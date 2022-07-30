@@ -1,0 +1,62 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+window.nautilus-window {
+  // those are the items inside the nautilus canvas
+  .nautilus-canvas-item {
+    border-radius: config.$radius;
+    &:selected, &:active {
+      background: color.change(colors.$accent-primary, $alpha: config.$tint-medium);
+    }
+  }
+
+  // this is the floating bar usually shown at the bottom right of nautilus when elements are selected
+  .floating-bar {
+    background: colors.$surface-strong;
+    color: colors.$white-strong;
+    padding: config.$spacing-small;
+
+    &.bottom.left {
+      border-top-right-radius: config.$radius;
+    }
+    &.bottom.right {
+      border-top-left-radius: config.$radius;
+    }
+  }
+
+  .nautilus-path-bar {
+    background: colors.$white-weakest;
+      border-radius: config.$radius;
+
+    > button {
+      background: transparent;
+      &:hover {
+        background: colors.$white-weakest;
+      }
+    }
+
+    .path-buttons-box {
+      button {
+        background: transparent;
+        &:hover:not(.current-dir) {
+          background: transparent;
+          label {
+            color: colors.$white-moderate;
+          }
+        }
+      }
+      .dim-label {
+        color: colors.$white-weak;
+        opacity: 1;
+      }
+    }
+  }
+
+  .operations-list {
+    background: transparent;
+    row {
+      background: transparent;
+    }
+  }
+}

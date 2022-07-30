@@ -1,0 +1,85 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+spinbutton {
+
+  button {
+    border: config.$border-size solid transparent;
+  }
+
+  &:focus {
+    button {
+      &:hover {
+        background-clip: padding-box;
+      }
+      border-color: color.change(colors.$purple-normal, $alpha: config.$tint-strong);
+    }
+  }
+
+  &:disabled {
+    opacity: config.$disabled-opacity;
+  }
+
+  &.horizontal {
+    :nth-child(3) {
+      border-radius: config.$radius 0 0 config.$radius;
+      border-right: 0;
+    }
+  
+    :nth-child(4) {
+      border-radius: 0;
+      border-width: config.$border-size 0;
+    }
+  
+    :nth-child(5) {
+      border-radius: 0 config.$radius config.$radius 0;
+      border-left: 0;
+    }
+  }
+
+  &.vertical {
+    entry {
+      padding: config.$spacing-medium 0;
+    }
+
+    :nth-child(3) {
+      border-radius: config.$radius config.$radius 0 0;
+      border-bottom: 0;
+    }
+  
+    :nth-child(4) {
+      border-radius: 0;
+      border-width: 0 config.$border-size;
+    }
+  
+    :nth-child(5) {
+      border-radius: 0 0 config.$radius config.$radius;
+      border-top: 0;
+    }
+  }
+
+  .linked.horizontal & {
+    &:not(:first-child) {
+      :nth-child(3) { border-top-left-radius: 0; }
+      :nth-child(5) { border-bottom-left-radius: 0; }
+    }
+
+    &:not(:last-child) {
+      :nth-child(3) { border-top-right-radius: 0; }
+      :nth-child(5) { border-bottom-right-radius: 0; }
+    }
+  }
+
+  .linked.vertical & {
+    &:not(:first-child) {
+      :nth-child(3) { border-top-left-radius: 0; }
+      :nth-child(5) { border-top-right-radius: 0; }
+    }
+
+    &:not(:last-child) {
+      :nth-child(3) { border-bottom-left-radius: 0; }
+      :nth-child(5) { border-bottom-right-radius: 0; }
+    }
+  }
+}

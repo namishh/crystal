@@ -1,0 +1,25 @@
+@use "../colors";
+@use "../config";
+
+expander {
+  title {
+    color: colors.$white-moderate;
+    padding: config.$spacing-medium;
+
+    arrow {
+      -gtk-icon-source: -gtk-icontheme("go-next-symbolic");
+      min-width: 1em;
+      min-height: 1em;
+      margin-right: config.$spacing-medium;
+
+      &:checked {
+        -gtk-icon-source: -gtk-icontheme("go-down-symbolic");
+        color: colors.$white-strong;
+        
+        & + label {
+          color: colors.$white-strong;
+        }
+      }
+    }
+  }
+}

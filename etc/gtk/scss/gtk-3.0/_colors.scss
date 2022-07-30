@@ -1,0 +1,41 @@
+$surface-strongest: #0a1011;
+$surface-strong: #0a1011;
+$surface-moderate: #0d1617;
+$surface-weak: #0a1011;
+$surface-weakest: #121b1c;
+
+$white-strongest: #d7e0e0;
+$white-strong: #d7e0e0;
+$white-moderate: #cedcd9;
+$white-weak: #2e3333;
+$white-weakest: #0b1617;
+
+$black-strongest: #0a1011;
+$black-strong: #0b1617;
+$black-moderate: #0e1617;
+$black-weak: #0e1617;
+$black-weakest: #162224;
+
+$red-normal: #df5b61;
+$red-light: #f16269;
+$orange-normal: #e29c6f;
+$orange-light: #f69e65;
+$yellow-normal: #deb26a;
+$yellow-light: #dbb476;
+$green-normal: #6ec587;
+$green-light: #8dd5a0;
+$cyan-normal:  #6fd1d5;
+$cyan-light: #7bd3e0;
+$blue-light: #739bdf;
+$blue-normal: #659bdb;
+$purple-normal: #c177d9;
+$purple-light: #d16ee0;
+$pink-normal: rgb(213, 108, 195);
+$pink-light: rgb(223, 129, 207);
+
+
+$accent-primary: $blue-normal;
+$accent-secondary: $green-normal;
+
+// TODO: is there a better way to do this? this is for example used in gnome-calculator for the result top-border
+@define-color borders #{"" +$surface-strong};

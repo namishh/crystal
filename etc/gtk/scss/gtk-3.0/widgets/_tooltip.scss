@@ -1,0 +1,20 @@
+@use '../colors';
+@use '../config';
+
+tooltip {
+  background: colors.$surface-weakest;
+
+  > * {
+    margin: config.$spacing-medium;
+  }
+
+  grid {
+    label {
+      margin: config.$spacing-small 0;
+    }
+    
+    image {
+      margin-right: config.$spacing-medium;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+#/usr/bin/sh
+
+PLAYERCTL_STATUS=$(playerctl --player=spotify status 2>/dev/null)
+EXIT_CODE=$?
+if [ $EXIT_CODE -eq 0 ]; then
+    STATUS=$PLAYERCTL_STATUS
+    icon=""
+    if [ $STATUS == "Paused" ]; then
+      icon=""
+    fi
+    SONG_NAME=$(playerctl --player=spotify metadata title 2>/dev/null)
+    ARTIST_NAME=$(playerctl --player=spotify metadata artist 2>/dev/null)
+    artlink="$(playerctl --player=spotify metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
+    curl -s "$artlink" --output /tmp/cover.png;
+    IMAGE=$(playerctl --player=spotify metadata mpris:artUrl 2>/dev/null)
+else
+    STATUS=""
+    SONG_NAME="N/A"
+    ARTIST_NAME="NIL"
+    IMAGE=""
+    cp ~/.config/eww/doge.png /tmp/cover.png
+    icon=""
+
+fi
+
+
+if [[ $1 == "--status" ]]; then
+    echo $STATUS
+elif [[ $1 == "--song" ]]; then
+  count=$(echo -n "$SONG_NAME" | wc -c)
+  if [ "$count" -le 10 ]; then
+		echo $SONG_NAME
+	else 
+		echo ${SONG_NAME:0:10}...
+	fi
+elif [[ $1 == "--artist" ]]; then
+    echo $ARTIST_NAME
+elif [[ $1 == "--image" ]]; then
+    echo $IMAGE
+elif [[ $1 == "--icon" ]]; then
+    echo $icon
+fi

@@ -1,0 +1,78 @@
+@use '../colors';
+
+// TODO: theme "this tab is playing audio" tooltip section
+// TODO: find out how bookmark drag and drop boxes render their buggy 1px border
+// TODO: check how separators are rendered. `separator, .separator` background affects a larger area than wanted.
+
+window.background.chromium {
+  // active tab and toolbar colors
+  background: lighten(colors.$surface-weak, 2%);
+  color: colors.$white-strong;
+
+  button {
+    border: 1px solid lighten(colors.$surface-weak, 2%);
+  }
+
+  .titlebutton {
+    border: transparent;
+  }
+
+  entry {
+    // chromium manipulates this color, so it is impossible to set a specific one
+    // using black at least guarantees a light, monochrome color
+    &:focus {
+      border-color: colors.$black-strongest;
+    }
+  }
+
+  // context menu colors
+  menu {
+    background: colors.$surface-moderate;
+    menuitem {
+      color: colors.$white-strong;
+      &:hover {
+        background: colors.$white-weakest;
+      }
+      &:disabled label {
+        color: colors.$white-weakest;
+      }
+    }
+  }
+
+  // tab bar / headerbar
+  headerbar, menubar {
+    background: colors.$surface-strongest;
+
+    label {
+      color: colors.$white-moderate;
+    }
+
+    // this is a workaround to position titlebuttons to the very right
+    .titlebutton {
+      padding: 100px 80px;
+    }
+  }
+
+  scrollbar {
+    button {
+      background: colors.$white-weakest;
+      color: colors.$white-strong;
+    }
+
+    trough {
+      background: transparent;
+    }
+    slider {
+      background: colors.$white-weakest;
+    }
+    junction {
+      background: colors.$white-weakest;
+    }
+  }
+
+  // address bar
+  textview {
+    background-color: colors.$surface-strong;
+    color: colors.$white-strong;
+  }
+}
