@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="14"
+   height="14"
+   viewBox="0 0 14 14"
+   enable-background="new 0 0 24.00 24.00"
+   xml:space="preserve"
+   id="svg4"
+   sodipodi:docname="check.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"><metadata
+   id="metadata10">
+  <rdf:RDF>
+    <cc:Work
+   rdf:about="">
+      <dc:format>image/svg+xml</dc:format>
+
+
+
+      <dc:type
+   rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+
+
+
+      <dc:title></dc:title>
+
+
+
+    </cc:Work>
+
+
+
+  </rdf:RDF>
+
+
+
+</metadata>
+
+
+
+<defs
+   id="defs8" />
+
+
+
+<sodipodi:namedview
+   height="13.41403px"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   inkscape:document-rotation="0"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="2560"
+   inkscape:window-height="1408"
+   id="namedview6"
+   showgrid="true"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-right="0"
+   fit-margin-bottom="0"
+   inkscape:zoom="32"
+   inkscape:cx="-2.658788"
+   inkscape:cy="0.0350941"
+   inkscape:window-x="0"
+   inkscape:window-y="32"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg4">
+  <inkscape:grid
+   id="grid830"
+   type="xygrid" />
+</sodipodi:namedview>
+
+
+
+
+	<path
+   d="m 5,12.207015 -5,-5 1.414,-1.414 3.586,3.586 7.586,-7.58603 1.414,1.414"
+   id="path2"
+   inkscape:connector-curvature="0"
+   sodipodi:nodetypes="cccccc"
+   style="fill:#000000;stroke:none"
+   stroke-linejoin="round"
+   stroke-width="0.2"
+   fill-opacity="1"
+   fill="#000000" />
+
+
+
+
+</svg>

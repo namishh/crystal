@@ -1,0 +1,187 @@
+$background : #0a1011;
+$foreground : #d7e0e0;
+$background-alt : #0d1617;
+$foreground-alt : #c5d7d7;
+
+$red : #df5b61;
+$red-light : #f16269;
+
+$green : #6EC587;
+$green-light : #8dd5a0;
+
+$yellow : #deb26a;
+$yellow-light : #dbb476;
+
+$blue : #659bdb;
+$blue-light : #739bdf;
+
+$cyan : #5fd1d5;
+$cyan-light : #6bd3e0;
+
+$magenta : #c167d9;
+$magenta-light : #d16ee0;
+
+* {
+  all: unset;
+  font-family: "JetBrains Mono Nerd Font";
+}
+
+.dash {
+  background-color: $background;
+  padding: 1.5rem;
+  border-radius: 7px;
+}
+
+.time {
+  font-size: 2.8rem;
+  letter-spacing: .7rem;
+  margin-bottom: 1rem;
+}
+
+.timebox {
+  font-family: "Montserrat";
+  padding: 1rem 4rem;
+}
+
+.date {
+  font-size: 1.3rem;
+}
+
+.btncontainer {
+  margin-left: 2rem;
+  margin-top: .8rem;
+}
+
+.setbtn {
+  padding: 2.5rem 3.1rem;
+  font-size: 1.8rem;
+  margin: 1rem 1rem;
+  border-radius: 50%;
+  color: $blue;
+  background-color: $background-alt;
+}
+
+.wifi {
+  padding-right: 3.2rem;
+}
+
+scale trough {
+				background-color: $background-alt;
+				border-radius: 10px;
+				min-height: 13em;
+				min-width: 1em;
+				margin: 1rem 1rem;
+}
+
+.progressicon {
+  font-size: 2rem;
+}
+.scale {
+  margin: 1rem 1.3rem;
+}
+.rambar trough highlight {
+					background-image: linear-gradient(to top, $yellow, $yellow-light);
+					border-radius: 10px;
+}
+.batbar trough highlight {
+					background-image: linear-gradient(to top, $green-light, $green);
+					border-radius: 10px;
+}
+
+.cpubar trough highlight {
+					background-image: linear-gradient(to top, $red-light, $red);
+					border-radius: 10px;
+}
+.rambar {
+  margin-left: 2rem;
+}
+.batbar {
+  margin-right: 2rem;
+}
+.red {
+  color: $red;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+
+.circbar {
+  font-size: 2em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 5rem;
+  background-color: $background-alt;
+}
+
+.circtext {
+  padding: 3.5rem;
+}
+
+.magenta {
+  color: $magenta;
+}
+
+.blue {
+  color: $blue;
+}
+
+.active {
+  background-color: $blue;
+  color: $background-alt;
+}
+
+.songbtn {
+  font-size: 3rem;
+  margin: 1rem 1.4rem;
+}
+
+.background-song {
+  min-height: 10rem;
+  min-width: 10rem;
+}
+
+.music-controls {
+  margin-left: 1rem;
+}
+
+.songbox {
+  margin-top: 2rem;
+}
+
+.songtitle {
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+.songinfo {
+  margin-top: 1.4rem;
+}
+.image {
+  margin-left: 2.5rem;
+  border-radius: 10px;
+  background-size: 150px;
+  min-height: 150px;
+  min-width: 150px;
+}
+
+.play {
+  color: $blue;
+}
+
+.prev {
+  color: $red;
+}
+
+.next {
+  color: $yellow;
+}
+
+.powerbtn-1 {
+  margin-top: 2.5rem;
+  margin-bottom: .6rem;
+  font-size: 2rem;
+}

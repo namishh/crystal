@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   preserveAspectRatio="xMidYMid meet"
+   viewBox="0 0 640 640"
+   width="64"
+   height="64"
+   id="svg18"
+   sodipodi:docname="min.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata22">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1850"
+     inkscape:window-height="1048"
+     id="namedview20"
+     showgrid="false"
+     inkscape:zoom="3.6875"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:window-x="70"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg18" />
+  <defs
+     id="defs4">
+    <path
+       d="M585.73 318.31C585.73 468.08 465.15 589.66 316.63 589.66C168.11 589.66 47.53 468.08 47.53 318.31C47.53 168.55 168.11 46.97 316.63 46.97C465.15 46.97 585.73 168.55 585.73 318.31Z"
+       id="a2ej96w70M" />
+    <path
+       d="M537.98 314.94C537.98 438.04 438.79 537.98 316.63 537.98C194.46 537.98 95.28 438.04 95.28 314.94C95.28 191.85 194.46 91.91 316.63 91.91C438.79 91.91 537.98 191.85 537.98 314.94Z"
+       id="b7nigrmLLp" />
+  </defs>
+  <g
+     id="g16"
+     transform="matrix(1.1499123,0,0,1.1499123,-47.8033,-42.29562)">
+    <g
+       id="g14">
+      <g
+         id="g8">
+        <use
+           xlink:href="#a2ej96w70M"
+           id="use6"
+           style="opacity:1;fill:#fbf98b;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g12">
+        <use
+           xlink:href="#b7nigrmLLp"
+           id="use10"
+           style="opacity:1;fill:#b1ceff;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+    </g>
+  </g>
+</svg>

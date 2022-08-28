@@ -1,0 +1,318 @@
+diff --git a/Makefile b/Makefile
+index 6dfa212..2ffd3c8 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@
+ 
+ include config.mk
+ 
+-SRC = st.c x.c boxdraw.c
++SRC = st.c x.c boxdraw.c hb.c
+ OBJ = $(SRC:.c=.o)
+ 
+ all: options st
+@@ -22,7 +22,8 @@ config.h:
+ 	$(CC) $(STCFLAGS) -c $<
+ 
+ st.o: config.h st.h win.h
+-x.o: arg.h config.h st.h win.h
++x.o: arg.h config.h st.h win.h hb.h
++hb.o: st.h
+ boxdraw.o: config.h st.h boxdraw_data.h
+ 
+ $(OBJ): config.h config.mk
+diff --git a/config.mk b/config.mk
+index c070a4a..3d236f0 100644
+--- a/config.mk
++++ b/config.mk
+@@ -15,10 +15,12 @@ PKG_CONFIG = pkg-config
+ # includes and libs
+ INCS = -I$(X11INC) \
+        `$(PKG_CONFIG) --cflags fontconfig` \
+-       `$(PKG_CONFIG) --cflags freetype2`
++       `$(PKG_CONFIG) --cflags freetype2` \
++       `$(PKG_CONFIG) --cflags harfbuzz`
+ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
+        `$(PKG_CONFIG) --libs fontconfig` \
+-       `$(PKG_CONFIG) --libs freetype2`
++       `$(PKG_CONFIG) --libs freetype2` \
++       `$(PKG_CONFIG) --libs harfbuzz`
+ 
+ # flags
+ STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
+diff --git a/hb.c b/hb.c
+new file mode 100644
+index 0000000..a47300e
+--- /dev/null
++++ b/hb.c
+@@ -0,0 +1,148 @@
++#include <stdlib.h>
++#include <stdio.h>
++#include <math.h>
++#include <X11/Xft/Xft.h>
++#include <hb.h>
++#include <hb-ft.h>
++
++#include "st.h"
++
++#define FEATURE(c1,c2,c3,c4) { .tag = HB_TAG(c1,c2,c3,c4), .value = 1, .start = HB_FEATURE_GLOBAL_START, .end = HB_FEATURE_GLOBAL_END }
++
++void hbtransformsegment(XftFont *xfont, const Glyph *string, hb_codepoint_t *codepoints, int start, int length);
++hb_font_t *hbfindfont(XftFont *match);
++
++typedef struct {
++	XftFont *match;
++	hb_font_t *font;
++} HbFontMatch;
++
++static int hbfontslen = 0;
++static HbFontMatch *hbfontcache = NULL;
++
++/*
++ * Replace 0 with a list of font features, wrapped in FEATURE macro, e.g.
++ * FEATURE('c', 'a', 'l', 't'), FEATURE('d', 'l', 'i', 'g')
++ */
++hb_feature_t features[] = { 0 };
++
++void
++hbunloadfonts()
++{
++	for (int i = 0; i < hbfontslen; i++) {
++		hb_font_destroy(hbfontcache[i].font);
++		XftUnlockFace(hbfontcache[i].match);
++	}
++
++	if (hbfontcache != NULL) {
++		free(hbfontcache);
++		hbfontcache = NULL;
++	}
++	hbfontslen = 0;
++}
++
++hb_font_t *
++hbfindfont(XftFont *match)
++{
++	for (int i = 0; i < hbfontslen; i++) {
++		if (hbfontcache[i].match == match)
++			return hbfontcache[i].font;
++	}
++
++	/* Font not found in cache, caching it now. */
++	hbfontcache = realloc(hbfontcache, sizeof(HbFontMatch) * (hbfontslen + 1));
++	FT_Face face = XftLockFace(match);
++	hb_font_t *font = hb_ft_font_create(face, NULL);
++	if (font == NULL)
++		die("Failed to load Harfbuzz font.");
++
++	hbfontcache[hbfontslen].match = match;
++	hbfontcache[hbfontslen].font = font;
++	hbfontslen += 1;
++
++	return font;
++}
++
++void
++hbtransform(XftGlyphFontSpec *specs, const Glyph *glyphs, size_t len, int x, int y)
++{
++	int start = 0, length = 1, gstart = 0;
++	hb_codepoint_t *codepoints = calloc((unsigned int)len, sizeof(hb_codepoint_t));
++
++	for (int idx = 1, specidx = 1; idx < len; idx++) {
++		if (glyphs[idx].mode & ATTR_WDUMMY) {
++			length += 1;
++			continue;
++		}
++
++		if (specs[specidx].font != specs[start].font || ATTRCMP(glyphs[gstart], glyphs[idx]) || selected(x + idx, y) != selected(x + gstart, y)) {
++			hbtransformsegment(specs[start].font, glyphs, codepoints, gstart, length);
++
++			/* Reset the sequence. */
++			length = 1;
++			start = specidx;
++			gstart = idx;
++		} else {
++			length += 1;
++		}
++
++		specidx++;
++	}
++
++	/* EOL. */
++	hbtransformsegment(specs[start].font, glyphs, codepoints, gstart, length);
++
++	/* Apply the transformation to glyph specs. */
++	for (int i = 0, specidx = 0; i < len; i++) {
++		if (glyphs[i].mode & ATTR_WDUMMY)
++			continue;
++		if (glyphs[i].mode & ATTR_BOXDRAW) {
++			specidx++;
++			continue;
++		}
++
++		if (codepoints[i] != specs[specidx].glyph)
++			((Glyph *)glyphs)[i].mode |= ATTR_LIGA;
++
++		specs[specidx++].glyph = codepoints[i];
++	}
++
++	free(codepoints);
++}
++
++void
++hbtransformsegment(XftFont *xfont, const Glyph *string, hb_codepoint_t *codepoints, int start, int length)
++{
++	hb_font_t *font = hbfindfont(xfont);
++	if (font == NULL)
++		return;
++
++	Rune rune;
++	ushort mode = USHRT_MAX;
++	hb_buffer_t *buffer = hb_buffer_create();
++	hb_buffer_set_direction(buffer, HB_DIRECTION_LTR);
++
++	/* Fill buffer with codepoints. */
++	for (int i = start; i < (start+length); i++) {
++		rune = string[i].u;
++		mode = string[i].mode;
++		if (mode & ATTR_WDUMMY)
++			rune = 0x0020;
++		hb_buffer_add_codepoints(buffer, &rune, 1, 0, 1);
++	}
++
++	/* Shape the segment. */
++	hb_shape(font, buffer, features, sizeof(features));
++
++	/* Get new glyph info. */
++	hb_glyph_info_t *info = hb_buffer_get_glyph_infos(buffer, NULL);
++
++	/* Write new codepoints. */
++	for (int i = 0; i < length; i++) {
++		hb_codepoint_t gid = info[i].codepoint;
++		codepoints[start+i] = gid;
++	}
++
++	/* Cleanup. */
++	hb_buffer_destroy(buffer);
++}
+diff --git a/hb.h b/hb.h
+new file mode 100644
+index 0000000..07888df
+--- /dev/null
++++ b/hb.h
+@@ -0,0 +1,6 @@
++#include <X11/Xft/Xft.h>
++#include <hb.h>
++#include <hb-ft.h>
++
++void hbunloadfonts();
++void hbtransform(XftGlyphFontSpec *, const Glyph *, size_t, int, int);
+diff --git a/st.c b/st.c
+index 248728f..9101ae8 100644
+--- a/st.c
++++ b/st.c
+@@ -2584,7 +2584,8 @@ draw(void)
+ 
+ 	drawregion(0, 0, term.col, term.row);
+ 	xdrawcursor(cx, term.c.y, term.line[term.c.y][cx],
+-			term.ocx, term.ocy, term.line[term.ocy][term.ocx]);
++			term.ocx, term.ocy, term.line[term.ocy][term.ocx],
++			term.line[term.ocy], term.col);
+ 	term.ocx = cx;
+ 	term.ocy = term.c.y;
+ 	xfinishdraw();
+diff --git a/st.h b/st.h
+index 8d26273..133dc08 100644
+--- a/st.h
++++ b/st.h
+@@ -11,7 +11,8 @@
+ #define DIVCEIL(n, d)		(((n) + ((d) - 1)) / (d))
+ #define DEFAULT(a, b)		(a) = (a) ? (a) : (b)
+ #define LIMIT(x, a, b)		(x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
+-#define ATTRCMP(a, b)		((a).mode != (b).mode || (a).fg != (b).fg || \
++#define ATTRCMP(a, b)		(((a).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) != ((b).mode & (~ATTR_WRAP) & (~ATTR_LIGA)) || \
++				(a).fg != (b).fg || \
+ 				(a).bg != (b).bg)
+ #define TIMEDIFF(t1, t2)	((t1.tv_sec-t2.tv_sec)*1000 + \
+ 				(t1.tv_nsec-t2.tv_nsec)/1E6)
+@@ -34,6 +35,7 @@ enum glyph_attribute {
+ 	ATTR_WIDE       = 1 << 9,
+ 	ATTR_WDUMMY     = 1 << 10,
+ 	ATTR_BOXDRAW    = 1 << 11,
++	ATTR_LIGA       = 1 << 12,
+ 	ATTR_BOLD_FAINT = ATTR_BOLD | ATTR_FAINT,
+ };
+ 
+diff --git a/win.h b/win.h
+index a6ef1b9..bc0d180 100644
+--- a/win.h
++++ b/win.h
+@@ -25,7 +25,7 @@ enum win_mode {
+ 
+ void xbell(void);
+ void xclipcopy(void);
+-void xdrawcursor(int, int, Glyph, int, int, Glyph);
++void xdrawcursor(int, int, Glyph, int, int, Glyph, Line, int);
+ void xdrawline(Line, int, int, int);
+ void xfinishdraw(void);
+ void xloadcols(void);
+diff --git a/x.c b/x.c
+index 9b29264..af93cad 100644
+--- a/x.c
++++ b/x.c
+@@ -19,6 +19,7 @@ char *argv0;
+ #include "arg.h"
+ #include "st.h"
+ #include "win.h"
++#include "hb.h"
+ 
+ /* types used in config.h */
+ typedef struct {
+@@ -1031,6 +1032,9 @@ xunloadfont(Font *f)
+ void
+ xunloadfonts(void)
+ {
++	/* Clear Harfbuzz font cache. */
++	hbunloadfonts();
++
+ 	/* Free the loaded fonts in the font cache.  */
+ 	while (frclen > 0)
+ 		XftFontClose(xw.dpy, frc[--frclen].font);
+@@ -1231,7 +1235,7 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
+ 		mode = glyphs[i].mode;
+ 
+ 		/* Skip dummy wide-character spacing. */
+-		if (mode == ATTR_WDUMMY)
++		if (mode & ATTR_WDUMMY)
+ 			continue;
+ 
+ 		/* Determine font for glyph if different from previous glyph. */
+@@ -1343,6 +1347,9 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
+ 		numspecs++;
+ 	}
+ 
++	/* Harfbuzz transformation for ligatures. */
++	hbtransform(specs, glyphs, len, x, y);
++
+ 	return numspecs;
+ }
+ 
+@@ -1496,14 +1503,17 @@ xdrawglyph(Glyph g, int x, int y)
+ }
+ 
+ void
+-xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og)
++xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og, Line line, int len)
+ {
+ 	Color drawcol;
+ 
+ 	/* remove the old cursor */
+ 	if (selected(ox, oy))
+ 		og.mode ^= ATTR_REVERSE;
+-	xdrawglyph(og, ox, oy);
++
++	/* Redraw the line where cursor was previously.
++	 * It will restore the ligatures broken by the cursor. */
++	xdrawline(line, 0, oy, len);
+ 
+ 	if (IS_SET(MODE_HIDE))
+ 		return;

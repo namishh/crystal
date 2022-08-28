@@ -1,121 +1,15 @@
+(include "./src/yuck/_vars.yuck")
+(include "./src/yuck/_modules.yuck")
 
-(defpoll hour 	:interval "1s" `date +%H`)
-(defpoll minute :interval "1s" `date +%M`)
-(defpoll day 	:interval "1s" `date "+%A"`)
-(defpoll date 	:interval "1s" `date "+%D"`)
-(defpoll volume :interval "2s" `pamixer --get-volume`)
-(defpoll brightness :interval "2s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
-(defwidget time[]
-  (box :orientation "v" :space-evenly "false" :class "timebox"
-    (box :class "time" "${hour}:${minute}")
-    (box :class "date" "${date}")
-    )  
-)
+(include "./src/yuck/elevate/_widgets.yuck")
+(include "./src/yuck/elevate/_window.yuck")
 
-(defwidget setbtn[?icon active func]
-  (button :class "setbtn ${active}" :onclick "${func}" "${icon}"  )
-  )
+(include "./src/yuck/horizon/_widgets.yuck")
+(include "./src/yuck/horizon/_window.yuck")
 
-(defwidget progbar[?icon value classname iconclass]
-  (box :orientation "v" :class "progbox" :space-evenly "false"
-  (scale :class "scale ${classname}" :min 0 :max 101 :value value :orientation "v" :flipped "true" :active "false")
-  (box :orientation "v" :class "progressicon ${iconclass}" "${icon}")
-    )
-  )
+(include "./src/yuck/mainframe/_widgets.yuck")
+(include "./src/yuck/mainframe/_window.yuck")
 
+(include "./src/yuck/moment/_widgets.yuck")
+(include "./src/yuck/moment/_window.yuck")
 
-(defpoll picomactive :interval '1s' "~/.config/eww/scripts/picom --class")
-(defpoll apactive :interval '1s' "~/.config/eww/scripts/airplanemode --class")
-(defpoll dndctive :interval '1s' "~/.config/eww/scripts/dnd --class")
-(defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi --class")
-(defpoll btactive :interval '1s' "~/.config/eww/scripts/bluetooth --class")
-(defpoll nlactive :interval '1s' "~/.config/eww/scripts/nightlight --class")
-
-(defwidget settings[] 
-  (box :orientation "v" :class "btncontainer"
-      (box :"orientation "h" :class "btnrow" :space-evenly "false"
-          (setbtn :icon "直" :active "${wifiactive} wifi" :func "~/.config/eww/scripts/wifi --toggle")  
-          (setbtn :icon "" :active "${btactive}" :func "~/.config/eww/scripts/bluetooth --toggle")  
-          (setbtn :icon "ﮖ" :active "${dndctive}" :func "~/.config/eww/scripts/dnd --toggle")  
-        )
-      (box :"orientation "h" :class "btnrow" :space-evenly "false"
-          (setbtn :icon "" :active "${apactive}" :func "~/.config/eww/scripts/airplanemode --toggle")  
-          (setbtn :icon "𧻓" :active "${picomactive}" :func "~/.config/eww/scripts/picom --toggle  ")  
-          (setbtn :icon "" :active "${nlactive}" :func "~/.config/eww/scripts/nightlight --toggle")  
-        )
-
-    )
-  )
-
-(defwidget circbar[?value classname text]
-(box :class "bar"
-     :space-evenly false
-  (circular-progress :class "circbar ${classname}"
-                   :value value 
-                   :thickness 8
-                   :clockwise true
-                   :start-at 30
-         (label :text "${text}" :class "${classname} circtext"))))
-
-(defwidget systemstats[]
-  (box :orientation "h" :class "systemstats" :space-evenly "false"
-    (box :orientation "h" :class "scaleboxes" :space-evenly "false"
-      (progbar :icon "" :value {EWW_RAM.used_mem_perc} :classname 'rambar' :iconclass "yellow")
-      (progbar :icon "﬙" :value {round(EWW_CPU.avg, 0)} :classname 'cpubar' :iconclass "red")
-      (progbar :icon "" :value {EWW_BATTERY['BAT0'].capacity} :classname 'batbar' :iconclass "green") 
-      )
-    (box :orientation "v" :class "circprogressbox" :space-evenly "false"
-        (circbar :classname "magenta" :text "墳" :value volume) 
-        (circbar :classname "blue" :text "滛" :value brightness) 
-      )
-    )
-  )
-
-(defpoll status :interval "1s" "~/.config/eww/scripts/spotify --status")
-(defpoll image :interval "1s" "echo /tmp/cover.png")
-(defpoll songname :interval "1s" "~/.config/eww/scripts/spotify --song")
-(defpoll artist :interval "1s" "~/.config/eww/scripts/spotify --artist")
-(defpoll icon :interval "1s" "~/.config/eww/scripts/spotify --icon")
-
-(defwidget song[]
-  (box :orientation "h" :class "songbox" :space-evenly "false"
-      (box :class "image" :style "background-image: url('${image}');")
-      (box :orientation "v" :space-evenly "false" :class "songinfo"
-        (box :orientation "h" :class "songtitle" "${songname}") 
-        (box :orientation "h" :space-evenly "false" :class "music-controls"
-            (button :class "songbtn prev" :onclick "playerctl --player=spotify previous"  "ﭢ")
-            (button :class "songbtn play" :onclick "playerctl --player=spotify play-pause" "${icon}" )
-            (button :class "songbtn next" :onclick "playerctl --player=spotify next" "ﭠ")
-          ) 
-        )
-    )
-  )
-
-(defwidget powermenu_1[]
-  (box :orientation "h" :class "powermenu_horizontal_1"
-      (button :class "powerbtn-1 red" :onclick "poweroff" "")
-      (button :class "powerbtn-1 blue" :onclick "restart" "ﰇ")
-      (button :class "powerbtn-1 green" :onclick "systemctl suspend" "鈴")
-      (button :class "powerbtn-1 yellow" :onlick "bspc quit" "")
-    )
-  )
-
-(defwidget dash[]
-  (box :orientation "h" :space-evenly "false" :class "dash"
-    (box :orientation "v" :class "left-side" :space-evenly "false"
-      (time)
-      (settings)
-      (systemstats)
-      (song)
-      (powermenu_1)
-      )
-))
-
-(defwindow dash
-           :monitor 0
-           :geometry (geometry :x "12px"
-                               :y "69px"
-                                :anchor "top left")
-           :stacking "fg"
-           :wm-ignore false
-  (dash))

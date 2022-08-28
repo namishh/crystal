@@ -1,0 +1,15 @@
+@icon,,18,17,16,16,0,left,top,#7AA2F7,#7AA2F7,/home/namish/.config/jgmenu/svgs/searching.svg
+@search,,42,15,150,20,2,left,top,#c0caf5,#7aa2f7,Search
+Terminal,st,/home/namish/.config/jgmenu/svgs/alacritty.svg
+Web Browser,firefox,/home/namish/.config/jgmenu/svgs/firefox.svg
+File manager,nautilus,/home/namish/.config/jgmenu/svgs/folder-alt.svg
+Text Editor,code,/home/namish/.config/jgmenu/svgs/code.svg
+Music Player,spotify,/home/namish/.config/jgmenu/svgs/spotify.svg
+
+^sep()
+Applications,^checkout(lx-apps),/home/namish/.config/jgmenu/svgs/emblem-favorite.svg
+System Menu,eww open --toggle sidebar,/home/namish/.config/jgmenu/svgs/preferences.svg
+^sep()
+Exit,eww open-many --toggle powermenu,/home/namish/.config/jgmenu/svgs/system-logout.svg
+
+^tag(lx-apps)

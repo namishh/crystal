@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg4600"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   sodipodi:docname="trompaste.svg"
+   inkscape:export-filename="/home/tio/Downloads/person-80.jpg.png"
+   inkscape:export-xdpi="9.6761904"
+   inkscape:export-ydpi="9.6761904"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4594">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter4423">
+      <feFlood
+         flood-opacity="0.45098"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood4425" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4427" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="5.46448"
+         result="blur"
+         id="feGaussianBlur4429" />
+      <feOffset
+         dx="-2.2"
+         dy="4.9"
+         result="offset"
+         id="feOffset4431" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4433" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="1360"
+     inkscape:cy="707.14286"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1861"
+     inkscape:window-height="1047"
+     inkscape:window-x="59"
+     inkscape:window-y="33"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="0" />
+  <metadata
+     id="metadata4597">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-87)">
+    <rect
+       style="fill:#393939;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:14.0665;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       id="rect903"
+       width="194.99178"
+       height="196.24919"
+       x="9.7085037"
+       y="95.904175"
+       ry="34.075214" />
+    <path
+       style="fill:#bc5151;fill-rule:evenodd;stroke:none;stroke-width:14.2399;stroke-linecap:square;paint-order:stroke markers fill"
+       d="m 61.132241,230.69377 c -2.658382,-2.65838 -3.775113,-84.03995 -1.243641,-90.63668 0.944604,-2.46174 4.211853,-3.31729 12.668006,-3.31729 8.335332,0 13.016371,-1.19866 17.433015,-4.46407 6.503377,-4.80816 14.046339,-4.34284 19.598139,1.20895 1.7645,1.7645 8.17642,3.29612 15.35127,3.66693 l 12.32111,0.63677 0.6339,11.01023 0.63389,11.01023 h -19.66735 c -17.84641,0 -20.089491,0.4494 -24.227208,4.85385 -4.268522,4.54364 -4.56,6.88914 -4.56,36.70076 v 31.84696 H 76.861093 c -7.479912,0 -14.304128,-1.09188 -15.728852,-2.51664 z m 40.304209,-80.54663 c 4.34779,-1.66845 4.27945,-10.49218 -0.0943,-12.17056 -6.734815,-2.58439 -11.818753,5.76305 -6.654881,10.9269 2.940907,2.94096 2.525527,2.86442 6.749201,1.24366 z"
+       id="path6546" />
+    <path
+       style="fill:#bc5151;fill-rule:evenodd;stroke:none;stroke-width:14.2399;stroke-linecap:square;paint-order:stroke markers fill"
+       d="m 100.55937,213.28713 v -42.99236 h 18.87462 18.87469 v 13.21228 c 0,7.47997 1.09193,14.30416 2.51665,15.72893 1.46392,1.4639 8.48199,2.51661 16.77747,2.51661 h 14.26089 v 23.94612 c 0,13.17039 -0.57283,25.43893 -1.27293,27.26346 -1.08921,2.83826 -6.23752,3.31729 -35.65224,3.31729 h -34.37915 z"
+       id="path6585" />
+    <path
+       style="fill:#bc5151;fill-rule:evenodd;stroke:none;stroke-width:14.2399;stroke-linecap:square;paint-order:stroke markers fill"
+       d="m 148.79461,180.78073 c 0,-5.76727 0.7473,-10.48596 1.66056,-10.48596 2.04783,0 19.31136,17.41286 19.31136,19.47839 0,0.82142 -4.71869,1.4935 -10.48592,1.4935 h -10.486 z"
+       id="path6821" />
+  </g>
+</svg>

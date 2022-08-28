@@ -1,0 +1,26 @@
+(defwidget setbtn[?icon active func altfunc label]
+  (box :orientation "v" :class "ekdamfull" :space-evenly "false"
+  (box :orientation "h" :space-evenly "false" :class "fullsetbtn"
+  (button :class "${active == 'active' ? 'active' : ''} setbtn" :onclick "${func}" "${icon}"  )
+  (button :class "${active == 'active' ? 'active' : ''} funcbtn"  :onclick "${altfunc}" ""  )
+    )
+  (box :class "setlabel" "${label}")
+    )
+  )
+
+(defwidget progbar[?icon value classname iconclass]
+  (box :orientation "v" :class "progbox" :space-evenly "false"
+(scale :class "scale ${classname}" :min 0 :max 101 :value value :orientation "v" :flipped "true" :active "false")
+  (box :orientation "v" :class "progressicon ${iconclass}" "${icon}")
+    )
+  )
+
+(defwidget circbar[?value classname text]
+(box :class "bar"
+     :space-evenly false
+  (circular-progress :class "circbar ${classname}"
+                   :value value 
+                   :thickness 8
+                   :clockwise true
+                   :start-at 30
+         (label :text "${text}" :class "${classname} circtext"))))

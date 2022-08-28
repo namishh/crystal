@@ -30,8 +30,6 @@ hi Normal guifg=#d7e0e0 ctermbg=NONE guibg=#0a1011 gui=NONE
 set t_Co=256
 let &t_ut=''
 if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
 
@@ -94,8 +92,9 @@ exe "hi LineNr guifg="s:wave8_gui
 exe "hi NonText guifg="s:wave5_gui." guibg="s:wave0_gui
 exe "hi Comment guifg="s:wave8_gui "gui=italic" 
 exe "hi SpecialComment guifg="s:wave8_gui "gui=italic guibg=NONE "
-exe "hi TabLineFill gui=NONE guibg="s:wave8_gui
-exe "hi TabLine guifg="s:wave7_gui." guibg="s:wave8_gui
+exe "hi TabLineFill gui=NONE guibg="s:wave1_gui
+exe "hi TabLineSel gui=NONE guibg="s:wave1_gui
+exe "hi TabLine guifg="s:wavefg_gui." guibg="s:wave1_gui
 exe "hi StatusLine guibg="s:wavebg_gui." guifg="s:wavefg_gui
 exe "hi StatusLineNC guibg="s:wavebg_gui." guifg="s:wavefg_gui
 exe "hi Search guibg="s:wave8_gui." guifg="s:wave4_gui
@@ -113,8 +112,8 @@ exe "hi SpellRare guifg="s:wave5_gui
 " Diff Highlightings
 exe "hi DiffAdd guifg="s:wave2_gui." guibg="s:wavebg_gui
 exe "hi DiffChange guifg="s:wave5_gui." guibg="s:wavebg_gui
-exe "hi DiffDelete guifg="s:wave6_gui." guibg="s:wavebg_gui
-exe "hi DiffText guifg="s:wave1_gui." guibg="s:wavebg_gui
+exe "hi DiffDelete guifg="s:wave1_gui." guibg="s:wavebg_gui
+exe "hi DiffText guifg="s:wave2_gui." guibg="s:wavebg_gui
 
 " GitGutter Highlightings
 exe "hi GitGutterAdd guifg="s:wave3_gui

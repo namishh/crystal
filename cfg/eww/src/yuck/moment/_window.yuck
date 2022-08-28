@@ -1,0 +1,5 @@
+(defwindow calendar
+	:geometry (geometry :x "-15px" 
+						:y "78px" 
+            :anchor "top right")
+(cal))

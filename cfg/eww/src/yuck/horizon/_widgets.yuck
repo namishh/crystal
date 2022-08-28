@@ -1,0 +1,18 @@
+(defwidget powermenu[] 
+  (box :orientation "v" :class "lockscreen" :space-evenly false  
+      (box :orientation "h" :class "lockupperrow" :space-evenly false :vexpand true
+          (button :class "locktime" :hexpand true :halign "end" :valign "start" :onclick "eww close powermenu" "")
+        )
+      (box :orientation "h" :class "lockbottomrow" :space-evenly false
+          (box :orientation "h" :class "locktime" :hexpand "true" :halign "start" "${hour}:${minute} | ${battery} ${batteryperc}%")
+          (box :orientation "h" :class "lockmenu" :halign "end" :space-evenly false
+            (button :onclick "poweroff" :orientation "h" :class "lockicon red" "")
+            (button :onclick "reboot" :orientation "h" :class "lockicon green" "")
+            (button :onclick "lock" :orientation "h" :class "lockicon blue" "")
+            (button :onclick "systemctl suspend" :orientation "h" :class "lockicon magenta" "")
+            (button :onclick "loginctl kill-user $USER" :orientation "h" :class "lockicon yellow" " ")
+            )
+        )
+    )
+)
+

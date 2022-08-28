@@ -13,14 +13,18 @@ if [ $EXIT_CODE -eq 0 ]; then
     artlink="$(playerctl --player=spotify metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
     curl -s "$artlink" --output /tmp/cover.png;
     IMAGE=$(playerctl --player=spotify metadata mpris:artUrl 2>/dev/null)
+    POSITION=$(playerctl --player=spotify position)
+    LENGTH=$(playerctl --player=spotify metadata mpris:length)
+    LENGTH=$(LENGTH / 1000)
 else
     STATUS=""
-    SONG_NAME="N/A"
-    ARTIST_NAME="NIL"
+    SONG_NAME="Spotify is Offline"
+    ARTIST_NAME="Open Spotify First"
     IMAGE=""
-    cp ~/.config/eww/doge.png /tmp/cover.png
+    cp ~/.config/eww/assets/doge.png /tmp/cover.png
     icon=""
-
+    POSITION=0
+    LENGTH=100
 fi
 
 
@@ -28,10 +32,10 @@ if [[ $1 == "--status" ]]; then
     echo $STATUS
 elif [[ $1 == "--song" ]]; then
   count=$(echo -n "$SONG_NAME" | wc -c)
-  if [ "$count" -le 10 ]; then
+  if [ "$count" -le 20 ]; then
 		echo $SONG_NAME
 	else 
-		echo ${SONG_NAME:0:10}...
+		echo ${SONG_NAME:0:20}...
 	fi
 elif [[ $1 == "--artist" ]]; then
     echo $ARTIST_NAME
@@ -39,4 +43,8 @@ elif [[ $1 == "--image" ]]; then
     echo $IMAGE
 elif [[ $1 == "--icon" ]]; then
     echo $icon
+elif [[ $1 == "--pos" ]]; then
+    echo $POSITION
+elif [[ $1 == "--len" ]]; then
+    echo $LENGTH
 fi

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   preserveAspectRatio="xMidYMid meet"
+   viewBox="0 0 640 640"
+   width="64"
+   height="64"
+   id="svg55"
+   sodipodi:docname="org.gnome.TwentyFortyEight-symbolic.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata59">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1850"
+     inkscape:window-height="1048"
+     id="namedview57"
+     showgrid="false"
+     inkscape:zoom="1.3037281"
+     inkscape:cx="-245.62209"
+     inkscape:cy="52.64664"
+     inkscape:window-x="70"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g17"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <defs
+     id="defs9">
+    <path
+       d="M598.99 18.78C611.58 18.78 621.79 28.98 621.79 41.57C621.79 157.73 621.79 483.4 621.79 599.55C621.79 612.14 611.58 622.35 598.99 622.35C482.61 622.35 156.27 622.35 39.89 622.35C27.3 622.35 17.09 612.14 17.09 599.55C17.09 483.4 17.09 157.73 17.09 41.57C17.09 28.98 27.3 18.78 39.89 18.78C156.27 18.78 482.61 18.78 598.99 18.78Z"
+       id="oh5kVGtna" />
+    <path
+       d="M243.34 34.98C280.77 34.98 311.11 65.32 311.11 102.74C311.11 143.4 311.11 197.62 311.11 238.28C311.11 275.71 280.77 306.05 243.34 306.05C199.98 306.05 137.67 306.05 94.31 306.05C56.89 306.05 26.55 275.71 26.55 238.28C26.55 197.62 26.55 143.4 26.55 102.74C26.55 65.32 56.89 34.98 94.31 34.98C137.67 34.98 199.98 34.98 243.34 34.98Z"
+       id="h1fesc5PDi" />
+    <path
+       d="M243.34 332.6C280.77 332.6 311.11 362.94 311.11 400.36C311.11 441.02 311.11 495.24 311.11 535.9C311.11 573.33 280.77 603.67 243.34 603.67C199.98 603.67 137.67 603.67 94.31 603.67C56.89 603.67 26.55 573.33 26.55 535.9C26.55 495.24 26.55 441.02 26.55 400.36C26.55 362.94 56.89 332.6 94.31 332.6C137.67 332.6 199.98 332.6 243.34 332.6Z"
+       id="h1nWesDFrT" />
+    <path
+       d="M545.45 332.6C582.88 332.6 613.22 362.94 613.22 400.36C613.22 441.02 613.22 495.24 613.22 535.9C613.22 573.33 582.88 603.67 545.45 603.67C502.1 603.67 439.79 603.67 396.43 603.67C359 603.67 328.66 573.33 328.66 535.9C328.66 495.24 328.66 441.02 328.66 400.36C328.66 362.94 359 332.6 396.43 332.6C439.79 332.6 502.1 332.6 545.45 332.6Z"
+       id="f5jk0JztMk" />
+    <path
+       d="M188.19 134.73C188.19 130.05 186.43 125.37 182.91 122.24C179.39 119.12 174.11 116.78 168.83 116.78C158.27 116.78 147.71 123.8 138.02 137.08C134.94 135.51 110.3 123.02 107.22 121.46C115.14 110.53 123.94 101.95 133.62 96.48C143.31 91.02 155.63 87.9 169.71 87.9C183.79 87.9 196.99 91.8 208.43 100.39C219.87 108.97 225.15 119.9 225.15 133.95C225.15 141.76 222.51 149.57 218.11 156.59C213.71 163.62 205.79 172.99 193.47 183.92C191.41 185.79 181.15 195.16 162.67 212.02L230.43 212.02L230.43 242.46L109.86 242.46L109.86 217.48C139.96 190.32 156.68 175.22 160.03 172.21C170.59 162.84 177.63 155.81 182.03 150.35C186.43 144.88 188.19 139.42 188.19 134.73Z"
+       id="c1pF7P471R" />
+    <path
+       d="M219.79 417.61L152.43 417.61C152.43 432.68 152.43 441.04 152.43 442.72C157.75 441.15 163.07 441.15 170.16 441.15C187 441.15 201.18 445.86 212.7 454.49C224.23 463.12 230.43 474.89 230.43 490.58C230.43 505.49 224.23 518.04 211.82 527.46C199.41 536.87 184.34 542.36 165.72 542.36C142.68 542.36 123.18 534.52 107.22 519.61C109.26 517.1 125.57 497.01 127.61 494.5C129.38 496.07 131.15 497.64 133.81 499.21C136.47 500.78 140.91 503.92 147.11 507.06C153.31 510.2 160.41 511.76 166.61 511.76C172.82 511.76 179.02 510.2 184.34 506.27C189.66 503.13 192.32 497.64 192.32 490.58C192.32 483.52 189.66 478.81 184.34 474.89C179.02 470.96 171.93 469.4 163.06 469.4C154.2 469.4 144.45 472.53 132.93 478.03C131.86 477.03 126.55 472.06 116.97 463.12L116.97 387.8L219.79 387.8L219.79 417.61Z"
+       id="a6k2QvDVS0" />
+    <path
+       d="M408.66 394.46L531.86 394.46L531.86 420.21L463.22 545.81L421.86 545.81L486.98 423.33L443.86 423.33L443.86 442.83L408.66 442.83L408.66 394.46Z"
+       id="erQLC4FtY" />
+  </defs>
+  <g
+     id="g53">
+    <g
+       id="g51">
+      <g
+         id="g13">
+        <use
+           xlink:href="#oh5kVGtna"
+           id="use11"
+           fill-opacity="1"
+           fill="#ce839c"
+           opacity="1" />
+      </g>
+      <g
+         id="g17"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#h1fesc5PDi"
+           id="use15"
+           style="opacity:1;fill:#834c72;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <use
+           xlink:href="#h1fesc5PDi"
+           id="use15-3"
+           style="opacity:1;fill:#b07085;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%"
+           transform="translate(298.60978,-0.04049912)" />
+      </g>
+      <g
+         id="g21"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#h1nWesDFrT"
+           id="use19"
+           style="opacity:1;fill:#8a435f;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g25"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#f5jk0JztMk"
+           id="use23"
+           style="opacity:1;fill:#664a6e;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g33"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#c1pF7P471R"
+           id="use27"
+           style="opacity:1;fill:#bc8e9d;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g31">
+          <use
+             xlink:href="#c1pF7P471R"
+             id="use29"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+      <g
+         id="g41"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#a6k2QvDVS0"
+           id="use35"
+           style="opacity:1;fill:#bc8e9d;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g39">
+          <use
+             xlink:href="#a6k2QvDVS0"
+             id="use37"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+      <g
+         id="g49"
+         transform="matrix(0.86171013,0,0,0.86171013,49.773291,40.091617)">
+        <use
+           xlink:href="#erQLC4FtY"
+           id="use43"
+           style="opacity:1;fill:#bc8e9d;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g47">
+          <use
+             xlink:href="#erQLC4FtY"
+             id="use45"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

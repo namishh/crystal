@@ -1,0 +1,43 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+switch {
+  background: colors.$white-weakest;
+  border-radius: 1em;
+  min-width: 3em;
+  border: config.$border-size solid transparent;
+
+  slider {
+    background: colors.$white-moderate;
+    border-radius: 100%;
+    min-width: 1.5em;
+    min-height: 1.5em;
+  }
+
+  :nth-child(2) { color: transparent; }
+  :nth-child(3) { color: colors.$white-moderate; }
+
+  &:checked {
+    background: color.change(colors.$accent-primary, $alpha: config.$tint-weak);
+    
+    slider {
+      background: color.change(colors.$accent-primary, $alpha: config.$tint-strong);
+    }
+
+    :nth-child(2) { color: colors.$white-strong; }
+    :nth-child(3) { color: transparent; }
+  }
+
+  &:disabled { opacity: config.$disabled-opacity; }
+
+  &:hover {
+    slider {
+      box-shadow: 0 0 0 config.$spacing-small colors.$white-weak;
+    }
+
+    &:checked slider {
+      box-shadow: 0 0 0 config.$spacing-small color.change(colors.$accent-primary, $alpha: config.$tint-weak);
+    }
+  }
+}

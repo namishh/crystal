@@ -1,0 +1,87 @@
+diff --git a/config.def.h b/config.def.h
+index 3e9cda5..a9c65a9 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -156,8 +156,14 @@ unsigned int defaultattr = 11;
+  */
+ MouseShortcut mshortcuts[] = {
+ 	/* button               mask            string */
+-	{ Button4,              XK_ANY_MOD,     "\031" },
+-	{ Button5,              XK_ANY_MOD,     "\005" },
++	{ Button4,              XK_NO_MOD,      "\031" },
++	{ Button5,              XK_NO_MOD,      "\005" },
++};
++
++MouseKey mkeys[] = {
++	/* button               mask            function        argument */
++	{ Button4,              ShiftMask,      kscrollup,      {.i =  1} },
++	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
+ };
+ 
+ /* Internal keyboard shortcuts. */
+diff --git a/st.c b/st.c
+index b74b9dc..d33eb5b 100644
+--- a/st.c
++++ b/st.c
+@@ -237,6 +237,7 @@ static Rune utfmax[UTF_SIZ + 1] = {0x10FFFF, 0x7F, 0x7FF, 0xFFFF, 0x10FFFF};
+ /* config.h array lengths */
+ size_t colornamelen = LEN(colorname);
+ size_t mshortcutslen = LEN(mshortcuts);
++size_t mkeyslen = LEN(mkeys);
+ size_t shortcutslen = LEN(shortcuts);
+ size_t selmaskslen = LEN(selmasks);
+ 
+diff --git a/st.h b/st.h
+index 2d9b028..ca90c31 100644
+--- a/st.h
++++ b/st.h
+@@ -182,6 +182,13 @@ typedef union {
+ } Arg;
+ 
+ typedef struct {
++	uint b;
++	uint mask;
++	void (*func)(const Arg *);
++	const Arg arg;
++} MouseKey;
++
++typedef struct {
+ 	uint mod;
+ 	KeySym keysym;
+ 	void (*func)(const Arg *);
+@@ -271,6 +278,8 @@ extern unsigned int mousebg;
+ extern unsigned int defaultattr;
+ extern MouseShortcut mshortcuts[];
+ extern size_t mshortcutslen;
++extern MouseKey mkeys[];
++extern size_t mkeyslen;
+ extern Shortcut shortcuts[];
+ extern size_t shortcutslen;
+ extern uint forceselmod;
+diff --git a/x.c b/x.c
+index 495cd90..67dcfdc 100644
+--- a/x.c
++++ b/x.c
+@@ -248,6 +248,7 @@ bpress(XEvent *e)
+ {
+ 	struct timespec now;
+ 	MouseShortcut *ms;
++	MouseKey *mk;
+ 
+ 	if (IS_SET(MODE_MOUSE) && !(e->xbutton.state & forceselmod)) {
+ 		mousereport(e);
+@@ -262,6 +263,14 @@ bpress(XEvent *e)
+ 		}
+ 	}
+ 
++	for (mk = mkeys; mk < mkeys + mkeyslen; mk++) {
++		if (e->xbutton.button == mk->b
++				&& match(mk->mask, e->xbutton.state)) {
++			mk->func(&mk->arg);
++			return;
++		}
++	}
++
+ 	if (e->xbutton.button == Button1) {
+ 		clock_gettime(CLOCK_MONOTONIC, &now);
+ 

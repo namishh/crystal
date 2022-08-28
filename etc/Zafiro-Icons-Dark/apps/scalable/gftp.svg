@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   preserveAspectRatio="xMidYMid meet"
+   viewBox="0 0 640 640"
+   width="64"
+   height="64"
+   id="svg75"
+   sodipodi:docname="gftp.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14">
+  <metadata
+     id="metadata79">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1850"
+     inkscape:window-height="1048"
+     id="namedview77"
+     showgrid="false"
+     inkscape:zoom="3.6875"
+     inkscape:cx="32"
+     inkscape:cy="32"
+     inkscape:window-x="70"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g71" />
+  <defs
+     id="defs13">
+    <path
+       d="M20.56 18.88L620.56 18.88L620.56 620L20.56 620L20.56 18.88Z"
+       id="bTqO2zYTt" />
+    <path
+       d="M152.02 159.33C312.01 159.33 412 159.33 452 159.33C461.94 159.33 470 167.38 470 177.33C470 220.24 470 330.99 470 373.91C470 383.85 461.94 391.91 452 391.91C392 391.91 230.02 391.91 170.02 391.91C160.08 391.91 152.02 383.85 152.02 373.91C152.02 345.3 152.02 273.77 152.02 159.33Z"
+       id="c4YX8OBpa" />
+    <path
+       d="M310.45 133.48C318.52 133.48 325.06 140.02 325.06 148.09C325.06 153.03 325.06 153.26 325.06 158.2C325.06 166.27 318.52 172.81 310.45 172.81C278.76 172.81 198.31 172.81 166.63 172.81C158.56 172.81 152.02 166.27 152.02 158.2C152.02 153.26 152.02 153.03 152.02 148.09C152.02 140.02 158.56 133.48 166.63 133.48C198.31 133.48 278.76 133.48 310.45 133.48Z"
+       id="d2iWR8StVv" />
+    <path
+       d="M492.22 192.07C498.35 192.07 502.89 197.75 501.53 203.72C490.49 252.4 460.47 384.73 449.54 432.89C447.66 441.17 440.21 446.99 431.72 446.81C372.51 445.52 209.85 441.99 150.74 440.71C142.83 440.54 136.98 433.31 138.46 425.54C147.33 378.85 171.98 249.13 181.07 201.32C182.09 195.95 186.78 192.07 192.24 192.07C254.63 192.07 430.34 192.07 492.22 192.07Z"
+       id="b1j8I0jDuq" />
+    <path
+       d="M512.13 215.28C520.84 215.28 527.4 223.19 525.8 231.75C516.87 279.47 492.83 407.87 483.81 456.02C482.27 464.28 474.97 470.21 466.57 470.03C405.33 468.74 236.58 465.2 175.45 463.91C167.55 463.75 161.69 456.52 163.17 448.76C172.04 402.06 195.81 277.01 204.67 230.36C206.33 221.61 213.98 215.28 222.89 215.28C284.09 215.28 451.21 215.28 512.13 215.28Z"
+       id="b1eGsS4AF1" />
+    <path
+       d="M178.43 534.04L461.57 534.04L461.57 547.53L178.43 547.53L178.43 534.04Z"
+       id="h61h5ODxZY" />
+    <path
+       d="M291.35 524.49L358.76 524.49L358.76 557.08L291.35 557.08L291.35 524.49Z"
+       id="bkKVSnpyq" />
+    <path
+       d="M331.03 484.69L331.81 531.02L319.08 531.24L318.3 484.91L331.03 484.69Z"
+       id="gEWqyO40V" />
+    <path
+       d="M241.56 300.54C239.89 300.54 238.54 301.88 238.54 303.54C238.54 310.49 238.54 366.03 238.54 372.98C238.54 374.64 239.89 375.98 241.56 375.98C242.62 375.98 251.14 375.98 252.21 375.98C253.88 375.98 255.23 374.64 255.23 372.98C255.23 370.64 255.23 351.92 255.23 349.58C255.23 347.92 256.57 346.58 258.24 346.58C260.79 346.58 281.21 346.58 283.76 346.58C285.43 346.58 286.78 345.23 286.78 343.57C286.78 342.64 286.78 335.17 286.78 334.24C286.78 332.57 285.43 331.23 283.76 331.23C281.21 331.23 260.79 331.23 258.24 331.23C256.57 331.23 255.23 329.89 255.23 328.23C255.23 327.29 255.23 319.83 255.23 318.9C255.23 317.23 256.57 315.89 258.24 315.89C261.05 315.89 283.52 315.89 286.33 315.89C288 315.89 289.35 314.55 289.35 312.89C289.35 311.95 289.35 304.48 289.35 303.55C289.35 301.89 288 300.54 286.33 300.54C277.38 300.54 246.03 300.54 241.56 300.54Z"
+       id="a93Wnyj" />
+    <path
+       d="M333.75 314.99C333.75 348.61 333.75 367.29 333.75 371.03C333.75 374.33 339.12 375.98 344.49 375.98C349.86 375.98 355.23 374.33 355.23 371.03C355.23 367.29 355.23 348.61 355.23 314.99C366.63 314.99 372.97 314.99 374.23 314.99C378.36 314.99 380.71 311.58 380.71 307.66C380.71 304.25 378.78 300.54 374.23 300.54C368.29 300.54 320.69 300.54 314.75 300.54C310.2 300.54 308.27 304.25 308.27 307.66C308.27 311.58 310.61 314.99 314.75 314.99C317.28 314.99 323.61 314.99 333.75 314.99Z"
+       id="a6mvQ9OyCU" />
+    <path
+       d="M402.44 300.54C400.79 300.54 399.45 301.88 399.45 303.54C399.45 310.49 399.45 366.03 399.45 372.98C399.45 374.64 400.79 375.98 402.44 375.98C403.5 375.98 411.96 375.98 413.02 375.98C414.68 375.98 416.02 374.64 416.02 372.98C416.02 370.64 416.02 351.92 416.02 349.58C416.02 347.92 417.36 346.58 419.01 346.58C419.92 346.58 427.21 346.58 428.13 346.58C443.95 346.58 455.96 341.14 455.96 323.45C455.96 305.55 443 300.54 427.38 300.54C422.4 300.54 404.94 300.54 402.44 300.54ZM419.01 332.51C417.36 332.51 416.02 331.16 416.02 329.5C416.02 328.31 416.02 318.8 416.02 317.61C416.02 315.95 417.36 314.61 419.01 314.61C419.56 314.61 423.96 314.61 424.51 314.61C430.89 314.61 438.75 315.67 438.75 323.45C438.75 330.48 432.91 332.51 427.06 332.51C425.45 332.51 419.82 332.51 419.01 332.51Z"
+       id="c7MGnVRuD" />
+  </defs>
+  <g
+     id="g73">
+    <g
+       id="g71">
+      <g
+         id="g21"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#c4YX8OBpa"
+           id="use19"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g25"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#d2iWR8StVv"
+           id="use23"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g29"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#b1j8I0jDuq"
+           id="use27"
+           style="opacity:1;fill:#a9a9aa;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g33"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#b1eGsS4AF1"
+           id="use31"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g37"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#h61h5ODxZY"
+           id="use35"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g41"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#bkKVSnpyq"
+           id="use39"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g45"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#gEWqyO40V"
+           id="use43"
+           style="opacity:1;fill:#6b7896;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+      </g>
+      <g
+         id="g53"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#a93Wnyj"
+           id="use47"
+           style="opacity:1;fill:#a9a9aa;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g51">
+          <use
+             xlink:href="#a93Wnyj"
+             id="use49"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+      <g
+         id="g61"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#a6mvQ9OyCU"
+           id="use55"
+           style="opacity:1;fill:#a9a9aa;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g59">
+          <use
+             xlink:href="#a6mvQ9OyCU"
+             id="use57"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+      <g
+         id="g69"
+         transform="matrix(1.3136954,0,0,1.3136954,-106.53884,-131.36358)">
+        <use
+           xlink:href="#c7MGnVRuD"
+           id="use63"
+           style="opacity:1;fill:#a9a9aa;fill-opacity:1"
+           x="0"
+           y="0"
+           width="100%"
+           height="100%" />
+        <g
+           id="g67">
+          <use
+             xlink:href="#c7MGnVRuD"
+             id="use65"
+             style="opacity:1;fill-opacity:0;stroke:#000000;stroke-width:1;stroke-opacity:0"
+             x="0"
+             y="0"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

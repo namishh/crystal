@@ -1,0 +1,94 @@
+(defwidget song[]
+  (box :orientation "h" :class "songbox" :space-evenly "false"
+      (box :class "image" :orientation "v" :space-evenly false :style "background-image: url('${image}');"
+          (box :orientation "v" :class "music-info" :height "288" :width "440"  :hexpand "false" :vexpand "true" :space-evenly false
+          (box :class "songname" :halign "start"
+              "${songname}"
+            )
+          (box  :class "artist" :halign "start"
+              "${artist}"
+            )
+          )
+
+      )
+        (box :orientation "v" :space-evenly "false" :class "music-controls"
+            (button :class "songbtn prev" :onclick "playerctl --player=spotify previous"  "ﭢ")
+            (button :class "songbtn play" :onclick "playerctl --player=spotify play-pause" "${icon}" )
+            (button :class "songbtn next" :onclick "playerctl --player=spotify next" "ﭠ")
+          ) 
+    )
+  )
+
+(defwidget settings[] 
+  (box :orientation "v" :class "btncontainer" :space-evenly "true"
+      (box :"orientation "h" :class "btnrow"
+          (setbtn :icon "直" :label ssid :active "${wifiactive}" :altfunc "wifimenu &" :func "~/.config/eww/scripts/wifi --toggle")  
+          (setbtn :icon "" :label "Bluetooth" :active "${btactive}" :altfunc "bluetoothmenu &" :func "~/.config/eww/scripts/bluetooth --toggle")  
+          (setbtn :icon "ﮖ" :label "Do Not Disturb" :active "${dndctive}" :altfunc "dunstify 'Notifs' 'This toggle the DND Mode!' &":func "~/.config/eww/scripts/dnd --toggle")  
+        )
+      (box :"orientation "h" :class "btnrow"  
+          (setbtn :icon "" :label "Airplane Mode" :active "${apactive}"  :altfunc "dunstify 'Airplane Mode' 'This toggles the airplane mode!' &" :func "~/.config/eww/scripts/airplanemode --toggle")  
+          (setbtn :icon "𧻓" :label "Compositer" :active "${picomactive}":altfunc "st -e nvim ~/.config/picom/picom.conf &"  :func "~/.config/eww/scripts/picom --toggle  ")  
+          (setbtn :icon "" :label "Night Light" :active "${nlactive}" :altfunc "st -e nvim ~/.config/redshift/redshift.conf &" :func "~/.config/eww/scripts/nightlight --toggle")  
+        )
+
+    )
+  )
+
+
+(defwidget batover []
+	(box :class "batover"
+		:orientation "h"
+		:space-evenly "false"
+		(overlay :valign "center" 
+			(scale :class "bat-scale ${battery_class}"
+				:min 0
+				:max 100
+				:orientation "h"
+				:value {EWW_BATTERY['BAT0'].capacity}
+			)
+      (box :class "batover-textbox" :orientation "h"
+            (box :class "batover-col" :orientation "v" :valign "center" :space-evenly false
+                  (label :class "bat-label" :text "Battery")
+                  (label :class "bat-label" :text "${batteryperc}%")
+              )
+            (label :class "bat-icon" :text "${battery}")
+        )
+		)
+	)
+)
+
+(defwidget overprog[?label tt class value changefunc] 
+	(box
+		:orientation "h"
+		:space-evenly "false"
+    :tooltip tt
+			(scale :class "over-scale ${class}"
+				:min 0
+				:max 100
+				:orientation "h"
+        :value value
+        :onchange changefunc
+        :active true 
+        :valign 'center')
+	)
+)
+
+
+(defwidget sidebar[]
+  (box :orientation "h" :space-evenly "false" :class "dash"
+    (box :orientation "v" :class "left-side" :space-evenly "false"
+      (settings)
+
+      (box :orientation "h" :space-evenly true 
+        (batover)
+        (box :orientation "v" :valign "center" :space-evenly false
+          (overprog :tt "Brightness : ${brightness}%" :class "brightover" :label volumeill :value brightness  :changefunc "brightnessctl s {}%") 
+          (overprog :tt "Volume: ${volume}%" :class "volover" :label volumeill :value volume :changefunc "~/.config/eww/scripts/volume {}")  
+          )
+        )
+
+      (song)
+     )
+  )
+)

@@ -1,7 +1,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'wave',
+    theme = 'warm',
     component_separators = { left = ' | ', right = ' | '},
     section_separators = { left = ' ', right = ' '},
     disabled_filetypes = { "packer", "alpha", "NvimTree" },

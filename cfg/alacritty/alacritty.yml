@@ -100,7 +100,7 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: RobotoMono Nerd Font
     # family: Hack
-    family: JetBrains Mono Nerd Font
+    family: Iosevka Nerd Font
     # family: UbuntuMono Nerd Font
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
@@ -145,29 +145,29 @@ draw_bold_text_with_bright_colors: true
 colors:
   # Default colors
   primary:
-    background: '#0a1011'
-    foreground: '#d7e0e0'
+    background: '#0f0f0f'
+    foreground: '#dfdde0'
 
   # Normal colors
   normal:
-    black:   '#0d1617'
-    red:     '#df5b61'
-    green:   '#6ec587'
-    yellow:  '#deb26a'
-    blue:    '#659bdb'
-    magenta: '#c167d9'
-    cyan:    '#6fd1d5'
-    white:   '#c5d7d7'
+    black:   '#1a1a1d'
+    red:     '#d08689'
+    green:   '#9bcba8'
+    yellow:  '#d3b787'
+    blue:    '#7894b0'
+    magenta: '#c095cb'
+    cyan:    '#87b9bb'
+    white:   '#b9c1c1'
   # Bright colors
   bright:
-    black:   '#121b1c'
-    red:     '#f16269'
-    green:   '#8dd5a0'
-    yellow:  '#dbb476'
-    blue:    '#739bdf'
-    magenta: '#d16ee0'
-    cyan:    '#7bd3e0'
-    white:   '#cedcd9'
+    black:   '#1e1f25'
+    red:     '#db7176'
+    green:   '#9adaab'
+    yellow:  '#e7c794'
+    blue:    '#80a0c0'
+    magenta: '#d7a1df'
+    cyan:    '#81c6cf'
+    white:   '#ccc9c3'
 
 # Visual Bell
 #

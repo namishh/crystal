@@ -1,0 +1,37 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+tabs {
+  background: colors.$surface-strongest;
+
+  @each $class, $side in (
+    'top': 'bottom',
+    'right': 'left',
+    'bottom': 'top',
+    'left': 'right'
+  ) {
+    .#{$class} > & {
+      border-#{$side}: config.$border-size solid colors.$surface-moderate;
+      tab {
+        border-#{$side}: config.$border-size solid transparent;
+        margin-#{$side}: -#{config.$border-size};
+      }
+    }
+  }
+
+  tab {
+    padding: config.$spacing-medium;
+    color: colors.$white-moderate;
+
+    header &:checked {
+      border-color: color.change(colors.$accent-primary, $alpha: config.$tint-medium);
+      color: colors.$white-strong;
+    }
+
+    header &:hover:not(:checked) {
+      border-color: colors.$white-weakest;
+      color: colors.$white-strong;
+    }
+  }
+}

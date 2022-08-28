@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="iconmonstr-power-on-off.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="31.833333"
+     inkscape:cx="12"
+     inkscape:cy="11.968587"
+     inkscape:window-width="1808"
+     inkscape:window-height="964"
+     inkscape:window-x="56"
+     inkscape:window-y="33"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M 13.78522,12.282603 H 10.403012 V 2.135979 h 3.382208 z m 3.562311,-8.6635256 -1.025655,1.3520377 c 2.523127,1.4644962 4.227762,4.1897111 4.227762,7.3114879 0,4.662374 -3.793148,8.455521 -8.455522,8.455521 -4.6623739,0 -8.4555205,-3.793147 -8.4555205,-8.455521 0,-3.1217768 1.7046329,-5.8469917 4.2277603,-7.3114879 L 6.8407012,3.6190774 c -2.929838,1.778196 -4.8932099,4.986221 -4.8932099,8.6635256 0,5.603473 4.5431513,10.146625 10.1466247,10.146625 5.603474,0 10.146626,-4.543152 10.146626,-10.146625 0,-3.6773046 -1.963372,-6.8853296 -4.893211,-8.6635256 z"
+     id="path2"
+     style="fill:#b3b3b3;stroke-width:0.845552" />
+</svg>

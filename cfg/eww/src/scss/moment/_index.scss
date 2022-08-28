@@ -1,0 +1,51 @@
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.header {
+color: $blue;
+font-weight: bold;
+}
+
+calendar.button {
+color: $magenta;
+}
+
+calendar.highlight {
+color: $magenta;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: #c2cfcf;
+}
+.cal-box {
+			background-color: $background;
+			border-radius: 10px;
+      font-size: 16px;	
+			padding: 1rem;
+	
+			.month-year {
+				font-size: 18px;
+				font-weight: bold;
+				margin: 0.5em 0em 0em;
+      }
+	
+			.day-names {
+				margin: 1em 1em 0em;
+				font-size: 16px;
+				font-weight: bold;
+				color: $green;
+			}
+		
+			.cal {
+				padding: 1em .75em 0em;
+			}
+		}
+
+.moment {
+  font-family: "Iosevka Nerd Font";  
+  background-color: $background;
+  border-radius: 8px;
+}

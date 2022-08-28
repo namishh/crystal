@@ -1,0 +1,35 @@
+.setbtn {
+  padding: 2.5rem 2.5rem;
+  font-size: 1.8rem;
+  margin: .75rem 0rem;
+  border-radius: 10px 0px 0px 10px;
+  font-family: "Iosevka Nerd Font";
+}
+
+
+.funcbtn {
+  font-family: "Iosevka Nerd Font";
+  padding: 2rem 2rem;
+  font-size: 1.8rem;
+  margin: .75rem 0rem;
+  border-radius: 0px 10px 10px 0px;
+}
+scale trough {
+				background-color: $background-alt;
+				border-radius: 2px;
+				min-height: 13em;
+				min-width: 1em;
+				margin: 1rem 1rem;
+}
+.lockicon {
+  font-family: "Font Awesome"; 
+  font-size: 1.4rem;
+  background-color: $background;
+  margin: 0 .5rem;
+  padding: 2rem;
+  border-radius: 5px 0 5px 0;
+
+  &:hover {
+    background-color: $background-alt;
+  }
+}

@@ -1,0 +1,25 @@
+--- st.h
++++ st.h
+@@ -182,13 +182,6 @@ typedef union {
+ } Arg;
+ 
+ typedef struct {
+-	uint b;
+-	uint mask;
+-	void (*func)(const Arg *);
+-	const Arg arg;
+-} MouseKey;
+-
+-typedef struct {
+ 	uint mod;
+ 	KeySym keysym;
+ 	void (*func)(const Arg *);
+@@ -278,8 +271,6 @@ extern unsigned int mousebg;
+ extern unsigned int defaultattr;
+ extern MouseShortcut mshortcuts[];
+ extern size_t mshortcutslen;
+-extern MouseKey mkeys[];
+-extern size_t mkeyslen;
+ extern Shortcut shortcuts[];
+ extern size_t shortcutslen;
+ extern uint forceselmod;
