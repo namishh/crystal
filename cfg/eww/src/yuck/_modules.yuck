@@ -20,7 +20,9 @@
      :space-evenly false
   (circular-progress :class "circbar ${classname}"
                    :value value 
-                   :thickness 8
+                   :thickness 18
                    :clockwise true
                    :start-at 30
-         (label :text "${text}" :class "${classname} circtext"))))
+         (label :text "${text}" :class "${classname} circtext"))
+  )
+)

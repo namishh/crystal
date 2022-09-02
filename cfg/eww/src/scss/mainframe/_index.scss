@@ -192,3 +192,58 @@
 .main-quote {
   margin: 1rem;
 }
+
+
+.quote{
+	background-color: $background-alt;
+	border-radius: 12px;
+	padding: 1.5rem;
+	margin: .5rem;
+}
+.quote-text{
+	font-family: "DM Sans";
+  font-weight: 300;
+	padding: 1.4rem .5rem;
+	font-size: 1.5em;
+	color: $foreground;
+}
+
+.weatherbox {
+  background-color: $background-alt;
+  padding: 3.2rem;
+
+  border-radius: 5px;
+}
+
+.weathericon {
+  font-size: 3.8rem;
+  margin-bottom: 1rem;
+}
+
+.weathercity {
+  font-family : "Iosevka Nerd Font";
+  font-size: 1.3rem;
+}
+
+.weathertemp {
+  margin-left: 5rem;
+  margin-bottom: 1.5rem;
+  font-family : "Iosevka Nerd Font";
+  font-size: 2.2rem;
+}
+
+.uptimebox {
+  font-family: "Iosevka Nerd Font";
+  background-color: $background-alt;
+  margin-left: 1rem;
+  padding: 2rem;
+  border-left: 2px solid $green;
+}
+
+.uptimetext {
+  font-size : 1.2rem;
+  margin : 1.5rem 0;
+}
+.uptime {
+  font-size : 1.8rem;
+}

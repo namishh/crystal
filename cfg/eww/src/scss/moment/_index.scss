@@ -21,26 +21,26 @@ calendar:indeterminate {
 color: #c2cfcf;
 }
 .cal-box {
-			background-color: $background;
+			background-color: $background-alt;
 			border-radius: 10px;
-      font-size: 16px;	
-			padding: 1rem;
+      font-size: 18px;	
+			padding: 2rem 1rem;
 	
 			.month-year {
-				font-size: 18px;
+				font-size: 20px;
 				font-weight: bold;
 				margin: 0.5em 0em 0em;
       }
 	
 			.day-names {
-				margin: 1em 1em 0em;
-				font-size: 16px;
+				margin: 1.5em .75em 0em;
+				font-size: 18px;
 				font-weight: bold;
 				color: $green;
 			}
 		
 			.cal {
-				padding: 1em .75em 0em;
+				padding: 1em 1em 0em;
 			}
 		}
 
@@ -48,4 +48,5 @@ color: #c2cfcf;
   font-family: "Iosevka Nerd Font";  
   background-color: $background;
   border-radius: 8px;
+  padding: 1rem 1rem;
 }

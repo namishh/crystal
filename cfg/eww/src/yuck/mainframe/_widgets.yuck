@@ -35,7 +35,21 @@
     )
   )
 
-
+(defwidget quote [] 
+	(box 	:class "quote" 
+		 	:orientation "h" 
+			:halign "center"
+		 	:spacing 0 
+		 	:space-evenly "false"
+	(box 	:orientation "v" 
+		 	:spacing 0 
+		 	:space-evenly "false" 
+	(label 	:class "quote-text" 
+			:halign "center" 
+			:wrap "true"
+			:text "\"The Linux philosophy is 'Laugh in the face of danger'. Oops. Wrong One. 'Do it yourself'. Yes, that's it.\"")
+	)
+))
 (defwidget batover []
 	(box :class "batover"
 		:orientation "h"
@@ -74,6 +88,24 @@
 	)
 )
 
+(defwidget progressbars[] 
+    (box :orientation "h" :class "progressbars-box" 
+        (circbar :classname "red" :value {EWW_RAM.used_mem_perc} :text "")
+        (circbar :classname "blue" :value {round(EWW_CPU.avg, 0)} :text "﬙")
+        (circbar :classname "green" :value {EWW_DISK['/'].used_perc} :text "")
+      )
+  )
+
+(defwidget weatherbox[]
+    (box :orientation "h" :class "weatherbox" :space-evenly false
+        (box :orientation "v" :class "weathercol" :halign "start" :space-evenly false :hexpand true
+            (box :class "weathericon" :style "color: ${weatherhex};" weathericon) 
+            (box :class "weathercity" "New Delhi") 
+          )
+        (box :class "weathertemp" :style "color: ${weatherhex};":halign "end" "${current_temp}°C") 
+      )
+  )
+
 
 (defwidget sidebar[]
   (box :orientation "h" :space-evenly "false" :class "dash"
@@ -90,5 +122,16 @@
 
       (song)
      )
+    (box :orientation "v" :class "right-side" :space-evenly false
+        (cal)
+        (progressbars)
+        (box :orientation "h" :space-evenly false     
+          (weatherbox)
+          (box :class "uptimebox" :height 180 :valign "center"   :orientation "v" :space-evenly false
+              (box :valign "center" :class "uptimetext" "Uptime")
+              (box :class "uptime" :valign "center"  uptime)
+            )
+          )
+      )
   )
 )

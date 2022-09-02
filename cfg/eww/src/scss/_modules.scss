@@ -4,6 +4,7 @@
   margin: .75rem 0rem;
   border-radius: 10px 0px 0px 10px;
   font-family: "Iosevka Nerd Font";
+  background-color: $background-alt;
 }
 
 
@@ -11,8 +12,13 @@
   font-family: "Iosevka Nerd Font";
   padding: 2rem 2rem;
   font-size: 1.8rem;
+  background-color: $background-alt;
   margin: .75rem 0rem;
   border-radius: 0px 10px 10px 0px;
+}
+.active {
+  background-color: $blue;
+  color: $background-alt;
 }
 scale trough {
 				background-color: $background-alt;
@@ -32,4 +38,17 @@ scale trough {
   &:hover {
     background-color: $background-alt;
   }
+}
+.circbar {
+  font-family: "Iosevka Nerd Font";
+  font-size: 2.3em;
+  background-color: $background-alt;
+}
+
+.circtext {
+  padding: 4.3rem;
+}
+
+.progressbars-box {
+  padding: 1rem 2rem;
 }
