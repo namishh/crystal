@@ -1,0 +1,25 @@
+From b5d3351a21442a842e01e8c0317603b6890b379c Mon Sep 17 00:00:00 2001
+From: asparagii <michele.lambertucci1@gmail.com>
+Date: Thu, 27 Jan 2022 15:44:02 +0100
+Subject: [PATCH] st-scrollback-mouse
+
+---
+ config.def.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index e3b469b..c217315 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -176,6 +176,8 @@ static uint forcemousemod = ShiftMask;
+  */
+ static MouseShortcut mshortcuts[] = {
+ 	/* mask                 button   function        argument       release */
++	{ ShiftMask,            Button4, kscrollup,      {.i = 1} },
++	{ ShiftMask,            Button5, kscrolldown,    {.i = 1} },
+ 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+ 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+ 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+-- 
+2.34.1
+

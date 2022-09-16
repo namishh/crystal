@@ -1,0 +1,163 @@
+From 94353eb52055927d9079f3d9e33da1c954abf386 Mon Sep 17 00:00:00 2001
+From: aleks <aleks.stier@icloud.com>
+Date: Wed, 26 Jun 2019 13:25:10 +0200
+Subject: [PATCH] Add support for fuzzy-matching
+
+---
+ config.def.h |  1 +
+ config.mk    |  2 +-
+ dmenu.c      | 89 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 91 insertions(+), 1 deletion(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1edb647..51612b9 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -2,6 +2,7 @@
+ /* Default settings; can be overriden by command line. */
+ 
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
++static int fuzzy = 1;                      /* -F  option; if 0, dmenu doesn't use fuzzy matching     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+ 	"monospace:size=10"
+diff --git a/config.mk b/config.mk
+index 0929b4a..d14309a 100644
+--- a/config.mk
++++ b/config.mk
+@@ -20,7 +20,7 @@ FREETYPEINC = /usr/include/freetype2
+ 
+ # includes and libs
+ INCS = -I$(X11INC) -I$(FREETYPEINC)
+-LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS)
++LIBS = -L$(X11LIB) -lX11 $(XINERAMALIBS) $(FREETYPELIBS) -lm
+ 
+ # flags
+ CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700 -D_POSIX_C_SOURCE=200809L -DVERSION=\"$(VERSION)\" $(XINERAMAFLAGS)
+diff --git a/dmenu.c b/dmenu.c
+index 6b8f51b..96ddc98 100644
+--- a/dmenu.c
++++ b/dmenu.c
+@@ -1,6 +1,7 @@
+ /* See LICENSE file for copyright and license details. */
+ #include <ctype.h>
+ #include <locale.h>
++#include <math.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -32,6 +33,7 @@ struct item {
+ 	char *text;
+ 	struct item *left, *right;
+ 	int out;
++	double distance;
+ };
+ 
+ static char text[BUFSIZ] = "";
+@@ -210,9 +212,94 @@ grabkeyboard(void)
+ 	die("cannot grab keyboard");
+ }
+ 
++int
++compare_distance(const void *a, const void *b)
++{
++	struct item *da = *(struct item **) a;
++	struct item *db = *(struct item **) b;
++
++	if (!db)
++		return 1;
++	if (!da)
++		return -1;
++
++	return da->distance == db->distance ? 0 : da->distance < db->distance ? -1 : 1;
++}
++
++void
++fuzzymatch(void)
++{
++	/* bang - we have so much memory */
++	struct item *it;
++	struct item **fuzzymatches = NULL;
++	char c;
++	int number_of_matches = 0, i, pidx, sidx, eidx;
++	int text_len = strlen(text), itext_len;
++
++	matches = matchend = NULL;
++
++	/* walk through all items */
++	for (it = items; it && it->text; it++) {
++		if (text_len) {
++			itext_len = strlen(it->text);
++			pidx = 0; /* pointer */
++			sidx = eidx = -1; /* start of match, end of match */
++			/* walk through item text */
++			for (i = 0; i < itext_len && (c = it->text[i]); i++) {
++				/* fuzzy match pattern */
++				if (!fstrncmp(&text[pidx], &c, 1)) {
++					if(sidx == -1)
++						sidx = i;
++					pidx++;
++					if (pidx == text_len) {
++						eidx = i;
++						break;
++					}
++				}
++			}
++			/* build list of matches */
++			if (eidx != -1) {
++				/* compute distance */
++				/* add penalty if match starts late (log(sidx+2))
++				 * add penalty for long a match without many matching characters */
++				it->distance = log(sidx + 2) + (double)(eidx - sidx - text_len);
++				/* fprintf(stderr, "distance %s %f\n", it->text, it->distance); */
++				appenditem(it, &matches, &matchend);
++				number_of_matches++;
++			}
++		} else {
++			appenditem(it, &matches, &matchend);
++		}
++	}
++
++	if (number_of_matches) {
++		/* initialize array with matches */
++		if (!(fuzzymatches = realloc(fuzzymatches, number_of_matches * sizeof(struct item*))))
++			die("cannot realloc %u bytes:", number_of_matches * sizeof(struct item*));
++		for (i = 0, it = matches; it && i < number_of_matches; i++, it = it->right) {
++			fuzzymatches[i] = it;
++		}
++		/* sort matches according to distance */
++		qsort(fuzzymatches, number_of_matches, sizeof(struct item*), compare_distance);
++		/* rebuild list of matches */
++		matches = matchend = NULL;
++		for (i = 0, it = fuzzymatches[i];  i < number_of_matches && it && \
++				it->text; i++, it = fuzzymatches[i]) {
++			appenditem(it, &matches, &matchend);
++		}
++		free(fuzzymatches);
++	}
++	curr = sel = matches;
++	calcoffsets();
++}
++
+ static void
+ match(void)
+ {
++	if (fuzzy) {
++		fuzzymatch();
++		return;
++	}
+ 	static char **tokv = NULL;
+ 	static int tokn = 0;
+ 
+@@ -702,6 +789,8 @@ main(int argc, char *argv[])
+ 			topbar = 0;
+ 		else if (!strcmp(argv[i], "-f"))   /* grabs keyboard before reading stdin */
+ 			fast = 1;
++		else if (!strcmp(argv[i], "-F"))   /* grabs keyboard before reading stdin */
++			fuzzy = 0;
+ 		else if (!strcmp(argv[i], "-i")) { /* case-insensitive item matching */
+ 			fstrncmp = strncasecmp;
+ 			fstrstr = cistrstr;
+-- 
+2.22.0
+

@@ -1,25 +1,25 @@
 " Setting up the colors
-let s:warm0_gui = "#252528"
-let s:warm1_gui = "#d08689"
-let s:warm2_gui = "#9bcba8"
-let s:warm3_gui = "#d3b787"
-let s:warm4_gui = "#7894b0"
-let s:warm5_gui = "#c095cb"
-let s:warm6_gui = "#87b9bb"
+let s:warm0_gui = "#212126"
+let s:warm1_gui = "#da696d"
+let s:warm2_gui = "#74be88"
+let s:warm3_gui = "#e1b56a"
+let s:warm4_gui = "#6d92b7"
+let s:warm5_gui = "#be67d5"
+let s:warm6_gui = "#679ca6"
 let s:warm7_gui = "#b9c1c1"
-let s:warm8_gui = "#282931"
-let s:warm9_gui = "#db7176"
-let s:warm10_gui = "#9adaab"
-let s:warm11_gui = "#d3b787"
-let s:warm12_gui = "#77a6c2"
-let s:warm13_gui = "#d7a1df"
-let s:warm14_gui = "#81c6cf"
+let s:warm8_gui = "#28292f"
+let s:warm9_gui = "#ec6e74"
+let s:warm10_gui = "#86d19a"
+let s:warm11_gui = "#d4b27c"
+let s:warm12_gui = "#6692bf"
+let s:warm13_gui = "#c585cf"
+let s:warm14_gui = "#6bd1e0"
 let s:warm15_gui = "#ccc9c3"
 let s:warmbg_gui = "#0f0f0f"
 let s:warmfg_gui = "#dfdee0"
-
+let s:warmbg_alt = "#18181a"
 let s:warmNR_fg = s:warm7_gui
-
+let s:comment = "#494b56"
 hi clear
 syntax reset
 let g:colors_name = "warm"
@@ -38,13 +38,55 @@ if !exists("g:warmNR")
     let g:warmNR = 1
 endif
 
-if g:warmNR == 0
-    let s:warmNR_fg = .s:warm0_gui
-endif
 
+"Staline
+exe "hi StalineFolderIcon guibg="s:warm1_gui. " guifg="s:warmbg_gui
+exe "hi StalineFolderSep guibg="s:warmbg_gui. " guifg="s:warm1_gui
+exe "hi StalineFolderText guibg="s:warm8_gui. " guifg="s:warm15_gui
+exe "hi StalineFilename guibg="s:warmbg_gui. " guifg="s:warm15_gui
+exe "hi StalineLogo guibg="s:warmbg_gui. " guifg="s:warm12_gui
+exe "hi StalineProgress guibg="s:warm8_gui. " guifg="s:warm15_gui
+exe "hi StalineProgressSep guibg="s:warmbg_gui. " guifg="s:warm10_gui
+exe "hi StalineProgressSepIcon guibg="s:warm10_gui. " guifg="s:warm8_gui
+exe "hi StalineBranch guifg="s:comment
+"Completiton
+exe "hi CmpItemAbbrMatch guifg="s:warm12_gui
+exe "hi CmpItemAbbr guifg="s:warmfg_gui
+exe "hi CmpBorder guifg="s:warm12_gui
+"SearchBox
+exe "hi FloatBorder guifg="s:warm12_gui
+
+" Diagnostics
+exe "hi DiagnosticSign guibg="s:warmbg_gui
+exe "hi DiagnosticError guifg="s:warm9_gui
+exe "hi DiagnosticWarn guifg="s:warm11_gui
+exe "hi DiagnosticHint guifg="s:warm14_gui
+
+"Alpha
+exe "hi AlphaHeader guifg="s:warm12_gui
+exe "hi AlphaButton guifg="s:warm4_gui
+exe "hi AlphaFooter guifg="s:warm4_gui
+"Telescope
+exe "hi TelescopeBorder guifg="s:warmbg_alt
+exe "hi TelescopePromptBorder guifg="s:warm0_gui. " guibg="s:warm0_gui
+exe "hi TelescopePromptNormal guifg="s:warmfg_gui. " guibg="s:warm0_gui
+exe "hi TelescopePromptPrefix guifg="s:warm9_gui. " guibg="s:warm0_gui
+exe "hi TelescopeNormal guibg="s:warmbg_alt
+exe "hi TelescopePreviewBorder guifg="s:warmbg_alt." guibg="s:warmbg_alt
+exe "hi TelescopePreviewTitle guifg="s:warmbg_alt." guibg="s:warmbg_alt
+exe "hi TelescopePromptTitle guifg="s:warm8_gui." guibg="s:warm9_gui
+exe "hi TelescopeResultsTitle guifg="s:warmbg_alt." guibg="s:warmbg_alt
+exe "hi TelescopeResultsBorder guifg="s:warmbg_alt." guibg="s:warmbg_alt
+"Whichkey
+exe "hi WhichKey guifg="s:warm2_gui. " guibg="s:warmbg_alt
+exe "hi WhichKeyFloat guifg="s:warm2_gui. " guibg="s:warmbg_alt
+exe "hi WhichKeyGroup guifg="s:warm12_gui. " guibg="s:warmbg_alt
+exe "hi WhichKeyValue guifg="s:warm12_gui. " guibg="s:warmbg_alt
+exe "hi WhichKeySeparator guifg="s:warm5_gui. " guibg="s:warmbg_alt
+exe "hi WhichKeyDesc guifg="s:warm9_gui. " guibg="s:warmbg_alt
 "Syntax Highlighting
-exe "hi CursorLineNR guifg=" s:warmNR_fg
-exe "hi CursorLine guibg=" s:warm0_gui
+exe "hi CursorLineNR guifg=" s:warmfg_gui." guibg="s:warmbg_gui
+exe "hi CursorLine guibg=" s:warmbg_gui
 
 exe "hi ErrorMsg guifg=" s:warm1_gui." guibg="s:warm8_gui
 exe "hi WarningMsg guifg=" s:warm0_gui
@@ -84,13 +126,13 @@ exe "hi Storage guifg=" s:warm9_gui
 exe "hi Statement guifg=" s:warm5_gui
 exe "hi Operator guifg=" s:warm4_gui
 exe "hi ColorColumn guibg=" s:warm8_gui
-exe "hi PMenu guifg="s:warm7_gui." guibg=" s:warm0_gui
-exe "hi PMenuSel guifg="s:warm8_gui." guibg="s:warm5_gui
+exe "hi PMenu guifg="s:warm7_gui." guibg=" s:warmbg_alt
+exe "hi PMenuSel guifg="s:warm8_gui." guibg="s:warm12_gui
 exe "hi SignColumn guibg=" s:warm0_gui
 exe "hi Title guifg=" s:warm3_gui
 exe "hi LineNr guifg="s:warm8_gui
 exe "hi NonText guifg="s:warm5_gui." guibg="s:warm0_gui
-exe "hi Comment guifg="s:warm8_gui "gui=italic" 
+exe "hi Comment guifg="s:comment "gui=italic" 
 exe "hi SpecialComment guifg="s:warm8_gui "gui=italic guibg=NONE "
 exe "hi TabLineFill gui=NONE guibg="s:warm1_gui
 exe "hi TabLineSel gui=NONE guibg="s:warm1_gui
@@ -98,7 +140,7 @@ exe "hi TabLine guifg="s:warmfg_gui." guibg="s:warm1_gui
 exe "hi StatusLine guibg="s:warmbg_gui." guifg="s:warmfg_gui
 exe "hi StatusLineNC guibg="s:warmbg_gui." guifg="s:warmfg_gui
 exe "hi Search guibg="s:warm8_gui." guifg="s:warm4_gui
-exe "hi VertSplit gui=NONE guifg="s:warm8_gui." guibg="s:warm0_gui
+exe "hi VertSplit gui=NONE guifg="s:warmbg_alt." guibg="s:warmbg_gui
 exe "hi Visual gui=NONE guibg="s:warm0_gui
 exe "hi Underlined guifg="s:warm3_gui
 exe "hi EndOfBuffer guibg=NONE"
@@ -271,13 +313,35 @@ exe "hi goTodo guifg="s:warm3_gui
 exe "hi goType guifg="s:warm3_gui
 
 " NvimTree Highlights
-exe "hi NvimTreeFolderIcon guifg="s:warm3_gui
+exe "hi NvimTreeFolderIcon guifg="s:warm11_gui
 exe "hi NvimTreeFoldername guifg="s:warmfg_gui
-exe "hi NvimTreeOpenedFolderName guifg="s:warm4_gui
-exe "hi NvimTreeEmptyFolderName guifg="s:warm4_gui
+exe "hi NvimTreeOpenedFolderName guifg="s:warmfg_gui
+exe "hi NvimTreeEmptyFolderName guifg="s:warm11_gui
 exe "hi NvimTreeFileDirty guifg="s:warm1_gui
 exe "hi NvimTreeExecFile guifg="s:warmfg_gui
 exe "hi NvimTreeGitDirty guifg="s:warm1_gui
 exe "hi NvimTreeGitDeleted guifg="s:warm1_gui
 exe "hi NvimTreeRootFolder guifg="s:warm5_gui
-exe "hi NvimTreeIndentMarker guifg="s:warm0_gui
+exe "hi NvimTreeIndentMarker guifg="s:warm8_gui
+
+" Notifications
+exe "hi NotifyERRORBorder  guifg="s:warmbg_alt. " guibg="s:warmbg_alt
+exe "hi NotifyWARNBorder  guifg="s:warmbg_alt. " guibg="s:warmbg_alt 
+exe "hi NotifyINFOBorder guifg="s:warmbg_alt. " guibg="s:warmbg_alt 
+exe "hi NotifyDEBUGBorder  guifg="s:warmbg_alt. " guibg="s:warmbg_alt
+exe "hi NotifyTRACEBorder guifg="s:warmbg_alt. " guibg="s:warmbg_alt
+exe "hi NotifyERRORIcon guibg="s:warmbg_alt. " guifg="s:warm9_gui
+exe "hi NotifyWARNIcon guibg="s:warmbg_alt. " guifg="s:warm3_gui
+exe "hi NotifyINFOIcon guibg="s:warmbg_alt. " guifg="s:warm4_gui
+exe "hi NotifyDEBUGIcon guibg="s:warmbg_alt. " guifg="s:warm5_gui
+exe "hi NotifyTRACEIcon guibg="s:warmbg_alt. " guifg="s:warm6_gui
+exe "hi NotifyERRORTitle guibg="s:warmbg_alt. " guifg="s:warm9_gui
+exe "hi NotifyWARNTitle guibg="s:warmbg_alt. " guifg="s:warm3_gui
+exe "hi NotifyINFOTitle guibg="s:warmbg_alt. " guifg="s:warm4_gui
+exe "hi NotifyDEBUGTitle guibg="s:warmbg_alt. " guifg="s:warm5_gui
+exe "hi NotifyTRACETitle guibg="s:warmbg_alt. " guifg="s:warm6_gui
+exe "hi NotifyERRORBody guibg="s:warmbg_alt. " guifg="s:warmfg_gui
+exe "hi NotifyWARNBody guibg="s:warmbg_alt. " guifg="s:warmfg_gui
+exe "hi NotifyINFOBody guibg="s:warmbg_alt. " guifg="s:warmfg_gui
+exe "hi NotifyDEBUGBody guibg="s:warmbg_alt. " guifg="s:warmfg_gui
+exe "hi NotifyTRACEBody guibg="s:warmbg_alt. " guifg="s:warmfg_gui

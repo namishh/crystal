@@ -38,12 +38,9 @@ if !exists("g:waveNR")
     let g:waveNR = 1
 endif
 
-if g:waveNR == 0
-    let s:waveNR_fg = .s:wave0_gui
-endif
 
 "Syntax Highlighting
-exe "hi CursorLineNR guifg=" s:waveNR_fg
+exe "hi CursorLineNR guifg=" s:wave0_fg
 exe "hi CursorLine guibg=" s:wave0_gui
 
 exe "hi ErrorMsg guifg=" s:wave1_gui." guibg="s:wave8_gui

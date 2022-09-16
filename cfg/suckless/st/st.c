@@ -950,7 +950,7 @@ ttyresize(int tw, int th)
 }
 
 void
-ttyhangup()
+ttyhangup(void)
 {
 	/* Send SIGHUP to shell */
 	kill(pid, SIGHUP);
@@ -2590,9 +2590,9 @@ void
 tresize(int col, int row)
 {
 	int i, j;
+	int *bp;
 	int tmp;
 	int minrow, mincol;
-	int *bp;
 	TCursor c;
 
 	tmp = col;
@@ -2601,7 +2601,6 @@ tresize(int col, int row)
 	col = MAX(col, term.maxcol);
 	minrow = MIN(row, term.row);
 	mincol = MIN(col, term.maxcol);
-
 	if (col < 1 || row < 1) {
 		fprintf(stderr,
 		        "tresize: error resizing to %dx%d\n", col, row);
@@ -2721,10 +2720,11 @@ draw(void)
 		cx--;
 
 	drawregion(0, 0, term.col, term.row);
-  if (term.scr == 0)
-	  xdrawcursor(cx, term.c.y, term.line[term.c.y][cx],
-		  	term.ocx, term.ocy, term.line[term.ocy][term.ocx],
-			  term.line[term.ocy], term.col);
+	if (term.scr == 0)
+		xdrawcursor(cx, term.c.y, term.line[term.c.y][cx],
+        term.ocx, term.ocy, term.line[term.ocy][term.ocx],
+  			term.line[term.ocy], term.col);
+
 	term.ocx = cx;
 	term.ocy = term.c.y;
 	xfinishdraw();

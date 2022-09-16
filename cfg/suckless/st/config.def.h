@@ -1,11 +1,15 @@
 /* See LICENSE file for copyright and license details. */
+
 /*
  * appearance
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Iosevka Nerd Font:pixelsize=20:antialias=true:autohint=true";
-static int borderpx = 12;
+static char *font2[] = {
+  "NotoColorEmoji:pixelsize=20:antialias=true:autohint=true"
+};
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -15,7 +19,7 @@ static int borderpx = 12;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/usr/bin/zsh";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -26,7 +30,7 @@ char *vtiden = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 1.1;
+static float chscale = 1.0;
 
 /*
  * word delimiter string
@@ -65,11 +69,18 @@ static unsigned int blinktimeout = 800;
  * thickness of underline and bar cursors
  */
 static unsigned int cursorthickness = 2;
+
+/*
+ * 1: render most of the lines/blocks characters without using the font for
+ *    perfect alignment between cells (U2500 - U259F except dashes/diagonals).
+ *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
+ * 0: disable (render all U25XX glyphs normally from the font).
+ */
 const int boxdraw = 1;
 const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
-const int boxdraw_braille = 1;
+const int boxdraw_braille = 0;
 
 /*
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
@@ -96,26 +107,25 @@ char *termname = "st-256color";
  *	stty tabs
  */
 unsigned int tabspaces = 2;
-float alpha = 1;
-/* Terminal colors (16 first used in escape sequence) */
 
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#252528", /* black   */
-	"#d08689", /* red     */
-  "#9bcba8", /* green   */
-	"#d3b787", /* yellow  */
-	"#7894b0", /* blue    */
-	"#c095cb", /* magenta */
-	"#87b9bb", /* cyan    */
+	"#212126", /* black   */
+	"#da696d", /* red     */
+  "#74be88", /* green   */
+	"#e1b56a", /* yellow  */
+	"#6d92b7", /* blue    */
+	"#be67d5", /* magenta */
+	"#679ca6", /* cyan    */
 	"#b9c1c1", /* white   */
 
-	"#282931", /* black   */
-	"#db7176", /* red     */
-	"#9adaab", /* green   */
-	"#e7c794", /* yellow  */
-	"#80a0c0", /* blue    */
-	"#d7a1df", /* magenta */
-	"#81c6cf", /* cyan    */
+	"#28292f", /* black   */
+	"#ec6e74", /* red     */
+	"#86d19a", /* green   */
+	"#d4b27c", /* yellow  */
+	"#6692bf", /* blue    */
+	"#c585cf", /* magenta */
+	"#6bd1e0", /* cyan    */
 	"#ccc9c3", /* white   */
 
   [255] = 0,
@@ -127,6 +137,7 @@ unsigned int defaultfg = 256;
 unsigned int defaultbg = 257;
 unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
+
 /*
  * Default shape of cursor
  * 2: Block ("█")
@@ -134,8 +145,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorstyle = 4;
-static Rune stcursor = 0x2603; /* snowman ("☃") */
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
@@ -169,14 +179,18 @@ static uint forcemousemod = ShiftMask;
  * Beware that overloading Button1 will disable the selection.
  */
 static MouseShortcut mshortcuts[] = {
-      	{ ShiftMask,            Button4, kscrollup,      {.i = 1} },
-      	{ ShiftMask,            Button5, kscrolldown,    {.i = 1} },
-        { XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-        { ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+	/* mask                 button   function        argument       release */
+	{ ShiftMask,            Button4, kscrollup,      {.i = 1} },
+	{ShiftMask,            Button5, kscrolldown,    {.i = 1} },
+	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
+	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
+	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
+	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
+	{ XK_ANY_MOD,           Button5, ttysend,        {.s = "\005"} },
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod4Mask
+#define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
 static Shortcut shortcuts[] = {
@@ -193,8 +207,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-  { ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-  { ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
@@ -272,7 +286,7 @@ static Key key[] = {
 	{ XK_KP_Delete,     ControlMask,    "\033[3;5~",    +1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
 	{ XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
-  { XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",       -1,    0},
+	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",       -1,    0},
 	{ XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 	{ XK_KP_Multiply,   XK_ANY_MOD,     "\033Oj",       +2,    0},
 	{ XK_KP_Add,        XK_ANY_MOD,     "\033Ok",       +2,    0},

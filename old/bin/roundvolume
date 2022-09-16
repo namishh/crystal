@@ -1,4 +1,0 @@
-a=$1
-c=${a%%.*}
-pamixer --set-volume $c
-

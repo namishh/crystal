@@ -1,10 +1,11 @@
 configuration {
 	modi:                       "drun,run,filebrowser,window";
     show-icons:                 true;
-    display-drun:               " ";
-    display-run:                " ";
-    display-filebrowser:        " ";
-    display-window:             " ";
+    display-drun:               "﩯";
+    display-run:                "";
+    display-filebrowser:        "";
+    display-window:             "类";
+    display-emoji:              "😀";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -14,11 +15,11 @@ configuration {
 * {
     font:                        "Iosevka Nerd Font 12";
     background:                  #0f0f0f;
-    background-alt:              #1e1f25;
+    background-alt:              #18181f;
     foreground:                  #dfdde0;
-    selected:                    #7894b0;
-    active:                      #8bcba8;
-    urgent:                      #d08689;
+    selected:                    #6d92b7;
+    active:                      #74be88;
+    urgent:                      #da696d;
 }
 
 window {
@@ -57,7 +58,7 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     padding:                     100px 60px;
-    background-image:            url("~/.config/rofi/pic.jpg", width);
+    background-image:            url("~/.config/rofi/pic.png", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
@@ -65,7 +66,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         " ";
+    str:                         "";
     padding:                     12px 15px;
     border-radius:               5px;
     background-color:            @background-alt;
@@ -80,7 +81,7 @@ entry {
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search";
+    placeholder:                 "";
     placeholder-color:           inherit;
 }
 dummy {
@@ -103,7 +104,7 @@ button {
     cursor:                      pointer;
 }
 button selected {
-    background-color:            #80a0c0;
+    background-color:            #6692bf;
     text-color:                  @foreground;
 }
 

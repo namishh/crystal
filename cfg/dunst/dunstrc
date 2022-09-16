@@ -1,6 +1,4 @@
 [global]
-background = "#11161b"
-foreground = "#d4d4d5"
 monitor = 0
 follow = mouse
 width = (150,300)
@@ -10,7 +8,7 @@ progress_bar_height = 18
 progress_bar_frame_width = 3
 progress_bar_min_width = 150
 progress_bar_max_width = 300
-highlight = "#7894b0"
+highlight = "#74be88"
 indicate_hidden = true
 shrink = true
 transparency = 0
@@ -58,20 +56,20 @@ ellipsize = end
 [urgency_low]
 timeout = 4
 background = "#0f0f0f"
-frame_color = "#1a1a1d"
-foreground = "#9bcba8"
+frame_color = "#18181f"
+foreground = "#74be88"
 
 [urgency_normal]
 timeout = 8
 background = "#0f0f0f"
-frame_color = "#1a1a1d"
-foreground = "#7894b0"
+frame_color = "#18181f"
+foreground = "#6d92b7"
 
 [urgency_critical]
 timeout = 30
 background = "#0f0f0f"
-frame_color = "#1a1a1d"
-foreground = "#d08689"
+frame_color = "#18181f"
+foreground = "#da696d"
 
 [fullscreen_show_critical]
 msg_urgency = critical

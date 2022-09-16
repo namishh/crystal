@@ -5,53 +5,68 @@
 
 #!/usr/bin/bash
 black=#0f0f0f
-green=#9bcba8
+green=#74be88
 white=#dfdde0
-grey=#1a1a1d
-blue=#80a0c0
-red=#d08689
-darkblue=#7894b0
+grey=#212126
+darkblue=#6d92b7
+red=#da696d
+blue=#6692bf
+yellow=#e1b56a
 interval=0
 
+updates() {
+  updates=$(checkupdates | wc -l)   # arch
+
+  if [ -z "$updates" ]; then
+    printf "  ^b$green^^c$black^ 󰳢"" ^c$green^^b$black^ 0 "
+  else
+    printf "  ^b$green^^c$black^ 󰳢"" ^c$green^^b$black^ $updates "
+  fi
+}
 
 battery() {
   BAT_ICON=$(~/.local/bin/battery --icon)
   get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)%"
-  echo "^c$green^ $BAT_ICON $get_capacity "
+  echo "^c$green^ $BAT_ICON $get_capacity"
 }
 
 volume() {
   VOL_ICON="$(~/.local/bin/volume)"
   VOLUME=$(pamixer --get-volume)
-  echo "^c$blue^ $VOL_ICON $VOLUME% "
+  echo "^c$blue^ $VOL_ICON $VOLUME%"
 }
 
 wlan() {
   SSID=$(iwgetid -r)
 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
-	up) printf "^c$black^ ^b$blue^   ^d^%s" " ^c$blue^$SSID" ;;
-	down) printf "^c$black^ ^b$blue^   ^d^%s" " ^c$blue^Disconnected" ;;
+	up) printf "^c$black^^b$blue^ 󰤨 ^d^%s""^c$blue^^b$black^ $SSID ^b$black^" ;;
+	down) printf "^c$black^^b$blue^ 󰤯 ^d^%s"" ^c$blue^^b$black^ Disconnected ^b$black^" ;;
 	esac
 }
 
 clock() {
-	printf "^c$black^ ^b$darkblue^   "
+	printf "^c$black^^b$darkblue^ 󰃭 "
   printf "^c$black^^b$blue^ $(date '+%H:%M')"
 }
 
+brightness() {
+  BR_D=$(brillo)
+  BR=$(echo "($BR_D+0.5)/1" | bc)
+  echo "^c$yellow^ 󰃞 $BR%"
+}
+
+mem() {
+  MEM=$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)
+  echo "^b$grey^^c$red^ 󰆼 ^b$red^^c$black^ $MEM ^b$black^"
+}
+
+cpu() {
+  CPU=$(grep -o "^[^ ]*" /proc/loadavg)
+	printf "^c$grey^^b$green^ 󰘚 ^d^%s""^c$green^^b$grey^ $CPU ^b$black^"
+}
+
 while true; do
-
   interval=$((interval + 1))
-
-  sleep 1 && xsetroot -name "$(volume) $(battery) $(wlan) $(clock) "
+  sleep 1 && xsetroot -name "$(volume)  $(battery)  $(mem) $(cpu) $(wlan) $(clock) "
 done
 
-if [[ $1 == "--bat" ]]; then
-    battery
-elif [[ $1 == "--wlan" ]]; then
-    wlan
-elif [[ $1 == "--volume" ]]; then
-    volume
-elif [[ $1 == "--clock" ]]; then
-    clock
-fi

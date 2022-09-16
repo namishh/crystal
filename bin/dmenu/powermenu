@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$(echo -e "⏻ Shutdown\n Restart\n Lock\n⏾ Suspend\n Logout" | dmenu \
+    -i -c -p\
+    "ﮣ Power:" -h 36 -l 5)" in
+        "⏻ Shutdown") exec loginctl poweroff;;
+        " Restart") exec loginctl reboot;;
+        " Lock") exec lock;;
+        "⏾ Suspend") exec loginctl suspend;;
+        " Logout") exec loginctl kill-user $USER;;
+esac

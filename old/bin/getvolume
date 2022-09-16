@@ -1,7 +1,0 @@
-volume=$(pamixer --get-volume)
-muted=$(pamixer --get-mute)
-icon=墳
-if [ "$muted" = true ] ; then
-    icon=婢
-fi
-echo "$icon $volume%"

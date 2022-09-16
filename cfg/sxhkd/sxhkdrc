@@ -1,0 +1,43 @@
+# terminal emulator
+super + shift + Return
+	st
+
+# program launcher
+super + a
+  dmenu_run -l 15  -c -h 36  -p "  Launch:"
+
+# make sxhkd reload its configuration files:
+super + Escape 
+	pkill -USR1 -x sxhkd
+
+super + e 
+  ~/.local/bin/dmenu/emojimenu
+
+super + x 
+  ~/.local/bin/dmenu/powermenu
+
+super + n 
+  ~/.local/bin/dmenu/wifimenu
+
+super + q
+  ~/.local/bin/dmenu/ssmenu
+
+super + z
+  ~/.local/bin/dmenu/launcher
+
+#volume
+XF86AudioRaiseVolume
+    changevolume up
+XF86AudioLowerVolume
+    changevolume down
+XF86AudioMute
+    changevolume mute
+
+XF86MonBrightnessDown
+    changebrightness down
+
+XF86MonBrightnessUp
+    changebrightness up
+
+super + c 
+  playerctl play-pause

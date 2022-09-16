@@ -1,4 +1,4 @@
-local disabled_built_ins = {
+local default_plugins = {
   "2html_plugin",
   "getscript",
   "getscriptPlugin",
@@ -9,17 +9,36 @@ local disabled_built_ins = {
   "netrwSettings",
   "netrwFileHandlers",
   "matchit",
-  "matchparen",
   "tar",
-  "tutor",
   "tarPlugin",
   "rrhelper",
+  "spellfile_plugin",
   "vimball",
   "vimballPlugin",
   "zip",
   "zipPlugin",
+  "tutor",
+  "rplugin",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "syntax",
+  "bugreport",
+  "ftplugin",
+  "matchparen",
+}
+for _, plugin in pairs(default_plugins) do
+  vim.g["loaded_" .. plugin] = 1
+end
+
+
+local default_providers = {
+  "node",
+  "perl",
+  "python3",
+  "ruby",
 }
 
-for _, plugin in pairs(disabled_built_ins) do
-  vim.g["loaded_" .. plugin] = 1
+for _, provider in ipairs(default_providers) do
+  vim.g["loaded_" .. provider .. "_provider"] = 0
 end
