@@ -1,7 +1,3 @@
-#!/usr/bin/sh
-
-# ^c$var^ = fg color
-# ^b$var^ = bg color
 
 #!/usr/bin/bash
 black=#0f0f0f
@@ -40,7 +36,7 @@ wlan() {
   SSID=$(iwgetid -r)
 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
 	up) printf "^c$black^^b$blue^ 󰤨 ^d^%s""^c$blue^^b$black^ $SSID ^b$black^" ;;
-	down) printf "^c$black^^b$blue^ 󰤯 ^d^%s"" ^c$blue^^b$black^ Disconnected ^b$black^" ;;
+	down) printf "^c$black^^b$blue^ 󰤯 ^d^%s""^c$blue^^b$black^ Disconnected ^b$black^" ;;
 	esac
 }
 
@@ -57,16 +53,16 @@ brightness() {
 
 mem() {
   MEM=$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)
-  echo "^b$grey^^c$red^ 󰆼 ^b$red^^c$black^ $MEM ^b$black^"
+  echo "^b$grey^^c$red^ 󰘚 ^b$black^^c$red^ $MEM ^b$black^"
 }
 
 cpu() {
-  CPU=$(grep -o "^[^ ]*" /proc/loadavg)
-	printf "^c$grey^^b$green^ 󰘚 ^d^%s""^c$green^^b$grey^ $CPU ^b$black^"
+  CPU=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
+	echo "^c$grey^^b$green^ CPU ^c$green^^b$grey^ ${CPU} ^b$black^"
 }
 
 while true; do
   interval=$((interval + 1))
-  sleep 1 && xsetroot -name "$(volume)  $(battery)  $(mem) $(cpu) $(wlan) $(clock) "
+  sleep 1 && xsetroot -name "$(volume)  $(battery)  $(cpu) $(mem)$(wlan)$(clock) "
 done
 

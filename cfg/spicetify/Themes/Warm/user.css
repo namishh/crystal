@@ -6,6 +6,10 @@
   --background-base: var(--spice-play-button);
 }
 
+* {
+  font-family : "Iosevka Nerd Font" !important;
+ }
+
 /* TOPBAR */
 
 /* fix topbar bug */

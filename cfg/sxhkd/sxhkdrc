@@ -25,6 +25,10 @@ super + q
 super + z
   ~/.local/bin/dmenu/launcher
 
+# copy some stuff
+super + shift + p
+  xclip -sel c < ~/pa
+
 #volume
 XF86AudioRaiseVolume
     changevolume up

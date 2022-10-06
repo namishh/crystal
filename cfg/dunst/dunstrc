@@ -5,19 +5,19 @@ width = (150,300)
 height = 200
 progress_bar = true
 progress_bar_height = 18
-progress_bar_frame_width = 3
+progress_bar_frame_width = 1
 progress_bar_min_width = 150
 progress_bar_max_width = 300
 highlight = "#74be88"
 indicate_hidden = true
 shrink = true
 transparency = 0
-separator_height = 10
+separator_height = 15
 padding = 18
 horizontal_padding = 18
 text_icon_padding = 8
 gap_size = 2
-frame_width = 2
+frame_width = 1
 frame_color = "#1a1a1d"
 sort = true
 idle_threshold = 0
@@ -25,7 +25,7 @@ font = Iosevka Nerd Font 14
 line_height = 3
 markup = full
 origin = "top-left"
-offset = "10x55"
+offset = "9x46"
 format = "<b>%s</b>\n%b"
 alignment = left
 show_age_threshold = 60
@@ -45,7 +45,6 @@ browser = firefox
 always_run_script = true
 title = Dunst
 class = Dunst
-corner_radius = 9
 notification_limit = 5
 mouse_left_click = do_action
 mouse_middle_click = close_current
@@ -56,19 +55,19 @@ ellipsize = end
 [urgency_low]
 timeout = 4
 background = "#0f0f0f"
-frame_color = "#18181f"
+frame_color = "#74be88"
 foreground = "#74be88"
 
 [urgency_normal]
 timeout = 8
 background = "#0f0f0f"
-frame_color = "#18181f"
+frame_color = "#6d92b7"
 foreground = "#6d92b7"
 
 [urgency_critical]
 timeout = 30
 background = "#0f0f0f"
-frame_color = "#18181f"
+frame_color = "#da696d"
 foreground = "#da696d"
 
 [fullscreen_show_critical]

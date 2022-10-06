@@ -1,5 +1,0 @@
-[Default Applications]
-x-scheme-handler/msteams=teams.desktop
-
-[Added Associations]
-application/pdf=firefox.desktop;

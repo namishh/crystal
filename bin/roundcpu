@@ -1,3 +1,0 @@
-CPU=$(grep -o "^[^ ]*" /proc/loadavg)
-VAL="$(($CPU * 10))"
-echo $VAL
