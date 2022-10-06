@@ -10,7 +10,7 @@ My dotfiles based on my own personal taste
 
 ![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/n2.png)
 
-![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dot.sh/main/.github/screenshots/n3.png)
+![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/n3.png)
 
 ![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/n4.png)
 
