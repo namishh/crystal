@@ -1,0 +1,2 @@
+vol=$(roundvolume $1)
+pamixer --set-volume $vol

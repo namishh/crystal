@@ -1,0 +1,52 @@
+(defwidget cal []
+	(box :class "cal-box" 
+		 :orientation "v"
+	(box :orientation "v" :class "cal-inner-box" :space-evenly false
+  (box :orientation "h" :class "monthyear" "${month} ${year}")
+  (box :class "day-names" :orientation "h" :space-evenly "true"
+						(label :text "Su")
+						(label :text "Mo")
+						(label :text "Tu")
+						(label :text "We")
+						(label :text "Th")
+						(label :text "Fr")
+						(label :text "Sa")
+	)
+	(calendar :class "cal" :day date :show-details false :show-heading false :show-day-names false))))
+
+(defwidget weather[] 
+  (box :orientation "h" :class "weatherfullbox" :space-evenly false
+  (box :orientation "v" :height 100 :class "weatherbox" :hexpand true :space-evenly false
+      (box :orientation "h" :class "weathertop" :space-evenly false
+          (box :class "weatherdesc" :halign "start" :hexpand true weatherdesc)
+          (box :class "weathertemp" :halign "end" "${weathertemp}°C")
+        )
+      (box :orientation "h" :class "weatherbot" :space-evenly false
+          (box :class "weathercity" :halign "start" :hexpand true  weathercity)
+          (box :class "weathercity" :halign "end" "Feels like ${weatherfl}°C")
+        )
+  )
+  (box :class "weathericon" :halign true weathericon)
+  )
+)
+
+(defwidget caltime[]
+    (box :halign "center" :class "caltime" :orientation "h" :space-evenly false
+        (box :class "caltext" "${hour}")
+        (box :class "caltimeboxes" :valign "center" :spacing 5 :space-evenly false :orientation 'v'
+          (box :class "caltimebox red" "󰝤")
+          (box :class "caltimebox green" "󰝤")
+          (box :class "caltimebox blue" "󰝤")
+          )
+        (box :class "caltext" "${minute}")
+      )
+)
+
+(defwidget calbox[]
+  (box :orientation "v" :width 480 :space-evenly false :class "calouterbox"
+    (caltime)
+    (box :class "calday" "${datemonth}")
+    (cal)
+    (weather)
+    )
+  )

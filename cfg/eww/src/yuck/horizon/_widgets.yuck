@@ -1,0 +1,24 @@
+(defwidget powerbtn[click classname icon name] 
+    (box :orientation "v" :class "powerbtn" :space-evenly false
+        (button :onclick click :orientation "h" :class "lockicon ${classname}" icon)
+        (box :class "powerstr" name)
+      )
+  )
+
+(defwidget powermenu[] 
+  (box :orientation "h" :class "lockscreen" :space-evenly false :vexpand true :hexpand true
+          (box :orientation "v" :class "locktext"  :space-evenly false :valign "center" :hexpand true :halign "center"
+            (box :class "locktime" "${hour}:${minute}")
+            (box :class "lockstr" :valign "start" "~ brain.exists() == null; ~")
+          )
+          (box :orientation "v" :class "lockmenu" :spacing 15 :space-evenly false :valign "center"
+            (powerbtn :click "loginctl poweroff" :classname "lockicon red" :icon "󰐥" :name "Poweroff")
+            (powerbtn :click "loginctl reboot" :classname "lockicon green" :icon "󰑙" :name "Restart")
+            (powerbtn :click "eww close powermenu && lock" :classname "lockicon blue" :icon "󰌾" :name "Lock")
+            (powerbtn :click "eww close powermenu && loginctl suspend" :classname "lockicon magenta" :icon "󰤄" :name "Suspend")
+            (powerbtn :click "loginctl kill-user $USER" :classname "lockicon yellow" :icon "󰈆" :name "Logout")
+            )
+    )
+)
+
+

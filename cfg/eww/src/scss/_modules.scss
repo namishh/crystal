@@ -1,0 +1,25 @@
+.circbarbox {
+  margin: 0rem;
+}
+.cpubar{
+  background-color: $background-alt;
+  border-radius: 5px;
+  margin-right: 2rem;
+}
+.rambar{
+  background-color: $background-alt;
+  border-radius: 5px;
+}
+.sidecircs {
+  padding: 2rem 0;
+}
+.circbar {
+  font-size: 3em;
+  margin: 2rem;
+  background-color: #212126;
+}
+
+.circtext {
+  padding: 4.8rem;
+  font-family: "Material Design Icon Desktop"
+}

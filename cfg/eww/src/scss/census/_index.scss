@@ -1,0 +1,32 @@
+.census {
+  padding: 2rem;
+  background-color: $background;
+  border-radius: 4px;
+}
+
+.cencircicon {
+  padding: 4rem;
+  font-family: "Material Deisign Icon Desktop";
+  font-size: 2rem;
+}
+
+.cencirc {
+  background-color: #28292f;
+}
+
+.cencirctitle {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.2rem;
+  color: $foreground-alt;
+  margin-bottom: 2rem;
+}
+
+.cencircbox {
+  background-color: $background-alt;
+  padding: 2rem 2.5rem;
+  border-radius: 4px;
+}
+
+.cenrow2 {
+  margin-top: 1.3rem;
+}

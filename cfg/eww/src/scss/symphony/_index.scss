@@ -1,0 +1,114 @@
+.symscale trough {
+  min-height: 3.9rem;
+  border-radius: 5%;
+  min-width: 20rem;
+  background-color: #28292f;
+}
+
+.symvol trough highlight {
+  border-radius: 3px;
+  background-color: $blue;
+}
+
+.symmic trough highlight {
+  border-radius: 3px;
+  background-color: $red;
+}
+
+.symvoltext {
+  font-size: 1.7rem;
+  background-color: $blue;
+  margin-right: 2rem;
+  color: $background;
+  border-radius: 50%;
+  font-family: "Iosevka Nerd Font";
+}
+
+.symmictext {
+  font-size: 1.7rem;
+  background-color: $red;
+  margin-left: 2rem;
+  color: $background;
+  border-radius: 50%;
+  font-family: "Iosevka Nerd Font";
+}
+
+.symphony {
+  background-color: $background;
+  padding: 2rem;
+  border-radius: 9px;
+}
+
+.symslidermic {
+  margin-top: 2rem;
+}
+
+.symtitle {
+  font-family: "Iosevka Nerd Font";
+  color: $foreground-alt;
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+}
+
+.symimage {
+  border-radius: 10px;
+  min-height: 4rem;
+  min-width: 4rem;
+  background-position: center;
+  background-size: 28rem;
+}
+
+.symsongbox {
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.symsonginfo {
+  border-radius: 10px;
+  background: linear-gradient(to right, rgba(15, 15, 15, .95), rgba(15, 15, 15, 0.4));
+  font-size: 1.4rem;
+  padding: 1rem;
+  font-family: "Iosevka Nerd Font";
+}
+
+.symsongname {
+  font-size: 1.55rem;
+  font-weight: bold;
+}
+
+.symsongartist {
+  font-size: 1.1rem;
+}
+
+.symsongbtn {
+  font-family: "Material Design Icon Desktop";
+  font-size: 2rem;
+}
+
+.symctl {
+  font-family: "Material Design Icon Desktop";
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+
+.symcbtn {
+  padding: 2rem;
+  background-color: $background-alt;
+  border-radius: 10px;
+}
+
+.activered {
+  background-color: $red;
+  color: $background;
+}
+
+.activeblue {
+  background-color: $blue;
+  color: $background;
+}
+
+.activegreen {
+  background-color: $green;
+  color: $background;
+}

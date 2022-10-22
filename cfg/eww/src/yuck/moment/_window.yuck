@@ -1,0 +1,7 @@
+(defwindow calbox
+  :geometry (geometry :x "-6px" 
+						:y "43px"
+            :anchor "top right")
+  :stacking "fg"
+(calbox))
+

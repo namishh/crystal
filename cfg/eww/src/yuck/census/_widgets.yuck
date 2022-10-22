@@ -1,0 +1,27 @@
+(defwidget census[]
+    (box :orientation 'v' :class "census" :space-evenly false
+        (box :class "symtitle" :halign "start" "CENSUS")
+        (box :orientation 'h' :class "cenrow" :space-evenly false :spacing 20
+            (cencirc :class "wificirc" :icon "󰤨" :label "WIFI" :color 'blue' :value wifispeed)
+            (cencirc :class "diskcirc" :icon "󰋊" :label "DISK" :color 'red' :value {EWW_DISK["/"].used_perc})
+          )
+        (box :orientation 'h' :class "cenrow2" :space-evenly false :spacing 20
+            (cencirc :class "diskcirc" :icon "󰁹" :label "BATTERY" :color 'green' :value {EWW_BATTERY["BAT0"].capacity})
+            (cencirc :class "diskcirc" :icon "󰔏" :label "CPU TEMP" :color 'yellow' :value cputemp)
+          )
+      )
+)
+
+(defwidget cencirc[class label icon color value]
+  (box :orientation 'v' :class "${class} cencircbox" :space-evenly false :hexpand true
+      (box :orientation "v" :space-evenly false  :hexpand true
+          (box :class "cencirctitle" :halign "start" label)
+          (circular-progress :class "cencirc ${color}"
+                   :value value 
+                   :thickness 9
+                   :clockwise true
+                   :start-at 30
+         (label :class "cencircicon ${color}"  :text icon))
+        )
+    )
+)

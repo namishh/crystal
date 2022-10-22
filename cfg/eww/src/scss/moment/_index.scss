@@ -1,0 +1,119 @@
+.cal-box {
+  border-radius: 5px;
+  background-color: $background-alt;
+  font-family: Iosevka Nerd Font;
+  font-size: 1.2rem;
+  color: $foreground-alt;
+
+  .cal-inner-box {
+    padding: 1.5rem 1rem;
+
+    .cal {
+      &.highlight {
+        padding: 5rem;
+      }
+
+      padding: .8rem .25rem 0rem;
+    }
+  }
+}
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.button {
+  color: $green;
+}
+
+calendar.highlight {
+  color: $green;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: $background-alt;
+}
+
+.day-names {
+  font-weight: bold;
+  padding: 0 1rem;
+  padding-top: 1rem;
+  color: $green;
+  font-size: 1.5rem;
+}
+
+.monthyear {
+  font-size: 1.75rem;
+  color: $foreground-alt;
+  font-weight: bold;
+  margin: .5rem 0;
+}
+
+.weatherbox {
+  background-color: $background-alt;
+  border-radius: 5px;
+  padding: 2rem;
+  margin-top: 1.5rem;
+}
+
+.weathericon {
+  padding: 2rem 2.4rem;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  margin-left: 1.25rem;
+  background-color: $background-alt;
+  font-size: 3rem;
+  font-family: "Material Design Icon Desktop";
+  color: $foreground-alt;
+}
+
+.weatherdesc {
+  font-size: 1.75rem;
+  font-family: "Iosevka Nerd Font";
+  color: $foreground-alt;
+}
+
+.weathertemp {
+  font-size: 1.75rem;
+  color: $foreground-alt;
+  font-family: "Iosevka Nerd Font";
+}
+
+.weathercity {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: $foreground-alt;
+  font-family: "Iosevka Nerd Font";
+}
+
+.calouterbox {
+  padding: 1.75rem;
+  background-color: $background;
+  border-radius: 5px;
+}
+
+.caltime {
+  font-family: "Iosevka Nerd Font";
+  margin-bottom: 1rem;
+  margin-top: .5rem;
+}
+
+.caltext {
+  font-weight: bold;
+  font-size: 4rem;
+  color: $foreground-alt;
+}
+
+.calday {
+  font-weight: 300;
+  font-size: 1.75rem;
+  font-family: "Iosevka Nerd Font";
+  margin-bottom: 1.5rem;
+  color: $foreground-alt;
+}
+
+.caltimeboxes {
+  margin: 0 2rem;
+  font-family: "Material Design Icon Desktop";
+}

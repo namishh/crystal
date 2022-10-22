@@ -1,0 +1,139 @@
+.sidebar {
+  background-color: $background;
+  color: $foreground-alt;
+  padding: 2rem 2rem;
+  border-radius: 6px;
+}
+
+.time {
+  font-family: "Iosevka Nerd Font";
+  font-size: 6rem;
+}
+
+.quote {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.4rem;
+  padding: 1rem 0;
+  margin-bottom: 2.2rem;
+}
+
+.scale trough {
+  min-height: 1.6rem;
+  border-radius: 3px;
+  min-width: 29rem;
+  background-color: #28292f;
+}
+
+.brightscale {
+  border-radius: 3px;
+  margin-bottom: 1.2rem;
+}
+
+.volover trough highlight {
+  border-radius: 3px;
+  background-color: $magenta;
+}
+
+.brightover trough highlight {
+  border-radius: 3px;
+  background-color: $green;
+}
+
+.scale-label {
+  font-family: "Iosevka Nerd Font";
+  margin-right: 1.5rem;
+}
+
+.sidescales {
+  border-radius: 5px;
+  padding: 2rem 1.3rem;
+  background-color: #18181a;
+}
+
+.setbtn {
+  background-color: $background-alt;
+  font-family: "Material Design Icon Desktop";
+  padding: 2.8rem;
+  font-size: 2rem;
+  border-radius: 3px;
+}
+
+.active {
+  background-color: $green;
+  color: $background;
+}
+
+.musicbox {
+  margin-top: 1.8rem;
+}
+
+.musicicon {
+  font-size: 7.6rem;
+  color: $red;
+  background-color: $background-alt;
+  border-radius: 5px;
+  padding: 2.7rem;
+}
+
+.musicname {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.6rem;
+  margin-bottom: .8rem;
+}
+
+.musicartist {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.musicinfo {
+  border-radius: 5px;
+  padding: 2rem;
+  background-color: $background-alt;
+  margin-left: 1.5rem;
+}
+
+.musicctrl {
+  font-family: "Material Design Icon Desktop";
+  font-size: 2.3rem;
+
+}
+
+.profile_picture {
+  background-size: 130px;
+  background-position: 50% 35%;
+  min-height: 130px;
+  min-width: 130px;
+  border-radius: 100%;
+}
+
+.profile_greeting {
+  color: $blue;
+  font-size: 1.6rem;
+  font-family: "Iosevka Nerd Font";
+  font-weight: bold;
+}
+
+.profile {
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  background-color: $background-alt;
+}
+
+.profileinfodate {
+  margin-left: 2rem;
+  margin-top: 1.3rem;
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.3rem;
+}
+
+.profilename {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.profilebtn {
+  font-family: "Material Design Icon Desktop";
+  font-size: 1.58rem;
+}

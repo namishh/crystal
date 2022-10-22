@@ -1,0 +1,94 @@
+(defwidget setbtn[icon active func]
+  (button :class "setbtn ${active == 'active' ? 'active' : ''}" :onclick "${func}" "${icon}"  )
+)
+
+(defwidget profile []
+			(box :class "profile" :orientation "h" :space-evenly "false" 
+        (box :class "profile_picture" :halign 'start'  :style "background-image: url('${profilepic}');")
+        (box :orientation "v" :class "profileinfodate" :hexpand true :space-evenly false  :spacing 10
+            (box :class "profilename" :halign 'start' "chadcat" )
+            (box :class "profilehost" :halign 'start' "namish@artx" )
+          )
+        (box :orientation 'v' :class "profileright" :halign 'end'
+            (button :orientation 'v' :onclick "loginctl poweroff" :class "profilebtn red" "󰤆")
+            (button :orientation 'v' :onclick 'loginctl restart' :class "profilebtn green" "󰦛")
+            (button :orientation 'v' :onclick "loginctl kill-user $USER":class "profilebtn blue" "󰈆")
+          )
+        )
+)
+
+(defwidget time[]
+  (box :orientation "v" :class "time" "${hour}:${minute}")
+)
+
+(defwidget quote[]
+  (box :orientation "v" :class "quote" "Don't Limit Your Challenges , Challenge Your Limit")
+)
+
+(defwidget music[]
+  (box :orientation "h" :class "musicbox" :space-evenly "false"
+      (box :class "musicicon" "󰎆")
+      (box :orientation "v"  :class "musicinfo" :space-evenly false :hexpand true
+          (box :class "musicname" "${songname}")
+          (box :class "musicartist" "${artist}")
+          (box :class "musicctrl" :orientation "h" :halign 'center' :spacing 20 :space-evenly false
+              (button :onclick "playerctl --player=spotify previous" :class "musicprev" "󰙣")
+              (button :onclick "playerctl --player=spotify play-pause" :class "musicprev" "${icon}")
+              (button :onclick "playerctl --player=spotify next" :class "musicnext" "󰙡")
+            )
+        )
+    )
+  )
+
+(defwidget volscale[]
+    (box
+    :orientation "h"
+    :space-evenly "false" :class "volscale"
+      (box :orientation "h" :valign "center" :class "scale-label" "VOL")
+      (scale :class " scale volover"
+              :min 0
+              :max 100
+              :orientation "h"
+              :value "${volume}"
+              :onchange "~/.config/eww/scripts/volume {}"
+              :valign 'center')
+    )
+)
+
+(defwidget brightscale[]
+    (box
+    :orientation "h"
+    :space-evenly "false" :class "brightscale"
+      (box :orientation "h" :valign "center" :class "scale-label" "BRI")
+      (scale :class "scale brightover"
+              :min 0
+              :max 100
+              :orientation "h"
+              :value "${brightness}"
+              :onchange "brightnessctl s {}%"
+              :valign 'center')
+    )
+)
+
+(defwidget sidebar[]
+  (box :orientation "v" :class "sidebar" :space-evenly false
+  ;(time)
+  ;(quote)
+  (profile)
+  (box :orientation "v" :class "sidescales"
+    (brightscale)
+    (volscale)
+  )
+  (box :orientation "h" :class "sidecircs" :space-evenly false
+    (circbar :value {EWW_RAM.used_mem_perc} :wholeclass "cpubar" :text "󰍛" :classname "red")
+    (circbar :value {round(EWW_CPU.avg, 0)} :wholeclass "rambar" :text "󰘚" :classname "yellow")
+  )
+  (box :orientation "h" :class "sidebtns" :space-evenly true :spacing 20
+          (setbtn  :icon "󰤨" :active "${wifiactive}" :func "~/.config/eww/scripts/wifi --toggle &")  
+          (setbtn :icon "󰂯" :active "${btactive}" :func "~/.config/eww/scripts/bluetooth --toggle &")  
+          (setbtn :icon "󰍶" :active "${dndctive}" :func "~/.config/eww/scripts/dnd --toggle &") 
+          (setbtn :icon "󰀝" :active "${apactive}" :func "~/.config/eww/scripts/airplanemode --toggle &")  
+  )
+  (music)
+  )
+)

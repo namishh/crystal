@@ -1,0 +1,64 @@
+(defwidget symphony[]
+  (box :class "symphony" :orientation "v" :space-evenly false
+    (box :class "symtitle" :halign "start" "SYMPHONY")
+    (box :class "symscales" :orientation 'v' :space-evenly false
+      (symslidervol)
+      (symslidermic)
+    )
+    (symsongbox)
+    (symctl)
+  )
+)
+
+(defwidget symslidervol[]
+    (box :orientation 'h' :class "symslidervol" :space-evenly false
+              (box :valign 'center' :class "symvoltext" :style "padding : ${volume > 10 ? '1rem 1.3rem' : '1rem 1.75rem'};" volume)
+              (scale :valign "center" :class "symscale symvol"
+              :min 0
+              :max 100
+              :orientation "h"
+              :value "${volume}"
+              :onchange "~/.config/eww/scripts/volume {}"
+              :valign 'center')
+      )
+  )
+
+(defwidget symsongbox[]
+  (box :orientation "h" :class "symsongbox" :space-evenly "false"
+      (box :width 400 :height 280 :class "symimage" :orientation "v" :space-evenly false :style "background-image: url('${songimage}');"
+          (box :orientation "v" :hexpand true :vexpand true :class "symsonginfo" :space-evenly false
+              (box :orientation "v" :class "symsongtop" :vexpand true :halign 'start' :space-evenly false
+                  (box :class "symsongname" :halign 'start' songname)
+                  (box :class "symsongartist" :halign 'start' artist)
+                )
+              (box :orientation "h" :class "symsongcontrol" :valign 'end' :space-evenly false :spacing 8
+                  (button :class "symsongbtn prev" :onclick "playerctl --player=spotify previous"  "󰙣")
+                  (button :class "symsongbtn play" :onclick "playerctl --player=spotify play-pause" "${icon}" )
+                  (button :class "symsongbtn next" :onclick "playerctl --player=spotify next" "󰙡")
+                )
+            )
+        )
+  )
+)
+
+(defwidget symctl[]
+  (box :orientation "h" :class "symctl" :space-evenly true :spacing 20
+      (button :onclick "${shuffle == 'On' ? 'playerctl --player=spotify shuffle off' : 'playerctl --player=spotify shuffle on'}" :class "red symshuffle symcbtn ${shuffle == 'On' ? 'activered' : ''}" "󰒟")
+      (button :onclick "${repeat == 'Playlist' ? 'playerctl --player=spotify loop none' : 'playerctl --player=spotify loop playlist'}" :class "blue symrepeatalbum symcbtn ${repeat == 'Playlist' ? 'activeblue' : ''}" "󰑖")
+      (button :onclick "${repeat == 'Track' ? 'playerctl --player=spotify loop none' : 'playerctl --player=spotify loop track'}" :class "green symrepeatalbum symcbtn ${repeat == 'Track' ? 'activegreen' : ''}" "󰑘")
+    )
+  )
+
+(defwidget symslidermic[]
+    (box :orientation 'h' :class "symslidermic" :space-evenly false
+              (scale :valign "center" :class "symscale symmic"
+              :min 0
+              :max 100
+              :orientation "h"
+              :value "${mic}"
+              :flipped true
+              :onchange "pamixer --source 1 --set-volume $(printf %d {})"
+              :valign 'center')
+              (box :valign 'center' :style "padding : ${mic > 10 ? '1rem 1.3rem' : '1rem 1.75rem'};" :class "symmictext" mic)
+      )
+  )

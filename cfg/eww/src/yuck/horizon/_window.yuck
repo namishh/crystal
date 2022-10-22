@@ -1,0 +1,8 @@
+(defwindow powermenu
+	:geometry (geometry :x "0px" 
+						:y "0"
+            :height "100%"
+            :width "100%"
+            :anchor "center")
+  :stacking "fg"
+(powermenu))

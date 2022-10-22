@@ -1,0 +1,29 @@
+* {
+  all: unset;
+}
+
+
+.red {
+  color: $red;
+}
+.yellow {
+  color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+.magenta {
+  color: $magenta;
+}
+
+.blue {
+  color: $blue;
+}
+.cyan {
+  color: $cyan;
+}
+
+.white {
+  color: $foreground-alt;
+}

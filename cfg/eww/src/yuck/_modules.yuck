@@ -1,0 +1,10 @@
+(defwidget circbar[?value classname text wholeclass]
+(box :class "circbarbox"
+     :space-evenly false
+     :class wholeclass
+  (circular-progress :class "circbar ${classname}"
+                   :value value
+                   :thickness 12
+                   :clockwise true
+                   :start-at 30
+         (label :text "${text}" :class "${classname} circtext"))))

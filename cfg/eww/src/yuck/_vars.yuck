@@ -1,0 +1,44 @@
+(defpoll hour :interval "1s" `date +%H`)
+(defpoll minute :interval "1m" `date +%M`)
+(defpoll day :interval "1h" `date "+%A"`)
+(defpoll year :interval "1h" `date "+%Y"`)
+(defpoll month :interval "1h" `date "+%B"`)
+(defpoll date :interval "2h" `date "+%d"`)
+(defpoll thourtime :interval "1s" `date +"%I:%M %p %a"`)
+(defpoll datemonth :interval "24h"
+	"date '+%A, %d %B'")
+
+(defpoll volume :interval "1s" `pamixer --get-volume`)
+(defpoll mic :interval "1s" `pamixer --source 1 --get-volume`)
+(defpoll brightness :interval "1s" `brillo`)
+
+(defpoll apactive :interval '1s' "~/.config/eww/scripts/airplanemode --class")
+(defpoll dndctive :interval '1s' "~/.config/eww/scripts/dnd --class")
+(defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi --class")
+(defpoll btactive :interval '1s' "~/.config/eww/scripts/bluetooth --class")
+
+(defpoll songname :interval "1s" "~/.config/eww/scripts/spotify --song")
+(defpoll artist :interval "1s" "~/.config/eww/scripts/spotify --artist")
+(defpoll icon :interval "1s" "~/.config/eww/scripts/spotify --icon")
+(defpoll songimage :interval "1s" "~/.config/eww/scripts/spotify --image")
+(defpoll repeat :interval "1s" "~/.config/eww/scripts/spotify --loop")
+(defpoll shuffle :interval "1s" "~/.config/eww/scripts/spotify --shuf")
+
+
+(defpoll cputemp :interval "1s" "~/.config/eww/scripts/cpu")
+
+(defvar profilepic "./assets/chadcat.jpg")
+
+(defpoll batteryperc :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
+(defpoll uptime :interval "1m" "uptime -p | sed 's/up\s*//g' | sed 's/\s*days/d/g' | sed 's/\s*hours/h/g' | sed 's/\s*minutes/m/g'")
+
+(defpoll weathericon :interval "2h" "~/.config/eww/scripts/weather icon")
+(defpoll weathercity :interval "2h" "~/.config/eww/scripts/weather city")
+(defpoll weathertemp :interval "2h" "~/.config/eww/scripts/weather current_temp")
+(defpoll weatherfl :interval "2h" "~/.config/eww/scripts/weather feels_like")
+(defpoll weatherdesc :interval "2h" "~/.config/eww/scripts/weather weather_desc")
+
+(defpoll packages :interval "4h" "pacman -Q | wc -l")
+
+(defpoll spacefree :interval "2h" `df -h / | awk '{print $4}' | tail -n 1 | sed 's/G/GB/'`)
+(defpoll wifispeed :interval "1m" `awk 'NR==3 {print $3 "0"}''' /proc/net/wireless`)
