@@ -35,6 +35,7 @@ opt.shiftwidth = 0
 opt.autoindent = true
 opt.expandtab = true
 opt.fillchars:append('eob: ')
+opt.listchars:append "space: "
 cmd('set lazyredraw')
 opt.laststatus = 3 -- Global Status
 diagnostic.config { signs = false } -- Removing diagnostic column
@@ -71,17 +72,25 @@ local builtins = {
   "netrwSettings",
   "netrwFileHandlers",
   "matchit",
+  "matchparen",
   "tar",
-  "tutor",
   "tarPlugin",
   "rrhelper",
+  "spellfile_plugin",
   "vimball",
   "vimballPlugin",
   "zip",
   "zipPlugin",
-  "tutor_mode_plugin",
-  "fzf",
-  "spellfile_plugin",
+  "tutor",
+  "rplugin",
+  "syntax",
+  "synmenu",
+  "optwin",
+  "compiler",
+  "bugreport",
+  "ftplugin",
+  "archlinux",
+  "fzf"
 }
 
 for _, plugin in ipairs(builtins) do

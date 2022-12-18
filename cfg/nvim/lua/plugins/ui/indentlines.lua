@@ -1,1 +1,3 @@
-require("indent_blankline").setup()
+require("indent_blankline").setup {
+  space_char_blankline = " ",
+}

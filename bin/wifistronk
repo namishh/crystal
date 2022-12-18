@@ -1,0 +1,21 @@
+#!/bin/bash
+SPED=$(awk 'NR==3 {print $3 "0"}''' /proc/net/wireless)
+SPED=$(~/.local/bin/roundvalue $SPED)
+if [ ! "$SPED" ]
+then
+  echo "󰤮"
+elif [ $SPED -ge 75 ]
+then
+  echo "󰤥"
+elif [ $SPED -ge 50 ]
+then
+  echo "󰤢"
+elif [ $SPED -ge 25 ]
+then
+  echo "󰤟"
+elif [ $SPED -ge 0 ]
+then
+  echo "󰤯"
+else
+  echo "󰤮"
+fi

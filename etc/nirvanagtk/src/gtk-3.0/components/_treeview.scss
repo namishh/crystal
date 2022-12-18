@@ -1,0 +1,43 @@
+// TODO: check if full width horizontal separators are possible
+
+treeview {
+  -GtkTreeView-expander-size: 13;
+  -GtkTreeView-grid-line-pattern: '';
+  -GtkTreeView-tree-line-pattern: '';
+  -GtkTreeView-horizontal-separator: 8;
+  -GtkTreeView-vertical-separator: 8;
+
+  background: $background-2;
+
+  border-left-color: $background-3; // TODO: check if there is going to be a new way to define tree-lines
+  border-top-color: $background-3; // TODO: check if there is going to be a new way to define column-lines
+
+  &:hover {
+    background: lighten($background-2, 3%);
+  }
+
+  &:selected {
+    background: $primary-accent;
+    color: darken($primary-accent, 50%);
+  }
+
+  &.separator {
+    color: $background-3;
+    min-height: 2px;
+  }
+
+  header {
+    button {
+      border-bottom: 1px solid $background-3;
+      background: $background-2;
+
+      &:hover {
+        background: $background-3;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid $background-3;
+      }
+    }
+  }
+}

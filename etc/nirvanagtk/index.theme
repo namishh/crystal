@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name-janleigh-phocus
+Comment=Jan Leigh's Edition of ElKowar's Phocus
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=phocus
+MetacityTheme=phocus
+IconTheme=Adwaita
+CursorTheme=Adwaita
+ButtonLayout=menu:minimize,maximize,close

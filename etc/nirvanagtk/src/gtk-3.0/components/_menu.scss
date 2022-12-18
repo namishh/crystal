@@ -1,0 +1,8 @@
+menu {
+  background: $background-1;
+  padding: 10px;
+  menuitem {
+    padding: 8px;
+    &:hover { background: $background-2; }
+  }
+}

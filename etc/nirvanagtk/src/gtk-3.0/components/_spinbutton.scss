@@ -1,0 +1,33 @@
+spinbutton {
+  &.horizontal {
+    entry {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    button.down {
+      border-radius: 0;
+    }
+
+    button.up {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  &.vertical {
+    button.up {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    entry {
+      border-radius: 0;
+    }
+
+    button.down {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}

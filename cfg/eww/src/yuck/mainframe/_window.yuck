@@ -1,9 +1,8 @@
-
-(defwindow sidebar
+(defwindow mainframe
            :monitor 0
-           :geometry (geometry :x "6"
+           :geometry (geometry :x "-6px"
                                :y "43px"
-                                :anchor "top left")
+                                :anchor "top right")
            :wm-ignore true
            :stacking "fg"
-  (sidebar))
+  (mainframe))

@@ -1,0 +1,23 @@
+@import "../colors";
+
+filechooser {
+  viewport,
+  placessidebar,
+  list {
+    background: none;
+  }
+  placessidebar list row {
+    margin: 5px;
+  }
+
+  treeview {
+    background: none;
+  }
+  treeview header box {
+    padding: 5px;
+  }
+
+  treeview:selected {
+    background: $primary-accent;
+  }
+}

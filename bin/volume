@@ -1,10 +1,11 @@
+#!/bin/bash
 vol=$(pamixer --get-volume)
 mute=$(pamixer --get-mute)
 
 if [ "$mute" == true ]
 then
-  icon=ﱝ
+  icon='󰸈'
 else
-  icon=墳
+  icon='󰕾'
 fi
 echo "$icon"

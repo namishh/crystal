@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case $1 in
+left)
+  rofi -show drun
+  ;;
+right)
+  eww open --toggle speculate
+  ;;
+esac
+

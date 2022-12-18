@@ -29,7 +29,7 @@ M.capabilities.textDocument.completion.completionItem = {
   },
 }
 
-local servers = { "html", "pyright", "tsserver", "emmet_ls", "bashls", "vuels", "clangd", "cssls" }
+local servers = { "html", "pyright", "tsserver", "emmet_ls", "clangd", "cssls" }
 
 for _, k in ipairs(servers) do
   lspconfig[k].setup {
@@ -45,7 +45,7 @@ lspconfig.sumneko_lua.setup {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { "vim" },
+        globals = { "vim", "awesome" },
       },
       workspace = {
         library = {

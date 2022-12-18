@@ -140,6 +140,10 @@ return require('packer').startup({ function(use)
     config = "require('plugins.utils.comments')",
     event = "BufWinEnter"
   }
+  use {
+    "elkowar/yuck.vim",
+    ft = "yuck"
+  }
   -- End Of Plugins
 end,
 })

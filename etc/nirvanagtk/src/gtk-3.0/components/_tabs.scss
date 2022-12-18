@@ -1,0 +1,57 @@
+tabs {
+  background: $background-1;
+
+  .top > & {
+    border-bottom: 2px solid $background-3;
+    tab {
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+  }
+
+  .right > & {
+    border-left: 2px solid $background-3;
+    tab {
+      border-left: 2px solid transparent;
+      margin-left: -2px;
+    }
+  }
+
+  .bottom > & {
+    border-top: 2px solid $background-3;
+    tab {
+      border-top: 2px solid transparent;
+      margin-top: -2px;
+    }
+  }
+
+  .left > & {
+    border-right: 2px solid $background-3;
+    tab {
+      border-right: 2px solid transparent;
+      margin-right: -2px;
+    }
+  }
+
+  tab {
+    padding: 8px;
+    color: transparentize($foreground-color, 0.8);
+    transition: color 200ms ease-in-out, border-color 200ms ease-in-out;
+    header &:checked {
+      border-color: $primary-accent;
+      color: $foreground-color;
+    }
+
+    header &:hover:not(:checked) {
+      border-color: transparentize($foreground-color, 0.8);
+    }
+  }
+}
+
+header tabs {
+  background: $background-2;
+}
+
+dialog header tabs > tab > label {
+  padding: 3px;
+}

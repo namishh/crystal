@@ -1,0 +1,12 @@
+menubar {
+  background: $background-1;
+  padding: 5px;
+
+  menuitem {
+    padding: 5px;
+
+    &:hover {
+      background: $background-2;
+    }
+  }
+}

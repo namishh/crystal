@@ -4,44 +4,37 @@ super + shift + Return
 
 # program launcher
 super + a
-  dmenu_run -l 15  -c -h 36  -p "  Launch:"
-
+ rofi -show drun
 # make sxhkd reload its configuration files:
 super + Escape 
 	pkill -USR1 -x sxhkd
 
-super + e 
-  ~/.local/bin/dmenu/emojimenu
-
-super + x 
-  ~/.local/bin/dmenu/powermenu
+super + q 
+  ~/.local/bin/rofiscripts/ssmenu
 
 super + n 
-  ~/.local/bin/dmenu/wifimenu
+  ~/.local/bin/wifimenu
 
-super + q
-  ~/.local/bin/dmenu/ssmenu
-
-super + z
-  ~/.local/bin/dmenu/launcher
+super + x
+  ~/.local/bin/rofiscripts/powermenu
 
 # copy some stuff
 super + shift + p
   xclip -sel c < ~/pa
 
+super + c
+  playerctl play-pause
 #volume
 XF86AudioRaiseVolume
-    changevolume up
+    ~/.local/bin/changevolume up
 XF86AudioLowerVolume
-    changevolume down
+    ~/.local/bin/changevolume down
 XF86AudioMute
-    changevolume mute
+    ~/.local/bin/changevolume mute
 
 XF86MonBrightnessDown
-    changebrightness down
+    ~/.local/bin/changebrightness down
 
 XF86MonBrightnessUp
-    changebrightness up
+    ~/.local/bin/changebrightness up
 
-super + c 
-  playerctl play-pause

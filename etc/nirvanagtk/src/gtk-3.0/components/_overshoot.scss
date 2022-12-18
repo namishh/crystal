@@ -1,0 +1,29 @@
+@mixin overshoot($side, $color: $background-3) {
+  $position-per-side: (
+    top: center top,
+    right: right center,
+    bottom: center bottom,
+    left: left center
+  );
+  $position: map-get($position-per-side, $side);
+
+  background-image: -gtk-gradient(
+    radial,
+    $position, 0,
+    $position, 0.6,
+    from(transparentize($color, 0.8)),
+    to(transparentize($color, 1))
+  );
+
+  background-size: map-get((top: 100% 60%, right: 60% 100%, bottom: 100% 60%, left: 60% 100%), $side);
+  background-repeat: no-repeat;
+  background-position: $position;
+}
+
+
+overshoot {
+  &.top { @include overshoot(top); }
+  &.bottom { @include overshoot(bottom); }
+  &.left { @include overshoot(left); }
+  &.right { @include overshoot(right); }
+}

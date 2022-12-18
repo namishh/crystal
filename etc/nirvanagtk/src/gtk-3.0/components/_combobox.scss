@@ -1,0 +1,18 @@
+combobox {
+  box entry {
+    border-radius: 0;
+  }
+  button {
+    &.combo {
+      cellview {
+        margin: -2px;
+      }
+      arrow {
+        margin: -6px -8px;
+        padding: 8px;
+        min-width: 16px;
+        -gtk-icon-source: -gtk-icontheme("pan-down-symbolic");
+      }
+    }
+  }
+}

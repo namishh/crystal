@@ -1,5 +1,5 @@
 local fn = vim.fn
-local M = function ()
+local M = function()
   local icon = "  "
   local filename = (fn.expand "%" == "" and "Empty ") or fn.expand "%:t"
   if filename == "NvimTree_1" then
@@ -16,6 +16,6 @@ local M = function ()
     local ft_icon = devicons.get_icon(filename)
     icon = (ft_icon ~= nil and " " .. ft_icon) or ""
   end
-  return "%#StalineFilename#" .. icon .. "  " .. filename .. "  "
+  return "%#StalineFilename#" .. " " .. icon .. "  " .. filename .. "  "
 end
 return M

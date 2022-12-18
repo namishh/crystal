@@ -1,0 +1,41 @@
+@use 'sass:color';
+@use '../colors';
+
+#MozillaGtkWidget {
+  // firefox somehow adjusts this color, the minimum color is #262626
+  // estimating that firefox adds 15% lightness on top, which is close enough
+  // TODO: check algorithm to replace estimate with
+  background: color.adjust(colors.$background-1);
+
+  // bar that contains inactive tabs
+  // TODO: find out if the gtk headerbar (the one with decorations) can be themed as well
+  menubar {
+    color: colors.$foreground-color;
+    background: colors.$background-2;
+  }
+
+  // address-bar, side-bar (bookmarks), burger menu, account menu
+  text {
+    background: colors.$background-2;
+  }
+
+  // context menus
+  menu {
+    background: colors.$background-2;
+
+    // TODO: check if this can go into default menu styles, or if this is a weird selector for firefox
+    :disabled {
+      color: colors.$foreground-color;
+    }
+
+    // TODO: could potentially go into default styles, at the very least make it consistent
+    separator {
+      padding: 8px;
+    }
+  }
+
+  // borders in menus, sidebars, navigation bar and more
+  border {
+    border: 0px solid colors.$background-1;
+  }
+}

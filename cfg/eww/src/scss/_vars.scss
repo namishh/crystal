@@ -1,23 +1,66 @@
-$background : #0f0f0f;
-$foreground : #dfdde0;
-$background-alt : #18181a;
-$background-light : #1e1f25;
-$foreground-alt : #c5d7d7;
+* {
+  all: unset;
+}
 
-$red : #da696d;
-$red-light : #ec6e74;
+$background : #121111;
+$foreground : #dbdfdf;
+$background-alt : #191919;
+$background-light : #252525;
+$foreground-alt : #b7b7b7;
 
-$green : #74be88;
-$green-light : #86d19a;
+$red : #af575b;
+$red-light : #c15a5e;
 
-$yellow : #e1b56a;
-$yellow-light : #d5b27c;
+$green : #7d8a6b;
+$green-light : #8fa176;
 
-$blue : #6d92b7;
-$blue-light : #6692b7;
 
-$cyan : #679ca6;
-$cyan-light : #6bd1e0;
+$yellow : #caac79;
+$yellow-light : #d8b170;
 
-$magenta : #be67d5;
-$magenta-light : #c585cf;
+$blue : #7d95ae;
+$blue-light : #809fbe;
+
+$cyan : #6b8f8a;
+$cyan-light : #8cb5af;
+
+$magenta : #a07ea7;
+$magenta-light : #b183ba;
+
+$accent : $blue-light;
+
+.accent {
+  color: $accent;
+}
+
+.comment {
+  color: #5a5858;
+}
+
+.red {
+  color: $red;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+
+.magenta {
+  color: $magenta;
+}
+
+.blue {
+  color: $blue;
+}
+
+.cyan {
+  color: $cyan;
+}
+
+.white {
+  color: $foreground-alt;
+}

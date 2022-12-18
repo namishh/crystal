@@ -1,0 +1,14 @@
+.pavucontrol-window {
+    background: $background-1;
+
+    tabs {
+        background: $background-2;
+        tab {
+            padding: 16px;
+        }
+    }
+
+    .show-volume-meters-check-button {
+        padding: 8px;
+    }
+}

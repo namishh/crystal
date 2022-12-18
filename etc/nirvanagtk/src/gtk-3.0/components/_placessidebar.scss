@@ -1,0 +1,22 @@
+// TODO: extract to nautilus specific stylesheet, since this will be removed from gtk because only nautilus uses it
+placessidebar  {
+  background: $background-2;
+
+  list {
+    background: transparent;
+
+    row {
+      &:hover {
+        background: rgba(0,0,0,0.2);
+      }
+
+      .sidebar-icon {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  &.frame, .frame {
+    border: 0;
+  }
+}

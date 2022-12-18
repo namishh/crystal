@@ -1,0 +1,21 @@
+// TODO: find consistent way to remove top and bottom space through negative margins
+
+popover {
+  background: $background-3;
+  box-shadow: 0 0 5px rgba(0,0,0,.4);
+
+  box {
+    modelbutton {
+      padding: 5px 10px;
+      margin: 0 -10px;
+
+      &:hover {
+        background: lighten($background-3, 10%);
+      }
+    }
+  }
+
+  &.menu:first-child {
+    border-top-left-radius: 0;
+  }
+}

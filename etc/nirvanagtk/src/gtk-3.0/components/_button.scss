@@ -1,0 +1,31 @@
+button {
+  transition: background-color 100ms ease-in;
+  background: transparentize(white, 0.95);
+  padding: 8px;
+
+  &:hover:not(:active) { background: transparentize(white, 0.9); }
+  &:disabled { opacity: 0.3; }
+
+  &:checked, &.suggested-action {
+    background: $primary-accent;
+    color: lighten($primary-accent, 40%);
+    &:hover:not(:active) { background: darken($secondary-accent, 5%); }
+  }
+
+  &.destructive-action {
+    background: $accent-1;
+    color: lighten($accent-1, 40%);
+    &:hover:not(:active) { background: darken($secondary-accent, 5%); }
+  }
+
+  &.circular {
+    border-radius: 100%;
+    padding: 8px;
+  }
+
+  &.flat {
+    background: transparent;
+    &:hover { color: rgba(255,255,255,.7); }
+    &:checked { color: rgba(255,255,255,.8); }
+  }
+}

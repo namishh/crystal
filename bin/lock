@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 sleep 0.2
+playerctl play-pause
 slock &

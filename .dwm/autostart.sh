@@ -1,9 +1,8 @@
-
 ~/.fehbg &
-barinfo &
+~/.local/bin/barinfo &
 udiskie &
 sxhkd &
-picom --experimental-backends &
 dunst &
 xss-lock -- lock &
-eww daemon &
+~/.local/bin/eww daemon &
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &

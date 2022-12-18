@@ -1,0 +1,7 @@
+toolbar {
+  background: $background-1;
+  &.osd {
+    background: transparentize($background-3, 0.5);
+    padding: 10px;
+  }
+}

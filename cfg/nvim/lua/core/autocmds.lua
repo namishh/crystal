@@ -15,6 +15,7 @@ local N = {
   __au = {}
 }
 
+
 local M = setmetatable({}, {
   __index = N,
   __newindex = autocmd,
@@ -28,6 +29,7 @@ end
 N.set = function(fn)
   local id = string.format('%p', fn)
   M.__au[id] = fn
+
   return string.format('lua require("core.autocmds").exec("%s")', id)
 end
 

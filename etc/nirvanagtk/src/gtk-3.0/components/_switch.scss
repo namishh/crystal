@@ -1,0 +1,28 @@
+switch {
+  background: transparentize($foreground-color, 0.8);
+  border-radius: 20px;
+  color: transparent;
+  min-width: 40px;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+
+  slider {
+    background: $foreground-color;
+    transition: background 100ms ease-in-out;
+    border-radius: 100%;
+    min-width: 5px;
+    min-height: 5px;
+    background-clip: padding-box;
+    margin: -4px -2px;
+  }
+
+  &:checked {
+    background: transparentize($primary-accent, 0.7);
+    background-clip: content-box;
+    slider {
+      background: $primary-accent;
+    }
+  }
+
+  &:disabled { opacity: 0.3; }
+}

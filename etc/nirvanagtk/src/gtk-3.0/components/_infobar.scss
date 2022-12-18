@@ -1,0 +1,18 @@
+infobar {
+  color: rgba(255,255,255,0.8);
+
+  &.info {
+    background: $accent-4;
+  }
+  &.warning {
+    background: $accent-3;
+  }
+  &.error {
+    background: $accent-1;
+  }
+  &.question {
+    background: $accent-6;
+  }
+
+  // TODO: if the button optimizations don't get more readable here, we have to style an exception
+}

@@ -1,0 +1,26 @@
+entry {
+  transition: all 100ms ease-in-out;
+  background: transparentize(white, 0.95);
+  border: 2px solid transparent;
+  padding: 6px;
+  border-radius: 0;
+
+  &:focus {
+    border-color: $primary-accent;
+    background: transparentize(white, 0.9);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+
+  image {
+    &.left { margin-right: 8px; }
+    &.right { margin-left: 8px; }
+  }
+
+  selection {
+    background: $primary-accent;
+    color: $background-2;
+  }
+}

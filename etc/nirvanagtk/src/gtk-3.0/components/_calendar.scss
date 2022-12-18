@@ -1,0 +1,29 @@
+calendar {
+  border: 1px solid $background-3;
+  background: $background-2;
+
+  &.button {
+    background: $background-3;
+    color: rgba(255,255,255,0.5);
+
+    &:hover { color: rgba(255,255,255,0.8); }
+    &:disabled { color: rgba(255,255,255,0.1); }
+  }
+
+  &.header {
+    background: $background-3;
+  }
+
+  &.highlight {
+    color: rgba(255,255,255,.2);
+  }
+
+  &:selected {
+    color: white;
+    background: $accent-7;
+  }
+
+  &:indeterminate {
+    color: rgba(255,255,255,.1);
+  }
+}

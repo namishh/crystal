@@ -1,0 +1,8 @@
+iconview {
+  background: $background-2;
+
+  &:selected {
+    color: rgba(255,255,255,0.8);
+    background: $primary-accent;
+  }
+}

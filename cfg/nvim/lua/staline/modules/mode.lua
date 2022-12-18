@@ -28,11 +28,12 @@ local modes = {
   ["!"] = { "SHELL", "StalineTerminalMode" },
 }
 
-local M = function ()
+local M = function()
   local mode = api.nvim_get_mode().mode
   local sep = "%#" .. modes[mode][2] .. "Sep" .. "#" .. "  "
   local septwo = "%#StalineModeSepTwo" .. "#" .. " "
-  local current_mode = "%#" .. modes[mode][2] .. "#" .. "  " .. modes[mode][1] .. " " .. sep .. septwo .. " "
+  -- local current_mode = "%#" .. modes[mode][2] .. "#" .. "  " .. modes[mode][1] .. " " .. sep .. septwo .. " "
+  local current_mode = "%#" .. modes[mode][2] .. "#" .. " " .. modes[mode][1] .. " "
 
   return current_mode
 end

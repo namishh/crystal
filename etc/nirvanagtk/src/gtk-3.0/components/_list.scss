@@ -1,0 +1,10 @@
+list {
+  background: $background-2;
+
+  row {
+    padding: 6px;
+    &:hover {
+      background: $background-3;
+    }
+  }
+}

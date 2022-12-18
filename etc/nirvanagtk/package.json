@@ -1,0 +1,29 @@
+{
+	"name": "phisch",
+	"version": "0.0.1",
+	"description": "GTK3 theme based on the Phocus colors.",
+	"author": "Philipp Schaffrath",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/phocus/gtk.git"
+	},
+	"homepage": "https://github.com/phocus/gtk#readme",
+	"bugs": {
+		"url": "https://github.com/phocus/gtk/issues"
+	},
+	"keywords": [
+		"gtk3",
+		"gtk3-theme",
+		"theme"
+	],
+	"scripts": {
+		"build": "sass src/gtk-3.0/gtk.scss dist/gtk-3.0/gtk.css",
+		"format": "prettier --write src",
+		"format:check": "prettier --check src"
+	},
+	"devDependencies": {
+		"prettier": "^2.7.1",
+		"sass": "^1.32.12"
+	}
+}

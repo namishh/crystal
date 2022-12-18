@@ -1,0 +1,23 @@
+#!/bin/bash
+BLO=$(cat ~/.cache/hosttype)
+
+case $1 in
+toggle)
+    BLO=$(cat ~/.cache/hosttype)
+
+    if [ "$BLO" = "no" ]; then
+      getroot ~/.local/bin/blockunsafe
+    else
+      getroot ~/.local/bin/unblocksafe
+    fi
+	;;
+status)
+    BLO=$(cat ~/.cache/hosttype)
+
+    if [ "$BLO" = "no" ]; then
+      echo "false"
+    else
+      echo "true"
+    fi
+  ;;
+esac

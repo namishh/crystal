@@ -1,0 +1,28 @@
+scrollbar {
+  -GtkScrollbar-has-backward-stepper: false;
+  -GtkScrollbar-has-forward-stepper: false;
+
+  background: transparent;
+
+  slider {
+    padding: 3px;
+    background: rgba(255,255,255,0.05);
+    &:hover {
+      background: rgba(255,255,255,0.1);
+    }
+    &:active {
+      background: transparentize($primary-accent, 0.25);
+    }
+  }
+
+  &:hover {
+    background: rgba(255,255,255,0.05);
+
+    &.horizontal slider {
+      padding: 5px 3px;
+    }
+    &.vertical slider {
+      padding: 3px 5px;
+    }
+  }
+}

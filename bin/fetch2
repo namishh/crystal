@@ -1,0 +1,79 @@
+#!/bin/sh
+
+# Colors
+c() { printf "\033[%s;%sm" "$1" "$2"; }
+
+# Import info
+. /etc/os-release
+
+# Get info functions
+Name() {
+  read -r host < /etc/hostname;
+  printf "%s@%s" "$USER" "$host";
+}
+Os() { printf "%s" "$NAME"; }
+Kernel() {
+  read -r _ _ kern _ < /proc/version;
+  printf "%s" "$kern";
+}
+Uptime() {
+  IFS=. read -r up _ < /proc/uptime;
+  printf "%dD %dH %dM" "$((up / 60 / 60 / 24))" "$((up / 60 / 60 % 24))" "$((up / 60 % 60))";
+}
+Shell() { printf "%s" "${SHELL##*/}"; }
+Desktop() {
+  if [ "$DESKTOP_SESSION" != "" ]; then
+    printf "%s\n" "$DESKTOP_SESSION"
+  elif [ "$XDG_CURRENT_DESKTOP" != "" ]; then
+    printf "%s\n" "$XDG_CURRENT_DESKTOP"
+  else
+    for i in /proc/*/comm; do
+      read -r p < "$i"
+      case "$p" in
+        awesome|xmonad*|qtile|sway|i3|[bfo]*box|*wm*) printf "%s" "${p%%-*}"; break;;
+      esac
+    done
+  fi
+}
+Memory() {
+  while IFS=':k ' read -r mem1 mem2 _; do
+    case "$mem1" in
+      MemTotal)
+        memt="$(( mem2 / 1024 ))";;
+      MemAvailable)
+        memu="$(( memt - mem2 / 1024))";;
+    esac;
+  done < /proc/meminfo;
+  printf "%dMib / %dMib" "$memu" "$memt";
+}
+
+help() { printf "Usage: fetch [ -c config | -h ]
+Report issue at: https://github.com/manas140/fetch\n\n" && exit; }
+
+# Import config
+if [ -f "$HOME"/.config/fetch/conf ]; then
+  . "$HOME"/.config/fetch/conf
+else
+  # Default Config
+conf() {
+  printf " $(c 0 37)
+  $(c 1 32)$(Name)$(c 0 0)
+  $(c 1 31)$(c 0 0)$(c 1 31)Os: $(Os)
+  $(c 1 33)$(c 0 0)$(c 1 33)Kernel: $(Kernel)
+  $(c 1 34)$(c 0 0)$(c 1 34)Uptime: $(Uptime)
+  $(c 1 35)$(c 0 0)$(c 1 35)Shell: $(Shell)
+  $(c 1 36)$(c 0 0)$(c 1 36)DE/WM: $(Desktop)
+  $(c 1 37)$(c 0 0)$(c 1 37)Memory: $(Memory)
+
+$(c 0 30) 󰑊 $(c 0 31) 󰑊 $(c 0 32) 󰑊 $(c 0 33) 󰑊 $(c 0 34) 󰑊 $(c 0 35) 󰑊 $(c 0 36) 󰑊 $(c 0 37) 󰑊 $(c 0 0)
+  \n"
+}
+fi
+
+case "$1" in
+  *-c*) [ -f "$2" ] && . "$2" ;;
+  *-h*) help;;
+esac
+
+conf
+

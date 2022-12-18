@@ -1,0 +1,33 @@
+checkbutton {
+  check {
+    -gtk-icon-source: -gtk-recolor(url('../assets/symbolic/check.symbolic.png'));
+    -gtk-icon-transform: scale(0);
+    color: rgba(255,255,255, .8);
+    border: 2px solid rgba(255,255,255,0.05);
+    border-radius: 1px;
+    padding: 1px;
+    min-width: 12px;
+    min-height: 12px;
+
+    // TODO: extract transitions into separate directory
+    transition: -gtk-icon-transform 200ms;
+
+    &:hover, &:checked {
+      border-color: $primary-accent;
+    }
+
+    &:active, &:checked {
+      background: $primary-accent;
+    }
+
+    &:checked {
+      -gtk-icon-transform: scale(1);
+      border-color: $primary-accent;
+      &:active { background: transparent; }
+    }
+  }
+
+  label { padding-left: 5px; }
+
+  &:disabled { opacity: 0.3; }
+}

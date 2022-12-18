@@ -1,4 +1,4 @@
-local core = require('themes.colorschemes.warm')
+local core = require('themes.colorschemes.nirvana')
 local highlights = require('themes.highlights')
 
 local function setup(opts)

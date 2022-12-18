@@ -8,4 +8,5 @@ require("core.keybinds")
 
 -- Setting The Statusline
 vim.opt.statusline = "%!v:lua.require('staline').run()"
+
 require("plugins") -- All The Plugins

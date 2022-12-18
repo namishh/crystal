@@ -1,14 +1,14 @@
 [global]
 monitor = 0
 follow = mouse
-width = (150,300)
-height = 200
+width = (150,350)
+height = (200,500)
 progress_bar = true
 progress_bar_height = 18
 progress_bar_frame_width = 1
 progress_bar_min_width = 150
 progress_bar_max_width = 300
-highlight = "#74be88"
+highlight = "#8fa176"
 indicate_hidden = true
 shrink = true
 transparency = 0
@@ -18,23 +18,23 @@ horizontal_padding = 18
 text_icon_padding = 8
 gap_size = 2
 frame_width = 1
-frame_color = "#1a1a1d"
+frame_color = "#1a1a1a"
 sort = true
 idle_threshold = 0
 font = Iosevka Nerd Font 14
-line_height = 3
+line_height = 4
 markup = full
 origin = "top-left"
 offset = "9x46"
 format = "<b>%s</b>\n%b"
 alignment = left
 show_age_threshold = 60
-word_wrap = false
+word_wrap = true
 ignore_newline = true
 stack_duplicates = true
 hide_duplicate_count = true
 show_indicators = true
-icon_position = left
+icon_position = off
 max_icon_size = 80
 min_icon_size = 50
 icon_theme = "Zafiro-Icons-Dark"
@@ -54,21 +54,21 @@ ellipsize = end
 
 [urgency_low]
 timeout = 4
-background = "#0f0f0f"
-frame_color = "#74be88"
-foreground = "#74be88"
+background = "#121111"
+frame_color = "#8fa176"
+foreground = "#8fa176"
 
 [urgency_normal]
 timeout = 8
-background = "#0f0f0f"
-frame_color = "#6d92b7"
-foreground = "#6d92b7"
+background = "#121111"
+frame_color = "#8097fb"
+foreground = "#8097fb"
 
 [urgency_critical]
 timeout = 30
-background = "#0f0f0f"
-frame_color = "#da696d"
-foreground = "#da696d"
+background = "#121111"
+frame_color = "#c15a5e"
+foreground = "#c15a5e"
 
 [fullscreen_show_critical]
 msg_urgency = critical

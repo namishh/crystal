@@ -1,0 +1,12 @@
+#!/bin/sh
+
+URL="https://www.reddit.com/message/inbox/.json?feed=d076dfb64e2f8a1a3ed10492af0260e1ffded1a3&user=ChadCat5207"
+USERAGENT="polybar-scripts/notification-reddit:v1.0 u/ChadCat5207"
+
+notifications=$(curl -sf --user-agent "$USERAGENT" "$URL" | jq '.["data"]["children"] | length')
+
+if [ -n "$notifications" ] && [ "$notifications" -gt 0 ]; then
+    echo "$notifications"
+else
+    echo "0"
+fi

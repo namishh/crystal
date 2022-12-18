@@ -1,0 +1,40 @@
+scale {
+  padding: 8px 0;
+
+  contents {
+    trough {
+      background: $background-3;
+      slider {
+        background: $foreground-color;
+        padding: 8px;
+        margin: -5px;
+        border-radius: 100%;
+      }
+      highlight {
+      }
+    }
+  }
+
+  // TODO: marks can be at the top or bottom, maybe also on the right or left depending on scale.horizontal/vertical
+  marks {
+    mark {
+      padding-top: 5px;
+      indicator {
+        color: $background-3;
+        min-height: 8px;
+        min-width: 1px;
+      }
+    }
+  }
+
+  &.horizontal highlight {
+    background-image: linear-gradient(to right, $accent-5, $accent-8);
+  }
+  &.vertical highlight {
+    background-image: linear-gradient(to bottom, $accent-5, $accent-8);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}

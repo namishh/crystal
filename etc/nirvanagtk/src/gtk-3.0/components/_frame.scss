@@ -1,0 +1,27 @@
+frame {
+  &.app-notification border {
+    background: $background-2;
+    border: 0;
+  }
+  & > border {
+    //padding-top: 5px;
+    //padding-left: 5px;
+    //padding-bottom: 15px;
+    //padding-right: 15px;
+  }
+}
+
+frame > border {
+  //border: 1px solid $background-2;
+  border: none;
+}
+
+.frame {
+  border: 1px solid $background-2;
+}
+
+scrolledwindow {
+  viewport.frame {
+    border-style: none;
+  }
+}

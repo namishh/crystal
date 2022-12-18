@@ -1,8 +1,6 @@
-#!/bin/sh
-
+#!/bin/bash
 bat=$(cat /sys/class/power_supply/BAT0/capacity)
 stat=$(cat /sys/class/power_supply/BAT0/status)
-
 if [ "$stat" == "Charging" ]
 then
   icon=""
@@ -78,4 +76,6 @@ elif [[ $1 == '--fg' ]]; then
   echo $foreground
 elif [[ $1 == '--class' ]]; then
   echo $class
+elif [[ $1 == '--val' ]]; then
+  echo $bat
 fi
