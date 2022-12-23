@@ -23,12 +23,11 @@ calendar {
     background-color: $background;
     border-radius: inherit;
 
-    padding: .5em;
     margin: 1em;
 
     .moment_month-year {
       font-family: "Iosevka Nerd Font";
-      font-size: 18px;
+      font-size: 1.3rem;
       font-weight: bold;
       margin: 0.5em 0em 0em;
     }
@@ -36,12 +35,13 @@ calendar {
     .moment_day-names {
       font-family: "Iosevka Nerd Font";
       margin: 1em 1em 0em;
-      font-size: 14px;
+      font-size: 1.1rem;
       font-weight: bold;
       color: $green;
     }
 
     .moment_cal {
+      font-size: 1.0rem;
       padding: 1em .75em 0em;
     }
   }

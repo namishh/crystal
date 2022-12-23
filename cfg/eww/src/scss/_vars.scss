@@ -7,7 +7,6 @@ $foreground : #dbdfdf;
 $background-alt : #191919;
 $background-light : #252525;
 $foreground-alt : #b7b7b7;
-
 $red : #af575b;
 $red-light : #c15a5e;
 
@@ -27,6 +26,8 @@ $cyan-light : #8cb5af;
 $magenta : #a07ea7;
 $magenta-light : #b183ba;
 
+$comment : #5a5858;
+// $accent : #738c64;
 $accent : $blue-light;
 
 .accent {
@@ -34,7 +35,7 @@ $accent : $blue-light;
 }
 
 .comment {
-  color: #5a5858;
+  color: $comment;
 }
 
 .red {

@@ -3,6 +3,5 @@
            :geometry (geometry :x "-6px"
                                :y "43px"
                                 :anchor "top right")
-           :wm-ignore true
            :stacking "fg"
   (mainframe))

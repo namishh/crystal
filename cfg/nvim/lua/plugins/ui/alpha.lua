@@ -48,7 +48,7 @@ dashboard.section.footer.val = footer()
 dashboard.section.footer.opts.hl = "AlphaFooter"
 local opts = {
   layout = {
-    { type = "padding", val = 5 },
+    { type = "padding", val = 3 },
     dashboard.section.header,
     { type = "padding", val = 3 },
     heading,
@@ -62,6 +62,7 @@ local opts = {
   },
 }
 alpha.setup(opts)
+
 vim.cmd([[ autocmd FileType alpha setlocal nofoldenable]])
 vim.api.nvim_create_augroup("alpha_tabline", { clear = true })
 

@@ -15,7 +15,6 @@ local N = {
   __au = {}
 }
 
-
 local M = setmetatable({}, {
   __index = N,
   __newindex = autocmd,

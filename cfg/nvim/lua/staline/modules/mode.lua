@@ -28,14 +28,20 @@ local modes = {
   ["!"] = { "SHELL", "StalineTerminalMode" },
 }
 
-local M = function()
+
+local M = function(m)
   local mode = api.nvim_get_mode().mode
   local sep = "%#" .. modes[mode][2] .. "Sep" .. "#" .. "  "
   local septwo = "%#StalineModeSepTwo" .. "#" .. " "
-  -- local current_mode = "%#" .. modes[mode][2] .. "#" .. "  " .. modes[mode][1] .. " " .. sep .. septwo .. " "
-  local current_mode = "%#" .. modes[mode][2] .. "#" .. " " .. modes[mode][1] .. " "
-
-  return current_mode
+  if (m == 'minimal') then
+    return "%#" .. modes[mode][2] .. "#" .. " " .. modes[mode][1] .. " ";
+  elseif (m == 'fancy') then
+    return "%#" .. modes[mode][2] .. "#" .. "  " .. modes[mode][1] .. " " .. sep .. septwo .. " ";
+  elseif (m == 'monochrome') then
+    return "%#" .. "StalineMonoMode" .. "#" .. " " .. modes[mode][1] .. " " .. "%#StalineEmptySpace#" .. " ";
+  else
+    return "F"
+  end
 end
 
 return M

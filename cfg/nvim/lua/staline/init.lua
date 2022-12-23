@@ -1,5 +1,5 @@
 return {
-  run = function()
+  run = function(STYLE)
     local mode = require("staline.modules.mode")
     local filename = require("staline.modules.filename")
     local branch = require("staline.modules.branch")
@@ -8,17 +8,16 @@ return {
     local position = require("staline.modules.position")
     local diagnostics = require("staline.modules.diagnostics")
     local lsp = require("staline.modules.lsp")
-
     return table.concat {
-      mode(),
+      mode(STYLE),
       filename(),
       branch(),
-      diff(),
+      diff(STYLE),
       "%=",
-      diagnostics(),
-      folder(),
-      lsp() or "",
-      position(),
-    }
+      diagnostics(STYLE),
+      folder(STYLE),
+      lsp(STYLE) or "",
+      position(STYLE),
+    };
   end,
 }

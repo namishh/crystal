@@ -44,6 +44,11 @@ opt.shadafile = "NONE"
 opt.shadafile = ""
 opt.formatoptions:remove { "c", "r", "o" }
 opt.swapfile = false
+opt.shortmess:append "sI"
+
+-- Setting The Statusline
+local DEFAULT_STALINE_STYLE = 'minimal'
+opt.statusline = "%!v:lua.require('staline').run('" .. DEFAULT_STALINE_STYLE .. "')"
 
 -- Formatting Code on Save
 autocmd.BufWritePre = {
@@ -59,6 +64,20 @@ autocmd.BufWritePre = {
     end
   end
 }
+
+vim.api.nvim_create_user_command(
+  'StatusStyle',
+  function(opts)
+    opt.statusline = "%!v:lua.require('staline').run('" .. opts.args .. "')"
+  end,
+  {
+    nargs = 1,
+    complete = function()
+      -- return completion candidates as a list-like table
+      return { 'minimal', 'fancy', 'monochrome' }
+    end,
+  }
+)
 
 -- Disabling some built in plugins
 local builtins = {
@@ -90,7 +109,8 @@ local builtins = {
   "bugreport",
   "ftplugin",
   "archlinux",
-  "fzf"
+  "fzf",
+  "vimgrep"
 }
 
 for _, plugin in ipairs(builtins) do

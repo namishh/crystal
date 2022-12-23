@@ -40,14 +40,14 @@
     border-radius: 6px;
     background: $background-alt;
     padding: 0rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 
     &_icon_box {
-      padding: 1rem;
+      padding: .8rem;
     }
 
     &_alt {
-      padding: 1rem;
+      padding: .8rem;
     }
 
     &_label {
@@ -63,44 +63,38 @@
   &_scales {
     margin: 2rem 0;
     font-family: "Iosevka Nerd Font";
-    padding: 1.3rem;
+    padding: 1.4rem;
     background-color: $background-alt;
     border-radius: 5px;
   }
 
   &_scale_label {
     font-family: "Material Design Icons desktop";
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     color: $foreground-alt;
   }
 
 
 
+
   &_scale trough {
-    min-height: 1rem;
+    min-height: .7rem;
     border-radius: 20px;
     background-color: $background-light;
     // border: 1px solid $blue;
   }
 
-  &_scale_volume trough highlight {
+
+  &_scale trough highlight {
     border-radius: 20px;
     background: $accent;
   }
-
-  &_scale_brightness trough highlight {
-    border-radius: 20px;
-    background: $accent;
-  }
-
 
 
   &_battery {
     font-family: "Iosevka Nerd Font";
     font-size: 1.2rem;
     color: $accent;
-    background-color: $background-alt;
-    padding: 1rem;
   }
 
   &_power {
@@ -121,7 +115,7 @@
   &_focus_box {
     border-radius: 32px;
     background: $accent;
-    padding: 0 .5rem;
+    padding: 0 .2rem;
   }
 
   &_focus_text {
@@ -131,7 +125,7 @@
 
 
   &_sep {
-    background-color: #5a5858;
+    background-color: $comment;
     min-height: 1px;
     min-width: 1px;
 
@@ -141,33 +135,26 @@
   }
 
   &_song {
-
+    background: linear-gradient(to right, rgba($background, 1), rgba($background, 0.7));
+    padding: 1rem;
     &_ctl {
       &_btn {
-        background-color: $background-alt;
-        padding: 1.2rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
         border-radius: 5px;
       }
 
-      margin-bottom: 1.5rem;
       margin-top: .3rem;
       font-family: "material design icons desktop";
     }
 
     &_box {
       font-family: "Iosevka Nerd Font";
-      background-color: $background-alt;
-      padding: 2rem;
       border-radius: 5px;
+      background-position: center;
     }
 
-    &_cont {
-      margin-bottom: 1.3rem;
-    }
 
     &_btn {
-      margin-top: 4rem;
       font-size: 1.7rem;
       font-family: "material design icons desktop";
     }
@@ -183,47 +170,26 @@
       font-weight: 300;
     }
 
-    &_icon {
-      background-color: $background-light;
-      font-family: "material design icons desktop";
-      font-size: 4rem;
-      padding: 1rem 2.5rem;
-      border-radius: 5px;
+
+    &_scale trough {
+      border-radius: 20px;
+      padding: 1rem 0;
+
+      highlight {
+        border-radius: 20px;
+        background: $foreground-alt;
+      }
+
     }
+
   }
-
-  &_statprog {
-    background-color: $background-alt;
-    padding: 1.4rem;
-    border-radius: 6px;
-
-    &_label {
-      font-family: "material design icons desktop";
-      padding: 2.2rem;
-      font-size: 2rem;
-    }
-
-    &_uplab {
-      font-family: 'Iosevka Nerd Font';
-      margin-bottom: 1rem;
-    }
-
-    &_bar {
-      background-color: $background-light;
-    }
-  }
-
-  &_stats {
-    margin-bottom: 2rem;
-    margin-top: .4rem;
+  &_footer {
+    margin-top: 1.5rem;
+    padding: 0 .2rem;
   }
 }
 
 .active {
   background: $accent;
   color: $background;
-}
-
-.s121 {
-  font-size: 1.6rem;
 }

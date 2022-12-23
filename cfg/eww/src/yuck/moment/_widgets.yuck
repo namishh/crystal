@@ -22,6 +22,5 @@
 					(calendar :class "moment_cal" 
 						:show-details false :show-heading false :show-day-names false)
 				)
-	)
+  )
 )
-

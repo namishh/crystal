@@ -5,10 +5,10 @@ STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
 
 toggle() {
     if [[ $STATUS == "connected" ]]; then
-        nmcli radio wifi off
+        getroot 'nmcli radio wifi off'
         notify-send  --urgency=normal "Wi-Fi" "Wi-Fi has been turned off!"
     else
-        nmcli radio wifi on
+        getroot 'nmcli radio wifi on'
         notify-send  --urgency=normal "Wi-Fi" "Wi-Fi has been turned on, you are back online!"
     fi
 }
@@ -33,7 +33,7 @@ ssid() {
         echo $(iwgetid -r)
 
     else
-        echo "n/a"
+        echo "Wifi"
     fi
 }
 color() {

@@ -1,0 +1,49 @@
+sw_volume: 98
+audio_device_state:1:PipeWire Sound Server
+audio_device_state:1:my_fifo
+state: pause
+current: 3
+time: 70.943000
+random: 1
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:The Weeknd - Save Your Tears.mp3
+1:Ado - うっせぇわ.mp3
+2:Jason Mraz - I'm Yours.mp3
+3:AJR - World's Smallest Violin.mp3
+4:The Weeknd - Blinding Lights.mp3
+5:Lena Raine - otherside.mp3
+6:Imagine Dragons - Bones.mp3
+7:Rick Astley - Never Gonna Give You Up.mp3
+8:One Direction - Night Changes.mp3
+9:Pritam, Arijit Singh - Ae Dil Hai Mushkil Title Track (From 'Ae Dil Hai Mushkil').mp3
+10:Ado - レディメイド.mp3
+11:Engelbert Humperdinck - A Man Without Love.mp3
+12:Glass Animals - Heat Waves.mp3
+13:Imagine Dragons - Radioactive.mp3
+14:Kygo - Stranger Things (feat. OneRepublic) - Alan Walker Remix.mp3
+15:Backstreet Boys - I Want It That Way.mp3
+16:Post Malone - Circles.mp3
+17:Imagine Dragons - Enemy (with JID) - from the series Arcane League of Legends.mp3
+18:Pritam, Arijit Singh - Hawayein.mp3
+19:Tay K Returns To Dreamland 4.mp3
+20:Engelbert Humperdinck - A Man Without Love.mp3
+21:The Weeknd - Blinding Lights.mp3
+22:The Weeknd - Save Your Tears.mp3
+23:Glass Animals - Heat Waves.mp3
+24:Imagine Dragons - Enemy (with JID) - from the series Arcane League of Legends.mp3
+25:One Direction - Night Changes.mp3
+26:Post Malone - Circles.mp3
+27:Kygo - Stranger Things (feat. OneRepublic) - Alan Walker Remix.mp3
+28:Imagine Dragons - Bones.mp3
+29:Backstreet Boys - I Want It That Way.mp3
+30:Imagine Dragons - Radioactive.mp3
+31:AJR - World's Smallest Violin.mp3
+32:Ram Kumar Lakha - Shri Ram Jaanki Baithe Hai.mp3
+33:frandy_jory - Goofy ahh Beat.mp3
+playlist_end
