@@ -7,9 +7,9 @@ DEFAULT_ICON="󰑗"
 ## Get status
 get_status() {
 	if [[ $STATUS == *"[playing]"* ]]; then
-		echo "󰏥"
+		echo "󰏤"
 	else
-		echo "󰐌"
+		echo "󰐊"
 	fi
 }
 

@@ -1,0 +1,124 @@
+.control-center {
+  padding: 1rem;
+  background-color: $background;
+  color: $foreground-alt;
+
+  font-family: "Iosevka Nerd Font";
+
+  &-card-box {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+
+  &-card-notify-close {
+    font-size: 1.3rem;
+  }
+
+  &-titlebar {
+    background-color: $background-light;
+    padding: 1rem;
+
+  }
+
+  &-content {
+    padding: 1rem;
+  }
+
+  &-card-eventbox {
+    background-color: $background-alt;
+    padding: 1rem;
+  }
+
+  &-glyph {
+    font-size: 2.4rem;
+    padding: 1.7rem;
+    margin-right: 1rem;
+    background-color: $background-light;
+    font-family: "Material Design Icons Desktop";
+  }
+
+  &-changebrightness {
+    color: $yellow;
+  }
+
+  &-empty-label {
+    font-size: 1.3rem;
+  }
+
+  &-changevolume {
+    color: $cyan;
+  }
+
+  &-Spotify {
+    color: $green;
+  }
+
+  &-firefox {
+    color: $orange;
+  }
+
+  &-screenshot {
+    color: $magenta;
+  }
+
+  &-separator {
+    background-color: $comment;
+  }
+
+  &-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+
+  }
+
+  &-header {
+    padding: 0.5rem 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-clear-all {
+    background-color: $background-alt;
+    padding: .8rem;
+  }
+
+  font-family: "Iosevka Nerd Font";
+}
+
+.statcard {
+  &-box {
+    padding: 0 1rem 1rem 1rem;
+    background-color: $background;
+  }
+
+  &-icon {
+    font-family: "Iosevka Nerd Font";
+    margin-bottom: 2rem;
+  }
+
+  &-value {
+    font-family: "Iosevka Nerd Font";
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  &-scale trough {
+    min-height: 0.2rem;
+    background-color: $background-light;
+  }
+
+  &-scale-red trough highlight {
+    background-color: $red;
+  }
+
+
+  &-scale-blue trough highlight {
+    background-color: $blue;
+  }
+
+  &-scale-green trough highlight {
+    background-color: $green;
+  }
+
+  padding: 1rem;
+  background-color: $background-alt;
+}

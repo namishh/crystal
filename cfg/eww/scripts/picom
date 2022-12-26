@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 toggle(){
     if [[ ! `pidof picom` ]]; then
-        picom --experimental-backends &
+        picom &
     else 
         pkill -9 picom
     fi

@@ -17,6 +17,8 @@ $green-light : #8fa176;
 $yellow : #caac79;
 $yellow-light : #d8b170;
 
+$orange: #eaac79;
+
 $blue : #7d95ae;
 $blue-light : #809fbe;
 
@@ -27,8 +29,13 @@ $magenta : #a07ea7;
 $magenta-light : #b183ba;
 
 $comment : #5a5858;
+$comment-light : #838383;
 // $accent : #738c64;
 $accent : $blue-light;
+
+.commentlight {
+  color: $comment-light
+}
 
 .accent {
   color: $accent;

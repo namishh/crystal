@@ -1,7 +1,7 @@
 (defwidget moment[]
   (box :orientation 'v' :class 'moment' :space-evenly false
       (moment_calendar)
-  )
+ )
 )
 
 (defwidget moment_calendar[]

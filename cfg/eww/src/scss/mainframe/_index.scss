@@ -5,50 +5,27 @@
 
   &_profile {
     font-family: "Iosevka Nerd Font";
-    padding: 1rem 0;
-    padding-bottom: 1.3rem;
+    background-image: url('assets/profile.jpg');
+    background-size: 13.4rem;
+    background-position: 50% 35%;
+    min-height: 13rem;
+    min-width: 42px;
+    border-radius: 5px;
 
-    &_picture {
-      background-image: url('assets/profile.jpg');
-      background-size: 42px;
-      background-position: 50% 35%;
-      min-height: 42px;
-      min-width: 42px;
-      border-radius: 100%;
-    }
 
-    &_name {
-      font-weight: 300;
-      margin-left: 1rem;
-      font-size: 1.2rem;
-    }
-
-    &_time {
-      &_text {
-        font-weight: 300;
-        font-size: 1.3rem;
-      }
-
-      &_suffix {
-        margin-left: 0.4rem;
-      }
+    &_box {
+      padding: 1rem;
+      background: linear-gradient(to right, rgba($background, .7), rgba($background, 0.5));
     }
   }
 
   &_button {
     font-family: "Material Design Icons Desktop";
-    border-radius: 6px;
-    background: $background-alt;
+    border-radius: 50%;
+    background: $background-light;
     padding: 0rem;
     font-size: 1.6rem;
 
-    &_icon_box {
-      padding: .8rem;
-    }
-
-    &_alt {
-      padding: .8rem;
-    }
 
     &_label {
       font-family: "Iosevka Nerd Font";
@@ -57,12 +34,14 @@
   }
 
   &_settings {
-    margin-top: 2rem;
+    background-color: $background-alt;
+    padding: 1rem;
+    border-radius: 5px;
   }
 
   &_scales {
     margin: 2rem 0;
-    font-family: "Iosevka Nerd Font";
+    font-family: "iosevka nerd font";
     padding: 1.4rem;
     background-color: $background-alt;
     border-radius: 5px;
@@ -74,11 +53,16 @@
     color: $foreground-alt;
   }
 
+  &_scale_value {
+    font-family: "iosevka nerd font";
+    color: $foreground-alt;
+  }
+
 
 
 
   &_scale trough {
-    min-height: .7rem;
+    min-height: .2rem;
     border-radius: 20px;
     background-color: $background-light;
     // border: 1px solid $blue;
@@ -87,14 +71,13 @@
 
   &_scale trough highlight {
     border-radius: 20px;
-    background: $accent;
+    background: $foreground-alt;
   }
 
 
   &_battery {
     font-family: "Iosevka Nerd Font";
     font-size: 1.2rem;
-    color: $accent;
   }
 
   &_power {
@@ -109,7 +92,7 @@
 
   &_focus_toggle {
     border-radius: 32px;
-    background: $background-alt;
+    background: rgba($color: #647ea7, $alpha: 0.15);
   }
 
   &_focus_box {
@@ -135,11 +118,12 @@
   }
 
   &_song {
-    background: linear-gradient(to right, rgba($background, 1), rgba($background, 0.7));
+    background: linear-gradient(to right, rgba($background, 1), rgba($background, 0.8));
     padding: 1rem;
+
     &_ctl {
       &_btn {
-        font-size: 1rem;
+        font-size: 1.3rem;
         border-radius: 5px;
       }
 
@@ -155,21 +139,26 @@
 
 
     &_btn {
-      font-size: 1.7rem;
+      font-size: 2.1rem;
       font-family: "material design icons desktop";
     }
 
     &_name {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       font-weight: 300;
     }
 
     &_artist {
-      font-size: 1.1rem;
+      font-size: 1rem;
       margin-top: .5rem;
       font-weight: 300;
     }
 
+    &_side {
+      padding: 0 1rem;
+      background-color: $background-alt;
+      border-radius: 5px;
+    }
 
     &_scale trough {
       border-radius: 20px;
@@ -183,6 +172,7 @@
     }
 
   }
+
   &_footer {
     margin-top: 1.5rem;
     padding: 0 .2rem;
@@ -190,6 +180,6 @@
 }
 
 .active {
-  background: $accent;
-  color: $background;
+  background: rgba(#647ea7, 0.1);
+  color: $accent;
 }

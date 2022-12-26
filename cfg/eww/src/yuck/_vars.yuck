@@ -5,9 +5,12 @@
 (defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi --class")
 (defpoll btactive :interval '1s' "~/.config/eww/scripts/bluetooth --class")
 (defpoll picomactive :interval '1s' "~/.config/eww/scripts/picom --class")
-(defpoll micmute :interval '1s' 'pamixer --source 56 --get-mute')
+(defpoll micmute :interval '1s' 'pamixer --source 1 --get-mute')
 
 (defpoll ssid :interval '3s' `~/.config/eww/scripts/wifi --ssid`)
+
+(defpoll user :interval '5m' `echo $USER`)
+(defpoll host :interval '5m' `cat /etc/hostname`)
 
 (defpoll brightness :interval "1s" `brillo`)
 (defpoll volume :interval "1s" `pamixer --get-volume`)
@@ -26,5 +29,7 @@
 (defpoll repeat :interval "1s" "~/.config/eww/scripts/music --getrepeat")
 (defpoll single :interval "1s" "~/.config/eww/scripts/music --getsingle")
 
+(deflisten cards "~/.config/eww/scripts/notification_logger.zsh subscribe")
+(defpoll critical :interval "1s" "~/.config/eww/scripts/notification_logger.zsh crits")
 
 (defpoll focusmode :interval "1s" `~/.local/bin/hostsafe status`)

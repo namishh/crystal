@@ -5,3 +5,7 @@
 
 (include "./src/yuck/moment/_widgets.yuck")
 (include "./src/yuck/moment/_window.yuck")
+
+
+(include "./src/yuck/disclose/_widgets.yuck")
+(include "./src/yuck/disclose/_window.yuck")

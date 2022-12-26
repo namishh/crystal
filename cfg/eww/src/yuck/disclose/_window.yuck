@@ -1,0 +1,7 @@
+(defwindow disclose
+           :monitor 0
+           :geometry (geometry :x "-6px"
+                               :y "43px"
+                                :anchor "top right")
+           :stacking "fg"
+  (disclose))
