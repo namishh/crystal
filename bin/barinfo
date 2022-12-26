@@ -49,8 +49,9 @@ min() {
   TIME=$(date +"%H:%M")
   MONTH=$(date +"%e %b %Y")
   WIFI_STEN=$(~/.local/bin/wifistronk)
-  printf "^b$grey^^c$white^ \x07$MONTH ^b$black^ "
-  printf "^b$grey^^c$white^ \x06$TIME $WIFI_STEN $BAT_ICON ^b$black^"
+  printf "\x07^b$grey^^c$white^ $MONTH ^b$black^ "
+  printf "\x06^b$grey^^c$white^ $TIME $WIFI_STEN $BAT_ICON ^b$black^ "
+  printf "\x08^b$grey^^c$white^ 󰂚 ^b$black^"
 }
 
 powermenu(){

@@ -61,8 +61,8 @@ foreground = "#8fa176"
 [urgency_normal]
 timeout = 8
 background = "#121111"
-frame_color = "#8097fb"
-foreground = "#8097fb"
+frame_color = "#809fbe"
+foreground = "#809fbe"
 
 [urgency_critical]
 timeout = 30
@@ -74,3 +74,7 @@ foreground = "#c15a5e"
 msg_urgency = critical
 fullscreen = pushback
 
+[logger]
+summary = "*"
+body = "*"
+script = "~/.config/eww/scripts/notification_logger.zsh"

@@ -11,7 +11,7 @@
 (defwidget mainframe_button[func label altfunc icon activevar]
   (box :orientation 'v' :class 'commentlight mainframe_button_whole' :space-evenly false :spacing 8
     (box :orientation 'h' :hexpand true :class 'mainframe_button ${activevar == "active" ? "active" : ""}' :space-evenly false :width 75 :height 75 
-      (button :onclick func  :hexpand true :class 'mainframe_button_icon_box'
+      (button :onrightclick altfunc :onclick func  :hexpand true :class 'mainframe_button_icon_box'
           (label :class 'mainframe_button_icon' :halign 'center' :text icon)
         )
     )

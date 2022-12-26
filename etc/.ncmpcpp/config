@@ -59,5 +59,6 @@ main_window_color = "blue"
 current_item_inactive_column_prefix = "$b$5"
 current_item_inactive_column_suffix = "$/b$5"
 
+
 color1 = "white"
 color2 = "blue"
