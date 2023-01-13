@@ -1,0 +1,8 @@
+@use "sass:color";
+@use '../colors';
+@use '../config';
+
+rubberband, .rubberband {
+  background-color: colors.$white-weakest;
+  border: config.$border-size solid color.change(colors.$accent-primary, $alpha: config.$tint-medium);
+}

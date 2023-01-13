@@ -1,0 +1,11 @@
+@use '../colors';
+
+frame > border, .frame {
+  border: 1px solid colors.$surface-moderate;
+}
+
+scrolledwindow {
+  viewport.frame {
+    border-style: none;
+  }
+}
