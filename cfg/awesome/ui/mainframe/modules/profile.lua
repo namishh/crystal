@@ -30,7 +30,7 @@ local name = wibox.widget {
     },
     {
       font = beautiful.font .. " 12",
-      markup = "@arty",
+      markup = "@fedorable",
       valign = "center",
       widget = wibox.widget.textbox,
     },

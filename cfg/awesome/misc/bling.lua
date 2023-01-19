@@ -30,20 +30,20 @@ M.scratchpads = {
 
 awful.screen.connect_for_each_screen(function(s)
   --Tiled Wallpaper
-  -- bling.module.tiled_wallpaper("󰹻", s, {
-  --   fg = beautiful.pri .. "da",
-  --   bg = beautiful.bg3,
-  --   offset_y = 25,
-  --   offset_x = 25,
-  --   font = beautiful.icofont,
-  --   font_size = 35,
-  --   padding = 270,
-  --   zickzack = true
-  -- })
+   bling.module.tiled_wallpaper(" ", s, {
+     bg = beautiful.pri .. "da",
+     fg = beautiful.bg3,
+     offset_y = 25,
+     offset_x = 25,
+     font = beautiful.icofont,
+     font_size = 35,
+     padding = 270,
+     zickzack = true
+   })
   -- Regular Wallpaper
-  bling.module.wallpaper.setup {
-    wallpaper = beautiful.wall
-  }
+  --bling.module.wallpaper.setup {
+  --  wallpaper = beautiful.wall
+  --}
 end)
 
 -- Start Window Swallowing

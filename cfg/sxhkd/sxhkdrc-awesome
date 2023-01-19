@@ -1,0 +1,33 @@
+
+# program launcher
+super + a
+ rofi -show drun
+# make sxhkd reload its configuration files:
+super + Escape 
+	pkill -USR1 -x sxhkd
+
+super + q 
+  ~/.local/bin/rofiscripts/ssmenu
+
+super + n 
+  ~/.local/bin/wifimenu
+
+super + x
+  ~/.local/bin/rofiscripts/powermenu
+
+# copy some stuff
+super + shift + p
+  xclip -sel c < ~/pa
+
+super + c
+  playerctl play-pause
+#volume
+XF86AudioMute
+    ~/.local/bin/changevolume mute
+
+XF86MonBrightnessDown
+    ~/.local/bin/changebrightness down
+
+XF86MonBrightnessUp
+    ~/.local/bin/changebrightness up
+

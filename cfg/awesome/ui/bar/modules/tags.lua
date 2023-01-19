@@ -1,7 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local animation = require("modules.rubato")
 local beautiful = require("beautiful")
 return function(s)
   local taglist = awful.widget.taglist {

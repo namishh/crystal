@@ -9,12 +9,12 @@ configuration {
 window {
     /* properties for window widget */
     transparency:                "real";
-    location:                    northeast;
-    anchor:                      northeast;
+    location:                    southeast;
+    anchor:                      southeast;
     fullscreen:                  false;
     width:                       350px;
     x-offset:                    -6px;
-    y-offset:                    44px;
+    y-offset:                    -54px;
 
     /* properties for all widgets */
     enabled:                     true;

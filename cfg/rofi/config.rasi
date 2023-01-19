@@ -19,12 +19,12 @@ configuration {
 
 window {
     transparency:                "real";
-    location:                    northwest;
-    anchor:                      northwest;
+    location:                    southwest;
+    anchor:                      southwest;
     fullscreen:                  false;
     width:                       500px;
     x-offset:                    6px;
-    y-offset:                    44px;
+    y-offset:                    -54px;
 
     enabled:                     true;
     margin:                      0px;
@@ -88,7 +88,7 @@ listview {
     padding:                     15px;
     enabled:                     true;
     columns:                     1;
-    lines:                       12;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;

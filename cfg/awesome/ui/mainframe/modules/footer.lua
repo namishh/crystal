@@ -29,7 +29,7 @@ local chev = wibox.widget {
 
 local batterylabel = wibox.widget {
   font = beautiful.font .. " 12",
-  markup = "86%",
+  markup = "00%",
   widget = wibox.widget.textbox,
   valign = "center",
   align = "center"
@@ -37,14 +37,14 @@ local batterylabel = wibox.widget {
 
 local batteryprog = wibox.widget {
   max_value     = 100,
-  value         = 86,
-  forced_height = dpi(3),
-  forced_width  = dpi(35),
-  paddings      = dpi(1),
-  border_width  = dpi(1),
+  value         = 0,
+  forced_height = dpi(7),
+  forced_width  = dpi(30),
+  paddings      = dpi(2),
+  border_width  = dpi(2),
   shape         = helpers.rrect(3),
   bar_shape     = helpers.rrect(3),
-  border_color  = beautiful.fg .. 'cc',
+  border_color  = beautiful.fg .. '96',
   widget        = wibox.widget.progressbar,
 }
 
@@ -54,7 +54,7 @@ local batteryicon = wibox.widget {
     {
       wibox.widget.textbox,
       widget = wibox.container.background,
-      bg = beautiful.fg .. "A6",
+      bg = beautiful.fg .. "96",
       forced_width = dpi(8.2),
       forced_height = dpi(8.2),
       shape = function(cr, width, height)
@@ -83,6 +83,18 @@ local finalwidget = wibox.widget {
   widget = wibox.container.margin
 }
 
+
+awesome.connect_signal("signal::battery", function(value)
+  batterylabel.markup = value .. "%"
+  batteryprog.value = value
+  if value > 90 then
+    beautiful.progressbar_fg = beautiful.ok
+  elseif value > 20 then
+    beautiful.progressbar_fg = beautiful.pri
+  else
+    beautiful.progressbar_fg = beautiful.err
+  end
+end)
 awesome.connect_signal("signal::toggler", function(val)
   if val then
     chev.markup = "󰅃"
