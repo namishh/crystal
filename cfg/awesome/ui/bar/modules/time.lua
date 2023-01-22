@@ -16,6 +16,11 @@ local hourminutes = wibox.widget {
     margins = { left = dpi(12), right = dpi(12) },
     widget = wibox.container.margin
   },
+  buttons = {
+    awful.button({}, 1, function()
+      awesome.emit_signal('toggle::notificationcenter')
+    end)
+  },
   widget = wibox.container.background,
   shape = helpers.rrect(2),
   bg = beautiful.bg3 .. "cc"

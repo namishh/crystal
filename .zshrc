@@ -38,6 +38,7 @@ bindkey "^[[3~" delete-char
 alias v="nvim"
 alias rm="trash"
 alias ls='ls --color=auto'
+alias clp='dye -b -p "#5a5a58,#838383,#191919,#121111,#dfddde,#dfdddd,#eaac79,#1b1b1b,#af575b,#7d8a6b,#caac79,#7d95ae,#a07ea7,#6d8f8a,#b7b7b7,#272727,#c15a5e,#8fa175,#d8b170,#8097fb,#b183ba,#8cb5af,#d4d5d5"'
 PATH=$PATH:~/.local/bin
 export PATH
-export PATH=$PATH:/home/namish/.spicetify
+export PATH=$PATH:/home/namish/.spicetify:/home/namish/.nimble/bin:/home/namish/.local/share/nvim/mason/bin

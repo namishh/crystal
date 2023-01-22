@@ -44,7 +44,7 @@ awful.screen.connect_for_each_screen(function(s)
   awesome.connect_signal("signal::toggler", function(val)
     if val then
       mainframe.height = dpi(height + 135)
-      awful.placement.bottom_right(mainframe, { honor_workarea = true, margins =  beautiful.useless_gap * 2 })
+      awful.placement.bottom_right(mainframe, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
     else
       mainframe.height = dpi(height)
       awful.placement.bottom_right(mainframe, { honor_workarea = true, margins = beautiful.useless_gap * 2 })

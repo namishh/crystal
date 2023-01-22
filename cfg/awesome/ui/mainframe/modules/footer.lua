@@ -78,7 +78,15 @@ local battery = wibox.widget {
 local finalwidget = wibox.widget {
   battery,
   chev,
-  timewidget,
+  {
+    {
+      timewidget,
+      widget = wibox.container.margin,
+      margins = 1,
+    },
+    bg = beautiful.bg2 .. 'cc',
+    widget = wibox.container.background
+  },
   layout = wibox.layout.align.horizontal,
   widget = wibox.container.margin
 }

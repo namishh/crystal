@@ -51,10 +51,13 @@ local createButton = function(label, labelfalse, text, signal)
 
   awesome.connect_signal('signal::' .. signal, function(status)
     if status then
-      settingbuttonlabel.markup = helpers.colorizeText(label, beautiful.pri)
-      settingbuttonback.bg = beautiful.pri .. '11'
+      settingbuttonlabel.markup = helpers.colorizeText(label, beautiful.bg)
+      settingbuttontext.markup = helpers.colorizeText(text, beautiful.bg)
+      settingbuttonback.bg = beautiful.pri .. "bb"
+      settingbuttonback.fg = beautiful.bg
     else
-      settingbuttonlabel.markup = labelfalse
+      settingbuttonlabel.markup = helpers.colorizeText(labelfalse, beautiful.fg .. 'cc')
+      settingbuttontext.markup = helpers.colorizeText(text, beautiful.fg .. 'cc')
       settingbuttonback.bg = beautiful.bg4 .. 'aa'
     end
   end)
@@ -95,8 +98,8 @@ mic:add_button(awful.button({}, 1, function()
 end))
 local hidden = wibox.widget {
   {
+    airplane,
     picom,
-    dnd,
     mic,
     layout = wibox.layout.fixed.horizontal,
     spacing = 12,
@@ -114,8 +117,8 @@ local finalwidget = {
       {
         wifibtn,
         bluetooth,
+        dnd,
         -- dnd,
-        airplane,
         layout = wibox.layout.fixed.horizontal,
         spacing = 12,
       },

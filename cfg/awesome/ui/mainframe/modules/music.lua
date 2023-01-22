@@ -31,8 +31,16 @@ local artistname = wibox.widget {
 }
 
 local currentpos = wibox.widget {
-  markup = '0:00 / ',
+  markup = '0:00',
   align = 'left',
+  valign = 'bottom',
+  forced_height = dpi(20),
+  widget = wibox.widget.textbox
+}
+
+local sep = wibox.widget {
+  markup = helpers.colorizeText(' / ', beautiful.pri),
+  align = 'center',
   valign = 'bottom',
   forced_height = dpi(20),
   widget = wibox.widget.textbox
@@ -79,7 +87,7 @@ local next = wibox.widget {
 
 local play = wibox.widget {
   align = 'center',
-  font = beautiful.icofont .. " 28",
+  font = beautiful.icofont .. " 26",
   markup = helpers.colorizeText('󰐊', beautiful.pri),
   widget = wibox.widget.textbox,
   buttons = {
@@ -115,7 +123,10 @@ local finalwidget = wibox.widget {
             layout = wibox.layout.fixed.vertical,
           },
           {
-            currentpos,
+            { currentpos,
+              sep,
+              layout = wibox.layout.fixed.horizontal,
+            },
             tpos,
             player,
             layout = wibox.layout.align.horizontal,
@@ -132,8 +143,18 @@ local finalwidget = wibox.widget {
         {
           {
             prev,
-            play,
+            {
+              {
+                play,
+                widget = wibox.container.margin,
+                margins = 5,
+              },
+              shape = helpers.rrect(4),
+              widget = wibox.container.background,
+              bg = beautiful.pri .. "11"
+            },
             next,
+            expand = 'none',
             layout = wibox.layout.align.vertical,
           },
           widget = wibox.container.margin,
@@ -171,7 +192,7 @@ end)
 
 playerctl:connect_signal("position", function(_, interval_sec, length_sec, player_name)
   tpos.markup = os.date("!%M:%S", length_sec)
-  currentpos.markup = os.date("!%M:%S", interval_sec) .. " / "
+  currentpos.markup = os.date("!%M:%S", interval_sec)
 end)
 
 playerctl:connect_signal("playback_status", function(_, playing, player_name)

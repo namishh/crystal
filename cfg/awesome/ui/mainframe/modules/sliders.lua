@@ -7,18 +7,21 @@ local helpers   = require("helpers")
 
 local createHandle = function()
   return function(cr)
-    gears.shape.rounded_rect(cr, 20, 30, 0)
+    gears.shape.rounded_rect(cr, 16, 16, 50)
   end
 end
 
 local brightnessSlider = wibox.widget {
-  bar_shape           = helpers.rrect(2),
-  bar_height          = 30,
+  bar_shape           = helpers.rrect(6),
+  bar_height          = 7,
   handle_color        = beautiful.pri .. 'cc',
-  bar_color           = beautiful.bg4 .. 'cc',
+  bar_color           = beautiful.pri .. '33',
+  bar_active_color    = beautiful.pri,
   handle_shape        = createHandle(),
-  handle_border_width = 0,
-  handle_border_color = beautiful.pri .. 'cc',
+  handle_border_width = 4,
+  handle_width        = dpi(12),
+  handle_margins      = { top = 3, right = 2, },
+  handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 10,
   maximum             = 100,
@@ -64,13 +67,16 @@ local brightnessScale = wibox.widget {
 
 
 local volumeSlider = wibox.widget {
-  bar_shape           = helpers.rrect(2),
-  bar_height          = 30,
+  bar_shape           = helpers.rrect(6),
+  bar_height          = 7,
   handle_color        = beautiful.pri .. 'cc',
-  bar_color           = beautiful.bg4 .. 'cc',
+  bar_color           = beautiful.pri .. '33',
+  bar_active_color    = beautiful.pri,
   handle_shape        = createHandle(),
-  handle_border_width = 0,
-  handle_border_color = beautiful.pri .. 'cc',
+  handle_border_width = 4,
+  handle_width        = dpi(12),
+  handle_margins      = { top = 3, },
+  handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 10,
   maximum             = 100,
