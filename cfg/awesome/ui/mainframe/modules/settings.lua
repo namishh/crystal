@@ -53,6 +53,7 @@ local createButton = function(label, labelfalse, text, signal)
     if status then
       settingbuttonlabel.markup = helpers.colorizeText(label, beautiful.bg)
       settingbuttontext.markup = helpers.colorizeText(text, beautiful.bg)
+      --settingbuttonback.bg = "#a2b5c7"
       settingbuttonback.bg = beautiful.pri .. "bb"
       settingbuttonback.fg = beautiful.bg
     else

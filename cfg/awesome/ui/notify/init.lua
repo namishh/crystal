@@ -5,8 +5,8 @@ local helpers = require("helpers")
 local wibox = require("wibox")
 
 local stats = require("ui.notify.modules.stats")
-
-local height = 1018
+local box = require("ui.notify.modules.notifs.box")
+local height = 818
 
 awful.screen.connect_for_each_screen(function(s)
   local notify = wibox({
@@ -17,15 +17,19 @@ awful.screen.connect_for_each_screen(function(s)
     height = dpi(height),
     bg = beautiful.bg,
     ontop = true,
-    visible = false,
+    visible = true,
   })
 
   notify:setup {
     {
-      nil,
-      nil,
       stats,
-      spacing = 20,
+      {
+        box,
+        margins = {
+          top = 15,
+        },
+        widget = wibox.container.margin,
+      },
       layout = wibox.layout.align.vertical,
     },
     margins = dpi(15),

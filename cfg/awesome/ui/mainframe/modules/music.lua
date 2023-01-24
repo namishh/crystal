@@ -176,6 +176,12 @@ local finalwidget = wibox.widget {
 
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
   -- Set art widget
+  if title == "" then
+    title = "None"
+  end
+  if artist == "" then
+    artist = "Unknown"
+  end
   if album_path == "" then
     album_path = beautiful.songdefpicture
   end
@@ -191,8 +197,13 @@ playerctl:connect_signal("metadata", function(_, title, artist, album_path, albu
 end)
 
 playerctl:connect_signal("position", function(_, interval_sec, length_sec, player_name)
-  tpos.markup = os.date("!%M:%S", length_sec)
-  currentpos.markup = os.date("!%M:%S", interval_sec)
+  if interval_sec > 0 then
+    tpos.markup = os.date("!%M:%S", tonumber(length_sec))
+    currentpos.markup = os.date("!%M:%S", tonumber(interval_sec))
+  else
+    tpos.markup = "00:00"
+    currentpos.markup = "00:00"
+  end
 end)
 
 playerctl:connect_signal("playback_status", function(_, playing, player_name)

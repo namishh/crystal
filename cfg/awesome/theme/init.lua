@@ -15,7 +15,7 @@ theme.pri = "#7D95AE"
 
 theme.br = dpi(2)
 
-theme.wall = theme_path .. "wallpapers/" .. 'beach.png'
+theme.wall = theme_path .. "wallpapers/" .. 'sky.jpg'
 
 theme.bg = "#121111"
 theme.bg2 = "#191919"

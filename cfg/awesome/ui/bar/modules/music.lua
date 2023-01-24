@@ -5,7 +5,7 @@ local wibox     = require("wibox")
 local dpi       = require("beautiful").xresources.apply_dpi
 local bling     = require("modules.bling")
 
-local playerctl = bling.signal.playerctl.lib()
+local playerctl = bling.signal.playerctl.cli()
 
 local songname = wibox.widget {
   font = beautiful.font,

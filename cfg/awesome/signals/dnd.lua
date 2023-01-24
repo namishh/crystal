@@ -1,9 +1,7 @@
-local awful = require('awful')
 local gears = require('gears')
 local naughty = require("naughty")
 -- Network Fetching and Signal Emitting
 ---------------------------------------
-local status_old = -1
 local function emit_dnd_status()
   local status = naughty.is_suspended()
   awesome.emit_signal('signal::dnd', status)

@@ -1,6 +1,6 @@
 local _M = {
-  terminal = os.getenv('TERMINAL') or 'st',
-  editor   = os.getenv('EDITOR') or 'nvim',
+  terminal = 'st',
+  editor   = 'nvim',
 }
 
 _M.editor_cmd = _M.terminal .. ' -e ' .. _M.editor

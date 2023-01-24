@@ -1,34 +1,34 @@
 <div align="center">
 
-# Dots.sh
+# dots.sh
 
 </div>
 
-My dotfiles based on my own personal taste
+~ My awesome and dwm dotfiles ~
 
-![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/1.png)
+### Awesome
+![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/awesome.png)
 
-![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/2.png)
-
-![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/3.png)
+### DWM
+![Screenshot1](https://raw.githubusercontent.com/dark-Jedi2108/dots.sh/main/.github/screenshots/dwm.png)
 
 
 **!! IMPOTANT** -- if the dots work for me, does'nt mean it would also work for you
 
 ## Application And Utilites
-+ WM - suckless's dwm
++ WM - suckless's dwm and awesome (currently using)
 + Terminal - suckless's st
-+ Menu - dmenu
++ Menu - rofi
 + Compositer - picom
 + Editor - [My Neovim Config](https://github.com/dark-Jedi2108/nvide)
 + GUI File Manager - nemo
 + Terminal File Manager - lf
 + hotkey daemon - sxhkd
-+ Audio Visualizer - Cava
++ Audio Visualizer - cava
 + Discord Enhancer - betterdiscord
-+ Fetch Util - Neofetch
++ Fetch Util - Neofetch, pfetch
 + Spotify Enhancer - spicetify
-+ Lock Screen - slock
++ Lock Screen - i3lock-color (awesome), slock (dwm)
 
 ## Touch To Tap Util
 

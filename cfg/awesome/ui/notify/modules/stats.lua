@@ -16,6 +16,16 @@ local createSlider = function(label, value)
     },
     widget = wibox.container.margin,
   }
+  local teextval = wibox.widget {
+    {
+      font = beautiful.font .. " 12",
+      markup = label,
+      widget = wibox.widget.textbox,
+      valign = "center",
+      align = "center"
+    },
+    widget = wibox.container.margin,
+  }
   local progress = wibox.widget {
     widget = wibox.container.arcchart,
     max_value = 100,
