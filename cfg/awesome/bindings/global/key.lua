@@ -2,32 +2,14 @@ local awful = require 'awful'
 local hotkeys_popup = require 'awful.hotkeys_popup'
 require 'awful.hotkeys_popup.keys'
 local menubar = require 'menubar'
-local naughty = require("naughty")
 local apps = require 'config.apps'
 local mod = require 'bindings.mod'
 local widgets = require 'misc.menus'
 --local scratches = require 'misc.bling'.scratchpads
 menubar.utils.terminal = apps.terminal
 
-local show_volume_notification = function()
-  local command = "sleep 0.09 ; pamixer --get-volume"
-  awful.spawn.easy_async_with_shell(command, function(out) naughty.notify({ text = out, timeout = 1 }) end)
-end
-
 -- general awesome keys
 awful.keyboard.append_global_keybindings {
-  awful.key({}, "XF86AudioLowerVolume", function()
-    awful.spawn.with_shell("pamixer -d 5", false)
-    show_volume_notification()
-  end),
-  awful.key({}, "XF86AudioRaiseVolume", function()
-    awful.spawn.with_shell("pamixer -i 5", false)
-    show_volume_notification()
-  end),
-  awful.key({}, "XF86AudioMute", function()
-    awful.spawn.with_shell("pamixer -t", false)
-    show_volume_notification()
-  end),
   awful.key {
     modifiers   = { mod.super },
     key         = 's',
@@ -259,7 +241,9 @@ awful.keyboard.append_global_keybindings {
     description = 'select previous',
     group       = 'layout',
     on_press    = function() awful.layout.inc(-1) end,
-  },
+  }, awful.key({ mod.super }, "Tab", function()
+    awesome.emit_signal("bling::window_switcher::turn_on")
+  end, { description = "Window Switcher", group = "bling" })
 }
 
 awful.keyboard.append_global_keybindings {

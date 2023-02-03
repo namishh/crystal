@@ -8,9 +8,10 @@ local profile = require("ui.mainframe.modules.profile")
 local sliders = require("ui.mainframe.modules.sliders")
 local music = require("ui.mainframe.modules.music")
 local settings = require("ui.mainframe.modules.settings")
+-- not using footer at the moment
 local footer = require("ui.mainframe.modules.footer")
 
-local height = 685
+local height = 725
 
 awful.screen.connect_for_each_screen(function(s)
   local mainframe = wibox({
@@ -18,7 +19,7 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = dpi(480),
-    height = dpi(height),
+    --height = dpi(height),
     bg = beautiful.bg,
     ontop = true,
     visible = false
@@ -30,7 +31,7 @@ awful.screen.connect_for_each_screen(function(s)
       sliders,
       music,
       settings,
-      footer,
+      --footer,
       spacing = 20,
       layout = wibox.layout.fixed.vertical,
     },
@@ -43,7 +44,7 @@ awful.screen.connect_for_each_screen(function(s)
   end)
   awesome.connect_signal("signal::toggler", function(val)
     if val then
-      mainframe.height = dpi(height + 135)
+      mainframe.height = dpi(height + 98)
       awful.placement.bottom_right(mainframe, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
     else
       mainframe.height = dpi(height)

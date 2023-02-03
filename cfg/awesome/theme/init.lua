@@ -12,10 +12,11 @@ theme.ok = "#7D8A6B"
 theme.warn = "#caac79"
 theme.err = "#AF575B"
 theme.pri = "#7D95AE"
+theme.dis = "#a07ea7"
 
 theme.br = dpi(2)
 
-theme.wall = theme_path .. "wallpapers/" .. 'sky.jpg'
+theme.wall = theme_path .. "wallpapers/" .. 'flower.jpg'
 
 theme.bg = "#121111"
 theme.bg2 = "#191919"
@@ -51,14 +52,14 @@ theme.titlebar_font = theme.font
 
 
 theme.taglist_bg = theme.bg .. "00"
-theme.taglist_bg_focus = theme.bg4
+theme.taglist_bg_focus = theme.pri
 theme.taglist_fg_focus = theme.accent
 theme.taglist_bg_urgent = theme.err
 theme.taglist_fg_urgent = theme.fg
-theme.taglist_bg_occupied = theme.bg4 .. "80"
+theme.taglist_bg_occupied = theme.fg2
 theme.taglist_fg_occupied = theme.fg
-theme.taglist_bg_empty = theme.bg2
-theme.taglist_fg_empty = theme.fg .. "66"
+theme.taglist_bg_empty = theme.fg3 .. '33'
+theme.taglist_fg_empty = theme.fg
 theme.taglist_disable_icon = true
 
 theme.tasklist_bg_normal = theme.bg
@@ -108,15 +109,19 @@ theme.powericon = gears.color.recolor_image(theme_path .. "icons/" .. "poweroff.
 
 theme.play = gears.color.recolor_image(theme_path .. "icons/" .. "play.svg", theme.fg1)
 theme.pause = gears.color.recolor_image(theme_path .. "icons/" .. "pause.svg", theme.fg1)
+theme.shuffle = theme_path .. "icons/" .. "shuffle.svg"
+theme.repeaticon = theme_path .. "icons/" .. "repeat.svg"
+theme.repeatonce = theme_path .. "icons/" .. "repeat-once.svg"
+theme.random = theme_path .. "icons/" .. "random.svg"
 
 theme.task_preview_widget_border_width = 0 -- The border width of the widget
 
 theme.systray_icon_spacing = dpi(8)
 
-theme.parent_filter_list = { "discord", "firefox" }
-theme.child_filter_list  = { "discord", "firefox" }
+theme.parent_filter_list = { "discord", "firefox", "nemo" }
+theme.child_filter_list  = { "discord", "firefox", "nemo" }
 theme.swallowing_filter  = true
---theme.playerctl_ignore   = "firefox"
+theme.playerctl_ignore   = "firefox"
 
 theme.hotkeys_bg = theme.bg
 theme.hotkeys_fg = theme.fg
@@ -128,22 +133,43 @@ theme.hotkeys_border_width = dpi(2)
 theme.hotkeys_border_color = theme.pri
 theme.hotkeys_group_margin = 20
 
-theme.profilepicture = theme_path .. "/pics/profile.jpg"
+theme.profilepicture = theme_path .. "/pics/pfp.jpg"
 theme.songdefpicture = theme_path .. "/pics/nosong.jpg"
 
 theme.progressbar_bg = theme.pri .. '11'
 theme.progressbar_fg = theme.pri
 
+theme.window_switcher_widget_bg = theme.bg2 .. 'cc' -- The bg color of the widget
+theme.window_switcher_widget_border_width = 1 -- The border width of the widget
+theme.window_switcher_widget_border_radius = 5 -- The border radius of the widget
+theme.window_switcher_widget_border_color = theme.pri -- The border color of the widget
+theme.window_switcher_clients_spacing = 25 -- The space between each client item
+theme.window_switcher_client_icon_horizontal_spacing = 10 -- The space between client icon and text
+theme.window_switcher_client_width = 150 -- The width of one client widget
+theme.window_switcher_client_height = 250 -- The height of one client widget
+theme.window_switcher_client_margins = 10 -- The margin between the content and the border of the widget
+theme.window_switcher_thumbnail_margins = 10 -- The margin between one client thumbnail and the rest of the widget
+theme.thumbnail_scale = false -- If set to true, the thumbnails fit policy will be set to "fit" instead of "auto"
+theme.window_switcher_name_margins = 10 -- The margin of one clients title to the rest of the widget
+theme.window_switcher_name_valign = "center" -- How to vertically align one clients title
+theme.window_switcher_name_forced_width = 400 -- The width of one title
+theme.window_switcher_name_font = theme.font .. ' 12' -- The font of all titles
+theme.window_switcher_name_normal_color = theme.fg -- The color of one title if the client is unfocused
+theme.window_switcher_name_focus_color = theme.pri -- The color of one title if the client is focused
+theme.window_switcher_icon_valign = "center" -- How to vertically align the one icon
+theme.window_switcher_icon_width = 20 --
 -- ICONS
 theme.icon_theme = "Reversal"
 local icon_dir = os.getenv("HOME") .. "/.icons/" .. theme.icon_theme .. "/apps/scalable/"
 theme.ic_icons = {
   ["st-256color"] = icon_dir .. "terminal.svg",
+  ["pfetchpad"] = icon_dir .. "terminal.svg",
   ["discord"] = icon_dir .. "discord.svg",
   ["firefox"] = icon_dir .. "firefox.svg",
   ["feh"] = icon_dir .. "image-viewer.svg",
   ["Spotify"] = icon_dir .. "spotify.svg",
+  ["ncmpcpppad"] = icon_dir .. "deepin-music-player.svg",
   ["SimpleScreenRecorder"] = icon_dir .. "screenrecorder.svg",
 }
-
+theme.ic_dynamic_classes = { "st-256color" }
 return theme

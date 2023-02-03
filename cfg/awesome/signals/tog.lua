@@ -14,9 +14,6 @@ local function tog_emit()
   end)
 end
 
--- Microphone Fetching and Signal Emitting
--- Refreshing
--------------
 gears.timer {
   timeout   = 1,
   call_now  = true,

@@ -7,23 +7,23 @@ local helpers   = require("helpers")
 
 local createHandle = function()
   return function(cr)
-    gears.shape.rounded_rect(cr, 16, 16, 50)
+    gears.shape.rounded_rect(cr, 12, 12, 50)
   end
 end
 
 local brightnessSlider = wibox.widget {
   bar_shape           = helpers.rrect(6),
-  bar_height          = 7,
-  handle_color        = beautiful.pri .. 'cc',
-  bar_color           = beautiful.pri .. '33',
-  bar_active_color    = beautiful.pri,
+  bar_height          = 3,
+  handle_color        = beautiful.fg .. 'cc',
+  bar_color           = beautiful.fg .. '33',
+  bar_active_color    = beautiful.fg .. 'aa',
   handle_shape        = createHandle(),
-  handle_border_width = 4,
-  handle_width        = dpi(12),
-  handle_margins      = { top = 3, right = 2, },
+  handle_border_width = 3,
+  handle_width        = dpi(17),
+  handle_margins      = { top = 12 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
-  forced_height       = 10,
+  forced_height       = 3,
   maximum             = 100,
   widget              = wibox.widget.slider,
 }
@@ -46,10 +46,18 @@ local brightnessLabelBox = wibox.widget {
 
 local brightnessIcon = wibox.widget {
   {
-    font = beautiful.icofont .. " 16",
-    markup = "󰃠",
-    valign = "center",
-    widget = wibox.widget.textbox,
+    {
+      {
+        font = beautiful.icofont .. " 15",
+        markup = helpers.colorizeText("󰃟", beautiful.fg .. 'cc'),
+        valign = "center",
+        widget = wibox.widget.textbox,
+      },
+      widget = wibox.container.margin,
+      margins = 7,
+    },
+    bg = beautiful.fg .. '11',
+    widget = wibox.container.background
   },
   widget = wibox.container.margin,
   margins = {
@@ -68,17 +76,17 @@ local brightnessScale = wibox.widget {
 
 local volumeSlider = wibox.widget {
   bar_shape           = helpers.rrect(6),
-  bar_height          = 7,
-  handle_color        = beautiful.pri .. 'cc',
-  bar_color           = beautiful.pri .. '33',
-  bar_active_color    = beautiful.pri,
+  bar_height          = 3,
+  handle_color        = beautiful.fg .. 'cc',
+  bar_color           = beautiful.fg .. '33',
+  bar_active_color    = beautiful.fg .. 'aa',
   handle_shape        = createHandle(),
-  handle_border_width = 4,
-  handle_width        = dpi(12),
-  handle_margins      = { top = 3, },
+  handle_border_width = 3,
+  handle_width        = dpi(16),
+  handle_margins      = { top = 12 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
-  forced_height       = 10,
+  forced_height       = 3,
   maximum             = 100,
   widget              = wibox.widget.slider,
 }
@@ -101,10 +109,18 @@ local volumeLabelBox = wibox.widget {
 
 local volumeIcon = wibox.widget {
   {
-    font = beautiful.icofont .. " 16",
-    markup = "󰕾",
-    valign = "center",
-    widget = wibox.widget.textbox,
+    {
+      {
+        font = beautiful.icofont .. " 15",
+        markup = helpers.colorizeText("󰕾", beautiful.fg .. 'cc'),
+        valign = "center",
+        widget = wibox.widget.textbox,
+      },
+      widget = wibox.container.margin,
+      margins = 7,
+    },
+    bg = beautiful.fg .. '11',
+    widget = wibox.container.background
   },
   widget = wibox.container.margin,
   margins = {
@@ -122,13 +138,19 @@ local volumeScale = wibox.widget {
 local finalwidget = wibox.widget {
   {
     {
+      {
+        font = beautiful.font .. " 11",
+        markup = helpers.colorizeText('Controls', beautiful.fg3),
+        valign = "center",
+        widget = wibox.widget.textbox,
+      },
       brightnessScale,
       volumeScale,
-      spacing = 20,
+      spacing = 15,
       layout = wibox.layout.fixed.vertical,
     },
     widget = wibox.container.margin,
-    margins = dpi(20)
+    margins = dpi(15)
   },
 
   widget = wibox.container.background,

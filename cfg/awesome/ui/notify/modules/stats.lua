@@ -5,7 +5,7 @@ local dpi       = require("beautiful").xresources.apply_dpi
 local gears     = require("gears")
 local helpers   = require("helpers")
 
-local createSlider = function(label, value)
+local createSlider = function(label, color, value)
   local text = wibox.widget {
     {
       font = beautiful.font .. " 12",
@@ -33,8 +33,8 @@ local createSlider = function(label, value)
     value = value,
     thickness = dpi(7),
     rounded_edge = true,
-    bg = beautiful.pri .. "4D",
-    colors = { beautiful.pri },
+    bg = color .. "4D",
+    colors = { color },
     start_angle = math.pi + math.pi / 2,
     forced_width = dpi(72),
     forced_height = dpi(72)
@@ -61,23 +61,24 @@ local createSlider = function(label, value)
       widget = wibox.container.background,
       bg = beautiful.bg2 .. 'cc',
     },
-    forced_height = 150,
-    forced_width = 140,
+    forced_height = 160,
+    forced_width = 150,
     widget = wibox.container.margin,
   }
   return widget
 end
 
-local memory = createSlider('Mem', 69)
-local disk = createSlider('Disk', 12)
-local cpu = createSlider('Cpu', 34)
+local memory = createSlider('Mem', beautiful.err, 69)
+local disk = createSlider('Disk', beautiful.ok, 12)
+local cpu = createSlider('Cpu', beautiful.pri, 34)
 
 local finalwidget = wibox.widget {
   memory,
   cpu,
   disk,
   expand = 'none',
-  layout = wibox.layout.align.horizontal,
+  spacing = 20,
+  layout = wibox.layout.fixed.horizontal,
 }
 
 return finalwidget

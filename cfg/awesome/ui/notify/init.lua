@@ -13,26 +13,27 @@ awful.screen.connect_for_each_screen(function(s)
     type = "dock",
     shape = helpers.rrect(4),
     screen = s,
-    width = dpi(480),
-    height = dpi(height),
+    width = dpi(520),
+    height = 1000,
     bg = beautiful.bg,
     ontop = true,
-    visible = true,
+    visible = false,
   })
 
   notify:setup {
     {
-      stats,
+      nil,
       {
         box,
         margins = {
-          top = 15,
+          bottom = 20,
         },
         widget = wibox.container.margin,
       },
+      stats,
       layout = wibox.layout.align.vertical,
     },
-    margins = dpi(15),
+    margins = dpi(20),
     widget = wibox.container.margin,
   }
 

@@ -8,10 +8,12 @@ require("signals.airplane")
 require("signals.tog")
 require("signals.picom")
 require("signals.mic")
-return {
-  naughty = require 'signals.naughty',
-  tag     = require 'signals.tag',
-  screen  = require 'signals.screen',
-  client  = require 'signals.client',
-  ruled   = require 'signals.ruled',
-}
+require("signals.night")
+require("signals.uptime")
+require("signals.disk")
+require("signals.cpu")
+require("signals.mem")
+require 'signals.tag'
+require 'signals.screen'
+require 'signals.client'
+require 'signals.ruled'

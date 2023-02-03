@@ -36,6 +36,7 @@ ruled.client.connect_signal('request::rules', function()
         'Tor Browser',
         'Wpa_gui',
         'veromix',
+        'ncmpcpppad',
         'xtightvncviewer',
       },
       -- Note that the name property shown in xprop might be set slightly after creation of the client

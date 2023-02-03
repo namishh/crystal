@@ -28,7 +28,18 @@ local function init(s)
         {
           layout = wibox.layout.fixed.horizontal,
           launcher,
-          taglist(s),
+          {
+            {
+              {
+                taglist(s),
+                widget = wibox.container.margin,
+                margins = { left = dpi(12), right = dpi(12) },
+              },
+              widget = wibox.container.place
+            },
+            bg = beautiful.bg2 .. 'cc',
+            widget = wibox.container.background
+          },
           layoutbox,
           spacing = 7,
         },
