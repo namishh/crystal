@@ -4,9 +4,9 @@ local beautiful = require("beautiful")
 local dpi       = require("beautiful").xresources.apply_dpi
 
 -- Importing all the compoments
-local systraybox = require("ui.bar.modules.systray")
 local layoutbox = require("ui.bar.modules.layout")
 local taglist = require("ui.bar.modules.tags")
+local systraybox = require("ui.bar.modules.tray")
 local tasklist = require("ui.bar.modules.tasklist")
 local status = require("ui.bar.modules.status")
 local time = require("ui.bar.modules.time")
@@ -32,6 +32,7 @@ local function init(s)
             {
               {
                 taglist(s),
+                forced_width = 159,
                 widget = wibox.container.margin,
                 margins = { left = dpi(12), right = dpi(12) },
               },

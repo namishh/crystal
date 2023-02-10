@@ -18,7 +18,7 @@ local hourminutes = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      awesome.emit_signal('toggle::notificationcenter')
+      awesome.emit_signal('toggle::notify')
     end)
   },
   widget = wibox.container.background,
@@ -40,7 +40,7 @@ local daymonths = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      awesome.emit_signal('calendar::toggle')
+      awesome.emit_signal('toggle::moment')
     end)
   },
   widget = wibox.container.background,

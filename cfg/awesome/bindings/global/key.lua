@@ -5,6 +5,7 @@ local menubar = require 'menubar'
 local apps = require 'config.apps'
 local mod = require 'bindings.mod'
 local widgets = require 'misc.menus'
+local appmenu = require 'misc.bling'.app_launcher
 --local scratches = require 'misc.bling'.scratchpads
 menubar.utils.terminal = apps.terminal
 
@@ -41,15 +42,10 @@ awful.keyboard.append_global_keybindings {
   awful.key {
     modifiers   = { mod.super },
     key         = 'x',
-    description = 'lua execute prompt',
+    description = 'powermenu',
     group       = 'awesome',
     on_press    = function()
-      awful.prompt.run {
-        prompt = 'Run Lua code: ',
-        textbox = awful.screen.focused().promptbox.widget,
-        exe_callback = awful.util.eval,
-        history_path = awful.util.get_cache_dir() .. '/history_eval'
-      }
+      awesome.emit_signal('toggle::exit')
     end,
   },
   awful.key {
@@ -68,10 +64,10 @@ awful.keyboard.append_global_keybindings {
   },
   awful.key {
     modifiers   = { mod.super },
-    key         = 'p',
+    key         = 'a',
     description = 'show the menubar',
     group       = 'launcher',
-    on_press    = function() menubar.show() end,
+    on_press    = function() awesome.emit_signal('toggle::app_launcher') end,
   },
   awful.key {
     modifiers   = { mod.super },

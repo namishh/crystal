@@ -11,16 +11,16 @@ local create    = require("ui.notify.modules.notifs.make")
 local clearButton = wibox.widget {
   {
     {
-      font = beautiful.font .. " 11",
-      markup = helpers.colorizeText("Clear All", beautiful.err),
+      font = beautiful.font .. " 12",
+      markup = helpers.colorizeText("Clear All", beautiful.fg .. 'cc'),
       widget = wibox.widget.textbox,
       valign = "center",
       align = "center",
     },
-    margins = dpi(6),
+    margins = dpi(8),
     widget = wibox.container.margin
   },
-  bg = beautiful.err .. '11',
+  bg = beautiful.fg .. '11',
   widget = wibox.container.background,
 
 }
@@ -39,6 +39,7 @@ local header = wibox.widget {
   layout = wibox.layout.align.horizontal,
 }
 local finalcontent = wibox.widget {
+  nil,
   spacing = 20,
   layout = wibox.layout.fixed.vertical,
 }

@@ -16,6 +16,9 @@ theme.dis = "#a07ea7"
 
 theme.br = dpi(2)
 
+theme.scrheight = 1080
+theme.scrwidth = 1920
+
 theme.wall = theme_path .. "wallpapers/" .. 'flower.jpg'
 
 theme.bg = "#121111"
@@ -105,14 +108,9 @@ theme.layout_floating = gears.color.recolor_image(theme_path .. "icons/" .. "flo
 theme.layout_tile     = gears.color.recolor_image(theme_path .. "icons/" .. "tile.png", theme.fg1)
 
 theme.awesomewm = gears.color.recolor_image(theme_path .. "icons/" .. "awesomewm.svg", theme.pri)
-theme.powericon = gears.color.recolor_image(theme_path .. "icons/" .. "poweroff.svg", theme.err)
 
 theme.play = gears.color.recolor_image(theme_path .. "icons/" .. "play.svg", theme.fg1)
 theme.pause = gears.color.recolor_image(theme_path .. "icons/" .. "pause.svg", theme.fg1)
-theme.shuffle = theme_path .. "icons/" .. "shuffle.svg"
-theme.repeaticon = theme_path .. "icons/" .. "repeat.svg"
-theme.repeatonce = theme_path .. "icons/" .. "repeat-once.svg"
-theme.random = theme_path .. "icons/" .. "random.svg"
 
 theme.task_preview_widget_border_width = 0 -- The border width of the widget
 

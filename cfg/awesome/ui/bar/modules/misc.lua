@@ -4,13 +4,13 @@ local awful     = require("awful")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local helpers   = require("helpers")
-
-M.launcher = wibox.widget {
+local app       = require("misc.bling").app_launcher
+M.launcher      = wibox.widget {
   {
     {
       buttons = {
         awful.button({}, 1, function()
-          awful.spawn.with_shell('rofi -show drun')
+          app:toggle()
         end)
       },
       font = beautiful.icofont .. " 18",
@@ -43,7 +43,8 @@ M.powerbutton = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      awful.spawn.with_shell('~/.local/bin/rofiscripts/powermenu')
+      awesome.emit_signal('show::exit')
+      --awful.spawn.with_shell('~/.local/bin/rofiscripts/powermenu')
     end)
   },
   widget = wibox.container.margin

@@ -4,41 +4,35 @@ local dpi = beautiful.xresources.apply_dpi
 local helpers = require("helpers")
 local wibox = require("wibox")
 
-local stats = require("ui.notify.modules.stats")
-local box = require("ui.notify.modules.notifs.box")
-local height = 818
+local notifbox = require("ui.notify.modules.notifs.box")
 
 awful.screen.connect_for_each_screen(function(s)
-  local notify = wibox({
+  local moment = wibox({
     type = "dock",
     shape = helpers.rrect(4),
     screen = s,
-    width = dpi(520),
-    height = 1000,
+    width = dpi(480),
+    height = 800,
     bg = beautiful.bg,
     ontop = true,
-    visible = false,
+    visible = false
   })
 
-  notify:setup {
+
+  moment:setup {
     {
       nil,
-      {
-        box,
-        margins = {
-          bottom = 20,
-        },
-        widget = wibox.container.margin,
-      },
-      stats,
+      notifbox,
+      nil,
       layout = wibox.layout.align.vertical,
     },
-    margins = dpi(20),
+    margins = dpi(15),
     widget = wibox.container.margin,
   }
 
-  awful.placement.bottom_right(notify, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
-  awesome.connect_signal("toggle::notificationcenter", function()
-    notify.visible = not notify.visible
+  awful.placement.bottom_right(moment, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
+  awesome.connect_signal("toggle::notify", function()
+    moment.visible = not moment.visible
   end)
+
 end)

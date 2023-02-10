@@ -16,7 +16,6 @@ return function(icon, notification, width)
   }
 
   local appicon
-
   if icons[string.lower(notification.app_name)] then
     appicon = icons[string.lower(notification.app_name)]
   else
@@ -26,14 +25,14 @@ return function(icon, notification, width)
   local appiconbox = wibox.widget {
     {
       {
-        font   = beautiful.icofont .. " 16",
+        font   = beautiful.icofont .. " 14",
         markup = "<span foreground='" .. beautiful.pri .. "'>" .. appicon .. "</span>",
         align  = "center",
         valign = "center",
         widget = wibox.widget.textbox
       },
       widget = wibox.container.margin,
-      margins = 4,
+      margins = 10,
     },
     bg = beautiful.pri .. "1A",
     widget = wibox.container.background,
@@ -88,40 +87,90 @@ return function(icon, notification, width)
     widget = wibox.container.constraint,
   }
   local close = wibox.widget {
-    markup = helpers.colorizeText("X", beautiful.err),
-    font   = beautiful.font .. " 13",
+    markup = helpers.colorizeText("󰅖", beautiful.err),
+    font   = beautiful.icofont .. " 13",
     align  = "center",
     valign = "center",
     widget = wibox.widget.textbox
   }
+  local action_widget = {
+    {
+      {
+        id = "text_role",
+        align = "center",
+        valign = "center",
+        font = beautiful.font .. " 12",
+        widget = wibox.widget.textbox
+      },
+      left = dpi(6),
+      right = dpi(6),
+      widget = wibox.container.margin
+    },
+    bg = beautiful.bg3,
+    forced_height = dpi(30),
+    shape = helpers.rrect(4),
+    widget = wibox.container.background
+  }
+
+
+  -- actions
+  local actions = wibox.widget {
+    notification = notification,
+    base_layout = wibox.widget {
+      spacing = dpi(8),
+      layout = wibox.layout.flex.horizontal
+    },
+    widget_template = {
+      action_widget,
+      bottom = dpi(15),
+      widget = wibox.container.margin
+    },
+    style = { underline_normal = false, underline_selected = true },
+    widget = naughty.list.actions
+  }
 
   local finalnotif = wibox.widget {
     {
+      --top
+      appiconbox,
       {
         {
           {
-            appiconbox,
             title,
-            spacing = 10,
-            layout = wibox.layout.fixed.horizontal
+            nil,
+            close,
+            layout = wibox.layout.align.horizontal,
           },
-          nil,
-          close,
-          layout = wibox.layout.align.horizontal
+          margins = {
+            top = 5,
+            bottom = 5,
+            left = 10,
+            right = 10,
+          },
+          widget = wibox.container.margin
         },
-        margins = 20,
-        widget = wibox.container.margin
+        bg = beautiful.bg3,
+        widget = wibox.container.background
       },
-      bg = beautiful.bg3,
-      widget = wibox.container.background
+      nil,
+      layout = wibox.layout.align.horizontal,
     },
     {
       {
         {
-          image,
-          message,
-          spacing = 30,
-          layout = wibox.layout.fixed.horizontal,
+          {
+            widget = wibox.container.margin,
+            margins = { right = 30 },
+            image,
+          },
+          {
+            message,
+            actions,
+            spacing = 20,
+            layout = wibox.layout.fixed.vertical,
+          },
+          nil,
+          layout = wibox.layout.align.horizontal,
         },
         widget = wibox.container.margin,
         margins = 20,
@@ -129,6 +178,7 @@ return function(icon, notification, width)
       bg = beautiful.bg4 .. '66',
       widget = wibox.container.background
     },
+    shape = helpers.rrect(4),
     layout = wibox.layout.fixed.vertical,
   }
 

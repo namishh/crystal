@@ -120,16 +120,16 @@ function save_clip(){
 	if [ "$choice" = "Copy to Clipboard" ]
 	then
 		xclip -selection clipboard -t image/png /tmp/screenshot.png
-		notify-send -i /tmp/screenshot.png "Screenshot Captured!!" "Copied to clipboard"
+		notify-send.sh -i /tmp/screenshot.png "Screenshot Captured!!" "Copied to clipboard"
 	elif [ "$choice" = "Save Image" ]
 	then
 		cp /tmp/screenshot.png $save_folder/$file_name
-		notify-send -i /tmp/screenshot.png "Screenshot Saved!!" "$file_name"
+		notify-send.sh -o "open:xdg-open $save_folder/${file_name}" -o "delete:gio trash $save_folder/${file_name}" -i /tmp/screenshot.png "Screenshot Saved!!" "$file_name"
 	elif [ "$choice" = "Upload to Imgur" ]
 	then
-		notify-send "Uploading to Imgur"
+		notify-send.sh "Uploading to Imgur"
 		upload_to_imgur
-		notify-send -i /tmp/screenshot.png -i "Uploaded to Imgur!" "Imgur URL copied to Clipboard."
+		notify-send.sh -i /tmp/screenshot.png -i "Uploaded to Imgur!" "Imgur URL copied to Clipboard."
 	fi
 }
 

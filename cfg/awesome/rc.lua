@@ -14,12 +14,10 @@ require 'bindings'
 
 -- load rules
 require 'rules'
-require 'config.notifs'
 -- load signals
 require 'signals'
 
 require 'ui'
 
 require 'misc.bling'
-
 awful.spawn.with_shell('~/.awesome/autostart.sh')

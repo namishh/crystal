@@ -19,5 +19,4 @@ _M.layouts = {
 }
 
 _M.tags = { '1', '2', '3', '4', '5' }
-
 return _M
