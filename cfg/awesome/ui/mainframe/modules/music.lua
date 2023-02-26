@@ -1,19 +1,19 @@
-local wibox       = require("wibox")
-local awful       = require("awful")
-local beautiful   = require("beautiful")
-local dpi         = require("beautiful").xresources.apply_dpi
-local gears       = require("gears")
-local bling       = require("modules.bling")
-local helpers     = require("helpers")
-local playerctl   = bling.signal.playerctl.lib()
-local art         = wibox.widget {
+local wibox           = require("wibox")
+local awful           = require("awful")
+local beautiful       = require("beautiful")
+local dpi             = require("beautiful").xresources.apply_dpi
+local gears           = require("gears")
+local bling           = require("modules.bling")
+local helpers         = require("helpers")
+local playerctl       = bling.signal.playerctl.lib()
+local art             = wibox.widget {
   image = beautiful.songdefpicture,
   opacity = 0.25,
   forced_height = dpi(210),
   forced_width = dpi(365),
   widget = wibox.widget.imagebox
 }
-local createStick = function(height)
+local createStick     = function(height)
   return wibox.widget {
     {
       valign = 'center',
@@ -26,7 +26,7 @@ local createStick = function(height)
     widget = wibox.container.place,
   }
 end
-local visualizer  = wibox.widget {
+local visualizer      = wibox.widget {
   createStick(20),
   createStick(10),
   createStick(15),
@@ -36,7 +36,7 @@ local visualizer  = wibox.widget {
   spacing = 4,
   layout = wibox.layout.fixed.horizontal,
 }
-local songname    = wibox.widget {
+local songname        = wibox.widget {
   markup = 'Nothing Playing',
   align = 'left',
   valign = 'center',
@@ -44,7 +44,7 @@ local songname    = wibox.widget {
   forced_width = dpi(40),
   widget = wibox.widget.textbox
 }
-local artistname  = wibox.widget {
+local artistname      = wibox.widget {
   markup = 'None',
   align = 'left',
   valign = 'center',
@@ -52,7 +52,7 @@ local artistname  = wibox.widget {
   widget = wibox.widget.textbox
 }
 
-local status = wibox.widget {
+local status          = wibox.widget {
   markup = 'Paused',
   align = 'left',
   valign = 'bottom',
@@ -60,7 +60,7 @@ local status = wibox.widget {
   widget = wibox.widget.textbox
 }
 
-local prev = wibox.widget {
+local prev            = wibox.widget {
   align = 'center',
   font = beautiful.icofont .. " 24",
   text = '󰒮',
@@ -72,7 +72,7 @@ local prev = wibox.widget {
   },
 }
 
-local slider = wibox.widget {
+local slider          = wibox.widget {
   bar_shape        = helpers.rrect(0),
   bar_height       = 6,
   handle_color     = beautiful.dis,
@@ -137,7 +137,7 @@ local finalwidget = wibox.widget {
           type = "linear",
           from = { 0, 0 },
           to = { 190, 0 },
-          stops = { { 0, beautiful.bg .. "00" }, { 1, "#181817" } }
+          stops = { { 0, beautiful.bg .. "00" }, { 1, beautiful.mbg } }
         },
         widget = wibox.container.background,
       },
@@ -192,7 +192,7 @@ local finalwidget = wibox.widget {
           widget = wibox.container.margin,
           margins = dpi(10)
         },
-        bg = beautiful.bg2 .. 'cc',
+        bg = beautiful.bg2,
         widget = wibox.container.background,
       },
       widget = wibox.container.margin,

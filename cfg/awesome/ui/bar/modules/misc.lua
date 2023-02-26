@@ -1,4 +1,4 @@
-local M = {}
+local M         = {}
 
 local awful     = require("awful")
 local wibox     = require("wibox")
@@ -8,24 +8,28 @@ local app       = require("misc.bling").app_launcher
 M.launcher      = wibox.widget {
   {
     {
-      buttons = {
-        awful.button({}, 1, function()
-          app:toggle()
-        end)
+      {
+        font = beautiful.icofont .. " 16",
+        markup = "󰍉",
+        valign = "center",
+        align = "center",
+        widget = wibox.widget.textbox,
       },
-      font = beautiful.icofont .. " 18",
-      markup = " 󰍉 ",
-      valign = "center",
-      align = "center",
-      widget = wibox.widget.textbox,
+      margins = 6,
+      widget = wibox.container.margin
     },
-    bg = beautiful.bg3,
+    bg = beautiful.bg2,
     widget = wibox.container.background
+  },
+  buttons = {
+    awful.button({}, 1, function()
+      app:toggle()
+    end)
   },
   widget = wibox.container.margin
 }
 
-M.powerbutton = wibox.widget {
+M.powerbutton   = wibox.widget {
   {
     {
       {
@@ -35,10 +39,10 @@ M.powerbutton = wibox.widget {
         align = "center",
         widget = wibox.widget.textbox,
       },
-      margins = 8,
+      margins = 6,
       widget = wibox.container.margin
     },
-    bg = beautiful.bg3,
+    bg = beautiful.bg2,
     widget = wibox.container.background
   },
   buttons = {

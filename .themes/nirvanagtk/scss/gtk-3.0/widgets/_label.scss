@@ -1,0 +1,10 @@
+@use '../colors';
+
+label {
+  &.dim-label, &:disabled { opacity: 0.3; }
+
+  selection {
+    background: colors.$accent-primary;
+    color: lighten(colors.$white-strong, 50%);
+  }
+}

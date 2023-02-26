@@ -29,10 +29,8 @@ awful.screen.connect_for_each_screen(function(s)
     margins = dpi(15),
     widget = wibox.container.margin,
   }
-
-  awful.placement.bottom_right(moment, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
+  helpers.placeWidget(moment)
   awesome.connect_signal("toggle::notify", function()
     moment.visible = not moment.visible
   end)
-
 end)

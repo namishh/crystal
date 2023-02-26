@@ -10,7 +10,7 @@ local playerctl = bling.signal.playerctl.lib()
 local dpi       = beautiful.xresources.apply_dpi
 
 
-local art     = wibox.widget {
+local art        = wibox.widget {
   image = beautiful.songdefpicture,
   clip_shape = helpers.rrect(10),
   opacity = 0.75,
@@ -20,7 +20,7 @@ local art     = wibox.widget {
   valign = 'center',
   widget = wibox.widget.imagebox
 }
-local leftart = wibox.widget {
+local leftart    = wibox.widget {
   image = beautiful.songdefpicture,
   clip_shape = helpers.rrect(100),
   opacity = 0.75,
@@ -30,7 +30,7 @@ local leftart = wibox.widget {
   valign = 'center',
   widget = wibox.widget.imagebox
 }
-local prev    = wibox.widget {
+local prev       = wibox.widget {
   align = 'center',
   font = beautiful.icofont .. " 24",
   markup = helpers.colorizeText('󰒮', beautiful.fg),
@@ -41,7 +41,7 @@ local prev    = wibox.widget {
     end)
   },
 }
-local next    = wibox.widget {
+local next       = wibox.widget {
   align = 'center',
   font = beautiful.icofont .. " 24",
   markup = helpers.colorizeText('󰒭', beautiful.fg),
@@ -53,7 +53,7 @@ local next    = wibox.widget {
   },
 }
 
-local play = wibox.widget {
+local play       = wibox.widget {
   align = 'center',
   font = beautiful.icofont .. " 24",
   markup = helpers.colorizeText('󰐊', beautiful.pri),
@@ -77,7 +77,7 @@ local shufflebtn = wibox.widget {
 }
 playerctl:connect_signal("shuffle", function(_, shuffle)
   shufflebtn.markup = shuffle and helpers.colorizeText('󰒝', beautiful.pri) or helpers.colorizeText('󰒝',
-    beautiful.fg)
+        beautiful.fg)
 end)
 local repeatt = wibox.widget {
   align = 'center',
@@ -298,7 +298,7 @@ local volslider = wibox.widget {
   handle_width     = 18,
   bar_color        = beautiful.dis .. '33',
   bar_active_color = beautiful.dis,
-  handle_margins   = { top = 6 },
+  handle_margins   = { top = beautiful.titlebarType == 'vert' and -1 or 6, },
   forced_height    = 10,
   value            = 100,
   forced_width     = 80,
@@ -348,7 +348,7 @@ local leftartcomplete = wibox.widget {
   widget = wibox.container.place,
   halign = 'center'
 }
-local left = function(c)
+local left            = function(c)
   awful.titlebar(c, { position = "right", size = dpi(280), bg = beautiful.bg }):setup {
     {
       {
@@ -374,11 +374,60 @@ local left = function(c)
       valign = 'center'
     },
     shape = helpers.prect(true, false, false, true, 15),
-    bg = beautiful.bg3,
+    bg = beautiful.bg2,
     widget = wibox.container.background
   }
 end
-local top = function(c)
+local animation       = require("modules.animation")
+
+local typee           = beautiful.titlebarType
+
+local createButton    = function(c, col, fn)
+  local btn = wibox.widget {
+    forced_width  = 12,
+    forced_height = 15,
+    bg            = col,
+    shape         = helpers.rrect(10),
+    buttons       = {
+      awful.button({}, 1, function()
+        fn(c)
+      end)
+    },
+    widget        = wibox.container.background
+  }
+  local anim = animation:new({
+    duration = 0.12,
+    easing = animation.easing.linear,
+    update = function(_, pos)
+      if typee == 'vert' then
+        btn.forced_height = pos
+      else
+        btn.forced_width = pos
+      end
+    end,
+  })
+  btn:connect_signal('mouse::enter', function(_)
+    anim:set(50)
+  end)
+  btn:connect_signal('mouse::leave', function(_)
+    anim:set(15)
+  end)
+  return btn
+end
+local top             = function(c)
+  local close = createButton(c, beautiful.err, function(c1)
+    c1:kill()
+  end)
+
+  local maximize = createButton(c, beautiful.warn, function(c1)
+    c1.maximized = not c1.maximized
+  end)
+
+  local minimize = createButton(c, beautiful.ok, function(c1)
+    gears.timer.delayed_call(function()
+      c1.minimized = not c1.minimized
+    end)
+  end)
   local buttons = gears.table.join(
     awful.button({}, 1, function()
       client.focus = c
@@ -392,16 +441,21 @@ local top = function(c)
     end)
   )
 
-  awful.titlebar(c, { position = "top", size = dpi(45), bg = beautiful.bg2 }):setup {
+  awful.titlebar(c,
+    {
+      position = beautiful.titlebarType == 'vert' and 'left' or 'top',
+      size = beautiful.titlebarType == 'vert' and 35 or 45,
+      bg = beautiful.bg2
+    }):setup {
 
     {
       {
         {
-          awful.titlebar.widget.closebutton(c),
-          awful.titlebar.widget.maximizedbutton(c),
-          awful.titlebar.widget.minimizebutton(c),
+          close,
+          maximize,
+          minimize,
           spacing = dpi(8),
-          layout = wibox.layout.fixed.horizontal
+          layout = beautiful.titlebarType == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
         },
         widget = wibox.container.margin,
         margins = {
@@ -417,13 +471,19 @@ local top = function(c)
       {
         {
           {
-            font = beautiful.icofont .. " 17",
+            font = beautiful.titlebarType == 'vert' and beautiful.icofont .. ' 0' or beautiful.icofont .. ' 17',
             markup = helpers.colorizeText("󰕾", beautiful.fg),
             widget = wibox.widget.textbox,
           },
-          volslider,
+          {
+            volslider,
+            forced_height = beautiful.titlebarType == 'vert' and 100 or 18,
+            forced_width  = beautiful.titlebarType == 'vert' and 20 or 80,
+            direction     = beautiful.titlebarType == 'vert' and 'east' or 'north',
+            layout        = wibox.container.rotate,
+          },
           spacing = 10,
-          layout = wibox.layout.fixed.horizontal,
+          layout = beautiful.titlebarType == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
         },
         margins = {
           top = 5,
@@ -433,7 +493,7 @@ local top = function(c)
         },
         widget = wibox.container.margin
       },
-      layout = wibox.layout.align.horizontal,
+      layout = beautiful.titlebarType == 'vert' and wibox.layout.align.vertical or wibox.layout.align.horizontal
     },
     margins = {
       top = 0,
@@ -445,7 +505,7 @@ local top = function(c)
   }
 end
 
-local final = function(c)
+local final           = function(c)
   bottom(c)
   top(c)
   left(c)

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=phocus
+Comment=the phocus theme
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=phocus
+MetacityTheme=phocus
+IconTheme=gnome
+CursorTheme=DMZ-Black
+ButtonLayout=menu:minimize,maximize,close

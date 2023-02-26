@@ -1,0 +1,12 @@
+@use '../colors';
+@use '../config';
+
+menu {
+  background: colors.$surface-weak;
+  menuitem {
+    padding: config.$spacing-medium;
+    &:hover {
+      background: colors.$white-weakest;
+    }
+  }
+}

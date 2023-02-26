@@ -1,11 +1,9 @@
--- awesome_mode: api-level=4:screen=on
 local awful = require('awful')
--- load luarocks if installed
-pcall(require, 'luarocks.loader')
 
 -- load theme
 local beautiful = require 'beautiful'
 beautiful.init('~/.config/awesome/theme/init.lua')
+beautiful.setTheme()
 
 require "modules.icon_customizer" { delay = 0 }
 

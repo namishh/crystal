@@ -1,0 +1,43 @@
+/* stylelint-disable unknownAtRules */
+/* stylelint-disable css-ruleorselectorexpected */
+/* stylelint-disable at-rule-no-unknown */
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable function-no-unknown */
+/* stylelint-disable function-comma-space-after */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable hue-degree-notation */
+$surface-strongest: #171717;
+$surface-strong: #191919;
+$surface-moderate: #212121;
+$surface-weak: #272727;
+$surface-weakest: #272727;
+
+$white-strongest: #dddddd;
+$white-strong: #dfd5d5;
+$white-moderate: #d4d5d5;
+$white-weak: #212121;
+$white-weakest: #22222222;
+
+$black-strongest: #121111;
+$black-moderate: #191919;
+
+$red-normal: #af575b;
+$red-light: #c15a5e;
+$orange-normal: #daac79;
+$orange-light: #eaac79;
+$yellow-normal: #ccac79;
+$yellow-light: #d8b170;
+$green-normal: #7d8a6b;
+$green-light: #8fa176;
+$cyan-normal: #6d8f8a;
+$cyan-light: #8cb5af;
+$blue-normal: #7d95ae;
+$blue-light: #8097fb;
+$purple-normal: #a07ea7;
+$purple-light: #b183ba;
+
+$accent-primary: $cyan-normal;
+$accent-secondary: $green-normal;
+
+// TODO: is there a better way to do this? this is for example used in gnome-calculator for the result top-border
+@define-color borders #{"" +$surface-strong};

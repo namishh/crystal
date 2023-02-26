@@ -1,0 +1,80 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+button {
+  transition: background-color 100ms ease-in;
+  background: colors.$white-weakest;
+  padding: config.$spacing-medium;
+  border-radius: config.$radius;
+
+  &:hover:not(:active) { background: colors.$white-weak; }
+  &:disabled { opacity: config.$disabled-opacity; }
+
+  &:checked, &.suggested-action {
+    background: color.change(colors.$purple-normal, $alpha: config.$tint-medium);
+    color: colors.$white-strong;
+    &:hover:not(:active) {
+      background: color.change(colors.$purple-light, $alpha: config.$tint-medium);
+    }
+  }
+
+  &.image-button:not(.text-button) {
+    padding: calc(config.$spacing-medium + 0.2em);
+  }
+
+  &.destructive-action {
+    background: color.change(colors.$red-normal, $alpha: config.$tint-medium);
+    color: colors.$white-strongest;
+    &:hover:not(:active) {
+      background: color.change(colors.$red-light, $alpha: config.$tint-medium);
+    }
+  }
+
+  &.circular {
+    border-radius: 100%;
+    padding: calc(config.$spacing-medium + 0.2em);
+  }
+
+  &.flat {
+    background: transparent;
+    &:hover {
+      background: colors.$white-weakest;
+    }
+    &:active, &:checked {
+      background: colors.$white-weak;
+    }
+  }
+
+  label + & {
+    margin-left: config.$spacing-medium;
+  }
+
+  &.small-button {
+    image:only-child {
+      padding: config.$spacing-small;
+    }
+  }
+
+  .linked.horizontal & {
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .linked.vertical & {
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:not(:last-child) {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

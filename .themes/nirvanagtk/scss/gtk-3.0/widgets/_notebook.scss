@@ -1,0 +1,7 @@
+@use '../colors';
+
+notebook {
+  stack {
+    &:only-child { background: colors.$surface-strongest; }
+  }
+}

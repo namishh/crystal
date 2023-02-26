@@ -1,22 +1,21 @@
-local beautiful  = require 'beautiful'
-local bling      = require("modules.bling")
-local awful      = require("awful")
-local terminal   = require 'config.apps'.terminal
-local helpers    = require("helpers")
-local xresources = require("beautiful.xresources")
-local dpi        = xresources.apply_dpi
-local M          = {}
+local beautiful     = require 'beautiful'
+local bling         = require("modules.bling")
+local awful         = require("awful")
+local terminal      = require 'config.apps'.terminal
+local helpers       = require("helpers")
+local xresources    = require("beautiful.xresources")
+local dpi           = xresources.apply_dpi
+local M             = {}
 
 -- These are example rubato tables. You can use one for just y, just x, or both.
 -- The duration and easing is up to you. Please check out the rubato docs to learn more.
-local scrheight = 1080
-local scrwidth  = 1920
+local scrheight     = 1080
+local scrwidth      = 1920
 
 local createScratch = function(command, width, height)
   local scratch = bling.module.scratchpad {
     --command = terminal .. ' '
-    command = terminal ..
-        ' -n "' .. command .. 'pad' .. '" -c "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
+    command = terminal .. ' -c "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
     rule = { class = command .. 'pad' },
     sticky = true,
     autoclose = false,
@@ -47,7 +46,7 @@ end
 --   filterClients = awful.widget.tasklist.filter.currenttags, -- The function to filter the viewed clients
 -- }
 --
-M.scratchpads = {
+M.scratchpads       = {
   default = createScratch('pfetch', 900, 680),
   ncmp = createScratch('ncmpcpp', 950, 600)
 }
