@@ -4,15 +4,16 @@ local awful      = require("awful")
 local dpi        = xresources.apply_dpi
 local gfs        = require("gears.filesystem")
 local gears      = require("gears")
+local reader     = require("modules.read")
 local theme_path = gfs.get_configuration_dir() .. "/theme/"
 theme.barfont    = 'Iosevka Nerd Font 13'
-theme.font       = 'Iosevka Comfy Motion Fixed'
+theme.font       = 'Iosevka Nerd Font'
 theme.icofont    = 'Material Design Icons Desktop'
 
 
-theme.barDir       = "left"
-theme.titlebarType = "vert"
-theme.scheme       = 'everforest'
+theme.barDir       = reader.readall('bartype') or 'left'
+theme.titlebarType = reader.readall('titlebar') or 'vert'
+theme.scheme       = reader.readall('theme') or 'gruvbox'
 local colors       = require("theme.palettes." .. theme.scheme)
 
 theme.setTheme     = function()

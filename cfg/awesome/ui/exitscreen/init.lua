@@ -11,18 +11,18 @@ local exiticon = "󰈆"
 local lockicon = "󰍁"
 
 local poweroffcommand = function()
-  awful.spawn.with_shell("systemctl poweroff")
+  awful.spawn.with_shell("loginctl poweroff")
   awesome.emit_signal('hide::exit')
 end
 
 local rebootcommand = function()
-  awful.spawn.with_shell("systemctl reboot")
+  awful.spawn.with_shell("loginctl reboot")
   awesome.emit_signal('hide::exit')
 end
 
 local suspendcommand = function()
   awesome.emit_signal('hide::exit')
-  awful.spawn.with_shell("systemctl suspend")
+  awful.spawn.with_shell("loginctl suspend")
 end
 
 local exitcommand = function()
@@ -152,7 +152,7 @@ awful.screen.connect_for_each_screen(function(s)
     margins = dpi(15),
     widget = wibox.container.margin,
   }
-  awful.placement.centered(exit)
+  awful.placement.centered(exit, { honor_workarea = true })
   awesome.connect_signal("toggle::exit", function()
     if exit.visible then
       exit_screen_grabber:stop()
@@ -170,5 +170,4 @@ awful.screen.connect_for_each_screen(function(s)
     exit_screen_grabber:stop()
     exit.visible = false
   end)
-
 end)

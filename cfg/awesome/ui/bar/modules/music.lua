@@ -2,6 +2,7 @@ local beautiful     = require("beautiful")
 local awful         = require("awful")
 local helpers       = require("helpers")
 local wibox         = require("wibox")
+local gears         = require("gears")
 local dpi           = require("beautiful").xresources.apply_dpi
 local bling         = require("modules.bling")
 
@@ -61,6 +62,25 @@ local vert          = wibox.widget {
   {
     {
       {
+        {
+          {
+            id = "image",
+            align = 'center',
+            clip_shape = helpers.rrect(50),
+            forced_height = 20,
+            forced_width = 20,
+            opacity = 0.75,
+            widget = wibox.widget.imagebox,
+          },
+          halign = 'center',
+          widget = wibox.container.place
+        },
+        margins = {
+          bottom = 5
+        },
+        widget = wibox.container.margin
+      },
+      {
         align = 'center',
         font = beautiful.icofont .. " 16",
         text = '󰒮',
@@ -119,11 +139,12 @@ playerctl:connect_signal("playback_status", function(_, playing, _)
       helpers.colorizeText("󰐊", beautiful.fg)
 end)
 
-playerctl:connect_signal("metadata", function(_, title)
+playerctl:connect_signal("metadata", function(_, title, artist, album_path, album)
   if title == "" then
     title = " None "
   end
 
+  vert:get_children_by_id('image')[1].image = helpers.cropSurface(1, gears.surface.load_uncached(album_path))
   songname:set_markup_silently(" " .. title .. " ")
 end)
 

@@ -1,6 +1,6 @@
 local M = {}
 
-M.name  = 'pop'
+M.name  = 'gruvbox'
 M.wall  = 'flower.jpg'
 M.ok    = "#56966e"
 M.warn  = "#dcae61"

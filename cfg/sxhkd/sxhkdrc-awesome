@@ -1,7 +1,4 @@
 
-# program launcher
-super + a
- rofi -show drun
 # make sxhkd reload its configuration files:
 super + Escape 
 	pkill -USR1 -x sxhkd ~/.config/sxhkd/sxhkdrc-awesome
@@ -9,11 +6,8 @@ super + Escape
 super + q 
   ~/.local/bin/rofiscripts/ssmenu
 
-super + n 
-  ~/.local/bin/wifimenu
-
-super + x
-  ~/.local/bin/rofiscripts/powermenu
+super + p 
+  ~/.local/bin/rofiscripts/wifimenu
 
 # copy some stuff
 super + shift + p
