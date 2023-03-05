@@ -1,0 +1,40 @@
+diff --git a/scss/gtk-3.0/widgets/_progressbar.scss b/scss/gtk-3.0/widgets/_progressbar.scss
+index 0c0dedf..3113179 100644
+--- a/scss/gtk-3.0/widgets/_progressbar.scss
++++ b/scss/gtk-3.0/widgets/_progressbar.scss
+@@ -6,6 +6,8 @@ progressbar {
+     background: colors.$white-weakest;
+     progress {
+       background: colors.$accent-secondary;
++      &.horizontal progress { background-image: linear-gradient(to right, colors.$accent-primary, colors.$accent-secondary); }
++      &.vertical progress { background-image: linear-gradient(to bottom, colors.$accent-primary, colors.$accent-secondary); }
+     }
+   }
+-}
+\ No newline at end of file
++}
+diff --git a/scss/gtk-3.0/widgets/_scale.scss b/scss/gtk-3.0/widgets/_scale.scss
+index 1da322d..ea6a59d 100644
+--- a/scss/gtk-3.0/widgets/_scale.scss
++++ b/scss/gtk-3.0/widgets/_scale.scss
+@@ -13,9 +13,7 @@ scale {
+         margin: -5px;
+         border-radius: 100%;
+       }
+-      highlight {
+-        background: colors.$accent-primary;
+-      }
++      highlight { }
+     }
+   }
+ 
+@@ -31,5 +29,7 @@ scale {
+     }
+   }
+ 
++  &.horizontal highlight { background-image: linear-gradient(to right, colors.$accent-primary, colors.$accent-secondary); }
++  &.vertical highlight { background-image: linear-gradient(to bottom, colors.$accent-primary, colors.$accent-secondary); }
+   &:disabled { opacity: 0.3; }
+-}
+\ No newline at end of file
++}

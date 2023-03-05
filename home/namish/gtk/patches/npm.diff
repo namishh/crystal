@@ -1,0 +1,22 @@
+From f9d92e374af843fb8e896c997107a431ed2dc901 Mon Sep 17 00:00:00 2001
+From: shaunsingh <shaunsingh0207@gmail.com>
+Date: Mon, 20 Feb 2023 18:57:45 -0500
+Subject: [PATCH] Update Makefile
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 377fffc..5b9c890 100644
+--- a/Makefile
++++ b/Makefile
+@@ -3,7 +3,7 @@ DESTDIR ?=
+ INSTALL_DIR ?= $(DESTDIR)$(PREFIX)/share/themes/phocus
+ 
+ all:
+-	npm install && npm run build
++	sass scss:.
+ 
+ install:
+ 	@install -v -d "$(INSTALL_DIR)"

@@ -1,0 +1,64 @@
+diff --git a/scss/gtk-3.0/_colors.scss b/scss/gtk-3.0/_colors.scss
+index ac47a66..0c157c7 100644
+--- a/scss/gtk-3.0/_colors.scss
++++ b/scss/gtk-3.0/_colors.scss
+@@ -1,8 +1,8 @@
+-$surface-strongest: rgb(10, 10, 10);
+-$surface-strong: rgb(20, 20, 20);
+-$surface-moderate: rgb(28, 28, 28);
+-$surface-weak: rgb(34, 34, 34);
+-$surface-weakest: rgb(40, 40, 40);
++$surface-strongest: @bg0@;
++$surface-strong: @bg1@;
++$surface-moderate: @bg2@;
++$surface-weak: @bg3@;
++$surface-weakest: @bg4@;
+ 
+ $white-strongest: rgb(255, 255, 255);
+ $white-strong: rgba(255, 255, 255, 0.87);
+@@ -16,25 +16,25 @@ $black-moderate: rgba(0, 0, 0, 0.42);
+ $black-weak: rgba(0, 0, 0, 0.15);
+ $black-weakest: rgba(0, 0, 0, 0.06);
+ 
+-$red-normal: rgb(218, 88, 88);
+-$red-light:rgb(227, 109, 109);
+-$orange-normal: rgb(237, 148, 84);
+-$orange-light: rgb(252, 166, 105);
+-$yellow-normal: rgb(232, 202, 94);
+-$yellow-light: rgb(250, 221, 117);
+-$green-normal: rgb(63, 198, 97);
+-$green-light: rgb(97, 214, 126);
+-$cyan-normal: rgb(92, 216, 230);
+-$cyan-light: rgb(126, 234, 246);
+-$blue-normal: rgb(73, 126, 233);
+-$blue-light: rgb(93, 141, 238);
+-$purple-normal: rgb(113, 84, 242);
+-$purple-light: rgb(128, 102, 245);
+-$pink-normal: rgb(213, 108, 195);
+-$pink-light: rgb(223, 129, 207);
++$red-normal: @red@;
++$red-light: @lred@;
++$orange-normal: @orange@;
++$orange-light: @lorange@;
++$yellow-normal: @yellow@;
++$yellow-light: @lyellow@;
++$green-normal: @green@;
++$green-light: @lgreen@;
++$cyan-normal: @cyan@;
++$cyan-light: @lcyan@;
++$blue-normal: @blue@;
++$blue-light: @lblue@;
++$purple-normal: @purple@;
++$purple-light: @lpurple@;
++$pink-normal: @pink@;
++$pink-light: @lpink@;
+ 
+-$accent-primary: $purple-normal;
+-$accent-secondary: $green-normal;
++$accent-primary: @primary@;
++$accent-secondary: @secondary@;
+ 
+ // TODO: is there a better way to do this? this is for example used in gnome-calculator for the result top-border
+-@define-color borders #{"" +$surface-strong};
+\ No newline at end of file
++@define-color borders #{"" +$surface-strong};
