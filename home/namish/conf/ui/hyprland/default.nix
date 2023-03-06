@@ -71,8 +71,8 @@
         fullscreen_opacity = 1.0
         rounding = 0
         blur = no 
-        blur_size = 3
-        blur_passes = 1
+        blur_size = 0
+        blur_passes = 0
         blur_new_optimizations = true
         blur_xray = true
         drop_shadow = false
@@ -87,18 +87,6 @@
         blur_ignore_opacity = false
         col.shadow = rgba(1a1a1aee)
       }
-      # animations {
-      #   enabled = yes
-      #
-      #   bezier = easeOutElastic, 0.05, 0.9, 0.1, 1.05
-      #   # bezier=overshot,0.05,0.9,0.1,1.1
-      #
-      #   animation = windows, 1, 5, easeOutElastic
-      #   animation = windowsOut, 1, 5, default, popin 80%
-      #   animation = border, 1, 8, default
-      #   animation = fade, 1, 5, default
-      #   animation = workspaces, 1, 6, default
-      # }
       animations {
         enabled=1
         bezier = overshot, 0.13, 0.99, 0.29, 1.1
@@ -276,14 +264,10 @@
       # wall(by swww service) #
       #-----------------------#
       # exec-once = dynamic_wallpaper
-      # exec-once = default_wall 
-      #------------#
-      # auto start #
-      #------------#
-      exec-once = swaybg -i ~/.config/dots.sh/cfg/awesome/theme/wallpapers/forest_stairs.jpg &
+      exec-once = waybar &
+      exec-once = swaybg -i ${wallpaper} &
       exec-once = mako &
       exec-once = xrdb -merge ~/.Xresources &
-      #exec-once = nm-applet --indicator &
       #---------------#
       # windows rules #
       #---------------#

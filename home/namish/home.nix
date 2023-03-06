@@ -34,6 +34,7 @@ in
     (import ./conf/music/ncmp/default.nix { inherit config; })
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./conf/ui/eww/default.nix { inherit config pkgs colors lib; })
+    (import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
 
     # Bin files
     (import ./bin/default.nix { inherit config; })
@@ -52,6 +53,7 @@ in
       }))
       material-design-icons
       swaybg
+      firefox
       ## icon and gtk theme
       (pkgs.callPackage ./icons/whitesur.nix { })
       ##(pkgs.callPackage ./gtk/phocus.nix { inherit colors; })
@@ -60,17 +62,20 @@ in
       python3
       grim
       pfetch
+      ## waybar for hyprland
+      hyprland.packages.${pkgs.system}.waybar-hyprland
       lua-language-server
       pamixer
       brightnessctl
       rofi
       mpd
       foot
+      git
       mako
       slurp
-      waybar
       cava
       ncmpcpp
+      xclip
       xdotool
       mpdris2
       pavucontrol

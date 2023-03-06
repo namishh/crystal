@@ -15,6 +15,10 @@
         executable = true;
         text = import ./rofiscripts/wifi.nix { };
       };
+      ".local/bin/powermenu" = {
+        executable = true;
+        text = import ./rofiscripts/powermenu.nix { };
+      };
       ".local/bin/screenshotmenu" = {
         executable = true;
         text = import ./rofiscripts/screenshot.nix { };

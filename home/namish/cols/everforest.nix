@@ -35,5 +35,5 @@ rec {
   color7 = "#d3c5aa";
   color15 = "#d4d5d5";
   name = "everforest";
-  wallpaper = "~/.config/dots.sh/cfg/awesome/theme/wallpapers/forest_stairs.jpg";
+  wallpaper = "~/.config/dots.old/cfg/awesome/theme/wallpapers/forest_stairs.jpg";
 }
