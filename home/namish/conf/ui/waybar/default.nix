@@ -1,143 +1,150 @@
-{ config, pkgs, lib, hyprland, colors, ... }:
-
+{ config, pkgs, lib, colors, ... }:
 {
   programs.waybar =
     with colors;{
       enable = true;
-      package = hyprland.packages.${pkgs.system}.waybar-hyprland;
+      package = pkgs.waybar;
       systemd = {
         enable = false;
         target = "graphical-session.target";
       };
       style = ''
         window#waybar {
-          background-color: ${background};
-          color: ${foreground};
+          background-color: #${background};
+          color: #${foreground};
           border-bottom: none;
         }
         #workspaces {
-          background-color: ${mbg};
-          margin : 9px 4.5px;
+          font-family: "Material Design Icons Desktop";
+          font-size: 20px;
+          background-color: #${mbg};
+          margin : 4px 0;
           border-radius : 5px;
         }
         #workspaces button {
+          font-size: 18px;
           background-color: transparent;
-          color: ${foreground};
-          transition: all 0.3s ease;
+          color: #${color5};
+          transition: all 0.1s ease;
         }
-
-        #workspaces button:hover {
-          background-color: ${color8};
-          color: ${color4};
-          transition: all 0.3s ease;
+        #workspaces button.focused {
+          font-size: 18px;
+          color: #${color3};
         }
-        #workspaces button.active {
-          color: ${color2};
+        #workspaces button.persistent {
+          color: #${color1};
+          font-size: 12px;
         }
-
         #custom-launcher {
-          background-color: ${mbg};
-          margin : 9px 4.5px;
-          padding : 5px 8px;
+          background-color: #${mbg};
+          color: #${color4};
+          margin : 4px 4.5px;
+          padding : 5px 12px;
+          font-size: 18px;
           border-radius : 5px;
         }
         #custom-power {
-          color : ${color1};
-          background-color: ${mbg};
-          margin : 9px 6.5px 9px 4.5px;
-          padding : 5px 8px;
+          color : #${color1};
+          background-color: #${mbg};
+          margin : 4px 4.5px 4px 4.5px;
+          padding : 5px 11px 5px 13px;
           border-radius : 5px;
         }
 
         #clock {
-          background-color: ${mbg};
-          margin : 9px 4.5px;
-          padding : 5px 8px;
+          background-color: #${mbg};
+          color: #${color7};
+          margin : 4px 9px;
+          padding : 5px 12px;
           border-radius : 5px;
         }
         
         #network {
-          color : ${color4};
-          background-color: ${mbg};
-          margin : 9px 4.5px;
-          padding : 5px 8px;
-          border-radius : 5px;
-        }
-
-        #pulseaudio {
-          color : ${color2};
-          background-color: ${mbg};
-          margin : 9px 4.5px;
-          padding : 5px 8px;
-          border-radius : 5px;
+          color : #${color7};
+          background-color: #${mbg};
+          margin : 4px 0 4px 4.5px;
+          padding : 5px 12px;
+          border-radius : 5px 0 0 5px;
         }
         #battery {
-          color : ${color5};
-          background-color: ${mbg};
-          margin : 9px 4.5px;
-          padding : 5px 8px;
+          color : #${color2};
+          background-color: #${mbg};
+          margin : 4px 0px;
+          padding : 5px 12px;
+          border-radius : 5px 0 0 5px;
+        }
+        #custom-swallow {
+          background-color: #${mbg};
+          margin : 4px 4.5px;
+          padding : 5px 12px;
           border-radius : 5px;
         }
         * {
-          font-size: 18px;
-          font-family: "Iosevka Nerd Font";
+          font-size: 16px;
+          min-height: 0;
+          font-family: "Iosevka Nerd Font", "Material Design Icons Desktop";
         }
       '';
       settings = [{
-        height = 50;
+        height = 35;
         layer = "top";
-        position = "bottom";
+        position = "top";
         tray = { spacing = 10; };
         modules-center = [ "clock" ];
-        modules-left = [ "custom/launcher" "wlr/workspaces" ];
+        modules-left = [ "custom/launcher" "sway/workspaces" ];
         modules-right = [
-          "pulseaudio"
           "network"
           "battery"
           "custom/power"
           "tray"
         ];
+        "sway/workspaces" = {
+          on-click = "activate";
+          all-outputs = true;
+          format = "{icon}";
+          disable-scroll = true;
+          active-only = false;
+          persistent_workspaces = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+          };
+          format-icons = {
+            default = "󰊠 ";
+            persistent = "󰊠 ";
+            focused = "󰮯 ";
+          };
+        };
         battery = {
-          format = "{icon} {capacity}%";
-          format-charging = "{  capacity}%";
-          format-icons = [ " " " " " " " " " " ];
-          format-plugged = "  {capacity}%";
+          format = "{icon}";
+          on-click = "eww open --toggle control";
+          format-charging = " ";
+          format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-plugged = "󰚦 ";
           states = {
             critical = 15;
             warning = 30;
           };
         };
         clock = {
+          format = "{:%d %A %H:%M}";
           tooltip-format = "{:%Y-%m-%d | %H:%M}";
         };
         network = {
           interval = 1;
-          format-disconnected = "Disconnected";
-          format-wifi = "  {essid}";
+          on-click = "eww open --toggle control";
+          format-disconnected = "󰤮 ";
+          format-wifi = "󰤨 ";
         };
         "custom/launcher" = {
-          on-click = "rofi -show drun";
-          format = " ";
+          on-click = "eww open --toggle dash";
+          format = " ";
         };
         "custom/power" = {
-          on-click = "powermenu";
+          on-click = "powermenu &";
           format = " ";
-        };
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-bluetooth = "{icon} {volume}%";
-          format-bluetooth-muted = "{icon} {volume}%";
-          format-icons = {
-            car = "";
-            default = [ "" "" " " ];
-            handsfree = "";
-            headphones = "";
-            headset = "";
-            phone = "";
-            portable = "";
-          };
-          format-muted = " {format_source}";
-          on-click = "pavucontrol";
         };
       }];
     };

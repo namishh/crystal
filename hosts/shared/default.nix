@@ -35,12 +35,12 @@ in
     defaultUserShell = pkgs.zsh;
   };
   fonts.fonts = with pkgs; [
+    material-design-icons
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
 
   xdg.portal = {
     enable = true;
-    # extraPortals = [xdg-hyprland.packages.${pkgs.system}.default];
   };
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -65,6 +65,7 @@ in
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     wayland
+    libnotify
     xdg-utils
     xorg.xf86inputevdev
     xorg.xf86inputsynaptics
@@ -72,6 +73,7 @@ in
     xorg.xorgserver
     xorg.xf86videoati
   ];
+
   environment.shells = with pkgs; [ zsh ];
 
   # Qt / GTK
@@ -94,7 +96,7 @@ in
     enable = true;
     powerOnBoot = false;
   };
-
+  security.polkit.enable = true;
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];

@@ -23,6 +23,14 @@
         executable = true;
         text = import ./rofiscripts/screenshot.nix { };
       };
+      ".local/bin/changebrightness" = {
+        executable = true;
+        text = import ./notifs/changebrightness.nix { };
+      };
+      ".local/bin/changevolume" = {
+        executable = true;
+        text = import ./notifs/changevolume.nix { };
+      };
     };
   };
 }

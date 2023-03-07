@@ -4,10 +4,15 @@
 let
   colors = import ./cols/everforest.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-
-  hyprland = (import flake-compat {
-    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+  swayfx = (import flake-compat {
+    src = builtins.fetchTarball "https://github.com/WillPower3309/swayfx/archive/master.tar.gz";
   }).defaultNix;
+
+  unstable = import
+    (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
+    {
+      config = config.nixpkgs.config;
+    };
 in
 
 {
@@ -28,13 +33,15 @@ in
   imports = [
     # Importing Configutations
     (import ./xresources.nix { inherit colors; })
-    (import ./conf/utils/rofi/default.nix { inherit config colors; })
+    (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
+    (import ./conf/utils/dunst/default.nix { inherit config pkgs colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
     (import ./conf/music/mpd/default.nix { inherit config; })
     (import ./conf/music/ncmp/default.nix { inherit config; })
-    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland colors; })
+    (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib swayfx colors; })
     (import ./conf/ui/eww/default.nix { inherit config pkgs colors lib; })
-    (import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
+    (import ./conf/utils/swaylock/default.nix { inherit config pkgs colors; })
+    (import ./conf/ui/waybar/default.nix { inherit config pkgs lib colors; })
 
     # Bin files
     (import ./bin/default.nix { inherit config; })
@@ -54,24 +61,20 @@ in
       material-design-icons
       swaybg
       firefox
-      ## icon and gtk theme
       (pkgs.callPackage ./icons/whitesur.nix { })
-      ##(pkgs.callPackage ./gtk/phocus.nix { inherit colors; })
+      #(pkgs.callPackage ./gtk/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
       python3
       grim
       pfetch
-      ## waybar for hyprland
-      hyprland.packages.${pkgs.system}.waybar-hyprland
       lua-language-server
       pamixer
       brightnessctl
-      rofi
+      rofi-wayland
       mpd
-      foot
+      nix-prefetch-git
       git
-      mako
       slurp
       cava
       ncmpcpp
@@ -79,7 +82,10 @@ in
       xdotool
       mpdris2
       pavucontrol
+      python310Packages.pip
       feh
+      spotdl
+      brillo
       ripgrep
       ueberzug
       wmctrl
@@ -87,4 +93,27 @@ in
       exa
     ];
   };
+
+  systemd.user.services.swaybg =
+    let
+      wallpaper = builtins.fetchurl rec {
+        name = "wallpaper-${sha256}.png";
+        url = "${colors.wallpaper}";
+        sha256 = "${colors.wallsha}";
+      };
+    in
+    {
+      Unit = {
+        Description = "Wayland wallpaper daemon";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        ExecStart = "${pkgs.swaybg}/bin/swaybg --mode fill --image ${wallpaper}";
+        Restart = "on-failure";
+      };
+
+      Install.WantedBy = [ "graphical-session.target" ];
+    };
 }

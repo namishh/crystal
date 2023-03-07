@@ -3,9 +3,9 @@
 let inherit (config.lib.formats.rasi) mkLiteral; in
 with colors; {
   "*" = {
-    bg = mkLiteral "${background}";
-    fg = mkLiteral "${foreground}";
-    button = mkLiteral "${contrast}";
+    bg = mkLiteral "#${background}";
+    fg = mkLiteral "#${foreground}";
+    button = mkLiteral "#${contrast}";
     background-color = mkLiteral "@bg";
     text-color = mkLiteral "@fg";
   };

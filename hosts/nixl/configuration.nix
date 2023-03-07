@@ -10,13 +10,19 @@
 
   # Packages
   # --------
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_5_10;
   environment.systemPackages = lib.attrValues {
     inherit (pkgs)
-      brightnessctl;
+      brightnessctl
+      wayland;
   };
-  # Power
-  # -----
+
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   services = {
     power-profiles-daemon.enable = false;
     tlp.enable = true;
@@ -27,8 +33,6 @@
 
       displayManager = {
         defaultSession = "gnome";
-        sessionPackages = [ inputs.hyprland.packages.${pkgs.system}.default ];
-
         startx.enable = true;
       };
       desktopManager.gnome.enable = true;

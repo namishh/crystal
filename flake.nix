@@ -8,13 +8,11 @@
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-contrib.url = "github:hyprwm/contrib";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     # Channel to follow.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, home-manager, hyprland, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @inputs:
     let
       inherit (nixpkgs) lib;
       forSystems = lib.genAttrs lib.systems.flakeExposed;
@@ -34,7 +32,6 @@
             modules = [
               # > Our main nixos configuration file <
               ./hosts/nixl/configuration.nix
-              hyprland.nixosModules.default
             ];
           };
       };
@@ -53,6 +50,6 @@
           ];
         };
       };
-      #nixl = self.nixosConfigurations.lappy.config.system.build.toplevel;
+      nixl = self.nixosConfigurations.lappy.config.system.build.toplevel;
     };
 }

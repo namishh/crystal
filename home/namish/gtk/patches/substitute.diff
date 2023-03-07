@@ -13,13 +13,13 @@ index ac47a66..0c157c7 100644
 +$surface-moderate: @bg2@;
 +$surface-weak: @bg3@;
 +$surface-weakest: @bg4@;
- 
+
  $white-strongest: rgb(255, 255, 255);
  $white-strong: rgba(255, 255, 255, 0.87);
 @@ -16,25 +16,25 @@ $black-moderate: rgba(0, 0, 0, 0.42);
  $black-weak: rgba(0, 0, 0, 0.15);
  $black-weakest: rgba(0, 0, 0, 0.06);
- 
+
 -$red-normal: rgb(218, 88, 88);
 -$red-light:rgb(227, 109, 109);
 -$orange-normal: rgb(237, 148, 84);
@@ -52,13 +52,8 @@ index ac47a66..0c157c7 100644
 +$purple-light: @lpurple@;
 +$pink-normal: @pink@;
 +$pink-light: @lpink@;
- 
+
 -$accent-primary: $purple-normal;
 -$accent-secondary: $green-normal;
 +$accent-primary: @primary@;
 +$accent-secondary: @secondary@;
- 
- // TODO: is there a better way to do this? this is for example used in gnome-calculator for the result top-border
--@define-color borders #{"" +$surface-strong};
-\ No newline at end of file
-+@define-color borders #{"" +$surface-strong};
