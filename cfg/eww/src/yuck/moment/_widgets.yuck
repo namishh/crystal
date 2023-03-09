@@ -1,0 +1,26 @@
+(defwidget moment[]
+  (box :orientation 'v' :class 'moment' :space-evenly false
+      (moment_calendar)
+ )
+)
+
+(defwidget moment_calendar[]
+  (box :class " white moment_calendar" :orientation "v"
+				(box :class "moment_cal-box"
+					:orientation "v"
+					:space-evenly "false"
+					(label :class "moment_month-year" :text thourtime)
+					(box :class "moment_day-names" :orientation "h" :space-evenly "true"
+						(label :text "Su")
+						(label :text "Mo")
+						(label :text "Tu")
+						(label :text "We")
+						(label :text "Th")
+						(label :text "Fr")
+						(label :text "Sa")
+					)
+					(calendar :class "moment_cal" 
+						:show-details false :show-heading false :show-day-names false)
+				)
+  )
+)

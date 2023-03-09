@@ -1,0 +1,19 @@
+@use "../config";
+
+.linked.path-bar {
+    button {
+      image:not(:only-child) {
+        margin-right: config.$spacing-medium;
+      }
+
+      &:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+  }

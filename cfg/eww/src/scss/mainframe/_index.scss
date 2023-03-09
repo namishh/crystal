@@ -1,0 +1,185 @@
+.mainframe {
+  background-color: $background;
+  padding: 1.25rem;
+  border-radius: 6px;
+
+  &_profile {
+    font-family: "Iosevka Nerd Font";
+    background-image: url('assets/profile.jpg');
+    background-size: 13.4rem;
+    background-position: 50% 35%;
+    min-height: 13rem;
+    min-width: 42px;
+    border-radius: 5px;
+
+
+    &_box {
+      padding: 1rem;
+      background: linear-gradient(to right, rgba($background, .7), rgba($background, 0.5));
+    }
+  }
+
+  &_button {
+    font-family: "Material Design Icons Desktop";
+    border-radius: 50%;
+    background: $background-light;
+    padding: 0rem;
+    font-size: 1.6rem;
+
+
+    &_label {
+      font-family: "Iosevka Nerd Font";
+      font-size: 1.1rem;
+    }
+  }
+
+  &_settings {
+    background-color: $background-alt;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  &_scales {
+    margin: 2rem 0;
+    font-family: "iosevka nerd font";
+    padding: 1.4rem;
+    background-color: $background-alt;
+    border-radius: 5px;
+  }
+
+  &_scale_label {
+    font-family: "Material Design Icons desktop";
+    font-size: 1.5rem;
+    color: $foreground-alt;
+  }
+
+  &_scale_value {
+    font-family: "iosevka nerd font";
+    color: $foreground-alt;
+  }
+
+
+
+
+  &_scale trough {
+    min-height: .2rem;
+    border-radius: 20px;
+    background-color: $background-light;
+    // border: 1px solid $blue;
+  }
+
+
+  &_scale trough highlight {
+    border-radius: 20px;
+    background: $foreground-alt;
+  }
+
+
+  &_battery {
+    font-family: "Iosevka Nerd Font";
+    font-size: 1.2rem;
+  }
+
+  &_power {
+    font-family: "material design icons desktop";
+    font-size: 1.5rem;
+
+    &btn {
+      background-color: $background-alt;
+      padding: .5rem;
+    }
+  }
+
+  &_focus_toggle {
+    border-radius: 32px;
+    background: rgba($color: #647ea7, $alpha: 0.15);
+  }
+
+  &_focus_box {
+    border-radius: 32px;
+    background: $comment;
+    padding: 0 .2rem;
+  }
+
+  &_focus_text {
+    font-family: "Iosevka Nerd Font";
+
+  }
+
+
+  &_sep {
+    background-color: $comment;
+    min-height: 1px;
+    min-width: 1px;
+
+    &_box {
+      padding: 0 1rem;
+    }
+  }
+
+  &_song {
+    background: linear-gradient(to right, rgba($background, 1), rgba($background, 0.8));
+    padding: 1rem;
+
+    &_ctl {
+      &_btn {
+        font-size: 1.3rem;
+        border-radius: 5px;
+      }
+
+      margin-top: .3rem;
+      font-family: "material design icons desktop";
+    }
+
+    &_box {
+      font-family: "Iosevka Nerd Font";
+      border-radius: 5px;
+      background-position: center;
+    }
+
+
+    &_btn {
+      font-size: 2.1rem;
+      font-family: "material design icons desktop";
+    }
+
+    &_name {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    &_artist {
+      font-size: 1rem;
+      margin-top: .5rem;
+      font-weight: 300;
+    }
+
+    &_side {
+      padding: 0 1rem;
+      background-color: $background-alt;
+      border-radius: 5px;
+    }
+
+    &_scale trough {
+      border-radius: 20px;
+      padding: 1rem 0;
+
+      highlight {
+        border-radius: 20px;
+        background: $foreground-alt;
+      }
+
+    }
+
+  }
+
+  &_footer {
+    margin-top: 1.5rem;
+    padding: 0 .2rem;
+  }
+}
+
+.active {
+  background: rgba(#647ea7, 0.1);
+  color: $accent;
+}

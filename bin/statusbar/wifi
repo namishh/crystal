@@ -1,0 +1,9 @@
+#!/bin/bash
+
+case $BUTTON in
+	1) ~/.local/bin/rofiscripts/wifimenu ;;
+	3) 
+  SPEED=$(awk 'NR==3 {print $3 "00%"}''' /proc/net/wireless)
+  dunstify "Network Speed" "$SPEED"
+  ;;
+esac

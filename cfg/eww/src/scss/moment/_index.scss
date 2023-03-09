@@ -1,0 +1,48 @@
+.moment {
+  background-color: $background;
+  border-radius: 4px;
+}
+
+calendar {
+  font-family: "Iosevka Nerd Font";
+
+  &:selected {
+    color: $accent;
+  }
+
+  &:indeterminate {
+    color: rgba(205, 219, 249, 0.3);
+  }
+}
+
+.moment_calendar {
+  background-color: $background;
+  border-radius: 10px;
+
+  .moment_cal-box {
+    background-color: $background;
+    border-radius: inherit;
+
+    margin: 1em;
+
+    .moment_month-year {
+      font-family: "Iosevka Nerd Font";
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin: 0.5em 0em 0em;
+    }
+
+    .moment_day-names {
+      font-family: "Iosevka Nerd Font";
+      margin: 1em 1em 0em;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: $green;
+    }
+
+    .moment_cal {
+      font-size: 1.0rem;
+      padding: 1em .75em 0em;
+    }
+  }
+}

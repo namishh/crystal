@@ -1,0 +1,57 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+// TODO: add right to left support (doable with negative margin on the entry)
+combobox {
+  entry {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &:focus + button {
+      border: config.$border-size solid color.change(colors.$accent-primary, $alpha: config.$tint-strong);
+      border-left: 0;
+      margin-right: -#{config.$border-size};
+
+      &:hover {
+        background-clip: padding-box;
+      }
+    }
+
+    + button.combo {
+      border-radius: 0 config.$radius config.$radius 0;
+    }
+  }
+
+  .linked button.combo {
+    padding: calc(config.$spacing-medium - 0.1em);
+    border-radius: config.$radius;
+    
+    arrow {
+      min-width: 1em;
+      -gtk-icon-source: -gtk-icontheme("go-down-symbolic");
+    }
+  }
+
+  .linked.horizontal & {
+    &:not(:first-child) button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:not(:last-child) button {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  .linked.vertical & {
+    &:not(:first-child) button {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &:not(:last-child) button {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}

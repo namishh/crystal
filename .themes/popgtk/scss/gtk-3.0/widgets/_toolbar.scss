@@ -1,0 +1,13 @@
+@use '../colors';
+@use '../config';
+
+toolbar, .toolbar {
+  background: colors.$surface-strong;
+  padding: config.$spacing-medium;
+
+  &.osd {
+    background: colors.$surface-weak;
+    padding: config.$spacing-medium;
+    border-radius: config.$radius;
+  }
+}

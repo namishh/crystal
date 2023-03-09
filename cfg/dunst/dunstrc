@@ -1,0 +1,80 @@
+[global]
+monitor = 0
+follow = mouse
+width = (150,350)
+height = (200,500)
+progress_bar = true
+progress_bar_height = 18
+progress_bar_frame_width = 1
+progress_bar_min_width = 150
+progress_bar_max_width = 300
+highlight = "#8fa176"
+indicate_hidden = true
+shrink = true
+transparency = 0
+separator_height = 15
+padding = 18
+horizontal_padding = 18
+text_icon_padding = 8
+gap_size = 2
+frame_width = 1
+frame_color = "#1a1a1a"
+sort = true
+idle_threshold = 0
+font = Iosevka Nerd Font 14
+line_height = 4
+markup = full
+origin = "top-left"
+offset = "9x46"
+format = "<b>%s</b>\n%b"
+alignment = left
+show_age_threshold = 60
+word_wrap = true
+ignore_newline = true
+stack_duplicates = true
+hide_duplicate_count = true
+show_indicators = true
+icon_position = off
+max_icon_size = 80
+min_icon_size = 50
+icon_theme = "Zafiro-Icons-Dark"
+enable_recursive_icon_lookup = true
+sticky_history = true
+history_length = 50
+browser = firefox
+always_run_script = true
+title = Dunst
+class = Dunst
+notification_limit = 5
+mouse_left_click = do_action
+mouse_middle_click = close_current
+mouse_right_click = context_all
+ignore_dbusclose = true
+ellipsize = end
+
+[urgency_low]
+timeout = 4
+background = "#121111"
+frame_color = "#8fa176"
+foreground = "#8fa176"
+
+[urgency_normal]
+timeout = 8
+background = "#121111"
+frame_color = "#809fbe"
+foreground = "#809fbe"
+
+[urgency_critical]
+timeout = 30
+background = "#121111"
+frame_color = "#c15a5e"
+foreground = "#c15a5e"
+
+[fullscreen_show_critical]
+msg_urgency = critical
+fullscreen = pushback
+
+[logger]
+summary = "*"
+body = "*"
+script = "~/.config/eww/scripts/notification_logger.zsh"

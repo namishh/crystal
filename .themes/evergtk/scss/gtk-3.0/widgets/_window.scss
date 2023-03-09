@@ -1,0 +1,15 @@
+@use '../colors';
+
+window, assistant {
+  background: colors.$surface-strongest;
+  color: colors.$white-strong;
+}
+
+window {
+  &.csd {
+    decoration {
+      box-shadow: 0 0 8px 0 black;
+      margin: 8px;
+    }
+  }
+}

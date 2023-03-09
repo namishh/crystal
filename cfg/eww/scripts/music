@@ -1,0 +1,148 @@
+#!/bin/bash
+
+STATUS=$(mpc status)
+COVER="/tmp/.music_cover.jpg"
+MUSIC_DIR="$HOME/Music"
+DEFAULT_ICON="󰑗"
+## Get status
+get_status() {
+	if [[ $STATUS == *"[playing]"* ]]; then
+		echo "󰏤"
+	else
+		echo "󰐊"
+	fi
+}
+
+
+get_single() {
+	if [[ $STATUS == *"single: on"* ]]; then
+		echo "true"
+    DEFAULT_ICON="󰑘"
+	else
+		echo "false"
+	fi
+}
+
+
+get_random() {
+	if [[ $STATUS == *"random: on"* ]]; then
+    DEFAULT_ICON="󰑖"
+		echo "true"
+	else
+		echo "false"
+	fi
+}
+
+get_repeat() {
+	if [[ $STATUS == *"repeat: on"* ]]; then
+    MODE='PLAYLIST'
+		echo "true"
+	else
+		echo "false"
+	fi
+}
+## Get song
+get_song() {
+	song=`mpc -f %title% current`
+	if [[ -z "$song" ]]; then
+		echo "Nothing is Playing"
+	else
+    count=$(echo -n "$song" | wc -c)
+    if [ "$count" -le 25 ]; then
+		  echo $song
+	  else 
+		  echo ${song:0:25}...
+	  fi
+	fi	
+}
+
+## Get artist
+get_artist() {
+	artist=`mpc -f %artist% current`
+	if [[ -z "$artist" ]]; then
+		echo " "
+	else
+    count=$(echo -n "$artist" | wc -c)
+    if [ "$count" -le 35 ]; then
+		  echo by $artist
+	  else 
+		  echo by ${artist:0:35}...
+	  fi
+	fi	
+}
+
+## Get time
+get_time() {
+	time=`mpc status | grep "%)" | awk '{print $4}' | tr -d '(%)'`
+	if [[ -z "$time" ]]; then
+		echo "0"
+	else
+		echo "$time"
+	fi	
+}
+get_ctime() {
+	ctime=`mpc status | grep "#" | awk '{print $3}' | sed 's|/.*||g'`
+	if [[ -z "$ctime" ]]; then
+		echo " "
+	else
+		echo "$ctime"
+	fi	
+}
+get_ttime() {
+	ttime=`mpc -f %time% current`
+	if [[ -z "$ttime" ]]; then
+		echo " "
+	else
+		echo "$ttime"
+	fi	
+}
+
+## Get cover
+get_cover() {
+	ffmpeg -i "${MUSIC_DIR}/$(mpc current -f %file%)" "${COVER}" -y &> /dev/null
+	STATUS=$?
+
+	# Check if the file has a embbeded album art
+	if [ "$STATUS" -eq 0 ];then
+		echo "$COVER"
+	else
+		echo "assets/nosong.jpg"
+	fi
+}
+
+## Execute accordingly
+if [[ "$1" == "--song" ]]; then
+	get_song
+elif [[ "$1" == "--artist" ]]; then
+	get_artist
+elif [[ "$1" == "--status" ]]; then
+	get_status
+elif [[ "$1" == "--time" ]]; then
+	get_time
+elif [[ "$1" == "--ctime" ]]; then
+	get_ctime
+elif [[ "$1" == "--ttime" ]]; then
+	get_ttime
+elif [[ "$1" == "--cover" ]]; then
+	get_cover
+elif [[ "$1" == "--toggle" ]]; then
+	mpc -q toggle
+elif [[ "$1" == "--random" ]]; then
+	mpc random
+elif [[ "$1" == "--shuffle" ]]; then
+	mpc shuffle
+elif [[ "$1" == "--single" ]]; then
+	mpc single
+elif [[ "$1" == "--repeat" ]]; then
+	mpc repeat
+elif [[ "$1" == "--getrandom" ]]; then
+	get_random
+elif [[ "$1" == "--getrepeat" ]]; then
+	get_repeat
+elif [[ "$1" == "--getsingle" ]]; then
+	get_single
+elif [[ "$1" == "--next" ]]; then
+	{ mpc -q next; get_cover; }
+elif [[ "$1" == "--prev" ]]; then
+	{ mpc -q prev; get_cover; }
+fi

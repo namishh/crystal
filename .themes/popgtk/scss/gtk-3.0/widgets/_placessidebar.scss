@@ -1,0 +1,34 @@
+@use "sass:color";
+@use "../colors";
+@use "../config";
+
+placessidebar {
+  background: colors.$surface-strong;
+
+  list {
+    background: transparent;
+
+    row {
+      &:hover {
+        background: colors.$white-weakest;
+      }
+
+      &:active {
+        background: colors.$white-weak;
+      }
+
+      &:selected {
+        background: color.change(colors.$accent-primary, $alpha: config.$tint-medium);
+      }
+
+      .sidebar-icon {
+        margin-right: config.$spacing-medium;
+      }
+    }
+  }
+
+  &.frame,
+  .frame {
+    border: 0;
+  }
+}

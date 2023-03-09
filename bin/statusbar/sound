@@ -1,0 +1,6 @@
+#!/bin/bash
+
+case $BUTTON in
+	1) changevolume mute;;
+	3) pavucontrol;;
+esac

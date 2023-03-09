@@ -1,0 +1,22 @@
+#!/bin/bash
+CUR=$(cat ~/.cache/tog)
+
+toggle() {
+  if [[ $CUR == "false" ]]; then
+    rm ~/.cache/tog 
+    echo "true" >> ~/.cache/tog
+  else
+    rm ~/.cache/tog
+    echo "false" >> ~/.cache/tog
+  fi
+}
+stat() {
+  echo $CUR
+}
+
+
+if [[ $1 == "--toggle" ]]; then
+    toggle
+elif [[ $1 == "--stat" ]]; then
+    stat
+fi

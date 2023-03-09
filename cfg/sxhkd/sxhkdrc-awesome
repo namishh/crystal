@@ -1,0 +1,31 @@
+
+# make sxhkd reload its configuration files:
+super + Escape 
+	pkill -USR1 -x sxhkd ~/.config/sxhkd/sxhkdrc-awesome
+
+super + q 
+  ~/.local/bin/rofiscripts/ssmenu
+
+super + p 
+  ~/.local/bin/rofiscripts/wifimenu
+
+# copy some stuff
+super + shift + p
+  xclip -sel c < ~/pa
+
+super + c
+  playerctl play-pause
+#volume
+XF86AudioRaiseVolume
+    ~/.local/bin/changevolume up
+XF86AudioLowerVolume
+    ~/.local/bin/changevolume down
+XF86AudioMute
+    ~/.local/bin/changevolume mute
+
+XF86MonBrightnessDown
+    ~/.local/bin/changebrightness down
+
+XF86MonBrightnessUp
+    ~/.local/bin/changebrightness up
+

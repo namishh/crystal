@@ -1,0 +1,69 @@
+#!/usr/bin/bash
+STATUS=$(nmcli | grep wlan0 | awk 'FNR == 1 {print $2}')
+SSID=$(iwgetid -r)
+STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
+
+toggle() {
+    if [[ $STATUS == "connected" ]]; then
+        getroot 'nmcli radio wifi off'
+        notify-send  --urgency=normal "Wi-Fi" "Wi-Fi has been turned off!"
+    else
+        getroot 'nmcli radio wifi on'
+        notify-send  --urgency=normal "Wi-Fi" "Wi-Fi has been turned on, you are back online!"
+    fi
+}
+
+
+class() {
+    if [[ $STATUS == "connected" ]]; then
+        echo "active"
+    else
+        echo "inactive"
+    fi
+}
+
+speed() {
+  s1=$(awk 'NR==3 {print $3}''' /proc/net/wireless)
+  s2=${s1::-1}
+  echo $s2
+}
+
+ssid() {
+    if [[ $STATUS == "connected" ]]; then
+        echo $(iwgetid -r)
+
+    else
+        echo "Wifi"
+    fi
+}
+color() {
+    if [[ $STATUS == "connected" ]]; then
+        echo "green"
+
+    else
+        echo "red"
+    fi
+}
+icon() {
+    if [[ $STATUS == "connected" ]]; then
+        echo "󰤨"
+
+    else
+        echo "󰤮"
+    fi
+}
+
+
+if [[ $1 == "--toggle" ]]; then
+    toggle
+elif [[ $1 == "--class" ]]; then
+    class
+elif [[ $1 == "--ssid" ]]; then
+   ssid 
+elif [[ $1 == "--color" ]]; then
+   color 
+elif [[ $1 == "--icon" ]]; then
+   icon
+elif [[ $1 == "--speed" ]]; then
+   speed
+fi

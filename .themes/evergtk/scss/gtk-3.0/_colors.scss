@@ -1,0 +1,47 @@
+/* stylelint-disable unknownAtRules */
+/* stylelint-disable css-ruleorselectorexpected */
+/* stylelint-disable at-rule-no-unknown */
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable function-no-unknown */
+/* stylelint-disable function-comma-space-after */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable hue-degree-notation */
+$surface-strongest: #1b2124;
+$surface-strong: #22292d;
+$surface-moderate: #2e383d;
+$surface-weak: #313b41;
+$surface-weakest: #313b41;
+
+$white-strongest: #dddddd;
+$white-strong: #dfd5d5;
+$white-moderate: #d4d5d5;
+$white-weak: #22292d;
+$white-weakest: #2e383d22;
+
+$black-strongest: #1b2124;
+$black-moderate: #22292d;
+
+$red-normal:  #ce6568;
+$red-light:       #e76365;
+$green-normal:    #8dc080;
+$green-light:    #90bd9b ;
+
+$yellow-normal:   #d3b884;
+
+$yellow-light:    #d6b678;
+
+
+$blue-normal:     #85b7b0;
+$blue-light:      #7fbbb3;
+
+$purple-normal: #d699b6  ;
+$purple-light:  #d491b1  ;
+
+
+$cyan-normal:   #90bd9b  ;
+$cyan-light:  #7ab98a    ;
+$accent-primary: $cyan-normal;
+$accent-secondary: $green-normal;
+
+// TODO: is there a better way to do this? this is for example used in gnome-calculator for the result top-border
+@define-color borders #{"" +$surface-strong};

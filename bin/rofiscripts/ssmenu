@@ -1,0 +1,145 @@
+#!/bin/bash
+# https://github.com/b4skyx/scmenu
+# Check whether the dependencies have been installed or not
+type curl &>/dev/null || {
+	echo "Couldn't find curl, dependency not satisfied." >&2
+	exit 17
+}
+type maim &>/dev/null || {
+	echo "Couldn't find maim, which is required to take screenshots." >&2
+	exit 17
+}
+
+# Fallback to dmenu if rofi is not found
+dmenu_cmd="rofi -dmenu -theme ~/.config/rofi/generic.rasi"
+type rofi&>/dev/null || {
+	type dmenu&>/dev/null || {
+		echo "Neither rofi nor dmenu installed..." >&2
+		exit 17
+	}
+	dmenu_cmd="dmenu"
+}
+
+
+# Help message
+function helpfn() {
+	echo "Scmenu, a screenshot wrapper built around maim" >&2
+	echo "Menu navigation through dmenu/rofi" >&2
+	echo "Note: Make sure you have the dependencies installed" >&2
+	echo "Usage: Put this script in your path and bind your desired key for quick launch"
+}
+
+# Set inital options and choices
+
+save_folder="$HOME/Pictures/Screenshots"
+options=("Fullscreen\nSelection\nCurrent Window\nTimer")
+choice=""
+
+# Update choice as required
+function get_choice() {
+	if [ -e /tmp/deletion_link ]
+	then
+		options+=$"\nDeletion Link"
+	fi
+	choice=$(echo -e "$options" | $dmenu_cmd -p "Select Type")
+}
+
+# Processing the choices made by the user
+function runner() {
+	file_name=$(date +Screenshot_%d%m%y_%H%M%S.png)
+	if [ "$choice" = "Timer" ]
+	then
+		seconds=`$dmenu_cmd "After number of seconds"`
+		choice=$(echo -e "Fullscreen\nCurrent Window" | $dmenu_cmd -p "Type")
+		sleep "$seconds"
+		runner
+	fi
+	if [ "$choice" = "Deletion Link" ]
+	then
+		xclip -selection clipboard < /tmp/deletion_link
+		rm /tmp/deletion_link
+		notify-send -i /tmp/screenshot.png "Deletion Link copied"
+	elif [ "$choice" = "Fullscreen" ]
+	then
+		sleep 0.2
+		maim /tmp/screenshot.png
+		save_clip
+	elif [ "$choice" = "Selection" ]
+	then
+		maim -s /tmp/screenshot.png
+		save_clip
+	elif [ "$choice" = "Current Window" ]
+	then
+		maim -i $(xdotool getactivewindow) /tmp/screenshot.png
+		save_clip
+	fi
+}
+
+# Upload screenshot to imgur
+
+function upload_to_imgur(){
+
+	# Set client_id for the imgur api
+	# Replace this with your own id if required
+	default_client_id=c9a6efb3d7932fd
+	client_id="${IMGUR_CLIENT_ID:=$default_client_id}"
+
+	# Send a request through curl of the screenshot
+	response=`curl -s -H "Authorization: Client-ID $client_id" -H "Expect: " -F "image=@/tmp/screenshot.png" https://api.imgur.com/3/image.xml`
+
+	# Error Handling
+
+	# Check for the response code. If failed, stdout with appropriate message.
+	if [ $? -ne 0 ]; then
+		echo "Upload failed" >&2
+		exit 1
+	# Else parse the response and check for upload status.
+	elif echo "$response" | grep -q 'success="0"'; then
+		echo "Error message:" >&2
+		msg="${response##*<error>}"
+		echo "${msg%%</error>*}" >&2
+		exit 1
+	fi
+
+	# If uploaded successfully, parse the response further to get the image and deletion url.
+	url="${response##*<link>}"
+	url="${url%%</link>*}"
+	delete_hash="${response##*<deletehash>}"
+	delete_hash="${delete_hash%%</deletehash>*}"
+
+	# Copy the image link to clipboard and save the deletion_link for further use.
+	echo $url | sed 's/^http:/https:/' | xclip -selection clipboard
+	echo "https://imgur.com/delete/$delete_hash" > /tmp/deletion_link
+}
+
+# Function to save the screenshot
+function save_clip(){
+	options=("Copy to Clipboard\nSave Image\nUpload to Imgur")
+	choice=$(echo -e "$options" | $dmenu_cmd -p "Select Type")
+
+	if [ "$choice" = "Copy to Clipboard" ]
+	then
+		xclip -selection clipboard -t image/png /tmp/screenshot.png
+		notify-send.sh -i /tmp/screenshot.png "Screenshot Captured!!" "Copied to clipboard"
+	elif [ "$choice" = "Save Image" ]
+	then
+		cp /tmp/screenshot.png $save_folder/$file_name
+		notify-send.sh -o "open:xdg-open $save_folder/${file_name}" -o "delete:gio trash $save_folder/${file_name}" -i /tmp/screenshot.png "Screenshot Saved!!" "$file_name"
+	elif [ "$choice" = "Upload to Imgur" ]
+	then
+		notify-send.sh "Uploading to Imgur"
+		upload_to_imgur
+		notify-send.sh -i /tmp/screenshot.png -i "Uploaded to Imgur!" "Imgur URL copied to Clipboard."
+	fi
+}
+
+
+if [ "$1" == "-h" -o "$1" == "--help" ]; then
+	helpfn
+	exit 0
+elif [ $# -eq 0 ]; then
+	get_choice
+	runner
+else
+	echo "Bad arguments passed.">&2
+fi

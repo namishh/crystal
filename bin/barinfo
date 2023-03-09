@@ -1,0 +1,66 @@
+#!/bin/bash
+black=#121111
+green=#8fa176
+white=#dbdfdf
+grey=#212126
+darkblue=#7d95ae
+red=#ca5a5e
+blue=#809fbe
+yellow=#d8b170
+interval=0
+
+battery() {
+  BAT_ICON=$(~/.local/bin/battery --icon)
+  get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)%%"
+  printf "\x04^b$green^^c$black^ $BAT_ICON ^b$black^^c$green^ $get_capacity ^b$black^"
+}
+
+volume() {
+  VOL_ICON="$(~/.local/bin/volume)"
+  VOLUME=$(pamixer --get-volume)
+  printf "\x05^c$black^^b$blue^ $VOL_ICON ^b$grey^^c$blue^ $VOLUME%% ^b$black^"
+}
+
+wlan() {
+  SSID=$(iwgetid -r)
+	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+	up) printf "\x02^c$black^^b$blue^ 󰤨 ^d^%s""^c$blue^^b$grey^ $SSID ^b$black^" ;;
+	down) printf "\x02^c$black^^b$blue^ 󰤯 ^d^%s""^c$blue^^b$grey^ Disconnected ^b$black^" ;;
+	esac
+}
+
+clock() {
+	printf "\x03^c$black^^b$darkblue^ 󰃭 "
+  printf "^c$black^^b$blue^ $(date '+%H:%M') ^b$black^"
+}
+
+mem() {
+  MEM=$(free -h | awk '/^Mem/ { print $3 }' | sed s/i//g)
+  printf "^b$red^^c$black^ 󰘚 ^b$grey^^c$red^ $MEM ^b$black^"
+}
+
+cpu() {
+  CPU=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')
+	printf "^c$grey^^b$green^ CPU ^c$green^^b$grey^ ${CPU} ^b$black^"
+}
+
+min() {
+  BAT_ICON=$(~/.local/bin/battery --icon)
+  TIME=$(date +"%H:%M")
+  MONTH=$(date +"%e %b %Y")
+  WIFI_STEN=$(~/.local/bin/wifistronk)
+  printf "\x07^b$grey^^c$white^ $MONTH ^b$black^ "
+  printf "\x06^b$grey^^c$white^ $TIME $WIFI_STEN $BAT_ICON ^b$black^ "
+  printf "\x08^b$grey^^c$white^ 󰂚 ^b$black^"
+}
+
+powermenu(){
+	printf "\x01^c$red^^b$grey^ 󰤆 "
+}
+
+
+while true; do
+  interval=$((interval + 1))
+  sleep 1 && xsetroot -name "$(min) $(powermenu)"
+
+ done

@@ -1,0 +1,11 @@
+
+* {
+    font:                        "Iosevka Nerd Font 12";
+    background:                  #1b2124;
+    background-alt:              #2e383d;
+    foreground:                  #dad0bc;
+    selected:                    #90bd9b;
+    active:                      #85b7b0;
+    urgent:                      #ce6568;
+}
+

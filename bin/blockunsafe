@@ -1,0 +1,5 @@
+#!/bin/bash
+cp /etc/hostnotsafe /etc/hosts
+rm /home/namish/.cache/hosttype 
+touch /home/namish/.cache/hosttype
+echo "yes" >> /home/namish/.cache/hosttype

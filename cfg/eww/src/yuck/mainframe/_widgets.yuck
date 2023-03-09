@@ -1,0 +1,118 @@
+(defwidget mainframe_profile[]
+  (box :orientation 'v' :hexpand true :class 'mainframe_profile' :space-evenly false
+      (box :orientation 'v' :class "mainframe_profile_box" :hexpand true :vexpand true :space-evenly false
+      (box :hexpand true :valign 'start' :vexpand true :halign 'start' :class " white mainframe_profile_greet" "Yo!"  )
+      (box :hexpand true :halign 'start' :class " white mainframe_profile_name" "${user}"  )
+      (box :hexpand true :halign 'start' :class " white mainframe_profile_name" "@${host}"  )
+        )
+    )
+)
+
+(defwidget mainframe_button[func label altfunc icon activevar]
+  (box :orientation 'v' :class 'commentlight mainframe_button_whole' :space-evenly false :spacing 8
+    (box :orientation 'h' :hexpand true :class 'mainframe_button ${activevar == "active" ? "active" : ""}' :space-evenly false :width 75 :height 75 
+      (button :onrightclick altfunc :onclick func  :hexpand true :class 'mainframe_button_icon_box'
+          (label :class 'mainframe_button_icon' :halign 'center' :text icon)
+        )
+    )
+  )
+)
+
+(defwidget mainframe_settings[]
+  (box :orientation 'v' :class 'mainframe_settings' :space-evenly false :spacing 20
+      (box :orientation 'h' :halign 'center' :class 'mainframe_settings_row' :space-evenly false :spacing 20
+          (mainframe_button :label ssid :func "~/.config/eww/scripts/wifi --toggle" :altfunc "~/.local/bin/rofiscripts/wifimenu &" :icon '󰤨' :activevar wifiactive)
+          (mainframe_button :label 'Bluetooth' :func "~/.config/eww/scripts/bluetooth --toggle" :altfunc "~/.local/bin/rofiscripts/bluetoothmenu" :icon '󰂯' :activevar btactive)
+        )
+      (box :orientation 'h' :halign 'center' :class 'mainframe_settings_row' :space-evenly false :spacing 15
+          (mainframe_button :label 'Airplane Mode' :func "~/.config/eww/scripts/airplanemode --toggle" :altfunc "dunstify 'Toggle Airplane Mode'" :icon '󰀝' :activevar apactive)
+          (mainframe_button :label 'Do Not Disturb' :func "~/.config/eww/scripts/donotdisturb --toggle" :altfunc "st -e nvim ~/.config/dunst/dunstrc &" :icon '󰍶' :activevar dndactive)
+        )
+
+  )
+)
+
+(defwidget mainframe_scale[label value func scalelabel]
+   (box
+    :orientation "h"
+    :space-evenly "false" :spacing 16 :class "mainframe_scale_box"
+      (box :orientation "h" :valign "center" :class "mainframe_scale_label " label)
+      (scale :class "mainframe_scale white ${scalelabel}"
+              :min 0
+              :hexpand true
+              :max 100
+              :orientation "h"
+              :value value
+              :onchange func
+              :valign 'center')
+      (box :orientation "h" :valign "center" :class "mainframe_scale_value" '${round(value,0) + 1}%')
+    )
+
+)
+
+(defwidget mainframe_scales[]
+  (box :orientation 'v' :class 'mainframe_scales' :space-evenly false :spacing 15
+      (box :class "commentlight" :halign 'start' 'Controls')
+      (mainframe_scale :func "pamixer --set-volume $(printf %d {})" :scalelabel "mainframe_scale_volume" :value volume :label "󰕾")
+      (mainframe_scale :func "brightnessctl s {}%" :scalelabel "mainframe_scale_brightness" :value brightness :label "󰃞")
+    )
+)
+
+(defwidget mainframe_focus[]
+  (box :orientation 'h':class 'mainframe_focus' :space-evenly false :spacing 10
+        (box :class 'white mainframe_focus_text' 'Chill')
+        (box :valign 'center' :class 'mainframe_focus_toggle' :height 20 :width 40 :space-evenly false
+            (button :valign 'center' :onclick '~/.local/bin/hostsafe toggle' :class 'mainframe_focus_box' :height 20 :valign 'center' :hexpand true :halign '${focusmode == "true" ? "end" : "start"}' :width 20)
+          )
+        (box :class 'white mainframe_focus_text' 'Focus')
+    )
+)
+
+(defwidget mainframe_song[]
+  (box :class 'mainframe_song_wrap' :space-evenly false :spacing 15 :orientation 'h'
+  (box :orientation 'h' :hexpand true :class 'mainframe_song_box' :height 255 :space-evenly false :style "background: url('${songimage}');background-position: center;"
+    (box :orientation 'v' :hexpand true :class 'mainframe_song' :space-evenly false
+      (box :halign 'start' :class 'mainframe_song_name white' songname)
+      (box :vexpand true :valign 'start' :halign 'start' :class 'mainframe_song_artist white' artist)
+      (scale :style 'min-height: ${ctime == " " ? "0rem" : ".1rem"};' :onchange "mpc seek {}%" :class 'mainframe_song_scale' :min 0 :max 100 :value ptime :hexpand true)
+      (box :valign 'end' :class 'mainframe_song_controls' :orientation 'h' :spacing 10 :space-evenly false
+            (box :halign 'start' :class 'white mainframe_song_time' :valign 'center' ctime)
+            (box "/")
+            (box :class 'white mainframe_song_time' :valign 'center' ttime)
+      )
+    ) 
+  )
+  (box :class 'mainframe_song_side' :orientation 'v'
+            (button :class "mainframe_song_btn white prev" :onclick "~/.config/eww/scripts/music --prev"  "󰒮")
+            (button :class "mainframe_song_btn accent play" :onclick "~/.config/eww/scripts/music --toggle" "${icon}" )
+            (button :halign 'start' :hexpand true :class "mainframe_song_btn white symsongbtn next" :onclick "~/.config/eww/scripts/music --next" "󰒭")
+    )
+  )
+)
+
+
+(defwidget mainframe_footer[]
+  (box :orientation 'h' :class 'mainframe_footer' :space-evenly false
+      (box :class 'green mainframe_battery' :halign 'start' '${battery_icon} ')
+      (box :class 'white mainframe_battery' :hexpand true  :halign 'start' '${battery_perc}%')
+      (mainframe_focus)
+    )
+)
+
+(defwidget mainframe_sep[]
+  (box :orientation 'h' :class 'mainframe_sep_box'
+      (box :class 'mainframe_sep')
+    )
+)
+
+(defwidget mainframe[]
+  (box :orientation 'v' :hexpand true :space-evenly false :class 'mainframe'
+    (box :orientation 'h' :spacing 20
+      (mainframe_settings)
+      (mainframe_profile)
+      )
+    (mainframe_scales)
+    (mainframe_song)
+    (mainframe_footer)
+  )
+)

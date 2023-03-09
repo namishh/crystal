@@ -1,0 +1,29 @@
+@use '../colors';
+
+radio {
+  -gtk-icon-source: -gtk-recolor(url('../assets/symbolic/radio.symbolic.png'));
+  -gtk-icon-transform: scale(0);
+  color: colors.$white-strongest;
+  border: 0.2em solid colors.$white-weakest;
+  border-radius: 100%;
+  padding: 0.1em;
+  min-width: 0.6em;
+  min-height: 0.6em;
+
+  // TODO: extract transitions into separate directory
+  transition: -gtk-icon-transform 200ms;
+
+  &:hover {
+    border-color: colors.$white-weak;
+  }
+
+  &:active, &:checked {
+    background: colors.$white-weakest;
+  }
+
+  &:checked {
+    -gtk-icon-transform: scale(1);
+    border-color: colors.$accent-primary;
+    background: colors.$accent-primary;
+  }
+}

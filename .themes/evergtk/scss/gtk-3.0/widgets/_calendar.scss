@@ -1,0 +1,31 @@
+@use '../colors';
+
+calendar {
+  background: colors.$surface-strong;
+
+  &.button {
+    background: colors.$surface-moderate;
+    color: colors.$white-moderate;
+
+    &:hover { color: colors.$white-strong; }
+    &:disabled { color: colors.$white-weakest; }
+  }
+
+  &.header {
+    background: colors.$surface-moderate;
+  }
+
+  &.highlight {
+    color: colors.$white-moderate;
+  }
+
+  &:selected {
+    color: colors.$white-strongest;
+    border-radius: 0.5em;
+    background: colors.$accent-primary;
+  }
+
+  &:indeterminate {
+    color: colors.$white-weak;
+  }
+}

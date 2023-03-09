@@ -1,0 +1,42 @@
+!-- decay palette --!
+#define decay_darker_bg   #0b0d16
+#define decay_bg          #0d0f18
+#define decay_contrast_bg #0f111a
+#define decay_lighter_bg  #11131c
+#define decay_fg          #a5b6cf
+#define decay_cursor      #a5b6cf
+
+#define decay_black         #151720
+#define decay_light_black   #1c1e27
+#define decay_red           #dd6777
+#define decay_green         #90ceaa
+#define decay_yellow        #ecd3a0
+#define decay_blue          #86aaec
+#define decay_magenta       #c296eb
+#define decay_cyan          #93cee9
+#define decay_white         #cbced3
+
+!-- colors assignment --!
+st.foreground:   decay_fg
+st.background:   decay_bg
+st.cursorColor:  decay_cursor
+st.contrast: decay_contrast_bg
+st.cursorline: decay_lighter_bg
+st.color0: decay_black
+st.color1: decay_red
+st.color2: decay_green
+st.olor3: decay_yellow
+st.color4: decay_blue
+st.color5: decay_magenta
+st.color6: decay_cyan
+st.color7: decay_white
+
+st.color8: decay_light_black
+st.color9: decay_red
+st.color10: decay_green
+st.color11: decay_yellow
+st.color12: decay_blue
+st.color13: decay_magenta
+st.color14: decay_cyan
+st.color15: decay_white
+st.borderpx:     12

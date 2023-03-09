@@ -1,0 +1,17 @@
+@use 'sass:color';
+@use '../colors';
+@use '../config';
+
+textview {
+  background: colors.$white-weakest;
+  padding: config.$spacing-medium config.$spacing-small;
+
+  &:disabled {
+    opacity: config.$disabled-opacity;
+  }
+
+  selection {
+    background: color.change(colors.$accent-primary, $alpha: config.$tint-medium);
+    color: colors.$white-strongest;
+  }
+}

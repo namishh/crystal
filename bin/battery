@@ -1,0 +1,81 @@
+#!/bin/bash
+bat=$(cat /sys/class/power_supply/BAT0/capacity)
+stat=$(cat /sys/class/power_supply/BAT0/status)
+if [ "$stat" == "Charging" ]
+then
+  icon=""
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 90 ]
+then
+  icon=""
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 80 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 70 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 60 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 50 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 40 ]
+then
+  icon=""
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 30 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 20 ]
+then
+  icon="" 
+  class="bat-green"
+  background="#308052"
+  foreground="#6ec687"
+elif [ $bat -ge 10 ]
+then
+  icon="" 
+  class="bat-red"
+  background="#c4373d"
+  foreground="#df5b61"
+else
+  icon=""
+  class="bat-red"
+  background="#c4373d"
+  foreground="#df5b61"
+fi
+
+if [[ $1 == '--icon' ]]; then
+  echo $icon
+elif [[ $1 == '--bg' ]]; then
+  echo $background
+elif [[ $1 == '--fg' ]]; then
+  echo $foreground
+elif [[ $1 == '--class' ]]; then
+  echo $class
+elif [[ $1 == '--val' ]]; then
+  echo $bat
+fi
