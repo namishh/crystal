@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, ... }:
+{ lib, stdenv, fetchFromGitHub, pkgs, ... }:
 
 stdenv.mkDerivation rec {
   pname = "aster";
@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [
-    go
+    pkgs.go
   ];
 
   installPhase = ''
