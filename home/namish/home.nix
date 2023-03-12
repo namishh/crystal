@@ -43,7 +43,7 @@ in
   home = {
     ## Installing neovim config
     activation = {
-      installNvimConfig = ''
+      installConfig = ''
         if [ ! -d "${config.home.homeDirectory}/.config/nvim" ]; then
           git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
         fi

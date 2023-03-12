@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
     sha256 = "0wyj4y8bzlicr617r2mrdrw81rpz0v4s0xb3nk0g22k5vxnsipln";
   };
 
-  buildInputs = [
-    pkgs.go
+  buildInputs = with pkgs;[
+    go
   ];
 
   installPhase = ''
