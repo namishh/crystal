@@ -45,10 +45,10 @@ in
     activation = {
       installConfig = ''
         if [ ! -d "${config.home.homeDirectory}/.config/nvim" ]; then
-          git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
+          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
         fi
         if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
-          git clone --depth 1 https://github.com/chadcat7/sugoi ${config.home.homeDirectory}/.config/awesome 
+          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/sugoi ${config.home.homeDirectory}/.config/awesome 
         fi
       '';
     };
