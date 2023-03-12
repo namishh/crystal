@@ -3,7 +3,7 @@
   additions = final: _prev: import ../pkgs { pkgs = final; inherit inputs; };
   modifications = final: prev: {
     aster = prev.callPackage ../derivs/aster.nix { };
-    st = prev.st.overrideAttrs (oldAttrs: {
+    st-c = prev.st.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {
         owner = "chadcat7";

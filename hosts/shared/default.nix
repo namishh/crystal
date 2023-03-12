@@ -60,6 +60,7 @@ in
     libnotify
     xdg-utils
     jq
+    st-c
     (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${system}.awesome-git
     git
     mpv
