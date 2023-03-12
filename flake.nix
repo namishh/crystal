@@ -29,7 +29,7 @@
         nixl = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
-              inherit inputs;
+              inherit inputs outputs;
             };
             modules = [
               # > Our main nixos configuration file <
