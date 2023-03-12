@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     repo = "Aster";
     owner = "TorchedSammy";
     rev = "e00dd55d3200f5b87d7cad6d17005b474b0d4a2d";
-    sha256 = "0xa8a8m8bi0b3crs36qh72hnryhjr6r7dzy202sdrvpd29jjgh35";
+    sha256 = "0wyj4y8bzlicr617r2mrdrw81rpz0v4s0xb3nk0g22k5vxnsipln";
   };
 
   buildInputs = [
