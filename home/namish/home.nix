@@ -41,16 +41,15 @@ in
     (import ../shared/bin/default.nix { inherit config; })
   ];
   home = {
+    ## Installing neovim config
+    activation = {
+      installNvimConfig = ''
+        if [ ! -d "${config.home.homeDirectory}/.config/nvim" ]; then
+          git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
+        fi
+      '';
+    };
     packages = with pkgs; [
-      (st.overrideAttrs (oldAttrs: rec {
-        buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
-        src = fetchFromGitHub {
-          owner = "chadcat7";
-          repo = "best";
-          rev = "b4e13bd68a4dd6e89d691c7a0721ae4c8ffc4908";
-          sha256 = "0mjba15phjm4rnwz6ni6731zqw3j3wb6w9pvw0nv8ikj4ncih8r6";
-        };
-      }))
       neovim
       bc
       firefox

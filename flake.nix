@@ -14,23 +14,23 @@
   };
   outputs = { self, nixpkgs, home-manager, ... } @inputs:
     let
-      inherit (nixpkgs) lib;
-      forSystems = lib.genAttrs lib.systems.flakeExposed;
+      inherit (self) outputs;
+      forSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = with inputs; [
-          nur.overlay
-        ];
       };
     in
     {
+      overlays = import ./overlays { inherit inputs; };
       # host configurations
       nixosConfigurations = {
         nixl = nixpkgs.lib.nixosSystem
           {
-            specialArgs = { inherit inputs; };
+            specialArgs = {
+              inherit inputs;
+            };
             modules = [
               # > Our main nixos configuration file <
               ./hosts/nixl/configuration.nix
