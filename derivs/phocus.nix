@@ -28,7 +28,7 @@ stdenvNoCC.mkDerivation rec {
       --replace "@bg2@" "#${colors.color8}"\
       --replace "@bg3@" "#${colors.color0}" \
       --replace "@bg4@" "#${colors.comment}" \
-      --replace "@red@" "#${colors.color1} \
+      --replace "@red@" "#${colors.color1}" \
       --replace "@lred@" "#${colors.color9}" \
       --replace "@orange@" "#${colors.color3}" \
       --replace "@lorange@" "#${colors.color11}" \
