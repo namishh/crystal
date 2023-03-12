@@ -16,6 +16,7 @@ stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
+    export GOPROXY=direct
     go get -d
     go build -o $out/bin/aster
   '';
