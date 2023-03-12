@@ -62,6 +62,7 @@ in
     xdg-utils
     jq
     st-custom
+    aster
     (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${system}.awesome-git
     git
     mpv
