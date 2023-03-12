@@ -40,7 +40,7 @@
       # user configurations
       homeConfigurations = {
         namish = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs self; };
           modules = [
             ./home/namish/home.nix
