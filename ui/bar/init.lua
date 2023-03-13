@@ -2,7 +2,7 @@ local awful       = require("awful")
 local wibox       = require("wibox")
 local beautiful   = require("beautiful")
 local dpi         = require("beautiful").xresources.apply_dpi
-
+local helpers     = require('helpers')
 -- Importing all the compoments
 local layoutbox   = require("ui.bar.modules.layout")
 local taglist     = require("ui.bar.modules.tags")
@@ -34,6 +34,7 @@ local function init(s)
   local wibar = awful.wibar {
     position = beautiful.barDir,
     height = barheight,
+    shape = helpers.rrect(5),
     width = barwidth,
     bg = beautiful.bg,
     margins = {
