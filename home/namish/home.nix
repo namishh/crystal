@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/decay.nix { };
+  colors = import ../shared/cols/pop.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -48,7 +48,8 @@ in
           ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
         fi
         if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
-          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/sugoi ${config.home.homeDirectory}/.config/awesome 
+          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/fuyu ${config.home.homeDirectory}/.config/awesome
+          cd ${config.home.homeDirectory}/.config/awesome && ${pkgs.git}/bin/git switch the-awesome-config
         fi
       '';
     };
