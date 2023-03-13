@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/decay.nix { };
+  colors = import ../shared/cols/pop.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -54,10 +54,8 @@ in
     };
     packages = with pkgs; [
       neovim
-      jmtpfs
       bc
       firefox
-      glib
       usbutils
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
@@ -76,7 +74,6 @@ in
       feh
       spotdl
       exa
-      android-file-transfer
     ];
   };
 }
