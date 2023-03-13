@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+STATUS=$(nmcli | grep wlan0 | awk 'FNR == 1 {print $2}')
+SSID=$(iwgetid -r)
+STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
+
+toggle() {
+    if [[ $STATUS == "connected" ]]; then
+        nmcli radio wifi off
+        notify-send -a "wifi"  --urgency=normal "Wi-Fi" "Wi-Fi has been turned off!"
+    else
+        nmcli radio wifi on
+        notify-send -a "wifi"  --urgency=normal "Wi-Fi" "Wi-Fi has been turned on, you are back online!"
+    fi
+}
+
+
+if [[ $1 == "--toggle" ]]; then
+    toggle
+fi
