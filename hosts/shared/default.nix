@@ -62,7 +62,7 @@ in
     xdg-utils
     jq
     st-custom
-    #aster
+    imgclr
     (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${system}.awesome-git
     git
     mpv
@@ -97,13 +97,7 @@ in
     style = "gtk2";
   };
 
-  # Fonts
-
-  # Hardware
-  # --------
-  # CUPS support
   services.printing.enable = true;
-  # Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;

@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/pop.nix { };
+  colors = import ../shared/cols/decay.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
