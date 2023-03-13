@@ -48,8 +48,7 @@ in
           ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
         fi
         if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
-          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/fuyu ${config.home.homeDirectory}/.config/awesome
-          cd ${config.home.homeDirectory}/.config/awesome && ${pkgs.git}/bin/git switch the-awesome-config
+          ${pkgs.git}/bin/git clone --depth 1 --branch the-awesome-config https://github.com/chadcat7/fuyu ${config.home.homeDirectory}/.config/awesome
         fi
       '';
     };
