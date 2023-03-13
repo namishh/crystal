@@ -1,5 +1,5 @@
 <div align='center'>
-  <h1>fuyu | winter</h1> <br>
+  <h1>冬 | fuyu | winter</h1>
   <h4>nix dotfiles that will 200% break your system</h4>
 </div>
 
@@ -12,32 +12,38 @@ You have been warned! <br>
 3. Follow these commands (you might need root privileges):
 
 ```bash
-# Get into a Nix shell with Nix unstable and git
-nix-shell -p git nixUnstable
-# Clone my dotfiles (it has submodules)
-git clone https://github.com/JavaCafe01/dotfiles /mnt/etc/nixos --recurse-submodules
-# Remove this file
-rm /mnt/etc/nixos/hosts/<your host>/hardware-configuration.nix
-# Generate a config and copy the hardware configuration, disregarding the generated configuration.nix
-nixos-generate-config --root /mnt
-cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/<your host>/
-rm /mnt/etc/nixos/configuration.nix
-# Make sure you're in the configuration directory
-cd /mnt/etc/nixos
-# Install this NixOS configuration with flakes
-nixos-install --flake '.#nixl'
+$ nix-shell -p git nixUnstable ## install git and unstable nix
 ```
+
+```bash
+$ git clone --depth 1 https://github.com/chadcat7/fuyu /mnt/etc/nixos --recurse-submodules ## cloning my config
+```
+
+```bash
+$ rm /mnt/etc/nixos/hosts/<your host>/hardware-configuration.nix ## remove the hardware-configuration.nix for my system!
+```
+
+```bash
+$ nixos-generate-config --root /mnt ## generate yours
+$ cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/<your host>/
+$ rm /mnt/etc/nixos/configuration.nix
+```
+
+```bash
+$ cd /mnt/etc/nixos
+$ nixos-install --flake '.#nixl'
+```
+
+Congrats! You just installed NixOS! Now lets install the environment and the configs
+
 4. Reboot, login as root, and change the password for your user using `passwd`.
 5. Log in as your normal user.
 6. Follow these commands:
 
 ```bash
-# change ownership of configuration folder
-sudo chown -R $USER /etc/nixos
-# go into the configuration folder
+sudo chown -R $USER /etc/nixos # change ownership of configuration folder
 cd /etc/nixos
-# Install the home manager configuration
-home-manager switch --flake '.#namish'
+home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
 
 
