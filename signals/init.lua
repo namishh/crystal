@@ -1,8 +1,0 @@
-require 'signals.tag'
-require 'signals.screen'
-require 'signals.client'
-require 'signals.ruled'
-require 'signals.con'
-require 'signals.etc'
-require 'signals.stat'
-require 'signals.sys'
