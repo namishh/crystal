@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+toggle(){
+    if [[ ! `pidof picom` ]]; then
+        picom &
+    else 
+        pkill -9 picom
+    fi
+}
+
+if [[ $1 == "--toggle" ]]; then
+    toggle
+fi
+
