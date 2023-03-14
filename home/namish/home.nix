@@ -69,6 +69,7 @@ in
       procps
       cava
       picom
+      simplescreenrecorder
       mpdris2
       pavucontrol
       feh

@@ -27,7 +27,7 @@ with colors; {
       "st.contrast" = "#${contrast}";
       "st.cursorline" = "#${cursorline}";
       "st.comment" = "#${comment}";
-      "st.borderpx" = 6;
+      "st.borderpx" = 32;
     };
   };
 }
