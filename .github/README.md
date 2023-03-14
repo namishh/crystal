@@ -71,7 +71,7 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 > by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
 
 #### WOW! NixOS looks so god damn cool! I am just gonna jump right into it!
-+ [NO](https://i.redd.it/ixi6zkudgsu61.png). NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) instead of the distribution directly.
++ [NO](https://i.redd.it/ixi6zkudgsu61.png). NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) or using NixOS in a virtual machine instead of ripping apart your hard disk.
 
 #### I really wanna try out NixOS!
 If you that determined, here are some resources to start out
