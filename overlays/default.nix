@@ -2,7 +2,6 @@
 {
   additions = final: _prev: import ../pkgs { pkgs = final; inherit inputs; };
   modifications = final: prev: {
-    aster = prev.callPackage ../derivs/aster.nix { };
     imgclr = prev.callPackage ../derivs/imagecolorizer.nix {
       buildPythonPackage = prev.python310Packages.buildPythonPackage;
     };
