@@ -10,7 +10,7 @@ Welcome to my nix dotfiles! This repo contains all my nix files that I have in m
 
 ## Features of config
 + Awesome as the windows manager
-+ zsh as the shell with starship prmompt
++ zsh as the shell with starship prompt
 + Multiple Themes
 + Pulseaudio for audio (will change to pipewire)
 + st as the terminal
