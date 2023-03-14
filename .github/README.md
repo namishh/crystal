@@ -5,8 +5,9 @@
 
 Welcome to my nix dotfiles! This repo contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config only checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
 
-> **WARNING**
-> I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot findd elsewhere!
+> **Warning**
+>
+> I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
 
 ## Features of config
 + Awesome as the windows manager
@@ -65,12 +66,14 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 5. overlays
   + they are just modifications you do on top of the original program, for example patching st, or using a fork of st from github.
 
-> **WARNING** by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
+> **Warning** 
+>
+> by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
 
 #### WOW! NixOS looks so god damn cool! I am just gonna jump right into it!
 + [NO](https://i.redd.it/ixi6zkudgsu61.png). NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) instead of the distribution directly.
 
-#### I really wanna try out nix!
+#### I really wanna try out NixOS!
 If you that determined, here are some resources to start out
   + [zero-to-nix](https://zero-to-nix.com)
   + [pills](https://nixos.org/guides/nix-pills/)
