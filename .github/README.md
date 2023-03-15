@@ -132,6 +132,7 @@ somethings i need to do before i can call it fully usable - <br>
 - [x] Install any image colorizer
 - [ ] Lock screen setup
 - [ ] Add Screenshots
+- [ ] Setup agenix
 
 ## Credits -
 These are the chads which helped me throughout my short but crazy nix journey!
