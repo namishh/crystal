@@ -2,33 +2,42 @@
 
 rec {
   # special
-  foreground = "c5c8c6";
-  cursorColor = "c5c8c6";
-  background = "11171b";
+  foreground = "d7e0e0";
+  cursorColor = "d7e0e0";
+  background = "0a1011";
 
   # black
-  color0 = "171a28";
-  color8 = "252a32";
+  color0 = "0d1617";
+  color8 = "253336";
 
-  color1 = "d14444";
-  color9 = "f65c5c";
-  color2 = "57b258";
-  color10 = "7dcc70";
-  color3 = "de925d";
-  color11 = "f6a565";
-  color4 = "6092bb";
-  color12 = "839fb6";
-  color5 = "ae72c2";
-  color13 = "b88ac6";
-  color6 = "51a69b";
-  color14 = "7fd3c7";
-  color7 = "707880";
-  color15 = "c5c8c6";
-  bg2 = "191919";
-  mbg = "181817";
-  contrast = "111111";
-  cursorline = "191919";
-  comment = "5a5858";
+  color1 = "df5b61";
+  color9 = "f16269";
+
+  color2 = "6ec587";
+  color10 = "8dd5a0";
+
+  color3 = "deb26a";
+  color11 = "dbb476";
+
+  color4 = "659bdb";
+  color12 = "739bdf";
+
+  color5 = "c167d9";
+  color13 = "d16ee0";
+
+  color6 = "c167d9";
+  color14 = "7bd3e0";
+
+  color7 = "c5d7d7";
+  color15 = "cedcd9";
+
+  bg2 = "101a1b";
+  mbg = "0e1718";
+
+  contrast = "111a1b";
+  cursorline = "111a1b";
+
+  comment = "505758";
   name = "serenity";
   wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/japan.jpg";
   #wallpaper = "https://raw.githubusercontent.com/chadcat5207/dots.nix/old/cfg/awesome/theme/wallpapers/flower.jpg";
