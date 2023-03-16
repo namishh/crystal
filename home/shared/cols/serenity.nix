@@ -39,7 +39,6 @@ rec {
 
   comment = "505758";
   name = "serenity";
-  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/japan.jpg";
-  #wallpaper = "https://raw.githubusercontent.com/chadcat5207/dots.nix/old/cfg/awesome/theme/wallpapers/flower.jpg";
-  wallsha = "04diqinksh1qrj23cc0rgq7ynzai81gqpma2wxp2hsj5vcrcf3fk";
+  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/smile.jpg";
+  wallsha = "11c09iq85iacz9c8hq24zhc3lrwjd5s9m0rpk5zq6iv0q2f7afmi";
 }
