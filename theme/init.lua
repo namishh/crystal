@@ -10,8 +10,8 @@ theme.font               = 'Iosevka Nerd Font'
 theme.icofont            = 'Material Design Icons'
 
 theme.titlebarType       = 'vert'
-theme.barDir             = 'left'
-theme.br                 = dpi(2)
+theme.barDir             = 'right'
+theme.barPadding         = 0
 theme.barSize            = 50
 
 theme.scrheight          = 1080

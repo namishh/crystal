@@ -8,8 +8,8 @@ screen.connect_signal('request::wallpaper', function(s)
     widget = {
       {
         image     = beautiful.wall,
-        upscale   = true,
-        downscale = true,
+        upscale   = false,
+        downscale = false,
         widget    = wibox.widget.imagebox,
       },
       valign = 'center',

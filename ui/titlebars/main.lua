@@ -53,11 +53,11 @@ client.connect_signal("request::titlebars", function(c)
     c1:kill()
   end)
 
-  local maximize = createButton(c, beautiful.warn, function(c1)
+  local maximize = createButton(c, beautiful.pri, function(c1)
     c1.maximized = not c1.maximized
   end)
 
-  local minimize = createButton(c, beautiful.ok, function(c1)
+  local minimize = createButton(c, beautiful.dis, function(c1)
     gears.timer.delayed_call(function()
       c1.minimized = not c1.minimized
     end)
@@ -80,7 +80,8 @@ client.connect_signal("request::titlebars", function(c)
   }):setup {
     {
       {
-        { -- Right
+        {
+          -- Right
           {
             close,
             maximize,
@@ -97,12 +98,15 @@ client.connect_signal("request::titlebars", function(c)
         widget = wibox.container.place,
         halign = 'center',
       },
-      { -- Middle
+      {
+        -- Middle
         buttons = buttons,
         layout = typee == 'vert' and wibox.layout.flex.vertical or wibox.layout.flex.horizontal
       },
-      { -- Left
-        { -- Title
+      {
+          -- Left
+        {
+          -- Title
           {
             align   = 'center',
             visible = titleVis,
@@ -110,7 +114,6 @@ client.connect_signal("request::titlebars", function(c)
           },
           widget = wibox.container.constraint,
           width = dpi(350)
-
         },
         -- awful.titlebar.widget.iconwidget(c),
         buttons = buttons,

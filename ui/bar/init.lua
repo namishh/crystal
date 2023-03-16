@@ -10,7 +10,6 @@ local systraybox  = require("ui.bar.modules.tray")
 local tasklist    = require("ui.bar.modules.tasklist")
 local status      = require("ui.bar.modules.status")
 local time        = require("ui.bar.modules.time")
-local music       = require("ui.bar.modules.music")
 local launcher    = require("ui.bar.modules.misc").launcher
 local powerbutton = require("ui.bar.modules.misc").powerbutton
 
@@ -20,12 +19,12 @@ local alignlayout = nil
 local fixedlayout = nil
 if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
   barwidth = dpi(beautiful.barSize)
-  barheight = barheight - 10
+  barheight = barheight - beautiful.barPadding
   alignlayout = wibox.layout.align.vertical
   fixedlayout = wibox.layout.fixed.vertical
 else
   barheight = dpi(beautiful.barSize)
-  barwidth = barwidth - 12
+  barwidth = barwidth - beautiful.barPadding
   alignlayout = wibox.layout.align.horizontal
   fixedlayout = wibox.layout.fixed.horizontal
 end
@@ -38,10 +37,10 @@ local function init(s)
     width = barwidth,
     bg = beautiful.bg,
     margins = {
-      bottom = beautiful.barDir == 'top' and 0 or 6,
-      left = beautiful.barDir == 'right' and 0 or 6,
-      right = beautiful.barDir == 'left' and 0 or 6,
-      top = beautiful.barDir == 'bottom' and 0 or 6,
+      bottom = beautiful.barDir == 'top' and 0 or beautiful.barPadding / 2,
+      left = beautiful.barDir == 'right' and 0 or beautiful.barPadding / 2,
+      right = beautiful.barDir == 'left' and 0 or beautiful.barPadding / 2,
+      top = beautiful.barDir == 'bottom' and 0 or beautiful.barPadding / 2,
     },
     fg = beautiful.fg1,
     screen = s,
@@ -86,7 +85,6 @@ local function init(s)
         {
           systraybox,
           status,
-          music,
           time,
           powerbutton,
           spacing = 7,

@@ -18,7 +18,7 @@ local hourminutes = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      awesome.emit_signal('toggle::notify')
+      awesome.emit_signal('toggle::moment')
     end)
   },
   widget = wibox.container.background,
@@ -71,7 +71,7 @@ local vert        = wibox.widget {
         valign = "center",
         buttons = {
           awful.button({}, 1, function()
-            awesome.emit_signal('toggle::notify')
+            awesome.emit_signal('toggle::moment')
           end)
         },
         widget = wibox.widget.textclock

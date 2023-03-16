@@ -77,7 +77,7 @@ local shufflebtn = wibox.widget {
 }
 playerctl:connect_signal("shuffle", function(_, shuffle)
   shufflebtn.markup = shuffle and helpers.colorizeText('󰒝', beautiful.pri) or helpers.colorizeText('󰒝',
-        beautiful.fg)
+    beautiful.fg)
 end)
 local repeatt = wibox.widget {
   align = 'center',
@@ -352,7 +352,6 @@ local left            = function(c)
   awful.titlebar(c, { position = "right", size = dpi(280), bg = beautiful.bg }):setup {
     {
       {
-
         {
           leftartcomplete,
           widget = wibox.container.background,
@@ -419,11 +418,11 @@ local top             = function(c)
     c1:kill()
   end)
 
-  local maximize = createButton(c, beautiful.warn, function(c1)
+  local maximize = createButton(c, beautiful.pri, function(c1)
     c1.maximized = not c1.maximized
   end)
 
-  local minimize = createButton(c, beautiful.ok, function(c1)
+  local minimize = createButton(c, beautiful.dis, function(c1)
     gears.timer.delayed_call(function()
       c1.minimized = not c1.minimized
     end)
@@ -463,7 +462,8 @@ local top             = function(c)
           bottom = 11.5,
         }
       },
-      { -- Middle
+      {
+        -- Middle
         buttons = buttons,
         widget = wibox.container.place,
         halign = 'center',
