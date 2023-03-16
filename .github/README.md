@@ -5,6 +5,8 @@
 
 Welcome to my nix dotfiles! This repo contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
 
+![Screenshot1](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/combined.png)
+
 > **Warning**
 >
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
