@@ -1,16 +1,33 @@
+kind of borked rn <br>
 nuclear config only meant to work with my nixos config
 
-### Running On Others Distrobutions
+### Setup
 
-+ This is not an exact step by step tutorial
-+ WARNING : It may / may not work on your system.
-
-First, you will need some programs <br>
+1. Install these programs
 ```txt
 awesome-git zsh pamixer ncmpcpp mpd mpDris2 brightnessctl uptime brillo networkmanager bluetoothctl reshift picom
 ```
 
-Then you will need to make a file called `theme/colors.lua`. <br>
+2. If you are using my nixos config, then my config should be already installed, otherwise
+```bash
+~ $ git clone --depth 1 --branch the-awesome-config https://github.com/chadcat5207/fuyu ~/.config/awesome
+```
+
+3. Make a secrets file at `config/key.lua`
+```lua
+local M = {
+  openweatherapi = "your_key_here"
+}
+
+return M
+```
+
+
+### Colors on other distros
+
++ WARNING : It may / may not work on your system.
+
+Make a file called `theme/colors.lua`. <br>
 This file is where you define all your colors, gtkTheme (i do not use this), icon theme and wallpaper
 
 ```lua
