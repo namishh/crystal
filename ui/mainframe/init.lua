@@ -9,21 +9,26 @@ local profile = require("ui.mainframe.modules.profile")
 local search = require("ui.mainframe.modules.search")
 local music = require("ui.mainframe.modules.music")
 local taw = require("ui.mainframe.modules.taw")
+local notifbox = require("ui.mainframe.modules.notifs.box")
+local bardir = beautiful.barDir
 -- not using footer at the moment
-
---local height = 720
-awful.screen.connect_for_each_screen(function(s)
-  local mainframe = wibox({
-    type = "dock",
-    shape = helpers.rrect(4),
-    screen = s,
-    width = 480,
-    height = beautiful.scrheight - beautiful.useless_gap * 4,
-    bg = beautiful.bg,
-    ontop = true,
-    visible = false,
-  })
-  mainframe:setup {
+local set
+local h
+local w
+if bardir == 'left' or bardir == 'right' then
+  set = {
+    search,
+    taw,
+    profile,
+    music,
+    notifbox,
+    spacing = 20,
+    layout = wibox.layout.fixed.vertical,
+  }
+  w = 480
+  h = beautiful.scrheight - beautiful.useless_gap * 4
+else
+  set = {
     {
       search,
       taw,
@@ -32,6 +37,27 @@ awful.screen.connect_for_each_screen(function(s)
       spacing = 20,
       layout = wibox.layout.fixed.vertical,
     },
+    notifbox,
+    spacing = 20,
+    layout = wibox.layout.fixed.horizontal,
+  }
+  w = 960
+  h = 760
+end
+--local height = 720
+awful.screen.connect_for_each_screen(function(s)
+  local mainframe = wibox({
+    type = "dock",
+    shape = helpers.rrect(4),
+    screen = s,
+    width = w,
+    height = h,
+    bg = beautiful.bg,
+    ontop = true,
+    visible = false,
+  })
+  mainframe:setup {
+    set,
     margins = dpi(15),
     widget = wibox.container.margin,
   }
@@ -57,7 +83,13 @@ awful.screen.connect_for_each_screen(function(s)
       slide_end:again()
       slide:set(s.geometry.height)
     elseif not mainframe.visible then
-      slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 2))
+      if beautiful.barDir == 'top' then
+        slide:set(s.geometry.height - beautiful.scrheight + 62)
+      elseif beautiful.barDir == 'bottom' then
+        slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 4) - beautiful.barSize)
+      else
+        slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 2))
+      end
       mainframe.visible = true
     end
   end)

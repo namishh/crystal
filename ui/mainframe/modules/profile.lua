@@ -1,7 +1,8 @@
-local wibox     = require("wibox")
-local beautiful = require("beautiful")
-local dpi       = require("beautiful").xresources.apply_dpi
-local helpers   = require("helpers")
+local wibox          = require("wibox")
+local beautiful      = require("beautiful")
+local dpi            = require("beautiful").xresources.apply_dpi
+local helpers        = require("helpers")
+local awful          = require('awful')
 
 local profilepicture = wibox.widget {
   image         = beautiful.profilepicture,
@@ -11,12 +12,12 @@ local profilepicture = wibox.widget {
   forced_width  = 80,
   widget        = wibox.widget.imagebox
 }
-local uptime = wibox.widget {
+local uptime         = wibox.widget {
   font = beautiful.font .. " 11",
   markup = helpers.colorizeText("4h 45m", beautiful.fg3),
   widget = wibox.widget.textbox,
 }
-local name = wibox.widget {
+local name           = wibox.widget {
   nil,
   {
     {
@@ -35,14 +36,14 @@ local name = wibox.widget {
   layout = wibox.layout.align.vertical,
   expand = "none"
 }
-local batval = wibox.widget {
+local batval         = wibox.widget {
   font = beautiful.font .. " 13",
   markup = helpers.colorizeText("15", beautiful.pri),
   widget = wibox.widget.textbox,
   align = "center",
   valign = "center",
 }
-local battery = wibox.widget {
+local battery        = wibox.widget {
   batval,
   widget = wibox.container.arcchart,
   max_value = 100,
@@ -57,7 +58,7 @@ local battery = wibox.widget {
   forced_height = dpi(70)
 }
 
-local createProg = function(value, color, signal)
+local createProg     = function(value, color, signal)
   local progress = wibox.widget {
     max_value        = 100,
     value            = value,
@@ -70,34 +71,115 @@ local createProg = function(value, color, signal)
     paddings         = 1,
     widget           = wibox.widget.progressbar,
   }
-  awesome.connect_signal('signal::' .. signal, function(value)
-    progress.value = value
+  awesome.connect_signal('signal::' .. signal, function(val)
+    progress.value = val
   end)
   return wibox.widget {
     progress,
-    forced_height = 100,
+    forced_height = 150,
     forced_width  = 8,
     direction     = 'east',
     layout        = wibox.container.rotate,
   }
 end
-local batteryprog = createProg(49, beautiful.ok, 'battery')
-local memprog = createProg(23, beautiful.warn, 'memory')
-local diskprog = createProg(43, beautiful.err, 'disk')
-local cpuprog = createProg(69, beautiful.dis, 'cpu')
-local finalwidget = wibox.widget {
+
+
+local createButton    = function(icon, cmd, color)
+  local button = wibox.widget {
+    {
+      {
+        id = 'text_role',
+        align = 'center',
+        font = beautiful.icofont .. " 20",
+        markup = helpers.colorizeText(icon, color),
+        widget = wibox.widget.textbox
+      },
+      margins = 5,
+      widget = wibox.container.margin
+    },
+    buttons = {
+      awful.button({}, 1, function()
+        cmd()
+      end)
+    },
+    widget = wibox.container.background
+  }
+
+  return button
+end
+
+local poweroffcommand = function()
+  awful.spawn.with_shell("poweroff")
+  awesome.emit_signal('hide::exit')
+end
+
+local rebootcommand   = function()
+  awful.spawn.with_shell("reboot")
+  awesome.emit_signal('hide::exit')
+end
+
+local suspendcommand  = function()
+  awesome.emit_signal('hide::exit')
+  awful.spawn.with_shell("systemctl suspend")
+end
+
+local exitcommand     = function()
+  awesome.quit()
+end
+
+local lockcommand     = function()
+  awesome.emit_signal('hide::exit')
+  awful.spawn.with_shell("lock")
+end
+
+local powerofficon    = "󰐥"
+local rebooticon      = "󰦛"
+local suspendicon     = "󰤄"
+local exiticon        = "󰈆"
+local lockicon        = "󰍁"
+
+local poweroffbutton  = createButton(powerofficon, poweroffcommand, beautiful.fg .. 'cc')
+local lockbutton      = createButton(lockicon, lockcommand, beautiful.fg .. 'cc')
+local rebootbutton    = createButton(rebooticon, rebootcommand, beautiful.fg .. 'cc')
+local exitbutton      = createButton(exiticon, exitcommand, beautiful.fg .. 'cc')
+
+local batteryprog     = createProg(49, beautiful.ok, 'battery')
+local memprog         = createProg(23, beautiful.warn, 'memory')
+local diskprog        = createProg(43, beautiful.err, 'disk')
+local cpuprog         = createProg(69, beautiful.dis, 'cpu')
+local finalwidget     = wibox.widget {
   {
     {
       {
         {
-          uptime,
-          name,
-          spacing = 5,
-          layout = wibox.layout.fixed.vertical
+          {
+            uptime,
+            name,
+            spacing = 5,
+            layout = wibox.layout.fixed.vertical
+          },
+          profilepicture,
+          spacing = 70,
+          layout = wibox.layout.fixed.horizontal,
         },
-        profilepicture,
-        spacing = 70,
-        layout = wibox.layout.fixed.horizontal,
+        {
+          {
+            {
+              poweroffbutton,
+              rebootbutton,
+              lockbutton,
+              exitbutton,
+              spacing = 25,
+              layout  = wibox.layout.fixed.horizontal
+            },
+            widget = wibox.container.margin,
+            margins = 14,
+          },
+          widget = wibox.container.background,
+          bg = beautiful.bg3
+        },
+        spacing = 20,
+        layout = wibox.layout.fixed.vertical
       },
       margins = 25,
       widget = wibox.container.margin,

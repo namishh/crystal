@@ -12,6 +12,7 @@ theme.icofont            = 'Material Design Icons'
 theme.titlebarType       = 'vert'
 theme.barDir             = 'left'
 theme.br                 = dpi(2)
+theme.barSize            = 50
 
 theme.scrheight          = 1080
 theme.scrwidth           = 1920

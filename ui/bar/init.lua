@@ -19,12 +19,12 @@ local barwidth    = beautiful.scrwidth
 local alignlayout = nil
 local fixedlayout = nil
 if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-  barwidth = dpi(50)
+  barwidth = dpi(beautiful.barSize)
   barheight = barheight - 10
   alignlayout = wibox.layout.align.vertical
   fixedlayout = wibox.layout.fixed.vertical
 else
-  barheight = dpi(50)
+  barheight = dpi(beautiful.barSize)
   barwidth = barwidth - 12
   alignlayout = wibox.layout.align.horizontal
   fixedlayout = wibox.layout.fixed.horizontal
