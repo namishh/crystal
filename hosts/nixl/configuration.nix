@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, self, ... }:
+{ inputs, outputs, config, pkgs, lib, self, ... }:
 
 {
 
@@ -6,6 +6,22 @@
     ./hardware-configuration.nix
     ../shared
   ];
+
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.modifications
+      outputs.overlays.additions
+      inputs.nixpkgs-f2k.overlays.stdenvs
+      (final: prev:
+        {
+          awesome = inputs.nixpkgs-f2k.packages.${pkgs.system}.awesome-git;
+        })
+    ];
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+    };
+  };
   networking.hostName = "nixl";
 
   # Packages

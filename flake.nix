@@ -9,6 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     # Channel to follow.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -41,7 +42,7 @@
       homeConfigurations = {
         namish = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs self; };
+          extraSpecialArgs = { inherit inputs outputs self; };
           modules = [
             ./home/namish/home.nix
             {

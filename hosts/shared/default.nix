@@ -50,12 +50,6 @@ in
     libvirtd.enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [
-    (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").overlays.default
-    outputs.overlays.modifications
-    outputs.overlays.additions
-  ];
   environment.systemPackages = with pkgs; [
     nodejs
     libnotify
@@ -63,7 +57,6 @@ in
     jq
     st-custom
     imgclr
-    (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${system}.awesome-git
     git
     mpv
     slurp
@@ -77,6 +70,7 @@ in
     wmctrl
     slop
     ueberzug
+    awesome
     ripgrep
     maim
     xclip
