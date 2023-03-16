@@ -9,7 +9,7 @@ local playerctl       = bling.signal.playerctl.lib()
 local art             = wibox.widget {
   image = beautiful.songdefpicture,
   opacity = 0.25,
-  forced_height = dpi(210),
+  forced_height = dpi(240),
   forced_width = dpi(365),
   widget = wibox.widget.imagebox
 }
@@ -136,7 +136,7 @@ local finalwidget = wibox.widget {
         bg = {
           type = "linear",
           from = { 0, 0 },
-          to = { 190, 0 },
+          to = { 250, 0 },
           stops = { { 0, beautiful.bg .. "00" }, { 1, beautiful.mbg } }
         },
         widget = wibox.container.background,
@@ -146,7 +146,6 @@ local finalwidget = wibox.widget {
         {
           {
             {
-
               songname,
               artistname,
               spacing = 3,
@@ -225,7 +224,7 @@ playerctl:connect_signal("metadata", function(_, title, artist, album_path, albu
   end
   songname:set_markup_silently(title)
   artistname:set_markup_silently(artist)
-  art:set_image(gears.surface.load_uncached(album_path))
+  art.image = helpers.cropSurface(1.5, gears.surface.load_uncached(album_path))
 end)
 
 playerctl:connect_signal("position", function(_, interval_sec, length_sec, player_name)

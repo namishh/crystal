@@ -6,9 +6,9 @@ local wibox = require("wibox")
 local gears = require("gears")
 local animation = require("modules.animation")
 local profile = require("ui.mainframe.modules.profile")
-local sliders = require("ui.mainframe.modules.sliders")
+local search = require("ui.mainframe.modules.search")
 local music = require("ui.mainframe.modules.music")
-local settings = require("ui.mainframe.modules.settings")
+local taw = require("ui.mainframe.modules.taw")
 -- not using footer at the moment
 
 --local height = 720
@@ -18,18 +18,17 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = 480,
-    height = 725,
+    height = beautiful.scrheight - beautiful.useless_gap * 4,
     bg = beautiful.bg,
     ontop = true,
     visible = false,
   })
   mainframe:setup {
     {
+      search,
+      taw,
       profile,
-      sliders,
       music,
-      settings,
-      --footer,
       spacing = 20,
       layout = wibox.layout.fixed.vertical,
     },
@@ -37,7 +36,7 @@ awful.screen.connect_for_each_screen(function(s)
     widget = wibox.container.margin,
   }
   local slide = animation:new({
-    duration = 0.12,
+    duration = 0.5,
     pos = s.geometry.height,
     easing = animation.easing.linear,
     update = function(_, pos)
@@ -47,7 +46,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   local slide_end = gears.timer({
     single_shot = true,
-    timeout = 0.33 + 0.08,
+    timeout = 0.43 + 0.08,
     callback = function()
       mainframe.visible = false
     end,
