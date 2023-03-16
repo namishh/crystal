@@ -9,9 +9,9 @@ theme.barfont            = 'Iosevka Nerd Font 13'
 theme.font               = 'Iosevka Nerd Font'
 theme.icofont            = 'Material Design Icons'
 
-theme.titlebarType       = 'vert'
-theme.barDir             = 'right'
-theme.barPadding         = 0
+theme.titlebarType       = 'horiz'
+theme.barDir             = 'bottom'
+theme.barPadding         = 10
 theme.barSize            = 50
 
 theme.scrheight          = 1080
