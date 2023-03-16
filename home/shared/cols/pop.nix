@@ -35,6 +35,7 @@ rec {
   color7 = "b7b7b7";
   color15 = "d4d5d5";
   name = "pop";
-  wallpaper = "https://raw.githubusercontent.com/chadcat5207/dots.nix/old/cfg/awesome/theme/wallpapers/flower.jpg";
-  wallsha = "13lgp58rznw055d69l1n7hhrp1qgirm8y7yg6jjzl9chw45naba6";
+  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/japan.jpg";
+  #wallpaper = "https://raw.githubusercontent.com/chadcat5207/dots.nix/old/cfg/awesome/theme/wallpapers/flower.jpg";
+  wallsha = "04diqinksh1qrj23cc0rgq7ynzai81gqpma2wxp2hsj5vcrcf3fk";
 }
