@@ -10,8 +10,8 @@ rec {
   cursorline = "22292d";
   comment = "5a5a58";
 
-  color0 = "2e383d";
-  color8 = "313b41";
+  color0 = "222a2e";
+  color8 = "303b41";
 
   color1 = "ce6568";
   color9 = "e76365";
@@ -34,6 +34,7 @@ rec {
   color7 = "d3c5aa";
   color15 = "d4d5d5";
   name = "everforest";
-  wallpaper = "https://raw.githubusercontent.com/Apeiros-46B/everforest-walls/main/other/japanese_street_shop.png";
-  wallsha = "1jnszan6mz98i31n0da4l9vd71ybm35njhzkdlbr3cj275258rqr";
+
+  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/floating.jpg";
+  wallsha = "1j6q0abz3l1d6ai3z7j9kyar6ing75mf53nvz0494dqmzblpxrc8";
 }

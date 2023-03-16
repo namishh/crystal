@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/serenity.nix { };
+  colors = import ../shared/cols/everforest.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -66,6 +66,7 @@ in
       xdg-desktop-portal
       lua-language-server
       mpd
+      imagemagick
       procps
       cava
       picom

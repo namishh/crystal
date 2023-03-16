@@ -40,5 +40,5 @@ rec {
   comment = "505758";
   name = "serenity";
   wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/smile.jpg";
-  wallsha = "11c09iq85iacz9c8hq24zhc3lrwjd5s9m0rpk5zq6iv0q2f7afmi";
+  wallsha = "06rx0qmqca4mqvmbzkxdbhqlrq2760nvqm5q2dx93rrlzmzmxskr";
 }
