@@ -84,6 +84,8 @@ local exit_screen_grabber = awful.keygrabber({
       if string.len(finalWidget:get_children_by_id('input')[1].markup) > 0 then
         awful.spawn.with_shell("bash -c 'firefox \"" ..
           "https://google.com/search?q=" .. finalWidget:get_children_by_id('input')[1].markup .. "\"'")
+        finalWidget:get_children_by_id('input')[1].markup = ''
+        awesome.emit_signal("toggle::dashboard")
       end
     elseif has_value(exclude, key) then
       addition = ''

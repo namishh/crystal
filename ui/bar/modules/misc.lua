@@ -22,7 +22,7 @@ M.launcher      = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      app:toggle()
+      awesome.emit_signal("toggle::dashboard")
     end)
   },
   widget = wibox.container.margin

@@ -4,18 +4,19 @@ local colors             = require("theme.colors")
 local dpi                = xresources.apply_dpi
 local gfs                = require("gears.filesystem")
 local gears              = require("gears")
+local appearConfig       = require("config.appearance")
 local theme_path         = gfs.get_configuration_dir() .. "/theme/"
 theme.barfont            = 'Iosevka Nerd Font 13'
 theme.font               = 'Iosevka Nerd Font'
 theme.icofont            = 'Material Design Icons'
 
-theme.titlebarType       = 'horiz'
-theme.barDir             = 'bottom'
-theme.barPadding         = 10
-theme.barSize            = 50
+theme.titlebarType       = appearConfig.titlebarType
+theme.barDir             = appearConfig.barDir
+theme.barPadding         = appearConfig.barPadding
+theme.barSize            = appearConfig.barSize
 
-theme.scrheight          = 1080
-theme.scrwidth           = 1920
+theme.scrheight          = appearConfig.scrheight
+theme.scrwidth           = appearConfig.scrwidth
 
 theme.wall               = colors.wall
 

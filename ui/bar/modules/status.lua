@@ -53,7 +53,7 @@ local status = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
-      awesome.emit_signal('toggle::dashboard')
+      awesome.emit_signal('toggle::control')
     end)
   },
   widget = wibox.container.background,

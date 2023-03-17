@@ -1,26 +1,26 @@
-local wibox     = require("wibox")
-local awful     = require("awful")
-local beautiful = require("beautiful")
-local dpi       = require("beautiful").xresources.apply_dpi
-local gears     = require("gears")
-local helpers   = require("helpers")
+local wibox            = require("wibox")
+local awful            = require("awful")
+local beautiful        = require("beautiful")
+local dpi              = require("beautiful").xresources.apply_dpi
+local gears            = require("gears")
+local helpers          = require("helpers")
 
-local createHandle = function()
+local createHandle     = function()
   return function(cr)
-    gears.shape.rounded_rect(cr, 12, 12, 50)
+    gears.shape.rounded_rect(cr, 16, 16, 50)
   end
 end
 
 local brightnessSlider = wibox.widget {
-  bar_shape           = helpers.rrect(6),
-  bar_height          = 3,
-  handle_color        = beautiful.fg .. 'cc',
-  bar_color           = beautiful.fg .. '33',
-  bar_active_color    = beautiful.fg .. 'aa',
+  bar_shape           = helpers.rrect(20),
+  bar_height          = 16,
+  handle_color        = beautiful.pri,
+  bar_color           = beautiful.fg3 .. '55',
+  bar_active_color    = beautiful.pri,
   handle_shape        = createHandle(),
-  handle_border_width = 3,
-  handle_width        = dpi(12),
-  handle_margins      = { top = 12 },
+  handle_border_width = 0,
+  handle_width        = dpi(16),
+  handle_margins      = { top = 9 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 3,
@@ -28,7 +28,7 @@ local brightnessSlider = wibox.widget {
   widget              = wibox.widget.slider,
 }
 
-local brightnessLabel = wibox.widget {
+local brightnessLabel  = wibox.widget {
   font = beautiful.font .. " Bold 12",
   markup = "86" .. "%",
   valign = "center",
@@ -75,15 +75,15 @@ local brightnessScale = wibox.widget {
 
 
 local volumeSlider = wibox.widget {
-  bar_shape           = helpers.rrect(6),
-  bar_height          = 3,
-  handle_color        = beautiful.fg .. 'cc',
-  bar_color           = beautiful.fg .. '33',
-  bar_active_color    = beautiful.fg .. 'aa',
+  bar_shape           = helpers.rrect(20),
+  bar_height          = 16,
+  handle_color        = beautiful.pri,
+  bar_color           = beautiful.fg3 .. '55',
+  bar_active_color    = beautiful.pri,
   handle_shape        = createHandle(),
-  handle_border_width = 3,
-  handle_width        = dpi(12),
-  handle_margins      = { top = 12 },
+  handle_border_width = 0,
+  handle_width        = dpi(16),
+  handle_margins      = { top = 9 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 3,
