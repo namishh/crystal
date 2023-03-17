@@ -5,6 +5,7 @@
     imgclr = prev.callPackage ../derivs/imagecolorizer.nix {
       buildPythonPackage = prev.python310Packages.buildPythonPackage;
     };
+    luapam = prev.callPackage ../derivs/luapam.nix;
     st-custom = prev.st.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {

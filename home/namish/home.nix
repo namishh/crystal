@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/everforest.nix { };
+  colors = import ../shared/cols/gruvbox.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import

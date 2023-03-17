@@ -55,6 +55,7 @@ in
     libnotify
     xdg-utils
     jq
+    luapam
     st-custom
     imgclr
     git
