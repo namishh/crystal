@@ -32,7 +32,7 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
         layout = wibox.layout.fixed.vertical,
       },
       widget = wibox.container.margin,
-      margins = 15
+      margins = 11
     },
     shape = helpers.rrect(40),
     widget = wibox.container.background,
@@ -88,62 +88,54 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
   return settingbuttonwidget
 end
 
-local wifibtn      = createButton("󰤨", "󰤮", 'Network', 'network', "~/.config/awesome/scripts/wifi --toggle", 90)
+local wifibtn      = createButton("󰤨", "󰤮", 'Network', 'network', "~/.config/awesome/scripts/wifi --toggle", 70)
 local bluetooth    = createButton("󰂯", "󰂲", 'Bluetooth', 'bluetooth',
-  "~/.config/awesome/scripts/bluetooth --toggle", 90)
+  "~/.config/awesome/scripts/bluetooth --toggle", 70)
 local dnd          = createButton("󰍶", "󱑙", 'Silence', 'dnd',
   'awesome-client \'naughty = require("naughty") naughty.toggle()\'', 100)
 local airplane     = createButton("󰀝", "󰀞", 'Airplane', 'airplane',
-  "~/.config/awesome/scripts/airplanemode --toggle", 90)
+  "~/.config/awesome/scripts/airplanemode --toggle", 70)
 
-local themeButton  = function(icon, name)
-  local themeButtonLabel = wibox.widget {
-    align = 'center',
-    font = beautiful.icofont .. " 14",
-    markup = icon,
-    widget = wibox.widget.textbox,
-  }
-
-  local themeButtonText = wibox.widget {
-    align = 'center',
-    font = beautiful.font .. " Bold 11",
-    markup = name,
-    widget = wibox.widget.textbox,
-  }
-  local widget = wibox.widget {
+local boreButton   = function(icon, signal, cmd)
+  local borebuttonwidget = wibox.widget {
     {
       {
-        themeButtonLabel,
-        themeButtonText,
-        layout = wibox.layout.fixed.vertical,
+        {
+          id = "icon",
+          align = 'center',
+          font = beautiful.icofont .. " 22",
+          markup = icon,
+          widget = wibox.widget.textbox,
+        },
+        widget = wibox.container.place,
+        valign = 'center',
       },
-      widget = wibox.container.place,
-      align = 'center'
+      widget = wibox.container.margin,
+      margins = 30
     },
-    forced_width = 100,
-    forced_height = 69,
-    shape = helpers.rrect(3),
+    shape = helpers.rrect(4),
     widget = wibox.container.background,
-    bg = beautiful.fg3 .. '33'
+    bg = beautiful.fg3 .. '22'
   }
-  widget:add_button(awful.button({}, 1, function()
-    awful.spawn.with_shell('notify-send "Changing theme to ' .. name .. '" "This might take some time!"')
-    awful.spawn.with_shell('setTheme ' .. string.lower(name))
-  end))
-  awesome.connect_signal("signal::theme", function(val)
-    if val == string.lower(name) then
-      widget.bg = beautiful.pri
-      themeButtonLabel.markup = helpers.colorizeText(icon, beautiful.bg)
-      themeButtonText.markup = helpers.colorizeText(name, beautiful.bg)
+
+  awesome.connect_signal('signal::' .. signal, function(status)
+    if status then
+      borebuttonwidget:get_children_by_id('icon')[1].markup = helpers.colorizeText(icon, beautiful.bg)
+      borebuttonwidget.bg = beautiful.pri
+    else
+      borebuttonwidget:get_children_by_id('icon')[1].markup = helpers.colorizeText(icon, beautiful.fg)
+      borebuttonwidget.bg = beautiful.fg3 .. '22'
     end
   end)
-  return widget
+
+  borebuttonwidget:add_button(awful.button({}, 1, function()
+    awful.spawn.with_shell(cmd)
+  end))
+  return borebuttonwidget
 end
 
-local serenity     = themeButton("󰖝", "Serenity")
-local everforest   = themeButton("󰐅", "Everforest")
-local gruvbox      = themeButton("󰌪", "Pop")
-local decay        = themeButton("󰃤", "Decay")
+local picom        = boreButton('󰗘', 'picom', '~/.config/awesome/scripts/picom --toggle')
+local mic          = boreButton('󰍭', 'mic', 'pamixer --default-source -t')
 
 local finalwidget  = {
   {
@@ -164,14 +156,8 @@ local finalwidget  = {
         {
           dnd,
           {
-            serenity,
-            decay,
-            layout = wibox.layout.fixed.horizontal,
-            spacing = 16,
-          },
-          {
-            gruvbox,
-            everforest,
+            picom,
+            mic,
             layout = wibox.layout.fixed.horizontal,
             spacing = 16,
           },

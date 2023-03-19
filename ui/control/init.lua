@@ -7,7 +7,11 @@ local gears = require("gears")
 local animation = require("modules.animation")
 
 local sliders = require("ui.control.modules.sliders")
+local barpadding = require("ui.control.modules.barpadding")
 local settings = require("ui.control.modules.settings")
+local themer = require("ui.control.modules.themer")
+local title = require("ui.control.modules.titlebar")
+local bar = require("ui.control.modules.bar")
 
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
@@ -15,7 +19,7 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = 480,
-    height = 800,
+    height = 890,
     bg = beautiful.bg,
     ontop = true,
     visible = false,
@@ -25,6 +29,49 @@ awful.screen.connect_for_each_screen(function(s)
     {
       sliders,
       settings,
+      themer,
+      {
+        {
+          {
+            {
+              title,
+              bar,
+              spacing = 25,
+              layout = wibox.layout.fixed.horizontal
+            },
+            barpadding,
+            {
+              {
+                {
+                  {
+                    font = beautiful.font .. " 13",
+                    markup = helpers.colorizeText('Apply', beautiful.pri),
+                    valign = "center",
+                    widget = wibox.widget.textbox,
+                  },
+                  widget = wibox.container.margin,
+                  margins = 8,
+                },
+                buttons = {
+                  awful.button({}, 1, function()
+                    awesome.restart()
+                  end)
+                },
+                widget = wibox.container.background,
+                bg = beautiful.pri .. '11'
+              },
+              widget = wibox.container.place,
+              halign = 'right',
+            },
+            spacing = 20,
+            layout = wibox.layout.fixed.vertical
+          },
+          widget = wibox.container.margin,
+          margins = 15,
+        },
+        widget = wibox.container.background,
+        bg = beautiful.bg2 .. 'cc'
+      },
       spacing = 20,
       layout = wibox.layout.fixed.vertical
     },

@@ -75,3 +75,11 @@ end
 
 setTheme()
 ```
+
+### Todo
+- [ ] control center
+- [ ] restore system
+- [ ] dock
+- [ ] dock vert
+- [ ] calendar good looks
+- [ ] widget for picom
