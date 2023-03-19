@@ -1,6 +1,10 @@
 { pkgs, outputs, overlays, lib, ... }:
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  my-python-packages = p: with p; [
+    yt-dlp
+    # other python packages
+  ];
 
 in
 {
@@ -53,9 +57,10 @@ in
   environment.systemPackages = with pkgs; [
     nodejs
     libnotify
+    (pkgs.python3.withPackages my-python-packages)
     xdg-utils
     jq
-    luapam
+    #lua_pam
     st-custom
     imgclr
     git

@@ -33,7 +33,7 @@ rec {
   color14 = "7db868";
 
   color7 = "d5c4a1";
-  color15 = "fbf1c7";
+  color15 = "d2c1c7";
   name = "gruvbox";
   wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/old/cfg/awesome/theme/wallpapers/samurai2.png";
   wallsha = "0q0bbxnlxnwwqa1x4769fqx6hwm386n706h3kxmybrjaq3gh85fl";

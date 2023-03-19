@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/gruvbox.nix { };
+  colors = import ../shared/cols/serenity.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -34,6 +34,7 @@ in
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
+    (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })

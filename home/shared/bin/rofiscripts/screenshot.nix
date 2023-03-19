@@ -9,20 +9,28 @@ _:
   save_location="$HOME/Pictures/Screenshots"
   screenshot_path="$save_location/$(date +'%Y-%m-%d-%H%M%S').png"
 
-  screen='  Fullscreen'
+  screen='  Screen'
   area='  Selection'
   window='  Window'
 
   chosen=$(printf '%s;%s;%s\n' "$screen" "$area" "$window" \
-      | rofi -dmenu \
+      | rofi -dmenu -l 3\
              -sep ';' \
-             -l 3 \
              -selected-row 1)
 
   case "$chosen" in
-      "$screen") sleep 1 && grim "$screenshot_path" ;;
-      "$area")   sleep 1 && grim -g "$(slurp)" ;;
-      "$window") sleep 1 && grim -g "$(swaymsg -t get_tree | jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" ;;
+      "$screen") extra_args='--delay=1' ;;
+      "$area")   extra_args='--delay=0.1 --select --highlight --color=0.85,0.87,0.91,0.2' ;;
+      "$window") extra_args="--delay=1 --window=$(xdotool getactivewindow)" ;;
       *)         exit 1 ;;
   esac
+
+  # The variable is used as a command's options, so it shouldn't be quoted.
+  # shellcheck disable=2086
+  maim --hidecursor --quiet --quality=3 --format='png' $extra_args "$screenshot_path" && {
+      notify-send "Screenshot saved as <i>$screenshot_path</i>"
+
+      xclip -selection clipboard -target 'image/png' -in "$screenshot_path"
+  }
+
 ''
