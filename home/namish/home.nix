@@ -35,6 +35,7 @@ in
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
     (import ./conf/utils/sxhkd/default.nix { })
+    (import ./conf/utils/picom/default.nix { })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
@@ -70,7 +71,6 @@ in
       imagemagick
       procps
       cava
-      picom
       simplescreenrecorder
       mpdris2
       pavucontrol

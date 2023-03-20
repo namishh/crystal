@@ -61,7 +61,8 @@ in
     xdg-utils
     jq
     #lua_pam
-    st-custom
+    st
+    picom
     imgclr
     git
     mpv
