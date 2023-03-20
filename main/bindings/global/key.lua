@@ -3,8 +3,8 @@ local hotkeys_popup = require 'awful.hotkeys_popup'
 require 'awful.hotkeys_popup.keys'
 local menubar = require 'menubar'
 local apps = require 'config.apps'
-local mod = require 'bindings.mod'
-local widgets = require 'misc.menus'
+local mod = require 'main.bindings.mod'
+local widgets = require 'config.menus'
 --local appmenu = require 'misc.bling'.app_launcher
 --local scratches = require 'misc.bling'.scratchpads
 menubar.utils.terminal = apps.terminal
@@ -124,7 +124,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'k',
     description = 'focus previous by index',
     group       = 'client',
-    on_press    = function() awful.client.focus.byidx( -1) end,
+    on_press    = function() awful.client.focus.byidx(-1) end,
   },
   awful.key {
     modifiers   = { mod.super },
@@ -173,7 +173,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'k',
     description = 'swap with previous client by index',
     group       = 'client',
-    on_press    = function() awful.client.swap.byidx( -1) end,
+    on_press    = function() awful.client.swap.byidx(-1) end,
   },
   awful.key {
     modifiers   = { mod.super },
@@ -194,7 +194,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'h',
     description = 'decrease master width factor',
     group       = 'layout',
-    on_press    = function() awful.tag.incmwfact( -0.05) end,
+    on_press    = function() awful.tag.incmwfact(-0.05) end,
   },
   awful.key {
     modifiers   = { mod.super, mod.shift },
@@ -208,7 +208,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'l',
     description = 'decrease the number of master clients',
     group       = 'layout',
-    on_press    = function() awful.tag.incnmaster( -1, nil, true) end,
+    on_press    = function() awful.tag.incnmaster(-1, nil, true) end,
   },
   awful.key {
     modifiers   = { mod.super, mod.ctrl },
@@ -222,7 +222,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'l',
     description = 'decrease the number of columns',
     group       = 'layout',
-    on_press    = function() awful.tag.incnmaster( -1, nil, true) end,
+    on_press    = function() awful.tag.incnmaster(-1, nil, true) end,
   },
   awful.key {
     modifiers   = { mod.super },
@@ -236,7 +236,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'space',
     description = 'select previous',
     group       = 'layout',
-    on_press    = function() awful.layout.inc( -1) end,
+    on_press    = function() awful.layout.inc(-1) end,
   }, awful.key({ mod.super }, "Tab", function()
   awesome.emit_signal("bling::window_switcher::turn_on")
 end, { description = "Window Switcher", group = "bling" })

@@ -101,9 +101,9 @@ awful.screen.connect_for_each_screen(function(s)
       slide:set(s.geometry.height)
     elseif not control.visible then
       if beautiful.barDir == 'top' then
-        slide:set(s.geometry.height - beautiful.scrheight + 62)
+        slide:set(s.geometry.height - beautiful.scrheight + beautiful.barSize + beautiful.useless_gap * 4)
       elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 4) - beautiful.barSize)
+        slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2) - beautiful.barSize)
       else
         slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2))
       end

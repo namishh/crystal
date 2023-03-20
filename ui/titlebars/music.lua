@@ -409,7 +409,7 @@ local createButton    = function(c, col, fn)
     anim:set(50)
   end)
   btn:connect_signal('mouse::leave', function(_)
-    anim:set(15)
+    anim:set(13)
   end)
   return btn
 end
@@ -458,8 +458,8 @@ local top             = function(c)
         },
         widget = wibox.container.margin,
         margins = {
-          top = 11.5,
-          bottom = 11.5,
+          top = beautiful.titlebarType == 'vert' and 11.5 or 13.5,
+          bottom = beautiful.titlebarType == 'vert' and 11.5 or 13.5,
         }
       },
       {

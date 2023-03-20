@@ -12,8 +12,9 @@ theme.icofont            = 'Material Design Icons'
 
 theme.titlebarType       = appearConfig.titlebarType
 theme.barDir             = appearConfig.barDir
-theme.barPadding         = appearConfig.barPadding
+theme.barPadding         = appearConfig.gaps
 theme.barSize            = appearConfig.barSize
+theme.barShouldHaveGaps  = appearConfig.barShouldHaveGaps
 
 theme.scrheight          = appearConfig.scrheight
 theme.scrwidth           = appearConfig.scrwidth
@@ -46,7 +47,7 @@ theme.bg_urgent          = theme.err .. "40"
 theme.bg_minimize        = theme.fg .. "10"
 theme.bg_focus           = theme.fg2 .. "cc"
 
-theme.useless_gap        = dpi(3)
+theme.useless_gap        = math.ceil(appearConfig.gaps / 4)
 theme.snap_bg            = theme.fg2
 
 theme.border_width       = dpi(5)

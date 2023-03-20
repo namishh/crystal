@@ -1,16 +1,13 @@
 local beautiful     = require 'beautiful'
 local bling         = require("modules.bling")
-local awful         = require("awful")
 local terminal      = require 'config.apps'.terminal
 local helpers       = require("helpers")
 local xresources    = require("beautiful.xresources")
 local dpi           = xresources.apply_dpi
 local M             = {}
 
--- These are example rubato tables. You can use one for just y, just x, or both.
--- The duration and easing is up to you. Please check out the rubato docs to learn more.
-local scrheight     = 1080
-local scrwidth      = 1920
+local scrheight     = beautiful.scrheight
+local scrwidth      = beautiful.scrwidth
 
 local createScratch = function(command, width, height)
   local scratch = bling.module.scratchpad {
@@ -28,47 +25,12 @@ local createScratch = function(command, width, height)
   end)
   return scratch
 end
--- bling.widget.window_switcher.enable {
---   type = "thumbnail", -- set to anything other than "thumbnail" to disable client previews
---
---   -- keybindings (the examples provided are also the default if kept unset)
---   hide_window_switcher_key = "Space", -- The key on which to close the popup
---   minimize_key = "n", -- The key on which to minimize the selected client
---   unminimize_key = "N", -- The key on which to unminimize all clients
---   kill_client_key = "q", -- The key on which to close the selected client
---   cycle_key = "Tab", -- The key on which to cycle through all clients
---   previous_key = "Left", -- The key on which to select the previous client
---   next_key = "Right", -- The key on which to select the next client
---   vim_previous_key = "h", -- Alternative key on which to select the previous client
---   vim_next_key = "l", -- Alternative key on which to select the next client
---
---   cycleClientsByIdx = awful.client.focus.byidx, -- The function to cycle the clients
---   filterClients = awful.widget.tasklist.filter.currenttags, -- The function to filter the viewed clients
--- }
---
 M.scratchpads       = {
   default = createScratch('pfetch', 900, 680),
   ncmp = createScratch('ncmpcpp', 950, 600)
 }
 
-awful.screen.connect_for_each_screen(function(s)
-  --Tiled Wallpaper
-  -- bling.module.tiled_wallpaper(" ", s, {
-  --   bg = beautiful.pri .. "ee",
-  --   fg = beautiful.bg3,
-  --   offset_y = 25,
-  --   offset_x = 25,
-  --   font = beautiful.icofont,
-  --   font_size = 35,
-  --   padding = 270,
-  --   zickzack = true
-  -- })
-  -- Regular Wallpaper
-  bling.module.wallpaper.setup {
-    wallpaper = beautiful.wall
-  }
-end)
-local args = {
+local args          = {
   terminal = "st",
   favorites = { "firefox", "st", "discord" },
   search_commands = true,
@@ -112,7 +74,7 @@ local args = {
   apps_spacing = dpi(5),
   app_shape = helpers.rrect(5)
 }
-local app_launcher = bling.widget.app_launcher(args)
+local app_launcher  = bling.widget.app_launcher(args)
 
 awesome.connect_signal('toggle::app_launcher', function()
   app_launcher:toggle()

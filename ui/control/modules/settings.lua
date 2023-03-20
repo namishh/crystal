@@ -88,13 +88,14 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
   return settingbuttonwidget
 end
 
-local wifibtn      = createButton("󰤨", "󰤮", 'Network', 'network', "~/.config/awesome/scripts/wifi --toggle", 70)
+local wifibtn      = createButton("󰤨", "󰤮", 'Network', 'network',
+"~/.config/awesome/ui/control/scripts/wifi --toggle", 70)
 local bluetooth    = createButton("󰂯", "󰂲", 'Bluetooth', 'bluetooth',
-  "~/.config/awesome/scripts/bluetooth --toggle", 70)
+  "~/.config/awesome/ui/control/scripts/bluetooth --toggle", 70)
 local dnd          = createButton("󰍶", "󱑙", 'Silence', 'dnd',
   'awesome-client \'naughty = require("naughty") naughty.toggle()\'', 100)
 local airplane     = createButton("󰀝", "󰀞", 'Airplane', 'airplane',
-  "~/.config/awesome/scripts/airplanemode --toggle", 70)
+  "~/.config/awesome/ui/control/scripts/airplanemode --toggle", 70)
 
 local boreButton   = function(icon, signal, cmd)
   local borebuttonwidget = wibox.widget {
@@ -134,7 +135,7 @@ local boreButton   = function(icon, signal, cmd)
   return borebuttonwidget
 end
 
-local picom        = boreButton('󰗘', 'picom', '~/.config/awesome/scripts/picom --toggle')
+local picom        = boreButton('󰗘', 'picom', '~/.config/awesome/scripts/ui/control/picom --toggle')
 local mic          = boreButton('󰍭', 'mic', 'pamixer --default-source -t')
 
 local finalwidget  = {

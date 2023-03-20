@@ -19,28 +19,29 @@ local alignlayout = nil
 local fixedlayout = nil
 if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
   barwidth = dpi(beautiful.barSize)
-  barheight = barheight - beautiful.barPadding
+  barheight = beautiful.barShouldHaveGaps == false and barheight or barheight - beautiful.barPadding
   alignlayout = wibox.layout.align.vertical
   fixedlayout = wibox.layout.fixed.vertical
 else
   barheight = dpi(beautiful.barSize)
-  barwidth = barwidth - beautiful.barPadding
+  barwidth = beautiful.barShouldHaveGaps == false and barwidth or barwidth - beautiful.barPadding
   alignlayout = wibox.layout.align.horizontal
   fixedlayout = wibox.layout.fixed.horizontal
 end
-
+local barMargin = beautiful.barShouldHaveGaps and beautiful.barPadding or 0
 local function init(s)
   local wibar = awful.wibar {
     position = beautiful.barDir,
     height = barheight,
-    shape = beautiful.barPadding == 0 and helpers.rrect(0) or helpers.rrect(5),
+    shape = barMargin == 0 and helpers.rrect(0) or helpers.rrect(5),
     width = barwidth,
     bg = beautiful.bg,
     margins = {
-      bottom = beautiful.barDir == 'top' and 0 or math.ceil(beautiful.barPadding / 2),
-      left = beautiful.barDir == 'right' and 0 or math.ceil(beautiful.barPadding / 2),
-      right = beautiful.barDir == 'left' and 0 or math.ceil(beautiful.barPadding / 2),
-      top = beautiful.barDir == 'bottom' and 0 or math.ceil(beautiful.barPadding / 2),
+      -- work requiered TODO
+      bottom = beautiful.barDir == 'top' and 0 or math.ceil(barMargin / 2),
+      left = beautiful.barDir == 'right' and 0 or math.ceil(barMargin / 2),
+      right = beautiful.barDir == 'left' and 0 or math.ceil(barMargin / 2),
+      top = beautiful.barDir == 'bottom' and 0 or math.ceil(barMargin / 2),
     },
     fg = beautiful.fg1,
     screen = s,

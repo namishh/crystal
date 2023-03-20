@@ -3,13 +3,12 @@ local awful     = require("awful")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local helpers   = require("helpers")
-local app       = require("misc.bling").app_launcher
 M.launcher      = wibox.widget {
   {
     {
       {
-        font = beautiful.icofont .. " 16",
-        markup = "󰍉",
+        font = beautiful.font .. " 16",
+        markup = helpers.colorizeText(" ", beautiful.pri),
         valign = "center",
         align = "center",
         widget = wibox.widget.textbox,

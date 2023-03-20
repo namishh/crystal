@@ -1,6 +1,6 @@
 local awful = require 'awful'
 
-local mod = require 'bindings.mod'
+local mod = require 'main.bindings.mod'
 
 client.connect_signal('request::default_mousebindings', function()
   awful.mouse.append_client_mousebindings {

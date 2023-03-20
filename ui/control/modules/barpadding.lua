@@ -32,13 +32,13 @@ awesome.connect_signal("signal::padding", function(value)
 end)
 slider:connect_signal("property::value", function(_, value)
   awful.spawn.with_shell(
-    'sed -i \'6s/.*/  barPadding = ' .. value .. ',/g\' ~/.config/awesome/config/appearance.lua')
+    'sed -i \'6s/.*/  gaps = ' .. value .. ',/g\' ~/.config/awesome/config/appearance.lua')
   awful.spawn.with_shell('bash -c "echo ' .. value .. ' > /tmp/barPadding"')
 end)
 return wibox.widget {
   {
     font = beautiful.font .. " 11",
-    markup = helpers.colorizeText('Bar Padding', beautiful.fg3),
+    markup = helpers.colorizeText('Gaps', beautiful.fg3),
     valign = "center",
     widget = wibox.widget.textbox,
   },

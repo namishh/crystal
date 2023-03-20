@@ -1,6 +1,6 @@
 local awful = require 'awful'
 
-local mod = require 'bindings.mod'
+local mod = require 'main.bindings.mod'
 
 client.connect_signal('request::default_keybindings', function()
   awful.keyboard.append_client_keybindings {
