@@ -12,6 +12,7 @@ local settings = require("ui.control.modules.settings")
 local themer = require("ui.control.modules.themer")
 local title = require("ui.control.modules.titlebar")
 local bar = require("ui.control.modules.bar")
+local bargaps = require("ui.control.modules.bargaps")
 
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
@@ -39,18 +40,24 @@ awful.screen.connect_for_each_screen(function(s)
               spacing = 25,
               layout = wibox.layout.fixed.horizontal
             },
-            barpadding,
             {
+              barpadding,
+              spacing = 25,
+              layout = wibox.layout.fixed.horizontal
+            },
+            {
+              bargaps,
+              nil,
               {
                 {
                   {
-                    font = beautiful.font .. " 13",
+                    font = beautiful.font .. " 12",
                     markup = helpers.colorizeText('Apply', beautiful.pri),
                     valign = "center",
                     widget = wibox.widget.textbox,
                   },
                   widget = wibox.container.margin,
-                  margins = 8,
+                  margins = 4,
                 },
                 buttons = {
                   awful.button({}, 1, function()
@@ -60,8 +67,7 @@ awful.screen.connect_for_each_screen(function(s)
                 widget = wibox.container.background,
                 bg = beautiful.pri .. '11'
               },
-              widget = wibox.container.place,
-              halign = 'right',
+              layout = wibox.layout.align.horizontal
             },
             spacing = 20,
             layout = wibox.layout.fixed.vertical
@@ -80,7 +86,7 @@ awful.screen.connect_for_each_screen(function(s)
   }
   local slide = animation:new({
     duration = 0.5,
-    pos = s.geometry.height,
+    pos = s.geometry.height + 500,
     easing = animation.easing.linear,
     update = function(_, pos)
       control.y = s.geometry.y + pos
@@ -89,7 +95,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   local slide_end = gears.timer({
     single_shot = true,
-    timeout = 0.43 + 0.08,
+    timeout = 0.43,
     callback = function()
       control.visible = false
     end,

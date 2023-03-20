@@ -77,7 +77,7 @@ setTheme()
 ```
 
 ### Todo
-- [ ] control center
+- [x] ~~control center~~
 - [ ] restore system
 - [ ] dock
 - [ ] dock vert

@@ -1,8 +1,4 @@
 require("signals.sys.bright")
-require("signals.sys.bardir")
 require("signals.sys.dnd")
 require("signals.sys.mic")
 require("signals.sys.volume")
-require("signals.sys.theme")
-require("signals.sys.title")
-require("signals.sys.padding")
