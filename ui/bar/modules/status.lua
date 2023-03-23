@@ -46,7 +46,12 @@ local status = wibox.widget {
         layout = l,
         spacing = dpi(15)
       },
-      margins = { top = dpi(10), bottom = dpi(10), left = dpi(6), right = dpi(6) },
+      margins = {
+        top = (beautiful.barDir == "top" or "bottom") and 8 or dpi(10),
+        bottom = (beautiful.barDir == "top" or "bottom") and 8 or dpi(10),
+        left = dpi(6),
+        right = dpi(6)
+      },
       widget = wibox.container.margin
     },
     layout = wibox.layout.stack

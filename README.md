@@ -83,3 +83,7 @@ setTheme()
 - [ ] dock vert
 - [ ] calendar good looks
 - [ ] widget for picom
+
+
+### Credits
+will add them here

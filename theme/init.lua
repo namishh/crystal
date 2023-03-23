@@ -63,7 +63,7 @@ theme.titlebar_font      = theme.font
 
 theme.taglist_bg               = theme.bg .. "00"
 theme.taglist_bg_focus         = theme.pri
-theme.taglist_fg_focus         = theme.accent
+theme.taglist_fg_focus         = theme.fg
 theme.taglist_bg_urgent        = theme.err
 theme.taglist_fg_urgent        = theme.fg
 theme.taglist_bg_occupied      = theme.fg2

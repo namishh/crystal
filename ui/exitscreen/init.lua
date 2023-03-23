@@ -132,12 +132,11 @@ local exit_screen_grabber = awful.keygrabber({
 
 awful.screen.connect_for_each_screen(function(s)
   local exit = wibox({
-    type = "dock",
     shape = helpers.rrect(0),
     screen = s,
     width = beautiful.scrwidth,
     height = beautiful.scrheight,
-    bg = beautiful.bg .. '44',
+    bg = beautiful.bg .. '99',
     ontop = true,
     visible = false,
   })

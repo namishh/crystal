@@ -23,7 +23,7 @@ if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
   alignlayout = wibox.layout.align.vertical
   fixedlayout = wibox.layout.fixed.vertical
 else
-  barheight = dpi(beautiful.barSize)
+  barheight = dpi(beautiful.barSize) - 5
   barwidth = beautiful.barShouldHaveGaps == false and barwidth or barwidth - beautiful.barPadding
   alignlayout = wibox.layout.align.horizontal
   fixedlayout = wibox.layout.fixed.horizontal
@@ -58,12 +58,7 @@ local function init(s)
                 taglist(s),
                 forced_width = 159,
                 widget = wibox.container.margin,
-                margins = {
-                  left = dpi(13),
-                  right = dpi(13),
-                  top = dpi(13),
-                  bottom = dpi(13)
-                },
+                margins = (beautiful.barDir == "top" or "bottom") and 8 or dpi(13),
               },
               widget = wibox.container.place
             },

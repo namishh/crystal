@@ -1,9 +1,9 @@
 local _M = {
   scrheight = 1080,
   scrwidth = 1920,
-  barDir = "left",
-  titlebarType = "vert",
-  gaps = 12,
+  barDir = "top",
+  titlebarType = "horiz",
+  gaps = 15,
   barSize = 50,
   barShouldHaveGaps = false,
 }
