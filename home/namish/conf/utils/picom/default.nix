@@ -15,6 +15,10 @@
       "100:class_g = 'awesome'"
     ];
     settings = {
+      blur-background-exclude = [
+        "window_type = 'dock'"
+      ];
+
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
       xrender-sync-fence = true;

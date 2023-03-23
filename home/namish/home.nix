@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/serenity.nix { };
+  colors = import ../shared/cols/everforest.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -75,7 +75,6 @@ in
       mpdris2
       pavucontrol
       feh
-      spotdl
       exa
     ];
   };

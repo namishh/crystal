@@ -3,6 +3,31 @@ let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = p: with p; [
     yt-dlp
+    # rich
+    # (
+    #   buildPythonPackage rec {
+    #     pname = "spotdl";
+    #     format = "pyproject";
+    #     version = "4.1.3";
+    #     src = fetchPypi
+    #       {
+    #         inherit pname version;
+    #         sha256 = "sha256-DWS2HtL7dyPDp9obtzhvxEpsnvpcJw03s17OPAppSt0=";
+    #       };
+    #     doCheck = false;
+    #     propagatedBuildInputs = [
+    #       rich
+    #       poetry-core
+    #       rapidfuzz
+    #       pytube
+    #       yt-dlp
+    #       uvicorn
+    #       spotipy
+    #       ytmusicapi
+    #       beautifulsoup4
+    #     ];
+    #   }
+    # )
     # other python packages
   ];
 
@@ -29,7 +54,6 @@ in
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
-
   users = {
     users.namish = {
       isNormalUser = true;
@@ -62,6 +86,7 @@ in
     jq
     #lua_pam
     st
+    unzip
     picom
     imgclr
     git

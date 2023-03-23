@@ -5,6 +5,7 @@
   imports = [
     ./hardware-configuration.nix
     ../shared
+    ../../services/picom.nix
   ];
 
   nixpkgs = {
@@ -36,6 +37,7 @@
   };
 
   services = {
+    gvfs.enable = true;
     power-profiles-daemon.enable = false;
     tlp.enable = true;
     upower.enable = true;
@@ -60,5 +62,4 @@
       desktopManager.gnome.enable = false;
     };
   };
-
 }
