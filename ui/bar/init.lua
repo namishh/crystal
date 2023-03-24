@@ -66,7 +66,6 @@ local function init(s)
             widget = wibox.container.background
           },
           layoutbox,
-          tasklist(s),
           spacing = 7,
         },
         top = dpi(8),

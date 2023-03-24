@@ -70,4 +70,39 @@ helpers.cropSurface  = function(ratio, surf)
   return out_surf
 end
 
+helpers.inTable      = function(t, v)
+  for _, value in ipairs(t) do
+    if value == v then
+      return true
+    end
+  end
+
+  return false
+end
+
+
+helpers.generateId = function()
+  local template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+  return string.gsub(template, '[xy]', function(c)
+    local v = (c == 'x') and math.random(0, 0xf) or math.random(8, 0xb)
+    return string.format('%x', v)
+  end)
+end
+
+helpers.addTables = function(a, b)
+  local result = {}
+  for k, v in pairs(a) do
+    table.insert(result, v)
+  end
+  for k, v in pairs(b) do
+    table.insert(result, v)
+  end
+  return result
+end
+
+helpers.hasKey = function(set, key)
+  return set[key] ~= nil
+end
+
+
 return helpers

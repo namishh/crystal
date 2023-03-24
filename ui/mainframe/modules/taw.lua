@@ -30,7 +30,7 @@ local weather   = wibox.widget {
         {
           {
             id            = "image",
-            image         = "~/.config/awesome/theme/icons/weather/weather-overcast-symbolic.svg",
+            image         = "~/.config/awesome/theme/icons/weather/weather-fog.svg",
             opacity       = 0.65,
             clip_shape    = helpers.rrect(4),
             forced_height = 50,
