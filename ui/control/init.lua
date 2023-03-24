@@ -86,7 +86,7 @@ awful.screen.connect_for_each_screen(function(s)
   }
   local slide = animation:new({
     duration = 0.5,
-    pos = s.geometry.height + 500,
+    pos = 0 - control.height,
     easing = animation.easing.linear,
     update = function(_, pos)
       control.y = s.geometry.y + pos
@@ -104,12 +104,12 @@ awful.screen.connect_for_each_screen(function(s)
   awesome.connect_signal("toggle::control", function()
     if control.visible then
       slide_end:again()
-      slide:set(s.geometry.height)
+      slide:set(0 - control.height)
     elseif not control.visible then
       if beautiful.barDir == 'top' then
-        slide:set(s.geometry.height - beautiful.scrheight + beautiful.barSize + beautiful.useless_gap * 4)
+        slide:set(beautiful.barSize - 5 + beautiful.useless_gap * 2)
       elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2) - beautiful.barSize)
+        slide:set(s.geometry.height - 5 - (control.height + beautiful.useless_gap * 2) - beautiful.barSize)
       else
         slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2))
       end

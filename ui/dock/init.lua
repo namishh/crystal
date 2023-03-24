@@ -328,6 +328,13 @@ local tomfoolery = function(s)
   hotpop:connect_signal("mouse::leave", function()
     dockHide:again()
   end)
+  dock:connect_signal("mouse::enter", function()
+    dockHide:stop()
+    dock.visible = true
+  end)
+  dock:connect_signal("mouse::leave", function()
+    dockHide:again()
+  end)
   tag.connect_signal("property::selected", function() refresh() end)
 end
 

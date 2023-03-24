@@ -61,9 +61,11 @@ awful.screen.connect_for_each_screen(function(s)
     margins = dpi(15),
     widget = wibox.container.margin,
   }
+
+  helpers.placeWidget(mainframe)
   local slide = animation:new({
     duration = 0.5,
-    pos = s.geometry.height,
+    pos = 0 - mainframe.height,
     easing = animation.easing.linear,
     update = function(_, pos)
       mainframe.y = s.geometry.y + pos
@@ -77,16 +79,15 @@ awful.screen.connect_for_each_screen(function(s)
       mainframe.visible = false
     end,
   })
-  helpers.placeWidget(mainframe)
   awesome.connect_signal("toggle::dashboard", function()
     if mainframe.visible then
       slide_end:again()
-      slide:set(s.geometry.height)
+      slide:set(0 - mainframe.height)
     elseif not mainframe.visible then
       if beautiful.barDir == 'top' then
-        slide:set(s.geometry.height - beautiful.scrheight + beautiful.barSize + beautiful.useless_gap * 4)
+        slide:set(beautiful.barSize - 5 + beautiful.useless_gap * 2)
       elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 2) - beautiful.barSize)
+        slide:set(s.geometry.height - 5 - (mainframe.height + beautiful.useless_gap * 2) - beautiful.barSize)
       else
         slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 2))
       end
