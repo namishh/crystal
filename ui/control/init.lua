@@ -102,14 +102,19 @@ awful.screen.connect_for_each_screen(function(s)
   })
   awful.placement.bottom_right(control, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
   awesome.connect_signal("toggle::control", function()
+    local pad = 0
+    if beautiful.barShouldHaveGaps then
+      pad = beautiful.barPadding
+    end
     if control.visible then
       slide_end:again()
       slide:set(0 - control.height)
     elseif not control.visible then
       if beautiful.barDir == 'top' then
-        slide:set(beautiful.barSize - 5 + beautiful.useless_gap * 2)
+        slide:set(beautiful.barSize - 5 + pad + beautiful.useless_gap * 2)
       elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - 5 - (control.height + beautiful.useless_gap * 2) - beautiful.barSize)
+        slide:set(s.geometry.height - 5 - (control.height + beautiful.useless_gap * 2) - beautiful.barSize -
+          pad)
       else
         slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2))
       end

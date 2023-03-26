@@ -79,11 +79,11 @@ setTheme()
 ### Todo
 - [x] ~~control center~~
 - [ ] restore system
-- [ ] dock
+- [x] ~~dock~~
 - [ ] dock vert
 - [ ] calendar good looks
 - [ ] widget for picom
-
+- [ ] make it so that new apps spawn at last in the dock
 
 ### Credits
 will add them here

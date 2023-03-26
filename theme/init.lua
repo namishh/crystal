@@ -146,7 +146,11 @@ theme.hotkeys_group_margin                      = 20
 theme.parent_filter_list                        = { "discord", "firefox", "nemo" }
 theme.child_filter_list                         = { "discord", "firefox", "nemo" }
 theme.swallowing_filter                         = true
-theme.playerctl_ignore                          = "firefox"
+theme.playerctl_ignore                          = { "firefox", "spotify" }
+theme.playerctl_player                          = { "mpd", "%any" }
+theme.playerctl_update_on_activity              = false
+theme.playerctl_position_update_interval        = 1
+theme.playerctl_backend                         = "playerctl_lib"
 
 local icon_dir                                  = colors.iconTheme .. "/apps/scalable/"
 theme.ic_icons                                  = {

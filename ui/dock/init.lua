@@ -3,6 +3,7 @@ local dpi = require("beautiful").xresources.apply_dpi
 local wibox = require("wibox")
 local gears = require("gears")
 local helpers = require("helpers")
+local iconTheme = require("theme.colors").iconTheme
 local beautiful = require("beautiful")
 local getIcon = require("ui.dock.getIcon")
 local drawPreview = require("ui.dock.taskpreview")
@@ -90,7 +91,7 @@ local tomfoolery = function(s)
     return wibox.widget {
       forced_height = 50,
       forced_width = 50,
-      image = getIcon(nil, icon, icon, false),
+      image = iconTheme .. icon,
       clip_shape = helpers.rrect(8),
       buttons = {
         awful.button({}, 1, function()
@@ -102,18 +103,20 @@ local tomfoolery = function(s)
   end
 
   local createPermaElements = function()
-    local launcher = createPermaElement("gnome-web", "rofi -show drun")
-    local music = createPermaElement("deepin-music-player",
-      "awesome-client 'awesome.emit_signal(\"toggle::ncmpcpppad\")'")
+    local launcher = createPermaElement("/apps/scalable/search.svg", "rofi -show drun")
+    local settings = createPermaElement("/apps/scalable/gdm-settings.svg",
+      "awesome-client 'awesome.emit_signal(\"toggle::control\")'")
+    local trash = createPermaElement("/places/scalable/gnome-dev-trash-full.svg", "nemo .local/share/Trash/files")
     return wibox.widget {
       {
         launcher,
-        music,
+        settings,
+        trash,
         spacing = 7,
         layout = wibox.layout.fixed.horizontal
       },
       widget = wibox.container.margin,
-      right = 7
+      left = 7
     }
   end
 
@@ -194,6 +197,15 @@ local tomfoolery = function(s)
         command = "st"
       },
       {
+        name = "ncmpcpppad",
+        convert = "deepin-music-player",
+        command = "awesome-client 'awesome.emit_signal(\"toggle::ncmpcpppad\")'"
+      },
+      {
+        name = "pfetchpad",
+        convert = "xterm",
+      },
+      {
         name = "feh",
         convert = "image-viewer"
       },
@@ -236,38 +248,75 @@ local tomfoolery = function(s)
     local clients = mouse.screen.selected_tag:clients()
     -- making some pinned apps
     local metadata = {
-          ['st-256color'] = {
-        id = helpers.generateId(),
+      {
+        name = "nemo",
+        id = 1,
         count = 0,
         clients = {},
+        class = "Nemo"
+      },
+      {
+        count = 0,
+        id = 2,
+        clients = {},
+        name = "st-256color",
         class = "st-256color"
       },
-      firefox = {
-        id = helpers.generateId(),
+      {
+        name = "firefox",
         count = 0,
+        id = 3,
         clients = {},
         class = "firefox"
       },
+      {
+        count = 0,
+        id = 4,
+        name = "ncmppcpp",
+        clients = {},
+        class = "ncmpcpppad"
+      },
+      {
+        count = 0,
+        id = 5,
+        name = "discord",
+        clients = {},
+        class = "discord"
+      },
+      {
+        count = 0,
+        id = 6,
+        name = "spotify",
+        clients = {},
+        class = "Spotify"
+      },
     }
     -- end
-    local classes = {}
+    local classes = { "st-256color", "discord", "ncmpcpppad", "firefox", "Spotify", "Nemo" }
     local dockElements = wibox.widget { layout = wibox.layout.fixed.horizontal, spacing = 5 }
     -- generating the data
     for i, c in ipairs(clients) do
       local class = c.class
       if helpers.inTable(classes, class) then
-        table.insert(metadata[class].clients, c)
-        metadata[class].count = metadata[class].count + 1
+        for u, j in pairs(metadata) do
+          if metadata[u].name == class then
+            table.insert(metadata[u].clients, c)
+            metadata[u].count = metadata[u].count + 1
+          end
+        end
       else
         table.insert(classes, class)
-        metadata[class] = {
-          id = helpers.generateId(),
+        local toInsert = {
           count = 1,
+          id = #classes + 1,
           clients = { c },
           class = class,
+          name = class,
         }
+        table.insert(metadata, toInsert)
       end
     end
+    table.sort(metadata, function(a, b) return a.id < b.id end)
     for _, j in pairs(metadata) do
       dockElements:add(createDockElement(j))
     end
@@ -277,8 +326,8 @@ local tomfoolery = function(s)
     check_for_dock_hide()
     dock:setup {
       {
-        createPermaElements(),
         createDockElements(),
+        createPermaElements(),
         layout = wibox.layout.fixed.horizontal
       },
       widget = wibox.container.margin,
