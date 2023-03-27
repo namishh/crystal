@@ -2,7 +2,7 @@
 
 
 let
-  colors = import ../shared/cols/everforest.nix { };
+  colors = import ../shared/cols/serenity.nix { };
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
@@ -35,6 +35,7 @@ in
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
     (import ./conf/utils/sxhkd/default.nix { })
+    (import ./conf/browser/chromium/default.nix { inherit lib pkgs; })
     (import ./conf/utils/picom/default.nix { inherit colors; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
@@ -57,7 +58,6 @@ in
     packages = with pkgs; [
       neovim
       bc
-      firefox
       usbutils
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
@@ -70,6 +70,7 @@ in
       mpd
       imagemagick
       procps
+      sbctl
       cava
       simplescreenrecorder
       mpdris2

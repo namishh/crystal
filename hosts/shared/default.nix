@@ -3,32 +3,6 @@ let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = p: with p; [
     yt-dlp
-    # rich
-    # (
-    #   buildPythonPackage rec {
-    #     pname = "spotdl";
-    #     format = "pyproject";
-    #     version = "4.1.3";
-    #     src = fetchPypi
-    #       {
-    #         inherit pname version;
-    #         sha256 = "sha256-DWS2HtL7dyPDp9obtzhvxEpsnvpcJw03s17OPAppSt0=";
-    #       };
-    #     doCheck = false;
-    #     propagatedBuildInputs = [
-    #       rich
-    #       poetry-core
-    #       rapidfuzz
-    #       pytube
-    #       yt-dlp
-    #       uvicorn
-    #       spotipy
-    #       ytmusicapi
-    #       beautifulsoup4
-    #     ];
-    #   }
-    # )
-    # other python packages
   ];
 
 in
@@ -38,9 +12,8 @@ in
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   networking = {
     networkmanager.enable = true;
-    firewall.enable = true;
+    firewall.enable = false;
   };
-
   security = {
     sudo.enable = true;
   };
@@ -80,12 +53,14 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
+    ungoogled-chromium
     libnotify
     (pkgs.python3.withPackages my-python-packages)
     xdg-utils
     jq
-    #lua_pam
     st
+    discord
+    spotdl
     unzip
     picom
     imgclr
@@ -93,6 +68,7 @@ in
     mpv
     slurp
     xdotool
+    spotify
     simplescreenrecorder
     brightnessctl
     pamixer
