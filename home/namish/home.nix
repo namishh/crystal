@@ -37,6 +37,7 @@ in
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/browser/chromium/default.nix { inherit lib pkgs; })
     (import ./conf/utils/picom/default.nix { inherit colors; })
+    (import ./conf/editors/vscopium/default.nix {})
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
@@ -44,19 +45,14 @@ in
     (import ../shared/bin/default.nix { inherit config; })
   ];
   home = {
-    ## Installing neovim config
     activation = {
       installConfig = ''
-        if [ ! -d "${config.home.homeDirectory}/.config/nvim" ]; then
-          ${pkgs.git}/bin/git clone --depth 1 https://github.com/chadcat7/kodo ${config.home.homeDirectory}/.config/nvim 
-        fi
         if [ ! -d "${config.home.homeDirectory}/.config/awesome" ]; then
           ${pkgs.git}/bin/git clone --depth 1 --branch the-awesome-config https://github.com/chadcat7/fuyu ${config.home.homeDirectory}/.config/awesome
         fi
       '';
     };
     packages = with pkgs; [
-      neovim
       bc
       usbutils
       playerctl
@@ -64,6 +60,7 @@ in
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
+      chromium
       pfetch
       xdg-desktop-portal
       lua-language-server

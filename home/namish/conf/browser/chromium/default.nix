@@ -2,7 +2,7 @@
 {
   programs.chromium = {
     enable = true;
-    package = pkgs.ungoogled-chromium;
+    #package = pkgs.ungoogled-chromium;
     extensions =
       let
         createChromiumExtensionFor = browserVersion: { id, sha256, version }:
@@ -27,7 +27,7 @@
         (createChromiumExtension {
           # dark reader
           id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
-          sha256 = "sha256:1xw996dmkzsx2pmilb3ivyfnjckm2g1f2sx10yd4nllqbz5076mm";
+          sha256 = "sha256:0dbm3crb3khzzakd7c9xaxnprfk97visli2rhfm9rz9vr7dfbmpd";
           version = "4.9.34";
         })
       ];

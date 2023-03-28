@@ -53,7 +53,6 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
-    ungoogled-chromium
     libnotify
     (pkgs.python3.withPackages my-python-packages)
     xdg-utils
@@ -65,6 +64,7 @@ in
     picom
     imgclr
     git
+    pstree
     mpv
     slurp
     xdotool
