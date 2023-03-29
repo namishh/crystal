@@ -135,7 +135,7 @@ somethings i need to do before i can call it fully usable - <br>
 - [ ] Lock screen setup ie install lua_pam
 - [ ] Add Screenshots
 - [ ] Setup agenix
-- [ ] Spicetify
+- [x] Spicetify
 
 ## Credits -
 These are the chads which helped me throughout my short but crazy nix journey!
