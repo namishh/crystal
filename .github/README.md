@@ -132,9 +132,10 @@ home-manager switch --flake '.#namish' # this should automatically install nvim 
 somethings i need to do before i can call it fully usable - <br>
 - [x] Install phocus with dynamic theming 
 - [x] Install any image colorizer
-- [ ] Lock screen setup
+- [ ] Lock screen setup ie install lua_pam
 - [ ] Add Screenshots
 - [ ] Setup agenix
+- [ ] Spicetify
 
 ## Credits -
 These are the chads which helped me throughout my short but crazy nix journey!

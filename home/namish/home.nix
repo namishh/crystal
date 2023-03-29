@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }:
-
+{ inputs, config, pkgs, lib, ... }:
 
 let
   colors = import ../shared/cols/serenity.nix { };
@@ -10,8 +9,8 @@ let
     {
       config = config.nixpkgs.config;
     };
+  spicetify-nix = inputs.spicetify-nix;
 in
-
 {
   # some general info  
   home.username = "namish";
@@ -34,10 +33,9 @@ in
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
+    (import ./conf/editors/vscopium/default.nix { })
+    (import ./conf/music/spicetify/default.nix {inherit colors spicetify-nix pkgs;})
     (import ./conf/utils/sxhkd/default.nix { })
-    (import ./conf/browser/chromium/default.nix { inherit lib pkgs; })
-    (import ./conf/utils/picom/default.nix { inherit colors; })
-    (import ./conf/editors/vscopium/default.nix {})
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
@@ -75,5 +73,9 @@ in
       feh
       exa
     ];
+  };
+  nixpkgs.config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
   };
 }

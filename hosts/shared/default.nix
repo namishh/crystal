@@ -1,10 +1,6 @@
 { pkgs, outputs, overlays, lib, ... }:
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-  my-python-packages = p: with p; [
-    yt-dlp
-  ];
-
 in
 {
   boot.loader.systemd-boot.enable = true;
@@ -54,12 +50,12 @@ in
   environment.systemPackages = with pkgs; [
     nodejs
     libnotify
-    (pkgs.python3.withPackages my-python-packages)
     xdg-utils
     jq
     st
+    python310Packages.pip
     discord
-    spotdl
+    firefox
     unzip
     picom
     imgclr

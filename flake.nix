@@ -9,6 +9,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    spicetify-nix.url = github:the-argus/spicetify-nix;
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
     # Channel to follow.
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +21,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
       };
     in
     {

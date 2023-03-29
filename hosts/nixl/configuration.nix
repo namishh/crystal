@@ -1,5 +1,4 @@
 { inputs, outputs, config, pkgs, lib, self, ... }:
-
 {
 
   imports = [
@@ -22,6 +21,7 @@
     ];
     config = {
       # Disable if you don't want unfree packages
+      allowUnfreePredicate = _: true;
       allowUnfree = true;
     };
   };
@@ -63,4 +63,6 @@
       desktopManager.gnome.enable = false;
     };
   };
+  
+
 }
