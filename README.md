@@ -76,14 +76,25 @@ end
 setTheme()
 ```
 
-### Todo
+### Todo (3/15)
 - [x] ~~control center~~
 - [ ] restore system
 - [x] ~~dock~~
-- [ ] dock vert
+- [ ] dock vert (almost done)
 - [ ] calendar good looks
+- [ ] lockscreen
 - [ ] widget for picom
-- [ ] make it so that new apps spawn at last in the dock
+- [ ] client previews
+- [ ] desktop icon
+- [ ] startmenu
+- [ ] window swallowing
+- [x] ~~scatchpads simple implementation~~
+- [ ] appmenu
+- [ ] window switcher
+
+#### Fixes
+- [ ] scratchpad + dock
+- [x] ~~make it so that new apps spawn at last in the dock~~
 
 ### Credits
 will add them here

@@ -25,10 +25,10 @@ local createScratch = function(command, width, height)
   end)
   return scratch
 end
-M.scratchpads       = {
-  default = createScratch('pfetch', 900, 680),
-  ncmp = createScratch('ncmpcpp', 950, 600)
-}
+-- M.scratchpads       = {
+--   default = createScratch('pfetch', 900, 680),
+--   ncmp = createScratch('ncmpcpp', 950, 600)
+-- }
 
 local args          = {
   terminal = "st",

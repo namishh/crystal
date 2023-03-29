@@ -6,9 +6,38 @@ local helpers = require("helpers")
 local iconTheme = require("theme.colors").iconTheme
 local beautiful = require("beautiful")
 local getIcon = require("ui.dock.getIcon")
-local drawPreview = require("ui.dock.taskpreview")
+--local drawPreview = require("ui.dock.taskpreview") -- TODO client previews
+
+local bardir = beautiful.barDir
+
+local placeDock = function(c, m)
+  if bardir == 'bottom' then
+    awful.placement.left(c, { margins = dpi(m) })
+  elseif bardir == "top" then
+    awful.placement.bottom(c, { margins = dpi(m) })
+  elseif bardir == "left" then
+    awful.placement.bottom(c, { margins = dpi(m) })
+  elseif bardir == "right" then
+    awful.placement.bottom(c, { margins = dpi(m) })
+  end
+end
+
+local layout
+local rlayout
+local flexlayout
+local cond = bardir == 'bottom'
+if bardir == "bottom" then
+  layout = wibox.layout.fixed.vertical
+  rlayout = wibox.layout.fixed.horizontal
+  flexlayout = wibox.layout.flex.vertical
+else
+  layout = wibox.layout.fixed.horizontal
+  rlayout = wibox.layout.fixed.vertical
+  flexlayout = wibox.layout.flex.horizontal
+end
 
 local tomfoolery = function(s)
+  -- this is the main dock
   local dock = awful.popup {
     widget = wibox.container.background,
     ontop = true,
@@ -17,16 +46,18 @@ local tomfoolery = function(s)
     screen = s,
     type = "dock",
     height = 150,
-    width = 500,
-    placement = function(c) awful.placement.bottom(c, { margins = dpi(10) }) end,
+    width = 600,
+    placement = function(c) placeDock(c, 10) end,
     shape = helpers.rrect(10)
   }
+  -- autohiding the dock
   local function check_for_dock_hide()
     for _, client in ipairs(s.selected_tag:clients()) do
       if client.fullscreen then
-        dock.visible = false
+        dock.visible = false --disable dock on fullscreen
       end
     end
+    -- make dock visible if nothing is open
     if #s.selected_tag:clients() < 1 then
       dock.visible = true
       return
@@ -42,6 +73,7 @@ local tomfoolery = function(s)
           return
         end
         if not c.minimized then
+          -- if client enters dock area then hide it
           local y = c:geometry().y
           local h = c.height
           if (y + h) >= s.geometry.height - 85 then
@@ -59,6 +91,7 @@ local tomfoolery = function(s)
       dock.visible = false
     end
   end
+  -- a timer to check for dock hide
   local dockHide = gears.timer {
     timeout = 1,
     autostart = true,
@@ -68,25 +101,24 @@ local tomfoolery = function(s)
     end
   }
   dockHide:again()
-
+  -- a hotarea at the bottom which will toggle the dock upon hover
   local hotpop = wibox({
     type = "dock",
-    height = beautiful.useless_gap * 3,
-    width = 100,
+    height = cond and 100 or beautiful.useless_gap * 3,
+    width = cond and beautiful.useless_gap * 3 or 100,
     screen = s,
     ontop = true,
     visible = true,
     bg = beautiful.bg .. '00'
   })
-
-  awful.placement.bottom(hotpop)
+  placeDock(hotpop, 0)
   hotpop:setup {
     widget = wibox.container.margin,
     margins = 10,
-    layout = wibox.layout.fixed.vertical
+    layout = layout
   }
 
-
+  -- creating permannant elements like settings launcher, rofi launcher etc
   local createPermaElement = function(icon, cmd)
     return wibox.widget {
       forced_height = 50,
@@ -106,24 +138,24 @@ local tomfoolery = function(s)
     local launcher = createPermaElement("/apps/scalable/search.svg", "rofi -show drun")
     local settings = createPermaElement("/apps/scalable/gdm-settings.svg",
       "awesome-client 'awesome.emit_signal(\"toggle::control\")'")
-    local trash = createPermaElement("/places/scalable/gnome-dev-trash-full.svg", "nemo .local/share/Trash/files")
+    local trash = createPermaElement("/places/scalable/gnome-dev-trash-full.svg", "nemo trash:/")
     return wibox.widget {
       {
         launcher,
         settings,
         trash,
         spacing = 7,
-        layout = wibox.layout.fixed.horizontal
+        layout = layout
       },
       widget = wibox.container.margin,
-      left = 7
+      left = cond and 0 or 7
     }
   end
-
+  -- indicators, idea from crylia
   local createDockIndicators = function(data)
     local clients = data.clients
-    local indicators = wibox.widget { layout = wibox.layout.flex.horizontal, spacing = 4 }
-    for i, v in ipairs(clients) do
+    local indicators = wibox.widget { layout = flexlayout, spacing = 4 }
+    for _, v in ipairs(clients) do
       local bac
       local click
       if v == client.focus then
@@ -158,8 +190,8 @@ local tomfoolery = function(s)
         end
       end
       local widget = wibox.widget {
-        forced_height = 4,
-        forced_width = 55,
+        forced_height = cond and 45 or 4,
+        forced_width = cond and 4 or 45,
         shape = helpers.rrect(50),
         widget = wibox.container.background,
         buttons = {
@@ -169,6 +201,12 @@ local tomfoolery = function(s)
         },
         bg = bac
       }
+      -- widget:connect_signal("mouse::enter", function()
+      --   drawPreview(v, true)
+      -- end)
+      -- widget:connect_signal("mouse::leave", function()
+      --   drawPreview(v, false)
+      -- end)
       indicators:add(widget)
     end
     return wibox.widget {
@@ -176,21 +214,21 @@ local tomfoolery = function(s)
         {
           indicators,
           spacing = 10,
-          layout = wibox.layout.fixed.horizontal
+          layout = layout
         },
         widget = wibox.container.place,
         halign = 'center'
       },
-      forced_height = 10,
-      forced_width = 45,
+      forced_height = cond and 45 or 4,
+      forced_width = cond and 4 or 45,
       widget = wibox.container.background
     }
   end
-
+  -- creating 1 icon on the dock
   local createDockElement = function(data)
     local class = string.lower(data.class)
     local command = string.lower(data.class)
-    local customIcons = {
+    local customIcons = { -- use this to define icons and commands for stuff that dont have icons available :despair:
       {
         name = "st-256color",
         convert = "xterm",
@@ -208,6 +246,16 @@ local tomfoolery = function(s)
       {
         name = "feh",
         convert = "image-viewer"
+      },
+      {
+        name = "firefox",
+        convert = "safari",
+        command = "firefox"
+      },
+      {
+        name = "code",
+        convert = "visualstudiocode",
+        command = "code"
       },
     }
     for _, v in pairs(customIcons) do
@@ -231,10 +279,10 @@ local tomfoolery = function(s)
             clip_shape = helpers.rrect(8),
             widget = wibox.widget.imagebox,
           },
-          layout = wibox.layout.fixed.horizontal
+          layout = layout
         },
         createDockIndicators(data),
-        layout = wibox.layout.fixed.vertical
+        layout = rlayout
       },
       forced_width = 50,
       widget = wibox.container.background
@@ -243,7 +291,7 @@ local tomfoolery = function(s)
   end
 
 
-
+  -- the main function
   local createDockElements = function()
     local clients = mouse.screen.selected_tag:clients()
     -- making some pinned apps
@@ -253,7 +301,7 @@ local tomfoolery = function(s)
         id = 1,
         count = 0,
         clients = {},
-        class = "Nemo"
+        class = "nemo"
       },
       {
         count = 0,
@@ -263,45 +311,52 @@ local tomfoolery = function(s)
         class = "st-256color"
       },
       {
-        name = "firefox",
         count = 0,
         id = 3,
         clients = {},
+        name = "firefox",
         class = "firefox"
       },
       {
         count = 0,
         id = 4,
-        name = "ncmppcpp",
+        name = "ncmppcpppad",
         clients = {},
         class = "ncmpcpppad"
       },
       {
         count = 0,
         id = 5,
+        name = "code",
+        clients = {},
+        class = "code"
+      },
+      {
+        count = 0,
+        id = 6,
         name = "discord",
         clients = {},
         class = "discord"
       },
       {
         count = 0,
-        id = 6,
+        id = 7,
         name = "spotify",
         clients = {},
-        class = "Spotify"
+        class = "spotify"
       },
     }
     -- end
-    local classes = { "st-256color", "discord", "ncmpcpppad", "firefox", "Spotify", "Nemo" }
-    local dockElements = wibox.widget { layout = wibox.layout.fixed.horizontal, spacing = 5 }
+    local classes = { "st-256color", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code" }
+    local dockElements = wibox.widget { layout = layout, spacing = 5 }
     -- generating the data
-    for i, c in ipairs(clients) do
-      local class = c.class
+    for _, c in ipairs(clients) do
+      local class = string.lower(c.class)
       if helpers.inTable(classes, class) then
-        for u, j in pairs(metadata) do
-          if metadata[u].name == class then
-            table.insert(metadata[u].clients, c)
-            metadata[u].count = metadata[u].count + 1
+        for _, j in pairs(metadata) do
+          if j.name == class then
+            table.insert(j.clients, c)
+            j.count = j.count + 1
           end
         end
       else
@@ -328,14 +383,14 @@ local tomfoolery = function(s)
       {
         createDockElements(),
         createPermaElements(),
-        layout = wibox.layout.fixed.horizontal
+        layout = layout
       },
       widget = wibox.container.margin,
       margins = {
         top = 10,
-        bottom = 3,
+        bottom = cond and 10 or 7,
         left = 10,
-        right = 10,
+        right = cond and 7 or 10,
       },
     }
   end

@@ -32,16 +32,19 @@ return function(s)
     },
     widget_template = {
       {
-        markup = '',
-        shape  = helpers.rrect(20),
-        widget = wibox.widget.textbox,
+        {
+          markup = '',
+          shape  = helpers.rrect(20),
+          widget = wibox.widget.textbox,
+        },
+        valign        = 'center',
+        id            = 'background_role',
+        shape         = gears.shape.circle,
+        widget        = wibox.container.background,
+        forced_width  = 10,
+        forced_height = 11,
       },
-      valign          = 'center',
-      id              = 'background_role',
-      shape           = gears.shape.circle,
-      widget          = wibox.container.background,
-      forced_width    = 10,
-      forced_height   = 11,
+      widget = wibox.container.place,
       create_callback = function(self, tag)
         self.taganim = animation:new({
           duration = 0.12,

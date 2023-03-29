@@ -80,26 +80,22 @@ awful.screen.connect_for_each_screen(function(s)
     end,
   })
   awesome.connect_signal("toggle::dashboard", function()
+    local pad = 0
+    if beautiful.barShouldHaveGaps then
+      pad = beautiful.barPadding
+    end
     if mainframe.visible then
       slide_end:again()
       slide:set(0 - mainframe.height)
     elseif not mainframe.visible then
       if beautiful.barDir == 'top' then
-        slide:set(beautiful.barSize - 5 + beautiful.useless_gap * 2)
+        slide:set(beautiful.barSize + beautiful.useless_gap + math.ceil(pad / 2))
       elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - 5 - (mainframe.height + beautiful.useless_gap * 2) - beautiful.barSize)
+        slide:set(s.geometry.height - mainframe.height - beautiful.barSize - beautiful.useless_gap - math.ceil(pad / 2))
       else
         slide:set(s.geometry.height - (mainframe.height + beautiful.useless_gap * 2))
       end
       mainframe.visible = true
     end
   end)
-  --   awesome.connect_signal("signal::toggler", function(val)
-  --     if val then
-  --       mainframe.height = dpi(mainframe.height + 98)
-  --     else
-  --       mainframe.height = dpi(1000)
-  --       awful.placement.bottom_right(mainframe, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
-  --     end
-  --   end)
 end)

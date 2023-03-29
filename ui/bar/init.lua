@@ -58,9 +58,11 @@ local function init(s)
                 taglist(s),
                 forced_width = 159,
                 widget = wibox.container.margin,
-                margins = (beautiful.barDir == "top" or "bottom") and 8 or dpi(13),
+                margins = (beautiful.barDir == "top" or "bottom") and 8 or dpi(15),
               },
-              widget = wibox.container.place
+              widget = wibox.container.place,
+              halign = 'center',
+              valign = 'center'
             },
             bg = beautiful.bg2,
             widget = wibox.container.background

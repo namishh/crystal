@@ -24,7 +24,8 @@ local slider       = wibox.widget {
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 18,
-  maximum             = 50,
+  minimum             = 10,
+  maximum             = 100,
   widget              = wibox.widget.slider,
 }
 awesome.connect_signal("signal::padding", function(value)

@@ -3,7 +3,7 @@ local _M = {
   scrwidth = 1920,
   barDir = "top",
   titlebarType = "horiz",
-  gaps = 15,
+  gaps = 21,
   barSize = 50,
   barShouldHaveGaps = false,
 }
