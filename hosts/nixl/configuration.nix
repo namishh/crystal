@@ -59,6 +59,10 @@
       };
       windowManager.awesome = {
         enable = true;
+        luaModules = with pkgs.luaPackages; [
+          lgi
+      ];
+
       };
       desktopManager.gnome.enable = false;
     };

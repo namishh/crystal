@@ -1,15 +1,14 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
+  spicetify-nix = inputs.spicetify-nix;
   colors = import ../shared/cols/serenity.nix { };
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
     {
       config = config.nixpkgs.config;
     };
-  spicetify-nix = inputs.spicetify-nix;
 in
 {
   # some general info  
@@ -41,6 +40,7 @@ in
     (import ./misc/awesome.nix { inherit pkgs colors; })
     # Bin files
     (import ../shared/bin/default.nix { inherit config; })
+    (import ../shared/lock.nix {inherit colors;})
   ];
   home = {
     activation = {

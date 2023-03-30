@@ -49,9 +49,11 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
+    luaPackages.lgi
     libnotify
     xdg-utils
     jq
+    i3lock-color
     st
     python310Packages.pip
     discord
