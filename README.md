@@ -89,7 +89,7 @@ setTheme()
 - [ ] startmenu
 - [ ] window swallowing
 - [x] ~~scatchpads simple implementation~~
-- [ ] appmenu
+- [ ] complete appmenu
 - [ ] window switcher
 
 #### Fixes

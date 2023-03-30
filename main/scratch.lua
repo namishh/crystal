@@ -154,6 +154,9 @@ local createScratch = function(command, width, height, k)
       on_press    = function() scratch:toggle() end,
     },
   }
+  awesome.connect_signal("toggle::" .. command .. "pad", function()
+    scratch:toggle()
+  end)
   return scratch
 end
 

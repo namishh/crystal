@@ -6,30 +6,6 @@ local xresources    = require("beautiful.xresources")
 local dpi           = xresources.apply_dpi
 local M             = {}
 
-local scrheight     = beautiful.scrheight
-local scrwidth      = beautiful.scrwidth
-
-local createScratch = function(command, width, height)
-  local scratch = bling.module.scratchpad {
-    --command = terminal .. ' '
-    command = terminal .. ' -c "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
-    rule = { class = command .. 'pad' },
-    sticky = true,
-    autoclose = false,
-    floating = true,
-    geometry = { x = (scrwidth / 2) - width / 2, y = (scrheight / 2) - height / 2, height = height, width = width },
-    reapply = true,
-  }
-  awesome.connect_signal('toggle::' .. command .. 'pad', function()
-    scratch:toggle()
-  end)
-  return scratch
-end
--- M.scratchpads       = {
---   default = createScratch('pfetch', 900, 680),
---   ncmp = createScratch('ncmpcpp', 950, 600)
--- }
-
 local args          = {
   terminal = "st",
   favorites = { "firefox", "st", "discord" },
@@ -81,6 +57,4 @@ awesome.connect_signal('toggle::app_launcher', function()
 end)
 
 M.app_launcher = app_launcher
--- Start Window Swallowing
-bling.module.window_swallowing.start()
 return M

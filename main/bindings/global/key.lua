@@ -69,20 +69,6 @@ awful.keyboard.append_global_keybindings {
     group       = 'launcher',
     on_press    = function() awesome.emit_signal('toggle::app_launcher') end,
   },
-  awful.key {
-    modifiers   = { mod.super },
-    key         = 'v',
-    description = 'scratchpad',
-    group       = 'scratches',
-    on_press    = function() awesome.emit_signal('toggle::pfetchpad') end,
-  },
-  awful.key {
-    modifiers   = { mod.super },
-    key         = 'z',
-    description = 'scratchpad',
-    group       = 'scratches',
-    on_press    = function() awesome.emit_signal('toggle::ncmpcpppad') end,
-  },
 }
 
 -- tags related keybindings
