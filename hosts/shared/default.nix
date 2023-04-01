@@ -1,6 +1,9 @@
 { pkgs, outputs, overlays, lib, ... }:
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+  my-python-packages = ps: with ps; [
+    pygame
+  ];
 in
 {
   boot.loader.systemd-boot.enable = true;
@@ -50,11 +53,14 @@ in
   environment.systemPackages = with pkgs; [
     nodejs
     luaPackages.lgi
+    (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
     jq
     i3lock-color
     st
+    spotdl
+    vitetris
     python310Packages.pip
     discord
     firefox

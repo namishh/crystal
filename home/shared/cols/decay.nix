@@ -3,7 +3,7 @@
 rec {
   background = "0d0f18";
   mbg = "0f121a";
-  bg2 = "11131c";
+  bg2 = "161924";
   contrast = "11131c";
   lighter = "11131c";
   foreground = "a5b6cf";
@@ -26,7 +26,7 @@ rec {
   color12 = "8baff1";
   color13 = "c79bf0";
   color14 = "98d3ee";
-  color15 = "d0d3d8";
+  color15 = "f6f9ff";
   name = "decay";
   wallpaper = "https://raw.githubusercontent.com/AlphaTechnolog/dotfiles/openbox/cfg/openbox/wallpaper.png";
   wallsha = "1nnmvjc69q9lf9w3s1szy8gqab1g73v5zblpjjys27zm4c5711ah";
