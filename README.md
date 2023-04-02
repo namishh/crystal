@@ -76,20 +76,19 @@ end
 setTheme()
 ```
 
-### Todo (3/15)
+### Todo (5/15)
 - [x] ~~control center~~
-- [ ] restore system
+- [ ] preserve state (is even possible?)
 - [x] ~~dock~~
 - [ ] dock vert (almost done)
 - [ ] calendar good looks
-- [ ] lockscreen
 - [ ] widget for picom
 - [ ] client previews
 - [ ] desktop icon
-- [ ] startmenu
-- [ ] window swallowing
+- [x] ~~window swallowing~~
 - [x] ~~scatchpads simple implementation~~
-- [ ] complete appmenu
+- [ ] appmenu
+- [ ] right click menu
 - [ ] window switcher
 
 #### Fixes

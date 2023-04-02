@@ -5,30 +5,30 @@ local beautiful = require("beautiful")
 local ruled = require("ruled")
 
 
-local Scratchpad = {mt = {}} -- scratch init
+local Scratchpad = { mt = {} } -- scratch init
 
 -- make a new instance of scratchpad
 function Scratchpad:new(args)
-  local ret = gears.object{}
+  local ret = gears.object {}
   gears.table.crush(ret, Scratchpad)
   gears.table.crush(ret, args)
   return ret
 end
 
 local findClient = function(rule)
-    local function matcher(c)
-        return awful.rules.match(c, rule)
-    end
-    local clients = client.get()
-    local findex = gears.table.hasitem(clients, client.focus) or 1
-    local start = gears.math.cycle(#clients, findex + 1)
+  local function matcher(c)
+    return awful.rules.match(c, rule)
+  end
+  local clients = client.get()
+  local findex = gears.table.hasitem(clients, client.focus) or 1
+  local start = gears.math.cycle(#clients, findex + 1)
 
-    local matches = {}
-    for c in awful.client.iterate(matcher, start) do
-        matches[#matches + 1] = c
-    end
+  local matches = {}
+  for c in awful.client.iterate(matcher, start) do
+    matches[#matches + 1] = c
+  end
 
-    return matches
+  return matches
 end
 
 function Scratchpad:find()
@@ -49,19 +49,19 @@ function Scratchpad:become(c)
   })
 end
 
-
 function on(c)
-    local current_tag = c.screen.selected_tag
-    ctags = { current_tag }
-    for k, tag in pairs(c:tags()) do
-        if tag ~= current_tag then
-            table.insert(ctags, tag)
-        end
+  local current_tag = c.screen.selected_tag
+  ctags = { current_tag }
+  for k, tag in pairs(c:tags()) do
+    if tag ~= current_tag then
+      table.insert(ctags, tag)
     end
-    c:tags(ctags)
-    c:raise()
-    client.focus = c
+  end
+  c:tags(ctags)
+  c:raise()
+  client.focus = c
 end
+
 function Scratchpad:on()
   self.client = self:find()[1]
   if not self.client then
@@ -74,29 +74,30 @@ function Scratchpad:on()
         switch_to_tags = false,
         hidden = true,
         minimized = true,
-      }, callback = function(c)
-      gears.timer ({
-        timeout = 0.1,
-        autostart = true,
-        single_shot = true,
-        callback = function()
-          self.client = c
-          self:become(c)
-          c.hidden = false
-          c.minimized = false
+      },
+      callback = function(c)
+        gears.timer({
+          timeout = 0.1,
+          autostart = true,
+          single_shot = true,
+          callback = function()
+            self.client = c
+            self:become(c)
+            c.hidden = false
+            c.minimized = false
 
-          c:activate({})
-          self:emit_signal("inital_apply", c)
+            c:activate({})
+            self:emit_signal("inital_apply", c)
             if c.name ~= "Discord Updater" then
               ruled.client.remove_rule("scratch")
             end
             c:connect_signal("request::unmanage", function()
               ruled.client.remove_rule("scratch")
             end)
-        end
-      })
-      
-    end})
+          end
+        })
+      end
+    })
   else
     self.client:raise()
     client.focus = self.client
@@ -105,17 +106,16 @@ function Scratchpad:on()
   end
 end
 
-
 function turn_off(c)
-    current_tag = c.screen.selected_tag
-    local ctags = {}
-    for k, tag in pairs(c:tags()) do
-        if tag ~= current_tag then
-            table.insert(ctags, tag)
-        end
+  current_tag = c.screen.selected_tag
+  local ctags = {}
+  for k, tag in pairs(c:tags()) do
+    if tag ~= current_tag then
+      table.insert(ctags, tag)
     end
-    c:tags(ctags)
-    c.sticky = false
+  end
+  c:tags(ctags)
+  c.sticky = false
 end
 
 function Scratchpad:off()
@@ -126,24 +126,23 @@ end
 function Scratchpad:toggle()
   local is_turn_off = client.focus and awful.rules.match(client.focus, self.rule)
   if is_turn_off then
-        self:off()
+    self:off()
   else
-        self:on()
+    self:on()
   end
 end
 
 function Scratchpad.mt:__call(...)
-    return Scratchpad:new(...)
+  return Scratchpad:new(...)
 end
-
 
 local mod = require 'main.bindings.mod'
 local createScratch = function(command, width, height, k)
   local scratch = Scratchpad:new {
     command = 'st' .. ' -c "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
     rule = { class = command .. 'pad' },
-    height = height, 
-    width = width ,
+    height = height,
+    width = width,
   }
   awful.keyboard.append_global_keybindings {
     awful.key {
@@ -161,4 +160,4 @@ local createScratch = function(command, width, height, k)
 end
 
 local default = createScratch("pfetch", 1000, 650, 'v')
-local ncmpcpp = createScratch("ncmpcpp", 900,600, 'z')
+local ncmpcpp = createScratch("ncmpcpp", 900, 600, 'z')

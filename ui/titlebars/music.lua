@@ -163,18 +163,11 @@ slider:connect_signal('property::value', function(_, value)
   end
 end)
 playerctl:connect_signal("position", function(_, interval_sec, length_sec)
-  slider.maximum = length_sec
-  slider.value = interval_sec
+  slider.maximum = length_sec or 100
+  slider.value = interval_sec or 0
 end)
 
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
-  -- Set art widget
-  if title == "" then
-    title = "None"
-  end
-  if artist == "" then
-    artist = "Unknown"
-  end
   if album_path == "" then
     album_path = beautiful.songdefpicture
   end
@@ -184,10 +177,10 @@ playerctl:connect_signal("metadata", function(_, title, artist, album_path, albu
   if string.len(artist) > 22 then
     artist = string.sub(artist, 0, 22) .. "..."
   end
-  songname:set_markup_silently(helpers.colorizeText(title, beautiful.fg))
-  leftname:set_markup_silently(helpers.colorizeText(title, beautiful.fg))
-  leftartist:set_markup_silently(helpers.colorizeText(' ' .. artist .. ' ', beautiful.fg))
-  artistname:set_markup_silently(helpers.colorizeText(artist, beautiful.fg))
+  songname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
+  leftname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
+  leftartist:set_markup_silently(helpers.colorizeText(' ' .. artist or "WT" .. ' ', beautiful.fg))
+  artistname:set_markup_silently(helpers.colorizeText(artist or "HM", beautiful.fg))
   art:set_image(gears.surface.load_uncached(album_path))
   leftart:set_image(gears.surface.load_uncached(album_path))
 end)
@@ -310,6 +303,7 @@ playerctl:connect_signal("volume", function(_, volume, _)
   volslider.value = not is_vol_hovered and volume
 end)
 volslider:connect_signal('property::value', function(_, value)
+  value = value or 100
   playerctl:set_volume(value / 100)
 end)
 volslider:connect_signal('mouse::enter', function()

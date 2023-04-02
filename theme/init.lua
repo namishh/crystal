@@ -118,7 +118,7 @@ theme.titlebar_close_button_focus               = gears.color.recolor_image(them
 
 theme.layout_floating                           = gears.color.recolor_image(
   theme_path .. "icons/" .. "floating.png", theme.fg1)
-theme.layout_spiral                             = gears.color.recolor_image(theme_path .. "icons/" .. "tile.png",
+theme.layout_tile                               = gears.color.recolor_image(theme_path .. "icons/" .. "tile.png",
   theme.fg1)
 
 theme.awesomewm                                 = gears.color.recolor_image(

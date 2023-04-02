@@ -89,6 +89,18 @@ helpers.generateId = function()
   end)
 end
 
+helpers.find_last = function(haystack, needle)
+  -- Set the third arg to false to allow pattern matching
+  local found = haystack:reverse():find(needle:reverse(), nil, true)
+  if found then
+    return haystack:len() - needle:len() - found + 2
+  else
+    return found
+  end
+end
+
+
+
 helpers.addTables = function(a, b)
   local result = {}
   for k, v in pairs(a) do
