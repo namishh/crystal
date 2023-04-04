@@ -54,6 +54,7 @@ local finalWidget = wibox.widget {
 local exclude     = {
   "Shift_R",
   "Shift_L",
+  "Tab",
   "Alt_R",
   "Alt_L",
   "Ctrl_L",
@@ -83,7 +84,7 @@ local exit_screen_grabber = awful.keygrabber({
     elseif key == "Return" then
       if string.len(finalWidget:get_children_by_id('input')[1].markup) > 0 then
         awful.spawn.with_shell("bash -c 'firefox \"" ..
-          "https://google.com/search?q=" .. finalWidget:get_children_by_id('input')[1].markup .. "\"'")
+        "https://google.com/search?q=" .. finalWidget:get_children_by_id('input')[1].markup .. "\"'")
         finalWidget:get_children_by_id('input')[1].markup = ''
         awesome.emit_signal("toggle::dashboard")
       end

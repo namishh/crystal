@@ -1,6 +1,7 @@
 require('ui.bar')
 require("ui.control")
 require("ui.dings")
+require("ui.desk")
 require("ui.dock")
 require("ui.exitscreen")
 require("ui.mainframe")

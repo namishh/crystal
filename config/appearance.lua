@@ -6,6 +6,7 @@ local _M = {
   gaps = 17,
   barSize = 50,
   barShouldHaveGaps = false,
+  dockSize = 50,
 }
 
 return _M

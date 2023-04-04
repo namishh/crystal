@@ -14,6 +14,7 @@ theme.titlebarType       = appearConfig.titlebarType
 theme.barDir             = appearConfig.barDir
 theme.barPadding         = appearConfig.gaps
 theme.barSize            = appearConfig.barSize
+theme.dockSize           = appearConfig.dockSize
 theme.barShouldHaveGaps  = appearConfig.barShouldHaveGaps
 
 theme.scrheight          = appearConfig.scrheight
@@ -154,16 +155,16 @@ theme.playerctl_backend                         = "playerctl_lib"
 
 local icon_dir                                  = colors.iconTheme .. "/apps/scalable/"
 theme.ic_icons                                  = {
-      ["st"] = icon_dir .. "terminal.svg",
-      ["st-256color"] = icon_dir .. "terminal.svg",
-      ["pfetchpad"] = icon_dir .. "terminal.svg",
-      ["discord"] = icon_dir .. "discord.svg",
-      ["firefox"] = icon_dir .. "firefox.svg",
-      ["firefox-aurora"] = icon_dir .. "firefox.svg",
-      ["feh"] = icon_dir .. "image-viewer.svg",
-      ["Spotify"] = icon_dir .. "spotify.svg",
-      ["ncmpcpppad"] = icon_dir .. "deepin-music-player.svg",
-      ["SimpleScreenRecorder"] = icon_dir .. "screenrecorder.svg",
+  ["st"] = icon_dir .. "terminal.svg",
+  ["st-256color"] = icon_dir .. "terminal.svg",
+  ["pfetchpad"] = icon_dir .. "terminal.svg",
+  ["discord"] = icon_dir .. "discord.svg",
+  ["firefox"] = icon_dir .. "firefox.svg",
+  ["firefox-aurora"] = icon_dir .. "firefox.svg",
+  ["feh"] = icon_dir .. "image-viewer.svg",
+  ["Spotify"] = icon_dir .. "spotify.svg",
+  ["ncmpcpppad"] = icon_dir .. "deepin-music-player.svg",
+  ["SimpleScreenRecorder"] = icon_dir .. "screenrecorder.svg",
 }
 theme.progressbar_bg                            = theme.pri .. '11'
 theme.progressbar_fg                            = theme.pri
