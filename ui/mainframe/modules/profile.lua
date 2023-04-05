@@ -176,7 +176,7 @@ local finalwidget     = wibox.widget {
             margins = 14,
           },
           widget = wibox.container.background,
-          bg = beautiful.bg3
+          bg = beautiful.bg3 .. '11'
         },
         spacing = 20,
         layout = wibox.layout.fixed.vertical

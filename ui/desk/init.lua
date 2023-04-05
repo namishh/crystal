@@ -20,8 +20,8 @@ local desktop = {
     {
       name = "Trash",
       icon = iconTheme .. '/places/scalable/gnome-dev-trash-full.svg',
-      type = "general",
-      f = "nemo trash"
+      type = "generalstuff",
+      f = "nemo trash:/"
     }
   },
   shortcuts = {
@@ -236,6 +236,50 @@ end
 function grabber:stop()
   grabber.main:stop()
 end
+
+local indexOf = function(array, value)
+  for i, v in ipairs(array) do
+    if v == value then
+      return i
+    end
+  end
+  return nil
+end
+
+function desktop:remove(entry)
+  entry = entry or desktop.objects[1]
+  local list
+  if entry.type == "file" then
+    list = desktop.files
+  elseif entry.type == "folder" then
+    list = desktop.folders
+  elseif entry.type == "shortcut" then
+    list = desktop.shortcuts
+  elseif entry.type == "generalstuff" then
+    list = desktop.generalstuff
+  end
+  local index = indexOf(list, entry)
+  print(index .. " this is the index")
+  print(list .. " wooh baby this is what i was waiting for")
+  --if index then list[index] = nil end
+  desktop.objects = {}
+  local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
+  for _, k in ipairs(stuff) do
+    for _, e in ipairs(desktop[k]) do
+      table.insert(desktop.objects, e)
+    end
+  end
+  desktop:writeData(desktop.objects)
+  local new = desktop:getData()
+  desktop.grid:reset()
+  for _, e in ipairs(new) do
+    desktop:add(e)
+  end
+end
+
+awesome.connect_signal('remove::something', function()
+  desktop:remove()
+end)
 
 function desktop:create(f)
   awful.screen.connect_for_each_screen(function(s)

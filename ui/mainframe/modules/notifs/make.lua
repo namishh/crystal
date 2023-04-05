@@ -7,7 +7,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 local naughty = require("naughty")
 return function(icon, notification, width)
-
   -- table of icons
   local icons = {
     ["firefox"]  = { icon = "󰈹" },
@@ -149,7 +148,7 @@ return function(icon, notification, width)
           },
           widget = wibox.container.margin
         },
-        bg = beautiful.bg3,
+        bg = beautiful.bg3 .. '88',
         widget = wibox.container.background
       },
       nil,

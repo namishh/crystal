@@ -27,7 +27,7 @@ _M.mainmenu = awful.menu {
 
 _M.desktopMenu = awful.menu {
   items = {
-    { 'Remove', function() awesome.emit_signal('rename::something') end },
+    { 'Remove', function() awesome.emit_signal('remove::something') end },
     { 'Rename', function()
     end }
   }
