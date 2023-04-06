@@ -24,13 +24,20 @@ local desktop = {
       f = "nemo trash:/"
     }
   },
-  shortcuts = {
-  }
+  shortcuts = {}
 }
 local DIR = '/home/namish/Desktop'
 local grabber = {}
 
 local DATA = gears.filesystem.get_cache_dir() .. 'data.json'
+
+desktop.menu = awful.menu {
+  items = {
+    { 'Remove', function() awesome.emit_signal('remove::something') end },
+    { 'Rename', function()
+    end }
+  }
+}
 
 function desktop:getData()
   local f = assert(io.open(DATA, "rb"))
@@ -80,6 +87,7 @@ function desktop:getStuff()
         toAdd = {
           name = path:gsub("^%l", string.upper):sub(1, -9),
           type = 'shortcut',
+          path = DIR .. "/" .. path,
           icon = getIcon(nil, path:sub(1, -9), path:sub(1, -9), false),
           f = path:sub(1, -9),
         }
@@ -139,8 +147,9 @@ function desktop:add(entry)
         awful.spawn.with_shell(entry.f)
       end),
       awful.button({}, 3, function()
-        widgets.desktopMenu:toggle()
         widgets.mainmenu:toggle()
+        print(entry)
+        self:remove(entry)
       end)
 
     },
@@ -247,7 +256,13 @@ local indexOf = function(array, value)
 end
 
 function desktop:remove(entry)
-  entry = entry or desktop.objects[1]
+  print(entry.type)
+  print(inspect(entry))
+  if entry.type == 'folder' then
+    os.execute('rm -rf "' .. entry.path .. '"')
+  else
+    os.execute('rm "' .. entry.path .. '"')
+  end
   local list
   if entry.type == "file" then
     list = desktop.files
@@ -256,12 +271,13 @@ function desktop:remove(entry)
   elseif entry.type == "shortcut" then
     list = desktop.shortcuts
   elseif entry.type == "generalstuff" then
+    print('hi')
+    print(inspect(self.generalstuff))
     list = desktop.generalstuff
+    print(inspect(list))
   end
   local index = indexOf(list, entry)
-  print(index .. " this is the index")
-  print(list .. " wooh baby this is what i was waiting for")
-  --if index then list[index] = nil end
+  table.remove(list, index)
   desktop.objects = {}
   local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
   for _, k in ipairs(stuff) do
@@ -354,8 +370,10 @@ function desktop:create(f)
         awful.spawn.with_shell('mkdir -p ~/Desktop/"' .. i .. '"')
         table.insert(desktop.folders, toAdd)
       elseif f == 'shortcut' then
+        i = string.lower(i)
         local icon = getIcon(nil, i, i, false)
         toAdd = {
+          path = DIR .. "/" .. i .. ".desktop",
           name = i:gsub("^%l", string.upper),
           type = 'shortcut',
           icon = icon,
