@@ -3,6 +3,7 @@ let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = ps: with ps; [
     pygame
+    pip
   ];
 in
 {
@@ -53,9 +54,11 @@ in
   environment.systemPackages = with pkgs; [
     nodejs
     luaPackages.lgi
+    ytmdl
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
+    gtk3
     jq
     i3lock-color
     st
@@ -107,6 +110,10 @@ in
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
+  };
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "us,";
   };
   security.polkit.enable = true;
   nix = {

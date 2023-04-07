@@ -5,6 +5,9 @@
     imgclr = prev.callPackage ../derivs/imagecolorizer.nix {
       buildPythonPackage = prev.python310Packages.buildPythonPackage;
     };
+    spotdl = prev.callPackage ../derivs/spotdl.nix {
+      buildPythonApplication = prev.python311Packages.buildPythonApplication;
+    };
     st = prev.st.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {

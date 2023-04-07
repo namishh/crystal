@@ -16,6 +16,8 @@ in
   home.homeDirectory = "/home/namish";
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
+  home.file.".icons/default".source =
+    "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
   # gtk themeing
   gtk = {
@@ -33,14 +35,15 @@ in
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config; })
     (import ./conf/editors/vscopium/default.nix { })
-    (import ./conf/music/spicetify/default.nix {inherit colors spicetify-nix pkgs;})
+    (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
+    (import ./conf/utils/picom/default.nix { inherit colors; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
     # Bin files
     (import ../shared/bin/default.nix { inherit config; })
-    (import ../shared/lock.nix {inherit colors;})
+    (import ../shared/lock.nix { inherit colors; })
   ];
   home = {
     activation = {
@@ -68,6 +71,7 @@ in
       lua-language-server
       mpd
       imagemagick
+      xorg.xev
       procps
       sbctl
       cava
@@ -79,7 +83,7 @@ in
     ];
   };
   nixpkgs.config = {
-      allowUnfree = true;
-      allowUnfreePredicate = _: true;
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
   };
 }
