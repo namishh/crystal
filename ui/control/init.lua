@@ -7,12 +7,8 @@ local gears = require("gears")
 local animation = require("modules.animation")
 
 local sliders = require("ui.control.modules.sliders")
-local barpadding = require("ui.control.modules.barpadding")
 local settings = require("ui.control.modules.settings")
 local themer = require("ui.control.modules.themer")
-local title = require("ui.control.modules.titlebar")
-local bar = require("ui.control.modules.bar")
-local bargaps = require("ui.control.modules.bargaps")
 
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
@@ -20,7 +16,7 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = 480,
-    height = 890,
+    height = 635,
     bg = beautiful.bg,
     ontop = true,
     visible = false,
@@ -31,55 +27,8 @@ awful.screen.connect_for_each_screen(function(s)
       sliders,
       settings,
       themer,
-      {
-        {
-          {
-            {
-              title,
-              bar,
-              spacing = 25,
-              layout = wibox.layout.fixed.horizontal
-            },
-            {
-              barpadding,
-              spacing = 25,
-              layout = wibox.layout.fixed.horizontal
-            },
-            {
-              bargaps,
-              nil,
-              {
-                {
-                  {
-                    font = beautiful.font .. " 12",
-                    markup = helpers.colorizeText('Apply', beautiful.pri),
-                    valign = "center",
-                    widget = wibox.widget.textbox,
-                  },
-                  widget = wibox.container.margin,
-                  margins = 4,
-                },
-                buttons = {
-                  awful.button({}, 1, function()
-                    awesome.restart()
-                  end)
-                },
-                widget = wibox.container.background,
-                bg = beautiful.pri .. '11'
-              },
-              layout = wibox.layout.align.horizontal
-            },
-            spacing = 20,
-            layout = wibox.layout.fixed.vertical
-          },
-          widget = wibox.container.margin,
-          margins = 15,
-        },
-        widget = wibox.container.background,
-        bg = beautiful.bg2 .. 'cc'
-      },
+      layout = wibox.layout.fixed.vertical,
       spacing = 20,
-      layout = wibox.layout.fixed.vertical
     },
     margins = dpi(15),
     widget = wibox.container.margin,
@@ -110,13 +59,7 @@ awful.screen.connect_for_each_screen(function(s)
       slide_end:again()
       slide:set(0 - control.height)
     elseif not control.visible then
-      if beautiful.barDir == 'top' then
-        slide:set(beautiful.barSize + beautiful.useless_gap + math.ceil(pad / 2))
-      elseif beautiful.barDir == 'bottom' then
-        slide:set(s.geometry.height - control.height - beautiful.barSize - beautiful.useless_gap - math.ceil(pad / 2))
-      else
-        slide:set(s.geometry.height - (control.height + beautiful.useless_gap * 2))
-      end
+      slide:set(beautiful.barSize + beautiful.useless_gap + math.ceil(pad / 2))
       control.visible = true
     end
   end)

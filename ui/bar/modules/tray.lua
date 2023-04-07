@@ -21,15 +21,9 @@ local togglertext = wibox.widget {
   widget = wibox.widget.textbox,
 }
 
-local l           = nil
-if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-  l = wibox.layout.fixed.vertical
-else
-  l = wibox.layout.fixed.horizontal
-end
 -- TRAY
 
-local systray = wibox.widget {
+local systray     = wibox.widget {
   {
     widget = wibox.widget.systray,
   },
@@ -44,18 +38,10 @@ local systray = wibox.widget {
 awesome.connect_signal('systray::toggle', function()
   if systray.visible then
     systray.visible = false
-    if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-      togglertext.text = '󰅃'
-    else
-      togglertext.text = '󰅁'
-    end
+    togglertext.text = '󰅁'
   else
     systray.visible = true
-    if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-      togglertext.text = '󰅀'
-    else
-      togglertext.text = '󰅂'
-    end
+    togglertext.text = '󰅂'
   end
 end)
 
@@ -64,10 +50,9 @@ local widget = wibox.widget {
     {
       systray,
       togglertext,
-      layout = l,
+      layout = wibox.layout.fixed.horizontal,
     },
     shape = helpers.rrect(2),
-    bg = beautiful.bg2 .. "cc",
     widget = wibox.container.background,
   },
   margins = 0,

@@ -39,6 +39,12 @@ return function(name, dir)
   elseif ext == '.hs' then
     fn = 'st -e nvim ' .. dir .. name
     i = "mimes/scalable/text-haskell.svg"
+  elseif ext == '.lua' then
+    fn = 'st -e nvim ' .. dir .. name
+    i = "mimes/scalable/text-x-lua.svg"
+  elseif ext == '.md' then
+    fn = 'st -e nvim ' .. dir .. name
+    i = "mimes/scalable/text-x-markdown.svg"
   else
     i = "mimes/scalable/txt.svg"
   end

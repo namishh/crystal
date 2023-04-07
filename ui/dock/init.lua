@@ -8,33 +8,14 @@ local beautiful = require("beautiful")
 local getIcon = require("ui.dock.getIcon")
 --local drawPreview = require("ui.dock.taskpreview") -- TODO client previews
 
-local bardir = beautiful.barDir
 
 local placeDock = function(c, m)
-  if bardir == 'bottom' then
-    awful.placement.left(c, { margins = dpi(m) })
-  elseif bardir == "top" then
-    awful.placement.bottom(c, { margins = dpi(m) })
-  elseif bardir == "left" then
-    awful.placement.bottom(c, { margins = dpi(m) })
-  elseif bardir == "right" then
-    awful.placement.bottom(c, { margins = dpi(m) })
-  end
+  awful.placement.bottom(c, { margins = dpi(m) })
 end
 
-local layout
-local rlayout
-local flexlayout
-local cond = bardir == 'bottom'
-if bardir == "bottom" then
-  layout = wibox.layout.fixed.vertical
-  rlayout = wibox.layout.fixed.horizontal
-  flexlayout = wibox.layout.flex.vertical
-else
-  layout = wibox.layout.fixed.horizontal
-  rlayout = wibox.layout.fixed.vertical
-  flexlayout = wibox.layout.flex.horizontal
-end
+local layout = wibox.layout.fixed.horizontal
+local rlayout = wibox.layout.fixed.vertical
+local flexlayout = wibox.layout.flex.horizontal
 
 local tomfoolery = function(s)
   -- this is the main dock
@@ -104,8 +85,8 @@ local tomfoolery = function(s)
   -- a hotarea at the bottom which will toggle the dock upon hover
   local hotpop = wibox({
     type = "dock",
-    height = cond and 100 or beautiful.useless_gap * 3,
-    width = cond and beautiful.useless_gap * 3 or 100,
+    height = beautiful.useless_gap * 3,
+    width = 200,
     screen = s,
     ontop = true,
     visible = true,
@@ -148,7 +129,7 @@ local tomfoolery = function(s)
         layout = layout
       },
       widget = wibox.container.margin,
-      left = cond and 0 or 7
+      left = 7
     }
   end
   -- indicators, idea from crylia
@@ -190,8 +171,8 @@ local tomfoolery = function(s)
         end
       end
       local widget = wibox.widget {
-        forced_height = cond and 45 or 4,
-        forced_width = cond and 4 or 45,
+        forced_height = 4,
+        forced_width = 45,
         shape = helpers.rrect(50),
         widget = wibox.container.background,
         buttons = {
@@ -219,8 +200,8 @@ local tomfoolery = function(s)
         widget = wibox.container.place,
         halign = 'center'
       },
-      forced_height = cond and 45 or 4,
-      forced_width = cond and 4 or 45,
+      forced_height = 4,
+      forced_width = 45,
       widget = wibox.container.background
     }
   end
@@ -388,9 +369,9 @@ local tomfoolery = function(s)
       widget = wibox.container.margin,
       margins = {
         top = 10,
-        bottom = cond and 10 or 7,
+        bottom = 7,
         left = 10,
-        right = cond and 7 or 10,
+        right = 10,
       },
     }
   end

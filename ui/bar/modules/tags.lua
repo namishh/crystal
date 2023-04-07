@@ -4,17 +4,11 @@ local gears = require("gears")
 local helpers = require("helpers")
 local animation = require("modules.animation")
 local beautiful = require("beautiful")
-local fixedlayout = nil
-if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-  fixedlayout = wibox.layout.fixed.vertical
-else
-  fixedlayout = wibox.layout.fixed.horizontal
-end
 return function(s)
   local taglist = awful.widget.taglist {
     layout          = {
       spacing = 15,
-      layout = fixedlayout,
+      layout = wibox.layout.fixed.horizontal,
     },
     style           = {
       shape = helpers.rrect(50)
@@ -50,11 +44,7 @@ return function(s)
           duration = 0.12,
           easing = animation.easing.linear,
           update = function(_, pos)
-            if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-              self:get_children_by_id('background_role')[1].forced_height = pos
-            else
-              self:get_children_by_id('background_role')[1].forced_width = pos
-            end
+            self:get_children_by_id('background_role')[1].forced_width = pos
           end,
         })
         self.update = function()

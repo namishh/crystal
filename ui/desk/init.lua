@@ -11,12 +11,13 @@ local widgets = require 'config.menu'
 local json = require "modules.json"
 local getIcon = require 'ui.dock.getIcon'
 
+-- so this is the main desktop object
 local desktop = {
   grid = wibox.widget { layout = wibox.layout.grid, forced_num_rows = 9, forced_num_cols = 20, orientation = 'horizontal' },
   objects = {},
   folders = {},
   files = {},
-  generalstuff = {
+  generalstuff = { -- use this to add xdg stuff like trashcan and home folder, etc
     {
       name = "Trash",
       icon = iconTheme .. '/places/scalable/gnome-dev-trash-full.svg',
@@ -24,21 +25,24 @@ local desktop = {
       f = "nemo trash:/"
     }
   },
-  shortcuts = {}
+  shortcuts = {},
+  toChange = {},
 }
 local DIR = '/home/namish/Desktop'
-local grabber = {}
+local grabber = {} -- a general class for a grabber
 
 local DATA = gears.filesystem.get_cache_dir() .. 'data.json'
 
 desktop.menu = awful.menu {
   items = {
-    { 'Remove', function() awesome.emit_signal('remove::something') end },
+    { 'Remove',      function() awesome.emit_signal('remove::something', desktop.toChange) end },
+    { 'Change Icon', function() awesome.emit_signal('edit::icon', desktop.toChange) end },
     { 'Rename', function()
     end }
   }
 }
 
+-- this function reads the data in the json file as a string and decodes it into a table form for us perform operations
 function desktop:getData()
   local f = assert(io.open(DATA, "rb"))
   local lines = f:read("*all")
@@ -47,6 +51,8 @@ function desktop:getData()
   return data
 end
 
+-- and this function takes an object
+-- first it clears the data file, and then encodes the given object and then wrties to that cleared file
 function desktop:writeData(d)
   os.execute('truncate -s 0 ' .. DATA)
   local f = assert(io.open(DATA, "a"))
@@ -58,8 +64,10 @@ end
 
 function desktop:getStuff()
   local toAdd
+  -- this loops over all the files in the Desktop directory
   for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
     path = string.sub(path, 3)
+    -- if the `cd` command is successful then it is a folder
     if os.execute("cd '" .. DIR .. '/' .. path .. "'") then
       toAdd = {
         name = path,
@@ -69,7 +77,7 @@ function desktop:getStuff()
         icon = iconTheme .. "places/scalable/stock_folder.svg"
       }
       table.insert(desktop.folders, toAdd)
-    else
+    else -- else it is a file
       local ext = path:match("^.+(%..+)$") or ' '
       if ext ~= '.desktop' then
         local s = determine(path, DIR .. '/')
@@ -82,8 +90,7 @@ function desktop:getStuff()
           icon = iconTheme .. s.icon
         }
         table.insert(desktop.files, toAdd)
-      else
-        print("this si the line" .. path:sub(1, -8))
+      else -- desktop shortcuts are special
         toAdd = {
           name = path:gsub("^%l", string.upper):sub(1, -9),
           type = 'shortcut',
@@ -148,8 +155,8 @@ function desktop:add(entry)
       end),
       awful.button({}, 3, function()
         widgets.mainmenu:toggle()
-        print(entry)
-        self:remove(entry)
+        self.toChange = entry
+        self.menu:toggle()
       end)
 
     },
@@ -188,6 +195,22 @@ function desktop:start()
       end)
     },
   }
+end
+
+function desktop:refresh()
+  desktop.objects = {}
+  local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
+  for _, k in ipairs(stuff) do
+    for _, e in ipairs(desktop[k]) do
+      table.insert(desktop.objects, e)
+    end
+  end
+  desktop:writeData(desktop.objects)
+  local new = desktop:getData()
+  desktop.grid:reset()
+  for _, e in ipairs(new) do
+    desktop:add(e)
+  end
 end
 
 function grabber:init(finalWidget, fn, cl)
@@ -255,14 +278,7 @@ local indexOf = function(array, value)
   return nil
 end
 
-function desktop:remove(entry)
-  print(entry.type)
-  print(inspect(entry))
-  if entry.type == 'folder' then
-    os.execute('rm -rf "' .. entry.path .. '"')
-  else
-    os.execute('rm "' .. entry.path .. '"')
-  end
+local getList = function(entry)
   local list
   if entry.type == "file" then
     list = desktop.files
@@ -271,37 +287,102 @@ function desktop:remove(entry)
   elseif entry.type == "shortcut" then
     list = desktop.shortcuts
   elseif entry.type == "generalstuff" then
-    print('hi')
-    print(inspect(self.generalstuff))
     list = desktop.generalstuff
-    print(inspect(list))
   end
-  local index = indexOf(list, entry)
-  table.remove(list, index)
-  desktop.objects = {}
-  local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
-  for _, k in ipairs(stuff) do
-    for _, e in ipairs(desktop[k]) do
-      table.insert(desktop.objects, e)
-    end
-  end
-  desktop:writeData(desktop.objects)
-  local new = desktop:getData()
-  desktop.grid:reset()
-  for _, e in ipairs(new) do
-    desktop:add(e)
-  end
+  return list
 end
 
-awesome.connect_signal('remove::something', function()
-  desktop:remove()
+function desktop:remove(entry, per)
+  if per then
+    if entry.type == 'folder' then
+      os.execute('rm -rf "' .. entry.path .. '"')
+    else
+      os.execute('rm "' .. entry.path .. '"')
+    end
+  end
+  local list = getList(entry)
+  local index = indexOf(list, entry)
+  table.remove(list, index)
+  self:refresh()
+end
+
+awesome.connect_signal('remove::something', function(entry)
+  desktop:remove(entry, true)
 end)
+
+function desktop:changeIcon(e)
+  awful.screen.connect_for_each_screen(function(s)
+    local pop = wibox({
+      type = "dock",
+      height = 90,
+      width = 200,
+      ontop = true,
+      screen = s,
+      visible = true,
+      bg = beautiful.bg
+    })
+    awful.placement.centered(pop)
+    local widget = wibox.widget {
+      {
+        font = beautiful.font .. " Light 12",
+        markup = "Enter Name",
+        valign = "center",
+        align = "start",
+        widget = wibox.widget.textbox,
+      },
+      {
+        {
+          {
+            id = "input",
+            font = beautiful.font .. " Light 12",
+            markup = "",
+            forced_height = 15,
+            valign = "center",
+            align = "start",
+            widget = wibox.widget.textbox,
+          },
+          widget = wibox.container.margin,
+          margins = 10
+        },
+        widget = wibox.container.background,
+        bg = beautiful.mbg
+      },
+      spacing = 10,
+      layout = wibox.layout.fixed.vertical
+    }
+    pop:setup {
+      widget,
+      widget = wibox.container.margin,
+      margins = 10
+    }
+    grabber:init(widget, function(i)
+      local icon = getIcon(nil, i, i, false)
+      pop.visible = false
+      self:remove(e, false)
+      local toAdd = {
+        path = e.path,
+        name = e.name,
+        type = e.type,
+        f = e.f,
+        icon = icon,
+      }
+      local list = getList(e)
+      table.insert(list, toAdd)
+      print(inspect(list))
+      print(inspect(toAdd))
+      self:refresh()
+    end, function()
+      pop.visible = false
+    end)
+    grabber:start()
+  end)
+end
 
 function desktop:create(f)
   awful.screen.connect_for_each_screen(function(s)
     local pop = wibox({
       type = "dock",
-      height = 100,
+      height = 90,
       width = 200,
       ontop = true,
       screen = s,
@@ -345,6 +426,7 @@ function desktop:create(f)
     grabber:init(widget, function(i)
       local toAdd
       if f == 'file' then
+        i = i or "Untitled File"
         s = determine(i, DIR .. '/')
         local ext = i:match('.') and i:match("^.+(%..+)$") or ''
         if ext ~= '.desktop' then
@@ -361,7 +443,7 @@ function desktop:create(f)
         awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '"')
       elseif f == 'folder' then
         toAdd = {
-          name = i,
+          name = i or 'Untitled Folder',
           path = DIR .. "/" .. i,
           type = "folder",
           f = "nemo '" .. DIR .. "/" .. i .. "'",
@@ -370,31 +452,21 @@ function desktop:create(f)
         awful.spawn.with_shell('mkdir -p ~/Desktop/"' .. i .. '"')
         table.insert(desktop.folders, toAdd)
       elseif f == 'shortcut' then
-        i = string.lower(i)
-        local icon = getIcon(nil, i, i, false)
-        toAdd = {
-          path = DIR .. "/" .. i .. ".desktop",
-          name = i:gsub("^%l", string.upper),
-          type = 'shortcut',
-          icon = icon,
-          f = i,
-        }
-        awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '.desktop"')
-        table.insert(desktop.shortcuts, toAdd)
-      end
-      desktop.objects = {}
-      local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
-      for _, k in ipairs(stuff) do
-        for _, entry in ipairs(desktop[k]) do
-          table.insert(desktop.objects, entry)
+        if i then
+          i = string.lower(i)
+          local icon = getIcon(nil, i, i, false)
+          toAdd = {
+            path = DIR .. "/" .. i .. ".desktop",
+            name = i:gsub("^%l", string.upper),
+            type = 'shortcut',
+            icon = icon,
+            f = i,
+          }
+          awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '.desktop"')
+          table.insert(desktop.shortcuts, toAdd)
         end
       end
-      desktop:writeData(desktop.objects)
-      local new = desktop:getData()
-      desktop.grid:reset()
-      for _, entry in ipairs(new) do
-        desktop:add(entry)
-      end
+      self:refresh()
       pop.visible = false
     end, function()
       pop.visible = false
@@ -403,8 +475,17 @@ function desktop:create(f)
   end)
 end
 
+function desktop:reload()
+
+end
+
 awesome.connect_signal('create::something', function(f)
   desktop:create(f)
+end)
+
+
+awesome.connect_signal('edit::icon', function(entry)
+  desktop:changeIcon(entry)
 end)
 
 desktop:getStuff()

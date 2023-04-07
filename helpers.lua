@@ -103,10 +103,10 @@ end
 
 helpers.addTables = function(a, b)
   local result = {}
-  for k, v in pairs(a) do
+  for _, v in pairs(a) do
     table.insert(result, v)
   end
-  for k, v in pairs(b) do
+  for _, v in pairs(b) do
     table.insert(result, v)
   end
   return result

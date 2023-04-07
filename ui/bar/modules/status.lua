@@ -7,51 +7,40 @@ local helpers   = require("helpers")
 
 local wifi      = wibox.widget {
   font = beautiful.icofont .. " 12",
-  markup = "󰤨",
+  markup = helpers.colorizeText("󰤨", beautiful.fg),
   widget = wibox.widget.textbox,
   valign = "center",
   align = "center"
 }
 local battery   = wibox.widget {
-  widget = wibox.container.arcchart,
-  max_value = 100,
-  min_value = 0,
-  value = 69,
-  thickness = dpi(3),
-  rounded_edge = true,
-  bg = beautiful.ok .. "4D",
-  colors = { beautiful.ok },
-  start_angle = math.pi + math.pi / 2,
-  forced_width = dpi(15),
-  forced_height = dpi(15)
+  id            = 'battery',
+  widget        = wibox.widget.progressbar,
+  max_value     = 100,
+  value         = 69,
+  forced_width  = 100,
+  forced_height = 40,
+  shape         = helpers.rrect(5),
 }
-local l         = nil
-if beautiful.barDir == 'left' or beautiful.barDir == 'right' then
-  l = wibox.layout.fixed.vertical
-  wifi.font = beautiful.icofont .. " 12"
-  battery.forced_width = dpi(15)
-  battery.forced_height = dpi(15)
-else
-  l = wibox.layout.fixed.horizontal
-  wifi.font = beautiful.icofont .. " 14"
-  battery.forced_width = dpi(17)
-  battery.forced_height = dpi(17)
-end
-local status = wibox.widget {
+local status    = wibox.widget {
   {
     {
       {
-        battery,
+        {
+          battery,
+          {
+            font = beautiful.icofont .. " 13",
+            markup = helpers.colorizeText("󱐋", beautiful.bg),
+            widget = wibox.widget.textbox,
+            valign = "center",
+            align = "center"
+          },
+          layout = wibox.layout.stack
+        },
         wifi,
-        layout = l,
+        layout = wibox.layout.fixed.horizontal,
         spacing = dpi(15)
       },
-      margins = {
-        top = (beautiful.barDir == "top" or "bottom") and 8 or dpi(10),
-        bottom = (beautiful.barDir == "top" or "bottom") and 8 or dpi(10),
-        left = dpi(6),
-        right = dpi(6)
-      },
+      margins = dpi(6.4),
       widget = wibox.container.margin
     },
     layout = wibox.layout.stack
@@ -63,21 +52,34 @@ local status = wibox.widget {
   },
   widget = wibox.container.background,
   shape = helpers.rrect(2),
-  bg = beautiful.bg2 .. "cc"
 }
 
 awesome.connect_signal("signal::network", function(value)
   if value then
-    wifi.markup = helpers.colorizeText("󰤨", beautiful.fg)
+    wifi.markup = "󰤨"
   else
-    wifi.markup = helpers.colorizeText("󰤮", beautiful.fg .. "99")
+    wifi.markup = helpers.colorizeText("󰤮", beautiful.fg2 .. "99")
   end
 end)
 
 
 
 awesome.connect_signal("signal::battery", function(value)
-  battery.value = value
+  local b = battery
+  b.value = value
+  if value < 20 then
+    b.color = beautiful.err
+    b.background_color = beautiful.err .. '55'
+  elseif value < 50 then
+    b.color = beautiful.warn
+    b.background_color = beautiful.warn .. '55'
+  elseif value < 70 then
+    b.color = beautiful.pri
+    b.background_color = beautiful.pri .. '55'
+  else
+    b.color = beautiful.ok
+    b.background_color = beautiful.ok .. '55'
+  end
 end)
 
 return status
