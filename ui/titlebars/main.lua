@@ -1,18 +1,12 @@
 local awful = require 'awful'
 require 'awful.autofocus'
-local wibox      = require 'wibox'
-local gears      = require 'gears'
-local helpers    = require("helpers")
-local xresources = require("beautiful.xresources")
-local dpi        = xresources.apply_dpi
-local beautiful  = require("beautiful")
-local animation  = require("modules.animation")
-
-local typee      = beautiful.titlebarType
-local titleVis   = true
-if typee == 'vert' then
-  titleVis = false
-end
+local wibox        = require 'wibox'
+local gears        = require 'gears'
+local helpers      = require("helpers")
+local xresources   = require("beautiful.xresources")
+local dpi          = xresources.apply_dpi
+local beautiful    = require("beautiful")
+local animation    = require("modules.animation")
 
 local createButton = function(c, col, fn)
   local btn = wibox.widget {
@@ -31,11 +25,7 @@ local createButton = function(c, col, fn)
     duration = 0.12,
     easing = animation.easing.linear,
     update = function(_, pos)
-      if typee == 'vert' then
-        btn.forced_height = pos
-      else
-        btn.forced_width = pos
-      end
+      btn.forced_width = pos
     end,
   })
   btn:connect_signal('mouse::enter', function(_)
@@ -75,8 +65,8 @@ client.connect_signal("request::titlebars", function(c)
     end)
   )
   awful.titlebar(c, {
-    size = typee == 'vert' and 35 or 27,
-    position = typee == 'vert' and 'left' or 'top'
+    size = 27,
+    position = 'top'
   }):setup {
     {
       {
@@ -89,7 +79,7 @@ client.connect_signal("request::titlebars", function(c)
             spacing = dpi(10),
             widget = wibox.container.place,
             halign = 'center',
-            layout = typee == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
+            layout = wibox.layout.fixed.horizontal
           },
           top = dpi(5),
           bottom = dpi(5),
@@ -101,25 +91,23 @@ client.connect_signal("request::titlebars", function(c)
       {
         -- Middle
         buttons = buttons,
-        layout = typee == 'vert' and wibox.layout.flex.vertical or wibox.layout.flex.horizontal
+        layout = wibox.layout.flex.horizontal
       },
       {
-          -- Left
+        -- Left
         {
           -- Title
           {
-            align   = 'center',
-            visible = titleVis,
-            widget  = awful.titlebar.widget.titlewidget(c)
+            align  = 'center',
+            widget = awful.titlebar.widget.titlewidget(c)
           },
           widget = wibox.container.constraint,
           width = dpi(350)
         },
-        -- awful.titlebar.widget.iconwidget(c),
         buttons = buttons,
-        layout = typee == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
+        layout = wibox.layout.fixed.horizontal
       },
-      layout = typee == 'vert' and wibox.layout.align.vertical or wibox.layout.align.horizontal
+      layout = wibox.layout.align.horizontal
     },
     right = dpi(10),
     left = dpi(10),

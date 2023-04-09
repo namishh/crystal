@@ -15,7 +15,7 @@ _M.filemenu = {
   { 'New Folder',   function() awesome.emit_signal('create::something', 'folder') end },
   { 'New Shortcut', function() awesome.emit_signal('create::something', 'shortcut') end },
   { 'Toggle Icons', function() awesome.emit_signal("toggle::desktop") end },
-  { 'Refresh',      awesome.restart },
+  { 'Refresh',      function() awesome.emit_signal('desktop::refresh') end },
 }
 _M.mainmenu = awful.menu {
   items = {

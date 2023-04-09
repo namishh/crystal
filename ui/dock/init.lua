@@ -238,6 +238,11 @@ local tomfoolery = function(s)
         convert = "visualstudiocode",
         command = "code"
       },
+      {
+        name = "notion-app-enhanced",
+        convert = "notion",
+        command = "notion-app-enhanced"
+      },
     }
     for _, v in pairs(customIcons) do
       if class == v.name then

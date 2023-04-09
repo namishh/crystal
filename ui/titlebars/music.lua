@@ -77,7 +77,7 @@ local shufflebtn = wibox.widget {
 }
 playerctl:connect_signal("shuffle", function(_, shuffle)
   shufflebtn.markup = shuffle and helpers.colorizeText('󰒝', beautiful.pri) or helpers.colorizeText('󰒝',
-    beautiful.fg)
+        beautiful.fg)
 end)
 local repeatt = wibox.widget {
   align = 'center',
@@ -291,7 +291,7 @@ local volslider = wibox.widget {
   handle_width     = 18,
   bar_color        = beautiful.dis .. '33',
   bar_active_color = beautiful.dis,
-  handle_margins   = { top = beautiful.titlebarType == 'vert' and -1 or 6, },
+  handle_margins   = { top = 6, },
   forced_height    = 10,
   value            = 100,
   forced_width     = 80,
@@ -392,11 +392,7 @@ local createButton    = function(c, col, fn)
     duration = 0.12,
     easing = animation.easing.linear,
     update = function(_, pos)
-      if typee == 'vert' then
-        btn.forced_height = pos
-      else
-        btn.forced_width = pos
-      end
+      btn.forced_width = pos
     end,
   })
   btn:connect_signal('mouse::enter', function(_)
@@ -436,9 +432,9 @@ local top             = function(c)
 
   awful.titlebar(c,
     {
-      position = beautiful.titlebarType == 'vert' and 'left' or 'top',
-      size = beautiful.titlebarType == 'vert' and 35 or 45,
-      bg = beautiful.bg2
+      position = 'top',
+      size     = 45,
+      bg       = beautiful.bg2
     }):setup {
 
     {
@@ -448,12 +444,12 @@ local top             = function(c)
           maximize,
           minimize,
           spacing = dpi(8),
-          layout = beautiful.titlebarType == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
+          layout = wibox.layout.fixed.horizontal
         },
         widget = wibox.container.margin,
         margins = {
-          top = beautiful.titlebarType == 'vert' and 11.5 or 13.5,
-          bottom = beautiful.titlebarType == 'vert' and 11.5 or 13.5,
+          top = 13.5,
+          bottom = 13.5,
         }
       },
       {
@@ -465,19 +461,19 @@ local top             = function(c)
       {
         {
           {
-            font = beautiful.titlebarType == 'vert' and beautiful.icofont .. ' 0' or beautiful.icofont .. ' 17',
+            font = beautiful.icofont .. ' 17',
             markup = helpers.colorizeText("󰕾", beautiful.fg),
             widget = wibox.widget.textbox,
           },
           {
             volslider,
-            forced_height = beautiful.titlebarType == 'vert' and 100 or 10,
-            forced_width  = beautiful.titlebarType == 'vert' and 20 or 80,
-            direction     = beautiful.titlebarType == 'vert' and 'east' or 'north',
+            forced_height = 10,
+            forced_width  = 80,
+            direction     = 'north',
             layout        = wibox.container.rotate,
           },
           spacing = 10,
-          layout = beautiful.titlebarType == 'vert' and wibox.layout.fixed.vertical or wibox.layout.fixed.horizontal
+          layout = wibox.layout.fixed.horizontal
         },
         margins = {
           top = 5,
@@ -487,7 +483,7 @@ local top             = function(c)
         },
         widget = wibox.container.margin
       },
-      layout = beautiful.titlebarType == 'vert' and wibox.layout.align.vertical or wibox.layout.align.horizontal
+      layout = wibox.layout.align.horizontal
     },
     margins = {
       top = 0,

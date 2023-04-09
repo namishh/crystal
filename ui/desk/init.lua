@@ -37,8 +37,7 @@ desktop.menu = awful.menu {
   items = {
     { 'Remove',      function() awesome.emit_signal('remove::something', desktop.toChange) end },
     { 'Change Icon', function() awesome.emit_signal('edit::icon', desktop.toChange) end },
-    { 'Rename', function()
-    end }
+    { 'Rename',      function() awesome.emit_signal('edit::name', desktop.toChange) end }
   }
 }
 
@@ -64,9 +63,16 @@ end
 
 function desktop:getStuff()
   local toAdd
+  local data = self:getData() or {}
   -- this loops over all the files in the Desktop directory
   for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
     path = string.sub(path, 3)
+    local match = {}
+    for _, v in ipairs(data) do
+      if v.path == DIR .. "/" .. path then
+        match = v
+      end
+    end
     -- if the `cd` command is successful then it is a folder
     if os.execute("cd '" .. DIR .. '/' .. path .. "'") then
       toAdd = {
@@ -92,11 +98,11 @@ function desktop:getStuff()
         table.insert(desktop.files, toAdd)
       else -- desktop shortcuts are special
         toAdd = {
-          name = path:gsub("^%l", string.upper):sub(1, -9),
+          name = match.name ~= '' and match.name or path:gsub("^%l", string.upper):sub(1, -9),
           type = 'shortcut',
-          path = DIR .. "/" .. path,
-          icon = getIcon(nil, path:sub(1, -9), path:sub(1, -9), false),
-          f = path:sub(1, -9),
+          path = match.path ~= '' and match.path or DIR .. "/" .. path,
+          icon = match.icon ~= '' and match.icon or getIcon(nil, path:sub(1, -9), path:sub(1, -9), false),
+          f = match.f ~= '' and match.f or path:sub(1, -9),
         }
         table.insert(desktop.shortcuts, toAdd)
       end
@@ -310,51 +316,56 @@ awesome.connect_signal('remove::something', function(entry)
   desktop:remove(entry, true)
 end)
 
-function desktop:changeIcon(e)
-  awful.screen.connect_for_each_screen(function(s)
-    local pop = wibox({
-      type = "dock",
-      height = 90,
-      width = 200,
-      ontop = true,
-      screen = s,
-      visible = true,
-      bg = beautiful.bg
-    })
-    awful.placement.centered(pop)
-    local widget = wibox.widget {
-      {
-        font = beautiful.font .. " Light 12",
-        markup = "Enter Name",
-        valign = "center",
-        align = "start",
-        widget = wibox.widget.textbox,
-      },
+function desktop:getPop(tit, s)
+  local pop = wibox({
+    type = "dock",
+    height = 90,
+    width = 200,
+    ontop = true,
+    screen = s,
+    visible = true,
+    bg = beautiful.bg
+  })
+  awful.placement.centered(pop)
+  local widget = wibox.widget {
+    {
+      font = beautiful.font .. " Light 12",
+      markup = tit,
+      valign = "center",
+      align = "start",
+      widget = wibox.widget.textbox,
+    },
+    {
       {
         {
-          {
-            id = "input",
-            font = beautiful.font .. " Light 12",
-            markup = "",
-            forced_height = 15,
-            valign = "center",
-            align = "start",
-            widget = wibox.widget.textbox,
-          },
-          widget = wibox.container.margin,
-          margins = 10
+          id = "input",
+          font = beautiful.font .. " Light 12",
+          markup = "",
+          forced_height = 15,
+          valign = "center",
+          align = "start",
+          widget = wibox.widget.textbox,
         },
-        widget = wibox.container.background,
-        bg = beautiful.mbg
+        widget = wibox.container.margin,
+        margins = 10
       },
-      spacing = 10,
-      layout = wibox.layout.fixed.vertical
-    }
-    pop:setup {
-      widget,
-      widget = wibox.container.margin,
-      margins = 10
-    }
+      widget = wibox.container.background,
+      bg = beautiful.mbg
+    },
+    spacing = 10,
+    layout = wibox.layout.fixed.vertical
+  }
+  pop:setup {
+    widget,
+    widget = wibox.container.margin,
+    margins = 10
+  }
+  return widget, pop
+end
+
+function desktop:changeIcon(e)
+  awful.screen.connect_for_each_screen(function(s)
+    local widget, pop = self:getPop('Change Icon to: ', s)
     grabber:init(widget, function(i)
       local icon = getIcon(nil, i, i, false)
       pop.visible = false
@@ -370,6 +381,38 @@ function desktop:changeIcon(e)
       table.insert(list, toAdd)
       print(inspect(list))
       print(inspect(toAdd))
+      self:refresh()
+    end, function()
+      pop.visible = false
+    end)
+    grabber:start()
+  end)
+end
+
+function desktop:changeName(e)
+  awful.screen.connect_for_each_screen(function(s)
+    local widget, pop = self:getPop('Change Name to: ', s)
+    grabber:init(widget, function(i)
+      pop.visible = false
+      self:remove(e, false)
+      local toAdd = {
+        path = e.path,
+        name = i,
+        type = e.type,
+        f = e.f,
+        icon = e.icon,
+      }
+      if e.type == 'shortcut' then
+        os.execute('mv ' .. DIR .. '/"' .. string.lower(e.name) .. '.desktop" ' .. DIR .. '/"' .. i .. '.desktop"')
+      else
+        if e.type == 'file' then
+          local a = determine(i, DIR .. '/')
+          toAdd.icon = iconTheme .. a.icon
+        end
+        os.execute('mv ' .. DIR .. '/"' .. e.name .. '" ' .. DIR .. '/"' .. i .. '"')
+      end
+      local list = getList(e)
+      table.insert(list, toAdd)
       self:refresh()
     end, function()
       pop.visible = false
@@ -488,5 +531,8 @@ awesome.connect_signal('edit::icon', function(entry)
   desktop:changeIcon(entry)
 end)
 
+awesome.connect_signal('edit::name', function(entry)
+  desktop:changeName(entry)
+end)
 desktop:getStuff()
 desktop:start()

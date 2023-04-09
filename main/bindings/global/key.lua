@@ -227,6 +227,15 @@ end, { description = "Window Switcher", group = "bling" })
 }
 
 awful.keyboard.append_global_keybindings {
+  awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn.with_shell("pamixer -i 5") end),
+  awful.key({}, "XF86AudioLowerVolume", function() awful.spawn.with_shell("pamixer -d 5") end),
+  awful.key({}, "XF86AudioMute", function() awful.spawn.with_shell("pamixer -t") end),
+  awful.key({}, "XF86MonBrightnessDown", function()
+    awful.spawn.with_shell("brightnessctl s 5-")
+  end),
+  awful.key({}, "XF86MonBrightnessUp", function()
+    awful.spawn.with_shell("brightnessctl s 5+")
+  end),
   awful.key {
     modifiers   = { mod.super },
     keygroup    = 'numrow',

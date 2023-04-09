@@ -51,7 +51,7 @@ end
 local serenity    = themeButton("󰖝", "Serenity")
 local everforest  = themeButton("󰐅", "Everforest")
 local gruvbox     = themeButton("󰌪", "Cat")
-local decay       = themeButton("󰃤", "Gruvbox")
+local decay       = themeButton("󰃤", "Pop")
 
 local finalwidget = wibox.widget {
   {

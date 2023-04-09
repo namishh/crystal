@@ -1,4 +1,5 @@
-kind of borked rn <br>
+n
+d of borked rn <br>
 nuclear config only meant to work with my nixos config
 
 ### Setup
@@ -80,16 +81,14 @@ setTheme()
 - [x] ~~control center~~
 - [ ] preserve state (is even possible?)
 - [x] ~~dock~~
-- [ ] dock vert (almost done)
 - [ ] calendar good looks
 - [ ] widget for picom
 - [ ] client previews
-- [ ] desktop icon
+- [x] ~~desktop icon~~
 - [x] ~~window swallowing~~
 - [x] ~~scatchpads simple implementation~~
 - [ ] appmenu
-- [ ] right click menu
-- [ ] window switcher
+- [x] ~~right click menu~~
 
 #### Fixes
 - [ ] scratchpad + dock
