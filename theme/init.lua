@@ -84,7 +84,7 @@ theme.menu_fg_focus            = theme.fg
 theme.menu_font                = theme.font
 theme.menu_border_color        = theme.bg
 theme.menu_height              = dpi(30)
-theme.menu_width               = dpi(130)
+theme.menu_width               = dpi(200)
 theme.menu_border_width        = dpi(10)
 
 theme.tasklist_plain_task_name = true

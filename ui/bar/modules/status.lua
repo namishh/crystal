@@ -6,7 +6,7 @@ local dpi       = require("beautiful").xresources.apply_dpi
 local helpers   = require("helpers")
 
 local wifi      = wibox.widget {
-  font = beautiful.icofont .. " 12",
+  font = beautiful.icofont .. " 14",
   markup = helpers.colorizeText("󰤨", beautiful.fg),
   widget = wibox.widget.textbox,
   valign = "center",

@@ -61,7 +61,7 @@ function desktop:writeData(d)
   f:close()
 end
 
-function desktop:getStuff()
+function desktop:getStuff(again)
   local toAdd
   local data = self:getData() or {}
   -- this loops over all the files in the Desktop directory
@@ -73,6 +73,8 @@ function desktop:getStuff()
         match = v
       end
     end
+
+
     -- if the `cd` command is successful then it is a folder
     if os.execute("cd '" .. DIR .. '/' .. path .. "'") then
       toAdd = {
@@ -82,7 +84,11 @@ function desktop:getStuff()
         f = "nemo '" .. DIR .. "/" .. path .. "'",
         icon = iconTheme .. "places/scalable/stock_folder.svg"
       }
-      table.insert(desktop.folders, toAdd)
+      if again then
+        if not next(match) then table.insert(self.folders, toAdd) end
+      else
+        table.insert(self.folders, toAdd)
+      end
     else -- else it is a file
       local ext = path:match("^.+(%..+)$") or ' '
       if ext ~= '.desktop' then
@@ -95,7 +101,11 @@ function desktop:getStuff()
           f = s.fn,
           icon = iconTheme .. s.icon
         }
-        table.insert(desktop.files, toAdd)
+        if again then
+          if not next(match) then table.insert(self.files, toAdd) end
+        else
+          table.insert(self.files, toAdd)
+        end
       else -- desktop shortcuts are special
         toAdd = {
           name = match.name ~= '' and match.name or path:gsub("^%l", string.upper):sub(1, -9),
@@ -104,21 +114,19 @@ function desktop:getStuff()
           icon = match.icon ~= '' and match.icon or getIcon(nil, path:sub(1, -9), path:sub(1, -9), false),
           f = match.f ~= '' and match.f or path:sub(1, -9),
         }
-        table.insert(desktop.shortcuts, toAdd)
+        if again then
+          if not next(match) then table.insert(self.shortcuts, toAdd) end
+        else
+          table.insert(self.shortcuts, toAdd)
+        end
       end
     end
   end
-  for _, entry in ipairs(desktop.generalstuff) do
-    table.insert(desktop.objects, entry)
-  end
-  for _, entry in ipairs(desktop.folders) do
-    table.insert(desktop.objects, entry)
-  end
-  for _, entry in ipairs(desktop.shortcuts) do
-    table.insert(desktop.objects, entry)
-  end
-  for _, entry in ipairs(desktop.files) do
-    table.insert(desktop.objects, entry)
+  local stuff = { 'generalstuff', 'shortcuts', 'folders', 'files' }
+  for _, k in ipairs(stuff) do
+    for _, e in ipairs(desktop[k]) do
+      table.insert(desktop.objects, e)
+    end
   end
   self:writeData(desktop.objects)
 end
@@ -518,14 +526,15 @@ function desktop:create(f)
   end)
 end
 
-function desktop:reload()
-
-end
-
 awesome.connect_signal('create::something', function(f)
   desktop:create(f)
 end)
 
+
+awesome.connect_signal('desktop::refresh', function()
+  desktop:getStuff(true)
+  desktop:refresh()
+end)
 
 awesome.connect_signal('edit::icon', function(entry)
   desktop:changeIcon(entry)
@@ -534,5 +543,18 @@ end)
 awesome.connect_signal('edit::name', function(entry)
   desktop:changeName(entry)
 end)
-desktop:getStuff()
+desktop:getStuff(false)
 desktop:start()
+
+
+desktop.refreshTimer = gears.timer {
+  timeout = 1,
+  autostart = true,
+  call_now = true,
+  callback = function()
+    awesome.emit_signal('desktop::refresh')
+  end
+}
+
+
+desktop.refreshTimer:again()

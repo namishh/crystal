@@ -19,9 +19,9 @@ _M.filemenu = {
 }
 _M.mainmenu = awful.menu {
   items = {
-    { 'Awesome',  _M.awesomemenu, beautiful.awesome_icon },
-    { 'Files',    _M.filemenu,    beautiful.awesome_icon },
-    { 'Terminal', apps.terminal }
+    { 'Awesome',          _M.awesomemenu,                                                           beautiful.awesome_icon },
+    { 'Files',            _M.filemenu,                                                              beautiful.awesome_icon },
+    { 'Open In Terminal', function() awful.spawn.with_shell('st -e sh -c "cd Desktop; $SHELL"') end }
   }
 }
 
