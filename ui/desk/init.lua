@@ -475,46 +475,18 @@ function desktop:create(f)
       margins = 10
     }
     grabber:init(widget, function(i)
-      local toAdd
       if f == 'file' then
         i = i or "Untitled File"
         s = determine(i, DIR .. '/')
         local ext = i:match('.') and i:match("^.+(%..+)$") or ''
         if ext ~= '.desktop' then
-          toAdd = {
-            ext = ext,
-            name = s.n,
-            path = DIR .. "/" .. i,
-            type = "file",
-            f = s.fn,
-            icon = iconTheme .. s.icon
-          }
+          awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '"')
         end
-        table.insert(desktop.files, toAdd)
-        awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '"')
       elseif f == 'folder' then
-        toAdd = {
-          name = i or 'Untitled Folder',
-          path = DIR .. "/" .. i,
-          type = "folder",
-          f = "nemo '" .. DIR .. "/" .. i .. "'",
-          icon = iconTheme .. "places/scalable/stock_folder.svg"
-        }
         awful.spawn.with_shell('mkdir -p ~/Desktop/"' .. i .. '"')
-        table.insert(desktop.folders, toAdd)
       elseif f == 'shortcut' then
         if i then
-          i = string.lower(i)
-          local icon = getIcon(nil, i, i, false)
-          toAdd = {
-            path = DIR .. "/" .. i .. ".desktop",
-            name = i:gsub("^%l", string.upper),
-            type = 'shortcut',
-            icon = icon,
-            f = i,
-          }
           awful.spawn.with_shell('touch ~/Desktop/"' .. i .. '.desktop"')
-          table.insert(desktop.shortcuts, toAdd)
         end
       end
       self:refresh()
@@ -546,15 +518,17 @@ end)
 desktop:getStuff(false)
 desktop:start()
 
+local subscribe = [[
+   bash -c "
+   while (inotifywait -r -e close_write -e delete -e modify -e create -e move $HOME/Desktop/ -qq) do echo; done
+"]]
 
-desktop.refreshTimer = gears.timer {
-  timeout = 1,
-  autostart = true,
-  call_now = true,
-  callback = function()
-    awesome.emit_signal('desktop::refresh')
-  end
-}
-
-
-desktop.refreshTimer:again()
+awful.spawn.easy_async_with_shell(
+  "ps x | grep \"inotifywait -e close_write -e delete -e create -e modify -e move $HOME/Desktop/\" | grep -v grep | awk '{print $1}' | xargs kill",
+  function()
+    awful.spawn.with_line_callback(subscribe, {
+      stdout = function(_)
+        awesome.emit_signal("desktop::refresh")
+      end
+    })
+  end)
