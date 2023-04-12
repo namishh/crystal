@@ -41,29 +41,38 @@ desktop.menu = awful.menu {
   }
 }
 
+local check_exits = function(path)
+  local file = io.open(path, "rb")
+  if file then file:close() end
+  return file ~= nil
+end
 -- this function reads the data in the json file as a string and decodes it into a table form for us perform operations
 function desktop:getData()
-  local f = assert(io.open(DATA, "rb"))
-  local lines = f:read("*all")
-  f:close()
-  local data = json.decode(lines)
-  return data
+  if check_exits(DATA) then
+    local f = assert(io.open(DATA, "rb"))
+    local lines = f:read("*all")
+    f:close()
+    local data = json.decode(lines)
+    return data
+  else
+    return {}
+  end
 end
 
 -- and this function takes an object
 -- first it clears the data file, and then encodes the given object and then wrties to that cleared file
 function desktop:writeData(d)
   os.execute('truncate -s 0 ' .. DATA)
-  local f = assert(io.open(DATA, "a"))
+  local f = assert(io.open(DATA, "wb"))
   local write = json.encode(d)
-  io.output(f)
   f:write(write)
+  f:flush()
   f:close()
 end
 
 function desktop:getStuff(again)
   local toAdd
-  local data = self:getData() or {}
+  local data = self:getData()
   -- this loops over all the files in the Desktop directory
   for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
     path = string.sub(path, 3)
@@ -520,7 +529,7 @@ desktop:start()
 
 local subscribe = [[
    bash -c "
-   while (inotifywait -r -e close_write -e delete -e modify -e create -e move $HOME/Desktop/ -qq) do echo; done
+   while (inotifywait -r -e close_write -e delete -e modify -e create -e move $HOME/Desktop/ ) do echo; done
 "]]
 
 awful.spawn.easy_async_with_shell(
