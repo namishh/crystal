@@ -90,7 +90,7 @@ function desktop:getStuff(again, line)
   local splitted = split(line, " ")
   local filename = splitted[1] and splitted[1] .. splitted[3] or ""
   local action = splitted[1] and splitted[2] or ""
-  if action == "DELETE" or action == "DELETE,ISDIR" or action == "MOVED_FROM" then
+  if action == "DELETE" or action == "DELETE,ISDIR" or action == "MOVED_FROM" or action == "MOVED_FROM,ISDIR" then
     local toRemove
     for _, v in ipairs(data) do
       if v.path == filename then
@@ -566,4 +566,3 @@ awful.spawn.easy_async_with_shell(
       end
     })
   end)
-
