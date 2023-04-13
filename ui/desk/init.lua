@@ -321,7 +321,7 @@ end
 
 local indexOf = function(array, value)
   for i, v in ipairs(array) do
-    if v == value then
+    if v.path == value.path then
       return i
     end
   end
@@ -353,6 +353,7 @@ function desktop:remove(entry, per)
   local list = getList(entry)
   local index = indexOf(list, entry)
   table.remove(list, index)
+  self:refresh()
 end
 
 awesome.connect_signal('remove::something', function(entry)
@@ -565,3 +566,4 @@ awful.spawn.easy_async_with_shell(
       end
     })
   end)
+
