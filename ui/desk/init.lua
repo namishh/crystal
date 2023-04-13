@@ -8,6 +8,7 @@ local beautiful = require("beautiful")
 local determine = require("ui.desk.determine")
 local iconTheme = require("theme.colors").iconTheme
 local widgets = require 'config.menu'
+local helpers = require 'helpers'
 local json = require "modules.json"
 local getIcon = require 'ui.dock.getIcon'
 
@@ -70,9 +71,28 @@ function desktop:writeData(d)
   f:close()
 end
 
-function desktop:getStuff(again)
+-- CODES for inotifywait
+-- CREATE - new file
+-- DELETE - delete
+local split = function(inputstr, sep)
+  if sep == nil then
+    sep = "%s"
+  end
+  local t = {}
+  for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+    table.insert(t, str)
+  end
+  return t
+end
+
+function desktop:getStuff(again, line)
+  line = line or ''
   local toAdd
   local data = self:getData()
+  local splitted = split(line, " ")
+  local filename = splitted[1] and splitted[1] .. splitted[3] or ""
+  local action = splitted[1] and splitted[2] or ""
+  print(inspect(splitted))
   -- this loops over all the files in the Desktop directory
   for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
     path = string.sub(path, 3)
@@ -117,6 +137,7 @@ function desktop:getStuff(again)
         end
       else -- desktop shortcuts are special
         toAdd = {
+          ext = ext,
           name = match.name ~= '' and match.name or path:gsub("^%l", string.upper):sub(1, -9),
           type = 'shortcut',
           path = match.path ~= '' and match.path or DIR .. "/" .. path,
@@ -136,6 +157,16 @@ function desktop:getStuff(again)
     for _, e in ipairs(desktop[k]) do
       table.insert(desktop.objects, e)
     end
+  end
+  if action == "DELETE" or action == "DELETE,ISDIR" or action == "MOVED_FROM" then
+    --if action == "DELETE" or action == "DELETE,ISDIR" then
+    local toRemove
+    for _, v in ipairs(data) do
+      if v.path == filename then
+        toRemove = v
+      end
+    end
+    self:remove(toRemove, false)
   end
   self:writeData(desktop.objects)
 end
@@ -326,7 +357,6 @@ function desktop:remove(entry, per)
   local list = getList(entry)
   local index = indexOf(list, entry)
   table.remove(list, index)
-  self:refresh()
 end
 
 awesome.connect_signal('remove::something', function(entry)
@@ -396,8 +426,6 @@ function desktop:changeIcon(e)
       }
       local list = getList(e)
       table.insert(list, toAdd)
-      print(inspect(list))
-      print(inspect(toAdd))
       self:refresh()
     end, function()
       pop.visible = false
@@ -512,8 +540,8 @@ awesome.connect_signal('create::something', function(f)
 end)
 
 
-awesome.connect_signal('desktop::refresh', function()
-  desktop:getStuff(true)
+awesome.connect_signal('desktop::refresh', function(l)
+  desktop:getStuff(true, l)
   desktop:refresh()
 end)
 
@@ -529,15 +557,15 @@ desktop:start()
 
 local subscribe = [[
    bash -c "
-   while (inotifywait -r -e close_write -e delete -e modify -e create -e move $HOME/Desktop/ ) do echo; done
+   while (inotifywait -m -e close_write -e delete -e create -e moved_from $HOME/Desktop/ -q) do echo; done
 "]]
 
 awful.spawn.easy_async_with_shell(
-  "ps x | grep \"inotifywait -e close_write -e delete -e create -e modify -e move $HOME/Desktop/\" | grep -v grep | awk '{print $1}' | xargs kill",
+  "ps x | grep \"inotifywait -m -e close_write -e delete -e create -e moved_from $HOME/Desktop/ -q\" | awk '{print $1}' | xargs kill",
   function()
     awful.spawn.with_line_callback(subscribe, {
-      stdout = function(_)
-        awesome.emit_signal("desktop::refresh")
+      stdout = function(l)
+        awesome.emit_signal("desktop::refresh", l)
       end
     })
   end)
