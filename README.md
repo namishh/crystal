@@ -77,12 +77,10 @@ end
 setTheme()
 ```
 
-### Todo (5/15)
+### Todo (7/11)
 - [x] ~~control center~~
-- [ ] preserve state (is even possible?)
 - [x] ~~dock~~
 - [ ] calendar good looks
-- [ ] widget for picom
 - [ ] client previews
 - [x] ~~desktop icon~~
 - [x] ~~window swallowing~~

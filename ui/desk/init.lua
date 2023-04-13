@@ -8,7 +8,6 @@ local beautiful = require("beautiful")
 local determine = require("ui.desk.determine")
 local iconTheme = require("theme.colors").iconTheme
 local widgets = require 'config.menu'
-local helpers = require 'helpers'
 local json = require "modules.json"
 local getIcon = require 'ui.dock.getIcon'
 
@@ -92,6 +91,17 @@ function desktop:getStuff(again, line)
   local splitted = split(line, " ")
   local filename = splitted[1] and splitted[1] .. splitted[3] or ""
   local action = splitted[1] and splitted[2] or ""
+  if action == "DELETE" or action == "DELETE,ISDIR" or action == "MOVED_FROM" then
+    local toRemove
+    print(filename)
+    for _, v in ipairs(data) do
+      if v.path == filename then
+        toRemove = v
+      end
+    end
+    print(inspect(toRemove))
+    self:remove(toRemove, false)
+  end
   print(inspect(splitted))
   -- this loops over all the files in the Desktop directory
   for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
@@ -157,16 +167,6 @@ function desktop:getStuff(again, line)
     for _, e in ipairs(desktop[k]) do
       table.insert(desktop.objects, e)
     end
-  end
-  if action == "DELETE" or action == "DELETE,ISDIR" or action == "MOVED_FROM" then
-    --if action == "DELETE" or action == "DELETE,ISDIR" then
-    local toRemove
-    for _, v in ipairs(data) do
-      if v.path == filename then
-        toRemove = v
-      end
-    end
-    self:remove(toRemove, false)
   end
   self:writeData(desktop.objects)
 end
