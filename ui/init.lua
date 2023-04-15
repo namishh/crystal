@@ -1,4 +1,3 @@
-require('ui.appmenu')
 require('ui.bar')
 require("ui.control")
 require("ui.dings")
