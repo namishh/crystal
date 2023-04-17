@@ -177,6 +177,7 @@ return function(icon, notification, width)
       bg = beautiful.bg4 .. '66',
       widget = wibox.container.background
     },
+    forced_height = 150,
     shape = helpers.rrect(4),
     layout = wibox.layout.fixed.vertical,
   }

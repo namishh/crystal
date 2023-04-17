@@ -39,9 +39,9 @@ local header                        = wibox.widget {
   layout = wibox.layout.align.horizontal,
 }
 local finalcontent                  = wibox.widget {
-  nil,
   spacing = 20,
-  layout = wibox.layout.fixed.vertical,
+  scrollbar_width = dpi(3),
+  layout = require('modules.overflow').vertical,
 }
 local remove_notifs_empty           = true
 

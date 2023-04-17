@@ -1,5 +1,0 @@
-require("signals.appear.theme")
-require("signals.appear.title")
-require("signals.appear.bardir")
-require("signals.appear.padding")
-require("signals.appear.barshouldhavegaps")

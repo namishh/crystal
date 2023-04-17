@@ -31,7 +31,7 @@ end
 
 local lockcommand = function()
   awesome.emit_signal('hide::exit')
-  awful.spawn.with_shell("lock")
+  awesome.emit_signal('toggle::lock')
 end
 
 local close = wibox.widget {

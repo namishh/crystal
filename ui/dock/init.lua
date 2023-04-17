@@ -313,27 +313,34 @@ local tomfoolery = function(s)
       {
         count = 0,
         id = 5,
+        name = "notion-app-enhanced",
+        clients = {},
+        class = "notion-app-enhanced"
+      },
+      {
+        count = 0,
+        id = 6,
         name = "code",
         clients = {},
         class = "code"
       },
       {
         count = 0,
-        id = 6,
+        id = 7,
         name = "discord",
         clients = {},
         class = "discord"
       },
       {
         count = 0,
-        id = 7,
+        id = 8,
         name = "spotify",
         clients = {},
         class = "spotify"
       },
     }
     -- end
-    local classes = { "st-256color", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code" }
+    local classes = { "st-256color", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code", "notion-app-enhanced" }
     local dockElements = wibox.widget { layout = layout, spacing = 5 }
     -- generating the data
     for _, c in ipairs(clients) do

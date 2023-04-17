@@ -1,12 +1,11 @@
-n
-d of borked rn <br>
+kind of borked rn <br>
 nuclear config only meant to work with my nixos config
 
 ### Setup
 
 1. Install these programs
 ```txt
-awesome-git zsh pamixer ncmpcpp mpd mpDris2 brightnessctl uptime brillo networkmanager bluetoothctl reshift picom
+awesome-git zsh pamixer ncmpcpp mpd mpDris2 brightnessctl inotifywait uptime brillo networkmanager bluetoothctl picom
 ```
 
 2. If you are using my nixos config, then my config should be already installed, otherwise
@@ -77,7 +76,7 @@ end
 setTheme()
 ```
 
-### Todo (7/11)
+### Todo (7/15)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [ ] calendar good looks
@@ -86,6 +85,9 @@ setTheme()
 - [x] ~~window swallowing~~
 - [x] ~~scatchpads simple implementation~~
 - [ ] appmenu
+- [ ] make a todo list widget
+- [x] make a pomo timer
+- [ ] focus mode?
 - [x] ~~right click menu~~
 
 #### Fixes

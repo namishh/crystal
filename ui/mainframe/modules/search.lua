@@ -39,6 +39,7 @@ local finalWidget = wibox.widget {
       },
       nil,
     },
+    forced_width = 180,
     widget = wibox.container.margin,
     margins = 10
   },
