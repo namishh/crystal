@@ -66,6 +66,7 @@ in
       neofetch
       chromium
       gcc
+      notion-app-enhanced
       pfetch
       xdg-desktop-portal
       lua-language-server

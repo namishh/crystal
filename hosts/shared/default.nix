@@ -55,6 +55,8 @@ in
     nodejs
     luaPackages.lgi
     ytmdl
+    inotify-tools
+    udiskie
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
@@ -63,7 +65,6 @@ in
     i3lock-color
     st
     spotdl
-    vitetris
     python310Packages.pip
     discord
     firefox

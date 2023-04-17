@@ -34,7 +34,8 @@
   environment.systemPackages = lib.attrValues {
     inherit (pkgs)
       brightnessctl
-      wayland;
+      wayland
+      android-tools;
   };
 
   services = {
