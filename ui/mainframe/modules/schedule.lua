@@ -1,4 +1,5 @@
 local wibox = require("wibox")
+local inspect = require("modules.inspect")
 local beautiful = require("beautiful")
 local gears = require("gears")
 local helpers = require("helpers")
@@ -6,8 +7,8 @@ local json = require("modules.json")
 local awful = require("awful")
 
 local schedule = {
-  todoGrid = wibox.widget { layout = wibox.layout.grid, forced_num_cols = 1, orientation = 'horizontal' },
-  doneGrid = wibox.widget { layout = wibox.layout.grid, forced_num_cols = 1, orientation = 'horizontal' },
+  todoGrid = wibox.widget { layout = wibox.layout.grid, forced_num_cols = 1, orientation = 'vertical', spacing = 10 },
+  doneGrid = wibox.widget { layout = wibox.layout.grid, forced_num_cols = 1, orientation = 'vertical', spacing = 10 },
   data = {},
 }
 
@@ -39,6 +40,85 @@ function schedule:writeData(d)
   f:close()
 end
 
+function schedule:makeData(name, grid)
+  local data = self:getData() or {}
+  local isComp
+  if grid == "todo" then
+    isComp = false
+  else
+    isComp = true
+  end
+  local toAdd = {
+    desc = name,
+    completed = isComp
+  }
+  table.insert(data, toAdd)
+  self:writeData(data)
+end
+
+function schedule:makeEntry(name, grid)
+  local widget = wibox.widget {
+    {
+      {
+        nil,
+        {
+          font = beautiful.font .. " 12",
+          markup = name,
+          widget = wibox.widget.textbox,
+        },
+        {
+          {
+            {
+              font = beautiful.icofont .. " 16",
+              markup = helpers.colorizeText(grid == "todo" and "󰄬" or "", beautiful.pri),
+              valign = "center",
+              align = "right",
+              widget = wibox.widget.textbox,
+              buttons = {
+                awful.button({}, 1, function()
+                end)
+              },
+            },
+            {
+              font = beautiful.icofont .. " 16",
+              markup = helpers.colorizeText("󰅖", beautiful.err),
+              valign = "center",
+              align = "right",
+              widget = wibox.widget.textbox,
+            },
+            spacing = 5,
+            layout = wibox.layout.fixed.horizontal,
+          },
+          widget = wibox.container.place,
+          halign = 'right',
+        },
+        forced_height = 70,
+        layout = wibox.layout.align.vertical
+      },
+      widget = wibox.container.margin,
+      margins = 5,
+    },
+    forced_width = 280,
+    widget = wibox.container.background,
+    bg = beautiful.fg3 .. '33',
+    shape = helpers.rrect(5)
+  }
+  if grid == "todo" then self.todoGrid:add(widget) else self.doneGrid:add(widget) end
+end
+
+function schedule:getExisting()
+  local data = self:getData() or {}
+  print(inspect(data))
+  for _, i in ipairs(data) do
+    print(inspect(i))
+    if i.completed then
+      self:makeEntry(i.desc, "completed")
+    else
+      self:makeEntry(i.desc, "todo")
+    end
+  end
+end
+
 function schedule:init()
   self.widget = wibox.widget {
     {
@@ -62,6 +142,8 @@ function schedule:init()
                   widget = wibox.widget.textbox,
                   buttons = {
                     awful.button({}, 1, function()
+                      self:makeData("Never gonna give you up! Never gonna let you down", "todo")
+                      self:makeEntry("Never gonna give you up! Never gonna let you down", "todo")
                     end)
                   },
                 },
@@ -71,13 +153,28 @@ function schedule:init()
                   valign = "center",
                   align = "start",
                   widget = wibox.widget.textbox,
+                  buttons = {
+                    awful.button({}, 1, function()
+                      self:makeData("Hello", "completed")
+                      self:makeEntry("Hello", "completed")
+                    end)
+                  },
                 },
                 spacing = 5,
                 layout = wibox.layout.fixed.horizontal,
               },
               layout = wibox.layout.align.horizontal,
             },
-            self.todoGrid,
+            {
+              {
+
+                self.todoGrid,
+                scrollbar_width = 1.5,
+                layout = require("modules.overflow").vertical
+              },
+              widget = wibox.container.margin,
+              top = 7,
+            },
             layout = wibox.layout.fixed.vertical,
           },
           widget = wibox.container.margin,
@@ -109,7 +206,15 @@ function schedule:init()
               layout = wibox.layout.align.horizontal,
 
             },
-            self.doneGrid,
+            {
+              {
+                self.doneGrid,
+                scrollbar_width = 1.5,
+                layout = require("modules.overflow").vertical
+              },
+              widget = wibox.container.margin,
+              top = 7,
+            },
             layout = wibox.layout.fixed.vertical,
           },
           widget = wibox.container.margin,
@@ -123,11 +228,14 @@ function schedule:init()
       spacing = 20,
       layout = wibox.layout.fixed.horizontal
     },
+    forced_height = 200,
     widget = wibox.container.margin,
     left = 20,
   }
 
   return self.widget
 end
+
+schedule:getExisting()
 
 return schedule:init()
