@@ -35,6 +35,5 @@ rec {
   color7 = "b7b7b7";
   color15 = "a4b5b5";
   name = "pop";
-  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/plant.png";
-  wallsha = "1p5vfwakhasylicbngvi861gf8sw3lvdzjfsg80ajvmf18hybz5l";
+  wallpaper = "leaves.jpg";
 }

@@ -1,17 +1,10 @@
 { pkgs, colors }:
-let
-  wallpaper = builtins.fetchurl rec {
-    name = "wallpaper-${sha256}.png";
-    url = "${colors.wallpaper}";
-    sha256 = "${colors.wallsha}";
-  };
-in
 {
   home.file.".config/awesome/theme/colors.lua".text = ''
     local M = {}
 
     M.name  = '${colors.name}'
-    M.wall  = '${wallpaper}'
+    M.wall  = '~/.config/awesome/theme/wallpapers/${colors.wallpaper}'
     M.ok    = "#${colors.color2}"
     M.warn  = "#${colors.color3}"
     M.err   = "#${colors.color1}"

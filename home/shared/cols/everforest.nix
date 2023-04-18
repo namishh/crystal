@@ -34,7 +34,5 @@ rec {
   color7 = "d3c5aa";
   color15 = "d4d5d5";
   name = "everforest";
-
-  wallpaper = "https://raw.githubusercontent.com/chadcat7/fuyu/the-awesome-config/theme/wallpapers/stairs.jpg";
-  wallsha = "0i7rrbdc9gn81gwvxwclxkvy6ryzknnfyqzc0jslgrs16afll9cz";
+  wallpaper = "stairs.jpg";
 }
