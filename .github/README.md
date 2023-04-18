@@ -86,7 +86,12 @@ If you that determined, here are some resources to start out
 Coming Soon
 
 ## Installation of my dotfiles
-Please make your own dotfiles, copying them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
+
+> **Warning**
+>
+> These instructions were made for future me incase I ever get a new laptop / pc. My awesome config will 9/10 times contain a lot of croken code that can ruin your awesome experience. Please only use these files as a reference and nothing else. DONT FUCKING COPY THEM!!
+
+Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
 You have been warned! <br>
 
 1. Get the latest [NixOS ISO](https://nixos.org/download.html) and boot into the installer/environment.
