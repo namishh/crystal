@@ -17,6 +17,9 @@
     settings = {
       blur-background-exclude = [
         "window_type = 'dock'"
+        "class_g ~= 'slop'"
+        "class_i ~= 'slop'"
+        "name ~= 'slop'"
       ];
 
       glx-no-stencil = true;
