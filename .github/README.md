@@ -7,6 +7,8 @@ Welcome to my nix dotfiles! This repo contains all my nix files that I have in m
 
 ![Screenshot1](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/1.png)
 ![Screenshot2](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/2.png)
+![Screenshot3](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/3.png)
+![Screenshot4](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/4.png)
 
 > **Warning**
 >
