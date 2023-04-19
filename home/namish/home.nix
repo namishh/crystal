@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/everforest.nix { };
+  colors = import ../shared/cols/serenity.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -58,7 +58,7 @@ in
     };
     packages = with pkgs; [
       bc
-      usbutils
+      tdesktop
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })

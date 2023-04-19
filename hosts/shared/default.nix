@@ -2,8 +2,7 @@
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = ps: with ps; [
-    pygame
-    pip
+    numpy
   ];
 in
 {
@@ -37,7 +36,9 @@ in
   };
   fonts.fonts = with pkgs; [
     material-design-icons
+    phospor
     inter
+    material-symbols
     rubik
     ibm-plex
     (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })

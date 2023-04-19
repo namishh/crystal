@@ -39,5 +39,5 @@ rec {
 
   comment = "505758";
   name = "serenity";
-  wallpaper = "sea.jpg";
+  wallpaper = "rock.jpg";
 }
