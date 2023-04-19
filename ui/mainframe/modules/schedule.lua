@@ -40,7 +40,7 @@ function schedule:writeData(d)
   f:close()
 end
 
-function schedule:makeData(name, grid)
+function schedule:makeData(name, grid, id)
   local data = self:getData() or {}
   local isComp
   if grid == "todo" then
@@ -49,6 +49,7 @@ function schedule:makeData(name, grid)
     isComp = true
   end
   local toAdd = {
+    id = id,
     desc = name,
     completed = isComp
   }
@@ -56,7 +57,8 @@ function schedule:makeData(name, grid)
   self:writeData(data)
 end
 
-function schedule:makeEntry(name, grid)
+function schedule:makeEntry(name, grid, id)
+  local data = self:getData()
   local widget = wibox.widget {
     {
       {
@@ -76,6 +78,20 @@ function schedule:makeEntry(name, grid)
               widget = wibox.widget.textbox,
               buttons = {
                 awful.button({}, 1, function()
+                  local newdata = data
+                  local add
+                  for i, j in ipairs(data) do
+                    if j.id == id then
+                      add.id = j.id
+                      add.desc = j.desc
+                      add.completed = true
+                      table.remove(newdata, i)
+                    end
+                  end
+                  table.insert(newdata, add)
+                  self:writeData(newdata)
+                  self.todoGrid:reset()
+                  self:getExisting()
                 end)
               },
             },
@@ -85,6 +101,19 @@ function schedule:makeEntry(name, grid)
               valign = "center",
               align = "right",
               widget = wibox.widget.textbox,
+              buttons = {
+                awful.button({}, 1, function()
+                  local newdata = data
+                  for i, j in ipairs(data) do
+                    if j.id == id then
+                      table.remove(newdata, i)
+                    end
+                  end
+                  self:writeData(newdata)
+                  self.todoGrid:reset()
+                  self:getExisting()
+                end)
+              },
             },
             spacing = 5,
             layout = wibox.layout.fixed.horizontal,
@@ -142,8 +171,9 @@ function schedule:init()
                   widget = wibox.widget.textbox,
                   buttons = {
                     awful.button({}, 1, function()
-                      self:makeData("Never gonna give you up! Never gonna let you down", "todo")
-                      self:makeEntry("Never gonna give you up! Never gonna let you down", "todo")
+                      local id = helpers.generateId()
+                      self:makeData("Never gonna give you up! Never gonna let you down", "todo", id)
+                      self:makeEntry("Never gonna give you up! Never gonna let you down", "todo", id)
                     end)
                   },
                 },

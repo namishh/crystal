@@ -243,6 +243,11 @@ local tomfoolery = function(s)
         convert = "notion",
         command = "notion-app-enhanced"
       },
+      {
+        name = "telegram-desktop",
+        convert = "telegram",
+        command = "telegram-desktop"
+      },
     }
     for _, v in pairs(customIcons) do
       if class == v.name then
