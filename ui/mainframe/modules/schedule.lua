@@ -80,14 +80,16 @@ function schedule:makeEntry(name, grid, id)
                 awful.button({}, 1, function()
                   local newdata = data
                   local add
+                  local index
                   for i, j in ipairs(data) do
                     if j.id == id then
                       add.id = j.id
                       add.desc = j.desc
                       add.completed = true
-                      table.remove(newdata, i)
+                      index = i
                     end
                   end
+                  table.remove(newdata, index)
                   table.insert(newdata, add)
                   self:writeData(newdata)
                   self.todoGrid:reset()

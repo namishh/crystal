@@ -5,6 +5,7 @@ local menubar = require 'menubar'
 local apps = require 'config.apps'
 local mod = require 'main.bindings.mod'
 local widgets = require 'config.menu'
+local audiodaemon = require 'daemons.audio'
 menubar.utils.terminal = apps.terminal
 
 -- general awesome keys
@@ -227,9 +228,16 @@ end, { description = "Window Switcher", group = "bling" })
 }
 
 awful.keyboard.append_global_keybindings {
-  awful.key({}, "XF86AudioRaiseVolume", function() awful.spawn.with_shell("pamixer -i 5") end),
-  awful.key({}, "XF86AudioLowerVolume", function() awful.spawn.with_shell("pamixer -d 5") end),
-  awful.key({}, "XF86AudioMute", function() awful.spawn.with_shell("pamixer -t") end),
+  awful.key({}, "XF86AudioLowerVolume", function()
+    audiodaemon:sink_volume_down(nil, 5)
+  end, { description = "Lower volume", group = "System" }),
+  awful.key({}, "XF86AudioRaiseVolume", function()
+    audiodaemon:sink_volume_up(nil, 5)
+  end, { description = "Increase volume", group = "System" }),
+  awful.key({}, "XF86AudioMute", function()
+    awful.spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    awesome.emit_signal "widget::volume_osd:rerun"
+  end, { description = "Mute volume", group = "System" }),
   awful.key({}, "XF86MonBrightnessDown", function()
     awful.spawn.with_shell("brightnessctl s 5-")
   end),

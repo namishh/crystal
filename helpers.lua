@@ -116,5 +116,8 @@ helpers.hasKey = function(set, key)
   return set[key] ~= nil
 end
 
+helpers.trim = function(string)
+  return string:gsub("^%s*(.-)%s*$", "%1")
+end
 
 return helpers

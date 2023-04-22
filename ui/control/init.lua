@@ -34,9 +34,9 @@ awful.screen.connect_for_each_screen(function(s)
     widget = wibox.container.margin,
   }
   local slide = animation:new({
-    duration = 0.5,
+    duration = 0.6,
     pos = 0 - control.height,
-    easing = animation.easing.linear,
+    easing = animation.easing.inOutExpo,
     update = function(_, pos)
       control.y = s.geometry.y + pos
     end,

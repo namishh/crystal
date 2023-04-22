@@ -3,6 +3,8 @@ local awful        = require("awful")
 local beautiful    = require("beautiful")
 local dpi          = require("beautiful").xresources.apply_dpi
 local helpers      = require("helpers")
+local wifidaemon   = require("daemons.net")
+
 local createButton = function(label, labelfalse, text, signal, cmd, height)
   local settingbuttonlabel = wibox.widget {
     align = 'center',
@@ -87,17 +89,19 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
 
   return settingbuttonwidget
 end
-
-local wifibtn      = createButton("󰤨", "󰤮", 'Network', 'network',
-"~/.config/awesome/ui/control/scripts/wifi --toggle", 70)
-local bluetooth    = createButton("󰂯", "󰂲", 'Bluetooth', 'bluetooth',
+awesome.connect_signal("settings::wifi", function()
+  wifidaemon:toggleWireless()
+end)
+local wifibtn     = createButton("󰤨", "󰤮", 'Network', 'network',
+  "awesome-client 'awesome.emit_signal(\"settings::wifi\")'", 70)
+local bluetooth   = createButton("󰂯", "󰂲", 'Bluetooth', 'bluetooth',
   "~/.config/awesome/ui/control/scripts/bluetooth --toggle", 70)
-local dnd          = createButton("󰍶", "󱑙", 'Silence', 'dnd',
+local dnd         = createButton("󰍶", "󱑙", 'Silence', 'dnd',
   'awesome-client \'naughty = require("naughty") naughty.toggle()\'', 100)
-local airplane     = createButton("󰀝", "󰀞", 'Airplane', 'airplane',
+local airplane    = createButton("󰀝", "󰀞", 'Airplane', 'airplane',
   "~/.config/awesome/ui/control/scripts/airplanemode --toggle", 70)
 
-local boreButton   = function(icon, signal, cmd)
+local boreButton  = function(icon, signal, cmd)
   local borebuttonwidget = wibox.widget {
     {
       {
@@ -135,10 +139,10 @@ local boreButton   = function(icon, signal, cmd)
   return borebuttonwidget
 end
 
-local picom        = boreButton('󰗘', 'picom', '~/.config/awesome/scripts/ui/control/picom --toggle')
-local mic          = boreButton('󰍭', 'mic', 'pamixer --default-source -t')
+local picom       = boreButton('󰗘', 'picom', '~/.config/awesome/scripts/ui/control/picom --toggle')
+local mic         = boreButton('󰍭', 'mic', 'pamixer --default-source -t')
 
-local finalwidget  = {
+local finalwidget = {
   {
     {
       {

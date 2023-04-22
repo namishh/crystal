@@ -4,6 +4,8 @@ local beautiful        = require("beautiful")
 local dpi              = require("beautiful").xresources.apply_dpi
 local gears            = require("gears")
 local helpers          = require("helpers")
+local audiodaemon      = require("daemons.audio")
+local brightdaemon     = require("daemons.light")
 
 local createHandle     = function()
   return function(cr)
@@ -171,14 +173,14 @@ end)
 volumeSlider:connect_signal("property::value", function(_, new_value)
   volumeLabel.markup = new_value .. "%"
   volumeSlider.value = new_value
-  awful.spawn("pamixer --set-volume " .. new_value, false)
+  audiodaemon:sink_set_volume(nil, new_value)
 end)
 
 
 brightnessSlider:connect_signal("property::value", function(_, new_value)
   brightnessSlider.markup = new_value .. "%"
   brightnessSlider.value = new_value
-  awful.spawn("brightnessctl s " .. new_value .. "%", false)
+  brightdaemon:set_brightness(new_value)
 end)
 
 return finalwidget

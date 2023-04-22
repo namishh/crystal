@@ -8,6 +8,7 @@ local determine = require("ui.desk.determine")
 local iconTheme = require("theme.colors").iconTheme
 local widgets = require 'config.menu'
 local json = require "modules.json"
+local outlineText = require "ui.desk.outline"
 local getIcon = require 'ui.dock.getIcon'
 
 -- so this is the main desktop object
@@ -31,6 +32,7 @@ local DIR = '/home/namish/Desktop'
 local grabber = {} -- a general class for a grabber
 
 local DATA = gears.filesystem.get_cache_dir() .. 'data.json'
+local SHOW_ICONS = gears.filesystem.get_cache_dir() .. 'showdesktopicon'
 
 desktop.menu = awful.menu {
   items = {
@@ -58,6 +60,17 @@ function desktop:getData()
   end
 end
 
+function desktop:getIconData()
+  if check_exits(SHOW_ICONS) then
+    local f = assert(io.open(DATA, "rb"))
+    local lines = f:read("*all")
+    f:close()
+    return lines
+  else
+    return 'yes'
+  end
+end
+
 -- and this function takes an object
 -- first it clears the data file, and then encodes the given object and then wrties to that cleared file
 function desktop:writeData(d)
@@ -65,6 +78,14 @@ function desktop:writeData(d)
   local f = assert(io.open(DATA, "wb"))
   local write = json.encode(d)
   f:write(write)
+  f:flush()
+  f:close()
+end
+
+function desktop:writeIconData(d)
+  os.execute('truncate -s 0 ' .. SHOW_ICONS)
+  local f = assert(io.open(SHOW_ICONS, "wb"))
+  f:write(d)
   f:flush()
   f:close()
 end
@@ -168,6 +189,7 @@ function desktop:getStuff(again, line)
 end
 
 function desktop:add(entry)
+  local text, size = outlineText(entry.name, 50)
   local widget = wibox.widget {
     {
       {
@@ -185,10 +207,11 @@ function desktop:add(entry)
       },
       {
         {
-          align = 'center',
-          font = beautiful.font .. " 11",
-          markup = entry.name,
-          widget = wibox.widget.textbox,
+          image = text,
+          resize = false,
+          valign = 'bottom',
+          halign = 'center',
+          widget = wibox.widget.imagebox,
         },
         widget = wibox.container.constraint,
         width = 70,
@@ -215,13 +238,14 @@ function desktop:add(entry)
 end
 
 function desktop:start()
+  local showicon = self:getIconData()
   local data = self:getData()
   for _, entry in ipairs(data) do
     desktop:add(entry)
   end
   local w = wibox({
     ontop = false,
-    visible = true,
+    visible = showicon == "yes" and true or false,
     x = 0,
     type = "dock",
     bg = beautiful.bg .. '00',
@@ -230,6 +254,11 @@ function desktop:start()
     height = beautiful.scrheight - beautiful.barSize - beautiful.dockSize * 2 - beautiful.useless_gap * 2,
   })
   awesome.connect_signal('toggle::desktop', function()
+    if showicon == "yes" then
+      self:writeIconData("no")
+    else
+      self:writeIconData("yes")
+    end
     w.visible = not w.visible
   end)
   w:setup {
