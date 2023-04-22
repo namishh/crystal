@@ -9,6 +9,8 @@
 
     shellAliases = {
       la = "exa -l";
+      starta = "startx ~/.xinitrc a";
+      starth = "startx ~/.xinitrc h";
       ls = "ls --color=auto";
       v = "nvim";
       suda = "sudo -E -s";

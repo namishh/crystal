@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/serenity.nix { };
+  colors = import ../shared/cols/pop.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -41,6 +41,8 @@ in
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
+    (import ./misc/xinit.nix { })
+
     # Bin files
     (import ../shared/bin/default.nix { inherit config; })
     (import ../shared/lock.nix { inherit colors; })
