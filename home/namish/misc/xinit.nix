@@ -5,7 +5,7 @@
     session=$1
 
     case $session in
-        h           ) exec dbus-run-session awesome -c ~/.config/hiru/rc.lua;;
+        h           ) xrdb -merge ~/.Xresources ; exec dbus-run-session awesome -c ~/.config/hiru/rc.lua;;
         a           ) exec dbus-run-session awesome;;
         *                 ) exec dbus-run-session awesome;;
     esac

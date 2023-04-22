@@ -6,7 +6,7 @@
     backend = "glx";
     extraArgs = [ "--experimental-backends" ];
     fade = true;
-    fadeDelta = 4;
+    fadeDelta = 3;
     fadeSteps = [ 0.03 0.03 ];
 
     opacityRules = [
@@ -18,7 +18,11 @@
       blur-background-exclude = [
         "window_type = 'dock'"
         "class_g ~= 'slop'"
+        "class_g ~= 'awesome'"
+        "class_g ~= 'discord'"
+        "class_g ~= 'firefox'"
         "class_i ~= 'slop'"
+        "class_i ~= 'Spotify'"
         "name ~= 'slop'"
       ];
 

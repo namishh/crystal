@@ -58,6 +58,7 @@ in
     ytmdl
     inotify-tools
     udiskie
+    pulseaudio
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
