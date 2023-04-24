@@ -10,7 +10,7 @@ local art             = wibox.widget {
   image = beautiful.songdefpicture,
   opacity = 0.25,
   forced_height = dpi(240),
-  forced_width = dpi(365),
+  forced_width = dpi(385),
   widget = wibox.widget.imagebox
 }
 local createStick     = function(height)

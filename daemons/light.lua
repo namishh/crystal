@@ -1,12 +1,8 @@
 local awful = require("awful")
 local gobject = require("gears.object")
 local gtable = require("gears.table")
-local inotify = require("modules.inotify")
-local tonumber = tonumber
 
 local brightness = {}
-local instance = nil
-
 function brightness:increase_brightness(step)
   awful.spawn("brightnessctl s +" .. step .. "%", false)
 end
@@ -49,7 +45,4 @@ local function new()
   return ret
 end
 
-if not instance then
-  instance = new()
-end
-return instance
+return new()

@@ -78,22 +78,6 @@ function schedule:makeEntry(name, grid, id)
               widget = wibox.widget.textbox,
               buttons = {
                 awful.button({}, 1, function()
-                  local newdata = data
-                  local add
-                  local index
-                  for i, j in ipairs(data) do
-                    if j.id == id then
-                      add.id = j.id
-                      add.desc = j.desc
-                      add.completed = true
-                      index = i
-                    end
-                  end
-                  table.remove(newdata, index)
-                  table.insert(newdata, add)
-                  self:writeData(newdata)
-                  self.todoGrid:reset()
-                  self:getExisting()
                 end)
               },
             },
@@ -105,15 +89,6 @@ function schedule:makeEntry(name, grid, id)
               widget = wibox.widget.textbox,
               buttons = {
                 awful.button({}, 1, function()
-                  local newdata = data
-                  for i, j in ipairs(data) do
-                    if j.id == id then
-                      table.remove(newdata, i)
-                    end
-                  end
-                  self:writeData(newdata)
-                  self.todoGrid:reset()
-                  self:getExisting()
                 end)
               },
             },
@@ -143,11 +118,17 @@ function schedule:getExisting()
   for _, i in ipairs(data) do
     print(inspect(i))
     if i.completed then
-      self:makeEntry(i.desc, "completed")
+      self:makeEntry(i.desc, "completed", i.id)
     else
-      self:makeEntry(i.desc, "todo")
+      self:makeEntry(i.desc, "todo", i.id)
     end
   end
+end
+
+function schedule:new()
+  local id = helpers.generateId()
+  self:makeData(tostring(id), "todo", id)
+  self:makeEntry(tostring(id), "todo", id)
 end
 
 function schedule:init()
@@ -173,9 +154,7 @@ function schedule:init()
                   widget = wibox.widget.textbox,
                   buttons = {
                     awful.button({}, 1, function()
-                      local id = helpers.generateId()
-                      self:makeData("Never gonna give you up! Never gonna let you down", "todo", id)
-                      self:makeEntry("Never gonna give you up! Never gonna let you down", "todo", id)
+                      self:new()
                     end)
                   },
                 },

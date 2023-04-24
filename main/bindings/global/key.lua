@@ -311,3 +311,32 @@ awful.keyboard.append_global_keybindings {
     end
   },
 }
+awful.keygrabber {
+  keybindings = {
+    awful.key {
+      modifiers = { "Mod1" },
+      key = "Tab",
+      on_press = function()
+        awesome.emit_signal "winswitch::next"
+      end,
+    },
+  },
+  root_keybindings = {
+    awful.key {
+      modifiers = { "Mod1" },
+      key = "Tab",
+      on_press = function()
+      end,
+    },
+  },
+  stop_key = "Mod1",
+  stop_event = "release",
+  start_callback = function()
+    awesome.emit_signal "toggle::winswitch"
+  end,
+  stop_callback = function()
+    awesome.emit_signal "winswitch::raise"
+    awesome.emit_signal "toggle::winswitch"
+  end,
+  export_keybindings = true,
+}
