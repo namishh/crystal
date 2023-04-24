@@ -92,6 +92,36 @@ return function()
     {
       {
         {
+          {
+            {
+              {
+                font = beautiful.font .. " 32",
+                format = "%I",
+                align = "center",
+                valign = "center",
+                widget = wibox.widget.textclock
+              },
+              {
+                markup = helpers.colorizeText(":", beautiful.pri),
+                font = beautiful.font .. " 32",
+                widget = wibox.widget.textbox,
+              },
+              {
+                font = beautiful.font .. " 32",
+                format = "%M",
+                align = "center",
+                valign = "center",
+                widget = wibox.widget.textclock
+              },
+              layout = wibox.layout.fixed.horizontal
+            },
+            widget = wibox.container.place,
+            halign = 'center'
+          },
+          widget = wibox.container.margin,
+          bottom = 6,
+        },
+        {
           title,
           nil,
           {

@@ -14,7 +14,7 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = dpi(720),
-    height = dpi(340),
+    height = dpi(400),
     bg = beautiful.bg,
     ontop = true,
     visible = false
