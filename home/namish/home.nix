@@ -63,6 +63,9 @@ in
       tdesktop
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
+      (pkgs.callPackage ../shared/icons/colloid.nix { })
+      (pkgs.callPackage ../shared/icons/fluent.nix { })
+      (pkgs.callPackage ../shared/icons/elementary.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch

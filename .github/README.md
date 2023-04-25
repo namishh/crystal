@@ -137,6 +137,14 @@ home-manager switch --flake '.#namish' # this should automatically install nvim 
 ```
 
 
+## History and thanks
+under construction ... <br>
+<pre align="center">
+<a href="#japan--history">
+<img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=chadcat7/fuyu&type=Date"/>
+</a>
+</pre>
+
 ## Todo
 somethings i need to do before i can call it fully usable - <br>
 - [x] Install phocus with dynamic theming 
