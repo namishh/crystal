@@ -92,7 +92,7 @@ Coming Soon
 
 > **Warning**
 >
-> These instructions were made for future me incase I ever get a new laptop / pc. My awesome config will 9/10 times contain a lot of croken code that can ruin your awesome experience. Please only use these files as a reference and nothing else. DONT FUCKING COPY THEM!!
+> These instructions were made for future me incase I ever get a new laptop / pc. My awesome config will 9/10 times contain a lot of broken code that can ruin your awesome experience. Please only use these files as a reference and nothing else. DONT FUCKING COPY THEM!!
 
 Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
 You have been warned! <br>
@@ -151,7 +151,6 @@ somethings i need to do before i can call it fully usable - <br>
 - [x] Install any image colorizer
 - [x] Lock screen setup
 - [ ] Add Screenshots
-- [ ] Setup agenix
 - [x] Spicetify
 
 ## Credits -
