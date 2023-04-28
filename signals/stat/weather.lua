@@ -7,24 +7,24 @@ local icon_dir = filesystem.get_configuration_dir() .. "theme/icons/weather/"
 local GET_FORECAST_CMD = [[bash -c "curl -s --show-error -X GET '%s'"]]
 
 local icon_map = {
-      ["01d"] = "weather-clear-sky",
-      ["02d"] = "weather-few-clouds",
-      ["04d"] = "weather-few-clouds",
-      ["03d"] = "weather-clouds",
-      ["09d"] = "weather-showers-scattered",
-      ["09n"] = "weather-showers-scattered",
-      ["10d"] = "weather-showers",
-      ["11d"] = "weather-strom",
-      ["13d"] = "weather-snow",
-      ["50d"] = "weather-fog",
-      ["01n"] = "weather-clear-night",
-      ["02n"] = "weather-few-clouds-night",
-      ["03n"] = "weather-clouds-night",
-      ["04n"] = "weather-clouds-night",
-      ["10n"] = "weather-showers",
-      ["11n"] = "weather-strom",
-      ["13n"] = "weather-snow",
-      ["50n"] = "weather-fog",
+  ["01d"] = "weather-clear-sky",
+  ["02d"] = "weather-few-clouds",
+  ["04d"] = "weather-few-clouds",
+  ["03d"] = "weather-clouds",
+  ["09d"] = "weather-showers-scattered",
+  ["09n"] = "weather-showers-scattered",
+  ["10d"] = "weather-showers",
+  ["11d"] = "weather-strom",
+  ["13d"] = "weather-snow",
+  ["50d"] = "weather-fog",
+  ["01n"] = "weather-clear-night",
+  ["02n"] = "weather-few-clouds-night",
+  ["03n"] = "weather-clouds-night",
+  ["04n"] = "weather-clouds-night",
+  ["10n"] = "weather-showers",
+  ["11n"] = "weather-strom",
+  ["13n"] = "weather-snow",
+  ["50n"] = "weather-fog",
 }
 
 local api_key = require("config.keys").openweatherapi
@@ -60,7 +60,24 @@ awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function(_, stdout
     humidity = result.current.humidity,
     temp = math.floor(result.current.temp),
     feelsLike = math.floor(result.current.feels_like),
-    image = icon_dir .. icon_map[result.current.weather[1].icon] .. ".svg"
+    image = icon_dir .. icon_map[result.current.weather[1].icon] .. ".svg",
+    hourly = {
+      result.hourly[1],
+      result.hourly[2],
+      result.hourly[3],
+      result.hourly[4],
+      result.hourly[5],
+      result.hourly[6],
+    },
+    daily = {
+      result.daily[1],
+      result.daily[2],
+      result.daily[3],
+      result.daily[4],
+      result.daily[5],
+      result.daily[6],
+
+    }
   }
   awesome.emit_signal("connect::weather", out)
 end)

@@ -30,7 +30,7 @@ local function new()
 
   get_brightness(ret)
   awful.spawn.easy_async_with_shell(
-    "ps x | grep \"inotifywait -e modify /sys/class/backlight\" | grep -v grep | awk '{print $1}' | xargs kill",
+    "ps x | grep \"inotifywait -e modify /sys/class/backlight\" | awk '{print $1}' | xargs kill",
     function()
       -- Update brightness status with each line printed
       awful.spawn.with_line_callback(

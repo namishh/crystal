@@ -7,6 +7,7 @@ local gears = require("gears")
 local animation = require("modules.animation")
 
 local calendar = require("ui.moment.modules.calendar")()
+local weather = require("ui.moment.modules.weather")
 
 awful.screen.connect_for_each_screen(function(s)
   local moment = wibox({
@@ -14,7 +15,7 @@ awful.screen.connect_for_each_screen(function(s)
     shape = helpers.rrect(4),
     screen = s,
     width = dpi(720),
-    height = dpi(400),
+    height = dpi(410),
     bg = beautiful.bg,
     ontop = true,
     visible = false
@@ -39,6 +40,7 @@ awful.screen.connect_for_each_screen(function(s)
   moment:setup {
     {
       calendar,
+      weather,
       layout = wibox.layout.fixed.horizontal,
     },
     margins = dpi(15),

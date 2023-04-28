@@ -35,7 +35,8 @@ end
 
 local title = wibox.widget {
   font = beautiful.font .. " Bold 14",
-  widget = wibox.widget.textbox
+  widget = wibox.widget.textbox,
+  halign = 'center'
 }
 
 local theGrid = wibox.widget {
@@ -119,44 +120,40 @@ return function()
             halign = 'center'
           },
           widget = wibox.container.margin,
-          bottom = 6,
+          bottom = 0,
         },
         {
-          title,
-          nil,
           {
-            {
-              text = "󰁍",
-              font = beautiful.icofont,
-              widget = wibox.widget.textbox,
-              buttons = awful.button({}, 1, function()
-                curr = os.date("*t", os.time({
-                  day = curr.day,
-                  month = curr.month - 1,
-                  year = curr.year
-                }))
-                updateCalendar(curr)
-              end)
-            },
-            {
-              text = "󰁔",
-              font = beautiful.icofont,
-              widget = wibox.widget.textbox,
-              buttons = awful.button({}, 1, function()
-                curr = os.date("*t", os.time({
-                  day = curr.day,
-                  month = curr.month + 1,
-                  year = curr.year
-                }))
-                updateCalendar(curr)
-              end)
-            },
-            spacing = 10,
-            layout = wibox.layout.fixed.horizontal
+            text = "󰁍",
+            font = beautiful.icofont,
+            widget = wibox.widget.textbox,
+            buttons = awful.button({}, 1, function()
+              curr = os.date("*t", os.time({
+                day = curr.day,
+                month = curr.month - 1,
+                year = curr.year
+              }))
+              updateCalendar(curr)
+            end)
+          },
+          title,
+          {
+            text = "󰁔",
+            font = beautiful.icofont,
+            widget = wibox.widget.textbox,
+            buttons = awful.button({}, 1, function()
+              curr = os.date("*t", os.time({
+                day = curr.day,
+                month = curr.month + 1,
+                year = curr.year
+              }))
+              updateCalendar(curr)
+            end)
           },
           layout = wibox.layout.align.horizontal
         },
         theGrid,
+        spacing = 10,
         layout = wibox.layout.fixed.vertical
       },
       widget = wibox.container.margin,

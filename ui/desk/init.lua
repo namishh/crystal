@@ -62,7 +62,7 @@ end
 
 function desktop:getIconData()
   if check_exits(SHOW_ICONS) then
-    local f = assert(io.open(DATA, "rb"))
+    local f = assert(io.open(SHOW_ICONS, "rb"))
     local lines = f:read("*all")
     f:close()
     return lines
@@ -121,7 +121,7 @@ function desktop:getStuff(again, line)
     self:remove(toRemove, false)
   end
   -- this loops over all the files in the Desktop directory
-  for path in io.popen("cd " .. DIR .. " && find . | tail -n +2"):lines() do
+  for path in io.popen("cd " .. DIR .. " && find . -maxdepth 1 | tail -n +2"):lines() do
     path = string.sub(path, 3)
     local match = {}
     for _, v in ipairs(data) do
@@ -239,13 +239,19 @@ end
 
 function desktop:start()
   local showicon = self:getIconData()
+  local show
+  if showicon == 'yes' then
+    show = true
+  else
+    show = false
+  end
   local data = self:getData()
   for _, entry in ipairs(data) do
     desktop:add(entry)
   end
   local w = wibox({
     ontop = false,
-    visible = showicon == "yes" and true or false,
+    visible = show,
     x = 0,
     type = "dock",
     bg = beautiful.bg .. '00',
