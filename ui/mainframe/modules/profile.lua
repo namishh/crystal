@@ -200,8 +200,8 @@ local finalwidget     = wibox.widget {
       margins = {
         top = 15,
         bottom = 15,
-        left = 25,
-        right = 25,
+        left = 35,
+        right = 35,
       },
       widget = wibox.container.margin,
     },
