@@ -34,6 +34,6 @@ rec {
 
   color7 = "B5BFE2";
   color15 = "83889a";
-  name = "gruvbox";
-  wallpaper = "leaves.png";
+  name = "cat";
+  wallpaper = "cat.png";
 }
