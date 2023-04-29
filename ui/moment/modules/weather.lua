@@ -127,8 +127,12 @@ local dayWeather        = function()
     local day = out.daily[i]
     widget:get_children_by_id('icon')[1].image = icon_dir .. icon_map[day.weather[1].icon] .. ".svg"
     widget:get_children_by_id('day')[1].text = os.date("%a", tonumber(day.dt))
-    widget:get_children_by_id('min')[1].text = tostring(day.temp.night):sub(1, -4)
-    widget:get_children_by_id('max')[1].text = tostring(day.temp.day):sub(1, -4)
+    local getTemp = function(temp)
+      local sp = helpers.split(temp, '.')[1]
+      return sp
+    end
+    widget:get_children_by_id('min')[1].text = getTemp(day.temp.night)
+    widget:get_children_by_id('max')[1].text = getTemp(day.temp.day)
     print(inspect(out))
   end
   return widget
@@ -256,7 +260,7 @@ local widget            = wibox.widget {
       day6,
       spacing = 20,
       layout = require("modules.overflow").horizontal,
-      scrollbar_width = dpi(2),
+      scrollbar_width = dpi(3),
     },
     spacing = 20,
     layout = wibox.layout.fixed.vertical,
