@@ -1,8 +1,34 @@
 local wibox = require("wibox")
-local awful = require("awful")
+local gears = require("gears")
+local inspect = require("modules.inspect")
 local beautiful = require "beautiful"
 local helpers = require "helpers"
 local dpi = beautiful.xresources.apply_dpi
+
+local filesystem = gears.filesystem
+local icon_dir = filesystem.get_configuration_dir() .. "theme/icons/weather/"
+
+
+local icon_map = {
+  ["01d"] = "weather-clear-sky",
+  ["02d"] = "weather-few-clouds",
+  ["03d"] = "weather-clouds",
+  ["04d"] = "weather-few-clouds",
+  ["09d"] = "weather-showers-scattered",
+  ["10d"] = "weather-showers",
+  ["11d"] = "weather-strom",
+  ["13d"] = "weather-snow",
+  ["50d"] = "weather-fog",
+  ["01n"] = "weather-clear-night",
+  ["02n"] = "weather-few-clouds-night",
+  ["03n"] = "weather-clouds-night",
+  ["04n"] = "weather-clouds-night",
+  ["09n"] = "weather-showers-scattered",
+  ["10n"] = "weather-showers",
+  ["11n"] = "weather-strom",
+  ["13n"] = "weather-snow",
+  ["50n"] = "weather-fog",
+}
 
 
 local createWeatherProg = function()
@@ -45,6 +71,78 @@ local hour6             = createWeatherProg()
 
 local hourList          = { hour1, hour2, hour3, hour4, hour5, hour6 }
 
+local dayWeather        = function()
+  local widget = wibox.widget {
+    {
+      id = "day",
+      halign = 'center',
+      widget = wibox.widget.textbox,
+      font = beautiful.font .. " 10",
+    },
+    {
+      id = "icon",
+      resize = true,
+      opacity = 0.6,
+      halign = 'center',
+      forced_height = dpi(40),
+      forced_width = dpi(40),
+      widget = wibox.widget.imagebox,
+    },
+    {
+      {
+        {
+          {
+            id = "min",
+            halign = 'center',
+            widget = wibox.widget.textbox,
+            font = beautiful.font .. " 10",
+          },
+          {
+            halign = 'center',
+            markup = helpers.colorizeText("/", beautiful.pri),
+            widget = wibox.widget.textbox,
+            font = beautiful.font .. " 10",
+          },
+          {
+            id = "max",
+            halign = 'center',
+            widget = wibox.widget.textbox,
+            font = beautiful.font .. " 10",
+          },
+          spacing = 8,
+          layout = wibox.layout.fixed.horizontal,
+        },
+        widget = wibox.container.place,
+        halign = 'center',
+      },
+      widget = wibox.container.margin,
+      bottom = 8,
+    },
+    spacing = 10,
+    forced_width = 80,
+    layout = wibox.layout.fixed.vertical,
+  }
+
+  widget.update = function(out, i)
+    local day = out.daily[i]
+    widget:get_children_by_id('icon')[1].image = icon_dir .. icon_map[day.weather[1].icon] .. ".svg"
+    widget:get_children_by_id('day')[1].text = os.date("%a", tonumber(day.dt))
+    widget:get_children_by_id('min')[1].text = tostring(day.temp.night):sub(1, -4)
+    widget:get_children_by_id('max')[1].text = tostring(day.temp.day):sub(1, -4)
+    print(inspect(out))
+  end
+  return widget
+end
+
+local day1              = dayWeather()
+local day2              = dayWeather()
+local day3              = dayWeather()
+local day5              = dayWeather()
+local day6              = dayWeather()
+local day4              = dayWeather()
+
+local daylist           = { day1, day2, day3, day4, day5, day6 }
+
 local widget            = wibox.widget {
   {
     {
@@ -53,9 +151,9 @@ local widget            = wibox.widget {
           {
             {
               id = "weathericon",
-              forced_height = dpi(90),
+              forced_height = dpi(70),
               halign = 'center',
-              forced_width = dpi(90),
+              forced_width = dpi(70),
               widget = wibox.widget.imagebox
             },
             {
@@ -65,7 +163,7 @@ local widget            = wibox.widget {
               font = beautiful.font .. " 14",
               markup = helpers.colorizeText("Hello", beautiful.pri)
             },
-            spacing = 15,
+            spacing = 8,
             layout = wibox.layout.fixed.vertical
           },
           widget = wibox.container.place,
@@ -79,7 +177,7 @@ local widget            = wibox.widget {
           id = "temp",
           halign = 'center',
           widget = wibox.widget.textbox,
-          font = beautiful.font .. " 34",
+          font = beautiful.font .. " 26",
           markup = helpers.colorizeText("Hello", beautiful.pri)
         },
         {
@@ -98,7 +196,6 @@ local widget            = wibox.widget {
             markup = helpers.colorizeText("Humidity", beautiful.pri)
           },
           widget = wibox.container.margin,
-          top = 12,
         },
         spacing = 8,
         layout = wibox.layout.fixed.vertical
@@ -150,7 +247,18 @@ local widget            = wibox.widget {
       widget = wibox.container.place,
       halign = 'center'
     },
-    spacing = 15,
+    {
+      day1,
+      day2,
+      day3,
+      day4,
+      day5,
+      day6,
+      spacing = 20,
+      layout = require("modules.overflow").horizontal,
+      scrollbar_width = dpi(2),
+    },
+    spacing = 20,
     layout = wibox.layout.fixed.vertical,
   },
   widget = wibox.container.margin,
@@ -167,6 +275,9 @@ awesome.connect_signal("connect::weather", function(out)
   for i, j in ipairs(hourList) do
     j:get_children_by_id("prog")[1].value = out.hourly[i].temp
     j:get_children_by_id("time")[1].markup = os.date("%Hh", tonumber(out.hourly[i].dt))
+  end
+  for i, j in ipairs(daylist) do
+    j.update(out, i)
   end
 end)
 

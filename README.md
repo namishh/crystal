@@ -79,7 +79,7 @@ setTheme()
 ### Todo (7/15)
 - [x] ~~control center~~
 - [x] ~~dock~~
-- [ ] calendar good looks
+- [x] calendar good looks
 - [ ] client previews
 - [x] ~~desktop icon~~
 - [x] ~~window swallowing~~

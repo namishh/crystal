@@ -35,7 +35,7 @@ local function outlined_text(text, max_width)
   local font = 'Iosevka Nerd Font'
   local font_size = 14
   local spacing = 100
-  local margin = 5
+  local margin = 1
   max_width = max_width - (margin * 2)
   local shadow_offset_x, shadow_offset_y = 1, 1
   local font_args = { cairo.FontSlant.NORMAL, cairo.FontWeight.NORMAL }

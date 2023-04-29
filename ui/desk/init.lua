@@ -189,7 +189,7 @@ function desktop:getStuff(again, line)
 end
 
 function desktop:add(entry)
-  local text, size = outlineText(entry.name, 50)
+  local text, size = outlineText(entry.name, 60)
   local widget = wibox.widget {
     {
       {
@@ -214,7 +214,7 @@ function desktop:add(entry)
           widget = wibox.widget.imagebox,
         },
         widget = wibox.container.constraint,
-        width = 70,
+        width = 78,
         height = 20,
       },
       spacing = 3,
