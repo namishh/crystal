@@ -35,5 +35,5 @@ rec {
   color7 = "b7b7b7";
   color15 = "a4b5b5";
   name = "pop";
-  wallpaper = "blue.png";
+  wallpaper = "leaves.jpg";
 }

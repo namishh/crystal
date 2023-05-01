@@ -4,7 +4,7 @@
     local M = {}
 
     M.name  = '${colors.name}'
-    M.wall  = '~/.config/awesome/theme/wallpapers/${colors.wallpaper}'
+    M.wall  = '~/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper}'
     M.ok    = "#${colors.color2}"
     M.warn  = "#${colors.color3}"
     M.err   = "#${colors.color1}"
@@ -26,3 +26,4 @@
 
   '';
 }
+
