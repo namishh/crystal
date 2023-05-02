@@ -76,7 +76,7 @@ end
 setTheme()
 ```
 
-### Todo (8/18)
+### Todo (8/22)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -91,11 +91,15 @@ setTheme()
 - [ ] client previews
 - [ ] wallpaper switcher
 - [ ] dock pinning
+- [ ] screenshoter
+- [ ] vid recorder
 
 #### Tough
 - [ ] wifimenu
 - [ ] right click menu
 - [ ] bluetoothmenu
+- [ ] live colorscheme change
+- [ ] preserve state
 - [ ] focus mode?
 
 
