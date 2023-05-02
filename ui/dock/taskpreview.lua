@@ -18,35 +18,31 @@ local drawpreview = function(c, v)
   cr:paint()
   local widget = awful.popup {
     ontop = true,
-    visible = v,
+    visible = false,
     bg = beautiful.bg,
     placement = function(cl) awful.placement.bottom(cl, { margins = dpi(50) }) end,
     shape = helpers.rrect(8),
-    widget = wibox.container.background
-  }
-  widget:setup {
-    {
-      id = "image_role",
-      resize = true,
-      image = img,
+    widget = {
+      {
+        id = "image_role",
+        resize = true,
+        image = img,
+        visible = v,
+        clip_shape = helpers.rrect(8),
+        widget = wibox.widget.imagebox,
+      },
+      height = 300,
+      width = 200,
       visible = v,
-      clip_shape = helpers.rrect(8),
-      widget = wibox.widget.imagebox,
-    },
-    height = 300,
-    width = 200,
-    visible = v,
-    widget = wibox.container.constraint
+      widget = wibox.container.constraint
+    }
   }
   if not v then
     collectgarbage("collect")
-    widget:setup {
-      height = 0,
-      width = 0,
-      visible = v,
-      widget = wibox.container.constraint
-
-    }
+    widget.widget = nil
+    widget.visible = false
+  else
+    widget.visible = true
   end
 end
 

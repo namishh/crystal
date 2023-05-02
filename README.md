@@ -76,19 +76,28 @@ end
 setTheme()
 ```
 
-### Todo (7/15)
+### Todo (8/18)
 - [x] ~~control center~~
 - [x] ~~dock~~
-- [x] calendar good looks
-- [ ] client previews
+- [x] ~~calendar good looks~~
 - [x] ~~desktop icon~~
 - [x] ~~window swallowing~~
 - [x] ~~scatchpads simple implementation~~
+- [x] ~~make a pomo timer~~
+
+#### Easy
 - [ ] appmenu
 - [ ] make a todo list widget
-- [x] make a pomo timer
+- [ ] client previews
+- [ ] wallpaper switcher
+- [ ] dock pinning
+
+#### Tough
+- [ ] wifimenu
+- [ ] right click menu
+- [ ] bluetoothmenu
 - [ ] focus mode?
-- [x] ~~right click menu~~
+
 
 #### Fixes
 - [ ] scratchpad + dock

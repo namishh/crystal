@@ -12,7 +12,6 @@ local taw = require("ui.mainframe.modules.taw")
 local notifbox = require("ui.mainframe.modules.notifs.box")
 
 local timer = require("ui.mainframe.modules.timer")
-local schedule = require("ui.mainframe.modules.schedule")
 
 awful.screen.connect_for_each_screen(function(s)
   local mainframe = wibox({
@@ -40,7 +39,6 @@ awful.screen.connect_for_each_screen(function(s)
   }
   local set = wibox.widget {
     { timer,
-      schedule,
       nil,
       layout = wibox.layout.align.horizontal,
     },

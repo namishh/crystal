@@ -1,6 +1,5 @@
 local wibox = require("wibox")
 local gears = require("gears")
-local inspect = require("modules.inspect")
 local beautiful = require "beautiful"
 local helpers = require "helpers"
 local dpi = beautiful.xresources.apply_dpi
@@ -45,8 +44,8 @@ local createWeatherProg = function()
         background_color = beautiful.bg,
         widget           = wibox.widget.progressbar,
       },
-      forced_height = 100,
-      forced_width  = 15,
+      forced_height = 90,
+      forced_width  = 10,
       direction     = 'east',
       layout        = wibox.container.rotate,
     },
@@ -92,7 +91,7 @@ local dayWeather        = function()
       {
         {
           {
-            id = "min",
+            id = "max",
             halign = 'center',
             widget = wibox.widget.textbox,
             font = beautiful.font .. " 10",
@@ -104,7 +103,7 @@ local dayWeather        = function()
             font = beautiful.font .. " 10",
           },
           {
-            id = "max",
+            id = "min",
             halign = 'center',
             widget = wibox.widget.textbox,
             font = beautiful.font .. " 10",
@@ -116,7 +115,7 @@ local dayWeather        = function()
         halign = 'center',
       },
       widget = wibox.container.margin,
-      bottom = 8,
+      bottom = 20,
     },
     spacing = 10,
     forced_width = 80,
@@ -133,7 +132,6 @@ local dayWeather        = function()
     end
     widget:get_children_by_id('min')[1].text = getTemp(day.temp.night)
     widget:get_children_by_id('max')[1].text = getTemp(day.temp.day)
-    print(inspect(out))
   end
   return widget
 end
@@ -260,7 +258,7 @@ local widget            = wibox.widget {
       day6,
       spacing = 20,
       layout = require("modules.overflow").horizontal,
-      scrollbar_width = dpi(3),
+      scrollbar_width = dpi(1.5),
     },
     spacing = 20,
     layout = wibox.layout.fixed.vertical,
