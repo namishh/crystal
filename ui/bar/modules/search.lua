@@ -29,6 +29,7 @@ local horizwidget = wibox.widget {
   },
   buttons = {
     awful.button({}, 1, function()
+      awesome.emit_signal("toggle::launcher")
     end)
   },
   forced_width = 180,
