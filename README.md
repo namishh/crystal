@@ -76,7 +76,7 @@ end
 setTheme()
 ```
 
-### Todo (8/22)
+### Todo (9/22)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -86,11 +86,10 @@ setTheme()
 - [x] ~~make a pomo timer~~
 
 #### Easy
-- [ ] appmenu
+- [x] ~~appmenu~~
 - [ ] make a todo list widget
 - [ ] client previews
 - [ ] wallpaper switcher
-- [ ] dock pinning
 - [ ] screenshoter
 - [ ] vid recorder
 

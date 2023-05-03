@@ -66,7 +66,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'a',
     description = 'show the menubar',
     group       = 'launcher',
-    on_press    = function() awesome.emit_signal('toggle::app_launcher') end,
+    on_press    = function() awesome.emit_signal('toggle::launcher') end,
   },
 }
 
