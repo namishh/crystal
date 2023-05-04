@@ -100,6 +100,7 @@ theme.separator_color          = theme.fg2
 
 theme.profilepicture = theme_path .. "/pics/pfp.jpg"
 theme.songdefpicture = theme_path .. "/pics/nosong.jpg"
+theme.menupicture = theme_path .. "/pics/menu2.png"
 
 
 theme.titlebar_maximized_button_focus_active    = gears.color.recolor_image(theme_path .. "icons/" .. "circle.svg",

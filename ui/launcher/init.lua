@@ -12,7 +12,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 awful.screen.connect_for_each_screen(function(s)
   local launcherdisplay = wibox {
-    width = dpi(500),
+    width = dpi(800),
     height = dpi(570),
     bg = beautiful.bg,
     ontop = true,
@@ -48,15 +48,14 @@ awful.screen.connect_for_each_screen(function(s)
         margins = 20,
       },
       widget = wibox.container.background,
-      bg = beautiful.bg2 .. 'cc'
+      bg = beautiful.bg
     },
     widget = wibox.container.margin,
-    margins = 20,
   }
 
   local entries = wibox.widget {
     homogeneous = false,
-    expand = true,
+    expand = false,
     forced_num_cols = 1,
     spacing = 4,
     layout = wibox.layout.grid
@@ -64,18 +63,55 @@ awful.screen.connect_for_each_screen(function(s)
 
   launcherdisplay:setup {
     {
-      prompt,
-      bg = beautiful.bg,
-      widget = wibox.container.background
+      {
+        widget = wibox.widget.imagebox,
+        forced_height = 570,
+        forced_width = 380,
+        image = beautiful.menupicture,
+      },
+      {
+        {
+          widget = wibox.widget.textbox,
+        },
+        bg = {
+          type = "linear",
+          from = { 0, 0 },
+          to = { 0, 500 },
+          stops = { { 0.2, beautiful.bg .. "22" }, { 1, beautiful.mbg } }
+        },
+        widget = wibox.container.background,
+      },
+      {
+        {
+          {
+            {
+              prompt,
+              forced_width = 380,
+              forced_height = 60,
+              widget = wibox.container.background,
+            },
+            widget = wibox.container.margin,
+            margins = 10,
+          },
+          widget = wibox.container.place,
+          valign = 'bottom',
+        },
+        widget = wibox.container.background,
+        fo9ced_height = 570,
+        forced_width = 380,
+      },
+      layout = wibox.layout.stack
     },
     {
       entries,
-      left = 20,
-      right = 20,
-      bottom = 15,
+      left = 10,
+      right = 10,
+      bottom = 10,
+      top = 10,
       widget = wibox.container.margin
     },
-    layout = wibox.layout.fixed.vertical
+    spacing = 0,
+    layout = wibox.layout.fixed.horizontal
   }
 
   -- Functions
@@ -176,6 +212,8 @@ awful.screen.connect_for_each_screen(function(s)
           margins = dpi(15),
           widget = wibox.container.margin
         },
+        forced_width = 400,
+        forced_height = 90,
         widget = wibox.container.background
       }
 
@@ -212,7 +250,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Prompt
 
     awful.prompt.run {
-      prompt = "Launch ",
+      prompt = "Launch: ",
       textbox = prompt:get_children_by_id('txt')[1],
       done_callback = function()
         slide_end:again()
@@ -243,6 +281,7 @@ awful.screen.connect_for_each_screen(function(s)
     open()
 
     if launcherdisplay.visible then
+      awful.keyboard.emulate_key_combination({}, "Escape")
       slide_end:again()
       slide:set(0 - launcherdisplay.height)
     elseif not launcherdisplay.visible then
