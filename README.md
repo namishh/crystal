@@ -1,5 +1,7 @@
 kind of borked rn <br>
-nuclear config only meant to work with my nixos config
+nuclear config only meant to work with my nixos config<br>
+
+the liblua_pam.so is compiled with lua5.2. either use lua5.2 or compile your own
 
 ### Setup
 
@@ -76,7 +78,7 @@ end
 setTheme()
 ```
 
-### Todo (9/22)
+### Todo (10/23)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -87,6 +89,7 @@ setTheme()
 
 #### Easy
 - [x] ~~appmenu~~
+- [x] ~~lock~~
 - [ ] make a todo list widget
 - [ ] client previews
 - [ ] wallpaper switcher

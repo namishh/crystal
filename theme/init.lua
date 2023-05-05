@@ -21,7 +21,7 @@ theme.scrheight          = appearConfig.scrheight
 theme.scrwidth           = appearConfig.scrwidth
 
 theme.wall               = colors.wall
-
+theme.name               = colors.name
 theme.ok                 = colors.ok
 theme.warn               = colors.warn
 theme.err                = colors.err

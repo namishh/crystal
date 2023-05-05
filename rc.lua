@@ -1,6 +1,5 @@
 local gtimer = require "gears.timer"
 local collectgarbage = collectgarbage
-
 collectgarbage("setpause", 110)
 collectgarbage("setstepmul", 1000)
 

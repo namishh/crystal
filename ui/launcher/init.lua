@@ -67,7 +67,7 @@ awful.screen.connect_for_each_screen(function(s)
         widget = wibox.widget.imagebox,
         forced_height = 570,
         forced_width = 380,
-        image = beautiful.menupicture,
+        image = gears.filesystem.get_configuration_dir() .. "/theme/pics/menu-" .. beautiful.name .. ".png",
       },
       {
         {

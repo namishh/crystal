@@ -117,13 +117,10 @@ local tomfoolery = function(s)
 
   local createPermaElements = function()
     local launcher = createPermaElement("/apps/scalable/search.svg", "rofi -show drun")
-    local settings = createPermaElement("/apps/scalable/gdm-settings.svg",
-      "awesome-client 'awesome.emit_signal(\"toggle::control\")'")
     local trash = createPermaElement("/places/scalable/gnome-dev-trash-full.svg", "nemo trash:/")
     return wibox.widget {
       {
         launcher,
-        settings,
         trash,
         spacing = 7,
         layout = layout
