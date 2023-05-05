@@ -54,7 +54,7 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
-    luaPackages.lgi
+    lua54Packages.lua
     ytmdl
     inotify-tools
     udiskie
@@ -88,7 +88,6 @@ in
     wmctrl
     slop
     ueberzug
-    awesome
     ripgrep
     maim
     xclip

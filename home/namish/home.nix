@@ -33,7 +33,7 @@ in
     (import ../shared/xresources.nix { inherit colors; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
-    (import ./conf/shell/zsh/default.nix { inherit config; })
+    (import ./conf/shell/zsh/default.nix { inherit config pkgs; })
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
@@ -61,6 +61,7 @@ in
     packages = with pkgs; [
       bc
       tdesktop
+      xss-lock
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
       (pkgs.callPackage ../shared/icons/colloid.nix { })
@@ -68,18 +69,17 @@ in
       (pkgs.callPackage ../shared/icons/elementary.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
+      cmake
       neofetch
-      chromium
-      gcc
+      gnat
+      gnumake
       notion-app-enhanced
       pfetch
       xdg-desktop-portal
-      lua-language-server
       mpd
       imagemagick
       xorg.xev
       procps
-      sbctl
       cava
       simplescreenrecorder
       mpdris2
@@ -90,6 +90,7 @@ in
   };
   nixpkgs.config = {
     allowUnfree = true;
+    allowBroken = true;
     allowUnfreePredicate = _: true;
   };
 }

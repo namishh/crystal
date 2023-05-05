@@ -145,7 +145,7 @@ under construction ... <br>
 somethings i need to do before i can call it fully usable - <br>
 - [x] Install phocus with dynamic theming 
 - [x] Install any image colorizer
-- [x] Lock screen setup
+- [x] Lock screen setup (now with awesome)
 - [ ] Add Screenshots
 - [x] Spicetify
 
