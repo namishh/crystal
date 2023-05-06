@@ -56,7 +56,7 @@ theme.fg2                = colors.fg3
 theme.fg3                = colors.fg4
 
 theme.fg_focus           = theme.fg
-theme.fg_normal          = theme.fg1
+theme.fg_normal          = theme.fg
 theme.fg_minimize        = theme.fg2
 
 theme.bg_normal          = theme.bg2
@@ -70,7 +70,7 @@ theme.snap_bg            = theme.fg2
 theme.border_width       = dpi(5)
 theme.border_color       = theme.bg2
 
-theme.titlebar_fg        = theme.fg .. "40"
+theme.titlebar_fg        = theme.fg
 theme.titlebar_fg_normal = theme.fg2
 theme.titlebar_fg_focus  = theme.fg
 theme.titlebar_bg        = theme.bg2
@@ -114,7 +114,7 @@ theme.notification_icon_size   = dpi(80)
 theme.separator_color          = theme.fg2
 
 
-theme.profilepicture = theme_path .. "/pics/pfp.jpg"
+theme.profilepicture = theme_path .. "/pics/cool.jpg"
 theme.songdefpicture = theme_path .. "/pics/nosong.jpg"
 theme.menupicture = theme_path .. "/pics/menu2.png"
 

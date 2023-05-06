@@ -12,9 +12,9 @@ local weather = require("ui.moment.modules.weather")
 awful.screen.connect_for_each_screen(function(s)
   local moment = wibox({
     type = "dock",
-    shape = helpers.rrect(4),
     screen = s,
     width = dpi(720),
+    shape = helpers.rrect(8),
     height = dpi(410),
     bg = beautiful.bg,
     ontop = true,

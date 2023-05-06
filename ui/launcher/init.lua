@@ -13,6 +13,7 @@ local dpi = beautiful.xresources.apply_dpi
 awful.screen.connect_for_each_screen(function(s)
   local launcherdisplay = wibox {
     width = dpi(800),
+    shape = helpers.rrect(8),
     height = dpi(570),
     bg = beautiful.bg,
     ontop = true,

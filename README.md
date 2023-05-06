@@ -78,7 +78,7 @@ end
 setTheme()
 ```
 
-### Todo (10/23)
+### Todo (11/23)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -93,7 +93,7 @@ setTheme()
 - [ ] make a todo list widget
 - [ ] client previews
 - [ ] wallpaper switcher
-- [ ] screenshoter
+- [x] ~~screenshoter~~
 - [ ] vid recorder
 
 #### Tough

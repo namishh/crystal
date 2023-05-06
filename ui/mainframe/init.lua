@@ -15,10 +15,9 @@ local timer = require("ui.mainframe.modules.timer")
 
 awful.screen.connect_for_each_screen(function(s)
   local mainframe = wibox({
-    type = "dock",
-    shape = helpers.rrect(4),
     screen = s,
     width = 960,
+    shape = helpers.rrect(8),
     height = 775,
     bg = beautiful.bg,
     ontop = true,
@@ -38,7 +37,8 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.fixed.horizontal,
   }
   local set = wibox.widget {
-    { timer,
+    {
+      timer,
       nil,
       layout = wibox.layout.align.horizontal,
     },
@@ -92,7 +92,6 @@ awful.screen.connect_for_each_screen(function(s)
             right = 10,
             bottom = 8
           }
-
         },
         id = "settingsBack",
         widget = wibox.container.background,
@@ -101,7 +100,6 @@ awful.screen.connect_for_each_screen(function(s)
             awesome.emit_signal('toggle::dashboardSet')
           end)
         },
-
       },
       layout = wibox.layout.fixed.horizontal,
       spacing = 20

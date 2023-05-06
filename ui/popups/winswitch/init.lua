@@ -18,7 +18,7 @@ local winswitch = function(s)
     visible = false,
     stretch = false,
     screen = s,
-    shape = helpers.rrect(6),
+    shape = helpers.rrect(9),
     placement = awful.placement.centered,
     bg = beautiful.bg,
   }

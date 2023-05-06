@@ -20,7 +20,6 @@ naughty.connect_signal("request::icon", function(n, context, hints)
   local path = menubar.utils.lookup_icon(hints.app_icon) or menubar.utils.lookup_icon(hints.app_icon:lower())
 
   if path then n.icon = path end
-
 end)
 
 local function get_oldest_notification()
@@ -59,8 +58,6 @@ end)
 -- connect to each display
 --------------------------
 naughty.connect_signal("request::display", function(n)
-
-
   -- action widget
   local action_widget = {
     {
@@ -210,13 +207,12 @@ naughty.connect_signal("request::display", function(n)
 
   local widget = naughty.layout.box {
     notification    = n,
-    type            = "notification",
     bg              = beautiful.bg_color,
-    shape           = helpers.rrect(beautiful.rounded),
+    shape           = helpers.rrect(8),
     widget_template = {
       {
-
-        { -- top bit
+        {
+          -- top bit
           {
             {
               {
@@ -234,8 +230,8 @@ naughty.connect_signal("request::display", function(n)
           },
           layout = wibox.layout.fixed.vertical
         },
-
-        { -- body
+        {
+          -- body
           {
             {
               title_n,
@@ -251,27 +247,20 @@ naughty.connect_signal("request::display", function(n)
           margins = { left = dpi(15), top = dpi(10), right = dpi(10) },
           widget = wibox.container.margin
         },
-
-        { -- foot
+        {
+          -- foot
           actions,
           margins = dpi(10),
           widget = wibox.container.margin
         },
-
         layout = wibox.layout.fixed.vertical,
         spacing = dpi(10)
-
       },
-
       widget = wibox.container.background,
-      shape = helpers.rrect(3),
+      shape = helpers.rrect(8),
       bg = beautiful.bg,
     }
   }
 
   widget.buttons = {}
-
-
-
 end)
-

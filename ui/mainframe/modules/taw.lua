@@ -2,7 +2,7 @@ local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local dpi       = require("beautiful").xresources.apply_dpi
 local helpers   = require("helpers")
-local awful     = require("awful")
+local gears     = require("gears")
 
 local weather   = wibox.widget {
   {
@@ -30,7 +30,7 @@ local weather   = wibox.widget {
         {
           {
             id            = "image",
-            image         = "~/.config/awesome/theme/icons/weather/weather-fog.svg",
+            image         = gears.filesystem.get_configuration_dir() .. "theme/icons/weather/weather-fog.svg",
             opacity       = 0.65,
             clip_shape    = helpers.rrect(4),
             forced_height = 50,

@@ -32,7 +32,6 @@ local bpop = function(s)
   }
 
   local widget = awful.popup {
-    type = "notification",
     visible = false,
     ontop = true,
     placement = function(c)

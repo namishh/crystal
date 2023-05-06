@@ -29,7 +29,7 @@ function lockscreen:init()
       min_value = 0,
       value = 0,
       rounded_edge = true,
-      thickness = dpi(10),
+      thickness = dpi(7),
       start_angle = 4.71238898,
       bg = beautiful.fg,
       colors = { beautiful.fg },
@@ -42,6 +42,7 @@ function lockscreen:init()
 
 
   local promptbox = wibox {
+    type = "dock",
     width = dpi(500),
     height = dpi(500),
     bg = beautiful.bg .. '00',
@@ -135,7 +136,7 @@ function lockscreen:init()
     {
       {
         font = beautiful.sans .. " Bold 82",
-        format = "%I:%M",
+        format = "%H:%M",
         align = "center",
         valign = "center",
         widget = wibox.widget.textclock

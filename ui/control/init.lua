@@ -12,8 +12,7 @@ local themer = require("ui.control.modules.themer")
 
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
-    type = "dock",
-    shape = helpers.rrect(4),
+    shape = helpers.rrect(8),
     screen = s,
     width = 480,
     height = 635,
