@@ -61,13 +61,14 @@ function lockscreen:init()
   }
 
   local background = wibox({
-    bgimage = beautiful.wall,
+    width = dpi(beautiful.scrwidth),
+    height = dpi(beautiful.scrheight),
     visible = false,
     ontop = true,
     type = "splash"
   })
 
-  awful.placement.maximize(background)
+  awful.placement.centered(background)
 
   local visible = function(v)
     background.visible = v
@@ -96,12 +97,12 @@ function lockscreen:init()
       keypressed_callback = function(_, key, _)
         if #key == 1 then
           entered = entered + 1
-          prompt.markup = string.rep("•", entered)
+          prompt.markup = string.rep(" ", entered)
         elseif key == "BackSpace" then
           if entered > 0 then
             entered = entered - 1
           end
-          prompt.markup = string.rep("•", entered)
+          prompt.markup = string.rep(" ", entered)
         end
       end,
       exe_callback = function(input)
@@ -126,7 +127,12 @@ function lockscreen:init()
   end)
 
   background:setup {
-    layout = wibox.container.place
+    widget = wibox.widget.imagebox,
+    forced_height = beautiful.scrheight,
+    horizontal_fit_policy = "fit",
+    vertical_fit_policy = "fit",
+    forced_width = beautiful.scrwidth,
+    image = beautiful.wall,
   }
   promptbox:setup {
     {
