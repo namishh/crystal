@@ -134,7 +134,7 @@ function lockscreen:init()
   promptbox:setup {
     {
       {
-        font = beautiful.sans .. " Bold 80",
+        font = beautiful.sans .. " Bold 82",
         format = "%I:%M",
         align = "center",
         valign = "center",
