@@ -1,26 +1,42 @@
-local theme              = {}
-local xresources         = require("beautiful.xresources")
-local colors             = require("theme.colors")
-local dpi                = xresources.apply_dpi
-local gfs                = require("gears.filesystem")
-local gears              = require("gears")
-local appearConfig       = require("config.appearance")
-local theme_path         = gfs.get_configuration_dir() .. "/theme/"
-theme.barfont            = 'Iosevka Nerd Font 13'
-theme.font               = 'Iosevka Nerd Font'
-theme.icofont            = 'Material Design Icons'
+local theme             = {}
+local xresources        = require("beautiful.xresources")
+local colors            = require("theme.colors")
+local awful             = require("awful")
+local dpi               = xresources.apply_dpi
+local gfs               = require("gears.filesystem")
+local gears             = require("gears")
+local appearConfig      = require("config.appearance")
+local theme_path        = gfs.get_configuration_dir() .. "/theme/"
+theme.barfont           = 'Iosevka Nerd Font 13'
+theme.font              = 'Iosevka Nerd Font'
+theme.sans              = "IBM Plex Sans"
+theme.icofont           = 'Material Design Icons'
 
-theme.titlebarType       = appearConfig.titlebarType
-theme.barDir             = appearConfig.barDir
-theme.barPadding         = appearConfig.gaps
-theme.barSize            = appearConfig.barSize
-theme.dockSize           = appearConfig.dockSize
-theme.barShouldHaveGaps  = appearConfig.barShouldHaveGaps
+theme.titlebarType      = appearConfig.titlebarType
+theme.barDir            = appearConfig.barDir
+theme.barPadding        = appearConfig.gaps
+theme.barSize           = appearConfig.barSize
+theme.dockSize          = appearConfig.dockSize
+theme.barShouldHaveGaps = appearConfig.barShouldHaveGaps
 
-theme.scrheight          = appearConfig.scrheight
-theme.scrwidth           = appearConfig.scrwidth
+theme.scrheight         = appearConfig.scrheight
+theme.scrwidth          = appearConfig.scrwidth
 
-theme.wall               = colors.wall
+theme.wall              = colors.wall
+local function file_exists(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+if not file_exists(gfs.get_cache_dir() .. colors.ow) then
+  os.execute('convert ' .. theme.wall .. ' -modulate 50 -filter Gaussian -blur 0x8 ~/.cache/awesome/' .. colors.ow)
+end
+theme.blurwall           = gfs.get_cache_dir() .. colors.ow
 theme.name               = colors.name
 theme.ok                 = colors.ok
 theme.warn               = colors.warn
@@ -145,9 +161,6 @@ theme.hotkeys_border_width                      = dpi(2)
 theme.hotkeys_border_color                      = theme.pri
 theme.hotkeys_group_margin                      = 20
 
-theme.parent_filter_list                        = { "discord", "firefox", "nemo" }
-theme.child_filter_list                         = { "discord", "firefox", "nemo" }
-theme.swallowing_filter                         = true
 theme.playerctl_ignore                          = { "firefox", "spotify" }
 theme.playerctl_player                          = { "mpd", "%any" }
 theme.playerctl_update_on_activity              = false
@@ -155,18 +168,6 @@ theme.playerctl_position_update_interval        = 1
 theme.playerctl_backend                         = "playerctl_lib"
 
 local icon_dir                                  = colors.iconTheme .. "/apps/scalable/"
-theme.ic_icons                                  = {
-  ["st"] = icon_dir .. "terminal.svg",
-  ["st-256color"] = icon_dir .. "terminal.svg",
-  ["pfetchpad"] = icon_dir .. "terminal.svg",
-  ["discord"] = icon_dir .. "discord.svg",
-  ["firefox"] = icon_dir .. "firefox.svg",
-  ["firefox-aurora"] = icon_dir .. "firefox.svg",
-  ["feh"] = icon_dir .. "image-viewer.svg",
-  ["Spotify"] = icon_dir .. "spotify.svg",
-  ["ncmpcpppad"] = icon_dir .. "deepin-music-player.svg",
-  ["SimpleScreenRecorder"] = icon_dir .. "screenrecorder.svg",
-}
 theme.progressbar_bg                            = theme.pri .. '11'
 theme.progressbar_fg                            = theme.pri
 return theme

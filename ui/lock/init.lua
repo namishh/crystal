@@ -4,7 +4,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local lockscreen = {}
---local passwd = config.password
 function lockscreen:init()
   local pam = require("liblua_pam")
   lockscreen.auth = function(password)
@@ -25,12 +24,18 @@ function lockscreen:init()
         halign        = 'center',
         widget        = wibox.widget.imagebox
       },
-      widget = wibox.container.background,
-      border_width = dpi(10),
-      forced_width = dpi(210),
-      forced_height = dpi(210),
-      shape = helpers.rrect(100),
-      border_color = beautiful.fg_color
+      id = "arc",
+      widget = wibox.container.arcchart,
+      max_value = 100,
+      min_value = 0,
+      value = 0,
+      rounded_edge = true,
+      thickness = dpi(10),
+      start_angle = 4.71238898,
+      bg = beautiful.fg,
+      colors = { beautiful.fg },
+      forced_width = dpi(200),
+      forced_height = dpi(200)
     },
     widget = wibox.container.place,
     halign = 'center',
@@ -44,17 +49,10 @@ function lockscreen:init()
     widget = wibox.widget.textbox,
   }
 
-  local prompt = wibox.widget {
-    forced_width = 380,
-    forced_height = 40,
-    markup = "Enter Password",
-    font = beautiful.font .. " 16",
-    widget = wibox.widget.textbox,
-  }
 
   local promptbox = wibox {
     width = dpi(500),
-    height = dpi(405),
+    height = dpi(500),
     bg = beautiful.bg .. '00',
     ontop = true,
     visible = false
@@ -77,7 +75,8 @@ function lockscreen:init()
 
   local reset = function(f)
     entered = 0
-    prompt.markup = not f and "Wrong" or "Enter Password"
+    header:get_children_by_id('arc')[1].value = not f and 100 or 0
+    header:get_children_by_id('arc')[1].colors = { not f and beautiful.err or beautiful.fg }
   end
 
   local function grab()
@@ -95,14 +94,15 @@ function lockscreen:init()
         }
       },
       keypressed_callback = function(_, key, _)
+        header:get_children_by_id('arc')[1].colors = { beautiful.pri }
+        header:get_children_by_id('arc')[1].value = 25
+        header:get_children_by_id('arc')[1].start_angle = tonumber(string.format("%.8f", math.random(0, math.pi * 2)))
         if #key == 1 then
           entered = entered + 1
-          prompt.markup = string.rep(" ", entered)
         elseif key == "BackSpace" then
           if entered > 0 then
             entered = entered - 1
           end
-          prompt.markup = string.rep(" ", entered)
         end
       end,
       exe_callback = function(input)
@@ -111,6 +111,7 @@ function lockscreen:init()
           reset(true)
           visible(false)
         else
+          header:get_children_by_id('arc')[1].colors = { beautiful.err }
           icon.markup = helpers.colorizeText(symbol, beautiful.err)
           reset(false)
           grab()
@@ -127,58 +128,43 @@ function lockscreen:init()
   end)
 
   background:setup {
-    widget = wibox.widget.imagebox,
-    forced_height = beautiful.scrheight,
-    horizontal_fit_policy = "fit",
-    vertical_fit_policy = "fit",
-    forced_width = beautiful.scrwidth,
-    image = beautiful.wall,
+    {
+      widget = wibox.widget.imagebox,
+      forced_height = beautiful.scrheight,
+      horizontal_fit_policy = "fit",
+      vertical_fit_policy = "fit",
+      forced_width = beautiful.scrwidth,
+      image = beautiful.blurwall,
+    },
+    layout = wibox.layout.stack
   }
   promptbox:setup {
     {
+      {
+        markup = helpers.colorizeText(os.date("%H:%M"), beautiful.fg),
+        font = beautiful.sans .. " Bold 82",
+        align = 'center',
+        valign = 'center',
+        widget = wibox.widget.textbox,
+      },
       header,
       {
         {
-          {
-            {
-              {
-                prompt,
-                left = dpi(10),
-                widget = wibox.container.margin
-              },
-              forced_height = 50,
-              shape = helpers.rrect(6),
-              widget = wibox.container.background,
-              bg = beautiful.bg .. "cc",
-            },
-            {
-              {
-                {
-                  icon,
-                  left = 15,
-                  right = 15,
-                  widget = wibox.container.margin
-                },
-                shape = helpers.rrect(6),
-                widget = wibox.container.background,
-                bg = beautiful.bg .. "cc",
-              },
-              widget = wibox.container.margin,
-            },
-            spacing = 20,
-            layout = wibox.layout.fixed.horizontal,
-          },
-          widget = wibox.container.background
+          markup = helpers.colorizeText("Namish Pande", beautiful.fg),
+          font = beautiful.sans .. " Semibold 16",
+          align = 'center',
+          valign = 'center',
+          widget = wibox.widget.textbox,
         },
+        top = 10,
         widget = wibox.container.margin
       },
-      spacing = 30,
+      spacing = 10,
       layout = wibox.layout.fixed.vertical
     },
     margins = dpi(10),
     widget = wibox.container.margin
   }
-
   awful.placement.centered(
     promptbox
   )
