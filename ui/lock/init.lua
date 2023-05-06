@@ -11,7 +11,6 @@ function lockscreen:init()
   end
 
 
-  local symbol = "󰌾"
   local entered = 0
 
   local header = wibox.widget {
@@ -39,14 +38,6 @@ function lockscreen:init()
     },
     widget = wibox.container.place,
     halign = 'center',
-  }
-
-  local icon = wibox.widget {
-    markup = symbol,
-    font = beautiful.icofont .. " 16",
-    align = 'center',
-    valign = 'center',
-    widget = wibox.widget.textbox,
   }
 
 
@@ -103,16 +94,18 @@ function lockscreen:init()
           if entered > 0 then
             entered = entered - 1
           end
+          if entered == 0 then
+            header:get_children_by_id('arc')[1].colors = { beautiful.dis }
+            header:get_children_by_id('arc')[1].value = 100
+          end
         end
       end,
       exe_callback = function(input)
         if lockscreen.auth(input) then
-          icon.markup = symbol
           reset(true)
           visible(false)
         else
           header:get_children_by_id('arc')[1].colors = { beautiful.err }
-          icon.markup = helpers.colorizeText(symbol, beautiful.err)
           reset(false)
           grab()
         end
@@ -141,11 +134,11 @@ function lockscreen:init()
   promptbox:setup {
     {
       {
-        markup = helpers.colorizeText(os.date("%H:%M"), beautiful.fg),
-        font = beautiful.sans .. " Bold 82",
-        align = 'center',
-        valign = 'center',
-        widget = wibox.widget.textbox,
+        font = beautiful.sans .. " Bold 80",
+        format = "%I:%M",
+        align = "center",
+        valign = "center",
+        widget = wibox.widget.textclock
       },
       header,
       {
