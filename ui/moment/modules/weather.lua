@@ -9,24 +9,24 @@ local icon_dir = filesystem.get_configuration_dir() .. "theme/icons/weather/"
 
 
 local icon_map = {
-  ["01d"] = "weather-clear-sky",
-  ["02d"] = "weather-few-clouds",
-  ["03d"] = "weather-clouds",
-  ["04d"] = "weather-few-clouds",
-  ["09d"] = "weather-showers-scattered",
-  ["10d"] = "weather-showers",
-  ["11d"] = "weather-strom",
-  ["13d"] = "weather-snow",
-  ["50d"] = "weather-fog",
-  ["01n"] = "weather-clear-night",
-  ["02n"] = "weather-few-clouds-night",
-  ["03n"] = "weather-clouds-night",
-  ["04n"] = "weather-clouds-night",
-  ["09n"] = "weather-showers-scattered",
-  ["10n"] = "weather-showers",
-  ["11n"] = "weather-strom",
-  ["13n"] = "weather-snow",
-  ["50n"] = "weather-fog",
+      ["01d"] = "weather-clear-sky",
+      ["02d"] = "weather-few-clouds",
+      ["03d"] = "weather-clouds",
+      ["04d"] = "weather-few-clouds",
+      ["09d"] = "weather-showers-scattered",
+      ["10d"] = "weather-showers",
+      ["11d"] = "weather-strom",
+      ["13d"] = "weather-snow",
+      ["50d"] = "weather-fog",
+      ["01n"] = "weather-clear-night",
+      ["02n"] = "weather-few-clouds-night",
+      ["03n"] = "weather-clouds-night",
+      ["04n"] = "weather-clouds-night",
+      ["09n"] = "weather-showers-scattered",
+      ["10n"] = "weather-showers",
+      ["11n"] = "weather-strom",
+      ["13n"] = "weather-snow",
+      ["50n"] = "weather-fog",
 }
 
 
@@ -205,7 +205,6 @@ local widget            = wibox.widget {
       layout = wibox.layout.fixed.horizontal
     },
     {
-
       {
         {
           {

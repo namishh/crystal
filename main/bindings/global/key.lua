@@ -22,7 +22,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'w',
     description = 'show main menu',
     group       = 'awesome',
-    on_press    = function() widgets.mainmenu:show() end,
+    on_press    = function() awesome.emit_signal("toggle::recorder") end,
   },
   awful.key {
     modifiers   = { mod.super, mod.ctrl },

@@ -31,36 +31,45 @@ local copyScrot = function(path)
   clipboard:store()
 end
 
-local createButton = function(icon, name, fn)
+local createButton = function(icon, name, fn, col)
   return wibox.widget {
     {
       {
         {
-          font = beautiful.icofont .. " 40",
-          markup = icon,
-          valign = "center",
-          align = "center",
-          widget = wibox.widget.textbox,
+          {
+            font = beautiful.icofont .. " 38",
+            markup = icon,
+            valign = "center",
+            align = "center",
+            widget = wibox.widget.textbox,
+          },
+          {
+            font = beautiful.font .. " Light 12",
+            markup = name,
+            valign = "center",
+            align = "center",
+            widget = wibox.widget.textbox,
+          },
+          layout = wibox.layout.fixed.vertical,
+          spacing = 8
         },
-        {
-          font = beautiful.font .. " Light 12",
-          markup = name,
-          valign = "center",
-          align = "center",
-          widget = wibox.widget.textbox,
-        },
-        layout = wibox.layout.fixed.vertical,
-        spacing = 8
+        widget = wibox.container.margin,
+        margins = 8
       },
-      widget = wibox.container.margin,
-      margins = 8
+      forced_width = 120,
+      bg = beautiful.mbg,
+      widget = wibox.container.background,
     },
-    forced_width = 120,
-    widget = wibox.container.background,
+    {
+      forced_height = 10,
+      forced_width = 110,
+      bg = col,
+      widget = wibox.container.background,
+    },
+    layout = wibox.layout.fixed.vertical,
     buttons = awful.button({}, 1, function()
       fn()
     end),
-    bg = beautiful.mbg
   }
 end
 
@@ -103,7 +112,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.spawn.easy_async_with_shell(cmd, function()
       copyScrot(name)
     end)
-  end)
+  end, beautiful.ok)
 
   local selection = createButton('', 'Selection', function()
     close()
@@ -112,7 +121,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.spawn.easy_async_with_shell(cmd, function()
       copyScrot(name)
     end)
-  end)
+  end, beautiful.pri)
 
   local window = createButton('', 'Window', function()
     close()
@@ -122,7 +131,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.spawn.easy_async_with_shell(cmd, function()
       copyScrot(name)
     end)
-  end)
+  end, beautiful.err)
 
   scrotter:setup {
     {

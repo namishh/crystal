@@ -34,9 +34,14 @@ local function file_exists(name)
 end
 
 if not file_exists(gfs.get_cache_dir() .. colors.ow) then
-  os.execute('convert ' .. theme.wall .. ' -modulate 50 -filter Gaussian -blur 0x8 ~/.cache/awesome/' .. colors.ow)
+  local cmd = 'convert ' .. theme.wall .. ' -modulate 50 -filter Gaussian -blur 0x8 ~/.cache/awesome/' .. colors.ow
+  awful.spawn.easy_async_with_shell(cmd, function()
+    theme.blurwall = gfs.get_cache_dir() .. colors.ow
+  end)
+else
+  theme.blurwall = gfs.get_cache_dir() .. colors.ow
 end
-theme.blurwall           = gfs.get_cache_dir() .. colors.ow
+
 theme.name               = colors.name
 theme.ok                 = colors.ok
 theme.warn               = colors.warn
