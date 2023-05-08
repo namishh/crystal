@@ -23,7 +23,7 @@ local getName = function()
   return string
 end
 
-local defCommand = "maim --capturebackground -d " .. delay .. mouseString .. " "
+local defCommand = "maim -d " .. delay .. mouseString .. " "
 
 local copyScrot = function(path)
   local image = GdkPixbuf.Pixbuf.new_from_file(path)

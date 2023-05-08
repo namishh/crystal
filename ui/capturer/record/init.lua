@@ -71,7 +71,7 @@ end
 
 
 awful.screen.connect_for_each_screen(function(s)
-  local scrotter = wibox {
+  local recorder = wibox {
     width = dpi(270),
     height = dpi(180),
     shape = helpers.rrect(8),
@@ -81,10 +81,10 @@ awful.screen.connect_for_each_screen(function(s)
   }
   local slide = animation:new({
     duration = 0.6,
-    pos = 0 - scrotter.height,
+    pos = 0 - recorder.height,
     easing = animation.easing.inOutExpo,
     update = function(_, pos)
-      scrotter.y = s.geometry.y + pos
+      recorder.y = s.geometry.y + pos
     end,
   })
 
@@ -92,13 +92,13 @@ awful.screen.connect_for_each_screen(function(s)
     single_shot = true,
     timeout = 0.43,
     callback = function()
-      scrotter.visible = false
+      recorder.visible = false
     end,
   })
 
   local close = function()
     slide_end:again()
-    slide:set(0 - scrotter.height)
+    slide:set(0 - recorder.height)
   end
 
   local fullscreen = createButton('󰄄', 'Start', function()
@@ -113,7 +113,7 @@ awful.screen.connect_for_each_screen(function(s)
     awful.spawn.with_shell("killall ffmpeg")
   end, beautiful.err)
 
-  scrotter:setup {
+  recorder:setup {
     {
       {
         {
@@ -147,13 +147,13 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   awesome.connect_signal("toggle::recorder", function()
-    if scrotter.visible then
+    if recorder.visible then
       slide_end:again()
-      slide:set(0 - scrotter.height)
-    elseif not scrotter.visible then
-      slide:set(beautiful.scrheight / 2 - scrotter.height / 2)
-      scrotter.visible = true
+      slide:set(0 - recorder.height)
+    elseif not recorder.visible then
+      slide:set(beautiful.scrheight / 2 - recorder.height / 2)
+      recorder.visible = true
     end
-    awful.placement.centered(scrotter)
+    awful.placement.centered(recorder)
   end)
 end)

@@ -7,7 +7,7 @@ the liblua_pam.so is compiled with lua5.2. either use lua5.2 or compile your own
 
 1. Install these programs
 ```txt
-awesome-git zsh pamixer ncmpcpp mpd mpDris2 brightnessctl inotifywait uptime brillo networkmanager bluetoothctl picom
+awesome-git zsh pamixer imagemagick ncmpcpp mpd mpDris2 brightnessctl inotifywait uptime brillo networkmanager bluetoothctl picom
 ```
 
 2. If you are using my nixos config, then my config should be already installed, otherwise
@@ -18,12 +18,12 @@ awesome-git zsh pamixer ncmpcpp mpd mpDris2 brightnessctl inotifywait uptime bri
 3. Make a secrets file at `config/key.lua`
 ```lua
 local M = {
-  openweatherapi = "your_key_here"
+  openweatherapi = "your_key_here",
+  password = "here",
 }
 
 return M
 ```
-
 
 ### Colors on other distros
 
@@ -38,6 +38,7 @@ local M = {}
 
 M.name  = 'pop'
 M.wall  = '/path/to/wallpaper.png'
+M.ow = "wallpaper.png" -- only the name of the wallpaper
 M.iconTheme = "./icons/Reversal"
 M.gtkTheme = 'popgtk'
 
@@ -78,7 +79,7 @@ end
 setTheme()
 ```
 
-### Todo (11/22)
+### Todo (13/21)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -90,17 +91,16 @@ setTheme()
 #### Easy
 - [x] ~~appmenu~~
 - [x] ~~lock~~
+- [x] ~~vid recorder~~
 - [x] ~~screenshoter~~
+- [x] ~~wallpaper switcher~~
 - [ ] client previews
-- [ ] wallpaper switcher
-- [ ] vid recorder
 
 #### Tough
 - [ ] wifimenu
 - [ ] right click menu
 - [ ] bluetoothmenu
 - [ ] make a todo list widget
-- [ ] preserve state
 - [ ] focus mode?
 
 

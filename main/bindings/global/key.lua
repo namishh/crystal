@@ -25,6 +25,13 @@ awful.keyboard.append_global_keybindings {
     on_press    = function() awesome.emit_signal("toggle::recorder") end,
   },
   awful.key {
+    modifiers   = { mod.super, mod.shift },
+    key         = 'w',
+    description = 'show main menu',
+    group       = 'awesome',
+    on_press    = function() awesome.emit_signal("toggle::wallswitcher") end,
+  },
+  awful.key {
     modifiers   = { mod.super, mod.ctrl },
     key         = 'r',
     description = 'reload awesome',
