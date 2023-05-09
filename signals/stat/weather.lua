@@ -52,8 +52,9 @@ local url = (
 
 
 
-awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function(_, stdout, stderr)
+awful.widget.watch(string.format(GET_FORECAST_CMD, url), 10, function(_, stdout, stderr)
   local result = json.decode(stdout)
+  print("hi")
   -- Current weather setup
   local out = {
     desc = result.current.weather[1].description:gsub("^%l", string.upper),
@@ -78,5 +79,6 @@ awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function(_, stdout
       result.daily[6],
     }
   }
+  print(require("modules.inspect")(out))
   awesome.emit_signal("connect::weather", out)
 end)

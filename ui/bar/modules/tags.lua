@@ -24,6 +24,32 @@ return function(s)
         awful.tag.viewnext(t.screen)
       end)
     },
+    -- widget_template = {
+    --   {
+    --     id = "yay",
+    --     markup = '',
+    --     font = beautiful.font .. " 13",
+    --     widget = wibox.widget.textbox,
+    --   },
+    --   widget = wibox.container.place,
+    --   create_callback = function(self, tag)
+    --     local t = self:get_children_by_id('yay')[1]
+    --     self.update = function()
+    --       if tag.selected then
+    --         t.markup = helpers.colorizeText('󰮯 ', beautiful.warn)
+    --       elseif #tag:clients() > 0 then
+    --         t.markup = helpers.colorizeText('󰊠 ', beautiful.pri)
+    --       else
+    --         t.markup = helpers.colorizeText('󰊠 ', beautiful.fg3 .. '33')
+    --       end
+    --     end
+    --
+    --     self.update()
+    --   end,
+    --   update_callback = function(self)
+    --     self.update()
+    --   end,
+    -- }
     widget_template = {
       {
         {
@@ -63,7 +89,7 @@ return function(s)
         self.update()
       end,
     }
-    --widget_template = {
+    -- --widget_template = {
     --   {
     --     {
     --       id     = 'text_role',

@@ -11,13 +11,9 @@ local DIR = gears.filesystem.get_configuration_dir() .. "theme/wallpapers/" .. c
 local curr = beautiful.wall
 local elems = wibox.widget {
   {
-    {
-      layout = wibox.layout.fixed.horizontal,
-      spacing = 20,
-      id = "switcher"
-    },
-    widget = wibox.container.margin,
-    bottom = 20,
+    layout = wibox.layout.fixed.horizontal,
+    spacing = 20,
+    id = "switcher"
   },
   layout = require("modules.overflow").horizontal
 }
@@ -69,25 +65,30 @@ awful.screen.connect_for_each_screen(function(s)
       if not os.execute("cd '" .. DIR .. path .. "'") then
         local widget = wibox.widget {
           {
-            widget = wibox.widget.imagebox,
-            image = DIR .. path,
-            forced_height = 197,
-            resize = true,
+            {
+              widget = wibox.widget.imagebox,
+              image = DIR .. path,
+              forced_height = curr == DIR .. path and dpi(180) or dpi(197),
+              resize = true,
+              shape = helpers.rrect(9),
+            },
+            widget = wibox.container.background,
+            border_width = curr == DIR .. path and dpi(3) or dpi(0),
+            forced_height = curr == DIR .. path and dpi(180) or dpi(197),
+            shape = helpers.rrect(9),
+            border_color = curr == DIR .. path and beautiful.pri or beautiful.bg,
+            buttons = {
+              awful.button({}, 1, function()
+                beautiful.wall = DIR .. path
+                curr = DIR .. path
+                gears.wallpaper.maximized(DIR .. path, s, beautiful.mbg)
+                awful.spawn.with_shell('setWall ' .. path .. " " .. beautiful.name)
+                refresh()
+              end)
+            },
           },
-          widget = wibox.container.background,
-          border_width = curr == DIR .. path and dpi(3) or dpi(0),
-          forced_height = curr == DIR .. path and dpi(180) or dpi(197),
-          shape = helpers.rrect(9),
-          border_color = curr == DIR .. path and beautiful.pri or beautiful.bg,
-          buttons = {
-            awful.button({}, 1, function()
-              beautiful.wall = DIR .. path
-              curr = DIR .. path
-              gears.wallpaper.maximized(DIR .. path, s, beautiful.mbg)
-              awful.spawn.with_shell('setWall ' .. path .. " " .. beautiful.name)
-              refresh()
-            end)
-          },
+          widget = wibox.container.margin,
+          bottom = 10
         }
         elems:add(widget)
       end
