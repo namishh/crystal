@@ -1,48 +1,27 @@
-local theme             = {}
-local xresources        = require("beautiful.xresources")
-local colors            = require("theme.colors")
-local awful             = require("awful")
-local beautiful         = require("beautiful")
-local dpi               = xresources.apply_dpi
-local gfs               = require("gears.filesystem")
-local gears             = require("gears")
-local appearConfig      = require("config.appearance")
-local theme_path        = gfs.get_configuration_dir() .. "/theme/"
-theme.barfont           = 'Iosevka Nerd Font 13'
-theme.font              = 'Iosevka Nerd Font'
-theme.sans              = "IBM Plex Sans"
-theme.icofont           = 'Material Design Icons'
+local theme              = {}
+local xresources         = require("beautiful.xresources")
+local colors             = require("theme.colors")
+local dpi                = xresources.apply_dpi
+local gfs                = require("gears.filesystem")
+local gears              = require("gears")
+local appearConfig       = require("config.appearance")
+local theme_path         = gfs.get_configuration_dir() .. "/theme/"
+theme.barfont            = 'Iosevka Nerd Font 13'
+theme.font               = 'Iosevka Nerd Font'
+theme.sans               = "IBM Plex Sans"
+theme.icofont            = 'Material Design Icons'
 
-theme.titlebarType      = appearConfig.titlebarType
-theme.barDir            = appearConfig.barDir
-theme.barPadding        = appearConfig.gaps
-theme.barSize           = appearConfig.barSize
-theme.dockSize          = appearConfig.dockSize
-theme.barShouldHaveGaps = appearConfig.barShouldHaveGaps
+theme.titlebarType       = appearConfig.titlebarType
+theme.barDir             = appearConfig.barDir
+theme.barPadding         = appearConfig.gaps
+theme.barSize            = appearConfig.barSize
+theme.dockSize           = appearConfig.dockSize
+theme.barShouldHaveGaps  = appearConfig.barShouldHaveGaps
 
-theme.scrheight         = appearConfig.scrheight
-theme.scrwidth          = appearConfig.scrwidth
+theme.scrheight          = appearConfig.scrheight
+theme.scrwidth           = appearConfig.scrwidth
 
-theme.wall              = colors.wall
-local function file_exists(name)
-  local f = io.open(name, "r")
-  if f ~= nil then
-    io.close(f)
-    return true
-  else
-    return false
-  end
-end
-
-if not file_exists(gfs.get_cache_dir() .. colors.ow) then
-  local cmd = 'convert ' .. theme.wall .. ' -modulate 50 -filter Gaussian -blur 0x8 ~/.cache/awesome/' .. colors.ow
-  awful.spawn.easy_async_with_shell(cmd, function()
-    theme.blurwall = gfs.get_cache_dir() .. colors.ow
-    require 'beautiful'.init('~/.config/awesome/theme/init.lua')
-  end)
-else
-  theme.blurwall = gfs.get_cache_dir() .. colors.ow
-end
+theme.wall               = colors.wall
 
 theme.name               = colors.name
 theme.ok                 = colors.ok

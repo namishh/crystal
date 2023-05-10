@@ -7,7 +7,7 @@ local beautiful = require("beautiful")
 local dpi = beautiful.xresources.apply_dpi
 local cairo = require("lgi").cairo
 
-local drawpreview = function(c, v)
+local drawpreview = function(c)
   local content = gears.surface(c.content)
   local cr = cairo.Context(content)
   local x, y, w, h = cr:clip_extents()
@@ -20,30 +20,20 @@ local drawpreview = function(c, v)
     ontop = true,
     visible = false,
     bg = beautiful.bg,
-    placement = function(cl) awful.placement.bottom(cl, { margins = dpi(50) }) end,
+    placement = function(cl) awful.placement.bottom(cl, { margins = dpi(80) }) end,
     shape = helpers.rrect(8),
     widget = {
-      {
-        id = "image_role",
-        resize = true,
-        image = img,
-        visible = v,
-        clip_shape = helpers.rrect(8),
-        widget = wibox.widget.imagebox,
-      },
-      height = 300,
-      width = 200,
-      visible = v,
-      widget = wibox.container.constraint
+      id = "image_role",
+      resize = true,
+      image = img,
+      visible = true,
+      clip_shape = helpers.rrect(8),
+      widget = wibox.widget.imagebox,
+      forced_width = 400,
+      forced_height = 200,
     }
   }
-  if not v then
-    collectgarbage("collect")
-    widget.widget = nil
-    widget.visible = false
-  else
-    widget.visible = true
-  end
+  return widget
 end
 
 return drawpreview

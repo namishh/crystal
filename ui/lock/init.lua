@@ -1,17 +1,47 @@
-local wibox = require("wibox")
-local helpers = require("helpers")
-local awful = require("awful")
+local wibox     = require("wibox")
+local helpers   = require("helpers")
+local awful     = require("awful")
 local beautiful = require("beautiful")
-local dpi = beautiful.xresources.apply_dpi
-local pam = require("liblua_pam")
-local auth = function(password)
+local dpi       = beautiful.xresources.apply_dpi
+local pam       = require("liblua_pam")
+local gfs       = require("gears.filesystem")
+local auth      = function(password)
   return pam.auth_current_user(password)
 end
 
 
-local entered = 0
+local caps       = wibox.widget {
+  {
+    {
+      {
+        markup = helpers.colorizeText("Caps Lock", beautiful.bg),
+        font = beautiful.font .. " 15",
+        widget = wibox.widget.textbox,
+      },
+      widget = wibox.container.margin,
+      margins = 6
+    },
+    widget = wibox.container.background,
+    shape = helpers.rrect(8),
+    bg = beautiful.warn
+  },
+  widget = wibox.container.margin,
+  top = 6
 
-local header = wibox.widget {
+}
+local check_caps = function()
+  awful.spawn.easy_async_with_shell(
+    'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d \' \'',
+    function(stdout)
+      if stdout:match('off') then
+        caps.opacity = 0
+      else
+        caps.opacity = 1
+      end
+    end
+  )
+end
+local header     = wibox.widget {
   {
     {
       image         = beautiful.profilepicture,
@@ -82,7 +112,7 @@ local function grab()
         end
       }
     },
-    keypressed_callback  = function(self, mod, key, command)
+    keypressed_callback  = function(_, _, key, _)
       if key == 'Escape' then
         input = ""
         return
@@ -113,7 +143,6 @@ local function grab()
     keyreleased_callback = function(self, _, key, _)
       -- Validation
       if key == 'Return' then
-        print("authing")
         if auth(input) then
           self:stop()
           reset(true)
@@ -125,6 +154,8 @@ local function grab()
           grab()
           input = ""
         end
+      elseif key == 'Caps_Lock' then
+        check_caps()
       end
     end
   }
@@ -137,17 +168,28 @@ awesome.connect_signal("toggle::lock", function()
   grab()
 end)
 
+local back = wibox.widget {
+  id = "bg",
+  widget = wibox.widget.imagebox,
+  forced_height = beautiful.scrheight,
+  horizontal_fit_policy = "fit",
+  vertical_fit_policy = "fit",
+  forced_width = beautiful.scrwidth,
+}
+
 background:setup {
-  {
-    widget = wibox.widget.imagebox,
-    forced_height = beautiful.scrheight,
-    horizontal_fit_policy = "fit",
-    vertical_fit_policy = "fit",
-    forced_width = beautiful.scrwidth,
-    image = beautiful.blurwall,
-  },
+  back,
   layout = wibox.layout.stack
 }
+local makeImage = function()
+  os.execute("mkdir -p ~/.cache/awesome/lock/")
+  local cmd = 'convert ' ..
+      beautiful.wall .. ' -modulate 50 -filter Gaussian -blur 0x6 ~/.cache/awesome/lock/' .. require('theme.colors').ow
+  awful.spawn.easy_async_with_shell(cmd, function()
+    local blurwall = gfs.get_cache_dir() .. "lock/" .. require('theme.colors').ow
+    back.image = blurwall
+  end)
+end
 promptbox:setup {
   {
     {
@@ -169,6 +211,11 @@ promptbox:setup {
       top = 10,
       widget = wibox.container.margin
     },
+    {
+      caps,
+      widget = wibox.container.place,
+      halign = 'center'
+    },
     spacing = 10,
     layout = wibox.layout.fixed.vertical
   },
@@ -178,3 +225,5 @@ promptbox:setup {
 awful.placement.centered(
   promptbox
 )
+check_caps()
+makeImage()

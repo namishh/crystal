@@ -177,11 +177,12 @@ local tomfoolery = function(s)
         },
         bg = bac
       }
+      local preview = drawPreview(v)
       widget:connect_signal("mouse::enter", function()
-        --  drawPreview(v, true)
+        preview.visible = true
       end)
       widget:connect_signal("mouse::leave", function()
-        -- drawPreview(v, false)
+        preview.visible = false
       end)
       indicators:add(widget)
     end
