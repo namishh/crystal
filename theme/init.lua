@@ -2,6 +2,7 @@ local theme             = {}
 local xresources        = require("beautiful.xresources")
 local colors            = require("theme.colors")
 local awful             = require("awful")
+local beautiful         = require("beautiful")
 local dpi               = xresources.apply_dpi
 local gfs               = require("gears.filesystem")
 local gears             = require("gears")
@@ -37,6 +38,7 @@ if not file_exists(gfs.get_cache_dir() .. colors.ow) then
   local cmd = 'convert ' .. theme.wall .. ' -modulate 50 -filter Gaussian -blur 0x8 ~/.cache/awesome/' .. colors.ow
   awful.spawn.easy_async_with_shell(cmd, function()
     theme.blurwall = gfs.get_cache_dir() .. colors.ow
+    require 'beautiful'.init('~/.config/awesome/theme/init.lua')
   end)
 else
   theme.blurwall = gfs.get_cache_dir() .. colors.ow
@@ -172,7 +174,7 @@ theme.playerctl_update_on_activity              = false
 theme.playerctl_position_update_interval        = 1
 theme.playerctl_backend                         = "playerctl_lib"
 
-local icon_dir                                  = colors.iconTheme .. "/apps/scalable/"
+theme.icon_dir                                  = colors.iconTheme .. "/apps/scalable/"
 theme.progressbar_bg                            = theme.pri .. '11'
 theme.progressbar_fg                            = theme.pri
 return theme
