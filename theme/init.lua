@@ -100,13 +100,14 @@ theme.notification_icon_size   = dpi(80)
 theme.separator_color          = theme.fg2
 
 
-theme.profilepicture = theme_path .. "/pics/cat.jpg"
+theme.profilepicture = theme_path .. "/pics/cool.jpg"
 theme.songdefpicture = theme_path .. "/pics/nosong.jpg"
 theme.menupicture = theme_path .. "/pics/menu2.png"
 
 
 theme.titlebar_maximized_button_focus_active    = gears.color.recolor_image(theme_path .. "icons/" .. "circle.svg",
   theme.warn)
+theme.nonotif                                   = theme_path .. "icons/" .. "bells.png"
 theme.titlebar_maximized_button_focus_inactive  = gears.color.recolor_image(theme_path .. "icons/" .. "circle.svg",
   theme.warn)
 theme.titlebar_maximized_button_normal_active   = theme_path .. "icons/" .. "circle.svg"

@@ -79,7 +79,7 @@ end
 setTheme()
 ```
 
-### Todo (13/21)
+### Todo (13/17)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -94,18 +94,15 @@ setTheme()
 - [x] ~~vid recorder~~
 - [x] ~~screenshoter~~
 - [x] ~~wallpaper switcher~~
-- [ ] client previews
 
 #### Tough
-- [ ] wifimenu
+- [ ] notifications for network and battery
 - [ ] right click menu
-- [ ] bluetoothmenu
 - [ ] make a todo list widget
 - [ ] focus mode?
 
 
 #### Fixes
-- [ ] scratchpad + dock
 - [x] ~~make it so that new apps spawn at last in the dock~~
 
 ### Credits

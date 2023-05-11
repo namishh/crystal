@@ -9,9 +9,9 @@ local naughty = require("naughty")
 return function(icon, notification, width)
   -- table of icons
   local icons = {
-    ["firefox"]  = { icon = "󰈹" },
-    ["discord"]  = { icon = "󰙯" },
-    ["dunstify"] = { icon = "󱝁" },
+        ["firefox"] = { icon = "󰈹" },
+        ["discord"] = { icon = "󰙯" },
+        ["dunstify"] = { icon = "󱝁" },
   }
 
   local appicon
@@ -33,14 +33,12 @@ return function(icon, notification, width)
       widget = wibox.container.margin,
       margins = 10,
     },
-    bg = beautiful.pri .. "1A",
     widget = wibox.container.background,
   }
   local message = wibox.widget {
     step_function = wibox.container.scroll.step_functions.waiting_nonlinear_back_and_forth,
     speed = 50,
     {
-
       markup = helpers.colorizeText(notification.message, beautiful.fg),
       font = beautiful.font .. " 12",
       align = "left",
@@ -105,7 +103,7 @@ return function(icon, notification, width)
       right = dpi(6),
       widget = wibox.container.margin
     },
-    bg = beautiful.bg3,
+    bg = beautiful.fg3 .. '33',
     forced_height = dpi(30),
     shape = helpers.rrect(4),
     widget = wibox.container.background
@@ -121,7 +119,7 @@ return function(icon, notification, width)
     },
     widget_template = {
       action_widget,
-      bottom = dpi(15),
+      bottom = dpi(0),
       widget = wibox.container.margin
     },
     style = { underline_normal = false, underline_selected = true },

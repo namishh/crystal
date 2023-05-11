@@ -6,7 +6,6 @@ local helpers = require("helpers")
 local iconTheme = require("theme.colors").iconTheme
 local beautiful = require("beautiful")
 local getIcon = require("ui.dock.getIcon")
-local drawPreview = require("ui.dock.taskpreview") -- TODO client previews
 
 
 local placeDock = function(c, m)
@@ -177,13 +176,6 @@ local tomfoolery = function(s)
         },
         bg = bac
       }
-      local preview = drawPreview(v)
-      widget:connect_signal("mouse::enter", function()
-        preview.visible = true
-      end)
-      widget:connect_signal("mouse::leave", function()
-        preview.visible = false
-      end)
       indicators:add(widget)
     end
     return wibox.widget {
