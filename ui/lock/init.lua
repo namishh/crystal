@@ -122,8 +122,8 @@ local function grab()
       -- Ignore 'Shift', 'Control', 'Return', 'F1', 'F2', etc., etc.
       if #key == 1 then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
-        header:get_children_by_id('arc')[1].value = 25
-        header:get_children_by_id('arc')[1].start_angle = math.random(0, math.pi * 2)
+        header:get_children_by_id('arc')[1].value = 20
+        header:get_children_by_id('arc')[1].start_angle = math.random(0, 6)
         if input == nil then
           input = key
           return
@@ -131,8 +131,8 @@ local function grab()
         input = input .. key
       elseif key == "BackSpace" then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
-        header:get_children_by_id('arc')[1].value = 25
-        header:get_children_by_id('arc')[1].start_angle = math.random(0, math.pi * 2)
+        header:get_children_by_id('arc')[1].value = 20
+        header:get_children_by_id('arc')[1].start_angle = math.random(0, 6)
         input = input:sub(1, -2)
         if #input == 0 then
           header:get_children_by_id('arc')[1].colors = { beautiful.dis }
