@@ -123,7 +123,7 @@ local function grab()
       if #key == 1 then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
         header:get_children_by_id('arc')[1].value = 25
-        header:get_children_by_id('arc')[1].start_angle = tonumber(string.format("%.8f", math.random(0, math.pi * 2)))
+        header:get_children_by_id('arc')[1].start_angle = math.random(0, math.pi * 2)
         if input == nil then
           input = key
           return
@@ -132,7 +132,7 @@ local function grab()
       elseif key == "BackSpace" then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
         header:get_children_by_id('arc')[1].value = 25
-        header:get_children_by_id('arc')[1].start_angle = tonumber(string.format("%.8f", math.random(0, math.pi * 2)))
+        header:get_children_by_id('arc')[1].start_angle = math.random(0, math.pi * 2)
         input = input:sub(1, -2)
         if #input == 0 then
           header:get_children_by_id('arc')[1].colors = { beautiful.dis }
