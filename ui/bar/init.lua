@@ -100,3 +100,4 @@ end
 screen.connect_signal('request::desktop_decoration', function(s)
   s.wibox = init(s)
 end)
+

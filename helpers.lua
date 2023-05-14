@@ -13,6 +13,15 @@ helpers.rrect        = function(radius)
   end
 end
 
+helpers.addHover     = function(element, bg, hbg)
+  element:connect_signal('mouse::enter', function(self)
+    self.bg = hbg
+  end)
+  element:connect_signal('mouse::leave', function(self)
+    self.bg = bg
+  end)
+end
+
 helpers.placeWidget  = function(widget)
   if beautiful.barDir == 'left' then
     awful.placement.bottom_left(widget, { honor_workarea = true, margins = beautiful.useless_gap * 2 })

@@ -5,7 +5,16 @@ awful.mouse.append_global_mousebindings {
   awful.button {
     modifiers = {},
     button    = 3,
-    on_press  = function() widgets.mainmenu:toggle() end
+    on_press  = function()
+      widgets.mainmenu:toggle()
+    end
+  },
+  awful.button {
+    modifiers = {},
+    button    = 1,
+    on_press  = function()
+      widgets.mainmenu:close()
+    end
   },
   awful.button {
     modifiers = {},

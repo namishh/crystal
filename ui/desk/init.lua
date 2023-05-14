@@ -11,9 +11,12 @@ local json = require "modules.json"
 local outlineText = require "ui.desk.outline"
 local getIcon = require 'ui.dock.getIcon'
 
+local gfilesystem = require('gears.filesystem')
+local gcolor = require('gears.color')
+local cm = require 'modules.menu'
+local icondir = gfilesystem.get_configuration_dir() .. 'theme/icons/desk/'
 -- so this is the main desktop object
 local desktop = {
-  grid = wibox.widget { layout = wibox.layout.grid, forced_num_rows = 9, forced_num_cols = 20, orientation = 'horizontal' },
   objects = {},
   folders = {},
   files = {},
@@ -34,14 +37,77 @@ local grabber = {} -- a general class for a grabber
 local DATA = gears.filesystem.get_cache_dir() .. 'data.json'
 local SHOW_ICONS = gears.filesystem.get_cache_dir() .. 'showdesktopicon'
 
-desktop.menu = awful.menu {
-  items = {
-    { 'Remove',      function() awesome.emit_signal('remove::something', desktop.toChange) end },
-    { 'Change Icon', function() awesome.emit_signal('edit::icon', desktop.toChange) end },
-    { 'Rename',      function() awesome.emit_signal('edit::name', desktop.toChange) end }
+
+local deskmenu = cm {
+  widget_template = wibox.widget {
+    {
+      {
+        {
+          {
+            widget = wibox.widget.imagebox,
+            resize = false,
+            valign = 'center',
+            halign = 'center',
+            id = 'icon_role',
+          },
+          widget = wibox.container.constraint,
+          stragety = 'exact',
+          width = 40,
+          height = 24,
+          id = 'const',
+        },
+        {
+          widget = wibox.widget.textbox,
+          valign = 'center',
+          halign = 'left',
+          id = 'text_role',
+        },
+        layout = wibox.layout.fixed.horizontal,
+      },
+      widget = wibox.container.margin,
+      margins = 6,
+    },
+    forced_width = 100,
+    widget = wibox.container.background,
+  },
+  spacing = 10,
+  entries = {
+    {
+      name = 'Remove',
+      icon = gcolor.recolor_image(icondir .. 'remove.svg', beautiful.err),
+      callback = function()
+        awesome.emit_signal('remove::something', desktop.toChange)
+      end,
+    },
+    {
+      name = 'Change Icon',
+      icon = gcolor.recolor_image(icondir .. 'file.svg', beautiful.ok),
+      callback = function()
+        awesome.emit_signal('edit::icon', desktop.toChange)
+      end,
+    },
+    {
+      name = 'Rename',
+      icon = gcolor.recolor_image(icondir .. 'keyboard.svg', beautiful.dis),
+      callback = function()
+        awesome.emit_signal('edit::name', desktop.toChange)
+      end,
+    },
   }
 }
 
+desktop.grid = wibox.widget { layout = wibox.layout.grid, forced_num_rows = 9, forced_num_cols = 20, orientation =
+'horizontal',
+  buttons = {
+    awful.button({}, 1, function()
+      widgets.mainmenu:close()
+      deskmenu:close()
+    end),
+  },
+
+}
+
+desktop.menu = deskmenu
 local check_exits = function(path)
   local file = io.open(path, "rb")
   if file then file:close() end
@@ -230,6 +296,7 @@ function desktop:add(entry)
         widgets.mainmenu:toggle()
         self.toChange = entry
         self.menu:toggle()
+        require("config.menu").mainmenu:close()
       end)
 
     },

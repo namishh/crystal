@@ -79,7 +79,7 @@ end
 setTheme()
 ```
 
-### Todo (13/17)
+### Todo (14/16)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -97,9 +97,8 @@ setTheme()
 
 #### Tough
 - [ ] notifications for network and battery
-- [ ] right click menu
-- [ ] make a todo list widget
-- [ ] focus mode?
+- [x] ~~right click menu~~
+- [ ] complete the dash
 
 
 #### Fixes
