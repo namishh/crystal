@@ -8,8 +8,8 @@ local helpers = require("helpers")
 local DATA = gears.filesystem.get_cache_dir() .. 'todos.json'
 
 local elems = wibox.widget {
-  layout = wibox.layout.fixed.vertical,
-  spacing = 18
+  layout = require("modules.overflow").vertical,
+  forced_height = 380,
 }
 
 local check_exits = function(path)
@@ -207,7 +207,8 @@ local function makeElement(i, n)
         layout = wibox.layout.align.horizontal
       },
       widget = wibox.container.background,
-      forced_height = 30,
+      forced_height = 45,
+      forced_width = 400,
       data = i
     }
     widget:get_children_by_id('input')[1]:add_button(awful.button({}, 1, function()
@@ -248,6 +249,8 @@ local function refresh()
     makeElement(j, i)
   end
 end
+
+local empV
 
 local finalwidget = wibox.widget {
   {
@@ -298,12 +301,9 @@ local finalwidget = wibox.widget {
         layout = wibox.layout.align.horizontal
       },
       {
-        {
-          elems,
-          widget = wibox.container.background,
-          forced_height = 350,
-        },
-        layout = require("modules.overflow").vertical
+        elems,
+        widget = wibox.container.place,
+        valign = 'top'
       },
       spacing = 18,
       layout = wibox.layout.fixed.vertical

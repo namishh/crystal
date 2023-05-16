@@ -14,6 +14,8 @@ local notifbox = require("ui.mainframe.modules.notifs.box")
 local timer = require("ui.mainframe.modules.timer")
 local todo = require("ui.mainframe.modules.todo")
 local quik = require("ui.mainframe.modules.quiklinks")
+local quikl = require("ui.mainframe.modules.quiklocations")
+local quote = require("ui.mainframe.modules.quote")
 
 awful.screen.connect_for_each_screen(function(s)
   local mainframe = wibox({
@@ -43,6 +45,12 @@ awful.screen.connect_for_each_screen(function(s)
       timer,
       todo,
       quik,
+      spacing = 20,
+      layout = wibox.layout.fixed.horizontal,
+    },
+    {
+      quikl,
+      quote,
       spacing = 20,
       layout = wibox.layout.fixed.horizontal,
     },
