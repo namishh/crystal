@@ -79,7 +79,7 @@ end
 setTheme()
 ```
 
-### Todo (14/16)
+### Todo (14/15)
 - [x] ~~control center~~
 - [x] ~~dock~~
 - [x] ~~calendar good looks~~
@@ -96,7 +96,6 @@ setTheme()
 - [x] ~~wallpaper switcher~~
 
 #### Tough
-- [ ] notifications for network and battery
 - [x] ~~right click menu~~
 - [ ] complete the dash
 
