@@ -89,7 +89,10 @@ naughty.connect_signal("request::display", function(n)
     {
       {
         opacity = 0.9,
-        image = n.icon,
+        image = n.icon or
+            gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "theme/icons/" .. "bell.png",
+              beautiful.fg)
+        ,
         resize = true,
         halign = "center",
         valign = "center",
@@ -111,8 +114,8 @@ naughty.connect_signal("request::display", function(n)
     start_angle = 4.71238898,
     bg = beautiful.pri,
     colors = { beautiful.fg },
-    forced_width = dpi(60),
-    forced_height = dpi(60)
+    forced_width = dpi(65),
+    forced_height = dpi(65)
   }
   local anim = animation:new {
     duration = 6,

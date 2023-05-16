@@ -97,7 +97,7 @@ setTheme()
 
 #### Tough
 - [x] ~~right click menu~~
-- [ ] complete the dash
+- [x] complete the dash
 
 
 #### Fixes
