@@ -84,7 +84,7 @@ If you that determined, here are some resources to start out
 ## Screenshots
 | <b>Cool Dashboard with 2 sections</b>                                                                              |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/02.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
 | <a href="#--------"><img src="screenshots/11.png" width="500px" alt="bottom panel preview"></a>                    |
 | <a href="#--------"><img src="screenshots/06.png" width="500px" alt="bottom panel preview"></a>                    |
 
