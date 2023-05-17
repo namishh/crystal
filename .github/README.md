@@ -85,46 +85,46 @@ If you that determined, here are some resources to start out
 | <b>Cool Dashboard with 2 sections</b>                                                                              |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/11.png" width="500px" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/06.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/11.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/06.png" alt="bottom panel preview"></a>                    |
 
 | <b>Control Panel</b>                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/05.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/05.png" alt="bottom panel preview"></a>                    |
 
 | <b>Exitscreen and Lockscreen</b>                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/04.png" width="500px" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/12.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/04.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |
 
 | <b>Screenshotter and Video Recorder</b>                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/07.png" width="500px" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/15.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/07.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
 
 
 | <b>Calendar + Weather Widget</b>                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/03.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/03.png"  alt="bottom panel preview"></a>                    |
 
 
 | <b>Right Click Menu</b>                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/01.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/01.png"  alt="bottom panel preview"></a>                    |
 
 | <b>App Menu</b>                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/09.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
 
 | <b>Custom Ncmpcppp UI</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/10.png" width="500px" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/14.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/10.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
 
 
 | <b>Wallpaper Switcher</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/13.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
 
 ## Installation of my dotfiles
 
