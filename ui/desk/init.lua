@@ -31,7 +31,9 @@ local desktop = {
   shortcuts = {},
   toChange = {},
 }
-local DIR = '/home/namish/Desktop'
+local DIR = '~/Desktop'
+DIR = DIR:gsub("~", os.getenv("HOME"))
+
 local grabber = {} -- a general class for a grabber
 
 local DATA = gears.filesystem.get_cache_dir() .. 'data.json'
