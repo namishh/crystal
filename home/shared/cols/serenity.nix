@@ -1,12 +1,10 @@
 {}:
-
 rec {
-  # special
+   wallpaper = "sea.jpg"; 
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";
 
-  # black
   color0 = "0d1617";
   color8 = "253336";
 
@@ -39,5 +37,4 @@ rec {
 
   comment = "505758";
   name = "serenity";
-  wallpaper = "waves.jpg";
 }

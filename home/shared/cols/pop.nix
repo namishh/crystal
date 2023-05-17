@@ -1,6 +1,6 @@
 {}:
-
 rec {
+   wallpaper = "mountains.jpg"; 
   foreground = "dfdddd";
   background = "0c0c0c";
   bg2 = "191919";
@@ -35,5 +35,4 @@ rec {
   color7 = "b7b7b7";
   color15 = "a4b5b5";
   name = "pop";
-  wallpaper = "mountains.jpg";
 }

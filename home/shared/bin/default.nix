@@ -15,6 +15,10 @@
         executable = true;
         text = import ./misc/changeTheme.nix { };
       };
+      ".local/bin/setWall" = {
+        executable = true;
+        text = import ./misc/changeWall.nix { };
+      };
       ".local/bin/tiling" = {
         executable = true;
         text = import ./misc/tiling.nix { };

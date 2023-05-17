@@ -71,7 +71,6 @@ in
     discord
     firefox
     unzip
-    picom
     imgclr
     git
     pstree

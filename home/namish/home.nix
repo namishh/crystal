@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/serenity.nix { };
+  colors = import ../shared/cols/pop.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -18,6 +18,7 @@ in
   programs.home-manager.enable = true;
   home.file.".icons/default".source =
     "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+
 
   # gtk themeing
   gtk = {
@@ -37,7 +38,7 @@ in
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
-    (import ./conf/utils/picom/default.nix { inherit colors; })
+    (import ./conf/utils/picom/default.nix { inherit colors pkgs; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
@@ -75,11 +76,13 @@ in
       gnumake
       notion-app-enhanced
       pfetch
+      ffmpeg_5-full
       xdg-desktop-portal
       mpd
       imagemagick
       xorg.xev
       procps
+      killall
       cava
       simplescreenrecorder
       mpdris2

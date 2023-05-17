@@ -4,7 +4,6 @@
     enable = true;
     activeOpacity = 1.0;
     backend = "glx";
-    extraArgs = [ "--experimental-backends" ];
     fade = true;
     fadeDelta = 3;
     fadeSteps = [ 0.03 0.03 ];
@@ -15,6 +14,15 @@
       "100:class_g = 'awesome'"
     ];
     settings = {
+      shadow = true;
+      shadow-radius = 15;
+      shadow-offset-x = -15;
+      shadow-offset-y = -15;
+      shadow-exclude = [
+        "window_type = 'dock'"
+        "class_g ~= 'slop'"
+      ];
+
       blur-background-exclude = [
         "window_type = 'dock'"
         "class_g ~= 'slop'"

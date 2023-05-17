@@ -1,6 +1,6 @@
 {}:
-
 rec {
+   wallpaper = "ahhhh.png"; 
   foreground = "dad0bc";
   background = "1b2124";
   mbg = "20282b";
@@ -34,5 +34,4 @@ rec {
   color7 = "d3c5aa";
   color15 = "d4d5d5";
   name = "everforest";
-  wallpaper = "stairs.jpg";
 }

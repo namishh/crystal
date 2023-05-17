@@ -5,7 +5,7 @@
 
 Welcome to my nix dotfiles! This repo contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
 
-![Screenshot1](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/screenshots.gif)
+![ScreenshotGif](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/screenshots.gif)
 
 > **Warning**
 >
@@ -82,7 +82,49 @@ If you that determined, here are some resources to start out
   + [nix-starter-config](https://github.com/Misterio77/nix-starter-config)
 
 ## Screenshots
-Coming Soon
+| <b>Cool Dashboard with 2 sections</b>                                                                              |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/02.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/11.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/06.png" width="500px" alt="bottom panel preview"></a>                    |
+
+| <b>Control Panel</b>                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/05.png" width="500px" alt="bottom panel preview"></a>                    |
+
+| <b>Exitscreen and Lockscreen</b>                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/04.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/12.png" width="500px" alt="bottom panel preview"></a>                    |
+
+| <b>Screenshotter and Video Recorder</b>                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/07.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/15.png" width="500px" alt="bottom panel preview"></a>                    |
+
+
+| <b>Calendar + Weather Widget</b>                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/03.png" width="500px" alt="bottom panel preview"></a>                    |
+
+
+| <b>Right Click Menu</b>                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/01.png" width="500px" alt="bottom panel preview"></a>                    |
+
+| <b>App Menu</b>                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/09.png" width="500px" alt="bottom panel preview"></a>                    |
+
+| <b>Custom Ncmpcppp UI</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/10.png" width="500px" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/14.png" width="500px" alt="bottom panel preview"></a>                    |
+
+
+| <b>Wallpaper Switcher</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/13.png" width="500px" alt="bottom panel preview"></a>                    |
 
 ## Installation of my dotfiles
 
@@ -132,9 +174,6 @@ cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
 
-
-## History and thanks
-under construction ... <br>
 <pre align="center">
 <a href="#japan--history">
 <img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=chadcat7/fuyu&type=Date"/>
@@ -146,7 +185,7 @@ somethings i need to do before i can call it fully usable - <br>
 - [x] Install phocus with dynamic theming 
 - [x] Install any image colorizer
 - [x] Lock screen setup (now with awesome)
-- [ ] Add Screenshots
+- [x] Add Screenshots
 - [x] Spicetify
 
 ## Credits -
@@ -156,3 +195,11 @@ These are the chads which helped me throughout my short but crazy nix journey!
 - [f2k](https://github.com/fortuneteller2k/)
 - [apro](https://github.com/Aproxia-dev)
 - [viper](https://github.com/viperML/)
+
+And of course credits for the guys for their help with my awesome config!
+- [stardust](https://github.com/stardust-kyun/)
+- [gw](https://github.com/Gwynsav)
+- [kasper](https://github.com/Kasper24)
+- [manas](https://github.com/Manas140)
+- [crylia](https://github.com/crylia/)
+- [rxyhn](https://github.com/rxyhn)
