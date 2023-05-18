@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src="assets/logo.png"  alt="logo"><br>
+  <img src="assets/logo.png" width="500px" alt="logo"><br>
   <h4>100% nix dotfiles that will 200% break your system</h4>
 </div>
 
