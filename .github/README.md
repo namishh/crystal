@@ -20,15 +20,15 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
 
 ## Features of config
-+ Awesome as the window manager
-+ zsh as the shell with starship prompt
-+ 4 Themes - Pop, Serenity, Catppuccin, Everforest
-+ Dynamic themeing
-+ Pulseaudio for audio (will change to pipewire, i am just too lazy for now)
-+ Ncmpcpp and Mpd for playing music
-+ Picom as the compositor
-+ Cool neovim config (installs with home-manager activation)
-+ st as the terminal
++ **OS**     -  nixos
++ **WM**     -  awesome
++ **Shell**  -  zsh
++ **Term**   -  st
++ **Music**  -  ncmpcpp
++ **Comp**   -  picom
++ **Editor** -  nvim
+
+<img src="assets/colors.png" alt="img" align="right" width="500px">
 
 #### Features Of the Awesome Config
 + Desktop Icons completely implemented in awesome
@@ -47,7 +47,6 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 + Mouse friendly custom ncmpcpp ui
 + Video Recorder and Screenshotter
 
-<img src="assets/colors.png" alt="img" align="right" width="500px">
 
 ## Nix
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
