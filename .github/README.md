@@ -160,6 +160,10 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
 
+| <b>Spicetify</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/16.png"  alt="bottom panel preview"></a>                    |
+
 ## Installation
 > **Warning**
 >
