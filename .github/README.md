@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src="assets/logo.png" width="625px" alt="logo">
+  <img src="assets/logo2.png" width="455px" alt="logo">
   <h4>100% nix dotfiles that will 200% break your system</h4><br>
   <p align="center">
   <a href="#features-of-config"><img width="150px" style="padding: 0 10px;" src="assets/featurebtn.png"></a>
