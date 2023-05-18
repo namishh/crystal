@@ -47,6 +47,8 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 + Mouse friendly custom ncmpcpp ui
 + Video Recorder and Screenshotter
 
+<img src="assets/colors.png" alt="img" align="right" width="500px">
+
 ## Nix
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
