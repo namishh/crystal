@@ -5,9 +5,9 @@
   <p align="center">
   <a href="#features-of-config"><img width="150px" style="padding: 0 10px;" src="assets/featurebtn.png"></a>
   <a href="#nix"><img width="150px" style="padding: 0 10px;" src="assets/nixbtn.png"></a>
-  <a href="#screenshots"><img width="150px" style="padding: 0 10px;" src="assets/scrotbtn.png"></a>
+  <a href="#screenshots"><img width="150px" style="padding: 0 10px;" src="assets/scrotsbtn.png"></a>
   <a href="#installation"><img width="150px" style="padding: 0 10px;" src="assets/install.png"></a>
-  <a href="#credits"><img width="150px" style="padding: 0 10px;" src="assets/credit.png"></a>
+  <a href="#credits"><img width="150px" style="padding: 0 10px;" src="assets/creditbtn.png"></a>
   </p>
 </div>
 
