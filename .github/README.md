@@ -2,11 +2,11 @@
   <img src="assets/logo2.png" width="455px" alt="logo">
   <h4>100% nix dotfiles that will 200% break your system</h4><br>
   <p align="center">
-  <a href="#features-of-config"><img width="150px" style="padding: 0 10px;" src="assets/featurebtn.png"></a>
-  <a href="#nix"><img width="150px" style="padding: 0 10px;" src="assets/nixbtn.png"></a>
-  <a href="#screenshots"><img width="150px" style="padding: 0 10px;" src="assets/scrotsbtn.png"></a>
-  <a href="#installation"><img width="150px" style="padding: 0 10px;" src="assets/install.png"></a>
-  <a href="#credits"><img width="150px" style="padding: 0 10px;" src="assets/creditbtn.png"></a>
+  <a href="#features-of-config"><img width="140px" style="padding: 0 10px;" src="assets/featurebtn.png"></a>
+  <a href="#nix"><img width="140px" style="padding: 0 10px;" src="assets/nixbtn.png"></a>
+  <a href="#screenshots"><img width="140px" style="padding: 0 10px;" src="assets/scrotsbtn.png"></a>
+  <a href="#installation"><img width="140px" style="padding: 0 10px;" src="assets/install.png"></a>
+  <a href="#credits"><img width="140px" style="padding: 0 10px;" src="assets/creditbtn.png"></a>
   </p><br>
 </div>
 
