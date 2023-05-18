@@ -19,6 +19,8 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 >
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
 
+<img src="assets/colors.png" alt="img" align="right" width="300px">
+
 ## Features of config
 + **OS**     -  nixos
 + **WM**     -  awesome
@@ -28,7 +30,6 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 + **Comp**   -  picom
 + **Editor** -  nvim
 
-<img src="assets/colors.png" alt="img" align="right" width="500px">
 
 #### Features Of the Awesome Config
 + Desktop Icons completely implemented in awesome
