@@ -2,13 +2,14 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/cat.nix { };
+  colors = import ../shared/cols/pop.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
     {
       config = config.nixpkgs.config;
     };
+  nixpkgs-f2k = inputs.nixpkgs-f2k;
 in
 {
   # some general info  
@@ -38,7 +39,7 @@ in
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
-    (import ./conf/utils/picom/default.nix { inherit colors pkgs; })
+    (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })

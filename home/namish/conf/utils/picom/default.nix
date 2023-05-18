@@ -1,7 +1,8 @@
-{ colors, ... }:
+{ colors, pkgs, nixpkgs-f2k, ... }:
 {
   services.picom = {
     enable = true;
+    package = nixpkgs-f2k.packages.${pkgs.system}.picom-ft-labs;
     activeOpacity = 1.0;
     backend = "glx";
     fade = true;

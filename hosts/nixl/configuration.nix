@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../shared
-    ../../services/picom.nix
   ];
 
   nixpkgs = {
@@ -16,7 +15,6 @@
       (final: prev:
         {
           awesome = inputs.nixpkgs-f2k.packages.${pkgs.system}.awesome-git;
-          picom = inputs.nixpkgs-f2k.packages.${pkgs.system}.picom-pijulius;
         })
     ];
     config = {
