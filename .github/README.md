@@ -1,16 +1,16 @@
 <div align='center'>
   <img src="assets/logo2.png" width="455px" alt="logo">
-  <img src="assets/text.png" width="700px" alt="logo"  style="margin: 30px;"><br><br>
+  <img src="assets/text.png" width="700px" alt="logo"  style="margin: 30px;">
   <p align="center">
   <a href="#features-of-config"><img width="140px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
   <a href="#nix"><img width="140px" style="padding: 0 16px;" src="assets/nixbtn.png"></a>
   <a href="#screenshots"><img width="140px" style="padding: 0 16px;" src="assets/scrotsbtn.png"></a>
   <a href="#installation"><img width="140px" style="padding: 0 16px;" src="assets/install.png"></a>
   <a href="#credits"><img width="140px" style="padding: 0 16px;" src="assets/creditbtn.png"></a>
+  <a href="https://github.com/chadcat7/fuyu/tree/the-awesome-config"><img width="140px" style="padding: 0 16px;" src="assets/aweconf.png"></a>
   </p><br>
 </div>
 
-Welcome to my nix dotfiles! This branch contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
 
 ![ScreenshotGif](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/screenshots.gif)
 
