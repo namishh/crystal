@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "sea.jpg"; 
+  wallpaper = "sea.jpg";
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";
@@ -23,7 +23,7 @@ rec {
   color5 = "c167d9";
   color13 = "d16ee0";
 
-  color6 = "c167d9";
+  color6 = "6fd1d5";
   color14 = "7bd3e0";
 
   color7 = "c5d7d7";
