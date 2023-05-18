@@ -15,6 +15,33 @@
       "100:class_g = 'awesome'"
     ];
     settings = {
+      #enable or disable animations
+      animations = false;
+      #change animation speed of windows in current tag e.g open window in current tag
+      animation-stiffness-in-tag = 125;
+      #change animation speed of windows when tag changes
+      animation-stiffness-tag-change = 90.0;
+
+      animation-window-mass = 0.4;
+      animation-dampening = 15;
+      animation-clamping = true;
+
+      #open windows
+      animation-for-open-window = "fly-in";
+      #minimize or close windows
+      animation-for-unmap-window = "squeeze";
+      #popup windows
+      animation-for-transient-window = "slide-up"; #available options: slide-up, slide-down, slide-left, slide-right, squeeze, squeeze-bottom, zoom
+
+      #set animation for windows being transitioned out while changings tags
+      animation-for-prev-tag = "slide-left";
+      #enables fading for windows being transitioned out while changings tags
+      enable-fading-prev-tag = true;
+
+      #set animation for windows being transitioned in while changings tags
+      animation-for-next-tag = "slide-right";
+      #enables fading for windows being transitioned in while changings tags
+      enable-fading-next-tag = true;
       shadow = true;
       shadow-radius = 15;
       shadow-offset-x = -15;
