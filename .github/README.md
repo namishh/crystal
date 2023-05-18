@@ -50,6 +50,7 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 
 
 ## Nix
+<img src="assets/nix.svg" alt="img" align="right" width="300px">
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
 NixOS is a unique distro. Unlike other distros where you store your configurations in `~/.config/` and binaries in `~/.local/bin` , nix takes a different approach. Instead you can [declaratively](https://zero-to-nix.com/concepts/declarative) define your configuration in `.nix` files. These nix files can be used to install and configure programs, services, setting up things like xresources, etc. This approach provides a modular system that enables users to share, reuse, and modify their configurations easily. <br> <br>
