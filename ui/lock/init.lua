@@ -97,6 +97,13 @@ local reset = function(f)
   header:get_children_by_id('arc')[1].value = not f and 100 or 0
   header:get_children_by_id('arc')[1].colors = { not f and beautiful.err or beautiful.fg }
 end
+
+local getRandom = function()
+  local r = math.random(0, 628)
+  r = r / 100
+  return r
+end
+
 local input = ""
 local function grab()
   local grabber = awful.keygrabber {
@@ -123,7 +130,7 @@ local function grab()
       if #key == 1 then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
         header:get_children_by_id('arc')[1].value = 20
-        header:get_children_by_id('arc')[1].start_angle = math.random(0, 6)
+        header:get_children_by_id('arc')[1].start_angle = getRandom()
         if input == nil then
           input = key
           return
@@ -132,7 +139,7 @@ local function grab()
       elseif key == "BackSpace" then
         header:get_children_by_id('arc')[1].colors = { beautiful.pri }
         header:get_children_by_id('arc')[1].value = 20
-        header:get_children_by_id('arc')[1].start_angle = math.random(0, 6)
+        header:get_children_by_id('arc')[1].start_angle = getRandom()
         input = input:sub(1, -2)
         if #input == 0 then
           header:get_children_by_id('arc')[1].colors = { beautiful.dis }
