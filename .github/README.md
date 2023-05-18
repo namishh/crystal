@@ -8,10 +8,10 @@
   <a href="#screenshots"><img width="150px" style="padding: 0 10px;" src="assets/scrotsbtn.png"></a>
   <a href="#installation"><img width="150px" style="padding: 0 10px;" src="assets/install.png"></a>
   <a href="#credits"><img width="150px" style="padding: 0 10px;" src="assets/creditbtn.png"></a>
-  </p>
+  </p><br>
 </div>
 
-Welcome to my nix dotfiles! This repo contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
+Welcome to my nix dotfiles! This branch contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
 
 ![ScreenshotGif](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/screenshots.gif)
 
@@ -20,11 +20,32 @@ Welcome to my nix dotfiles! This repo contains all my nix files that I have in m
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
 
 ## Features of config
-+ Awesome as the windows manager
++ Awesome as the window manager
 + zsh as the shell with starship prompt
-+ Multiple Themes
-+ Pulseaudio for audio (will change to pipewire)
++ 4 Themes - Pop, Serenity, Catppuccin, Everforest
++ Dynamic themeing
++ Pulseaudio for audio (will change to pipewire, i am just too lazy for now)
++ Ncmpcpp and Mpd for playing music
++ Picom as the compositor
++ Cool neovim config (installs with home-manager activation)
 + st as the terminal
+
+#### Features Of the Awesome Config
++ Desktop Icons completely implemented in awesome
++ And a dock completely in awesome too
++ Cool Titlebars
++ Modern Top Panel
++ Two Section Dashboard
++ Control Panel with Theme Switcher
++ Wallpaper Switcher
++ Better right click menu with icons
++ Calendar and Weather Widget
++ i3lock-color like lockscreen with profile picture
++ Minimal no-nonsense exit screen
++ Application Launcher
++ Good Looking notifications
++ Mouse friendly custom ncmpcpp ui
++ Video Recorder and Screenshotter
 
 ## Nix
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
@@ -208,5 +229,9 @@ And of course credits for the guys for their help with my awesome config!
 - [gw](https://github.com/Gwynsav)
 - [kasper](https://github.com/Kasper24)
 - [manas](https://github.com/Manas140)
+- [ilovecookie](https://github.com/manilarome)
 - [crylia](https://github.com/crylia/)
 - [rxyhn](https://github.com/rxyhn)
+
+
+**Feel free to use any code from the two branches as long as you will credit me**
