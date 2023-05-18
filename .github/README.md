@@ -1,5 +1,5 @@
 <div align='center'>
-  <h1>冬 | fuyu | winter | ☃️ </h1>
+  <img src="assets/logo.png"  alt="logo"><br>
   <h4>100% nix dotfiles that will 200% break your system</h4>
 </div>
 
