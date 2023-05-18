@@ -22,7 +22,7 @@ with colors; {
       "st.color12" = "#${color12}";
       "st.color5" = "#${color5}";
       "st.color13" = "#${color13}";
-      "st.color6" = "#${color3}";
+      "st.color6" = "#${color6}";
       "st.color14" = "#${color14}";
       "st.contrast" = "#${contrast}";
       "st.cursorline" = "#${cursorline}";
