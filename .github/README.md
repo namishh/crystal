@@ -50,7 +50,7 @@ Welcome to my nix dotfiles! This branch contains all my nix files that I have in
 
 
 ## Nix
-<img src="assets/nix.svg" alt="img" align="right" width="300px">
+<img src="assets/nix.svg" alt="img" align="left" width="200px">
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
 NixOS is a unique distro. Unlike other distros where you store your configurations in `~/.config/` and binaries in `~/.local/bin` , nix takes a different approach. Instead you can [declaratively](https://zero-to-nix.com/concepts/declarative) define your configuration in `.nix` files. These nix files can be used to install and configure programs, services, setting up things like xresources, etc. This approach provides a modular system that enables users to share, reuse, and modify their configurations easily. <br> <br>
@@ -104,8 +104,9 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 >
 > by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
 
+<img src="https://i.redd.it/ixi6zkudgsu61.png" alt="img" align="right" width="200px">
 #### WOW! NixOS looks so god damn cool! I am just gonna jump right into it!
-+ [NO](https://i.redd.it/ixi6zkudgsu61.png). NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) or using NixOS in a virtual machine instead of ripping apart your hard disk.
++ **NO**. NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) or using NixOS in a virtual machine instead of ripping apart your hard disk.
 
 #### I really wanna try out NixOS!
 If you that determined, here are some resources to start out
