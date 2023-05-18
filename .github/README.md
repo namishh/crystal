@@ -1,7 +1,14 @@
 <div align='center'>
   <br>
   <img src="assets/logo.png" width="425px" alt="logo"><br>
-  <h4>100% nix dotfiles that will 200% break your system</h4>
+  <h4>100% nix dotfiles that will 200% break your system</h4><br>
+  <p align="center">
+  <a href="#features-of-config"><img width="150px" style="padding: 0 10px;" src="assets/featurebtn.png"></a>
+  <a href="#nix"><img width="150px" style="padding: 0 10px;" src="assets/nixbtn.png"></a>
+  <a href="#screenshots"><img width="150px" style="padding: 0 10px;" src="assets/scrotbtn.png"></a>
+  <a href="#installation"><img width="150px" style="padding: 0 10px;" src="assets/install.png"></a>
+  <a href="#credits"><img width="150px" style="padding: 0 10px;" src="assets/credit.png"></a>
+  </p>
 </div>
 
 Welcome to my nix dotfiles! This repo contains all my nix files that I have in my `/etc/nixos` folder! For my awesomewm config checkout [this branch](https://github.com/chadcat7/fuyu/tree/the-awesome-config)! <br>
@@ -19,7 +26,7 @@ Welcome to my nix dotfiles! This repo contains all my nix files that I have in m
 + Pulseaudio for audio (will change to pipewire)
 + st as the terminal
 
-## Whats Nix? And other stuff
+## Nix
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
 NixOS is a unique distro. Unlike other distros where you store your configurations in `~/.config/` and binaries in `~/.local/bin` , nix takes a different approach. Instead you can [declaratively](https://zero-to-nix.com/concepts/declarative) define your configuration in `.nix` files. These nix files can be used to install and configure programs, services, setting up things like xresources, etc. This approach provides a modular system that enables users to share, reuse, and modify their configurations easily. <br> <br>
@@ -127,8 +134,7 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
 
-## Installation of my dotfiles
-
+## Installation
 > **Warning**
 >
 > These instructions were made for future me incase I ever get a new laptop / pc. My awesome config will 9/10 times contain a lot of broken code that can ruin your awesome experience. Please only use these files as a reference and nothing else. DONT FUCKING COPY THEM!!
@@ -189,7 +195,7 @@ somethings i need to do before i can call it fully usable - <br>
 - [x] Add Screenshots
 - [x] Spicetify
 
-## Credits -
+## Credits
 These are the chads which helped me throughout my short but crazy nix journey!
 - [gw](https://github.com/Gwynsav)
 - [javacafe](https://github.com/JavaCafe01/)
