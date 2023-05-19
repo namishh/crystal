@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "village.jpg"; 
+  wallpaper = "village.jpg";
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";
@@ -36,5 +36,5 @@ rec {
   cursorline = "111a1b";
 
   comment = "505758";
-  name = "serenity";
+  name = "wave";
 }

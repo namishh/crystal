@@ -12,7 +12,7 @@
 </div>
 
 
-![ScreenshotGif](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/screenshots.gif)
+![ScreenshotGif](https://raw.githubusercontent.com/chadcat7/fuyu/main/.github/screenshots/preview.png)
 
 > **Warning**
 >
