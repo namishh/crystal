@@ -8,7 +8,7 @@
   <a href="#installation"><img width="120px" style="padding: 0 16px;" src="assets/install.png"></a>
   <a href="#credits"><img width="120px" style="padding: 0 16px;" src="assets/creditbtn.png"></a>
   <a href="https://github.com/chadcat7/fuyu/tree/the-awesome-config"><img width="120px" style="padding: 0 16px;" src="assets/aweconf.png"></a>
-  </p><br><br>
+  </p><br>
   <img src="assets/preview.png" alt="logo"  style="margin: 30px;"><br><br>
 </div>
 
