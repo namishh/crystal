@@ -1,5 +1,5 @@
 <div align='center'>
-  <img src="assets/logo2.png" width="455px" alt="logo">
+  <img src="assets/logo.png" width="455px" alt="logo">
   <img src="assets/text.png" width="700px" alt="logo"  style="margin: 30px;"><br><br>
   <p align="center">
   <a href="#features-of-config"><img width="120px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
