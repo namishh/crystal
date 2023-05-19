@@ -9,14 +9,12 @@
   <a href="#credits"><img width="120px" style="padding: 0 16px;" src="assets/creditbtn.png"></a>
   <a href="https://github.com/chadcat7/fuyu/tree/the-awesome-config"><img width="120px" style="padding: 0 16px;" src="assets/aweconf.png"></a>
   </p><br><br>
-  <img src="assets/preview.png" width="700px" alt="logo"  style="margin: 30px;"><br><br>
+  <img src="assets/preview.png" width="600px" alt="logo"  style="margin: 30px;"><br><br>
 </div>
 
 > **Warning**
 >
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
-
-<img src="assets/colors.png" alt="img" align="right" width="400px">
 
 ## Features of config
 + **OS**     -  nixos
