@@ -48,10 +48,10 @@ local themeButton = function(icon, name)
   return widget
 end
 
-local serenity    = themeButton("󰖝", "Serenity")
-local everforest  = themeButton("󰐅", "Everforest")
+local serenity    = themeButton("󰖝", "Wave")
+local everforest  = themeButton("󰐅", "Forest")
 local gruvbox     = themeButton("󰌪", "Cat")
-local decay       = themeButton("󰃤", "Pop")
+local decay       = themeButton("󰃤", "Verdant")
 
 local finalwidget = wibox.widget {
   {

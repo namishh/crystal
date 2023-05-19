@@ -98,7 +98,7 @@ local deskmenu = cm {
   }
 }
 
-desktop.grid = wibox.widget { layout = wibox.layout.grid, forced_num_rows = 9, forced_num_cols = 20, orientation =
+desktop.grid = wibox.widget { layout = wibox.layout.grid, forced_num_rows = 9, homogenous = false, forced_num_cols = 20, orientation =
 'horizontal',
   buttons = {
     awful.button({}, 1, function()
@@ -288,6 +288,7 @@ function desktop:add(entry)
       spacing = 3,
       layout = wibox.layout.fixed.vertical
     },
+    forced_height = 90,
     widget = wibox.container.margin,
     margins = 10,
     buttons = {
