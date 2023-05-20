@@ -3,15 +3,15 @@
   <img src="assets/text.png" width="700px" alt="logo"  style="margin: 30px;"><br><br>
   <p align="center">
   <a href="#features-of-config"><img width="120px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
-  <a href="#features-of-config"><img width="100px" style="padding: 0 16px;" src="assets/sep.png"></a>
+  <a href="#features-of-config"><img width="10px" style="padding: 0 16px;" src="assets/sep.png"></a>
   <a href="#nix"><img width="120px" style="padding: 0 16px;" src="assets/nixbtn.png"></a>
-  <a href="#features-of-config"><img width="100px" style="padding: 0 16px;" src="assets/sep.png"></a>
+  <a href="#features-of-config"><img width="10px" style="padding: 0 16px;" src="assets/sep.png"></a>
   <a href="#screenshots"><img width="120px" style="padding: 0 16px;" src="assets/scrotsbtn.png"></a>
-  <a href="#features-of-config"><img width="100px" style="padding: 0 16px;" src="assets/sep.png"></a>
+  <a href="#features-of-config"><img width="10px" style="padding: 0 16px;" src="assets/sep.png"></a>
   <a href="#installation"><img width="120px" style="padding: 0 16px;" src="assets/install.png"></a>
-  <a href="#features-of-config"><img width="100px" style="padding: 0 16px;" src="assets/sep.png"></a>
+  <a href="#features-of-config"><img width="10px" style="padding: 0 16px;" src="assets/sep.png"></a>
   <a href="#credits"><img width="120px" style="padding: 0 16px;" src="assets/creditbtn.png"></a>
-  <a href="#features-of-config"><img width="100px" style="padding: 0 16px;" src="assets/sep.png"></a>
+  <a href="#features-of-config"><img width="10px" style="padding: 0 16px;" src="assets/sep.png"></a>
   <a href="https://github.com/chadcat7/fuyu/tree/the-awesome-config"><img width="120px" style="padding: 0 16px;" src="assets/aweconf.png"></a>
   </p><br>
   <img src="assets/preview.png" alt="logo"  style="margin: 30px;"><br><br>
