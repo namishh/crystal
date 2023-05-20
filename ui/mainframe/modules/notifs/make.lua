@@ -65,10 +65,6 @@ return function(icon, notification, width)
   }
   local image_width = 70
   local image_height = 70
-  if icon == 'none' then
-    image_width = 0
-    image_height = 0
-  end
   local image = wibox.widget {
     {
       image = icon,

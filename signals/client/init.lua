@@ -1,5 +1,5 @@
 require 'awful.autofocus'
 
 client.connect_signal('mouse::enter', function(c)
-  c:activate { context = 'mouse_enter', raise = false }
+  c:emit_signal('request::activate', 'mouse_enter', { raise = false })
 end)

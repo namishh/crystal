@@ -72,7 +72,7 @@ naughty.connect_signal("request::display", function(n)
 
   local appicon = n.icon or n.app_icon
   if not appicon then
-    appicon = 'none'
+    appicon = gears.filesystem.get_configuration_dir() .. "theme/icons/star.png"
   end
   title.markup = 'Notifications (' .. #finalcontent.children + 1 .. ')'
   finalcontent:insert(1, create(appicon, n))

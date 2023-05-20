@@ -13,7 +13,7 @@ local quotes = {
     author = "John Keats"
   },
   {
-    quote = "Tomorrow we will run faster, stretch out our arms farther…",
+    quote = "Tomorrow we will run faster, stretch out our arms farther",
     author = " F. Scott Fitzgerald "
   },
   {
