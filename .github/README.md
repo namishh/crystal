@@ -17,7 +17,7 @@
 
 ## Features of config
 + **OS**     -  nixos
-+ **WM**     -  awesome
++ **WM**     -  awesome - [config](https://github.com/chadcat7/fuyu/tree/the-awesome-config)
 + **Shell**  -  zsh
 + **Term**   -  st
 + **Music**  -  ncmpcpp
