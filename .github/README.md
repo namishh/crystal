@@ -1,15 +1,6 @@
 <div align='center'>
   <img src="assets/logo.png" width="455px" alt="logo"><br><br>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/01.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/02.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/03.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/04.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/05.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/06.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/07.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/08.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/09.png"></a>
-  <a href="#"><img height="24px" style="margin: 0 16px;" src="text/10.png"></a>
+  <img src="assets/text.png" width="655px" alt="logo"><br><br>
   <p align="center">
   <a href="#features-of-config"><img width="160px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
   <a href="#nix"><img width="160px" style="padding: 0 16px;" src="assets/nixbtn.png"></a>
