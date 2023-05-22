@@ -1,6 +1,6 @@
 <div align='center'>
   <img src="assets/logo.png" width="455px" alt="logo">
-  <img src="assets/text.png" width="700px" alt="logo"  style="margin: 30px;"><br><br>
+  <a href="#nix"><img height="50px" style="padding: 0 16px;" src="text/01.png"></a>
   <p align="center">
   <a href="#features-of-config"><img width="160px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
   <a href="#nix"><img width="160px" style="padding: 0 16px;" src="assets/nixbtn.png"></a>
