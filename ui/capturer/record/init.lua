@@ -16,12 +16,14 @@ local getName = function()
 end
 
 local start = function(fps, file_name)
+  local display = os.getenv("DISPLAY")
   local defCommand = string.format(
     'ffmpeg -y -f x11grab ' ..
-    '-r "%s" -i :0 -f pulse -i 0 -c:v libx264 -qp 0 -profile:v main ' ..
+    '-r "%s" -i %s -f pulse -i 0 -c:v libx264 -qp 0 -profile:v main ' ..
     '-preset ultrafast -tune zerolatency -crf 28 -pix_fmt yuv420p ' ..
     ' -c:a aac -b:a 64k -b:v 500k %s',
     fps,
+    display,
     file_name
   )
   print(defCommand)
