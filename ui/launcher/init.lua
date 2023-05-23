@@ -66,6 +66,8 @@ awful.screen.connect_for_each_screen(function(s)
     id = "boximage",
     widget = wibox.widget.imagebox,
     forced_height = 570,
+    horizontal_fit_policy = "fill",
+    vertical_fit_policy = "fill",
     forced_width = 380,
     image = gears.filesystem.get_configuration_dir() .. "/theme/pics/menu-" .. beautiful.name .. ".png",
   }
@@ -80,7 +82,7 @@ awful.screen.connect_for_each_screen(function(s)
       os.execute("mkdir -p ~/.cache/awesome/menu/")
       local cmd = 'convert ' ..
           beautiful.wall ..
-          ' -crop 760x1040+970+740 -modulate 70 -filter Gaussian -blur 0x1 ~/.cache/awesome/menu/' ..
+          ' -crop 380x570+600+410 -modulate 70 ~/.cache/awesome/menu/' ..
           require('theme.colors')
           .ow
       awful.spawn.easy_async_with_shell(cmd, function()
