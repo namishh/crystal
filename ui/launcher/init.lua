@@ -1,12 +1,13 @@
-local wibox = require("wibox")
-local awful = require("awful")
-local gears = require("gears")
-local Gio = require("lgi").Gio
+local wibox     = require("wibox")
+local awful     = require("awful")
+local gears     = require("gears")
+local Gio       = require("lgi").Gio
 local iconTheme = require("lgi").require("Gtk", "3.0").IconTheme.get_default()
 local beautiful = require("beautiful")
-local helpers = require("helpers")
+local gfs       = require("gears.filesystem")
+local helpers   = require("helpers")
 local animation = require("modules.animation")
-local dpi = beautiful.xresources.apply_dpi
+local dpi       = beautiful.xresources.apply_dpi
 
 -- Widgets
 
@@ -61,15 +62,40 @@ awful.screen.connect_for_each_screen(function(s)
     spacing = 4,
     layout = wibox.layout.grid
   }
+  local image = wibox.widget {
+    id = "boximage",
+    widget = wibox.widget.imagebox,
+    forced_height = 570,
+    forced_width = 380,
+    image = gears.filesystem.get_configuration_dir() .. "/theme/pics/menu-" .. beautiful.name .. ".png",
+  }
 
+  local check_exits = function(path)
+    local file = io.open(path, "rb")
+    if file then file:close() end
+    return file ~= nil
+  end
+  local makeImage = function()
+    if not check_exits("~/.cache/awesome/menu/" .. require("theme.colors").ow) then
+      os.execute("mkdir -p ~/.cache/awesome/menu/")
+      local cmd = 'convert ' ..
+          beautiful.wall ..
+          ' -crop 760x1040+970+740 -modulate 70 -filter Gaussian -blur 0x1 ~/.cache/awesome/menu/' ..
+          require('theme.colors')
+          .ow
+      awful.spawn.easy_async_with_shell(cmd, function()
+        local blurwall = gfs.get_cache_dir() .. "menu/" .. require('theme.colors').ow
+        image.image = blurwall
+      end)
+    else
+      local blurwall = gfs.get_cache_dir() .. "menu/" .. require('theme.colors').ow
+      image.image = blurwall
+    end
+  end
+  makeImage()
   launcherdisplay:setup {
     {
-      {
-        widget = wibox.widget.imagebox,
-        forced_height = 570,
-        forced_width = 380,
-        image = gears.filesystem.get_configuration_dir() .. "/theme/pics/menu-" .. beautiful.name .. ".png",
-      },
+      image,
       {
         {
           widget = wibox.widget.textbox,
