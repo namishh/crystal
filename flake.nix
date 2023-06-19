@@ -1,5 +1,5 @@
 {
-  description = "the fuck is this";
+  description = "i have no idea how this works";
 
   inputs = {
     # Package sources.
@@ -28,31 +28,29 @@
       overlays = import ./overlays { inherit inputs; };
       # host configurations
       nixosConfigurations = {
-        nixl = nixpkgs.lib.nixosSystem
+        starfall = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
-              inherit inputs outputs;
+              inherit inputs outputs home-manager;
             };
             modules = [
               # > Our main nixos configuration file <
-              ./hosts/nixl/configuration.nix
+	            home-manager.nixosModule
+              ./hosts/starfall/configuration.nix
             ];
           };
       };
+      home-manager = home-manager.packages.${nixpkgs.system}."home-manager";
       # user configurations
       homeConfigurations = {
         namish = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs self; };
+          extraSpecialArgs = { inherit inputs outputs home-manager self; };
           modules = [
             ./home/namish/home.nix
-            {
-              home.username = "namish";
-              home.homeDirectory = "/home/namish";
-            }
           ];
         };
       };
-      nixl = self.nixosConfigurations.nixl.config.system.build.toplevel;
+      starfall = self.nixosConfigurations.starfall.config.system.build.toplevel;
     };
 }

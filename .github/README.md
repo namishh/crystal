@@ -61,11 +61,11 @@ home/
     shared/
         ...
 hosts/
-    nixl/
-        hardware-configuration.nix
-        configuration.nix
     shared/
         default.nix
+    starfall/
+        hardware-configuration.nix
+        configuration.nix
 overlays/
       default.nix
 patches/
@@ -190,7 +190,7 @@ $ rm /mnt/etc/nixos/configuration.nix
 
 ```bash
 $ cd /mnt/etc/nixos
-$ nixos-install --flake '.#nixl'
+$ nixos-install --flake '.#starfall'
 ```
 
 Congrats! You just installed NixOS! Now lets install the environment and the configs

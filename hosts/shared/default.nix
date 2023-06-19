@@ -16,6 +16,9 @@ in
   security = {
     sudo.enable = true;
   };
+  services.blueman = {
+    enable = true;
+  };
 
   time = {
     hardwareClockInLocalTime = true;
@@ -54,20 +57,24 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
+    home-manager
+    vscode-extensions.sumneko.lua
     lua54Packages.lua
-    ytmdl
+    blueman
     inotify-tools
     udiskie
+    rnix-lsp
     pulseaudio
+    nodePackages.vscode-langservers-extracted
+    vscode-extensions.rust-lang.rust-analyzer
+    rust-analyzer
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
     gtk3
     jq
-    i3lock-color
     st
     spotdl
-    python310Packages.pip
     discord
     firefox
     unzip

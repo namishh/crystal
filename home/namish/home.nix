@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/wave.nix { };
+  colors = import ../shared/cols/cat.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -75,6 +75,7 @@ in
       neofetch
       gnat
       gnumake
+      neovim
       notion-app-enhanced
       pfetch
       ffmpeg_5-full

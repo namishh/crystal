@@ -23,7 +23,7 @@
       allowUnfree = true;
     };
   };
-  networking.hostName = "nixl";
+  networking.hostName = "starfall";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
   # Packages
