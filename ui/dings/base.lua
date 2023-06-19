@@ -91,7 +91,7 @@ naughty.connect_signal("request::display", function(n)
         opacity = 0.9,
         image = n.icon or
             gears.color.recolor_image(gears.filesystem.get_configuration_dir() .. "theme/icons/" .. "bell.png",
-              beautiful.fg)
+              beautiful.warn)
         ,
         resize = true,
         halign = "center",

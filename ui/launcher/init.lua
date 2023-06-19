@@ -82,7 +82,7 @@ awful.screen.connect_for_each_screen(function(s)
       os.execute("mkdir -p ~/.cache/awesome/menu/")
       local cmd = 'convert ' ..
           beautiful.wall ..
-          ' -crop 380x570+600+410 -modulate 70 ~/.cache/awesome/menu/' ..
+          ' -resize 1920x1080 +repage -crop 380x570+600+410 -modulate 52 ~/.cache/awesome/menu/' ..
           require('theme.colors')
           .ow
       awful.spawn.easy_async_with_shell(cmd, function()

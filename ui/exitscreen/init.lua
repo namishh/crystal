@@ -105,6 +105,7 @@ local box = wibox.widget {
             {
               image         = beautiful.profilepicture,
               forced_height = 200,
+              opacity = 0.7;
               clip_shape    = helpers.rrect(100),
               forced_width  = 200,
               halign        = 'center',
