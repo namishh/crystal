@@ -25,22 +25,19 @@ local M = {
 return M
 ```
 
-### Colors on other distros
+### Other Distros
 
-+ WARNING : It may / may not work on your system.
-
-Make a file called `theme/colors.lua`. <br>
-This file is where you define all your colors, gtkTheme (i do not use this), icon theme and wallpaper
+Create these files.
+1. `theme/colors/verdant.lua`
 
 ```lua
--- This is a sample file
 local M = {}
 
-M.name  = 'pop'
+M.name  = 'verdant'
 M.wall  = '/path/to/wallpaper.png'
 M.ow = "wallpaper.png" -- only the name of the wallpaper
 M.iconTheme = "./icons/Reversal"
-M.gtkTheme = 'popgtk'
+M.gtkTheme = 'popgtk' -- just set name of any gtk you have installed or make one for this theme
 
 M.ok    = "#56966e"
 M.warn  = "#dcae61"
@@ -62,21 +59,105 @@ M.fg4   = "#5a5858"
 return M
 ```
 
-I do not have this file in this config, as it is automatically generated including the gtkTheme using home-manager in my config! <br>
+2. `theme/pop/cat.lua`
+```lua
+local M = {}
+
+M.name  = 'cat'
+M.ow = 'girlwithcat.jpg'
+M.wall  = '~/.config/awesome/theme/wallpapers/cat/girlwithcat.jpg'
+M.iconTheme = "./icons/Reversal"
+M.gtkTheme = 'catgtk'
+
+M.ok    = "#A6D189"
+M.warn  = "#E5C890"
+M.err   = "#E78284"
+M.pri   = "#8CAAEE"
+M.dis   = "#F4B8E4"
+M.bg    = "#11111b"
+M.mbg   = "#1b1b29"
+M.bg2   = "#1e1e2e"
+M.bg3   = "#3a3e4b"
+M.bg4   = "#3b3e48"
+M.fg    = "#f5e0dc"
+M.fg2   = "#B5BFE2"
+M.fg3   = "#83889a"
+M.fg4   = "#6c7086"
+
+return M
+```
+
+3. `theme/colors/wave.lua`
+```lua
+local M = {}
+
+M.name  = 'wave'
+M.ow = 'sea.jpg'
+M.wall  = '~/.config/awesome/theme/wallpapers/wave/sea.jpg'
+M.gtkTheme = 'somebluetheme'
+
+M.ok    = "#6ec587"
+M.warn  = "#deb26a"
+M.err   = "#df5b61"
+M.pri   = "#659bdb"
+M.dis   = "#c167d9"
+M.bg    = "#0a1011"
+M.mbg   = "#0e1718"
+M.bg2   = "#101a1b"
+M.bg3   = "#0d1617"
+M.bg4   = "#253336"
+M.fg    = "#d7e0e0"
+M.fg2   = "#c5d7d7"
+M.fg3   = "#cedcd9"
+M.fg4   = "#505758"
+
+return M
+```
+
+4. `theme/colors/forest.lua`
+```lua
+local M = {}
+
+M.name  = 'wave'
+M.ow = 'sea.jpg'
+M.wall  = '~/.config/awesome/theme/wallpapers/wave/sea.jpg'
+M.gtkTheme = 'somebluetheme'
+
+M.ok    = "#6ec587"
+M.warn  = "#deb26a"
+M.err   = "#df5b61"
+M.pri   = "#659bdb"
+M.dis   = "#c167d9"
+M.bg    = "#0a1011"
+M.mbg   = "#0e1718"
+M.bg2   = "#101a1b"
+M.bg3   = "#0d1617"
+M.bg4   = "#253336"
+M.fg    = "#d7e0e0"
+M.fg2   = "#c5d7d7"
+M.fg3   = "#cedcd9"
+M.fg4   = "#505758"
+
+return M
+```
+Copy any one theme to `theme/colors.lua` which will be theme currently in use
+```bash
+$ cp ~/.config/awesome/theme/colors/verdant.lua ~/.config/awesome/theme/colors.lua
+```
 
 #### Changing Themes
 This is something that I do not handle as I use NixOs, but this is a sample function I used when I used Endevaour Os and Void.
 ```lua
-local colors       = require("theme.colors")
 
-local setTheme     = function()
+local setTheme     = function(color)
   awful.spawn.with_shell('xrdb -remove')
-  awful.spawn.with_shell('xrdb -merge ~/.palettes/' .. colors.name .. " && kill -USR1 $(pidof st)")
+  awful.spawn.with_shell('xrdb -merge ~/.palettes/' .. color .. " && kill -USR1 $(pidof st)")
+  awful.spawn.with_shell("cp ~/.config/awesome/theme/colors/" .. color .. ".lua ~/.config/awesome/theme/colors.lua")
   awful.spawn.with_shell('cp ~/.config/rofi/colors/' .. colors.name .. '.rasi ~/.config/rofi/colors.rasi')
   awful.spawn.with_shell("sed -i '2s/.*/gtk-theme-name=" .. colors.gtkTheme .. "/g' ~/.config/gtk-3.0/settings.ini")
 end
 
-setTheme()
+setTheme("verdant")
 ```
 
 ### Todo (14/15)
