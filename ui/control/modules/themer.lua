@@ -4,6 +4,11 @@ local beautiful   = require("beautiful")
 local dpi         = require("beautiful").xresources.apply_dpi
 local helpers     = require("helpers")
 
+local setTheme = function(name)
+    awful.spawn.with_shell('notify-send "Changing theme to ' .. name .. '" "This might take some time!"')
+    awful.spawn.with_shell('setTheme ' .. string.lower(name))
+end
+
 local themeButton = function(icon, name)
   local themeButtonLabel = wibox.widget {
     align = 'center',
@@ -35,8 +40,7 @@ local themeButton = function(icon, name)
     bg = beautiful.fg3 .. '33'
   }
   widget:add_button(awful.button({}, 1, function()
-    awful.spawn.with_shell('notify-send "Changing theme to ' .. name .. '" "This might take some time!"')
-    awful.spawn.with_shell('setTheme ' .. string.lower(name))
+    setTheme(name)
   end))
   awesome.connect_signal("signal::theme", function(val)
     if val == string.lower(name) then

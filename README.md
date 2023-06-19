@@ -147,17 +147,17 @@ $ cp ~/.config/awesome/theme/colors/verdant.lua ~/.config/awesome/theme/colors.l
 
 #### Changing Themes
 This is something that I do not handle as I use NixOs, but this is a sample function I used when I used Endevaour Os and Void.
+
+Replace this setTheme function with the one i used in `ui/control/modules/themer.lua`
 ```lua
 
-local setTheme     = function(color)
+local setTheme     = function(name)
   awful.spawn.with_shell('xrdb -remove')
-  awful.spawn.with_shell('xrdb -merge ~/.palettes/' .. color .. " && kill -USR1 $(pidof st)")
-  awful.spawn.with_shell("cp ~/.config/awesome/theme/colors/" .. color .. ".lua ~/.config/awesome/theme/colors.lua")
-  awful.spawn.with_shell('cp ~/.config/rofi/colors/' .. colors.name .. '.rasi ~/.config/rofi/colors.rasi')
-  awful.spawn.with_shell("sed -i '2s/.*/gtk-theme-name=" .. colors.gtkTheme .. "/g' ~/.config/gtk-3.0/settings.ini")
+  awful.spawn.with_shell('xrdb -merge ~/.palettes/' .. name .. " && kill -USR1 $(pidof st)")
+  awful.spawn.with_shell("cp ~/.config/awesome/theme/colors/" .. name .. ".lua ~/.config/awesome/theme/colors.lua")
+  awful.spawn.with_shell('cp ~/.config/rofi/colors/' .. name .. '.rasi ~/.config/rofi/colors.rasi')
 end
 
-setTheme("verdant")
 ```
 
 ### Todo (14/15)
