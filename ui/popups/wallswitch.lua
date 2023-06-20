@@ -115,15 +115,11 @@ awful.screen.connect_for_each_screen(function(s)
         end
         local widget = wibox.widget {
           {
-            {
-              markup = curr == DIR .. path and helpers.colorizeText(path, beautiful.pri) or path,
-              font   = beautiful.font .. " 12",
-              align  = "left",
-              valign = "center",
-              widget = wibox.widget.textbox
-            },
-            widget = wibox.container.background,
-            shape = helpers.rrect(9),
+            markup = curr == DIR .. path and helpers.colorizeText(path, beautiful.pri) or path,
+            font   = beautiful.font .. " 12",
+            align  = "left",
+            valign = "center",
+            widget = wibox.widget.textbox,
             buttons = {
               awful.button({}, 1, function()
                 curr = DIR .. path
