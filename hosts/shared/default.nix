@@ -59,6 +59,7 @@ in
     nodejs
     home-manager
     vscode-extensions.sumneko.lua
+    lua-language-server
     lua54Packages.lua
     blueman
     inotify-tools

@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "pattern.jpg"; 
+  wallpaper = "pattern.jpg";
   foreground = "dfdddd";
   background = "0c0c0c";
   bg2 = "191919";
@@ -20,8 +20,8 @@ rec {
   color2 = "56966e";
   color10 = "57a274";
 
-  color3 = "dcae61";
-  color11 = "fcc467";
+  color3 = "dc8c61";
+  color11 = "e1956c";
 
   color4 = "6e95bd";
   color12 = "6fadea";

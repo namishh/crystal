@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "stairs.jpg"; 
+  wallpaper = "stairs.jpg";
   foreground = "dad0bc";
   background = "1b2124";
   mbg = "20282b";
@@ -19,8 +19,8 @@ rec {
   color2 = "8dc080";
   color10 = "90bd9b";
 
-  color3 = "d3b884";
-  color11 = "d6b678";
+  color3 = "d29571";
+  color11 = "d69b78";
 
   color4 = "85b7b0";
   color12 = "7fbbb3";

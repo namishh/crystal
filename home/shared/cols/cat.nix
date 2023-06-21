@@ -6,9 +6,9 @@ rec {
   bg2 = "161623";
   mbg = "151521";
 
-  cursorColor = "181825";
-  contrast = "181825";
-  cursorline = "181825";
+  cursorColor = "151521";
+  contrast = "151521";
+  cursorline = "161623";
   comment = "6c7086";
 
   color0 = "292c35";
