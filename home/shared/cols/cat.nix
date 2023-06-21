@@ -1,36 +1,36 @@
 {}:
 rec {
-   wallpaper = "girlwithcat.jpg"; 
+  wallpaper = "pixel.png";
   foreground = "f5e0dc";
   background = "11111b";
-  bg2 = "1e1e2e";
-  mbg = "1b1b29";
+  bg2 = "161623";
+  mbg = "151521";
 
   cursorColor = "181825";
   contrast = "181825";
   cursorline = "181825";
   comment = "6c7086";
 
-  color0 = "3a3e4b";
-  color8 = "3b3e48";
+  color0 = "292c35";
+  color8 = "373941";
 
-  color1 = "E78284";
-  color9 = "E78284";
+  color1 = "d05759";
+  color9 = "e56e70";
 
-  color2 = "A6D189";
-  color10 = "A6D189";
+  color2 = "5fbf70";
+  color10 = "7fd98f";
 
-  color3 = "E5C890";
-  color11 = "E5C890";
+  color3 = "e0875f";
+  color11 = "efa17f";
 
-  color4 = "8CAAEE";
-  color12 = "8CAAEE";
+  color4 = "6481d0";
+  color12 = "7c98e4";
 
-  color5 = "F4B8E4";
-  color13 = "F4B8E4";
+  color5 = "c669cc";
+  color13 = "d476da";
 
-  color6 = "81C8BE";
-  color14 = "81C8BE";
+  color6 = "61aca2";
+  color14 = "70b6ac";
 
   color7 = "B5BFE2";
   color15 = "83889a";

@@ -2,7 +2,7 @@
 {
   services.picom = {
     enable = true;
-    package = nixpkgs-f2k.packages.${pkgs.system}.picom-ft-labs;
+    package = nixpkgs-f2k.packages.${pkgs.system}.picom-dccsillag;
     activeOpacity = 1.0;
     backend = "glx";
     fade = true;
@@ -10,38 +10,19 @@
     fadeSteps = [ 0.03 0.03 ];
 
     opacityRules = [
-      "90:class_g = 'st-256color' && !focused"
-      "95:class_g = 'st-256color' && focused"
+      "98:class_g = 'st-256color' && !focused"
+      "100:class_g = 'st-256color' && focused"
       "100:class_g = 'awesome'"
     ];
     settings = {
-      #enable or disable animations
-      animations = false;
-      #change animation speed of windows in current tag e.g open window in current tag
-      animation-stiffness-in-tag = 125;
-      #change animation speed of windows when tag changes
-      animation-stiffness-tag-change = 90.0;
-
-      animation-window-mass = 0.4;
-      animation-dampening = 15;
+      animations = true;
+      animation-stiffness = 300.0;
+      animation-dampening = 22.0;
       animation-clamping = true;
-
-      #open windows
-      animation-for-open-window = "fly-in";
-      #minimize or close windows
-      animation-for-unmap-window = "squeeze";
-      #popup windows
-      animation-for-transient-window = "slide-up"; #available options: slide-up, slide-down, slide-left, slide-right, squeeze, squeeze-bottom, zoom
-
-      #set animation for windows being transitioned out while changings tags
-      animation-for-prev-tag = "slide-left";
-      #enables fading for windows being transitioned out while changings tags
-      enable-fading-prev-tag = true;
-
-      #set animation for windows being transitioned in while changings tags
-      animation-for-next-tag = "slide-right";
-      #enables fading for windows being transitioned in while changings tags
-      enable-fading-next-tag = true;
+      animation-mass = 1;
+      animation-for-open-window = "zoom";
+      animation-for-menu-window = "slide-down";
+      animation-for-transient-window = "slide-down";
       shadow = true;
       shadow-radius = 15;
       shadow-offset-x = -15;
