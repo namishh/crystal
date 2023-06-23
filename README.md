@@ -34,9 +34,9 @@ Create these files.
 local M = {}
 
 M.name  = 'verdant'
-M.wall  = '/path/to/wallpaper.png'
-M.ow = "wallpaper.png" -- only the name of the wallpaper
-M.iconTheme = "./icons/Reversal"
+M.ow = 'abstract.png'
+M.wall  = '~/.config/awesome/theme/wallpapers/verdant/abstract.png'
+M.iconTheme = "~/.icons/Reversal"
 M.gtkTheme = 'popgtk' -- just set name of any gtk you have installed or make one for this theme
 
 M.ok    = "#56966e"
@@ -66,7 +66,7 @@ local M = {}
 M.name  = 'cat'
 M.ow = 'girlwithcat.jpg'
 M.wall  = '~/.config/awesome/theme/wallpapers/cat/girlwithcat.jpg'
-M.iconTheme = "./icons/Reversal"
+M.iconTheme = "~/.icons/Reversal"
 M.gtkTheme = 'catgtk'
 
 M.ok    = "#A6D189"
@@ -95,6 +95,7 @@ M.name  = 'wave'
 M.ow = 'sea.jpg'
 M.wall  = '~/.config/awesome/theme/wallpapers/wave/sea.jpg'
 M.gtkTheme = 'somebluetheme'
+M.iconTheme = "~/.icons/Reversal"
 
 M.ok    = "#6ec587"
 M.warn  = "#deb26a"
@@ -122,6 +123,7 @@ M.name  = 'wave'
 M.ow = 'sea.jpg'
 M.wall  = '~/.config/awesome/theme/wallpapers/wave/sea.jpg'
 M.gtkTheme = 'somebluetheme'
+M.iconTheme = "~/.icons/Reversal"
 
 M.ok    = "#6ec587"
 M.warn  = "#deb26a"

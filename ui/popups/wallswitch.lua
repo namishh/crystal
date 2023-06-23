@@ -16,21 +16,21 @@ local elems = wibox.widget {
     spacing = 20,
     id = "switcher"
   },
-    forced_height = 200,
+  forced_height = 200,
   layout = require("modules.overflow").vertical
 }
 
-local setWall = function(path) 
-                gears.wallpaper.maximized(curr, s, beautiful.mbg)
-                awful.spawn.with_shell('setWall ' .. path .. " " .. beautiful.name)
+local setWall = function(path)
+  gears.wallpaper.maximized(curr, s, beautiful.mbg)
+  awful.spawn.with_shell('setWall ' .. path .. " " .. beautiful.name)
 end
 
 local imageWidget = wibox.widget {
-        image = helpers.cropSurface(2, gears.surface.load_uncached(curr)),
-        forced_width = 690,
+  image = helpers.cropSurface(2, gears.surface.load_uncached(curr)),
+  forced_width = 690,
   horizontal_fit_policy = "fit",
   vertical_fit_policy = "fit",
-        widget = wibox.widget.imagebox,
+  widget = wibox.widget.imagebox,
 }
 
 awful.screen.connect_for_each_screen(function(s)
@@ -65,19 +65,19 @@ awful.screen.connect_for_each_screen(function(s)
       },
       {
         {
-              markup = "Set As Wall",
-              font   = beautiful.font .. " 12",
-              valign = "bottom",
-              halign = 'right',
-              widget = wibox.widget.textbox
-            },
-            widget = wibox.container.margin,
-            margins = 12,
-            buttons = {
-              awful.button({}, 1, function()
-                setWall(currPath)
-              end)
-            },
+          markup = "Set As Wall",
+          font   = beautiful.font .. " 12",
+          valign = "bottom",
+          halign = 'right',
+          widget = wibox.widget.textbox
+        },
+        widget = wibox.container.margin,
+        margins = 12,
+        buttons = {
+          awful.button({}, 1, function()
+            setWall(currPath)
+          end)
+        },
       },
       layout = wibox.layout.stack
     },
@@ -110,16 +110,16 @@ awful.screen.connect_for_each_screen(function(s)
     for path in io.popen("cd " .. DIR .. " && find . -maxdepth 1 | tail -n +2"):lines() do
       path = string.sub(path, 3)
       if not os.execute("cd '" .. DIR .. path .. "'") then
-        if curr == DIR..path then
+        if curr == DIR .. path then
           currPath = path
         end
         local widget = wibox.widget {
           {
-            markup = curr == DIR .. path and helpers.colorizeText(path, beautiful.pri) or path,
-            font   = beautiful.font .. " 12",
-            align  = "left",
-            valign = "center",
-            widget = wibox.widget.textbox,
+            markup  = curr == DIR .. path and helpers.colorizeText(path, beautiful.pri) or path,
+            font    = beautiful.font .. " 12",
+            align   = "left",
+            valign  = "center",
+            widget  = wibox.widget.textbox,
             buttons = {
               awful.button({}, 1, function()
                 curr = DIR .. path

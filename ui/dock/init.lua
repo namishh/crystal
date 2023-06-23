@@ -217,11 +217,6 @@ local tomfoolery = function(s)
         convert = "image-viewer"
       },
       {
-        name = "firefox",
-        convert = "safari",
-        command = "firefox"
-      },
-      {
         name = "code",
         convert = "visualstudiocode",
         command = "code"
