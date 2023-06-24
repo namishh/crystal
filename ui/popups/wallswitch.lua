@@ -65,19 +65,39 @@ awful.screen.connect_for_each_screen(function(s)
       },
       {
         {
-          markup = "Set As Wall",
-          font   = beautiful.font .. " 12",
-          valign = "bottom",
-          halign = 'right',
-          widget = wibox.widget.textbox
+          {
+            {
+              markup = "Open Folder",
+              font   = beautiful.font .. " 12",
+              widget = wibox.widget.textbox
+            },
+            widget = wibox.container.margin,
+            margins = 12,
+            buttons = {
+              awful.button({}, 1, function()
+                awful.spawn.with_shell("nemo " .. "~/.config/awesome/theme/wallpapers/" .. beautiful.name)
+              end)
+            },
+          },
+          {
+            {
+              markup = "Set As Wall",
+              font   = beautiful.font .. " 12",
+              widget = wibox.widget.textbox
+            },
+            widget = wibox.container.margin,
+            margins = 12,
+            buttons = {
+              awful.button({}, 1, function()
+                setWall(currPath)
+              end)
+            },
+          },
+          layout = wibox.layout.fixed.horizontal
         },
-        widget = wibox.container.margin,
-        margins = 12,
-        buttons = {
-          awful.button({}, 1, function()
-            setWall(currPath)
-          end)
-        },
+        widget = wibox.container.place,
+        halign = 'right',
+        valign = 'bottom',
       },
       layout = wibox.layout.stack
     },
