@@ -52,7 +52,7 @@ local url = (
 
 
 
-awful.widget.watch(string.format(GET_FORECAST_CMD, url), 10, function(_, stdout, stderr)
+awful.widget.watch(string.format(GET_FORECAST_CMD, url), 100, function(_, stdout, stderr)
   local result = json.decode(stdout)
   -- Current weather setup
   local out = {
