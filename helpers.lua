@@ -1,10 +1,9 @@
-local helpers   = {}
-local awful     = require("awful")
-local beautiful = require("beautiful")
-local gears     = require("gears")
-local dpi       = beautiful.xresources.apply_dpi
-local cairo     = require("lgi").cairo
-
+local helpers        = {}
+local awful          = require("awful")
+local beautiful      = require("beautiful")
+local gears          = require("gears")
+local dpi            = beautiful.xresources.apply_dpi
+local cairo          = require("lgi").cairo
 
 helpers.rrect        = function(radius)
   radius = radius or dpi(4)

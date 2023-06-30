@@ -25,8 +25,8 @@ local leftart    = wibox.widget {
   clip_shape = helpers.rrect(100),
   opacity = 0.75,
   resize = true,
-  forced_height = dpi(180),
-  forced_width = dpi(180),
+  forced_height = dpi(210),
+  forced_width = dpi(210),
   valign = 'center',
   widget = wibox.widget.imagebox
 }
@@ -77,7 +77,7 @@ local shufflebtn = wibox.widget {
 }
 playerctl:connect_signal("shuffle", function(_, shuffle)
   shufflebtn.markup = shuffle and helpers.colorizeText('󰒝', beautiful.pri) or helpers.colorizeText('󰒝',
-        beautiful.fg)
+    beautiful.fg)
 end)
 local repeatt = wibox.widget {
   align = 'center',
@@ -325,7 +325,7 @@ local leftartcomplete = wibox.widget {
         shape = helpers.rrect(100),
       },
       widget = wibox.container.margin,
-      margins = 70,
+      margins = 90,
     },
     {
       {
@@ -335,7 +335,7 @@ local leftartcomplete = wibox.widget {
         shape = helpers.rrect(100),
       },
       widget = wibox.container.margin,
-      margins = 73,
+      margins = 93,
     },
     layout = wibox.layout.stack
   },
