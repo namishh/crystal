@@ -1,8 +1,9 @@
 {}:
 rec {
-  wallpaper = "pixel.png";
+   wallpaper = "pixel.png"; 
   foreground = "f5e0dc";
   background = "11111b";
+  darker = "0d0d15";
   bg2 = "161623";
   mbg = "151521";
 

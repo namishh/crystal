@@ -1,10 +1,11 @@
 {}:
 rec {
-  wallpaper = "pattern.jpg";
+   wallpaper = "wall.jpg"; 
   foreground = "dfdddd";
   background = "0c0c0c";
-  bg2 = "191919";
-  mbg = "181817";
+  darker = "070707";
+  bg2 = "151515";
+  mbg = "131313";
 
   cursorColor = "dbdfdf";
   contrast = "111111";

@@ -9,6 +9,8 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  programs.zsh.enable = true;
+
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
@@ -65,6 +67,7 @@ in
     inotify-tools
     udiskie
     rnix-lsp
+    xorg.xwininfo
     pulseaudio
     nodePackages.vscode-langservers-extracted
     vscode-extensions.rust-lang.rust-analyzer
@@ -77,6 +80,7 @@ in
     st
     spotdl
     discord
+    w3m
     firefox
     unzip
     imgclr
@@ -94,7 +98,7 @@ in
     brillo
     wmctrl
     slop
-    ueberzug
+    ueberzugpp
     ripgrep
     maim
     xclip

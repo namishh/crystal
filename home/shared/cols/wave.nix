@@ -1,9 +1,10 @@
 {}:
 rec {
-   wallpaper = "sea.jpg"; 
+   wallpaper = "satellitee.jpeg"; 
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";
+  darker = "080c0d";
 
   color0 = "0d1617";
   color8 = "253336";

@@ -3,6 +3,7 @@ rec {
   wallpaper = "stairs.jpg";
   foreground = "dad0bc";
   background = "1b2124";
+  darker = "151a1c";
   mbg = "20282b";
   bg2 = "22292d";
   cursorColor = "d3c6a6";

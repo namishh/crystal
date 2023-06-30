@@ -2,7 +2,7 @@
 {
   services.picom = {
     enable = true;
-    package = nixpkgs-f2k.packages.${pkgs.system}.picom-dccsillag;
+    package = nixpkgs-f2k.packages.${pkgs.system}.picom-pijulius;
     activeOpacity = 1.0;
     backend = "glx";
     fade = true;
@@ -10,8 +10,8 @@
     fadeSteps = [ 0.03 0.03 ];
 
     opacityRules = [
-      "98:class_g = 'st-256color' && !focused"
-      "100:class_g = 'st-256color' && focused"
+      "95:class_g = 'st-256color' && !focused"
+      "98:class_g = 'st-256color' && focused"
       "100:class_g = 'awesome'"
     ];
     settings = {
@@ -23,6 +23,8 @@
       animation-for-open-window = "zoom";
       animation-for-menu-window = "slide-down";
       animation-for-transient-window = "slide-down";
+      animation-for-workspace-switch-in = "zoom";
+      animation-for-workspace-switch-out = "zoom";
       shadow = true;
       shadow-radius = 15;
       shadow-offset-x = -15;
@@ -39,6 +41,7 @@
         "class_g ~= 'discord'"
         "class_g ~= 'firefox'"
         "class_i ~= 'slop'"
+        "class_g ~= 'firefox'"
         "class_i ~= 'Spotify'"
         "name ~= 'slop'"
       ];
@@ -47,11 +50,6 @@
       glx-no-rebind-pixmap = true;
       xrender-sync-fence = true;
       use-damage = true;
-      blur = {
-        method = "dual_kawase";
-        size = 20;
-        deviation = 5.0;
-      };
     };
 
   };

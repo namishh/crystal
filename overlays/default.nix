@@ -12,9 +12,9 @@
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {
         owner = "chadcat7";
-        repo = "best";
-        rev = "b4e13bd68a4dd6e89d691c7a0721ae4c8ffc4908";
-        sha256 = "0mjba15phjm4rnwz6ni6731zqw3j3wb6w9pvw0nv8ikj4ncih8r6";
+        repo = "st";
+        rev = "3d9eb51d43981963638a1b5a8a6aa1ace4b90fbb";
+        sha256 = "007pvimfpnmjz72is4y4g9a0vpq4sl1w6n9sdjq2xb2igys2jsyg";
       };
     });
   };

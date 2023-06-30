@@ -43,6 +43,7 @@ in
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
+    (import ./misc/kittyconf.nix { inherit pkgs colors; })
     (import ./misc/xinit.nix { })
 
     # Bin files
@@ -62,7 +63,7 @@ in
     };
     packages = with pkgs; [
       bc
-      tdesktop
+      catimg
       xss-lock
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
@@ -75,10 +76,11 @@ in
       neofetch
       gnat
       gnumake
-      neovim
+      kitty
       notion-app-enhanced
       pfetch
       ffmpeg_5-full
+      neovim
       xdg-desktop-portal
       mpd
       imagemagick
