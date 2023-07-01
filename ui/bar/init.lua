@@ -23,7 +23,8 @@ local function init(s)
   local wibar = awful.wibar {
     position = beautiful.barDir,
     height = barheight,
-    ontop = true,
+    ontop = false,
+    type = "dock",
     shape = barMargin == 0 and helpers.rrect(0) or helpers.rrect(5),
     width = barwidth,
     bg = beautiful.bg,
@@ -100,4 +101,3 @@ end
 screen.connect_signal('request::desktop_decoration', function(s)
   s.wibox = init(s)
 end)
-

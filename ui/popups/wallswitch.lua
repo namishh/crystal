@@ -26,8 +26,8 @@ local setWall = function(path)
 end
 
 local imageWidget = wibox.widget {
-  image = helpers.cropSurface(2, gears.surface.load_uncached(curr)),
-  forced_width = 690,
+  image = curr,
+  forced_width = 600,
   horizontal_fit_policy = "fit",
   vertical_fit_policy = "fit",
   widget = wibox.widget.imagebox,
@@ -35,7 +35,7 @@ local imageWidget = wibox.widget {
 
 awful.screen.connect_for_each_screen(function(s)
   local wallswitcher = wibox {
-    width = dpi(650),
+    width = dpi(600),
     height = dpi(550),
     shape = helpers.rrect(8),
     bg = beautiful.bg,

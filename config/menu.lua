@@ -82,7 +82,7 @@ local menu = cm {
       name = 'Open In Terminal',
       icon = gcolor.recolor_image(icondir .. 'terminal.svg', beautiful.fg),
       callback = function()
-        awful.spawn.with_shell('st -e sh -c "cd Desktop; $SHELL"')
+        awful.spawn.with_shell('kitty -e sh -c "cd Desktop; $SHELL"')
       end,
     },
     {
@@ -101,7 +101,7 @@ local menu = cm {
           name = 'Open Config',
           icon = gcolor.recolor_image(icondir .. 'text.svg', beautiful.pri),
           callback = function()
-            awful.spawn.with_shell('st -e sh -c "cd ~/.config/awesome ; nvim rc.lua ; $SHELL"')
+            awful.spawn.with_shell('kitty -e sh -c "cd ~/.config/awesome ; nvim rc.lua ; $SHELL"')
           end,
         },
         {

@@ -4,7 +4,7 @@ local dontSuckMe = {}
 
 local checkForSucc = function(child, parent)
   local canSuc = false
-  if not helpers.inTable(dontSuckMe, child) and parent == "st-256color" then
+  if not helpers.inTable(dontSuckMe, child) and parent == "kitty" then
     canSuc = true
   end
   return canSuc
@@ -73,4 +73,3 @@ local handle = function(c)
   end)
 end
 client.connect_signal("manage", handle)
-

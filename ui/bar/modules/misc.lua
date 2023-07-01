@@ -7,11 +7,18 @@ M.launcher      = wibox.widget {
   {
     {
       {
-        font = beautiful.font .. " 16",
-        markup = helpers.colorizeText(" ", beautiful.pri),
-        valign = "center",
-        align = "center",
-        widget = wibox.widget.textbox,
+        image         = beautiful.nixlogo,
+        opacity       = 0.7,
+        clip_shape    = helpers.rrect(4),
+        forced_height = 22,
+        forced_width  = 22,
+        valign        = 'center',
+        widget        = wibox.widget.imagebox
+        -- font = beautiful.font .. " 16",
+        -- markup = helpers.colorizeText(" ", beautiful.pri),
+        -- valign = "center",
+        -- align = "center",
+        -- widget = wibox.widget.textbox,
       },
       margins = 6,
       widget = wibox.container.margin
