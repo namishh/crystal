@@ -11,6 +11,7 @@
       la = "exa -l";
       ls = "ls --color=auto";
       v = "nvim";
+      nf = "neofetch";
       suda = "sudo -E -s";
       nix-pkgs = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
     };

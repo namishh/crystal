@@ -1,6 +1,6 @@
 {}:
 rec {
-  wallpaper = "stairs.jpg";
+  wallpaper = "waves.png";
   foreground = "dad0bc";
   background = "1b2124";
   darker = "151a1c";
@@ -35,4 +35,5 @@ rec {
   color7 = "d3c5aa";
   color15 = "d4d5d5";
   name = "forest";
+  neofetchpic = "trees.jpg";
 }
