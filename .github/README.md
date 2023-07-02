@@ -19,10 +19,10 @@
 + **OS**     -  nixos
 + **WM**     -  awesome - [config](https://github.com/chadcat7/fuyu/tree/the-awesome-config)
 + **Shell**  -  zsh
-+ **Term**   -  st
++ **Term**   -  kitty
 + **Music**  -  ncmpcpp
-+ **Comp**   -  picom
-+ **Editor** -  nvim
++ **Comp**   -  picom - [fdev31 fork](https://github.com/fdev31/picom/tree/animation-pr)
++ **Editor** -  nvim v0.9 - [my config](https://github.com/chadcat7/lodo)
 
 
 #### Features Of the Awesome Config
@@ -113,7 +113,7 @@ If you that determined, here are some resources to start out
 | <b>Cool Dashboard with 2 sections</b>                                                                              |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/11.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/10.png" alt="bottom panel preview"></a>                    |
 | <a href="#--------"><img src="screenshots/06.png" alt="bottom panel preview"></a>                    |
 
 | <b>Control Panel</b>                                                                                               |
@@ -123,12 +123,12 @@ If you that determined, here are some resources to start out
 | <b>Exitscreen and Lockscreen</b>                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/04.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/11.png"  alt="bottom panel preview"></a>                    |
 
 | <b>Screenshotter and Video Recorder</b>                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/07.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
 
 
 | <b>Calendar + Weather Widget</b>                                                                                   |
@@ -142,22 +142,25 @@ If you that determined, here are some resources to start out
 
 | <b>App Menu</b>                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/08.png"  alt="bottom panel preview"></a>                    |
 
 | <b>Custom Ncmpcppp UI</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/10.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
 
 
 | <b>Wallpaper Switcher</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |
 
 | <b>Spicetify</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/16.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
 
+| <b>Neofetch</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/16.png"  alt="bottom panel preview"></a>                    |
 ## Installation
 > **Warning**
 >
