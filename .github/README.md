@@ -9,9 +9,9 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge)
 
-<img src="src/p1.png" alt="showcase3">
-<img src="src/p2.png" alt="showcase2">
-<img src="src/p3" alt="showcase1">
+<img src="screenshots/p1.png" alt="showcase3">
+<img src="screenshots/p2.png" alt="showcase2">
+<img src="screenshots/p3.png" alt="showcase1">
 
 </div>
 
