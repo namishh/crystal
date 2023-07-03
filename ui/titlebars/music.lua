@@ -366,8 +366,7 @@ local left            = function(c)
       halign = 'center',
       valign = 'center'
     },
-    shape = helpers.prect(true, false, false, true, 15),
-    bg = beautiful.bg2,
+    bg = beautiful.mbg,
     widget = wibox.container.background
   }
 end
