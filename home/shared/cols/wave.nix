@@ -1,6 +1,6 @@
 {}:
 rec {
-  wallpaper = "sea.jpg";
+  wallpaper = "cyber.png";
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";
@@ -38,5 +38,5 @@ rec {
 
   comment = "505758";
   name = "wave";
-  neofetchpic = "desert.jpg";
+  neofetchpic = "verycool.png";
 }

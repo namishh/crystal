@@ -1,16 +1,15 @@
-<div align='center'>
-  <img src="assets/logo.png" width="455px" alt="logo"><br><br>
-  <img src="assets/text.png" width="655px" alt="logo"><br><br>
-  <p align="center">
-  <a href="#features-of-config"><img width="160px" style="padding: 0 16px;" src="assets/featurebtn.png"></a>
-  <a href="#nix"><img width="160px" style="padding: 0 16px;" src="assets/nixbtn.png"></a>
-  <a href="#screenshots"><img width="160px" style="padding: 0 16px;" src="assets/scrotsbtn.png"></a>
-  <a href="#installation"><img width="160px" style="padding: 0 16px;" src="assets/install.png"></a>
-  <a href="#credits"><img width="160px" style="padding: 0 16px;" src="assets/creditbtn.png"></a>
-  </p><br>
-  <img src="assets/preview.png" alt="logo"  style="margin: 30px;"><br><br>
+<div align="center">
+  <h1> kodo </h1>
 </div>
+<div align="center">
 
+![GitHub top language](https://img.shields.io/github/languages/top/chadcat7/fuyu?color=6d92bf&style=for-the-badge)
+![Cool](https://img.shields.io/badge/WM-Awesome-da696f?style=for-the-badge)
+![Bloat](https://img.shields.io/badge/Bloated-Yes-c585cf?style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge)
+
+</div>
 > **Warning**
 >
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
