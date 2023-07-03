@@ -1,5 +1,5 @@
 <div align="center">
-  <h1> fuyu </h1>
+  <h1> dots.nix </h1>
 </div>
 <div align="center">
 
@@ -9,7 +9,13 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge)
 
+<img src="src/p1.png" alt="showcase3">
+<img src="src/p2.png" alt="showcase2">
+<img src="src/p3" alt="showcase1">
+
 </div>
+
+
 > **Warning**
 >
 > I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
@@ -43,7 +49,6 @@
 
 
 ## Nix
-<img src="assets/nix.svg" alt="img" align="left" width="200px">
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
 NixOS is a unique distro. Unlike other distros where you store your configurations in `~/.config/` and binaries in `~/.local/bin` , nix takes a different approach. Instead you can [declaratively](https://zero-to-nix.com/concepts/declarative) define your configuration in `.nix` files. These nix files can be used to install and configure programs, services, setting up things like xresources, etc. This approach provides a modular system that enables users to share, reuse, and modify their configurations easily. <br> <br>
@@ -96,8 +101,6 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 > **Warning** 
 >
 > by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
-
-<img src="https://i.redd.it/ixi6zkudgsu61.png" alt="img" align="right" width="250px">
 
 ### WOW! NixOS looks so god damn cool! I am just gonna jump right into it
 **NO**. NixOS is hard.Don't be impatient and jump with the hype train. Nix files are complicated to make and can cause high brain damage. I recommend you to start with the [nix package manager](https://nixos.org/download.html#nix-install-linux) or using NixOS in a virtual machine instead of ripping apart your hard disk.
@@ -206,12 +209,6 @@ sudo chown -R $USER /etc/nixos # change ownership of configuration folder
 cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
-
-<pre align="center">
-<a href="#japan--history">
-<img alt="" align="center" width="96%" src="https://api.star-history.com/svg?repos=chadcat7/fuyu&type=Date"/>
-</a>
-</pre>
 
 ## Todo
 somethings i need to do before i can call it fully usable - <br>
