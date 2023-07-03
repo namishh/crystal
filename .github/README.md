@@ -1,5 +1,6 @@
 <div align="center">
-  <h1> dots.nix </h1>
+  <h1> crystal </h1>
+  <p> 100% nix dotfiles that will 200% brick your system </p>
 </div>
 <div align="center">
 
@@ -164,12 +165,7 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/16.png"  alt="bottom panel preview"></a>                    |
 ## Installation
-> **Warning**
->
-> These instructions were made for future me incase I ever get a new laptop / pc. My awesome config will 9/10 times contain a lot of broken code that can ruin your awesome experience. Please only use these files as a reference and nothing else. DONT FUCKING COPY THEM!!
-
 Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
-You have been warned! <br>
 
 1. Get the latest [NixOS ISO](https://nixos.org/download.html) and boot into the installer/environment.
 2. Format and mount your disks.
@@ -180,7 +176,7 @@ $ nix-shell -p git nixUnstable ## install git and unstable nix
 ```
 
 ```bash
-$ git clone --depth 1 https://github.com/chadcat7/fuyu /mnt/etc/nixos --recurse-submodules ## cloning my config
+$ git clone --depth 1 https://github.com/chadcat7/fuyu /mnt/etc/nixos  ## cloning my config
 ```
 
 ```bash
