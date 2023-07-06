@@ -68,14 +68,9 @@ in
       xss-lock
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
-      (pkgs.callPackage ../shared/icons/colloid.nix { })
-      (pkgs.callPackage ../shared/icons/fluent.nix { })
-      (pkgs.callPackage ../shared/icons/elementary.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
-      cmake
       neofetch
-      gnat
       gnumake
       kitty
       notion-app-enhanced
@@ -89,7 +84,6 @@ in
       procps
       killall
       cava
-      simplescreenrecorder
       mpdris2
       pavucontrol
       feh

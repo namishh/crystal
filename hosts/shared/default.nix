@@ -60,7 +60,6 @@ in
   environment.systemPackages = with pkgs; [
     nodejs
     home-manager
-    vscode-extensions.sumneko.lua
     lua-language-server
     lua54Packages.lua
     blueman
@@ -70,7 +69,6 @@ in
     xorg.xwininfo
     pulseaudio
     nodePackages.vscode-langservers-extracted
-    vscode-extensions.rust-lang.rust-analyzer
     rust-analyzer
     (pkgs.python3.withPackages my-python-packages)
     libnotify
@@ -80,14 +78,12 @@ in
     st
     spotdl
     discord
-    w3m
     firefox
     unzip
     imgclr
     git
     pstree
     mpv
-    slurp
     xdotool
     spotify
     simplescreenrecorder

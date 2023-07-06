@@ -66,11 +66,11 @@ home/
     shared/
         ...
 hosts/
-    shared/
-        default.nix
-    starfall/
+    frostbyte/
         hardware-configuration.nix
         configuration.nix
+    shared/
+        default.nix
 overlays/
       default.nix
 patches/
@@ -86,7 +86,7 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 
 2. hosts/ folder
   + This folder contains configurations for our machines
-  + The `nixl` folder is the main one where my configuration is stored, the `shared` one contains configurations that would be same for all machines that I am _gonna_ own.
+  + The `frostbyte` folder is the main one where my configuration is stored, the `shared` one contains configurations that would be same for all machines that I am _gonna_ own.
 
 3. home/ folder
   + this folder contains the home-manager configuration for different users. Like before `shared` contains configurations that would be same for all users.
@@ -191,7 +191,7 @@ $ rm /mnt/etc/nixos/configuration.nix
 
 ```bash
 $ cd /mnt/etc/nixos
-$ nixos-install --flake '.#starfall'
+$ nixos-install --flake '.#frostbyte'
 ```
 
 Congrats! You just installed NixOS! Now lets install the environment and the configs

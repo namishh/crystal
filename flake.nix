@@ -28,15 +28,15 @@
       overlays = import ./overlays { inherit inputs; };
       # host configurations
       nixosConfigurations = {
-        starfall = nixpkgs.lib.nixosSystem
+        frostbyte = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
               inherit inputs outputs home-manager;
             };
             modules = [
               # > Our main nixos configuration file <
-	            home-manager.nixosModule
-              ./hosts/starfall/configuration.nix
+              home-manager.nixosModule
+              ./hosts/frostbyte/configuration.nix
             ];
           };
       };
@@ -51,6 +51,6 @@
           ];
         };
       };
-      starfall = self.nixosConfigurations.starfall.config.system.build.toplevel;
+      frostbyte = self.nixosConfigurations.frostbyte.config.system.build.toplevel;
     };
 }

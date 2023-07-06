@@ -23,7 +23,7 @@
       allowUnfree = true;
     };
   };
-  networking.hostName = "starfall";
+  networking.hostName = "frostbyte";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
   # Packages
