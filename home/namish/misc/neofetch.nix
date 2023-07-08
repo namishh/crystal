@@ -4,17 +4,12 @@
   home.file.".config/neofetch/config.conf".text = ''
     print_info() {
         info title
-        prin "\033[0m┌──────────────────────────────────────┐"
-        prin "\n"
-        info "\n \n \e[32m " os
-        info "\n \n \e[31m " kernel
-        info "\n \n \e[33m " uptime
-        info "\n \n \e[34m " packages
-        info "\n \n \e[35m " wm
-        info "\n \n \e[32m " shell
-        prin "\n"
-        prin "\033[0m└───────────────────── \033[0m \033[1;31m \033[1;32m \033[1;33m \033[1;34m \033[1;35m \033[1;36m \033[1;37m \033[0m┘"
-        prin "Hello! Have A Nice Day!"
+        info "\e[34m  " os
+        info "\e[31m " kernel
+        info "\e[33m " uptime
+        info "\e[32m " shell
+        info "\e[35m " wm
+        prin "$(color 1)▂▂ $(color 2)▂▂ $(color 3)▂▂ $(color 4)▂▂ $(color 5)▂▂ $(color 6)▂▂ "
     }
 
     title_fqdn="off"
@@ -51,7 +46,7 @@
     bar_color_total="distro"
     image_backend="kitty"
     image_source="${config.home.homeDirectory}/.config/awesome/theme/pics/neofetch-pics-and-stuff/${colors.neofetchpic}"
-    image_size="400px"
+    image_size="250px"
     image_loop="on"
     ascii_distro="nixos"
     ascii_colors=(distro)

@@ -13,6 +13,7 @@
 <img src="screenshots/p1.png" alt="showcase3">
 <img src="screenshots/p2.png" alt="showcase2">
 <img src="screenshots/p3.png" alt="showcase1">
+<img src="screenshots/p4.png" alt="showcase4">
 
 </div>
 
@@ -161,9 +162,6 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
 
-| <b>Neofetch</b>                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/16.png"  alt="bottom panel preview"></a>                    |
 ## Installation
 Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
 

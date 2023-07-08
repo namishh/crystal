@@ -18,8 +18,12 @@
     fadeSteps = [ 0.03 0.03 ];
 
     opacityRules = [
-      "90:class_g = 'kitty' && !focused"
-      "95:class_g = 'kitty' && focused"
+      "85:class_g = 'kitty' && !focused"
+      "93:class_g = 'kitty' && focused"
+      "85:class_g = 'ncmpcpppad' && !focused"
+      "93:class_g = 'ncmpcpppad' && focused"
+      "85:class_g = 'neofetchpad' && !focused"
+      "93:class_g = 'neofetchpad' && focused"
       "100:class_g = 'awesome'"
     ];
     settings = {
@@ -41,7 +45,7 @@
       shadow-offset-x = -15;
       shadow-offset-y = -15;
       shadow-exclude = [
-        "window_type = 'dock'"
+        "window_type = 'desktop'"
         "class_g ~= 'awesome'"
         "class_g ~= 'slop'"
       ];
@@ -51,9 +55,8 @@
         "class_i ~= 'slop'"
       ];
       blur-background-exclude = [
-        "window_type = 'dock'"
         "class_g ~= 'slop'"
-        "class_g ~= 'awesome'"
+        "window_type = 'desktop'"
         "class_g ~= 'discord'"
         "class_g ~= 'firefox'"
         "class_i ~= 'slop'"
@@ -63,9 +66,14 @@
       ];
       blur = {
         method = "dual_kawase";
-        size = 20;
-        deviation = 5.0;
+        strength = 5.0;
+        deviation = 1.0;
+        kernel = "11x11gaussian";
       };
+
+      blur-background = false;
+      blur-background-frame = true;
+      blur-background-fixed = true;
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
       xrender-sync-fence = true;
