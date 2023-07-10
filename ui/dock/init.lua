@@ -24,7 +24,6 @@ local tomfoolery = function(s)
     bg = beautiful.bg,
     visible = true,
     screen = s,
-    type = "dock",
     height = 150,
     width = 600,
     placement = function(c) placeDock(c, 10) end,
@@ -83,7 +82,7 @@ local tomfoolery = function(s)
   dockHide:again()
   -- a hotarea at the bottom which will toggle the dock upon hover
   local hotpop = wibox({
-    type = "dock",
+    type = "desktop",
     height = beautiful.useless_gap * 3,
     width = 200,
     screen = s,
@@ -209,7 +208,7 @@ local tomfoolery = function(s)
         command = "awesome-client 'awesome.emit_signal(\"toggle::ncmpcpppad\")'"
       },
       {
-        name = "pfetchpad",
+        name = "neofetchpad",
         convert = "xterm",
       },
       {

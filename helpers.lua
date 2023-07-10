@@ -127,7 +127,14 @@ end
 helpers.trim = function(string)
   return string:gsub("^%s*(.-)%s*$", "%1")
 end
-
+helpers.indexOf = function(array, value)
+  for i, v in ipairs(array) do
+    if v == value then
+      return i
+    end
+  end
+  return nil
+end
 
 helpers.split = function(inputstr, sep)
   if sep == nil then

@@ -323,7 +323,7 @@ function desktop:start()
     ontop = false,
     visible = show,
     x = 0,
-    type = "dock",
+    type = "desktop",
     bg = beautiful.bg .. '00',
     y = beautiful.barSize + beautiful.useless_gap * 2,
     width = beautiful.scrwidth,

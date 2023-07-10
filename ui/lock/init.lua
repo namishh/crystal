@@ -71,11 +71,11 @@ local header     = wibox.widget {
 
 
 local promptbox = wibox {
-  type = "dock",
   width = dpi(500),
   height = dpi(500),
   bg = beautiful.bg .. '00',
   ontop = true,
+  type = "desktop",
   visible = false
 }
 

@@ -3,59 +3,41 @@ local awful       = require("awful")
 local beautiful   = require("beautiful")
 local dpi         = require("beautiful").xresources.apply_dpi
 local helpers     = require("helpers")
+local gears       = require("gears")
 
-local setTheme = function(name)
-    awful.spawn.with_shell('notify-send "Changing theme to ' .. name .. '" "This might take some time!"')
-    awful.spawn.with_shell('setTheme ' .. string.lower(name))
+local setTheme    = function(name)
+  awful.spawn.with_shell('notify-send "Changing theme to ' .. name .. '" "This might take some time!"')
+  awful.spawn.with_shell('setTheme ' .. string.lower(name))
 end
 
-local themeButton = function(icon, name)
-  local themeButtonLabel = wibox.widget {
-    align = 'center',
-    font = beautiful.icofont .. " 14",
-    markup = icon,
-    widget = wibox.widget.textbox,
-  }
+local currTheme   = beautiful.name
+local drawing     = wibox.widget {
+  resize = true,
+  forced_width = 480,
+  forced_height = 400,
+  shape = helpers.rrect(3),
+  widget = wibox.widget.imagebox,
+  horizontal_fit_policy = "fit",
+  vertical_fit_policy = "fit",
+  image = helpers.cropSurface(2,
+    gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+      string.lower(currTheme) .. ".png"))
+}
+local name        = wibox.widget {
+  markup = currTheme,
+  font   = beautiful.font .. " 12",
+  widget = wibox.widget.textbox
+}
+local themes      = {
+  'wave',
+  'forest',
+  'cat',
+  'groove',
+  'verdant',
+  'arctic'
+}
 
-  local themeButtonText = wibox.widget {
-    align = 'center',
-    font = beautiful.font .. " Bold 11",
-    markup = name,
-    widget = wibox.widget.textbox,
-  }
-  local widget = wibox.widget {
-    {
-      {
-        themeButtonLabel,
-        themeButtonText,
-        layout = wibox.layout.fixed.vertical,
-      },
-      widget = wibox.container.place,
-      align = 'center'
-    },
-    forced_width = 90,
-    forced_height = 69,
-    shape = helpers.rrect(3),
-    widget = wibox.container.background,
-    bg = beautiful.fg3 .. '33'
-  }
-  widget:add_button(awful.button({}, 1, function()
-    setTheme(name)
-  end))
-  awesome.connect_signal("signal::theme", function(val)
-    if val == string.lower(name) then
-      widget.bg = beautiful.pri
-      themeButtonLabel.markup = helpers.colorizeText(icon, beautiful.bg)
-      themeButtonText.markup = helpers.colorizeText(name, beautiful.bg)
-    end
-  end)
-  return widget
-end
-
-local serenity    = themeButton("󰖝", "Wave")
-local everforest  = themeButton("󰐅", "Forest")
-local gruvbox     = themeButton("󰌪", "Cat")
-local decay       = themeButton("󰃤", "Verdant")
+local pos         = helpers.indexOf(themes, currTheme)
 
 local finalwidget = wibox.widget {
   {
@@ -67,12 +49,92 @@ local finalwidget = wibox.widget {
         widget = wibox.widget.textbox,
       },
       {
-        serenity,
-        decay,
-        gruvbox,
-        everforest,
-        layout = wibox.layout.fixed.horizontal,
-        spacing = 22,
+        drawing,
+        {
+          {
+            widget = wibox.widget.textbox,
+          },
+          bg = {
+            type = "linear",
+            from = { 0, 0 },
+            to = { 350, 0 },
+            stops = { { 0, beautiful.bg .. "31" }, { 1, beautiful.bg .. 'f1' } }
+          },
+          widget = wibox.container.background,
+        },
+        {
+          {
+            {
+              {
+                {
+                  markup = "󰅁",
+                  font   = beautiful.icofont .. " 18",
+                  widget = wibox.widget.textbox
+                },
+                widget = wibox.container.margin,
+                buttons = awful.button({}, 1, function()
+                  if pos >= 1 then
+                    pos = pos - 1
+                    currTheme = themes[pos]
+                    drawing.image = helpers.cropSurface(2,
+                      gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+                        string.lower(currTheme) .. ".png"))
+                    name.markup = currTheme
+                  end
+                end),
+              },
+              {
+                {
+                  markup = "󰅂",
+                  font   = beautiful.icofont .. " 18",
+                  widget = wibox.widget.textbox
+                },
+                widget = wibox.container.margin,
+                buttons = awful.button({}, 1, function()
+                  if pos <= #themes then
+                    pos = pos + 1
+                    currTheme = themes[pos]
+                    drawing.image = helpers.cropSurface(2,
+                      gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+                        string.lower(currTheme) .. ".png"))
+                    name.markup = currTheme
+                  end
+                end),
+              },
+              {
+                {
+                  markup = "Set Theme",
+                  font   = beautiful.font .. " 12",
+                  widget = wibox.widget.textbox
+                },
+                widget = wibox.container.margin,
+                buttons = awful.button({}, 1, function()
+                  setTheme(currTheme)
+                end),
+              },
+              spacing = 10,
+              layout = wibox.layout.fixed.horizontal
+            },
+            widget = wibox.container.place,
+            halign = 'right',
+            valign = 'bottom',
+          },
+          widget = wibox.container.margin,
+          bottom = 10,
+          right = 10,
+        },
+        {
+          {
+            name,
+            widget = wibox.container.place,
+            halign = 'right',
+            valign = 'top',
+          },
+          widget = wibox.container.margin,
+          top = 10,
+          right = 10,
+        },
+        widget = wibox.layout.stack
       },
       spacing = 15,
       layout = wibox.layout.fixed.vertical

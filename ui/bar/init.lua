@@ -24,7 +24,6 @@ local function init(s)
     position = beautiful.barDir,
     height = barheight,
     ontop = false,
-    type = "dock",
     shape = barMargin == 0 and helpers.rrect(0) or helpers.rrect(5),
     width = barwidth,
     bg = beautiful.bg,
