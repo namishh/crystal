@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/wave.nix { };
+  colors = import ../shared/cols/groove.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -71,8 +71,8 @@ in
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
-      gnumake
       kitty
+      hsetroot
       notion-app-enhanced
       pfetch
       ffmpeg_5-full

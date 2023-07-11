@@ -27,7 +27,7 @@
       visualizer_data_source = "/tmp/mpd.fifo";
       visualizer_output_name = "mpd_visualizer";
       visualizer_type = "ellipse";
-      visualizer_look = "●● ";
+      visualizer_look = "●●";
       visualizer_color = "blue, green";
 
       # appearance
