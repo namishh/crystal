@@ -38,7 +38,7 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
     },
     shape = helpers.rrect(40),
     widget = wibox.container.background,
-    bg = beautiful.bg4 .. 'aa',
+    bg = beautiful.pri .. '11',
   }
 
   local settingbuttonwidget = wibox.widget {
@@ -83,7 +83,7 @@ local createButton = function(label, labelfalse, text, signal, cmd, height)
     else
       settingbuttonlabel.markup = helpers.colorizeText(labelfalse, beautiful.fg .. 'cc')
       settingbuttonstat.markup = 'Off'
-      settingbuttonback.bg = beautiful.bg4 .. 'aa'
+      settingbuttonback.bg = beautiful.pri .. '11'
     end
   end)
 

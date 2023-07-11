@@ -13,7 +13,7 @@ local hourminutes     = wibox.widget {
       valign = "center",
       widget = wibox.widget.textclock
     },
-    margins = { left = dpi(5), right = dpi(5) },
+    margins = { left = dpi(10), right = dpi(10) },
     widget = wibox.container.margin
   },
   buttons = {
@@ -21,6 +21,7 @@ local hourminutes     = wibox.widget {
       awesome.emit_signal('toggle::moment')
     end)
   },
+  bg = beautiful.bg2,
   widget = wibox.container.background,
   shape = helpers.rrect(2),
 }

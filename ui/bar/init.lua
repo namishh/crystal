@@ -83,6 +83,7 @@ local function init(s)
           status,
           time,
           layoutbox,
+          powerbutton,
           spacing = 7,
           layout = fixedlayout,
         },

@@ -12,12 +12,12 @@ local layouts = awful.widget.layoutbox {
     awful.button {
       modifiers = {},
       button    = 3,
-      on_press  = function() awful.layout.inc( -1) end,
+      on_press  = function() awful.layout.inc(-1) end,
     },
     awful.button {
       modifiers = {},
       button    = 4,
-      on_press  = function() awful.layout.inc( -1) end,
+      on_press  = function() awful.layout.inc(-1) end,
     },
     awful.button {
       modifiers = {},
@@ -36,6 +36,7 @@ local widget = {
     margins = (beautiful.barDir == "top" or "bottom") and 10 or 10,
     widget = wibox.container.margin
   },
+  bg = beautiful.bg2,
   widget = wibox.container.background
 }
 return widget

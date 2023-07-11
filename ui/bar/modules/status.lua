@@ -17,8 +17,8 @@ local battery   = wibox.widget {
   widget        = wibox.widget.progressbar,
   max_value     = 100,
   value         = 69,
-  forced_width  = 100,
-  forced_height = 40,
+  forced_width  = 90,
+  forced_height = 30,
   shape         = helpers.rrect(5),
 }
 local status    = wibox.widget {
@@ -40,7 +40,10 @@ local status    = wibox.widget {
         layout = wibox.layout.fixed.horizontal,
         spacing = dpi(15)
       },
-      margins = dpi(6.4),
+      left = 10,
+      right = 10,
+      top = 8,
+      bottom = 6,
       widget = wibox.container.margin
     },
     layout = wibox.layout.stack
@@ -50,6 +53,7 @@ local status    = wibox.widget {
       awesome.emit_signal('toggle::control')
     end)
   },
+  bg = beautiful.bg2,
   widget = wibox.container.background,
   shape = helpers.rrect(2),
 }

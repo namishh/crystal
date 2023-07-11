@@ -53,6 +53,7 @@ local widget = wibox.widget {
       layout = wibox.layout.fixed.horizontal,
     },
     shape = helpers.rrect(2),
+    bg = beautiful.bg2,
     widget = wibox.container.background,
   },
   margins = 0,
