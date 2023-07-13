@@ -59,17 +59,25 @@ function context_menu:make_entries(wtemplate, entries, spacing)
           {
             {
               {
-                widget = wibox.widget.imagebox,
-                resize = true,
-                valign = 'center',
-                halign = 'center',
-                id = 'icon_role',
+                {
+                  {
+                    widget = wibox.widget.imagebox,
+                    resize = true,
+                    valign = 'center',
+                    halign = 'center',
+                    id = 'icon_role',
+                  },
+                  widget = wibox.container.constraint,
+                  stragety = 'exact',
+                  width = dpi(30),
+                  height = dpi(20),
+                  id = 'const',
+                },
+                widget = wibox.container.margin,
+                margins = 6,
               },
-              widget = wibox.container.constraint,
-              stragety = 'exact',
-              width = dpi(40),
-              height = dpi(24),
-              id = 'const',
+              widget = wibox.container.background,
+              bg = beautiful.bg2
             },
             {
               widget = wibox.widget.textbox,

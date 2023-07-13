@@ -26,24 +26,24 @@ return function(name, dir)
     fn = 'xarchiver ' .. dir .. name
   elseif ext == '.c' then
     i = "mimes/scalable/text-c.svg"
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
   elseif ext == '.py' then
     i = "mimes/scalable/text-x-python.svg"
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
   elseif ext == '.js' then
     i = "mimes/scalable/text-javascript.svg"
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
   elseif ext == '.rs' then
-    i = "mimes/scalable/text-rust.svg"
-    fn = 'st -e nvim ' .. dir .. name
+    i = "mimes/scalable/text-rukitty.svg"
+    fn = 'kitty -e nvim ' .. dir .. name
   elseif ext == '.hs' then
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
     i = "mimes/scalable/text-x-haskell.svg"
   elseif ext == '.lua' then
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
     i = "mimes/scalable/text-x-lua.svg"
   elseif ext == '.md' then
-    fn = 'st -e nvim ' .. dir .. name
+    fn = 'kitty -e nvim ' .. dir .. name
     i = "mimes/scalable/text-x-markdown.svg"
   else
     i = "mimes/scalable/txt.svg"

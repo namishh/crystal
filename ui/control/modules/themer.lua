@@ -33,6 +33,7 @@ local themes      = {
   'forest',
   'cat',
   'groove',
+  'onedark',
   'verdant',
   'arctic'
 }
