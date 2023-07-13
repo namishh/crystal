@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "wave.jpg"; 
+   wallpaper = "satellitee.jpeg"; 
   foreground = "d7e0e0";
   cursorColor = "d7e0e0";
   background = "0a1011";

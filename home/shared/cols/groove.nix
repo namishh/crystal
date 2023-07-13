@@ -33,8 +33,8 @@ rec {
   color6 = "7bac69";
   color14 = "7db868";
 
-  color7 = "97958e";
-  color15 = "979a83";
+  color7 = "fbf1c7";
+  color15 = "fbf1c7";
   name = "groove";
   neofetchpic = "table.png";
 }

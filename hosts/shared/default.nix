@@ -68,8 +68,6 @@ in
     rnix-lsp
     xorg.xwininfo
     pulseaudio
-    nodePackages.vscode-langservers-extracted
-    rust-analyzer
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils

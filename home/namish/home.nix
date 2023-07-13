@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/groove.nix { };
+  colors = import ../shared/cols/arctic.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -64,6 +64,7 @@ in
     };
     packages = with pkgs; [
       bc
+      chromium
       catimg
       xss-lock
       playerctl
@@ -71,14 +72,12 @@ in
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
-      kitty
       hsetroot
       notion-app-enhanced
       pfetch
       ffmpeg_5-full
       neovim
       xdg-desktop-portal
-      mpd
       imagemagick
       xorg.xev
       procps
