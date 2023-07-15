@@ -36,7 +36,7 @@ local imageWidget = wibox.widget {
 awful.screen.connect_for_each_screen(function(s)
   local wallswitcher = wibox {
     width = dpi(600),
-    height = dpi(550),
+    height = dpi(600),
     shape = helpers.rrect(8),
     bg = beautiful.bg,
     ontop = true,
@@ -45,61 +45,97 @@ awful.screen.connect_for_each_screen(function(s)
 
   wallswitcher:setup {
     {
+      {
+        {
+          {
+            font = beautiful.icofont .. " 16",
+            markup = helpers.colorizeText("󰝥", beautiful.err),
+            widget = wibox.widget.textbox,
+            align = "left",
+            valign = "center",
+            buttons =
+            {
+              awful.button({}, 1, function() awesome.emit_signal('toggle::wallswitcher') end),
+            }
+          },
+          nil,
+          {
+            font = beautiful.font .. " 12",
+            markup = helpers.colorizeText("WALLSWITCHER", beautiful.fg),
+            widget = wibox.widget.textbox,
+            align = "right",
+            valign = "center",
+          },
+          layout = wibox.layout.align.horizontal
+        },
+        widget = wibox.container.margin,
+        margins = 10,
+      },
+      widget = wibox.container.background,
+      bg = beautiful.bg2 .. 'cc'
+    },
+    {
       widget = wibox.container.margin,
       margins = 20,
       elems,
     },
     {
-      imageWidget,
       {
+        imageWidget,
         {
-          widget = wibox.widget.textbox,
+          {
+            widget = wibox.widget.textbox,
+          },
+          bg = {
+            type = "linear",
+            from = { 0, 0 },
+            to = { 250, 0 },
+            stops = { { 0, beautiful.bg .. "99" }, { 1, beautiful.bg .. "cc" } }
+          },
+          widget = wibox.container.background,
         },
-        bg = {
-          type = "linear",
-          from = { 0, 0 },
-          to = { 250, 0 },
-          stops = { { 0, beautiful.bg .. "99" }, { 1, beautiful.bg .. "cc" } }
-        },
-        widget = wibox.container.background,
-      },
-      {
         {
           {
             {
-              markup = "Open Folder",
-              font   = beautiful.font .. " 12",
-              widget = wibox.widget.textbox
+              {
+                markup = "Open Folder",
+                font   = beautiful.font .. " 12",
+                widget = wibox.widget.textbox
+              },
+              widget = wibox.container.margin,
+              margins = 12,
+              buttons = {
+                awful.button({}, 1, function()
+                  awful.spawn.with_shell("nemo " .. "~/.config/awesome/theme/wallpapers/" .. beautiful.name)
+                end)
+              },
             },
-            widget = wibox.container.margin,
-            margins = 12,
-            buttons = {
-              awful.button({}, 1, function()
-                awful.spawn.with_shell("nemo " .. "~/.config/awesome/theme/wallpapers/" .. beautiful.name)
-              end)
-            },
-          },
-          {
             {
-              markup = "Set As Wall",
-              font   = beautiful.font .. " 12",
-              widget = wibox.widget.textbox
+              {
+                markup = "Set As Wall",
+                font   = beautiful.font .. " 12",
+                widget = wibox.widget.textbox
+              },
+              widget = wibox.container.margin,
+              margins = 12,
+              buttons = {
+                awful.button({}, 1, function()
+                  setWall(currPath)
+                end)
+              },
             },
-            widget = wibox.container.margin,
-            margins = 12,
-            buttons = {
-              awful.button({}, 1, function()
-                setWall(currPath)
-              end)
-            },
+            layout = wibox.layout.fixed.horizontal
           },
-          layout = wibox.layout.fixed.horizontal
+          widget = wibox.container.place,
+          halign = 'right',
+          valign = 'bottom',
         },
-        widget = wibox.container.place,
-        halign = 'right',
-        valign = 'bottom',
+        layout = wibox.layout.stack
       },
-      layout = wibox.layout.stack
+      widget = wibox.container.margin,
+      bottom = 20,
+      left = 20,
+      right = 20,
     },
     layout = wibox.layout.fixed.vertical
   }

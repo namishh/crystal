@@ -9,28 +9,34 @@ local animation = require("modules.animation")
 local sliders = require("ui.control.modules.sliders")
 local settings = require("ui.control.modules.settings")
 local themer = require("ui.control.modules.themer")
+local profile = require("ui.control.modules.profile")
 
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
     shape = helpers.rrect(8),
     screen = s,
     width = 480,
-    height = 780,
+    height = 665,
     bg = beautiful.bg,
     ontop = true,
     visible = false,
   })
 
   control:setup {
+    profile,
     {
-      sliders,
-      settings,
-      themer,
-      layout = wibox.layout.fixed.vertical,
-      spacing = 20,
+      {
+        sliders,
+        settings,
+        themer,
+        layout = wibox.layout.fixed.vertical,
+        spacing = 16,
+      },
+      margins = dpi(12),
+      widget = wibox.container.margin,
     },
-    margins = dpi(15),
-    widget = wibox.container.margin,
+    layout = wibox.layout.fixed.vertical,
+    spacing = 8,
   }
   local slide = animation:new({
     duration = 0.6,

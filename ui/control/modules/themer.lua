@@ -14,7 +14,7 @@ local currTheme   = beautiful.name
 local drawing     = wibox.widget {
   resize = true,
   forced_width = 480,
-  forced_height = 400,
+  forced_height = 250,
   shape = helpers.rrect(3),
   widget = wibox.widget.imagebox,
   horizontal_fit_policy = "fit",
@@ -43,12 +43,6 @@ local pos         = helpers.indexOf(themes, currTheme)
 local finalwidget = wibox.widget {
   {
     {
-      {
-        font = beautiful.font .. " 11",
-        markup = helpers.colorizeText('Themeing', beautiful.fg3),
-        valign = "center",
-        widget = wibox.widget.textbox,
-      },
       {
         drawing,
         {
@@ -141,12 +135,6 @@ local finalwidget = wibox.widget {
       layout = wibox.layout.fixed.vertical
     },
     widget = wibox.container.margin,
-    margins = {
-      left = 12,
-      right = 12,
-      top = 15,
-      bottom = 16,
-    }
   },
   widget = wibox.container.background,
   bg = beautiful.bg2 .. 'cc',

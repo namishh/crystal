@@ -293,8 +293,8 @@ local volslider = wibox.widget {
   bar_active_color = beautiful.dis,
   handle_margins   = { top = 6, },
   forced_height    = 10,
-  value            = 100,
   forced_width     = 80,
+  minimum          = 0,
   maximum          = 100,
   widget           = wibox.widget.slider,
 }
@@ -304,7 +304,7 @@ playerctl:connect_signal("volume", function(_, volume, _)
 end)
 volslider:connect_signal('property::value', function(_, value)
   value = value or 100
-  playerctl:set_volume(value / 100)
+  playerctl:set_volume(value / 100, playerctl)
 end)
 volslider:connect_signal('mouse::enter', function()
   is_vol_hovered = true

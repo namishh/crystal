@@ -9,20 +9,20 @@ local brightdaemon     = require("daemons.light")
 
 local createHandle     = function()
   return function(cr)
-    gears.shape.rounded_rect(cr, 16, 16, 50)
+    gears.shape.rounded_rect(cr, 13, 13, 50)
   end
 end
 
 local brightnessSlider = wibox.widget {
   bar_shape           = helpers.rrect(20),
-  bar_height          = 16,
-  handle_color        = beautiful.pri,
+  bar_height          = 3,
+  handle_color        = beautiful.fg,
   bar_color           = beautiful.fg3 .. '55',
-  bar_active_color    = beautiful.pri,
+  bar_active_color    = beautiful.fg,
   handle_shape        = createHandle(),
   handle_border_width = 0,
-  handle_width        = dpi(16),
-  handle_margins      = { top = 9 },
+  handle_width        = dpi(13),
+  handle_margins      = { top = 11 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 3,
@@ -78,14 +78,14 @@ local brightnessScale = wibox.widget {
 
 local volumeSlider = wibox.widget {
   bar_shape           = helpers.rrect(20),
-  bar_height          = 16,
-  handle_color        = beautiful.pri,
+  bar_height          = 3,
+  handle_color        = beautiful.fg,
   bar_color           = beautiful.fg3 .. '55',
-  bar_active_color    = beautiful.pri,
+  bar_active_color    = beautiful.fg,
   handle_shape        = createHandle(),
   handle_border_width = 0,
-  handle_width        = dpi(16),
-  handle_margins      = { top = 9 },
+  handle_width        = dpi(13),
+  handle_margins      = { top = 11 },
   handle_border_color = beautiful.bg2 .. 'cc',
   value               = 25,
   forced_height       = 3,
@@ -140,12 +140,6 @@ local volumeScale = wibox.widget {
 local finalwidget = wibox.widget {
   {
     {
-      {
-        font = beautiful.font .. " 11",
-        markup = helpers.colorizeText('Controls', beautiful.fg3),
-        valign = "center",
-        widget = wibox.widget.textbox,
-      },
       brightnessScale,
       volumeScale,
       spacing = 15,

@@ -196,7 +196,7 @@ naughty.connect_signal("request::display", function(n)
   }
 
   local close = wibox.widget {
-    markup = helpers.colorizeText('󰅖', beautiful.err),
+    markup = helpers.colorizeText('󰝥', beautiful.err),
     font   = beautiful.icofont .. " 12",
     align  = "ceneter",
     valign = "center",

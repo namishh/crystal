@@ -8,14 +8,15 @@ local animation = require("modules.animation")
 
 local calendar = require("ui.moment.modules.calendar")()
 local weather = require("ui.moment.modules.weather")
+local title = require("ui.moment.modules.title")
 
 awful.screen.connect_for_each_screen(function(s)
   local moment = wibox({
     type = "dock",
     screen = s,
-    width = dpi(720),
+    width = dpi(410),
     shape = helpers.rrect(8),
-    height = dpi(410),
+    height = dpi(830),
     bg = beautiful.bg,
     ontop = true,
     visible = false
@@ -38,15 +39,21 @@ awful.screen.connect_for_each_screen(function(s)
     end,
   })
   moment:setup {
+    title,
     {
-      calendar,
-      weather,
-      layout = wibox.layout.fixed.horizontal,
+      {
+        calendar,
+        weather,
+        spacing = 12,
+        layout = wibox.layout.fixed.vertical,
+      },
+      margins = dpi(12),
+      widget = wibox.container.margin,
     },
-    margins = dpi(15),
-    widget = wibox.container.margin,
+    layout = wibox.layout.fixed.vertical,
+    spacing = 2,
   }
-  helpers.placeWidget(moment)
+  awful.placement.bottom_right(moment, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
   awesome.connect_signal("toggle::moment", function()
     if moment.visible then
       slide_end:again()

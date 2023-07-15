@@ -7,7 +7,7 @@ local dpi = beautiful.xresources.apply_dpi
 local datewidget = function(date, weekend)
   weekend = weekend or false
   return wibox.widget {
-    markup = weekend and helpers.colorizeText(date, beautiful.fg3) or date,
+    markup = weekend and helpers.colorizeText(date, beautiful.ok) or date,
     halign = 'center',
     font   = beautiful.font .. " 13",
 
@@ -95,72 +95,54 @@ return function()
         {
           {
             {
-              {
-                font = beautiful.font .. " 32",
-                format = "%I",
-                align = "center",
-                valign = "center",
-                widget = wibox.widget.textclock
-              },
-              {
-                markup = helpers.colorizeText(":", beautiful.pri),
-                font = beautiful.font .. " 32",
-                widget = wibox.widget.textbox,
-              },
-              {
-                font = beautiful.font .. " 32",
-                format = "%M",
-                align = "center",
-                valign = "center",
-                widget = wibox.widget.textclock
-              },
-              layout = wibox.layout.fixed.horizontal
+              text = "󰁍",
+              font = beautiful.icofont,
+              widget = wibox.widget.textbox,
+              buttons = awful.button({}, 1, function()
+                curr = os.date("*t", os.time({
+                  day = curr.day,
+                  month = curr.month - 1,
+                  year = curr.year
+                }))
+                updateCalendar(curr)
+              end)
             },
-            widget = wibox.container.place,
-            halign = 'center'
-          },
-          widget = wibox.container.margin,
-          bottom = 0,
-        },
-        {
-          {
-            text = "󰁍",
-            font = beautiful.icofont,
-            widget = wibox.widget.textbox,
-            buttons = awful.button({}, 1, function()
-              curr = os.date("*t", os.time({
-                day = curr.day,
-                month = curr.month - 1,
-                year = curr.year
-              }))
-              updateCalendar(curr)
-            end)
+            widget = wibox.container.margin,
+            left = 18,
           },
           title,
           {
-            text = "󰁔",
-            font = beautiful.icofont,
-            widget = wibox.widget.textbox,
-            buttons = awful.button({}, 1, function()
-              curr = os.date("*t", os.time({
-                day = curr.day,
-                month = curr.month + 1,
-                year = curr.year
-              }))
-              updateCalendar(curr)
-            end)
+            {
+              text = "󰁔",
+              font = beautiful.icofont,
+              widget = wibox.widget.textbox,
+              buttons = awful.button({}, 1, function()
+                curr = os.date("*t", os.time({
+                  day = curr.day,
+                  month = curr.month + 1,
+                  year = curr.year
+                }))
+                updateCalendar(curr)
+              end)
+            },
+            widget = wibox.container.margin,
+            right = 18,
           },
           layout = wibox.layout.align.horizontal
         },
-        theGrid,
-        spacing = 10,
+        {
+          theGrid,
+          widget = wibox.container.place,
+          halign = 'center',
+        },
+        spacing = 17,
         layout = wibox.layout.fixed.vertical
       },
       widget = wibox.container.margin,
-      margins = 5
+      margins = 20
     },
     shape = helpers.rrect(10),
     widget = wibox.container.background,
-    bg = beautiful.bg,
+    bg = beautiful.bg2 .. 'cc',
   }
 end
