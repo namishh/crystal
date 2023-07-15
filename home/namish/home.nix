@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/arctic.nix { };
+  colors = import ../shared/cols/groove.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -48,7 +48,7 @@ in
     (import ./misc/xinit.nix { })
 
     # Bin files
-    (import ../shared/bin/default.nix { inherit config; })
+    (import ../shared/bin/default.nix { inherit config colors; })
     (import ../shared/lock.nix { inherit colors; })
   ];
   home = {

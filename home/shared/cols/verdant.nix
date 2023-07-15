@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "cyberpunksamurai.png"; 
+   wallpaper = "flower.jpg"; 
   foreground = "dfdddd";
   background = "0c0c0c";
   darker = "070707";

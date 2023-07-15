@@ -1,6 +1,6 @@
 {}:
 rec {
-  wallpaper = "girl-reading-book.jpg";
+   wallpaper = "platform.jpg"; 
   foreground = "fbf1c7";
   background = "1f1f1f";
   darker = "171717";
@@ -9,7 +9,7 @@ rec {
 
   cursorColor = "fbf1c7";
   contrast = "222222";
-  cursorline = "2222222";
+  cursorline = "222222";
   comment = "666660";
 
   color0 = "1f1e1b";

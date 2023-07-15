@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, colors, ... }:
 
 {
   home = {
@@ -6,6 +6,10 @@
       ".local/bin/fetch" = {
         executable = true;
         text = import ./eyecandy/nixfetch.nix { };
+      };
+      ".local/bin/lut" = {
+        executable = true;
+        text = import ./misc/lut.nix { inherit colors; };
       };
       ".local/bin/roundvalue" = {
         executable = true;

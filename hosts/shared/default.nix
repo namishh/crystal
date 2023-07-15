@@ -59,6 +59,7 @@ in
 
   environment.systemPackages = with pkgs; [
     nodejs
+    lutgen
     home-manager
     lua-language-server
     lua54Packages.lua

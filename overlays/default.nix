@@ -8,6 +8,7 @@
     spotdl = prev.callPackage ../derivs/spotdl.nix {
       buildPythonApplication = prev.python311Packages.buildPythonApplication;
     };
+    lutgen = prev.callPackage ../derivs/lutgen.nix { };
     st = prev.st.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {

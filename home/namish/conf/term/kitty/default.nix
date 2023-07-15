@@ -30,7 +30,7 @@ with colors; {
 
     };
     extraConfig = ''
-      modify_font cell_height 110%
+      modify_font cell_height 120%
       click_interval 0.5
       cursor_blink_interval 0
       modify_font cell_width 87%
