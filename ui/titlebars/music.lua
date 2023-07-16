@@ -22,11 +22,11 @@ local art        = wibox.widget {
 }
 local leftart    = wibox.widget {
   image = beautiful.songdefpicture,
-  clip_shape = helpers.rrect(100),
+  clip_shape = helpers.rrect(10),
   opacity = 0.75,
   resize = true,
-  forced_height = dpi(210),
-  forced_width = dpi(210),
+  forced_height = dpi(250),
+  forced_width = dpi(250),
   valign = 'center',
   widget = wibox.widget.imagebox
 }
@@ -283,101 +283,26 @@ local bottom = function(c)
 end
 
 
-local volslider = wibox.widget {
-  bar_shape        = helpers.rrect(50),
-  bar_height       = 18,
-  handle_color     = beautiful.dis,
-  handle_shape     = createHandle(18, 18, true, true, true, true, 50),
-  handle_width     = 18,
-  bar_color        = beautiful.dis .. '33',
-  bar_active_color = beautiful.dis,
-  handle_margins   = { top = 6, },
-  forced_height    = 10,
-  forced_width     = 80,
-  minimum          = 0,
-  maximum          = 100,
-  widget           = wibox.widget.slider,
-}
-local is_vol_hovered = false
-playerctl:connect_signal("volume", function(_, volume, _)
-  volslider.value = not is_vol_hovered and volume
-end)
-volslider:connect_signal('property::value', function(_, value)
-  value = value or 100
-  playerctl:set_volume(value / 100, playerctl)
-end)
-volslider:connect_signal('mouse::enter', function()
-  is_vol_hovered = true
-end)
-volslider:connect_signal('mouse::leave', function()
-  is_vol_hovered = false
-end)
-
-
-local leftartcomplete = wibox.widget {
-  {
-    leftart,
+local left         = function(c)
+  awful.titlebar(c, { position = 'left', size = dpi(320), bg = beautiful.bg }):setup {
     {
-      {
-        widget = wibox.container.background,
-        bg = beautiful.fg .. 'cc',
-        align = 'center',
-        shape = helpers.rrect(100),
-      },
-      widget = wibox.container.margin,
-      margins = 90,
-    },
-    {
-      {
-        widget = wibox.container.background,
-        bg = beautiful.bg3,
-        align = 'center',
-        shape = helpers.rrect(100),
-      },
-      widget = wibox.container.margin,
-      margins = 93,
-    },
-    layout = wibox.layout.stack
-  },
-  widget = wibox.container.place,
-  halign = 'center'
-}
-local left            = function(c)
-  awful.titlebar(c, { position = "right", size = dpi(280), bg = beautiful.bg }):setup {
-    {
-      {
-        {
-          leftartcomplete,
-          widget = wibox.container.background,
-          border_width = dpi(3),
-          shape = gears.shape.circle,
-          border_color = beautiful.fg2 .. 'cc'
-        },
-        {
-          leftname,
-          leftartist,
-          spacing = 10,
-          layout = wibox.layout.fixed.vertical
-        },
-        spacing = 20,
-        layout = wibox.layout.fixed.vertical
-      },
+      leftart,
       widget = wibox.container.place,
       halign = 'center',
       valign = 'center'
     },
-    bg = beautiful.mbg,
+    bg = beautiful.bg2 .. 'cc',
     widget = wibox.container.background
   }
 end
-local animation       = require("modules.animation")
+local animation    = require("modules.animation")
 
-local typee           = beautiful.titlebarType
+local typee        = beautiful.titlebarType
 
-local createButton    = function(c, col, fn)
+local createButton = function(c, col, fn)
   local btn = wibox.widget {
-    forced_width  = 12,
-    forced_height = 15,
+    forced_width  = 16,
+    forced_height = 18,
     bg            = col,
     shape         = helpers.rrect(10),
     buttons       = {
@@ -387,34 +312,11 @@ local createButton    = function(c, col, fn)
     },
     widget        = wibox.container.background
   }
-  local anim = animation:new({
-    duration = 0.12,
-    easing = animation.easing.linear,
-    update = function(_, pos)
-      btn.forced_width = pos
-    end,
-  })
-  btn:connect_signal('mouse::enter', function(_)
-    anim:set(50)
-  end)
-  btn:connect_signal('mouse::leave', function(_)
-    anim:set(13)
-  end)
   return btn
 end
-local top             = function(c)
+local top          = function(c)
   local close = createButton(c, beautiful.err, function(c1)
     c1:kill()
-  end)
-
-  local maximize = createButton(c, beautiful.pri, function(c1)
-    c1.maximized = not c1.maximized
-  end)
-
-  local minimize = createButton(c, beautiful.dis, function(c1)
-    gears.timer.delayed_call(function()
-      c1.minimized = not c1.minimized
-    end)
   end)
   local buttons = gears.table.join(
     awful.button({}, 1, function()
@@ -440,8 +342,6 @@ local top             = function(c)
       {
         {
           close,
-          maximize,
-          minimize,
           spacing = dpi(8),
           layout = wibox.layout.fixed.horizontal
         },
@@ -458,35 +358,19 @@ local top             = function(c)
         halign = 'center',
       },
       {
-        {
-          {
-            font = beautiful.icofont .. ' 17',
-            markup = helpers.colorizeText("󰕾", beautiful.fg),
-            widget = wibox.widget.textbox,
-          },
-          {
-            volslider,
-            forced_height = 10,
-            forced_width  = 80,
-            direction     = 'north',
-            layout        = wibox.container.rotate,
-          },
-          spacing = 10,
-          layout = wibox.layout.fixed.horizontal
-        },
-        margins = {
-          top = 5,
-          bottom = 5,
-          left = 0,
-          right = 0,
-        },
-        widget = wibox.container.margin
+        markup = helpers.colorizeText('SYMPHONY', beautiful.fg),
+        align = 'center',
+        valign = 'center',
+        forced_height = dpi(20),
+        font = beautiful.font .. " 14",
+        widget = wibox.widget.textbox
       },
+      nil,
       layout = wibox.layout.align.horizontal
     },
     margins = {
       top = 0,
-      bottom = 5,
+      bottom = 0,
       right = 10,
       left = 10,
     },
@@ -494,7 +378,7 @@ local top             = function(c)
   }
 end
 
-local final           = function(c)
+local final        = function(c)
   bottom(c)
   top(c)
   left(c)

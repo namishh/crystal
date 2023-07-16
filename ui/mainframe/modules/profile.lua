@@ -13,6 +13,7 @@ local profilepicture = wibox.widget {
   widget        = wibox.widget.imagebox
 }
 local uptime         = wibox.widget {
+  halign = "right",
   font = beautiful.font .. " 11",
   markup = helpers.colorizeText("4h 45m", beautiful.fg3),
   widget = wibox.widget.textbox,
@@ -21,11 +22,13 @@ local name           = wibox.widget {
   nil,
   {
     {
+      halign = "right",
       font = beautiful.font .. " Bold 14",
       markup = helpers.colorizeText("Welcome!", beautiful.fg .. 'cc'),
       widget = wibox.widget.textbox,
     },
     {
+      halign = "right",
       font = beautiful.font .. " 13",
       markup = "chadcat#5207",
       widget = wibox.widget.textbox,
@@ -58,180 +61,26 @@ local battery        = wibox.widget {
   forced_height = dpi(70)
 }
 
-local createProg     = function(value, color, signal)
-  local progress = wibox.widget {
-    max_value        = 100,
-    value            = value,
-    forced_height    = 20,
-    forced_width     = 100,
-    shape            = helpers.rrect(10),
-    bar_shape        = helpers.rrect(10),
-    color            = color,
-    background_color = beautiful.bg2 .. '00',
-    paddings         = 1,
-    widget           = wibox.widget.progressbar,
-  }
-  awesome.connect_signal('signal::' .. signal, function(val)
-    progress.value = val
-  end)
-  return wibox.widget {
-    progress,
-    forced_height = 150,
-    forced_width  = 8,
-    direction     = 'east',
-    layout        = wibox.container.rotate,
-  }
-end
-
-
-local createButton    = function(icon, cmd, color)
-  local button = wibox.widget {
-    {
-      {
-        id = 'text_role',
-        align = 'center',
-        font = beautiful.icofont .. " 20",
-        markup = helpers.colorizeText(icon, color),
-        widget = wibox.widget.textbox
-      },
-      margins = 5,
-      widget = wibox.container.margin
-    },
-    buttons = {
-      awful.button({}, 1, function()
-        cmd()
-      end)
-    },
-    widget = wibox.container.background
-  }
-
-  return button
-end
-
-local poweroffcommand = function()
-  awful.spawn.with_shell("poweroff")
-  awesome.emit_signal('hide::exit')
-end
-
-local rebootcommand   = function()
-  awful.spawn.with_shell("reboot")
-  awesome.emit_signal('hide::exit')
-end
-
-local suspendcommand  = function()
-  awesome.emit_signal('hide::exit')
-  awful.spawn.with_shell("systemctl suspend")
-end
-
-local exitcommand     = function()
-  awesome.quit()
-end
-
-local lockcommand     = function()
-  awesome.emit_signal('hide::exit')
-  awful.spawn.with_shell("lock")
-end
-
-local powerofficon    = "󰐥"
-local rebooticon      = "󰦛"
-local suspendicon     = "󰤄"
-local exiticon        = "󰈆"
-local lockicon        = "󰍁"
-
-local poweroffbutton  = createButton(powerofficon, poweroffcommand, beautiful.fg .. 'cc')
-local lockbutton      = createButton(lockicon, lockcommand, beautiful.fg .. 'cc')
-local rebootbutton    = createButton(rebooticon, rebootcommand, beautiful.fg .. 'cc')
-local exitbutton      = createButton(exiticon, exitcommand, beautiful.fg .. 'cc')
-
-local batteryprog     = createProg(49, beautiful.ok, 'battery')
-local memprog         = createProg(23, beautiful.warn, 'memory')
-local diskprog        = createProg(43, beautiful.err, 'disk')
-local cpuprog         = createProg(69, beautiful.dis, 'cpu')
-local finalwidget     = wibox.widget {
+local finalwidget    = wibox.widget {
   {
     {
+
+      profilepicture,
+      nil,
       {
-        {
-          {
-            uptime,
-            name,
-            spacing = 5,
-            layout = wibox.layout.fixed.vertical
-          },
-          profilepicture,
-          spacing = 70,
-          layout = wibox.layout.fixed.horizontal,
-        },
-        {
-          {
-            {
-              poweroffbutton,
-              rebootbutton,
-              lockbutton,
-              exitbutton,
-              spacing = 25,
-              layout  = wibox.layout.fixed.horizontal
-            },
-            widget = wibox.container.margin,
-            margins = 14,
-          },
-          widget = wibox.container.background,
-          bg = beautiful.bg3 .. '11'
-        },
-        spacing = 20,
+        uptime,
+        name,
+        spacing = 5,
         layout = wibox.layout.fixed.vertical
       },
-      margins = 25,
-      widget = wibox.container.margin,
+      spacing = 70,
+      layout = wibox.layout.align.horizontal,
     },
-    bg = beautiful.bg2 .. 'cc',
-    widget = wibox.container.background
+    margins = 25,
+    widget = wibox.container.margin,
   },
-  {
-    {
-      {
-        cpuprog,
-        diskprog,
-        batteryprog,
-        memprog,
-        spacing = 12,
-        layout = wibox.layout.fixed.horizontal
-      },
-      margins = {
-        top = 15,
-        bottom = 15,
-        left = 35,
-        right = 35,
-      },
-      widget = wibox.container.margin,
-    },
-    bg = beautiful.bg2 .. 'cc',
-    widget = wibox.container.background
-    --   {
-    --     {
-    --       {
-    --         font = beautiful.font .. " 11",
-    --         markup = helpers.colorizeText("BAT", beautiful.fg3),
-    --         widget = wibox.widget.textbox,
-    --       },
-    --       margins = { left = 15, top = 15, },
-    --       widget = wibox.container.margin
-    --     },
-    --     {
-    --       battery,
-    --       margins = {
-    --         left = 30, right = 30, bottom = 10,
-    --       },
-    --       widget = wibox.container.margin
-    --     },
-    --     spacing = 5,
-    --     layout = wibox.layout.fixed.vertical
-    --   },
-    --   bg = beautiful.bg2 .. 'cc',
-    --   widget = wibox.container.background
-  },
-  spacing = 20,
-  layout = wibox.layout.fixed.horizontal
+  bg = beautiful.bg2 .. 'cc',
+  widget = wibox.container.background
 }
 
 awesome.connect_signal("signal::battery", function(value)

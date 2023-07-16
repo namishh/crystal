@@ -48,7 +48,7 @@ local weather   = wibox.widget {
     widget = wibox.container.margin,
     margins = 18,
   },
-  forced_width = 200,
+  forced_width = 100,
   bg = beautiful.bg2 .. 'cc',
   widget = wibox.container.background
 }
@@ -60,35 +60,24 @@ local time      = wibox.widget {
         {
           {
             {
-              {
-                font = beautiful.font .. " Bold 42",
-                format = "%I",
-                align = "center",
-                valign = "center",
-                widget = wibox.widget.textclock
-              },
-              {
-                font = beautiful.font .. " 42",
-                format = "%M",
-                align = "center",
-                valign = "center",
-                widget = wibox.widget.textclock
-              },
-              spacing = 15,
-              layout = wibox.layout.fixed.horizontal
+              font = beautiful.font .. " Bold 46",
+              format = "%I",
+              align = "center",
+              valign = "center",
+              widget = wibox.widget.textclock
             },
-            widget = wibox.container.place,
-            halign = 'center'
+            {
+              font = beautiful.font .. " 46",
+              format = "%M",
+              align = "center",
+              valign = "center",
+              widget = wibox.widget.textclock
+            },
+            spacing = 15,
+            layout = wibox.layout.fixed.horizontal
           },
-          {
-            font = beautiful.font,
-            format = "%A, %d %b",
-            align = "center",
-            valign = "center",
-            widget = wibox.widget.textclock
-          },
-          spacing = 10,
-          layout = wibox.layout.fixed.vertical
+          widget = wibox.container.place,
+          halign = 'center'
         },
         widget = wibox.container.place,
         halign = 'center',
@@ -101,10 +90,6 @@ local time      = wibox.widget {
     widget = wibox.container.background
   },
   widget = wibox.container.margin,
-  margins = {
-    left = 20,
-  },
-
 }
 
 awesome.connect_signal("connect::weather", function(out)
@@ -114,10 +99,10 @@ awesome.connect_signal("connect::weather", function(out)
 end)
 
 local finalWidget = {
-  layout = wibox.layout.align.horizontal,
-  weather,
+  layout = wibox.layout.fixed.vertical,
+  spacing = dpi(16),
   time,
-  nil
+  weather,
 }
 
 return finalWidget

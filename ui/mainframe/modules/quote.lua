@@ -63,10 +63,10 @@ local finalwidget = wibox.widget {
       align = "start",
       widget = wibox.widget.textbox,
     },
-    forced_width = 600,
+    forced_width = 640,
     layout = wibox.layout.stack
   },
-  forced_width = 600,
+  forced_width = 640,
   widget = wibox.container.background,
   bg = beautiful.mbg,
   shape = helpers.rrect(8),

@@ -6,6 +6,7 @@ local wibox = require("wibox")
 local gears = require("gears")
 local animation = require("modules.animation")
 local profile = require("ui.mainframe.modules.profile")
+local stats = require("ui.mainframe.modules.stats")
 local search = require("ui.mainframe.modules.search")
 local music = require("ui.mainframe.modules.music")
 local taw = require("ui.mainframe.modules.taw")
@@ -20,17 +21,22 @@ local quote = require("ui.mainframe.modules.quote")
 awful.screen.connect_for_each_screen(function(s)
   local mainframe = wibox({
     screen = s,
-    width = 960,
+    width = 1000,
     shape = helpers.rrect(8),
-    height = 775,
+    height = 800,
     bg = beautiful.bg,
     ontop = true,
     visible = false,
   })
   local main = wibox.widget {
     {
-      taw,
       profile,
+      {
+        taw,
+        stats,
+        spacing = 16,
+        layout = wibox.layout.fixed.horizontal,
+      },
       music,
       spacing = 20,
       layout = wibox.layout.fixed.vertical,

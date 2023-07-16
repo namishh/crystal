@@ -9,20 +9,11 @@ local empty                         = require("ui.mainframe.modules.notifs.empty
 local create                        = require("ui.mainframe.modules.notifs.make")
 
 local clearButton                   = wibox.widget {
-  {
-    {
-      font = beautiful.font .. " 12",
-      markup = helpers.colorizeText("Clear All", beautiful.fg .. 'cc'),
-      widget = wibox.widget.textbox,
-      valign = "center",
-      align = "center",
-    },
-    margins = dpi(8),
-    widget = wibox.container.margin
-  },
-  bg = beautiful.fg .. '11',
-  widget = wibox.container.background,
-
+  font = beautiful.icofont .. " 22",
+  markup = helpers.colorizeText("󰎟", beautiful.err),
+  widget = wibox.widget.textbox,
+  valign = "center",
+  align = "center",
 }
 local title                         = wibox.widget
     {
@@ -33,14 +24,22 @@ local title                         = wibox.widget
       align = "center"
     }
 local header                        = wibox.widget {
-  title,
-  nil,
-  clearButton,
-  layout = wibox.layout.align.horizontal,
+  {
+    {
+      title,
+      nil,
+      clearButton,
+      layout = wibox.layout.align.horizontal,
+    },
+    widget = wibox.container.margin,
+    margins = 10,
+  },
+  bg = beautiful.fg .. '11',
+  widget = wibox.container.background,
 }
 local finalcontent                  = wibox.widget {
   spacing = 20,
-  scrollbar_width = dpi(3),
+  scrollbar_width = 0,
   layout = require('modules.overflow').vertical,
 }
 local remove_notifs_empty           = true
@@ -86,16 +85,20 @@ end
 
 local finalwidget = wibox.widget {
   {
+    header,
     {
-      header,
-      finalcontent,
-      spacing = dpi(20),
-      widget = wibox.container.scroll.vertical,
-      step_function = wibox.container.scroll,
-      layout = wibox.layout.fixed.vertical,
+      {
+        finalcontent,
+        spacing = dpi(20),
+        widget = wibox.container.scroll.vertical,
+        step_function = wibox.container.scroll,
+        layout = wibox.layout.fixed.vertical,
+      },
+      margins = dpi(20),
+      widget = wibox.container.margin
     },
-    margins = dpi(20),
-    widget = wibox.container.margin
+    spacing = 10,
+    layout = wibox.layout.fixed.vertical,
   },
   forced_width = w,
   forced_height = 350,

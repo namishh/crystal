@@ -9,9 +9,9 @@ local naughty = require("naughty")
 return function(icon, notification, width)
   -- table of icons
   local icons = {
-        ["firefox"] = { icon = "󰈹" },
-        ["discord"] = { icon = "󰙯" },
-        ["dunstify"] = { icon = "󱝁" },
+    ["firefox"] = { icon = "󰈹" },
+    ["discord"] = { icon = "󰙯" },
+    ["dunstify"] = { icon = "󱝁" },
   }
 
   local appicon
@@ -142,7 +142,7 @@ return function(icon, notification, width)
           },
           widget = wibox.container.margin
         },
-        bg = beautiful.bg3 .. '88',
+        bg = beautiful.pri .. '0f',
         widget = wibox.container.background
       },
       nil,

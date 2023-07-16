@@ -100,7 +100,7 @@ theme.notification_icon_size   = dpi(80)
 theme.separator_color          = theme.fg2
 
 
-theme.profilepicture = theme_path .. "/pics/pfps/italianplumber.png"
+theme.profilepicture = theme_path .. "/pics/pfps/cool.jpg"
 theme.songdefpicture = theme_path .. "/pics/nosong.jpg"
 theme.menupicture = theme_path .. "/pics/menu2.png"
 theme.nixlogo = theme_path .. "/pics/nix.png"
