@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "river.jpg"; 
+   wallpaper = "road.png"; 
   foreground = "dad0bc";
   background = "1b2124";
   darker = "151a1c";
