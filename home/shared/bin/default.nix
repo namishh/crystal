@@ -11,6 +11,10 @@
         executable = true;
         text = import ./misc/lut.nix { inherit colors; };
       };
+      ".local/bin/lcon" = {
+        executable = true;
+        text = import ./misc/con.nix { };
+      };
       ".local/bin/roundvalue" = {
         executable = true;
         text = import ./misc/roudnvalue.nix { };

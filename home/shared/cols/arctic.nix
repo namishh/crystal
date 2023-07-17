@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "nord-circuits.png"; 
+  wallpaper = "nord-noice.jpg";
   foreground = "c7ccd6";
   background = "242832";
   darker = "1b1e15";
@@ -36,5 +36,5 @@ rec {
   color7 = "c7ccd6";
   color15 = "abb2bf";
   name = "arctic";
-  neofetchpic = "thecat.png";
+  neofetchpic = "nskull.png";
 }

@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "haunted.png"; 
+  wallpaper = "haunted.png";
   foreground = "dfdddd";
   background = "0c0c0c";
   darker = "070707";
@@ -36,5 +36,5 @@ rec {
   color7 = "b7b7b7";
   color15 = "a4b5b5";
   name = "verdant";
-  neofetchpic = "nix.png";
+  neofetchpic = "rose.png";
 }
