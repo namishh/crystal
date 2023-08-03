@@ -203,6 +203,11 @@ local tomfoolery = function(s)
         command = "st"
       },
       {
+        name = "org.wezfurlong.wezterm",
+        convert = "xterm",
+        command = "wezterm"
+      },
+      {
         name = "ncmpcpppad",
         convert = "deepin-music-player",
         command = "awesome-client 'awesome.emit_signal(\"toggle::ncmpcpppad\")'"
@@ -280,8 +285,8 @@ local tomfoolery = function(s)
         count = 0,
         id = 2,
         clients = {},
-        name = "kitty",
-        class = "kitty"
+        name = "org.wezfurlong.wezterm",
+        class = "org.wezfurlong.wezterm"
       },
       {
         count = 0,
@@ -327,7 +332,8 @@ local tomfoolery = function(s)
       },
     }
     -- end
-    local classes = { "kitty", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code", "notion-app-enhanced" }
+    local classes = { "org.wezfurlong.wezterm", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code",
+      "notion-app-enhanced" }
     local dockElements = wibox.widget { layout = layout, spacing = 5 }
     -- generating the data
     for _, c in ipairs(clients) do

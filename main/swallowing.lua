@@ -6,7 +6,7 @@ local dontSuckMe = {} -- this is for classes that you dont want to be swallowed
 
 local checkForSucc = function(child, parent)
   local canSuc = false
-  if not helpers.inTable(dontSuckMe, child) and parent == "kitty" then -- write the class of your terminal here
+  if not helpers.inTable(dontSuckMe, child) and parent == "org.wezfurlong.wezterm" and child ~= "org.wezfurlong.wezterm" then -- write the class of your terminal here
     canSuc = true
   end
   return canSuc

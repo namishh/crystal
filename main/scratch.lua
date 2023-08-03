@@ -139,7 +139,8 @@ end
 local mod = require 'main.bindings.mod'
 local createScratch = function(command, width, height, k)
   local scratch = Scratchpad:new {
-    command = 'kitty' .. ' --class "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
+    --command = 'kitty' .. ' --class "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
+    command = 'wezterm start --class ' .. command .. 'pad -e sh -c "' .. command .. '; $SHELL"',
     rule = { class = command .. 'pad' },
     height = height,
     width = width,
