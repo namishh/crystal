@@ -1,6 +1,6 @@
 {}:
 rec {
-  wallpaper = "nord-noice.jpg";
+   wallpaper = "nord-japan.png"; 
   foreground = "c7ccd6";
   background = "242832";
   darker = "1b1e15";

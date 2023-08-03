@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/cat.nix { };
+  colors = import ../shared/cols/verdant.nix { };
 
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
@@ -35,8 +35,9 @@ in
     (import ../shared/xresources.nix { inherit colors; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
-    (import ./conf/shell/zsh/default.nix { inherit config pkgs; })
+    (import ./conf/shell/zsh/default.nix { inherit config pkgs lib; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
+    (import ./conf/term/wezterm/default.nix { inherit pkgs colors; })
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
@@ -64,14 +65,18 @@ in
     };
     packages = with pkgs; [
       bc
+      cargo
+      rustc
       chromium
       catimg
       xss-lock
+      gcc
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
+      rust-analyzer
       hsetroot
       notion-app-enhanced
       pfetch
@@ -85,6 +90,7 @@ in
       cava
       mpdris2
       pavucontrol
+      fzf
       feh
       exa
     ];

@@ -11,7 +11,7 @@ with colors; {
       font_size = 16;
       disable_ligatures = "never";
       confirm_os_window_close = 0;
-      window_padding_width = 32;
+      window_padding_width = 24;
       adjust_line_height = 0;
       adjust_column_width = 0;
       box_drawing_scale = "0.01, 0.8, 1.5, 2";

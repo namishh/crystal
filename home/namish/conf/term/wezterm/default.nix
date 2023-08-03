@@ -3,7 +3,7 @@
 with colors; {
   programs.wezterm = {
     enable = true;
-    package = (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${pkgs.system}.wezterm-git;
+    #package = (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${pkgs.system}.wezterm-git;
     colorSchemes = import ./colors.nix {
       inherit colors;
     };
@@ -11,7 +11,7 @@ with colors; {
       local wez = require('wezterm')
       return {
         default_prog     = { 'zsh' },
-        
+        cell_width = 0.87,
         -- Performance
         --------------
         front_end        = "OpenGL",
@@ -28,11 +28,11 @@ with colors; {
         font_rules    = {
           {
             italic = true,
-            font   = wez.font("CaskaydiaCove Nerd Font", { italic = true })
+            font   = wez.font("Iosevka Nerd Font", { italic = true })
           }
         },
-        font_antialias = "Subpixel",
-        font_hinting = "VerticalSubpixel",
+        --font_antialias = "Subpixel",
+        --font_hinting = "VerticalSubpixel",
         font_size         = 16.0,
         line_height       = 1.15,
         harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
@@ -45,6 +45,7 @@ with colors; {
         },
         default_cursor_style = "SteadyUnderline",
         enable_scroll_bar    = false,
+        warn_about_missing_glyphs = false,
         -- Tabbar
         ---------
         enable_tab_bar               = true,

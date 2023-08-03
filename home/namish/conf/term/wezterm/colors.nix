@@ -6,7 +6,7 @@ with colors; {
     background = "#${background}";
     cursor_bg = "#${color8}";
     cursor_border = "#${color8}";
-    cursor_fg = "#${background}";
+    cursor_fg = "#${foreground}";
     foreground = "#${foreground}";
     selection_bg = "#${color15}";
     selection_fg = "#${background}";
