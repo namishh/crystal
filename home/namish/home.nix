@@ -71,6 +71,8 @@ in
       catimg
       xss-lock
       gcc
+      zig
+      zls
       playerctl
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })

@@ -4,9 +4,9 @@ with colors; {
   followSystem = {
     # basic colors
     background = "#${background}";
-    cursor_bg = "#${color8}";
-    cursor_border = "#${color8}";
-    cursor_fg = "#${foreground}";
+    cursor_bg = "#${foreground}";
+    cursor_border = "#${foreground}";
+    cursor_fg = "#${color8}";
     foreground = "#${foreground}";
     selection_bg = "#${color15}";
     selection_fg = "#${background}";

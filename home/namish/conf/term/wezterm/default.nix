@@ -11,7 +11,7 @@ with colors; {
       local wez = require('wezterm')
       return {
         default_prog     = { 'zsh' },
-        cell_width = 0.87,
+        cell_width = 0.85,
         -- Performance
         --------------
         front_end        = "OpenGL",
@@ -33,7 +33,7 @@ with colors; {
         },
         --font_antialias = "Subpixel",
         --font_hinting = "VerticalSubpixel",
-        font_size         = 16.0,
+        font_size         = 14.0,
         line_height       = 1.15,
         harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' },
         -- Bling
