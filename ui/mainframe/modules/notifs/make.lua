@@ -142,7 +142,7 @@ return function(icon, notification, width)
           },
           widget = wibox.container.margin
         },
-        bg = beautiful.pri .. '0f',
+        bg = beautiful.bg4 .. '0f',
         widget = wibox.container.background
       },
       nil,
