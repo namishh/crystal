@@ -1,6 +1,6 @@
 {}:
 rec {
-   wallpaper = "sky.jpg"; 
+   wallpaper = "haunted.png"; 
   foreground = "dfdddd";
   background = "0c0c0c";
   darker = "070707";

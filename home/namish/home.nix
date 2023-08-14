@@ -46,6 +46,7 @@ in
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
+    (import ./conf/shell/tmux/default.nix { inherit pkgs; })
     (import ./misc/xinit.nix { })
 
     # Bin files
