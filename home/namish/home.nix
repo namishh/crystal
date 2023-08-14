@@ -65,15 +65,15 @@ in
     };
     packages = with pkgs; [
       bc
-      cargo
-      rustc
       chromium
       catimg
       xss-lock
       gcc
-      zig
       zls
+      go
+      gopls
       playerctl
+      scc
       (pkgs.callPackage ../shared/icons/whitesur.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo

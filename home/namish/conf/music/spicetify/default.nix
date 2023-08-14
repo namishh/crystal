@@ -1,18 +1,18 @@
-{colors, spicetify-nix, pkgs}:
+{ colors, spicetify-nix, pkgs }:
 let
   spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
 in
 
 {
-    imports = [spicetify-nix.homeManagerModule];
+  imports = [ spicetify-nix.homeManagerModule ];
   programs.spicetify =
-      let
+    let
       # use a different version of spicetify-themes than the one provided by
       # spicetify-nix
       officialThemesOLD = pkgs.fetchgit {
         url = "https://github.com/spicetify/spicetify-themes";
-        rev = "c2751b48ff9693867193fe65695a585e3c2e2133";
-        sha256 = "0rbqaxvyfz2vvv3iqik5rpsa3aics5a7232167rmyvv54m475agk";
+        rev = "e4a15de2e02642c7d5ba2cde6cb610dc3c9fac91";
+        sha256 = "11dlxkd2kk8d9ppb2wfr1a00dzxjbsqha3s0q7wjx40bzy97fdb9";
       };
       # pin a certain version of the localFiles custom app
       localFilesSrc = pkgs.fetchgit {
@@ -21,18 +21,9 @@ in
         sha256 = "01gy16b69glqcalz1wm8kr5wsh94i419qx4nfmsavm4rcvcr3qlx";
       };
     in
-
-   {
-    enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
-        playlistIcons
-        spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
-        genre
-        historyShortcut
-        hidePodcasts
-        fullAppDisplay
-        shuffle
-      ];
+    with colors; {
+      spotifyPackage = pkgs.spotify;
+      enable = true;
       colorScheme = "custom";
       theme = {
         name = "Dribbblish";
@@ -57,10 +48,9 @@ in
         overwriteAssets = true;
         sidebarConfig = true;
       };
- 
-      # color definition for custom color scheme. (rosepine)
-      customColorScheme = with colors;{
-        text = "${color7}";
+
+      customColorScheme = {
+        text = "${foreground}";
         subtext = "${color15}";
         sidebar-text = "${color7}";
         main = "${background}";
@@ -70,14 +60,23 @@ in
         shadow = "${color8}";
         selected-row = "${color8}";
         button = "${color4}";
-        button-active = "${color4}";
+        button-active = "${mbg}";
         button-disabled = "${color5}";
         tab-active = "${color4}";
         notification = "${color3}";
         notification-error = "${color1}";
         misc = "${comment}";
       };
-      
-
-  };
+      enabledExtensions = with spicePkgs.extensions; [
+        playlistIcons
+        lastfm
+        genre
+        historyShortcut
+        spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
+        hidePodcasts
+        fullAppDisplay
+        shuffle
+      ];
+    };
 }
+
