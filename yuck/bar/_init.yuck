@@ -1,8 +1,13 @@
 (defwidget bar []
-           (box :class "bar" :orientation "horizontal" :space-evenly false 
-           (box :halign "start" :valign "center" :vexpand true :hexpand true :space-evenly false :spacing 7 (launcher) (workspaces)) 
-           (button :onclick "eww open --toggle control" (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7  (batteryprog) (time) (powericon)) )
-           )
+   (box :class "bar" :orientation "horizontal" :space-evenly false 
+    (box :halign "start" :valign "center" :vexpand true :hexpand true :space-evenly false :spacing 7 (launcher) (workspaces)) 
+    (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7 
+      (button :onclick "eww open --toggle control" (batteryprog))
+      (time) 
+      (powericon)
+    
+    ) 
+  )
 )
 
 
