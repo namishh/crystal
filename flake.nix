@@ -9,13 +9,21 @@
     home-manager.url = "github:nix-community/home-manager";
     nur.url = "github:nix-community/NUR";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/Hyprland";
+
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Channel to follow.
     home-manager.inputs.nixpkgs.follows = "unstable";
     nixpkgs.follows = "unstable";
   };
-  outputs = { self, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, hyprland-plugins, ... } @inputs:
     let
       inherit (self) outputs;
       forSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
@@ -31,7 +39,7 @@
         frostbyte = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
-              inherit inputs outputs home-manager;
+              inherit inputs outputs home-manager hyprland hyprland-plugins;
             };
             modules = [
               # > Our main nixos configuration file <

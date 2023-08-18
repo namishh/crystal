@@ -1,4 +1,4 @@
-{ pkgs, outputs, overlays, lib, ... }:
+{ pkgs, outputs, overlays, lib, inputs, ... }:
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = ps: with ps; [
@@ -10,7 +10,11 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   programs.zsh.enable = true;
-
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
@@ -39,7 +43,7 @@ in
     };
     defaultUserShell = pkgs.zsh;
   };
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     material-design-icons
     phospor
     inter
@@ -55,6 +59,13 @@ in
   security.rtkit.enable = true;
   virtualisation = {
     libvirtd.enable = true;
+  };
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -80,6 +91,13 @@ in
     firefox
     unzip
     imgclr
+    grim
+    slop
+    inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+    eww-wayland
+    wayland
+    swaylock-effects
+    swaybg
     git
     pstree
     mpv

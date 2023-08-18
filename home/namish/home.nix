@@ -2,8 +2,9 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/verdant.nix { };
-
+  colors = import ../shared/cols/wave.nix { };
+  hyprland = inputs.hyprland;
+  hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
     (builtins.fetchTarball "https://github.com/nixos/nixpkgs/archive/master.tar.gz")
     {
@@ -33,6 +34,7 @@ in
   imports = [
     # Importing Configutations
     (import ../shared/xresources.nix { inherit colors; })
+    (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
     (import ./conf/shell/zsh/default.nix { inherit config pkgs lib; })
@@ -47,7 +49,10 @@ in
     (import ./misc/awesome.nix { inherit pkgs colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
+    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland colors; })
+    #(import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./misc/xinit.nix { })
+    (import ./misc/eww.nix { inherit config colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors; })
@@ -68,6 +73,7 @@ in
       bc
       chromium
       catimg
+      dunst
       xss-lock
       gcc
       zls
@@ -82,6 +88,7 @@ in
       rust-analyzer
       hsetroot
       notion-app-enhanced
+      mpc-cli
       pfetch
       ffmpeg_5-full
       neovim
@@ -92,6 +99,7 @@ in
       killall
       cava
       mpdris2
+      socat
       pavucontrol
       fzf
       feh
