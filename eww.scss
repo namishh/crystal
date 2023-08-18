@@ -1,0 +1,13 @@
+@mixin rounding {
+  border-radius: 4px;
+}
+
+
+@import "style/colors";
+@import "style/bar/init";
+@import "style/control/init";
+
+* {
+  all: unset;
+  transition: 100ms ease;
+}

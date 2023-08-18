@@ -1,0 +1,33 @@
+(defpoll hour 	:interval "1s" `date +%H`)
+(defpoll minute :interval "1s" `date +%M`)
+(defpoll day 	:interval "1s" `date "+%A"`)
+(defpoll date 	:interval "1s" `date "+%D"`)
+(defpoll month_year :interval "24h"
+    "date '+%B %Y'")
+(defpoll calendar_day :interval "10h"
+    "date '+%d'")
+(defpoll calendar_year :interval "10h"
+  "date '+%Y'")
+
+;; SYSTEM VARS
+(defpoll volume :interval "1s" `pamixer --get-volume`)
+(defpoll brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
+
+
+(defpoll battery :interval "1s" `~/.config/eww/scripts/bat.sh percent`)
+(defpoll wifiConnected :interval "2s" `~/.config/eww/scripts/wifi.sh --icon`)
+
+(defpoll song :interval "2s"  "~/.config/eww/scripts/ms.sh --song")
+(defpoll song_artist :interval "2s"  "~/.config/eww/scripts/ms.sh --artist")
+(defpoll current_status :interval "1s"  "~/.config/eww/scripts/ms.sh --time")
+(defpoll song_status :interval "1s"  "~/.config/eww/scripts/ms.sh --status")
+(defpoll cover_art :interval "2s"  "~/.config/eww/scripts/ms.sh --cover")
+
+(defpoll username :interval "48h"  "whoami")
+(defpoll hostname :interval "48h"  "hostname")
+(defpoll uptime :interval "1m" "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'")
+
+(defpoll apactive :interval '1s' "~/.config/eww/scripts/ap.sh --class")
+(defpoll dndactive :interval '1s' "~/.config/eww/scripts/dnd.sh --class")
+(defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi.sh --class")
+(defpoll btactive :interval '1s' "~/.config/eww/scripts/bl.sh --class")

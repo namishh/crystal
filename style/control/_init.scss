@@ -1,0 +1,126 @@
+.control {
+  @include rounding;
+  background: $background;
+  padding: 1rem;
+}
+
+.sliders {
+  @include rounding;
+  background: $background-alt;
+  padding: 1rem;
+}
+
+.volscale trough {
+  min-width: 8rem;
+  min-height: 32px;
+  background: rgba($yellow, 0.05);
+  @include rounding;
+}
+
+.volscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $red, $yellow);
+}
+
+.brightscale trough {
+  min-width: 8rem;
+  min-height: 32px;
+  background: rgba($blue, 0.05);
+  @include rounding;
+}
+
+.brightscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $blue, $green);
+}
+
+.profileimage {
+  @include rounding;
+  background-size: cover;
+  background-position: center;
+  min-height: 80px;
+  opacity: 0.8;
+  min-width: 80px;
+  background-repeat: no-repeat;
+}
+
+.profile {
+  background: $background-alt;
+  @include rounding;
+  padding: 1rem;
+}
+
+.profiletime {
+  font-family: "Iosevka Nerd Font";
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.music {
+  @include rounding;
+  min-height: 18rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.music-g {
+  background-image: linear-gradient(to right, rgba($background, 1), rgba($background, 0.8));
+}
+
+.musicbutton {
+  font-family: "Iosevka Nerd Font";
+  padding: 1rem;
+  font-size: 30px;
+}
+
+.musicbuttons {
+  background: $background-alt;
+  padding: 0.5rem 1rem;
+}
+
+.profileexit {
+  color: $red;
+  font-size: 28px;
+  border-radius: 10px;
+  padding: 1rem 2rem 1rem 1.6rem;
+  background: rgba($red, 0.1);
+}
+
+.music-scale trough {
+  min-width: 8rem;
+  min-height: 10px;
+  background: rgba($background-alt, 0);
+}
+
+.music-scale trough highlight {
+  background: $magenta;
+}
+
+.musicinfo {
+  font-family: "Iosevka Nerd Font";
+  font-size: 14px;
+  padding: 1rem;
+}
+
+.musicname {
+  font-size: 16px;
+}
+
+.setbtns {
+  background: $background-alt;
+  @include rounding;
+  padding: 1rem;
+}
+
+.setbtn {
+  font-family: Material Design Icons;
+  background: rgba($blue, 0.03);
+  @include rounding;
+  padding: 2.5rem;
+  font-size: 24px;
+}
+
+.active {
+  background: $blue;
+  color: $background;
+}

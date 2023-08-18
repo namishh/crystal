@@ -1,0 +1,84 @@
+
+(defwidget profile[]
+  (box :orientation 'h' :space-evenly false :class "profile" :spacing 20
+  (box :class "profileimage" :halign 'start' :style `background-image: url("/home/namish/.config/awesome/theme/pics/pfps/cat.jpg");`)
+  (box :orientation 'v' :valign 'center' :space-evenly false :hexpand true :halign "start" :spacing 8
+    (box :class "profiletime" :halign "start" "${username}@${hostname}")
+    (box :class "profiletime" :halign "start" "${uptime}")
+    )
+  (box :class "profileexit" :valign 'center' "󰐥")
+  )
+)
+
+(defwidget music[]
+  (box :orientation "h" :space-evenly false :spacing 15
+    (overlay :hexpand true
+      (box :orientation 'v' :space-evenly false :class "music"  :style "background-image:  url('${cover_art}');" 
+      )
+      (box :class "music-g")
+      (box :orientation 'v'  :space-evenly false
+          (box :orientation  'v' :space-evenly false :vexpand true :class "musicinfo"
+              (box :orientation "v" :halign 'start' :space-evenly false :spacing 3
+                  (box :halign 'start' :class "musicname" song)
+                  (box :halign 'start' :class "musicartist" song_artist)
+              )
+          )
+          (scale :onchange "mpc seek {}%" :class "scale music-scale" :value current_status )
+        )
+    )
+  (box :orientation 'v' :class "musicbuttons"
+      (button :onclick "~/.config/eww/scripts/ms.sh  --prev":valign 'center' :class "musicbutton"  "󰒮")
+      (button :onclick "~/.config/eww/scripts/ms.sh  --toggle" :valign 'center' :class "musicbutton"  "${song_status}")
+      (button :onclick "~/.config/eww/scripts/ms.sh  --next" :valign 'center' :class "musicbutton"  "󰒭")
+    )
+  )
+)
+
+(defwidget setbtn[?icon active func ]
+  (button :halign 'center' :class "${active == 'active' ? 'active' : ''} setbtn" :onclick "${func}" "${icon}"  )
+)
+
+(defwidget slider[value function class]
+  (box :class "${class}"		
+    (scale :class "scale ${class}"
+				:min 0
+				:max 100
+				:orientation "h"
+        :value value
+        :onchange function
+        :active true 
+        :valign 'center')
+  )
+)
+
+(defwidget buttons[]
+  (box :orientation 'h' :space-evenly false :class "setbtns" :spacing 25
+      (setbtn :icon "󰤨 " :func "~/.config/eww/scripts/wifi.sh --toggle" :active wifiactive)
+      (setbtn :icon "󰂯" :func "~/.config/eww/scripts/bl.sh --toggle" :active btactive)
+      (setbtn :icon "󰍶" :func "~/.config/eww/scripts/dnd.sh --toggle" :active dndactive)
+      (setbtn :icon "󰀝" :func "~/.config/eww/scripts/ap.sh --toggle" :active apactive)
+    )
+)
+
+(defwidget control[]
+  (box :orientation "v" :class "control" :space-evenly false :spacing 15
+    (profile)
+    (box :orientation "v" :class "sliders" :space-evenly false :spacing 15
+        (slider :class "brightscale" :value brightness  :function "brightnessctl s {}%") 
+        (slider :class "volscale" :value volume :round-digits 0 :function "pamixer --set-volume {}")
+      )
+    (music)
+    (buttons)
+  )
+)
+
+(defwindow control
+    :monitor 0
+    :geometry (geometry :x "10px"
+      :y "10px"
+      :width "500px"
+      :height "620px"
+      :anchor "top right")
+    :stacking "fg"
+    :exclusive true
+  (control))

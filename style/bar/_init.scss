@@ -1,0 +1,113 @@
+.workspaces {
+  background-color: $background-alt;
+  @include rounding;
+  padding: 12px;
+  margin-top: 2px;
+
+  inner {
+    &:hover {
+      background-color: $background-alt;
+    }
+  }
+
+  button {
+    border-style: none;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background-color: $comment;
+
+    min-width: 11px;
+    min-height: 11px;
+    border-radius: 2px;
+
+    &:hover {
+      background-color: $foreground;
+    }
+
+    &.occupied {
+      background: $foreground;
+      margin-left: 3px;
+      margin-right: 3px;
+
+      min-width: 20px;
+      min-height: 11px;
+      border-radius: 2px;
+
+      &:hover {
+        background-color: $comment;
+      }
+    }
+
+    &.active {
+      background: $blue;
+      border-radius: 2px;
+      background-size: cover;
+      min-height: 11px;
+      min-width: 38px;
+    }
+  }
+}
+
+.bar {
+  background: $background;
+  padding: 4px;
+}
+
+.launcher {
+  font-family: "Iosevka Nerd Font";
+  background-color: $background-alt;
+  color: $blue;
+  @include rounding;
+  padding: 3px 12px;
+  margin-top: 2px;
+  font-size: 22px;
+}
+
+.time {
+  font-family: "Iosevka Nerd Font";
+  background-color: $background-alt;
+  @include rounding;
+  padding: 3px 12px;
+  margin-top: 2px;
+  font-size: 16px;
+}
+
+.powericon {
+  font-family: "Iosevka Nerd Font";
+  background-color: $background-alt;
+  @include rounding;
+  padding: 3px 12px;
+  color: $red;
+  margin-top: 2px;
+  font-size: 20px;
+}
+
+.batteryicon {
+  font-family: "Iosevka Nerd Font";
+  font-size: 20px;
+  color: $background;
+}
+
+.bat_progress trough {
+  min-width: 8rem;
+  min-height: 22px;
+  background: rgba($blue, 0.1);
+  @include rounding;
+}
+
+.bat_progress trough highlight {
+  @include rounding;
+  background-color: $blue;
+}
+
+.batterybar {
+  margin: 2px 0;
+  @include rounding;
+  padding: 8px;
+  background: $background-alt;
+}
+
+.wifiicon {
+  font-size: 20px;
+  font-family: "Iosevka Nerd Font";
+}

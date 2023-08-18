@@ -1,0 +1,49 @@
+(defwidget bar []
+           (box :class "bar" :orientation "horizontal" :space-evenly false 
+           (box :halign "start" :valign "center" :vexpand true :hexpand true :space-evenly false :spacing 7 (launcher) (workspaces)) 
+           (button :onclick "eww open --toggle control" (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7  (batteryprog) (time) (powericon)) )
+           )
+)
+
+
+(defwidget time[]
+  (box :class "time" "${hour} : ${minute}")
+)
+(defwidget launcher[]
+  (box :class "launcher" " ")
+)
+(defwidget batteryprog[]
+  (box :class "batterybar" :space-evenly false :spacing 18
+      
+     (overlay (scale :active false :class "bat_progress" :value battery :max 100 :min 0) (box :class "batteryicon" :valign "center" "󱐋")) (wifiicon) 
+  )
+)
+
+(defwidget wifiicon[]
+  (box :class "wifiicon" wifiConnected)
+)
+
+(defwidget powericon[]
+  (box :class "powericon" "󰐥")
+)
+(deflisten workspaces_var :initial "[]"  `$HOME/.config/eww/scripts/ws.sh`)
+(defwidget workspaces []
+  (box
+    (box :orientation "h" :class "workspaces" :space-evenly "false" :halign "center" :spacing 10
+        (button :class {workspaces_var[0]} :valign "center" :onclick "hyprctl dispatch workspace 1")
+        (button :class {workspaces_var[1]} :valign "center" :onclick "hyprctl dispatch workspace 2")
+        (button :class {workspaces_var[2]} :valign "center" :onclick "hyprctl dispatch workspace 3")
+        (button :class {workspaces_var[3]} :valign "center" :onclick "hyprctl dispatch workspace 4")
+        (button :class {workspaces_var[4]} :valign "center" :onclick "hyprctl dispatch workspace 5")
+	)))
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "0%"
+      :y "0px"
+      :width "100%"
+      :height "20px"
+      :anchor "top center")
+    :stacking "fg"
+    :exclusive true
+  (bar))
