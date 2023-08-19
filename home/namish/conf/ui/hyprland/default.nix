@@ -1,4 +1,4 @@
-{ config, lib, pkgs, hyprland, colors, ... }:
+{ config, lib, pkgs, hyprland, hyprland-plugins, colors, ... }:
 
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
@@ -6,6 +6,7 @@
     enable = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
     systemdIntegration = true;
+    #    plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts
@@ -247,6 +248,7 @@
       bind=CTRL SHIFT, j, resizeactive, 0 15
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
+      exec = export WALLPAPER=~/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper}
       exec = swaybg -i ~/.config/awesome/theme/wallpapers/${name}/${wallpaper} &
       exec = dunst &
       exec-once = xss-lock lock &

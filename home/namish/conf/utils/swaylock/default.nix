@@ -30,7 +30,7 @@
       line-wrong-color = "#${background}";
       bs-hl-color = "#${color4}";
       line-uses-ring = false;
-      grace = 1;
+      grace = 0;
       grace-no-mouse = true;
       grace-no-touch = true;
       datestr = "%d.%m";

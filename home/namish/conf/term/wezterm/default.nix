@@ -40,8 +40,8 @@ with colors; {
         --------
         color_scheme   = "followSystem",
         window_padding = {
-          left = "16pt", right = "16pt",
-          bottom = "16pt", top = "16pt"
+          left = "24pt", right = "24pt",
+          bottom = "24pt", top = "24pt"
         },
         default_cursor_style = "SteadyUnderline",
         enable_scroll_bar    = false,

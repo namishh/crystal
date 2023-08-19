@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/wave.nix { };
+  colors = import ../shared/cols/verdant.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -37,19 +37,20 @@ in
     (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/music/cava/default.nix { inherit colors; })
-    (import ./conf/shell/zsh/default.nix { inherit config pkgs lib; })
+    (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
+    (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors; })
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
-    (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
+    (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
-    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland colors; })
+    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
     #(import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./misc/xinit.nix { })
     (import ./misc/eww.nix { inherit config colors; })
@@ -77,6 +78,8 @@ in
       chromium
       catimg
       dunst
+      wl-clipboard
+      sway-contrib.grimshot
       xss-lock
       gcc
       zls
@@ -100,6 +103,7 @@ in
       xorg.xev
       procps
       killall
+      moreutils
       cava
       mpdris2
       socat
@@ -113,5 +117,8 @@ in
     allowUnfree = true;
     allowBroken = true;
     allowUnfreePredicate = _: true;
+  };
+  home.sessionVariables = {
+    WALLPAPER = "${config.home.homeDirectory}/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper}";
   };
 }

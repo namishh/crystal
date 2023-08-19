@@ -5,8 +5,9 @@
     text = ''
       #!/bin/sh
       playerctl pause
+      sleep 0.2
       #awesome-client "awesome.emit_signal('toggle::lock')"
-      swaylock
+      swaylock -i ~/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper} --effect-blur 10x10
     '';
   };
 }
