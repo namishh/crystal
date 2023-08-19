@@ -8,6 +8,7 @@
     "date '+%d'")
 (defpoll calendar_year :interval "10h"
   "date '+%Y'")
+(defpoll thourtime :interval "40s" `date +"%a %I:%M %p"`)
 
 ;; SYSTEM VARS
 (defpoll volume :interval "1s" `pamixer --get-volume`)
@@ -32,3 +33,8 @@
 (defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi.sh --class")
 (defpoll btactive :interval '1s' "~/.config/eww/scripts/bl.sh --class")
 (defpoll wallpaper :interval "1h" "echo $WALLPAPER")
+
+(defpoll weathericon :interval "2h" "~/.config/eww/scripts/weather.sh icon")
+(defpoll weatherhex :interval "2h" "~/.config/eww/scripts/weather.sh hex")
+(defpoll current_temp :interval "2h" "~/.config/eww/scripts/weather.sh current_temp")
+(defpoll current_desc :interval "2h" "~/.config/eww/scripts/weather.sh weather_desc")

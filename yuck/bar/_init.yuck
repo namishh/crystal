@@ -1,15 +1,28 @@
 (defwidget bar []
    (box :class "bar" :orientation "horizontal" :space-evenly false 
-    (box :halign "start" :valign "center" :vexpand true :hexpand true :space-evenly false :spacing 7 (launcher) (workspaces)) 
+    (box :halign "start" :valign "center" :vexpand true  :space-evenly false :spacing 7 (launcher) (workspaces))
+    (box :halign 'left' :hexpand true (musicbar))  
     (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7 
       (button :onclick "eww open --toggle control" (batteryprog))
-      (time) 
+      (button :onclick "eww open --toggle moment" (time))
       (button :onclick "eww open --toggle exit" (powericon))
-    
     ) 
   )
 )
 
+(defwidget musicbar[]
+      (overlay :hexpand true
+        (box :orientation 'v' :space-evenly false :class "musicbar" :halign 'center'  :style "background-image:  url('${cover_art}');") 
+        (box :class "barmusic-g")
+        (box :orientation 'h' :class "bmusicbuttons" :halign 'center' :valign 'center' :space-evenly false :spacing 120
+          (box :valign 'center' :class "hbmusicbutton"  "󰋎")
+        (box :orientation 'h' :class "bmusicbuttons" :halign 'center' :valign 'center' :space-evenly false
+          (button :onclick "~/.config/eww/scripts/ms.sh  --prev":valign 'center' :class "bmusicbutton"  "󰒮")
+          (button :onclick "~/.config/eww/scripts/ms.sh  --toggle" :valign 'center' :class "bmusicbutton"  "${song_status}")
+          (button :onclick "~/.config/eww/scripts/ms.sh  --next" :valign 'center' :class "bmusicbutton"  "󰒭")
+        ))
+      )
+) 
 
 (defwidget time[]
   (box :class "time" "${hour} : ${minute}")

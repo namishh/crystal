@@ -1,0 +1,52 @@
+(defwidget moment_calendar[]
+  (box :class " moment_calendar" :orientation "v" :space-evenly false
+			  (box :class "moment_up" :space-evenly false  (label :class "moment_month-year" :halign 'start' :hexpand true :text thourtime) (label :class "moment_month-year" :text month_year))
+				(box :class "moment_cal-box"
+					:orientation "v"
+					:space-evenly "false"
+					(box :class "moment_day-names" :orientation "h" :space-evenly "true"
+						(label :text "Su")
+						(label :text "Mo")
+						(label :text "Tu")
+						(label :text "We")
+						(label :text "Th")
+						(label :text "Fr")
+						(label :text "Sa")
+					)
+					(calendar :class "moment_cal" 
+						:show-details false :show-heading false :show-day-names false)
+				)
+  )
+)
+
+(defwidget weather[]
+  (box :class "weatherc" :orientation "h" :space-evenly false
+    (box :class "weather" :orientation "h" :hexpand true :space-evenly false
+      (box :class "weathericon" :hexpand true :halign "start" :style "color: ${weatherhex};" weathericon)
+      (box :class "weatherinfo" :valign 'center' :orientation "v" :space-evenly false :spacing 5
+          (box :class "weathertemp" :halign 'end' '${current_temp}°C')
+          (box :class "weatherdesc" :halign 'end' current_desc)
+        )
+    )
+  )
+)
+
+(defwidget moment[]
+    (box :orientation 'v' :class 'moment' :space-evenly false 
+      (moment_calendar)
+      (weather)
+ )
+)
+
+
+(defwindow moment
+    :monitor 0
+    :geometry (geometry :x "10px"
+      :y "10px"
+      :width "450px"
+      :height "585px"
+      :anchor "top right")
+    :stacking "fg"
+    :exclusive true
+  (moment))
+

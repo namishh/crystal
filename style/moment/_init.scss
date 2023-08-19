@@ -1,0 +1,81 @@
+.moment {
+  background: $background;
+  @include rounding;
+  font-family: "Iosevka Nerd Font";
+}
+
+calendar {
+  font-family: "Iosevka Nerd Font";
+
+  &:selected {
+    color: $accent;
+  }
+
+  &:indeterminate {
+    color: rgba(205, 219, 249, 0.3);
+  }
+}
+
+.moment_calendar {
+  background-color: $background;
+  border-radius: 10px;
+
+  .moment_cal-box {
+    padding: 0 1rem;
+    background-color: $background;
+    border-radius: inherit;
+
+    margin: 1em;
+
+
+    .moment_day-names {
+      font-family: "Iosevka Nerd Font";
+      margin: 1em 1em 0.5em;
+      font-weight: bold;
+      font-size: 20px;
+      color: $green;
+    }
+
+    .moment_cal {
+      font-size: 18px;
+      padding: 1em .75em 0.3em;
+    }
+  }
+}
+
+.moment_month-year {
+  font-family: "Iosevka Nerd Font";
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  background: rgba($blue, 0.08);
+  color: $foreground;
+
+}
+
+.moment_up {
+  padding: 18px;
+  background: $background-alt;
+}
+
+.weather {
+  @include rounding;
+  padding: 0.4rem 2rem;
+  background: $background-alt;
+}
+
+.weatherc {
+  padding: 0 0rem;
+}
+
+.weathericon {
+  font-size: 80px;
+  font-family: "Iosevka Nerd Font";
+}
+
+.weathertemp {
+  font-size: 24px
+}
+
+.weatherdesc {
+  font-size: 16px
+}

@@ -39,7 +39,8 @@
     }
 
     &.active {
-      background: $blue;
+
+      background: linear-gradient(to right, $blue, $blue-light);
       border-radius: 2px;
       background-size: cover;
       min-height: 11px;
@@ -97,7 +98,7 @@
 
 .bat_progress trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $blue, $green);
+  background: linear-gradient(to right, $blue, $blue-light);
 }
 
 .batterybar {
@@ -110,4 +111,29 @@
 .wifiicon {
   font-size: 20px;
   font-family: "Iosevka Nerd Font";
+}
+
+.musicbar {
+  @include rounding;
+  margin: 5px 0px;
+  background-position: bottom;
+  background-size: 100%;
+  min-height: 30px;
+  min-width: 280px;
+}
+
+.barmusic-g {
+  background-image: linear-gradient(to right, rgba($background, 0.8) 80%, rgba($background, 0.6));
+}
+
+.hbmusicbutton {
+  font-family: "Iosevka Nerd Font";
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.bmusicbutton {
+  font-family: "Iosevka Nerd Font";
+  padding: 1rem;
+  font-size: 24px;
 }

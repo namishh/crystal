@@ -12,26 +12,26 @@
 
 .volscale trough {
   min-width: 8rem;
-  min-height: 32px;
+  min-height: 16px;
   background: rgba($yellow, 0.05);
   @include rounding;
 }
 
 .volscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $red, $yellow);
+  background: linear-gradient(to right, $yellow, $yellow-light);
 }
 
 .brightscale trough {
   min-width: 8rem;
-  min-height: 32px;
+  min-height: 16px;
   background: rgba($blue, 0.05);
   @include rounding;
 }
 
 .brightscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $blue, $green);
+  background: linear-gradient(to right, $blue, $blue-light);
 }
 
 .profileimage {
@@ -64,7 +64,7 @@
 }
 
 .music-g {
-  background-image: linear-gradient(to right, rgba($background, 1), rgba($background, 0.8));
+  background-image: linear-gradient(to right, rgba($background, 1) 30%, rgba($background, 0.8));
 }
 
 .musicbutton {
@@ -83,7 +83,7 @@
   font-size: 28px;
   border-radius: 10px;
   padding: 1rem 2rem 1rem 1.6rem;
-  background: linear-gradient(to bottom right, rgba($red, 0.2), rgba($red, 0.1));
+  background: linear-gradient(to bottom right, rgba($red, 0.15), rgba($red, 0.1));
 }
 
 .music-scale trough {
@@ -121,6 +121,6 @@
 }
 
 .active {
-  background: linear-gradient(to bottom right, $blue 50%, $green);
+  background: linear-gradient(to bottom right, $blue 30%, $blue-light);
   color: $background;
 }
