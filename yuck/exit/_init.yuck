@@ -1,0 +1,64 @@
+(defwidget powerbutton[icon  c func]
+    (button :height 150 :width 100 :onclick "bash -c `eww close exit && ${func}`"  
+        (box :class "powerbtnicon ${c}" icon)
+    )
+  )
+(defwidget sundial []
+  (label :class "sundial" :halign "end" :hexpand true
+         :text {hour >= 2 && hour <= 4 ? "Early Morning" :
+               hour <= 5 ? "Dawn" :
+               hour >= 6 &&
+                (hour <= 8 &&
+                  minute <= 59) ? "Morning" :
+               hour >= 9 &&
+                (hour <= 11 && minute <= 59)
+                ? "Late Morning" :
+               hour == 12 && minute <= 29 ? "Midday" :
+               hour >= 12 && hour <= 16 ? "Afternoon" :
+               hour > 16 &&  hour <= 17 ?
+                "Late Afternoon" :
+               (hour >= 17 && minute <= 1)
+                || (hour <= 18 && minute <= 20) ?
+                  "Early Evening" :
+               hour >= 18 && hour <= 19 ? "Dusk" :
+               hour > 19 && hour <= 21 ? "Late Evening" :
+               hour > 21 ? "Night" : "Midnight"}))
+
+(defwidget exit[]
+  (box :orientation 'v' :space-evenly false :vexpand true :class "exit" :spacing 10 
+      (overlay 
+        (box :class "eb" :style "background-image:  url('${wallpaper}');")
+        (box :class "exit-g")
+        (box :class "exitcontent" :space-evenly false :orientation "v"
+          (box :orientation "h" :hexpand true  :space-evenly false 
+            (button  :onclick "eww close exit" :halign 'start' :hexpand true  :class "closeexit" "󰅖"  )
+              (box :orientation "h" :space-evenly false               (sundial)
+              (box :class "exituser"  :style "background-image:  url('/home/namish/.config/awesome/theme/pics/pfps/cat.jpg');"))
+            )
+          (box  :vexpand true :halign 'center' :valign "center" :orientation 'v' :spacing 10 :space-evenly false
+          (box :space-evenly false :halign 'center' :spacing 10 (box :class "exitmsg" "Choose wisely," ) (box :class "exitsp" "Explorer!"))
+          (box :orientation "h" :class "allbtns" :spacing 15 :valign "center" :hexpand false 
+            (powerbutton :icon "󰐥"  :c "red" :func "poweroff")
+            (powerbutton :icon "󰦛"  :c "blue" :func "reboot")
+            (powerbutton :icon "󰌾"  :c "green" :func "~/.local/bin/lock")
+            (powerbutton :icon "󰖔"  :c "yellow" :func "systemctl suspend")
+            (powerbutton :icon "󰿅" :c "magenta" :func "loginctl kill-user $USER") ))
+          (box :orientation "h" :hexpand true :halign 'start'  :space-evenly false 
+              (box :class "exitbat" "BAT - ${battery}")
+              (box :class "exitcover"  :style "background-image:  url('${cover_art}');")
+              (box :class "exitsong" "MUS - ${song}")
+            )
+        )
+      )
+  )
+)
+
+(defwindow exit
+    :monitor 0
+    :geometry (geometry :x "0px"
+      :y "0px"
+      :width "1920px"
+      :height "1130px"
+      :anchor "center")
+    :stacking "overlay"
+    :exclusive true  (exit))

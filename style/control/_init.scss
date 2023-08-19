@@ -83,7 +83,7 @@
   font-size: 28px;
   border-radius: 10px;
   padding: 1rem 2rem 1rem 1.6rem;
-  background: rgba($red, 0.1);
+  background: linear-gradient(to bottom right, rgba($red, 0.2), rgba($red, 0.1));
 }
 
 .music-scale trough {
@@ -93,7 +93,7 @@
 }
 
 .music-scale trough highlight {
-  background: $magenta;
+  background: linear-gradient(to right, rgba($magenta, 0.2) 4%, $magenta);
 }
 
 .musicinfo {
@@ -121,6 +121,6 @@
 }
 
 .active {
-  background: $blue;
+  background: linear-gradient(to bottom right, $blue 50%, $green);
   color: $background;
 }

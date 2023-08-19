@@ -4,7 +4,7 @@
     (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7 
       (button :onclick "eww open --toggle control" (batteryprog))
       (time) 
-      (powericon)
+      (button :onclick "eww open --toggle exit" (powericon))
     
     ) 
   )

@@ -31,3 +31,4 @@
 (defpoll dndactive :interval '1s' "~/.config/eww/scripts/dnd.sh --class")
 (defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi.sh --class")
 (defpoll btactive :interval '1s' "~/.config/eww/scripts/bl.sh --class")
+(defpoll wallpaper :interval "1h" "echo $WALLPAPER")

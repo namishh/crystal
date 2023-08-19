@@ -1,7 +1,7 @@
 .workspaces {
   background-color: $background-alt;
   @include rounding;
-  padding: 12px;
+  padding: 16px;
   margin-top: 2px;
 
   inner {
@@ -97,7 +97,7 @@
 
 .bat_progress trough highlight {
   @include rounding;
-  background-color: $blue;
+  background: linear-gradient(to right, $blue, $green);
 }
 
 .batterybar {
