@@ -58,7 +58,7 @@
         active_opacity = 1
         inactive_opacity = 1
         fullscreen_opacity = 1.0
-        rounding = 6
+        rounding = 3
         drop_shadow = true
         shadow_range = 4
         shadow_render_power = 3
@@ -214,8 +214,8 @@
       bind=,XF86AudioLowerVolume,exec, pamixer -d 5
       bind=,XF86AudioMute,exec, pamixer -t
       bind=,XF86AudioMicMute,exec, pamixer --default-source -t
-      bind=,XF86MonBrightnessUp,exec, light -A 5
-      bind=,XF86MonBrightnessDown, exec, light -U 5
+      bind=,XF86MonBrightnessDown,exec,brightnessctl set 5%-
+      bind=,XF86MonBrightnessUp,exec,brightnessctl set +5%
       bind=,XF86AudioPlay,exec, mpc -q toggle 
       bind=,XF86AudioNext,exec, mpc -q next 
       bind=,XF86AudioPrev,exec, mpc -q prev
@@ -248,12 +248,12 @@
       bind=CTRL SHIFT, j, resizeactive, 0 15
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
-      exec = export WALLPAPER=~/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper}
+      exec = source ~/.local/bin/upw
       exec = swaybg -i ~/.config/awesome/theme/wallpapers/${name}/${wallpaper} &
       exec = dunst &
       exec-once = xss-lock lock &
-      exec-once = eww open bar &
-      exec-once = xrdb -merge ~/.Xresources &
+      exec = pkill eww && eww open bar &
+      exec = xrdb -merge ~/.Xresources &
 
       layerrule = blur,lockscreen
       layerrule = blur,gtk-layer-shell
