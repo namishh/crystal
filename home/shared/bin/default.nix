@@ -7,10 +7,6 @@
         executable = true;
         text = import ./eyecandy/nixfetch.nix { };
       };
-      ".local/bin/wscreenshot" = {
-        executable = true;
-        text = import ./rofiscripts/wlscr.nix { };
-      };
       ".local/bin/lut" = {
         executable = true;
         text = import ./misc/lut.nix { inherit colors; };
