@@ -14,10 +14,7 @@
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
 
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     # Channel to follow.
     home-manager.inputs.nixpkgs.follows = "unstable";
