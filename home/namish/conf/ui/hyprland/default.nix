@@ -77,12 +77,19 @@
       }
       animations {
         enabled=1
-        bezier = overshot, 0.13, 0.99, 0.29, 1.1
-        animation = windows, 1, 4, overshot, slide
-        animation = windowsOut, 1, 5, default, popin 80%
-        animation = border, 1, 5, default
-        animation = fade, 1, 4, default
-        animation = workspaces, 1, 6, overshot, slidevert
+        bezier = md3_standard, 0.2, 0, 0, 1
+        bezier = md3_decel, 0.05, 0.7, 0.1, 1
+        bezier = md3_accel, 0.3, 0, 0.8, 0.15
+        bezier = overshot, 0.05, 0.9, 0.1, 1.1
+        bezier = crazyshot, 0.1, 1.5, 0.76, 0.92 
+        bezier = hyprnostretch, 0.05, 0.9, 0.1, 1.0
+        bezier = fluent_decel, 0.1, 1, 0, 1
+        # Animation configs
+        animation = windows, 1, 2, md3_decel, popin 80%
+        animation = border, 1, 10, default
+        animation = fade, 1, 2, default
+        animation = workspaces, 1, 3, md3_decel
+        animation = specialWorkspace, 1, 3, md3_decel, slidevert
       }
       gestures {
         workspace_swipe = true
@@ -249,6 +256,7 @@
       bindm = $mainMod, mouse:272, movewindow
       bindm = $mainMod, mouse:273, resizewindow
       exec = source ~/.local/bin/upw
+      exec = bash -c ~/.local/bin/genmenupic
       exec = swaybg -i ~/.config/awesome/theme/wallpapers/${name}/${wallpaper} &
       exec = dunst &
       exec-once = xss-lock lock &

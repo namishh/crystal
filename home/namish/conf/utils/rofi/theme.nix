@@ -1,73 +1,185 @@
 { config, colors, ... }:
 
 let inherit (config.lib.formats.rasi) mkLiteral; in
-with colors; {
-  "*" = {
-    bg = mkLiteral "#${background}";
-    fg = mkLiteral "#${foreground}";
-    button = mkLiteral "#${contrast}";
-    background-color = mkLiteral "@bg";
-    text-color = mkLiteral "@fg";
+with colors;
+{
+
+  "configuration" = {
+    modi = "drun,run,filebrowser,window";
+    show-icons = true;
+    display-drun = "APPS";
+    display-run = "RUN";
+    display-filebrowser = "FILES";
+    display-window = "WINDOW";
+    drun-display-format = "{name}";
+    window-format = "{w} · {c} · {t}";
   };
 
-  "#window" = {
+  "*" = {
+    background = "#${background}";
+    background-alt = "#${mbg}";
+    foreground = "#${foreground}";
+    selected = "#${color4}";
+    active = "#${color2}";
+    urgent = "#${color1}";
+  };
+
+  "window" = {
     transparency = "real";
-    border-color = mkLiteral "@button";
+    border-color = mkLiteral "@selected";
     border-radius = mkLiteral "0px";
     border = mkLiteral "2px";
-    width = mkLiteral "600px";
+    enabled = true;
+    width = mkLiteral "1000px";
   };
-  "#mainbox" = {
-    children = map mkLiteral [ "inputbar" "listview" ];
+  "mainbox" = {
+    enabled = true;
+    orientation = "horizontal";
+    children = [ "imagebox" "listbox" ];
+  };
+  "imagebox" = {
+    padding = "20px";
+    background-color = "transparent";
+    # background-image = "url(\"~/.config/rofi/menu.png\", height)";
+    orientation = "vertical";
+    children = [ "inputbar" "dummy" "mode-switcher" ];
+  };
+  "listbox" = {
+    spacing = "20px";
+    padding = "20px";
+    background-color = "transparent";
+    orientation = "vertical";
+    children = [ "message" "listview" ];
   };
 
-  "#inputbar" = {
-    children = map mkLiteral [ "prompt" "entry" ];
-    border-radius = mkLiteral "0px 0px 8px 8px";
-    padding = mkLiteral "10px";
-    background-color = mkLiteral "@button";
+  "dummy" = {
+    background-color = "transparent";
   };
-  "#prompt" = {
-    enabled = false;
+
+  "inputbar" = {
+    enabled = true;
+    spacing = "10px";
+    padding = "15px";
+    border-radius = "10px";
+    background-color = "@background-alt";
+    text-color = "@foreground";
+    children = [ "textbox-prompt-colon" "entry" ];
   };
-  "#entry" = {
-    placeholder = "Search";
-    placeholder-color = mkLiteral "@fg";
+
+  "textbox-prompt-colon" = {
+    enabled = true;
     expand = false;
-    border-radius = mkLiteral "8px";
-    padding = mkLiteral "1.5%";
-    background-color = mkLiteral "@button";
+    str = "";
+    background-color = "inherit";
+    text-color = "inherit";
+  };
+  "entry" = {
+    enabled = true;
+    background-color = "inherit";
+    text-color = "inherit";
+    cursor = "text";
+    placeholder = "Search";
+    placeholder-color = "inherit";
   };
 
-  "#listview" = {
+  "mode-switcher" = {
+    enabled = true;
+    spacing = "20px";
+    background-color = "transparent";
+    text-color = "@foreground";
+  };
+  "button" = {
+    padding = "15 px";
+    border-radius = "10 px";
+    background-color = "@background-alt";
+    text-color = "inherit";
+    cursor = "pointer";
+  };
+  "button selected" = {
+    background-color = "@selected";
+    text-color = "@foreground";
+  };
+  "listview" = {
+    enabled = true;
     columns = 1;
-    lines = 6;
+    lines = 8;
     cycle = true;
     dynamic = true;
-    layout = mkLiteral "vertical";
-    padding = mkLiteral "3% 1.5% 3% 1.5%";
+    scrollbar = false;
+    layout = "vertical";
+    reverse = false;
+    fixed-height = true;
+    fixed-columns = true;
+
+    spacing = "10px";
+    background-color = "transprent";
+    text-color = "@foreground";
+    cursor = "default";
   };
 
-  "#element" = {
-    orientation = mkLiteral "horizontal";
-    border-radius = mkLiteral "8px";
-    padding = mkLiteral "1.5% 0% 1.5% 0%";
+  "element" = {
+    enabled = true;
+    spacing = "15px";
+    padding = "8px";
+    border-radius = "10px";
+    background-color = "transprent";
+    text-color = "@foreground";
+    cursor = "pointer";
   };
-  "#element-text" = {
-    expand = true;
-    vertical-align = mkLiteral "0.5";
-    margin = mkLiteral "5px 2px";
-    background-color = mkLiteral "inherit";
-    text-color = mkLiteral "inherit";
+  "element normal.normal" = {
+    background-color = "inherit";
+    text-color = "inherit";
   };
-  "#element-icon" = {
-    background-color = mkLiteral "transparent";
-    size = mkLiteral "30px";
-    margin = mkLiteral "0 6px 0 12px";
+  "element normal.urgent" = {
+    background-color = "@urgent";
+    text-color = "@foreground";
   };
-  "#element selected" = {
-    background-color = mkLiteral "@button";
-    border-radius = mkLiteral "8px";
+  "element normal.active" = {
+    background-color = "active";
+    text-color = "@foreground";
+  };
+  "element selected.normal" = {
+    background-color = "@selected";
+    text-color = "@foreground";
+  };
+  "element selected.urgent " = {
+    background-color = "@urgent";
+    text-color = "@foreground";
+  };
+  "element selected.active" =
+    {
+      background-color = "@urgent";
+      text-color = "@foreground";
+    };
+  "element-icon" = {
+    background-color = "transprent";
+    text-color = "inherit";
+    size = "32px";
+    cursor = "inherit";
+  };
+  "element-text" = {
+    background-color = "transprent";
+    text-color = "inherit";
+    cursor = "inherit";
+    vertical-align = "0.5";
+    horizontal-align = "0.0";
+  };
+  "message" = {
+    background-color = "transprent";
+  };
+  "textbox" = {
+    padding = "15px";
+    border-radius = "10px";
+    background-color = "@background-alt";
+    text-color = "@foreground";
+    vertical-align = "0.5";
+    horizontal-align = "0.0";
+  };
+  "error-message" = {
+    padding = "15px";
+    border-radius = "20px";
+    background-color = "@background";
+    text-color = "@foreground";
   };
 }
 
