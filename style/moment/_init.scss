@@ -46,8 +46,6 @@ calendar {
 .moment_month-year {
   font-family: "Iosevka Nerd Font";
   font-size: 1.3rem;
-  padding: 0.5rem;
-  background: rgba($blue, 0.08);
   color: $foreground;
 
 }
@@ -55,27 +53,4 @@ calendar {
 .moment_up {
   padding: 18px;
   background: $background-alt;
-}
-
-.weather {
-  @include rounding;
-  padding: 0.4rem 2rem;
-  background: $background-alt;
-}
-
-.weatherc {
-  padding: 0 0rem;
-}
-
-.weathericon {
-  font-size: 80px;
-  font-family: "Iosevka Nerd Font";
-}
-
-.weathertemp {
-  font-size: 24px
-}
-
-.weatherdesc {
-  font-size: 16px
 }

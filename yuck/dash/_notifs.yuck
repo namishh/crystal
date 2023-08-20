@@ -1,0 +1,55 @@
+(defwidget card [?class summary body glyph ?glyph_class ?SL ?M ?L ?R]
+  (eventbox :onmiddleclick M
+    :onclick L
+    :onrightclick R
+    :class "control-center-card-eventbox"
+    (box :space-evenly false :orientation ''
+      
+      (box :orientation "vertical"
+        :class class
+        :hexpand true
+        :space-evenly false
+        :class "control-center-card-box"
+        
+        (box :space-evenly false
+            :class "control-center-titlebar"
+          (label :limit-width 25
+            :wrap true
+            :text summary
+            :class "control-center-summary"
+            :halign "start"
+          :hexpand true)
+          (button :onclick "~/.config/eww/scripts/notification_logger.zsh rm_id ${SL}"
+            :class "red control-center-card-notify-close"
+            :halign "end"
+            (label :text "x")))
+        (box :class "control-center-content" :space-evenly false
+        (label :class "control-center-glyph ${glyph_class}"
+        :text glyph)
+          (label :limit-width 40
+          :halign "start"
+          :valign "start"
+          :wrap true
+          :text body
+          :class "control-center-body"))
+        )
+      )
+    )
+)
+
+(defwidget statcard[icon value color]
+  (box :orientation 'v' :class 'statcard' :space-evenly false
+      (box :halign 'start' :class '${color} statcard-icon' icon)
+      (box :class 'white statcard-value' '${value}%')
+      (scale :class 'statcard-scale statcard-scale-${color}' :min 0 :max 100 :active false :value value)
+  )
+)
+(defwidget disclose[]
+    (box :class "control-center" :space-evenly false :orientation 'v' :width 360 
+      (box :class "control-center-header" :space-evenly false :hexpand true
+        (box :halign 'start' :hexpand true :class "control-center-title" "Notifications")
+        (button :class "control-center-clear-all" :onclick '~/.config/eww/scripts/notification_logger.zsh clear' "Clear All")
+        )
+        (literal :content cards)
+    )
+)

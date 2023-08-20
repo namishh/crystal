@@ -28,7 +28,7 @@
   (box :class "time" "${hour} : ${minute}")
 )
 (defwidget launcher[]
-  (box :class "launcher" " ")
+  (button :onclick "eww open --toggle dash" (box :class "launcher" " "))
 )
 (defwidget batteryprog[]
   (box :class "batterybar" :space-evenly false :spacing 18

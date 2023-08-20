@@ -1,0 +1,242 @@
+.dash {
+  padding: 1rem;
+  background: $background;
+  @include rounding;
+}
+
+.bartime {
+  padding: 1rem;
+  background: $background-alt;
+  font-size: 3rem;
+  font-family: "Iosevka Nerd Font";
+}
+
+.boxred {
+  background: $red;
+}
+
+.boxgreen {
+  background: $green;
+}
+
+.boxblue {
+  background: $blue;
+}
+
+.horizontalWidget {
+  margin-top: 1rem;
+}
+
+.userbg {
+  background: $background-alt;
+  padding: 2rem;
+  min-height: 150px;
+  min-width: 150px;
+}
+
+.userimage {
+  background-size: cover;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-width: 100px;
+  min-height: 150px;
+}
+
+.stats {
+  padding: 1rem;
+  min-width: 170px;
+  background: $background-alt;
+}
+
+.statscale trough {
+  min-width: 8px;
+  min-height: 18.5rem;
+  background: rgba($foreground, 0.02);
+  @include rounding;
+}
+
+.memscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $yellow, $yellow-light);
+}
+
+.diskscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $blue, $blue-light);
+}
+
+.tempscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $green, $green-light);
+}
+
+.cpuscale trough highlight {
+  @include rounding;
+  background: linear-gradient(to right, $red, $red-light);
+}
+
+.statstitle {
+  font-family: "Iosevka Nerd Font";
+}
+
+.weatherbox {
+  background: $background-alt;
+  padding: 1rem;
+}
+
+.weatherbox {
+  font-size: 20px;
+  font-family: "Iosevka Nerd Font";
+}
+
+.weathericon {
+
+  font-family: Material Design Icons Desktop;
+  font-size: 100px;
+  margin-right: 3.5rem;
+}
+
+.dashdate {
+  padding: 1rem;
+  background: $background-alt;
+  font-size: 16px;
+  font-family: "Iosevka Nerd Font";
+}
+
+.dashdatedate {
+  font-size: 14px;
+  color: $magenta;
+}
+
+.control-center {
+  margin-top: 15px;
+  padding: 1rem 2rem;
+  background-color: $background-alt;
+  color: $foreground;
+
+  font-family: "Iosevka Nerd Font";
+
+  &-body {
+    padding: 1rem;
+  }
+
+  &-card-box {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
+
+  &-card-notify-close {
+    border: none;
+    font-size: 1.7rem;
+  }
+
+  &-titlebar {
+    background-color: rgba($blue, 0.04);
+    padding: 0.4rem 1rem;
+
+  }
+
+  &-content {
+    padding: 1rem;
+  }
+
+  &-card-eventbox {
+    background-color: rgba($foreground, 0.02);
+    padding: 1rem;
+  }
+
+  &-glyph {
+    font-size: 2.4rem;
+    padding: 1.7rem;
+    margin-right: 1rem;
+    background-color: rgba($foreground, 0.02);
+    font-family: "Material Design Icons Desktop";
+  }
+
+  &-changebrightness {
+    color: $yellow;
+  }
+
+  &-empty-label {
+    font-size: 1.3rem;
+  }
+
+  &-changevolume {
+    color: $cyan;
+  }
+
+  &-Spotify {
+    color: $green;
+  }
+
+  &-firefox {
+    color: $yellow;
+  }
+
+  &-screenshot {
+    color: $magenta;
+  }
+
+  &-separator {
+    background-color: $comment;
+  }
+
+  &-title {
+    font-size: 1.3rem;
+    font-weight: 300;
+
+  }
+
+  &-header {
+    padding: 0.5rem 0rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-clear-all {
+    background-color: rgba($red, 0.1);
+    color: $red;
+    padding: .8rem;
+  }
+
+  font-family: "Iosevka Nerd Font";
+}
+
+.statcard {
+  &-box {
+    padding: 0 1rem 1rem 1rem;
+    background-color: $background;
+  }
+
+  &-icon {
+    font-family: "Iosevka Nerd Font";
+    margin-bottom: 2rem;
+  }
+
+  &-value {
+    font-family: "Iosevka Nerd Font";
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  &-scale trough {
+    min-height: 0.2rem;
+    background-color: rgba($foreground, 0.2);
+  }
+
+  &-scale-red trough highlight {
+    background-color: $red;
+  }
+
+
+  &-scale-blue trough highlight {
+    background-color: $blue;
+  }
+
+  &-scale-green trough highlight {
+    background-color: $green;
+  }
+
+  padding: 1rem;
+  background-color: $background-alt;
+}

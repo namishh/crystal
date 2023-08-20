@@ -7,25 +7,25 @@
 .sliders {
   @include rounding;
   background: $background-alt;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .volscale trough {
   min-width: 8rem;
-  min-height: 16px;
-  background: rgba($yellow, 0.05);
+  min-height: 12px;
+  background: rgba($foreground, 0.02);
   @include rounding;
 }
 
 .volscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $yellow, $yellow-light);
+  background: linear-gradient(to right, $green, $green-light);
 }
 
 .brightscale trough {
   min-width: 8rem;
-  min-height: 16px;
-  background: rgba($blue, 0.05);
+  min-height: 12px;
+  background: rgba($foreground, 0.02);
   @include rounding;
 }
 
@@ -83,7 +83,7 @@
   font-size: 28px;
   border-radius: 10px;
   padding: 1rem 2rem 1rem 1.6rem;
-  background: linear-gradient(to bottom right, rgba($red, 0.15), rgba($red, 0.1));
+  background: linear-gradient(to bottom right, rgba($red, 0.05), rgba($red, 0.03));
 }
 
 .music-scale trough {
@@ -116,11 +116,21 @@
   font-family: Material Design Icons;
   background: rgba($blue, 0.03);
   @include rounding;
-  padding: 2.5rem;
+  padding: 1.5rem;
   font-size: 24px;
 }
 
 .active {
   background: linear-gradient(to bottom right, $blue 30%, $blue-light);
   color: $background;
+}
+
+.scaleicon {
+  font-family: Material Design Icons;
+  font-size: 18px;
+}
+
+.mono {
+  font-size: 16px;
+  font-family: "Iosevka Nerd Font";
 }

@@ -19,23 +19,9 @@
   )
 )
 
-(defwidget weather[]
-  (box :class "weatherc" :orientation "h" :space-evenly false
-    (box :class "weather" :orientation "h" :hexpand true :space-evenly false
-      (box :class "weathericon" :hexpand true :halign "start" :style "color: ${weatherhex};" weathericon)
-      (box :class "weatherinfo" :valign 'center' :orientation "v" :space-evenly false :spacing 5
-          (box :class "weathertemp" :halign 'end' '${current_temp}°C')
-          (box :class "weatherdesc" :halign 'end' current_desc)
-        )
-    )
-  )
-)
-
 (defwidget moment[]
     (box :orientation 'v' :class 'moment' :space-evenly false 
-      (moment_calendar)
-      (weather)
- )
+      (moment_calendar))
 )
 
 
@@ -44,7 +30,7 @@
     :geometry (geometry :x "10px"
       :y "10px"
       :width "450px"
-      :height "585px"
+      :height "360px"
       :anchor "top right")
     :stacking "fg"
     :exclusive true

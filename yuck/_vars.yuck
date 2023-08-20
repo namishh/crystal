@@ -32,7 +32,10 @@
 (defpoll dndactive :interval '1s' "~/.config/eww/scripts/dnd.sh --class")
 (defpoll wifiactive :interval '1s' "~/.config/eww/scripts/wifi.sh --class")
 (defpoll btactive :interval '1s' "~/.config/eww/scripts/bl.sh --class")
-(defpoll wallpaper :interval "1h" "echo $WALLPAPER")
+(defpoll wallpaper :interval "1h" "source ~/.local/bin/upw && echo $WALLPAPER")
+
+(deflisten cards "~/.config/eww/scripts/notification_logger.zsh subscribe")
+(defpoll critical :interval "1s" "~/.config/eww/scripts/notification_logger.zsh crits")
 
 (defpoll weathericon :interval "2h" "~/.config/eww/scripts/weather.sh icon")
 (defpoll weatherhex :interval "2h" "~/.config/eww/scripts/weather.sh hex")

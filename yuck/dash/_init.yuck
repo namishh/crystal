@@ -1,0 +1,89 @@
+(defwidget dashtime[]
+  (box :class "bartime" :orientation "h" :space-evenly false :spacing 10
+    (box :hexpand true :halign "end"  "${hour}")
+    (box :class "boxes" :orientation "v" :valign "center" :space-evenly false :spacing 5
+        (box :width 8 :height 8 :class "boxred")
+        (box :width 8 :height 8 :class "boxgreen")
+        (box :width 8 :height 8 :class "boxblue")
+    )
+    (box :hexpand true :halign "start"  "${minute}")
+  )
+)
+
+(defwidget statscale[class value]
+   (scale :class "statscale ${class}"
+				:min 0
+				:max 100
+				:orientation "v"
+        :value value
+        :flipped true
+        :active false
+        :halign 'center'
+        :valign 'center')
+)
+
+(defwidget stats[]
+  (box :class "stats" :orientation 'v' :space-evenly false :spacing 22
+      (box :class "statstitle" :halign "start" "Stats")
+      (box
+      (statscale :class "cpuscale" :value {round(EWW_CPU.avg, 0)})
+      (statscale :class "memscale" :value {EWW_RAM.used_mem_perc})
+      (statscale :class "diskscale" :value {EWW_DISK["/"].used_perc})
+      (statscale :class "tempscale" :value {EWW_TEMPS["ACPITZ_TEMP1"]})
+      )
+    )
+)
+
+(defwidget userimage[]
+  (overlay 
+  (box :class "userbg" )
+  (box :class "userimage" :style 'background-image: url("/home/namish/.config/awesome/theme/pics/pfps/snoo.png");')
+  )
+)
+
+(defwidget datewidget[]
+  (box "hi")
+)
+
+(defwidget weather[]
+  (box :class "weatherbox" :orientation "v" :vexpand true :space-evenly false
+    (box :halign "start" :class "weathertemp" current_temp)
+    (box :halign "start" :vexpand true :class "weatherdesc" current_desc)
+    (box :halign "end" :valign "end" :class "weathericon" :style 'color: ${weatherhex};' weathericon)
+  )
+)
+
+(defwidget horizontalWidget[]
+  (box :orientation "h" :space-evenly false :class "horizontalWidget" :spacing 15
+      (box :orientation "v" :space-evenly false :spacing 15
+        (userimage)
+        (weather)
+      )
+      (box :orientation "v" :space-evenly false :spacing 15
+        (box :class "dashdate" :orientation 'v' :space-evenly false
+          (box :halign 'start' :class "dashdatedate" day)
+          (box :halign 'start' month_year)
+          )
+        (stats)
+      )
+    )
+)
+
+(defwidget dash[]
+  (box :class "dash" :space-evenly false :orientation "v"
+    (dashtime)
+    (horizontalWidget)
+    (disclose)
+  )
+)
+
+(defwindow dash
+    :monitor 0
+    :geometry (geometry :x "10px"
+      :y "10px"
+      :width "450px"
+      :height "800px"
+      :anchor "top left")
+    :stacking "fg"
+    :exclusive true
+  (dash))

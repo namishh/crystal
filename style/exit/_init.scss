@@ -10,28 +10,6 @@
   min-height: 1080px;
 }
 
-.powertitle {
-  @include rounding;
-  font-family: Iosevka Nerd Font;
-  font-size: 20px;
-  padding: 0.6rem 2rem;
-  color: $background;
-  background: linear-gradient(to right, $blue, $green);
-}
-
-.powertime {
-  font-family: Iosevka Nerd Font;
-  font-size: 20px;
-  padding: 0.6rem 2rem;
-  @include rounding;
-  color: $background;
-  background: linear-gradient(to right, $red, $yellow);
-}
-
-.topbar {
-  padding: 1rem;
-  background: $background-alt;
-}
 
 .powername {
   font-size: 20px;
@@ -89,9 +67,8 @@
 }
 
 .closeexit {
-  background: linear-gradient(to bottom right, $red 60%, $yellow);
   font-size: 30px;
-  color: $background;
+  color: $red;
   padding: 0 5px;
   @include rounding;
   font-family: Material Design Icons;
@@ -99,7 +76,7 @@
 
 .exitsong {
   border-radius: 0px 5px 5px 0px;
-  background-image: linear-gradient(to right, $magenta, $blue);
+  background-image: linear-gradient(to right, $magenta, $magenta-light);
   padding: 10px 18px;
   color: $background;
   font-size: 16px;
@@ -118,7 +95,7 @@
 
 .sundial {
   border-radius: 5px 0px 0px 5px;
-  background-image: linear-gradient(to right, $blue, $magenta);
+  background-image: linear-gradient(to right, $blue, $blue-light);
   padding: 4px 18px;
   color: $background;
   font-size: 16px;
