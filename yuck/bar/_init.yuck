@@ -3,6 +3,7 @@
     (box :halign "start" :valign "center" :vexpand true  :space-evenly false :spacing 7 (launcher) (workspaces))
     (box :halign 'left' :hexpand true (musicbar))  
     (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7 
+      (theme)
       (button :onclick "eww open --toggle control" (batteryprog))
       (button :onclick "eww open --toggle moment" (time))
       (button :onclick "eww open --toggle exit" (powericon))
@@ -22,7 +23,30 @@
           (button :onclick "~/.config/eww/scripts/ms.sh  --next" :valign 'center' :class "bmusicbutton"  "󰒭")
         ))
       )
-) 
+)
+(defvar themerev false)
+(defwidget theme[]
+(eventbox :onhover "eww update themerev=true"
+			  :onhoverlost "eww update themerev=false"
+		(box :vexpand "false" :hexpand "false" :space-evenly "false"
+				(button :class "icon"  :wrap "false" :limit-width 12 "󰃣")
+
+        (revealer :transition "slideleft"
+			    :reveal themerev
+			    :duration "350ms"
+          (box :class "themes" :space-evenly false :spacing 10 
+            (themeButton :color "#8dc080" :name "forest")
+            (themeButton :color "#659bdb" :name "wave")
+            (themeButton :color "#c668cc" :name "cat")
+            (themeButton :color "#c75f68" :name "onedark")
+          )
+        )
+  )
+))
+
+(defwidget themeButton[color name]
+  (button :onclick "setTheme ${name}" (box :valign 'center' :height 12 :width 12 :style 'background-color: ${color};'))
+)
 
 (defwidget time[]
   (box :class "time" "${hour} : ${minute}")

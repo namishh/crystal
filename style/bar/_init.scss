@@ -137,3 +137,19 @@
   padding: 1rem;
   font-size: 24px;
 }
+
+.icon {
+  background: $background-alt;
+  padding: 0.4rem 1rem;
+  font-size: 18px;
+  @include rounding;
+  margin: 4px 0;
+  margin-right: 0rem;
+  font-family: Material Design Icons Desktop;
+}
+
+.themes {
+  background: $background-alt;
+  margin: 4px 0;
+  padding: 0.4rem;
+}

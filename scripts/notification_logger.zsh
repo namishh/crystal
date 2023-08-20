@@ -46,7 +46,7 @@ function create_cache() {
     "microphone") glyph="󰍰";;
     "changevolume") glyph="󰕾";;
     "screenshot") glyph="󰢨";;
-    "firefox") glyph="󰈹";;
+    "firefox") glyph="󰈹 ";;
   esac
   # pipe stdout -> pipe cat stdin (cat conCATs multiple files and sends to stdout) -> absorb stdout from cat
   # concat: "one" + "two" + "three" -> notice how the order matters i.e. "one" will be prepended
