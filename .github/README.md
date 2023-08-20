@@ -24,9 +24,9 @@
 
 ## Features of config
 + **OS**     -  nixos
-+ **WM**     -  awesome - [config](https://github.com/chadcat7/fuyu/tree/the-awesome-config)
++ **WM**     -  awesome - [config](https://github.com/chadcat7/fuyu/tree/the-awesome-config) // hyprland
 + **Shell**  -  zsh
-+ **Term**   -  kitty
++ **Term**   -  wezterm
 + **Music**  -  ncmpcpp
 + **Comp**   -  picom - [fdev31 fork](https://github.com/fdev31/picom/tree/animation-pr)
 + **Editor** -  nvim v0.9 - [my config](https://github.com/chadcat7/lodo)
@@ -161,6 +161,13 @@ If you that determined, here are some resources to start out
 | <b>Spicetify</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
+
+| <b>Hyprland stuff</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/hl/01.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/hl/02.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/hl/03.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/hl/04.png"  alt="bottom panel preview"></a>                    |
 
 ## Installation
 Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
