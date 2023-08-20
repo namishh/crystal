@@ -81,6 +81,7 @@ in
       wl-clipboard
       sway-contrib.grimshot
       xss-lock
+      recode
       gcc
       zls
       go

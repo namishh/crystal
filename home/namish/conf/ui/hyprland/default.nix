@@ -13,8 +13,6 @@
       monitor=,preferred,auto,1 
       # monitor=HDMI-A-1, 1920x1080, 0x0, 1
       # monitor=eDP-1, 1920x1080, 1920x0, 1
-      # Source a file (multi-file configs)
-      # source = ~/.config/hypr/myColors.conf
       input {
         kb_layout = us
         kb_variant =
@@ -212,7 +210,6 @@
       #------------------------#
       # quickly launch program #
       #------------------------# 
-      bind=$mainMod,M,exec,netease-cloud-music-gtk4 
       bind=$mainMod,A,exec, rofi -show drun
       #-----------------------------------------#
       # control volume,brightness,media players-#
@@ -260,7 +257,7 @@
       exec = swaybg -i ~/.config/awesome/theme/wallpapers/${name}/${wallpaper} &
       exec = dunst &
       exec-once = xss-lock lock &
-      exec = pkill eww && eww open bar &
+      exec =  eww open bar && eww reload &
       exec = xrdb -merge ~/.Xresources &
 
       layerrule = blur,lockscreen
