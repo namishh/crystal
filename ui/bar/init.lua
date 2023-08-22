@@ -9,10 +9,9 @@ local taglist     = require("ui.bar.modules.tags")
 local systraybox  = require("ui.bar.modules.tray")
 local status      = require("ui.bar.modules.status")
 local time        = require("ui.bar.modules.time")
-local search      = require("ui.bar.modules.search")
 local launcher    = require("ui.bar.modules.misc").launcher
 local powerbutton = require("ui.bar.modules.misc").powerbutton
-
+local music       = require("ui.bar.modules.music")
 local barheight   = dpi(beautiful.barSize) - 2
 local barwidth    = beautiful.barShouldHaveGaps == false and beautiful.scrwidth or
     beautiful.scrwidth - beautiful.barPadding
@@ -44,7 +43,24 @@ local function init(s)
         {
           layout = fixedlayout,
           launcher,
-          search,
+          {
+            {
+              {
+                {
+                  taglist(s),
+                  widget = wibox.container.margin,
+                  margins = (beautiful.barDir == "top" or "bottom") and 8 or dpi(15),
+                },
+                widget = wibox.container.place,
+                halign = 'center',
+                valign = 'center'
+              },
+              bg = beautiful.bg2,
+              widget = wibox.container.background
+            },
+            widget = wibox.container.margin
+          },
+
           spacing = 7,
         },
         top = dpi(8),
@@ -54,27 +70,9 @@ local function init(s)
         widget = wibox.container.margin
       },
       {
-        {
-          {
-            {
-              taglist(s),
-              widget = wibox.container.margin,
-              margins = (beautiful.barDir == "top" or "bottom") and 8 or dpi(15),
-            },
-            widget = wibox.container.place,
-            halign = 'center',
-            valign = 'center'
-          },
-          bg = beautiful.bg2,
-          widget = wibox.container.background
-        },
-        margins = {
-          top = 7,
-          left = (beautiful.barDir == "top" or "bottom") and 13 or 6,
-          right = (beautiful.barDir == "top" or "bottom") and 13 or 6,
-          bottom = 7
-        },
-        widget = wibox.container.margin
+        music,
+        widget = wibox.container.place,
+        halign = "center"
       },
       {
         --Right

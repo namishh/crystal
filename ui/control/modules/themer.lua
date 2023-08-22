@@ -140,5 +140,9 @@ local finalwidget = wibox.widget {
   bg = beautiful.bg2 .. 'cc',
 }
 
-
+awesome.connect_signal("update::control", function()
+  drawing.image = helpers.cropSurface(2,
+    gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+      string.lower(currTheme) .. ".png"))
+end)
 return finalwidget

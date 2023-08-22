@@ -8,7 +8,7 @@ local appearConfig       = require("config.appearance")
 local theme_path         = gfs.get_configuration_dir() .. "/theme/"
 theme.barfont            = 'Iosevka Nerd Font 13'
 theme.font               = 'Iosevka Nerd Font'
-theme.sans               = "IBM Plex Sans"
+theme.sans               = "Dosis"
 theme.icofont            = 'Material Design Icons'
 
 theme.titlebarType       = appearConfig.titlebarType
