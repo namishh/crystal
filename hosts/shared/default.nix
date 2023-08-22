@@ -47,6 +47,7 @@ in
     material-design-icons
     phospor
     inter
+    dosis
     material-symbols
     rubik
     ibm-plex

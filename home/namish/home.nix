@@ -46,7 +46,7 @@ in
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
-    (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
+    (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/awesome.nix { inherit pkgs colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
@@ -112,6 +112,8 @@ in
       fzf
       feh
       exa
+      figma-linux
+      figma-agent
     ];
   };
   nixpkgs.config = {
