@@ -6,5 +6,5 @@ _:
   cd /etc/nixos && home-manager switch --flake ".#$USER"
   echo $THEME > /tmp/themeName
   kill -USR1 $(pidof st)
-  awesome-client 'awesome.restart()'
+  awesome-client 'awesome.emit_signal("colors::refresh")'
 ''

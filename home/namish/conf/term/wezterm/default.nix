@@ -3,7 +3,6 @@
 with colors; {
   programs.wezterm = {
     enable = true;
-    #package = (builtins.getFlake "github:fortuneteller2k/nixpkgs-f2k").packages.${pkgs.system}.wezterm-git;
     colorSchemes = import ./colors.nix {
       inherit colors;
     };

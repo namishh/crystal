@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/wave.nix { };
+  colors = import ../shared/cols/rose.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -78,9 +78,11 @@ in
       chromium
       catimg
       dunst
+      git-lfs
       wl-clipboard
       sway-contrib.grimshot
       xss-lock
+      htop
       recode
       gcc
       zls
@@ -120,8 +122,5 @@ in
     allowUnfree = true;
     allowBroken = true;
     allowUnfreePredicate = _: true;
-  };
-  home.sessionVariables = {
-    WALLPAPER = "${config.home.homeDirectory}/.config/awesome/theme/wallpapers/${colors.name}/${colors.wallpaper}";
   };
 }
