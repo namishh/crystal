@@ -1,7 +1,9 @@
 local gtimer = require "gears.timer"
-local collectgarbage = collectgarbage
-collectgarbage("setpause", 110)
-collectgarbage("setstepmul", 1000)
+require 'beautiful'.init('~/.config/awesome/theme/init.lua')
+require 'main'
+require 'signals'
+require 'ui'
+
 
 gtimer {
   timeout = 5,
@@ -12,7 +14,5 @@ gtimer {
   end,
 }
 
-require 'beautiful'.init('~/.config/awesome/theme/init.lua')
-require 'main'
-require 'signals'
-require 'ui'
+collectgarbage("setpause", 110)
+collectgarbage("setstepmul", 1000)

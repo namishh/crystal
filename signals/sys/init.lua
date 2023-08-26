@@ -1,5 +1,6 @@
 require("signals.sys.bright")
 require("signals.sys.dnd")
 require("signals.sys.mic")
+require("signals.sys.col")
 require("signals.sys.volume")
 require("signals.sys.theme")

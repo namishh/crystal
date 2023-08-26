@@ -54,12 +54,12 @@ return function(s)
       {
         {
           markup = '',
-          shape  = helpers.rrect(20),
+          shape  = helpers.rrect(3),
           widget = wibox.widget.textbox,
         },
         valign        = 'center',
         id            = 'background_role',
-        shape         = gears.shape.circle,
+        shape         = helpers.rrect(1),
         widget        = wibox.container.background,
         forced_width  = 10,
         forced_height = 11,

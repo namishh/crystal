@@ -11,7 +11,7 @@ local art       = wibox.widget {
   opacity = 0.25,
   shape = helpers.rrect(4),
   forced_height = dpi(36),
-  forced_width = dpi(205),
+  forced_width = dpi(255),
   widget = wibox.widget.imagebox
 }
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
