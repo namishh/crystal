@@ -1,41 +1,40 @@
 {}:
 rec {
-   wallpaper = "girl-reading-book.jpg"; 
+   wallpaper = "astro.png"; 
   foreground = "fbf1c7";
-  background = "1f1f1f";
-  darker = "171717";
-  bg2 = "2a2a2a";
-  mbg = "282828";
+  background = "1e2122";
+  darker = "17191a";
+  bg2 = "222627";
+  mbg = "212526";
 
   cursorColor = "fbf1c7";
-  contrast = "222222";
-  cursorline = "222222";
-  comment = "666660";
+  contrast = "222627";
+  cursorline = "222627";
+  comment = "928374";
 
-  color0 = "1f1e1b";
-  color8 = "201f1c";
+  color0 = "282c2d";
+  color8 = "2d3132";
 
-  color1 = "da4b3b";
-  color9 = "f15341";
+  color1 = "ec6b64";
+  color9 = "ec653c";
 
-  color2 = "99bf46";
-  color10 = "91c538";
+  color2 = "89b482";
+  color10 = "7fb477";
 
-  color3 = "dc8c61";
-  color11 = "e1956c";
+  color3 = "d69d76";
+  color11 = "d69569";
 
-  color4 = "649583";
-  color12 = "649583";
+  color4 = "6f8faf";
+  color12 = "6289af";
 
-  color5 = "bd798c";
-  color13 = "e3839d";
+  color5 = "cc7f94";
+  color13 = "cc768e";
 
-  color6 = "7bac69";
-  color14 = "7db868";
+  color6 = "6facaf";
+  color14 = "6cacaf";
 
-  color7 = "fbf1c7";
-  color15 = "fbf1c7";
+  color7 = "d4be98";
+  color15 = "d4be98";
   name = "groove";
   neofetchpic = "table.png";
 }
-

@@ -68,12 +68,13 @@ in
     # gtk portal needed to make gtk apps happy
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-
+  programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     nodejs
     lutgen
     home-manager
     lua-language-server
+    inputs.nix-gaming.packages.${pkgs.system}.rocket-league
     lua54Packages.lua
     blueman
     inotify-tools
@@ -81,15 +82,21 @@ in
     rnix-lsp
     xorg.xwininfo
     pulseaudio
+    gamemode
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
     gtk3
+    appimage-run
     jq
     st
     spotdl
     discord
+    osu-lazer
+    heroic
+    lutris
     firefox
+    gperftools
     unzip
     imgclr
     grim
@@ -108,8 +115,11 @@ in
     pamixer
     nix-prefetch-git
     python3
+    legendary-gl
     brillo
     wmctrl
+    steam
+    steam-run
     slop
     ueberzugpp
     ripgrep
@@ -148,6 +158,9 @@ in
       trusted-users = [ "root" "@wheel" ];
       auto-optimise-store = true;
       warn-dirty = false;
+      substituters = [ "https://nix-gaming.cachix.org" ];
+      trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+
     };
     gc = {
       automatic = true;

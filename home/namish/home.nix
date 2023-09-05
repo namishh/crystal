@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/rose.nix { };
+  colors = import ../shared/cols/groove.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -54,6 +54,7 @@ in
     #(import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./misc/xinit.nix { })
     (import ./misc/eww.nix { inherit config colors; })
+    (import ./misc/btrdc.nix { inherit config colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors; })
@@ -105,6 +106,7 @@ in
       imagemagick
       xorg.xev
       procps
+      betterdiscordctl
       killall
       moreutils
       cava

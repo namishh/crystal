@@ -10,10 +10,9 @@
     nur.url = "github:nix-community/NUR";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
-
     spicetify-nix.url = "github:the-argus/spicetify-nix";
     nixpkgs-f2k.url = "github:fortuneteller2k/nixpkgs-f2k";
-
+    nix-gaming.url = "github:fufexan/nix-gaming";
     hyprland-plugins.url = "github:hyprwm/hyprland-plugins";
 
     # Channel to follow.
