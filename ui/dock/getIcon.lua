@@ -1,5 +1,9 @@
-local icon_cache = {}
-local colors = require("theme.colors")
+local gfs          = require("gears.filesystem")
+local gears        = require("gears")
+local appearConfig = require("config.appearance")
+local theme_path   = gfs.get_configuration_dir() .. "/theme/"
+local icon_cache   = {}
+local colors       = require("theme.colors")
 local function Get_icon(client, program_string, class_string, is_steam)
   client = client or nil
   program_string = program_string or nil
@@ -22,6 +26,12 @@ local function Get_icon(client, program_string, class_string, is_steam)
           return colors.iconTheme .. "apps/scalable/default-application.svg"
         end
       end
+    elseif class_string == "osu!" then
+      return theme_path .. "icons/osu.svg"
+    elseif class_string == "heroic" then
+      return theme_path .. "icons/heroic.svg"
+    elseif class_string == "rocketleague.exe" then
+      return theme_path .. "icons/rocketleague.svg"
     else
       if program_string then
         clientName = program_string .. ".svg"

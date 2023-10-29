@@ -1,7 +1,7 @@
 local gtimer = require "gears.timer"
 require 'beautiful'.init('~/.config/awesome/theme/init.lua')
-require 'main'
 require 'signals'
+require 'main'
 require 'ui'
 
 

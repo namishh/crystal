@@ -12,7 +12,6 @@ local gcolor = require('gears.color')
 local gtimer = require('gears.timer')
 local helpers = require("helpers")
 
-
 local capi = {
   awesome = awesome,
   mouse = mouse,

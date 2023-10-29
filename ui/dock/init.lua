@@ -221,9 +221,24 @@ local tomfoolery = function(s)
         convert = "image-viewer"
       },
       {
-        name = "code",
-        convert = "visualstudiocode",
-        command = "code"
+        name = "steam",
+        convert = "steam",
+        command = "steam"
+      },
+      {
+        name = "rocketleague.exe",
+        convert = "rocketleague.exe",
+        command = "rocket-league"
+      },
+      {
+        name = "osu!",
+        convert = "osu!",
+        command = "osu\\!"
+      },
+      {
+        name = "neovim",
+        convert = "neovim",
+        command = "wezterm start -e nvim"
       },
       {
         name = "notion-app-enhanced",
@@ -298,42 +313,84 @@ local tomfoolery = function(s)
       {
         count = 0,
         id = 4,
+        clients = {},
+        name = "neovim",
+        class = "neovim",
+      },
+      {
+        count = 0,
+        id = 4,
+        clients = {},
+        name = "figma-linux",
+        class = "figma-linux",
+      },
+      {
+        count = 0,
+        id = 5,
         name = "ncmppcpppad",
         clients = {},
         class = "ncmpcpppad"
       },
       {
         count = 0,
-        id = 5,
+        id = 6,
         name = "notion-app-enhanced",
         clients = {},
         class = "notion-app-enhanced"
       },
       {
         count = 0,
-        id = 6,
-        name = "code",
+        id = 7,
+        name = "steam",
         clients = {},
-        class = "code"
+        class = "steam"
       },
       {
         count = 0,
-        id = 7,
+        id = 8,
+        name = "heroic",
+        clients = {},
+        class = "heroic"
+      },
+      {
+        count = 0,
+        id = 9,
+        name = "lutris",
+        clients = {},
+        class = "lutris"
+      },
+      {
+        count = 0,
+        id = 10,
         name = "discord",
         clients = {},
         class = "discord"
       },
       {
         count = 0,
-        id = 8,
+        id = 11,
         name = "spotify",
         clients = {},
         class = "spotify"
       },
+      {
+        count = 0,
+        id = 11,
+        name = "rocketleague.exe",
+        clients = {},
+        class = "rocketleague.exe"
+      },
+      {
+        count = 0,
+        id = 12,
+        name = "osu!",
+        clients = {},
+        class = "osu!"
+      },
     }
     -- end
-    local classes = { "org.wezfurlong.wezterm", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "code",
-      "notion-app-enhanced" }
+    local classes = { "org.wezfurlong.wezterm", "discord", "ncmpcpppad", "firefox", "spotify", "nemo", "steam",
+      "notion-app-enhanced", "heroic", "lutris" }
     local dockElements = wibox.widget { layout = layout, spacing = 5 }
     -- generating the data
     for _, c in ipairs(clients) do

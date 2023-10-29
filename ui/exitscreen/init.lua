@@ -32,6 +32,7 @@ end
 
 local lockcommand     = function()
   awesome.emit_signal('hide::exit')
+  awful.spawn.with_shell("playerctl pause")
   awesome.emit_signal('toggle::lock')
 end
 
