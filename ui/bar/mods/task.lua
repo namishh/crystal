@@ -122,7 +122,6 @@ function M:genIcons()
         bg = bg,
         buttons = {
           awful.button({}, 1, function()
-            awful.spawn.with_shell("notify-send " .. tostring(j.count))
             if j.count == 0 then
               awful.spawn.with_shell(j.exec)
             elseif j.count == 1 then
