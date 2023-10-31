@@ -125,6 +125,9 @@ theme.titlebar_maximized_button_focus_active    = gears.color.recolor_image(them
 
 theme.icon_theme                                = nil
 
+
+theme.songdefpicture = themes_path .. "/assets/defsong.jpg"
+
 rnotification.connect_signal('request::rules', function()
   rnotification.append_rule {
     rule       = { urgency = 'critical' },
