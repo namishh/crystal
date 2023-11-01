@@ -21,8 +21,7 @@ theme.wallpaper      = themes_path .. "assets/mountain.jpg"
 
 theme.pfp            = themes_path .. "assets/pfp.png"
 theme.user           = string.gsub(os.getenv('USER'), '^%l', string.upper)
-theme.hostname       = "@nixstar"
-
+theme.hostname       = os.getenv('HOST')
 ----- Font -----
 local themeName      = helpers.readFile("/home/namish/.config/awesome/color"):gsub("%s+", "")
 local colors         = require("theme.colors." .. themeName)

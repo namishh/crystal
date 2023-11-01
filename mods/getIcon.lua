@@ -10,6 +10,10 @@ local custom = {
     name = "org.wezfurlong.wezterm",
     to = "terminal"
   },
+  {
+    name = "ncmpcpppad",
+    to = "deepin-music-player"
+  },
 }
 
 local function hasValue(str)

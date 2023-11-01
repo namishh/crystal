@@ -33,19 +33,9 @@ local M          = {
       exec = "wezterm",
       name = "wezterm",
     },
-    {
-      count = 0,
-      pinned = true,
-      icon = getIcon(nil, "Spotify", "spotify"),
-      id = 2,
-      clients = {},
-      class = "spotify",
-      exec = "spotify",
-      name = "Spotify",
-    },
   },
   entries = {},
-  classes = { "firefox", "org.wezfurlong.wezterm", "spotify" }
+  classes = { "firefox", "org.wezfurlong.wezterm" }
 }
 
 M.widget         = wibox.widget {
@@ -108,9 +98,10 @@ function M:getExecutable(class)
   return class:lower()
 end
 
-function M:showMenu(clients)
-  self.popup.x = mouse.coords().x - 50
-  self.popup.y = 1080 - 60 - (50 * #clients)
+function M:showMenu(data)
+  local clients = data.clients
+  self.popup.x = mouse.coords().x - 80
+  self.popup.y = 1080 - 70 - (50 * (#clients + 2))
   self.popupWidget:reset()
   for i, j in ipairs(clients) do
     local widget = wibox.widget {
@@ -120,10 +111,12 @@ function M:showMenu(clients)
             {
               markup = j.name,
               font   = beautiful.font .. " 12",
+              height = 16,
               widget = wibox.widget.textbox,
             },
             widget = wibox.container.constraint,
             width = 180,
+            height = 16,
           },
           nil,
           {
@@ -162,6 +155,66 @@ function M:showMenu(clients)
     end)
     self.popupWidget:add(widget)
   end
+  local addNew = wibox.widget {
+    {
+      {
+        {
+          {
+            markup = "Open New Window",
+            font   = beautiful.font .. " 12",
+            widget = wibox.widget.textbox,
+          },
+          widget = wibox.container.constraint,
+          width = 180,
+        },
+        nil,
+        nil,
+        layout = wibox.layout.align.horizontal
+      },
+      widget = wibox.container.margin,
+      margins = 7,
+    },
+    buttons = {
+      awful.button({}, 1, function()
+        awful.spawn.with_shell(data.exec)
+      end)
+    },
+    widget = wibox.container.background,
+    shape = helpers.rrect(4),
+    bg = beautiful.mbg
+  }
+  local closeAll = wibox.widget {
+    {
+      {
+        {
+          {
+            markup = "Close All",
+            font   = beautiful.font .. " 12",
+            widget = wibox.widget.textbox,
+          },
+          widget = wibox.container.constraint,
+          width = 180,
+        },
+        nil,
+        nil,
+        layout = wibox.layout.align.horizontal
+      },
+      widget = wibox.container.margin,
+      margins = 7,
+    },
+    buttons = {
+      awful.button({}, 1, function()
+        for i, j in ipairs(clients) do
+          j:kill()
+        end
+      end)
+    },
+    widget = wibox.container.background,
+    shape = helpers.rrect(4),
+    bg = beautiful.mbg
+  }
+  self.popupWidget:add(addNew)
+  self.popupWidget:add(closeAll)
   self.popup.visible = true
 end
 
@@ -261,8 +314,11 @@ function M:genIcons()
               j.clients[j.count].minimized = true
             end
           else
-            self:showMenu(j.clients)
+            self:showMenu(j)
           end
+        end),
+        awful.button({}, 3, function()
+          self:showMenu(j)
         end)
       ))
       self.widget:add(widget)
