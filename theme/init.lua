@@ -17,14 +17,18 @@ local theme         = {}
 
 ----- User Preferences -----
 
-theme.wallpaper      = themes_path .. "assets/mountain.jpg"
 
-theme.pfp            = themes_path .. "assets/pfp.png"
-theme.user           = string.gsub(os.getenv('USER'), '^%l', string.upper)
-theme.hostname       = os.getenv('HOST')
+theme.pfp       = themes_path .. "assets/pfp.png"
+theme.user      = string.gsub(os.getenv('USER'), '^%l', string.upper)
+theme.hostname  = os.getenv('HOST')
 ----- Font -----
-local themeName      = helpers.readFile("/home/namish/.config/awesome/color"):gsub("%s+", "")
-local colors         = require("theme.colors." .. themeName)
+local themeName = helpers.readFile(gfs.get_configuration_dir() .. "color"):gsub("%s+", "")
+local colors    = require("theme.colors." .. themeName)
+
+
+theme.wallpaper     = themes_path .. "walls/" .. colors.name .. ".jpg"
+theme.iconThemePath = helpers.readFile(gfs.get_configuration_dir() .. "iconTheme"):gsub("%s+", "")
+
 
 theme.sans           = "Rubik"
 theme.mono           = "Iosevka Nerd Font"
@@ -61,7 +65,6 @@ theme.bg             = colors.bg
 theme.bg_alt         = colors.mbg
 
 theme.mbg            = colors.mbg
-theme.bg2            = colors.bg2
 theme.bg3            = colors.bg3
 theme.bg4            = colors.bg4
 
@@ -78,7 +81,7 @@ theme.menu_fg_focus  = theme.fg_normal
 theme.menu_fg_normal = theme.taglist_fg_empty
 theme.menu_bg_focus  = theme.bar_alt
 theme.menu_bg_normal = theme.bar
-theme.submenu        = "î¶…"
+theme.submenu        = ">"
 
 
 theme.taglist_bg           = theme.bg .. "00"
@@ -122,7 +125,7 @@ theme.titlebar_maximized_button_normal_active   = gears.color.recolor_image(them
 theme.titlebar_maximized_button_focus_active    = gears.color.recolor_image(themes_path .. "assets/titlebar/close_1.png",
   theme.yellow)
 
-theme.icon_theme                                = nil
+theme.icon_theme                                = "Reversal"
 
 
 theme.songdefpicture = themes_path .. "/assets/defsong.jpg"

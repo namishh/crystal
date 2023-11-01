@@ -34,7 +34,7 @@ local hourminutes = wibox.widget {
     margins = { left = dpi(10), right = dpi(10) },
     widget = wibox.container.margin
   },
-  bg = beautiful.bg2,
+  bg = beautiful.mbg,
   widget = wibox.container.background,
   shape = helpers.rrect(2),
 }
