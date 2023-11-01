@@ -13,6 +13,7 @@ local bluetooth   = require("ui.bar.mods.bluetooth")
 local music       = require("ui.bar.mods.music")
 local hourminutes = require("ui.bar.mods.time")
 local layout      = require("ui.bar.mods.layout")
+local systray     = require("ui.bar.mods.systray")
 
 local function init(s)
   local wibar = awful.wibar {
@@ -65,6 +66,7 @@ local function init(s)
       {
         {
           {
+            systray,
             music,
             {
               {
