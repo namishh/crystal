@@ -12,7 +12,7 @@ local blue      = wibox.widget {
   align = "center"
 }
 
-awesome.connect_signal("signal::network", function(value)
+awesome.connect_signal("signal::bluetooth", function(value)
   if value then
     blue.markup = helpers.colorizeText("󰂯", beautiful.blue)
   else

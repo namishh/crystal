@@ -3,6 +3,7 @@ local gears = require "gears"
 local wibox = require "wibox"
 local beautiful = require "beautiful"
 local helpers = require "helpers"
+local getIcon = require "mods.getIcon"
 local dpi = beautiful.xresources.apply_dpi
 
 ----- Titlebar
@@ -42,7 +43,17 @@ local get_titlebar = function(c)
 
   local right = wibox.widget {
     {
-      awful.titlebar.widget.iconwidget(c),
+      {
+        {
+          widget = wibox.widget.imagebox,
+          image = getIcon(c, c.class, c.class),
+          forced_width = 30,
+          clip_shape = helpers.rrect(100),
+          resize = true,
+        },
+        widget = wibox.container.place,
+        halign = "center",
+      },
       margins = dpi(5),
       widget = wibox.container.margin
     },

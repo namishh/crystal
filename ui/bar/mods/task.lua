@@ -33,9 +33,19 @@ local M          = {
       exec = "wezterm",
       name = "wezterm",
     },
+    {
+      count = 0,
+      pinned = true,
+      icon = getIcon(nil, "discord", "discord"),
+      id = 3,
+      clients = {},
+      class = "discord",
+      exec = "discord",
+      name = "discord",
+    },
   },
   entries = {},
-  classes = { "firefox", "org.wezfurlong.wezterm" }
+  classes = { "firefox", "org.wezfurlong.wezterm", "discord" }
 }
 
 M.widget         = wibox.widget {
@@ -227,7 +237,7 @@ function M:genMetadata()
   end
   for _, c in ipairs(clients) do
     local icon = getIcon(c, c.class, c.class)
-    local class = string.lower(c.class)
+    local class = string.lower(c.class or "default")
     local exe = self:getExecutable(c.class)
     if helpers.inTable(self.classes, class) then
       for _, j in pairs(self.metadata) do

@@ -207,13 +207,12 @@ client.connect_signal("request::default_keybindings", function()
 end)
 
 -- Mouse bindings
+local menu = require("ui.rightclick")
 awful.mouse.append_global_mousebindings({
   awful.button({}, 3, function()
-    mainmenu:toggle()
+    menu.desktop:toggle()
     return
   end),
-  awful.button({}, 4, awful.tag.viewprev),
-  awful.button({}, 5, awful.tag.viewnext),
 })
 
 client.connect_signal("request::default_mousebindings", function()

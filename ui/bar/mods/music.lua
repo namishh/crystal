@@ -16,7 +16,7 @@ local art       = wibox.widget {
 }
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
   -- Set art widget
-  art.image = helpers.cropSurface(4.2, gears.surface.load_uncached(album_path))
+  art.image = helpers.cropSurface(5, gears.surface.load_uncached(album_path))
 end)
 local next = wibox.widget {
   align = 'center',

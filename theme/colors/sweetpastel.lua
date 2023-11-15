@@ -1,4 +1,5 @@
 local M = {}
+M.type  = "dark"
 M.name  = 'sweetpastel'
 M.ok    = "#b4e3ad"
 M.warn  = "#f1c192"

@@ -2,9 +2,12 @@ local awful = require("awful")
 local helpers = require("helpers")
 local wibox = require("wibox")
 local gears = require("gears")
+local popup = require("ui.desktop.popup")
 local json = require("mods.json")
 local beautiful = require("beautiful")
 
+
+local data = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json")
 local inspect = require("mods.inspect")
 local dpi = beautiful.xresources.apply_dpi
 local appicons = "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/"
@@ -13,8 +16,8 @@ local foldericons =
 "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/places/48"
 
 local grid = wibox.widget {
-  forced_num_rows = 8,
-  forced_num_cols = 16,
+  forced_num_rows = 14,
+  forced_num_cols = 19,
   orientation = "horizontal",
   layout = wibox.layout.grid
 }
@@ -23,16 +26,35 @@ local manual = wibox.layout {
   layout = wibox.layout.manual
 }
 
+local icons = {
+  ["lua"] = "lua",
+  ["py"] = "python",
+  ["rs"] = "rust",
+  ["html"] = "html",
+  ["c"] = "c",
+  ["c++"] = "c++",
+  ["js"] = "javascript",
+  ["hs"] = "haskell",
+  ['go'] = "go",
+  ["php"] = "php",
+  ["rb"] = "ruby",
+  ["md"] = "markdown",
+  ["ts"] = "typescript",
+  ["scss"] = "sass",
+  ["sass"] = "sass",
+  ["java"] = "java",
+}
+
 local desktopdisplay = wibox {
-  visible = true,
+  visible = data.showDesktopIcons,
   ontop = false,
-  bgimage = beautiful.wallpaper,
+  bg = beautiful.bg .. '00',
   type = "desktop",
   screen = s,
   widget = wibox.widget {
     {
       grid,
-      margins = dpi(30),
+      margins = dpi(20),
       widget = wibox.container.margin
     },
     manual,
@@ -48,6 +70,15 @@ local function gen()
   local files = {}
   local entries = {}
 
+  table.insert(entries,
+    { icon = appicons .. "places/48/trash-empty.svg", label = "Trash", exec = "nemo trash:/", type = "general" })
+  --table.insert(entries,
+  --  {
+  --    icon = gears.filesystem.get_configuration_dir() .. "theme/assets/tsukkisaidmetoaddthis.png",
+  --    label = beautiful.user:lower(),
+  --   exec = "nemo /home/" .. beautiful.user:lower(),
+  --    type = "general"
+  -- })
   for entry in io.popen([[ls ~/Desktop | sed '']]):lines() do
     local label = entry
     local exec = nil
@@ -69,25 +100,38 @@ local function gen()
           icon = appicons .. "apps/" .. line:gsub("Icon=", "") .. ".svg"
         end
       end
-      table.insert(entries, { icon = icon, label = label, exec = exec })
+      table.insert(entries, { icon = icon, label = label, exec = exec, type = "shortcut" })
     elseif os.execute("cd ~/Desktop/'" .. entry .. "'") then
       icon = foldericons .. "/folder.svg"
       exec = "nemo" .. " Desktop/'" .. entry .. "'"
-      table.insert(entries, { icon = icon, label = label, exec = exec })
+      table.insert(entries, { icon = icon, label = label, exec = exec, type = "folder" })
     elseif os.execute("wc -c < ~/Desktop/'" .. entry .. "'") then
       icon = appicons .. "mimes/48/application-x-zerosize.svg"
       exec = "wezterm -e nvim" .. " ~/Desktop/'" .. entry .. "'"
       if string.match(entry, "%.") then
         local extenstion = helpers.split(entry, ".")
-        extenstion = extenstion[2]
+        extenstion = extenstion[#extenstion]
+        if extenstion == "jpg" or extenstion == "jpeg" or extenstion == "tiff" or extenstion == "png" or extenstion == "webp" or extenstion == "svg" then
+          if extenstion == "jpg" then
+            icon = appicons .. "mimes/48/jpg.svg"
+          else
+            icon = appicons .. "mimes/48/image-" .. extenstion .. ".svg"
+          end
+          exec = "feh '~/Desktop/" .. entry .. "'"
+        elseif extenstion == "mp4" or extenstion == "avif" or extenstion == "webm" or extenstion == "mkv" or extenstion == "mov" then
+          icon = appicons .. "mimes/48/media-video.svg"
+        elseif extenstion == "mp3" or extenstion == "wav" or extenstion == "flac" or extenstion == "aiff" then
+          icon = appicons .. "mimes/48/media-audio.svg"
+        elseif icons[extenstion] ~= nil then
+          icon = appicons .. "mimes/48/text-x-" .. icons[extenstion] .. ".svg"
+        end
       end
-      table.insert(entries, { icon = icon, label = label, exec = exec })
+      table.insert(entries, { icon = icon, label = label, exec = exec, type = 'file' })
     else
       exec = "xdg-open " .. os.getenv("HOME") .. "/Desktop/'" .. label .. "'"
-      table.insert(entries, { icon = icon, label = label, exec = exec })
+      table.insert(entries, { icon = icon, label = label, exec = exec, type = 'file' })
     end
   end
-
   return entries
 end
 
@@ -103,7 +147,8 @@ local function save()
       widget = {
         icon = widget.icon,
         label = widget.label,
-        exec = widget.exec
+        exec = widget.exec,
+        type = widget.type,
       }
     }
   end
@@ -128,7 +173,7 @@ local function gridindexat(y, x)
   return row, col
 end
 
-local function createicon(icon, label, exec)
+local function createicon(icon, label, exec, ty)
   local widget = wibox.widget {
     {
       {
@@ -165,6 +210,7 @@ local function createicon(icon, label, exec)
     icon = icon,
     label = label,
     exec = exec,
+    type = ty,
     forced_width = dpi(115),
     forced_height = dpi(105),
     margins = dpi(10),
@@ -254,7 +300,25 @@ local function createicon(icon, label, exec)
                 grid:add_widget_at(widget, newrow, newcol)
                 save()
               else
-                grid:add_widget_at(widget, oldpos.row, oldpos.col)
+                local d = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/desktop.json")
+                local elem
+                for _, j in ipairs(d) do
+                  if j.row == newrow and j.col == newcol then
+                    elem = j
+                    break
+                  end
+                end
+                if elem.widget.exec:find("nemo Desktop") then
+                  if exec ~= "Trash" then
+                    os.execute("mv ~/Desktop/'" .. label .. "' ~/Desktop/'" .. elem.widget.label .. "'/'" .. label .. "'")
+                  end
+                elseif elem.widget.exec:find("nemo trash:/") then
+                  if exec ~= "Trash" then
+                    os.execute("trash ~/Desktop/'" .. label .. "'")
+                  end
+                else
+                  grid:add_widget_at(widget, oldpos.row, oldpos.col)
+                end
               end
             else
               awful.spawn.with_shell(exec)
@@ -280,7 +344,7 @@ local function load()
   if not gears.filesystem.file_readable(layoutfile) then
     local entries = gen()
     for _, entry in ipairs(entries) do
-      grid:add(createicon(entry.icon, entry.label, entry.exec))
+      grid:add(createicon(entry.icon, entry.label, entry.exec, entry.type))
     end
     save()
     return
@@ -315,26 +379,16 @@ local function load()
     end }
   }
 
-  local rootmenu = awful.menu({
-    items = {
-      { "Awesome",  awmmenu },
-      { "Create",   createmenu },
-      { "Terminal", "wezterm" },
-      { "Browser",  "firefox" },
-      { "Files",    "nemo" },
-      { "Editor",   "wezterm -e nvim" }
-    }
-  })
 
   manual:buttons {
     awful.button({}, 1, function()
       awesome.emit_signal("iconmenu::hide")
-      rootmenu:hide()
+      awesome.emit_signal("close::menu")
     end),
     awful.button({}, 3, function()
       if mouse.current_widgets[4] == manual then
         awesome.emit_signal("iconmenu::hide")
-        rootmenu:toggle()
+        awesome.emit_signal("toggle::menu")
       end
     end)
   }
@@ -345,7 +399,8 @@ local function load()
   local layout = json.decode(t)
 
   for _, entry in ipairs(layout) do
-    grid:add_widget_at(createicon(entry.widget.icon, entry.widget.label, entry.widget.exec), entry.row, entry.col)
+    grid:add_widget_at(createicon(entry.widget.icon, entry.widget.label, entry.widget.exec, entry.type), entry.row,
+      entry.col)
   end
 end
 
@@ -363,7 +418,7 @@ awesome.connect_signal("signal::desktop", function(type)
         end
       end
       if check == false then
-        grid:add(createicon(entry.icon, entry.label, entry.exec))
+        grid:add(createicon(entry.icon, entry.label, entry.exec, entry.type))
       end
       check = false
     end
@@ -386,7 +441,6 @@ awesome.connect_signal("signal::desktop", function(type)
   save()
 end)
 
-awesome.emit_signal("signal::desktop")
 local subscribe = [[
    bash -c "
    while (inotifywait -m -e close_write -e delete -e create -e moved_from $HOME/Desktop/ -q) do echo; done

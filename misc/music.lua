@@ -92,9 +92,9 @@ playerctl:connect_signal("loop_status", function(_, loop_status)
   if loop_status:match('none') then
     repeatt.markup = helpers.colorizeText('󰑖', beautiful.fg)
   elseif loop_status:match('track') then
-    repeatt.markup = helpers.colorizeText('󰑘', beautiful.dis)
+    repeatt.markup = helpers.colorizeText('󰑘', beautiful.magenta)
   else
-    repeatt.markup = helpers.colorizeText('󰑖', beautiful.dis)
+    repeatt.markup = helpers.colorizeText('󰑖', beautiful.magenta)
   end
 end)
 

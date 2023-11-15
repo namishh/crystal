@@ -1,2 +1,5 @@
+require "ui.desktop"
 require "ui.bar"
 require "ui.menu"
+require "ui.control"
+require "ui.setup"

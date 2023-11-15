@@ -4,6 +4,8 @@ local beautiful      = require("beautiful")
 local gears          = require("gears")
 local dpi            = beautiful.xresources.apply_dpi
 local cairo          = require("lgi").cairo
+local gmatrix        = require("gears.matrix")
+local json           = require("mods.json")
 
 helpers.rrect        = function(radius)
   radius = radius or dpi(4)
@@ -147,13 +149,81 @@ helpers.split = function(inputstr, sep)
   return t
 end
 
-local open = io.open
-
 helpers.readFile = function(file)
   local f = assert(io.open(file, "rb"))
   local content = f:read("*all")
   f:close()
   return content
+end
+
+helpers.file_exists = function(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+local function get_widget_geometry(_hierarchy, widget)
+  local width, height = _hierarchy:get_size()
+  if _hierarchy:get_widget() == widget then
+    -- Get the extents of this widget in the device space
+    local x, y, w, h = gmatrix.transform_rectangle(_hierarchy:get_matrix_to_device(), 0, 0, width, height)
+    return { x = x, y = y, width = w, height = h, hierarchy = _hierarchy }
+  end
+
+  for _, child in ipairs(_hierarchy:get_children()) do
+    local ret = get_widget_geometry(child, widget)
+    if ret then
+      return ret
+    end
+  end
+end
+
+function helpers.get_widget_geometry(wibox, widget)
+  return get_widget_geometry(wibox._drawable._widget_hierarchy, widget)
+end
+
+function helpers.randomColor()
+  local accents = {
+    beautiful.magenta,
+    beautiful.yellow,
+    beautiful.green,
+    beautiful.red,
+    beautiful.blue,
+  }
+
+  local i = math.random(1, #accents)
+  return accents[i]
+end
+
+helpers.readJson = function(DATA)
+  if helpers.file_exists(DATA) then
+    local f = assert(io.open(DATA, "rb"))
+    local lines = f:read("*all")
+    f:close()
+    local data = json.decode(lines)
+    return data
+  else
+    return {}
+  end
+end
+
+helpers.writeJson = function(PATH, DATA)
+  local w = assert(io.open(PATH, "w"))
+  w:write(json.encode(DATA, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
+  w:close()
+end
+
+-- this stands for :get_children_by_id
+helpers.gc = function(widget, id)
+  return widget:get_children_by_id(id)[1]
+end
+
+helpers.beginsWith = function(str, pattern)
+  return str:find('^' .. pattern) ~= nil
 end
 
 

@@ -85,7 +85,12 @@ local function init(s)
               },
               widget = wibox.container.background,
               shape = helpers.rrect(5),
-              bg = beautiful.mbg
+              bg = beautiful.mbg,
+              buttons = {
+                awful.button({}, 1, function()
+                  awesome.emit_signal('toggle::control')
+                end)
+              },
             },
             hourminutes,
             layout = wibox.layout.fixed.horizontal,
