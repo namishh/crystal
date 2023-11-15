@@ -29,6 +29,10 @@ function M:generate()
     local settings = json.decode(t)
     M.settings = settings
   end
+
+  if not helpers.file_exists(gfs.get_cache_dir() .. "lock/lock.jpg") then
+    os.execute("mkdir -p ~/.cache/awesome/lock")
+  end
 end
 
 return M

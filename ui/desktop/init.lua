@@ -72,13 +72,13 @@ local function gen()
 
   table.insert(entries,
     { icon = appicons .. "places/48/trash-empty.svg", label = "Trash", exec = "nemo trash:/", type = "general" })
-  --table.insert(entries,
-  --  {
-  --    icon = gears.filesystem.get_configuration_dir() .. "theme/assets/tsukkisaidmetoaddthis.png",
-  --    label = beautiful.user:lower(),
-  --   exec = "nemo /home/" .. beautiful.user:lower(),
-  --    type = "general"
-  -- })
+  table.insert(entries,
+    {
+      icon = gears.filesystem.get_configuration_dir() .. "theme/assets/tsukkisaidmetoaddthis.png",
+      label = beautiful.user:lower(),
+      exec = "nemo /home/" .. beautiful.user:lower(),
+      type = "general"
+    })
   for entry in io.popen([[ls ~/Desktop | sed '']]):lines() do
     local label = entry
     local exec = nil

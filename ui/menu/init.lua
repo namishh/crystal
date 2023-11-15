@@ -101,7 +101,9 @@ awful.screen.connect_for_each_screen(function(s)
       halign = "center",
       buttons = {
         awful.button({}, 1, function()
-          awful.spawn.with_shell("command")
+          awesome.emit_signal("quit::search")
+          awesome.emit_signal("quit::launcher")
+          awful.spawn.with_shell(command)
         end)
       },
     }
