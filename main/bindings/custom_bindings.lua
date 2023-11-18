@@ -18,4 +18,8 @@ awful.keyboard.append_global_keybindings({
     function(c)
       awesome.emit_signal("toggle::launcher")
     end),
+  awful.key({ modkey, }, "x",
+    function(c)
+      awesome.emit_signal("toggle::exit")
+    end),
 })

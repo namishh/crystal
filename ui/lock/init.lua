@@ -14,9 +14,9 @@ local header    = wibox.widget {
     {
       image         = beautiful.pfp,
       clip_shape    = helpers.rrect(100),
-      forced_height = 80,
+      forced_height = 180,
       opacity       = 1,
-      forced_width  = 80,
+      forced_width  = 180,
       halign        = 'center',
       widget        = wibox.widget.imagebox
     },
@@ -26,20 +26,22 @@ local header    = wibox.widget {
     min_value = 0,
     value = 0,
     rounded_edge = false,
-    thickness = dpi(4),
+    thickness = dpi(8),
     start_angle = 4.71238898,
     bg = beautiful.fg,
     colors = { beautiful.fg },
-    forced_width = dpi(80),
-    forced_height = dpi(80)
+    forced_width = dpi(180),
+    forced_height = dpi(180)
   },
   widget = wibox.container.place,
-  halign = 'right',
+  halign = 'center',
 }
 local label     = wibox.widget {
   markup = "Type The Password",
+  valign = "center",
+  halign = "center",
   id     = "name",
-  font   = beautiful.sans .. " 11",
+  font   = beautiful.sans .. " 14",
   widget = wibox.widget.textbox,
 }
 
@@ -60,9 +62,9 @@ end
 
 
 local promptbox = wibox {
-  width = dpi(500),
-  height = dpi(150),
-  bg = beautiful.bg .. '00',
+  width = dpi(900),
+  height = dpi(800),
+  bg = beautiful.mbg .. "00",
   ontop = true,
   shape = helpers.rrect(10),
   visible = false
@@ -178,17 +180,24 @@ local back = wibox.widget {
 
 local makeImage = function()
   local cmd = 'convert ' ..
-      beautiful.wallpaper .. ' -filter Gaussian -blur 0x6 ~/.cache/awesome/lock/lock.jpg'
+      beautiful.wallpaper .. ' -filter Gaussian -blur 0x6 ~/.cache/awesome/lock.jpg'
   awful.spawn.easy_async_with_shell(cmd, function()
-    local blurwall = gears.filesystem.get_cache_dir() .. "lock/lock.jpg"
+    local blurwall = gears.filesystem.get_cache_dir() .. "lock.jpg"
     back.image = blurwall
   end)
 end
 
 makeImage()
 
+local overlay = wibox.widget {
+  widget = wibox.container.background,
+  forced_height = 1080,
+  forced_width = 1920,
+  bg = beautiful.bg .. "c1"
+}
 background:setup {
   back,
+  overlay,
   layout = wibox.layout.stack
 }
 
@@ -199,33 +208,42 @@ promptbox:setup {
       {
         {
           {
-            font = beautiful.sans .. " Bold 32",
+            font = beautiful.sans .. " Medium 110",
             format = "%H:%M",
-            align = "start",
+            halign = "center",
             valign = "center",
             widget = wibox.widget.textclock
           },
-          label,
-          layout = wibox.layout.fixed.vertical,
+          {
+            font = beautiful.sans .. " Light 28",
+            format = "%a, %d %B",
+            halign = "center",
+            valign = "center",
+            widget = wibox.widget.textclock
+          },
+          {
+            label,
+            widget = wibox.container.margin,
+            top = 50
+          },
           spacing = 10,
+          layout = wibox.layout.fixed.vertical,
         },
         widget = wibox.container.place,
         valign = "center",
       },
       nil,
       header,
-      spacing = 10,
-      layout = wibox.layout.align.horizontal
+      layout = wibox.layout.align.vertical
     },
     margins = dpi(30),
     widget = wibox.container.margin
   },
   widget = wibox.container.background,
-  bg = beautiful.bg,
   shape = helpers.rrect(20)
 }
-awful.placement.bottom_left(
-  promptbox, { margins = { bottom = 30, left = 30 } }
+awful.placement.centered(
+  promptbox
 )
 
 check_caps()

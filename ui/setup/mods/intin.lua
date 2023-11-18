@@ -29,7 +29,7 @@ local O = function(label, var)
           return
         end
         -- else update textbox and variable.
-        if string.match(input, "[^%d]") ~= nil then
+        if string.match(input, "[^%d%.]") ~= nil then
           M.textbox.markup = helpers.colorizeText(M.def, beautiful.fg)
           M.value = M.def
         else
