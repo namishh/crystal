@@ -6,18 +6,6 @@
     enableAutosuggestions = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./conf;
-        file = "powerlevel.zsh";
-      }
-    ];
     shellAliases = {
       la = "eza -l";
       ls = "ls --color=auto";
@@ -41,4 +29,14 @@
     '';
   };
 
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      add_newline = false;
+      format = "$directory$git_branch$git_status$cmd_duration\n[ ](fg:blue)  ";
+      git_branch.format = "via [$symbol$branch(:$remote_branch)]($style) ";
+      command_timeout = 1000;
+    };
+  };
 }
