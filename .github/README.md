@@ -4,11 +4,11 @@
 <br>
 <br>
 
-![GitHub top language](https://img.shields.io/github/languages/top/chadcat7/fuyu?color=6d92bf&style=for-the-badge)
-![Cool](https://img.shields.io/badge/WM-Awesome-da696f?style=for-the-badge)
-![Bloat](https://img.shields.io/badge/Bloated-Yes-c585cf?style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/chadcat7/fuyu?color=6d92bf&style=for-the-badge&labelColor=1B1919)
+![Cool](https://img.shields.io/badge/WM-Awesome-da696f?style=for-the-badge&labelColor=1B1919)
+![Bloat](https://img.shields.io/badge/Bloated-Yes-c585cf?style=for-the-badge&labelColor=1B1919)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge&labelColor=1B1919)
+![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge&labelColor=1B1919)
 </div>
 
 
