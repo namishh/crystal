@@ -6,6 +6,24 @@
 
 the liblua_pam.so is compiled with lua5.2. either use lua5.2 or compile your own
 
+
+### Features
++ Desktop Icons completely implemented in awesome
++ And a dock completely in awesome too
++ Cool Titlebars
++ Modern Top Panel
++ Two Section Dashboard
++ Control Panel with Theme Switcher
++ Wallpaper Switcher
++ Better right click menu with icons
++ Calendar and Weather Widget
++ i3lock-color like lockscreen with profile picture
++ Minimal no-nonsense exit screen
++ Application Launcher
++ Good Looking notifications
++ Mouse friendly custom ncmpcpp ui
++ Video Recorder and Screenshotter
+
 ### Setup
 
 1. Install these programs
