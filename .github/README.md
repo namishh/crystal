@@ -133,11 +133,11 @@ home-manager switch --flake '.#namish' # this should automatically install nvim 
 
 ## Rices
 
-| <b>Aura</b>                                                                                      |
+| <b>Aura (WIP)</b>                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/aura"><img src="screenshots/aura.png"  alt="aura"></a>                    |
 
-| <b>Blizzard</b>                                                                                      |
+| <b>Blizzard (Do not use)</b>                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/blizzard"><img src="screenshots/blizzard.png"  alt="blizz"></a>                    |
 
