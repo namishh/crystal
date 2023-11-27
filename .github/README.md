@@ -131,7 +131,7 @@ cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
 
-# Rices
+## Rices
 
 | <b>Aura</b>                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------ |
@@ -145,9 +145,9 @@ home-manager switch --flake '.#namish' # this should automatically install nvim 
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/glacier"><img src="screenshots/glacier.png"  alt="glacier"></a>                    |
 
-> **Warning**
+> **Info**
 >
-> For screenshots, go to each rice's respective branch
+> For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix. 
 
 ## Credits
 These are the chads which helped me throughout my short but crazy nix journey!
@@ -166,5 +166,9 @@ And of course credits for the guys for their help with my awesome config!
 - [crylia](https://github.com/crylia/)
 - [rxyhn](https://github.com/rxyhn)
 
+People from who I have ~~stolen~~ taken inspiration for my design.
+
+-[tsukki](https://github.com/tsukki9696)
+-[sammy](https://github.com/TorchedSammy)
 
 **Feel free to use any code from any branch as long as you will credit me**
