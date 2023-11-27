@@ -21,31 +21,12 @@
 
 ## Features of config
 + **OS**     -  nixos
-+ **WM**     -  awesome - [config](https://github.com/chadcat7/fuyu/tree/the-awesome-config) // hyprland
++ **WM**     -  awesome - [older](https://github.com/chadcat7/fuyu/tree/the-awesome-config) // [new](https://github.com/chadcat7/fuyu/tree/alps) // hyprland
 + **Shell**  -  zsh
 + **Term**   -  wezterm
 + **Music**  -  ncmpcpp
 + **Comp**   -  picom - [fdev31 fork](https://github.com/fdev31/picom/tree/animation-pr)
 + **Editor** -  nvim v0.9 - [my config](https://github.com/chadcat7/lodo)
-
-
-#### Features Of the Awesome Config
-+ Desktop Icons completely implemented in awesome
-+ And a dock completely in awesome too
-+ Cool Titlebars
-+ Modern Top Panel
-+ Two Section Dashboard
-+ Control Panel with Theme Switcher
-+ Wallpaper Switcher
-+ Better right click menu with icons
-+ Calendar and Weather Widget
-+ i3lock-color like lockscreen with profile picture
-+ Minimal no-nonsense exit screen
-+ Application Launcher
-+ Good Looking notifications
-+ Mouse friendly custom ncmpcpp ui
-+ Video Recorder and Screenshotter
-
 
 ## Nix
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
@@ -110,55 +91,6 @@ If you that determined, here are some resources to start out
   + [pills](https://nixos.org/guides/nix-pills/)
   + [nix-starter-config](https://github.com/Misterio77/nix-starter-config)
 
-## Screenshots
-| <b>Cool Dashboard with 2 sections</b>                                                                              |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/10.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/06.png" alt="bottom panel preview"></a>                    |
-
-| <b>Control Panel</b>                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/05.png" alt="bottom panel preview"></a>                    |
-
-| <b>Exitscreen and Lockscreen</b>                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/04.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/11.png"  alt="bottom panel preview"></a>                    |
-
-| <b>Screenshotter and Video Recorder</b>                                                                            |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/07.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
-
-
-| <b>Calendar + Weather Widget</b>                                                                                   |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/03.png"  alt="bottom panel preview"></a>                    |
-
-
-| <b>Right Click Menu</b>                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/01.png"  alt="bottom panel preview"></a>                    |
-
-| <b>App Menu</b>                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/08.png"  alt="bottom panel preview"></a>                    |
-
-| <b>Custom Ncmpcppp UI</b>                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
-
-
-| <b>Wallpaper Switcher</b>                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |
-
-| <b>Spicetify</b>                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/15.png"  alt="bottom panel preview"></a>                    |
-
 | <b>Hyprland stuff</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="#--------"><img src="screenshots/hl/01.png"  alt="bottom panel preview"></a>                    |
@@ -208,14 +140,6 @@ cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
 
-## Todo
-somethings i need to do before i can call it fully usable - <br>
-- [x] Install phocus with dynamic theming 
-- [x] Install any image colorizer
-- [x] Lock screen setup (now with awesome)
-- [x] Add Screenshots
-- [x] Spicetify
-
 ## Credits
 These are the chads which helped me throughout my short but crazy nix journey!
 - [gw](https://github.com/Gwynsav)
@@ -234,4 +158,4 @@ And of course credits for the guys for their help with my awesome config!
 - [rxyhn](https://github.com/rxyhn)
 
 
-**Feel free to use any code from the two branches as long as you will credit me**
+**Feel free to use any code from any branch as long as you will credit me**
