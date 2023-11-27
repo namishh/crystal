@@ -18,7 +18,7 @@
 
 ## Features of config
 + **OS**     -  nixos
-+ **WM**     -  awesome - [older](https://github.com/chadcat7/fuyu/tree/the-awesome-config) // [new](https://github.com/chadcat7/fuyu/tree/alps) // hyprland
++ **WM**     -  awesome - [blizzard](https://github.com/chadcat7/crystal/tree/blizzard) // [aura](https://github.com/chadcat7/fuyu/tree/aura) // hyprland
 + **Shell**  -  zsh
 + **Term**   -  wezterm
 + **Music**  -  ncmpcpp
@@ -168,7 +168,7 @@ And of course credits for the guys for their help with my awesome config!
 
 People from who I have ~~stolen~~ taken inspiration for my design.
 
--[tsukki](https://github.com/tsukki9696)
--[sammy](https://github.com/TorchedSammy)
+- [tsukki](https://github.com/tsukki9696)
+- [sammy](https://github.com/TorchedSammy)
 
 **Feel free to use any code from any branch as long as you will credit me**
