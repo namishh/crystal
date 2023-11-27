@@ -23,7 +23,10 @@
       allowUnfree = true;
     };
   };
-
+  networking.extraHosts =
+    ''
+      185.199.108.133 raw.githubusercontent.com
+    '';
   networking.hostName = "frostbyte";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;

@@ -3,18 +3,6 @@
 {
   home = {
     file = {
-      ".local/bin/upw" = {
-        executable = true;
-        text = import ./misc/upW.nix { inherit colors; };
-      };
-      ".local/bin/gencontrolpic" = {
-        executable = true;
-        text = import ./misc/genpicforcontrol.nix { inherit colors; };
-      };
-      ".local/bin/genmenupic" = {
-        executable = true;
-        text = import ./misc/genmenupic.nix { inherit colors; };
-      };
       ".local/bin/fetch" = {
         executable = true;
         text = import ./eyecandy/nixfetch.nix { };

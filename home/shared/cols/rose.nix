@@ -1,6 +1,5 @@
 {}:
 rec {
-   wallpaper = "flowers.jpg"; 
   foreground = "e0def4";
   background = "191724";
   darker = "13111e";
@@ -36,5 +35,4 @@ rec {
   color7 = "b5bfe2";
   color15 = "908caa";
   name = "rose";
-  neofetchpic = "sakura.png";
 }

@@ -19,7 +19,7 @@
       autocenter_mode = "yes";
       centered_cursor = "yes";
       allow_for_physical_item_deletion = "no";
-      lines_scrolled = "0";
+      lines_scrolled = "1";
       follow_now_playing_lyrics = "yes";
       lyrics_fetchers = "musixmatch";
 

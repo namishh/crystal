@@ -16,7 +16,7 @@ index ac47a66..0c157c7 100644
 
  $white-strongest: rgb(255, 255, 255);
  $white-strong: rgba(255, 255, 255, 0.87);
-@@ -16,25 +16,25 @@ $black-moderate: rgba(0, 0, 0, 0.42);
+@@ -16,25 +16,26 @@ $black-moderate: rgba(0, 0, 0, 0.42);
  $black-weak: rgba(0, 0, 0, 0.15);
  $black-weakest: rgba(0, 0, 0, 0.06);
 
@@ -57,3 +57,4 @@ index ac47a66..0c157c7 100644
 -$accent-secondary: $green-normal;
 +$accent-primary: @primary@;
 +$accent-secondary: @secondary@;
++ notebook stack:only-child { background: transparent; }

@@ -41,7 +41,7 @@
       enable-fading-prev-tag = true;
       animation-for-next-tag = "zoom";
       enable-fading-next-tag = true;
-      corner-radius = 12;
+      corner-radius = 8;
       shadow = true;
       shadow-radius = 15;
       shadow-offset-x = -15;
@@ -66,16 +66,10 @@
         "class_i ~= 'Spotify'"
         "name ~= 'slop'"
       ];
-      blur = {
-        method = "dual_kawase";
-        strength = 5.0;
-        deviation = 1.0;
-        kernel = "11x11gaussian";
-      };
 
       blur-background = false;
-      blur-background-frame = true;
-      blur-background-fixed = true;
+      blur-background-frame = false;
+      blur-background-fixed = false;
       glx-no-stencil = true;
       glx-no-rebind-pixmap = true;
       xrender-sync-fence = true;

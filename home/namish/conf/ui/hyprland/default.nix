@@ -5,7 +5,7 @@
   wayland.windowManager.hyprland = with colors; {
     enable = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
-    systemdIntegration = true;
+    systemd.enable = true;
     #    plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
@@ -254,7 +254,7 @@
       bindm = $mainMod, mouse:273, resizewindow
       exec = source ~/.local/bin/upw
       exec = bash -c ~/.local/bin/genmenupic
-      exec = swaybg -i ~/.config/awesome/theme/wallpapers/${name}/${wallpaper} &
+      exec = swaybg -i ~/.config/awesome/theme/walls/${name}.jpg &
       exec = dunst &
       exec-once = xss-lock lock &
       exec =  eww open bar && eww reload &

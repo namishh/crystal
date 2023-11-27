@@ -1,40 +1,38 @@
 {}:
 rec {
-   wallpaper = "astro.png"; 
   foreground = "fbf1c7";
-  background = "1e2122";
+  background = "282828";
   darker = "17191a";
-  bg2 = "222627";
-  mbg = "212526";
+  bg2 = "2c2a29";
+  mbg = "2c2a29";
 
   cursorColor = "fbf1c7";
-  contrast = "222627";
-  cursorline = "222627";
+  contrast = "2c2a29";
+  cursorline = "2c2a29";
   comment = "928374";
 
-  color0 = "282c2d";
-  color8 = "2d3132";
+  color0 = "32302f";
+  color8 = "32302f";
 
-  color1 = "ec6b64";
-  color9 = "ec653c";
+  color1 = "ea6962";
+  color9 = "ea6962";
 
-  color2 = "89b482";
-  color10 = "7fb477";
+  color2 = "a9b665";
+  color10 = "a9b665";
 
-  color3 = "d69d76";
-  color11 = "d69569";
+  color3 = "e79a4e";
+  color11 = "e79a4e";
 
-  color4 = "6f8faf";
-  color12 = "6289af";
+  color4 = "7daea3";
+  color12 = "7daea3";
 
-  color5 = "cc7f94";
-  color13 = "cc768e";
+  color5 = "d3869b";
+  color13 = "d3869b";
 
-  color6 = "6facaf";
-  color14 = "6cacaf";
+  color6 = "89b482";
+  color14 = "89b482";
 
   color7 = "d4be98";
   color15 = "d4be98";
   name = "groove";
-  neofetchpic = "table.png";
 }

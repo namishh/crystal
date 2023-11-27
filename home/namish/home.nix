@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/groove.nix { };
+  colors = import ../shared/cols/oxo.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -26,7 +26,7 @@ in
   gtk = {
     enable = true;
     gtk3.extraConfig.gtk-decoration-layout = "menu:";
-    iconTheme.name = "WhiteSur";
+    iconTheme.name = "reversal";
     theme.name = "phocus";
   };
   nixpkgs.overlays = [
@@ -40,21 +40,20 @@ in
     (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
     (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
-    (import ./conf/term/wezterm/default.nix { inherit pkgs colors; })
+    (import ./conf/term/wezterm/default.nix { inherit pkgs colors nixpkgs-f2k; })
     (import ./conf/editors/vscopium/default.nix { })
     (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
-    (import ./misc/awesome.nix { inherit pkgs colors; })
+    #  (import ./misc/awesome.nix { inherit pkgs colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
     #(import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./misc/xinit.nix { })
     (import ./misc/eww.nix { inherit config colors; })
-    (import ./misc/btrdc.nix { inherit config colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors; })
@@ -81,19 +80,30 @@ in
       dunst
       git-lfs
       wl-clipboard
+      unrar
       sway-contrib.grimshot
+      trash-cli
       xss-lock
+      glib
       htop
       recode
+      speechd
+      authenticator
+      authy
+      gnome.gnome-keyring
       gcc
+      jdk
+      nchat
+      wget
       zls
       go
       gopls
       playerctl
       scc
-      (pkgs.callPackage ../shared/icons/whitesur.nix { })
+      (pkgs.callPackage ../shared/icons/reversal.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
+      python310Packages.matplotlib
       neofetch
       rust-analyzer
       hsetroot
@@ -106,7 +116,6 @@ in
       imagemagick
       xorg.xev
       procps
-      betterdiscordctl
       killall
       moreutils
       cava
@@ -115,9 +124,7 @@ in
       pavucontrol
       fzf
       feh
-      exa
-      figma-linux
-      figma-agent
+      eza
     ];
   };
   nixpkgs.config = {

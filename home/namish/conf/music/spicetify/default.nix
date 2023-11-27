@@ -11,8 +11,8 @@ in
       # spicetify-nix
       officialThemesOLD = pkgs.fetchgit {
         url = "https://github.com/spicetify/spicetify-themes";
-        rev = "7e9e898124c96f115dc61fb91d0499ae81f56892";
-        sha256 = "06xp6vlbd4kj6vafkc3z2a81xpcwmz62cxilahjsj28110s0hxby";
+        rev = "9ba01f9861d1f52e049ad1ac01883f1609ffd45b";
+        sha256 = "0q2izca6qpgi1v17v4f9msr0lk78dl5binx78z9vszwf79x3kd2s";
       };
       # pin a certain version of the localFiles custom app
       localFilesSrc = pkgs.fetchgit {

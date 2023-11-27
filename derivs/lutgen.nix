@@ -6,12 +6,12 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "ozwaldorf";
     repo = "lutgen-rs";
-    rev = "621db41b10e5a1a923ef67094ce1fc05c618d6ae";
-    sha256 = "0dwj3cksf62z89ihqnhhxj1wgzjqqwlc40hwdfw18yqwr3byzfxf";
+    rev = "628fe661169f1939a8fd81abb2d53d4d4c7064b6";
+    sha256 = "1k2lcqpplw3i6babsx0pvmf2rzknfc0kizd2qhp57pxb2i93axcv";
   };
   nativeBuildInputs = with pkgs;[
     cargo
     rustc
   ];
-  cargoSha256 = "sha256-s5ejGEFMxDg+ENLg0Y1ZXgk2bDyy4H5C7tNMjVEp8kY=";
+  cargoSha256 = "sha256-BvhEDI2mUtCgmP6hRPniZmxdohaElG/vq/MrLHZgHbU=";
 }

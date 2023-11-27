@@ -7,7 +7,6 @@ with colors; {
     '';
     properties = {
       "st.background" = "#${background}";
-      "st.darker" = "#${darker}";
       "st.color0" = "#${color0}";
       "st.color8" = "#${color8}";
       "st.color7" = "#${color7}";
@@ -25,9 +24,6 @@ with colors; {
       "st.color13" = "#${color13}";
       "st.color6" = "#${color6}";
       "st.color14" = "#${color14}";
-      "st.contrast" = "#${contrast}";
-      "st.cursorline" = "#${cursorline}";
-      "st.comment" = "#${comment}";
       "st.borderpx" = 32;
     };
   };

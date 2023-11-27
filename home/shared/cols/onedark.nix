@@ -1,6 +1,5 @@
 {}:
 rec {
-   wallpaper = "rototrash-endeavour_astronaut.png"; 
   foreground = "dcdee6";
   background = "181b21";
   darker = "111418";
@@ -36,5 +35,4 @@ rec {
   color7 = "abb2bf";
   color15 = "abb2bf";
   name = "onedark";
-  neofetchpic = "awesome.png";
 }

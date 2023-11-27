@@ -1,6 +1,5 @@
 {}:
 rec {
-   wallpaper = "chip.png"; 
   foreground = "d8dee9";
   background = "21262f";
   darker = "1b2028";
@@ -36,5 +35,4 @@ rec {
   color7 = "bbc0c9";
   color15 = "cdd3dd";
   name = "arctic";
-  neofetchpic = "nskull.png";
 }

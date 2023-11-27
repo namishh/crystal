@@ -46,6 +46,7 @@ in
   fonts.packages = with pkgs; [
     material-design-icons
     phospor
+    maple-mono
     inter
     dosis
     material-symbols
@@ -74,9 +75,12 @@ in
     lutgen
     home-manager
     lua-language-server
-    inputs.nix-gaming.packages.${pkgs.system}.rocket-league
+    #  inputs.nix-gaming.packages.${pkgs.system}.rocket-league
     lua54Packages.lua
     blueman
+    bluez
+    pulseaudioFull
+    bluez-tools
     inotify-tools
     udiskie
     rnix-lsp
@@ -84,6 +88,7 @@ in
     pulseaudio
     gamemode
     (pkgs.python3.withPackages my-python-packages)
+    giph
     libnotify
     xdg-utils
     gtk3
@@ -91,10 +96,14 @@ in
     jq
     st
     spotdl
-    discord
+    (discord.override {
+      withVencord = true;
+    })
+    webcord-vencord
     osu-lazer
     heroic
     lutris
+    opera
     firefox
     gperftools
     unzip
