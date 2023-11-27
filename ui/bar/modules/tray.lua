@@ -27,11 +27,7 @@ local systray     = wibox.widget {
   {
     widget = wibox.widget.systray,
   },
-  top = dpi(9),
-  bottom = dpi(9),
   visible = false,
-  left = dpi(9),
-  right = dpi(9),
   widget = wibox.container.margin
 }
 

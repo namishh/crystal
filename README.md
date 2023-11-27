@@ -1,5 +1,8 @@
-kind of borked rn <br>
-nuclear config only meant to work with my nixos config<br>
+## The Old Config 
+
+> **Warning**
+>
+> This awesomewm config is not anymore compatible with my nixos config. Refer to this [commit](https://github.com/chadcat7/crystal/tree/211e76b02159daf1da581ff91db62eb537b35249) instead.
 
 the liblua_pam.so is compiled with lua5.2. either use lua5.2 or compile your own
 
@@ -162,29 +165,47 @@ end
 
 ```
 
-### Todo (14/15)
-- [x] ~~control center~~
-- [x] ~~dock~~
-- [x] ~~calendar good looks~~
-- [x] ~~desktop icon~~
-- [x] ~~window swallowing~~
-- [x] ~~scatchpads simple implementation~~
-- [x] ~~make a pomo timer~~
+## Screenshots
+| <b>Cool Dashboard with 2 sections</b>                                                                              |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/10.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/06.png" alt="bottom panel preview"></a>                    |
 
-#### Easy
-- [x] ~~appmenu~~
-- [x] ~~lock~~
-- [x] ~~vid recorder~~
-- [x] ~~screenshoter~~
-- [x] ~~wallpaper switcher~~
+| <b>Control Panel</b>                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/05.png" alt="bottom panel preview"></a>                    |
 
-#### Tough
-- [x] ~~right click menu~~
-- [x] complete the dash
+| <b>Exitscreen and Lockscreen</b>                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/04.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/11.png"  alt="bottom panel preview"></a>                    |
+
+| <b>Screenshotter and Video Recorder</b>                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/07.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
 
 
-#### Fixes
-- [x] ~~make it so that new apps spawn at last in the dock~~
+| <b>Calendar + Weather Widget</b>                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/03.png"  alt="bottom panel preview"></a>                    |
 
-### Credits
-will add them here
+
+| <b>Right Click Menu</b>                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/01.png"  alt="bottom panel preview"></a>                    |
+
+| <b>App Menu</b>                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/08.png"  alt="bottom panel preview"></a>                    |
+
+| <b>Custom Ncmpcppp UI</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
+
+
+| <b>Wallpaper Switcher</b>                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |

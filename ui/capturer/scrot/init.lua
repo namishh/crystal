@@ -117,7 +117,7 @@ awful.screen.connect_for_each_screen(function(s)
   local selection = createButton('', 'Selection', function()
     close()
     local name = getName()
-    local cmd = defCommand .. " -s " .. name
+    local cmd = "maim" .. mouseString .. " -s " .. name
     awful.spawn.easy_async_with_shell(cmd, function()
       copyScrot(name)
     end)
@@ -126,7 +126,7 @@ awful.screen.connect_for_each_screen(function(s)
   local window = createButton('', 'Window', function()
     close()
     local name = getName()
-    local cmd = defCommand .. " -i " .. client.focus.window .. " " .. name
+    local cmd = "maim" .. mouseString .. " -i " .. client.focus.window .. " " .. name
     awful.spawn.with_shell(cmd)
     awful.spawn.easy_async_with_shell(cmd, function()
       copyScrot(name)

@@ -102,7 +102,7 @@ local finalwidget = wibox.widget {
   },
   forced_width = w,
   forced_height = 350,
-  bg = beautiful.bg2 .. 'cc',
+  bg = beautiful.mbg .. 'cc',
   widget = wibox.container.background,
 }
 

@@ -25,6 +25,7 @@ local tomfoolery = function(s)
     visible = true,
     screen = s,
     height = 150,
+    x = 100,
     width = 600,
     placement = function(c) placeDock(c, 10) end,
     shape = helpers.rrect(10)
