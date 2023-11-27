@@ -37,7 +37,7 @@
 (defwidget userimage[]
   (overlay 
   (box :class "userbg" )
-  (box :class "userimage" :style 'background-image: url("/home/namish/.config/awesome/theme/pics/pfps/snoo.png");')
+  (box :class "userimage" :style 'background-image: url("/home/namish/.config/eww/assets/snoo.png");')
   )
 )
 

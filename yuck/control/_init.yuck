@@ -1,7 +1,7 @@
 
 (defwidget profile[]
   (box :orientation 'h' :space-evenly false :class "profile" :spacing 20
-  (box :class "profileimage" :halign 'start' :style `background-image: url("/home/namish/.config/awesome/theme/pics/pfps/snoo.png");`)
+  (box :class "profileimage" :halign 'start' :style `background-image: url("/home/namish/.config/eww/assets/snoo.png");`)
   (box :orientation 'v' :valign 'center' :space-evenly false :hexpand true :halign "start" :spacing 3
     (box :class "profiletime" :halign "start" "${username}@${hostname}")
     (box :class "profiletime" :halign "start" "${uptime}")
