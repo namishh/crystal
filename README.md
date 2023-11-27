@@ -186,44 +186,44 @@ end
 ## Screenshots
 | <b>Cool Dashboard with 2 sections</b>                                                                              |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/02.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/10.png" alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/06.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/02.png" alt="bottom panel preview"></a>|
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/06.png" alt="bottom panel preview"></a>|
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/10.png" alt="bottom panel preview"></a>|
 
 | <b>Control Panel</b>                                                                                               |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/05.png" alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/05.png" alt="bottom panel preview"></a>|
 
 | <b>Exitscreen and Lockscreen</b>                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/04.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/11.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/04.png" alt="bottom panel preview"></a>|
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/11.png" alt="bottom panel preview"></a>|
 
 | <b>Screenshotter and Video Recorder</b>                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/07.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/14.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/07.png" alt="bottom panel preview"></a>|
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/14.png" alt="bottom panel preview"></a>|
 
 
 | <b>Calendar + Weather Widget</b>                                                                                   |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/03.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/03.png" alt="bottom panel preview"></a>|
 
 
 | <b>Right Click Menu</b>                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/01.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/01.png" alt="bottom panel preview"></a>|
 
 | <b>App Menu</b>                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/08.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/08.png" alt="bottom panel preview"></a>|
 
 | <b>Custom Ncmpcppp UI</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/09.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/13.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/09.png" alt="bottom panel preview"></a>|
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/13.png" alt="bottom panel preview"></a>|
 
 
 | <b>Wallpaper Switcher</b>                                                                                          |
 | ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/12.png"  alt="bottom panel preview"></a>                    |
+| <a href="#--------"><img src="https://raw.githubusercontent.com/chadcat7/crystal/bloatedwm/.github/screenshots/12.png" alt="bottom panel preview"></a>|
