@@ -1,17 +1,13 @@
-<div align="center">
-  <h1> crystal </h1>
-  <p> 100% nix dotfiles that will 200% brick your system </p>
-</div>
-<div align="center">
+<div>
+<img src="screenshots/header.png" alt="showcase3">
+
+<br>
 
 ![GitHub top language](https://img.shields.io/github/languages/top/chadcat7/fuyu?color=6d92bf&style=for-the-badge)
 ![Cool](https://img.shields.io/badge/WM-Awesome-da696f?style=for-the-badge)
 ![Bloat](https://img.shields.io/badge/Bloated-Yes-c585cf?style=for-the-badge)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/chadcat7/fuyu?color=e1b56a&style=for-the-badge)
 ![GitHub Repo stars](https://img.shields.io/github/stars/chadcat7/fuyu?color=74be88&style=for-the-badge)
-
-<img src="screenshots/header.png" alt="showcase3">
-
 </div>
 
 
@@ -91,12 +87,6 @@ If you that determined, here are some resources to start out
   + [pills](https://nixos.org/guides/nix-pills/)
   + [nix-starter-config](https://github.com/Misterio77/nix-starter-config)
 
-| <b>Hyprland stuff</b>                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------ |
-| <a href="#--------"><img src="screenshots/hl/01.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/hl/02.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/hl/03.png"  alt="bottom panel preview"></a>                    |
-| <a href="#--------"><img src="screenshots/hl/04.png"  alt="bottom panel preview"></a>                    |
 
 ## Installation
 Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
@@ -139,6 +129,10 @@ sudo chown -R $USER /etc/nixos # change ownership of configuration folder
 cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
+
+> **Warning**
+>
+> For screenshots, go to each rice's respective branch
 
 ## Credits
 These are the chads which helped me throughout my short but crazy nix journey!
