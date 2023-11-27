@@ -52,7 +52,6 @@
       }
       # cursor_inactive_timeout = 0
       decoration {
-        multisample_edges = true
         active_opacity = 1
         inactive_opacity = 1
         fullscreen_opacity = 1.0

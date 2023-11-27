@@ -131,6 +131,20 @@ cd /etc/nixos
 home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
 ```
 
+# Rices
+
+| <b>Aura</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/aura"><img src="screenshots/aura.png"  alt="aura"></a>                    |
+
+| <b>Blizzard</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/blizzard"><img src="screenshots/blizzard.png"  alt="blizz"></a>                    |
+
+| <b>Glacier</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/glacier"><img src="screenshots/glacier.png"  alt="glacier"></a>                    |
+
 > **Warning**
 >
 > For screenshots, go to each rice's respective branch
