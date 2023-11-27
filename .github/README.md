@@ -1,6 +1,7 @@
-<div>
+<div align="center">
 <img src="screenshots/header.png" alt="showcase3">
 
+<br>
 <br>
 
 ![GitHub top language](https://img.shields.io/github/languages/top/chadcat7/fuyu?color=6d92bf&style=for-the-badge)
