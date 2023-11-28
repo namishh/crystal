@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/oxo.nix { };
+  colors = import ../shared/cols/forest.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -47,7 +47,7 @@ in
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
-    #  (import ./misc/awesome.nix { inherit pkgs colors; })
+    (import ./misc/vencord.nix { inherit config colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
@@ -88,14 +88,10 @@ in
       htop
       recode
       speechd
-      authenticator
       authy
-      gnome.gnome-keyring
       gcc
-      jdk
       nchat
       wget
-      zls
       go
       gopls
       playerctl
@@ -103,11 +99,9 @@ in
       (pkgs.callPackage ../shared/icons/reversal.nix { })
       (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
       cinnamon.nemo
-      python310Packages.matplotlib
       neofetch
       rust-analyzer
       hsetroot
-      notion-app-enhanced
       mpc-cli
       pfetch
       ffmpeg_5-full
