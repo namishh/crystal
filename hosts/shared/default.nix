@@ -25,6 +25,20 @@ in
   services.blueman = {
     enable = true;
   };
+  location.provider = "geoclue2";
+  # All values except 'enable' are optional.
+  services.redshift = {
+    enable = true;
+    brightness = {
+      # Note the string values below.
+      day = "1";
+      night = "1";
+    };
+    temperature = {
+      day = 5500;
+      night = 3700;
+    };
+  };
 
   time = {
     hardwareClockInLocalTime = true;
@@ -63,12 +77,6 @@ in
     libvirtd.enable = true;
   };
   services.dbus.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
   programs.steam.enable = true;
   environment.systemPackages = with pkgs; [
     nodejs

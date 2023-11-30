@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/forest.nix { };
+  colors = import ../shared/cols/kizu.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -110,6 +110,8 @@ in
       imagemagick
       xorg.xev
       procps
+      redshift
+      gammastep
       killall
       moreutils
       cava
