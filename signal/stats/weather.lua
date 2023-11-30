@@ -3,7 +3,8 @@ local gears = require("gears")
 local filesystem = gears.filesystem
 local json = require("mods.json")
 local helpers = require("helpers")
-local icon_dir = filesystem.get_configuration_dir() .. "theme/assets/weather/"
+local icon_dir = filesystem.get_configuration_dir() .. "theme/assets/weather/icons/"
+local thumb_dir = filesystem.get_configuration_dir() .. "theme/assets/weather/images/"
 
 local GET_FORECAST_CMD = [[bash -c "curl -s --show-error -X GET '%s'"]]
 
@@ -20,6 +21,28 @@ local icon_map = {
   ["50d"] = "weather-fog",
   ["01n"] = "weather-clear-night",
   ["02n"] = "weather-few-clouds-night",
+  ["03n"] = "weather-clouds-night",
+  ["04n"] = "weather-clouds-night",
+  ["10n"] = "weather-showers",
+  ["11n"] = "weather-strom",
+  ["13n"] = "weather-snow",
+  ["50n"] = "weather-fog",
+}
+
+
+local image_map = {
+  ["01d"] = "weather-clear-sky",
+  ["02d"] = "weather-clouds",
+  ["04d"] = "weather-clouds",
+  ["03d"] = "weather-clouds",
+  ["09d"] = "weather-showers-scattered",
+  ["09n"] = "weather-showers-scattered",
+  ["10d"] = "weather-showers",
+  ["11d"] = "weather-strom",
+  ["13d"] = "weather-snow",
+  ["50d"] = "weather-fog",
+  ["01n"] = "weather-clear-night",
+  ["02n"] = "weather-clouds-night",
   ["03n"] = "weather-clouds-night",
   ["04n"] = "weather-clouds-night",
   ["10n"] = "weather-showers",
@@ -62,6 +85,7 @@ awful.widget.watch(string.format(GET_FORECAST_CMD, url), 600, function(_, stdout
     temp = math.floor(result.current.temp),
     feelsLike = math.floor(result.current.feels_like),
     image = icon_dir .. icon_map[result.current.weather[1].icon] .. ".svg",
+    thumb = thumb_dir .. image_map[result.current.weather[1].icon] .. ".jpg",
     hourly = {
       result.hourly[1],
       result.hourly[2],

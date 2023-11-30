@@ -35,6 +35,11 @@ local hourminutes = wibox.widget {
     widget = wibox.container.margin
   },
   bg = beautiful.mbg,
+  buttons = {
+    awful.button({}, 1, function()
+      awesome.emit_signal('toggle::moment')
+    end)
+  },
   widget = wibox.container.background,
   shape = helpers.rrect(2),
 }

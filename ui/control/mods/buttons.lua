@@ -31,19 +31,22 @@ local createButton = function(cmd, icon, name, labelConnected, labelDisconnected
             spacing = 0
           },
           layout = wibox.layout.fixed.horizontal,
-          spacing = 15
+          spacing = 10
         },
         nil,
         {
           markup = "󰅂",
-          font   = beautiful.icon .. " 12",
+          font   = beautiful.icon .. " 20",
           id     = "arr",
           widget = wibox.widget.textbox,
         },
         layout = wibox.layout.align.horizontal,
       },
       widget = wibox.container.margin,
-      margins = 20,
+      top = 15,
+      bottom = 15,
+      left = 18,
+      right = 18
     },
     widget = wibox.container.background,
     id = "back",
@@ -56,12 +59,10 @@ local createButton = function(cmd, icon, name, labelConnected, labelDisconnected
   awesome.connect_signal('signal::' .. signal, function(status)
     if status then
       widget:get_children_by_id("back")[1].bg = beautiful.blue
-      if beautiful.style == "dark" then
-        widget:get_children_by_id("arr")[1].markup = helpers.colorizeText("󰅂", beautiful.bg)
-        widget:get_children_by_id("name")[1].markup = helpers.colorizeText(name, beautiful.bg)
-        widget:get_children_by_id("icon")[1].markup = helpers.colorizeText(icon, beautiful.bg)
-        widget:get_children_by_id("label")[1].markup = helpers.colorizeText(labelConnected, beautiful.bg)
-      end
+      widget:get_children_by_id("arr")[1].markup = helpers.colorizeText("󰅂", beautiful.bg)
+      widget:get_children_by_id("name")[1].markup = helpers.colorizeText(name, beautiful.bg)
+      widget:get_children_by_id("icon")[1].markup = helpers.colorizeText(icon, beautiful.bg)
+      widget:get_children_by_id("label")[1].markup = helpers.colorizeText(labelConnected, beautiful.bg)
     else
       widget:get_children_by_id("back")[1].bg = beautiful.mbg .. 'aa'
       widget:get_children_by_id("arr")[1].markup = helpers.colorizeText("󰅂", beautiful.fg .. 'cc')
@@ -79,7 +80,7 @@ local widget       = wibox.widget {
       "network"),
     createButton("~/.config/awesome/misc/scripts/bluetooth --toggle", "󰂯", "Bluetooth", "Connected", "Disconnected",
       "bluetooth"),
-    spacing = 25,
+    spacing = 20,
     layout = wibox.layout.flex.horizontal
   },
   {
@@ -87,7 +88,15 @@ local widget       = wibox.widget {
       "Turned Off", "airplane"),
     createButton('awesome-client \'naughty = require("naughty") naughty.toggle()\'', "󰍶", "Do Not Disturb",
       "Turned On", "Turned Off", "dnd"),
-    spacing = 25,
+    spacing = 20,
+    layout = wibox.layout.flex.horizontal
+  },
+  {
+    createButton("~/.config/awesome/misc/scripts/redshift --toggle", "󰛨", "Redshift", "Your Eyes Are Safe",
+      "Night Light Is Off", "redshift"),
+    createButton('pamixer --source 1 -t', "󰍬", "Microphone",
+      "Its Muted", "It is turned on", "mic"),
+    spacing = 20,
     layout = wibox.layout.flex.horizontal
   },
   layout = wibox.layout.fixed.vertical,

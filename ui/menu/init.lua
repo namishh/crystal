@@ -18,59 +18,48 @@ awful.screen.connect_for_each_screen(function(s)
     ontop = true,
     visible = false
   }
-  local image = wibox {
-    width = dpi(117),
-    shape = helpers.rrect(0),
-    height = dpi(117),
-    bg = beautiful.bg .. "00",
-    ontop = true,
-    visible = false
-  }
-  local pfp = wibox.widget {
-    {
-      widget = wibox.widget.imagebox,
-      image = beautiful.pfp,
-      forced_height = 115,
-      forced_width = 115,
-      clip_shape = helpers.rrect(100),
-      resize = true,
-    },
-    widget = wibox.container.background,
-    bg = beautiful.fg,
-    forced_height = 117,
-    forced_width = 117,
-    shape = helpers.rrect(100),
-    shape_border_width = 2,
-    shape_border_color = beautiful.fg,
-  }
   local prompt = wibox.widget {
+    {
+      image = helpers.cropSurface(3.42, gears.surface.load_uncached(beautiful.wallpaper)),
+      opacity = 0.9,
+      forced_height = dpi(140),
+      clip_shape = helpers.rrect(10),
+      forced_width = dpi(480),
+      widget = wibox.widget.imagebox
+    },
     {
       {
         {
           {
-            markup = "",
-            forced_height = 15,
-            id = "txt",
-            font = "Rubik 14",
-            widget = wibox.widget.textbox,
+            {
+              markup = "",
+              forced_height = 15,
+              id = "txt",
+              font = "Rubik 14",
+              widget = wibox.widget.textbox,
+            },
+            {
+              markup = "Search...",
+              forced_height = 15,
+              id = "placeholder",
+              font = "Rubik 14",
+              widget = wibox.widget.textbox,
+            },
+            layout = wibox.layout.stack
           },
-          {
-            markup = "Search...",
-            forced_height = 15,
-            id = "placeholder",
-            font = "Rubik 14",
-            widget = wibox.widget.textbox,
-          },
-          layout = wibox.layout.stack
+          widget = wibox.container.margin,
+          margins = 20,
         },
-        widget = wibox.container.margin,
-        margins = 20,
+        forced_width = 300,
+        shape = helpers.rrect(8),
+        widget = wibox.container.background,
+        bg = beautiful.mbg
       },
-      widget = wibox.container.background,
-      bg = beautiful.mbg
+      widget = wibox.container.place,
+      halign = "center",
+      valgn = "center",
     },
-    forced_width = 470,
-    widget = wibox.container.margin,
+    layout = wibox.layout.stack
   }
 
   local entries = wibox.widget {
@@ -112,33 +101,40 @@ awful.screen.connect_for_each_screen(function(s)
     {
       {
         {
-          nil,
-          nil,
           {
             {
-              {
-                markup = beautiful.user,
-                font = beautiful.sans .. " Bold 18",
-                align = "right",
-                widget = wibox.widget.textbox,
-              },
-              {
-                markup = "@frostbyte",
-                align = "right",
-                font = beautiful.mono .. " 12",
-                widget = wibox.widget.textbox,
-              },
-              layout = wibox.layout.fixed.vertical,
-              spacing = 5,
+              widget = wibox.widget.imagebox,
+              image = beautiful.nixos,
+              forced_height = 40,
+              forced_width = 40,
+              resize = true,
             },
-            widget = wibox.container.margin,
-            right = 15,
-            bottom = 15,
-            top = 10,
-
+            widget = wibox.container.place,
+            halign = "center"
           },
-          layout = wibox.layout.align.horizontal,
+          widget = wibox.container.margin,
+          top = 15
         },
+        nil,
+        {
+          {
+            createPowerButton("󰐥", beautiful.red, "poweroff"),
+            createPowerButton("󰌾", beautiful.blue, "lock"),
+            createPowerButton("󰦛", beautiful.green, "reboot"),
+            spacing = 10,
+            layout = wibox.layout.fixed.vertical
+          },
+          widget = wibox.container.margin,
+          margins = 10,
+
+        },
+        layout = wibox.layout.align.vertical
+      },
+      widget = wibox.container.background,
+      bg = beautiful.mbg
+    },
+    {
+      {
         prompt,
         spacing = 10,
         entries,
@@ -150,34 +146,9 @@ awful.screen.connect_for_each_screen(function(s)
       top = 10,
       widget = wibox.container.margin
     },
-    {
-      {
-        {
-          nil,
-          nil,
-          {
-            createPowerButton("󰐥", beautiful.red, "poweroff"),
-            createPowerButton("󰌾", beautiful.blue, "lock"),
-            createPowerButton("󰦛", beautiful.green, "reboot"),
-            spacing = 10,
-            layout = wibox.layout.fixed.vertical
-          },
-          layout = wibox.layout.align.vertical
-        },
-        widget = wibox.container.margin,
-        top = 10,
-        bottom = 10
-      },
-      widget = wibox.container.background,
-      bg = beautiful.mbg
-    },
     nil,
     spacing = 0,
     layout = wibox.layout.align.horizontal
-  }
-  image:setup {
-    pfp,
-    widget = wibox.container.margin
   }
   -- Functions
 
@@ -393,7 +364,6 @@ awful.screen.connect_for_each_screen(function(s)
 
   awesome.connect_signal("quit::launcher", function()
     launcherdisplay.visible = false
-    image.visible = false
   end)
   awesome.connect_signal("toggle::launcher", function()
     open()
@@ -401,14 +371,9 @@ awful.screen.connect_for_each_screen(function(s)
       awesome.emit_signal("quit::search")
     end
     launcherdisplay.visible = not launcherdisplay.visible
-    image.visible = not image.visible
     awful.placement.bottom_left(
       launcherdisplay,
-      { honor_workarea = true, margins = { bottom = 15, left = 15 } }
-    )
-    awful.placement.bottom_left(
-      image,
-      { honor_workarea = true, margins = { bottom = 550, left = 40, } }
+      { honor_workarea = true, margins = { bottom = 20, left = 20 } }
     )
   end)
 end)

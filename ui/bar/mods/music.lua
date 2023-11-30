@@ -7,16 +7,16 @@ local pctl      = require("mods.playerctl")
 local helpers   = require("helpers")
 local playerctl = pctl.lib()
 local art       = wibox.widget {
-  image = helpers.cropSurface(5, gears.surface.load_uncached(beautiful.songdefpicture)),
-  opacity = 0.18,
+  image = helpers.cropSurface(5.8, gears.surface.load_uncached(beautiful.songdefpicture)),
+  opacity = 0.3,
   forced_height = dpi(36),
   shape = helpers.rrect(5),
-  forced_width = dpi(210),
+  forced_width = dpi(240),
   widget = wibox.widget.imagebox
 }
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
   -- Set art widget
-  art.image = helpers.cropSurface(5, gears.surface.load_uncached(album_path))
+  art.image = helpers.cropSurface(5.8, gears.surface.load_uncached(album_path))
 end)
 local next = wibox.widget {
   align = 'center',
@@ -74,8 +74,8 @@ local finalwidget = wibox.widget {
       {
         {
           align = 'center',
-          font = beautiful.icon .. " 17",
-          markup = helpers.colorizeText('󰋋', beautiful.blue),
+          font = beautiful.icon .. " 18",
+          markup = helpers.colorizeText('󰋎', beautiful.fg),
           widget = wibox.widget.textbox,
         },
         nil,

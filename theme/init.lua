@@ -41,7 +41,7 @@ theme.bg_normal      = colors.bg
 theme.bg_focus       = colors.bg
 theme.bg_urgent      = colors.bg
 theme.bg_minimize    = colors.bg
-theme.bg_systray     = colors.bg
+theme.bg_systray     = colors.mbg
 
 theme.style          = colors.type
 
@@ -112,6 +112,8 @@ theme.layout_floating                           = gears.color.recolor_image(them
 theme.layout_tile                               = gears.color.recolor_image(themes_path .. "assets/tile.png",
   theme.fg)
 
+theme.nixos                                     = themes_path .. "assets/nixos.png",
+    theme.fg
 theme.titlebar_minimize_button_normal           = gears.color.recolor_image(
   themes_path .. "assets/titlebar/minimize_1.png", theme.bg3)
 theme.titlebar_minimize_button_focus            = gears.color.recolor_image(

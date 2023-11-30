@@ -5,8 +5,9 @@ local gears = require("gears")
 local json = require("mods.json")
 local beautiful = require("beautiful")
 
-local themes = { "biscuit", "cat", "decay", "everblush", "forest", "oxo", "solarized", "stardewnight", "sweetpastel",
-  "verdant" }
+local themes = { "biscuit", "cat", "decay", "everblush", "forest", "kizu", "oxo", "solarized", "stardewnight",
+  "sweetpastel",
+  "verdant", "vixima" }
 local index = helpers.indexOf(themes, beautiful.scheme)
 
 

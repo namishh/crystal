@@ -8,7 +8,6 @@ volume.increase = function()
 	]]
 
   awful.spawn.with_shell(script)
-  awesome.emit_signal("volume::notif")
 end
 
 volume.decrease = function()
@@ -17,7 +16,6 @@ volume.decrease = function()
 	]]
 
   awful.spawn.with_shell(script)
-  awesome.emit_signal("volume::notif")
 end
 
 volume.mute = function()
@@ -26,7 +24,6 @@ volume.mute = function()
 	]]
 
   awful.spawn.with_shell(script)
-  awesome.emit_signal("volume::notif")
 end
 
 return volume

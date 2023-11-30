@@ -7,22 +7,22 @@ local helpers      = require("helpers")
 
 local createHandle = function()
   return function(cr)
-    gears.shape.rounded_rect(cr, 25, 25, 15)
+    gears.shape.rounded_rect(cr, 20, 20, 15)
   end
 end
 
 local createSlider = function(icon, signal, command)
   local slidSlider = wibox.widget {
     bar_shape           = helpers.rrect(15),
-    bar_height          = 35,
+    bar_height          = 3,
     handle_color        = beautiful.bg,
     bar_color           = beautiful.bg .. '00',
-    bar_active_color    = beautiful.blue,
+    bar_active_color    = beautiful.fg,
     handle_shape        = createHandle(),
-    handle_border_width = 12,
-    handle_width        = dpi(25),
-    handle_margins      = { top = 5.2 },
-    handle_border_color = beautiful.blue,
+    handle_border_width = 2,
+    handle_width        = dpi(20),
+    handle_margins      = { top = 5.9 },
+    handle_border_color = beautiful.fg,
     value               = 25,
     forced_height       = 35,
     maximum             = 100,
@@ -49,36 +49,39 @@ local createSlider = function(icon, signal, command)
   local slidIcon = wibox.widget {
     {
       font = beautiful.icon .. " 15",
-      markup = helpers.colorizeText(icon, beautiful.bg),
+      markup = helpers.colorizeText(icon, beautiful.fg),
       valign = "center",
       widget = wibox.widget.textbox,
     },
     widget = wibox.container.margin,
-    left = 15
   }
 
   local slidScale = wibox.widget {
     nil,
     {
       {
-        {
-          widget = wibox.container.background,
-          forced_height = 2,
-          shape = helpers.rrect(10),
-          bg = beautiful.mbg
-        },
-        widget = wibox.container.place,
-        content_fill_horizontal = true,
-        valign = "center",
-      },
-      slidSlider,
-      {
         slidIcon,
         widget = wibox.container.place,
         valign = "center",
         halign = "left"
       },
-      layout = wibox.layout.stack
+      {
+        {
+          {
+            widget = wibox.container.background,
+            forced_height = 2,
+            shape = helpers.rrect(10),
+            bg = beautiful.mbg
+          },
+          widget = wibox.container.place,
+          content_fill_horizontal = true,
+          valign = "center",
+        },
+        slidSlider,
+        layout = wibox.layout.stack,
+      },
+      layout = wibox.layout.fixed.horizontal,
+      spacing = 20
     },
     nil,
     layout = wibox.layout.align.horizontal,
