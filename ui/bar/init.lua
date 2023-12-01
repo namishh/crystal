@@ -33,6 +33,29 @@ local function init(s)
             layout,
             {
               {
+                {
+                  align = 'center',
+                  font = beautiful.icon .. " 16",
+                  markup = helpers.colorizeText('󱓟', beautiful.fg),
+                  widget = wibox.widget.textbox,
+                },
+                widget = wibox.container.margin,
+                top = 10,
+                bottom = 10,
+                left = 10,
+                right = 10
+              },
+              widget = wibox.container.background,
+              shape = helpers.rrect(5),
+              bg = beautiful.mbg,
+              buttons = {
+                awful.button({}, 1, function()
+                  awesome.emit_signal('toggle::dash')
+                end)
+              },
+            },
+            {
+              {
                 tags(s),
                 widget = wibox.container.margin,
                 left = 15,

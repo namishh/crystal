@@ -15,7 +15,7 @@ local clipboard = Gtk.Clipboard.get(Gdk.SELECTION_CLIPBOARD)
 
 
 local getName = function()
-  local string = "~/Pictures/Screenshots/" .. os.date("%d-%m-%Y-%H:%M:%S") .. ".png"
+  local string = "~/Pictures/Screenshots/" .. os.date("%d-%m-%Y-%H:%M:%S") .. ".jpg"
   string = string:gsub("~", os.getenv("HOME"))
   return string
 end
