@@ -96,10 +96,30 @@ local function init(s)
             {
               {
                 {
-                  align = 'center',
-                  font = beautiful.icon .. " 16",
-                  markup = helpers.colorizeText('󰐥', beautiful.red),
-                  widget = wibox.widget.textbox,
+                  {
+                    align = 'center',
+                    font = beautiful.icon .. " 16",
+                    markup = helpers.colorizeText('󰂜', beautiful.fg),
+                    widget = wibox.widget.textbox,
+                    buttons = {
+                      awful.button({}, 1, function()
+                        awesome.emit_signal('toggle::notify')
+                      end)
+                    },
+                  },
+                  {
+                    align = 'center',
+                    font = beautiful.icon .. " 16",
+                    markup = helpers.colorizeText('󰐥', beautiful.red),
+                    widget = wibox.widget.textbox,
+                    buttons = {
+                      awful.button({}, 1, function()
+                        awesome.emit_signal('toggle::exit')
+                      end)
+                    },
+                  },
+                  spacing = 20,
+                  layout = wibox.layout.fixed.horizontal
                 },
                 widget = wibox.container.margin,
                 top = 10,
@@ -110,11 +130,6 @@ local function init(s)
               widget = wibox.container.background,
               shape = helpers.rrect(5),
               bg = beautiful.mbg,
-              buttons = {
-                awful.button({}, 1, function()
-                  awesome.emit_signal('toggle::exit')
-                end)
-              },
             },
             layout = wibox.layout.fixed.horizontal,
             spacing = 10,
