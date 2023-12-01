@@ -3,6 +3,10 @@
 {
   home = {
     file = {
+      ".local/bin/ghcontribs" = {
+        executable = true;
+        text = import ./misc/github.nix { };
+      };
       ".local/bin/fetch" = {
         executable = true;
         text = import ./eyecandy/nixfetch.nix { };

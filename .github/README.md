@@ -170,5 +170,7 @@ People from who I have ~~stolen~~ taken inspiration for my design.
 
 - [tsukki](https://github.com/tsukki9696)
 - [sammy](https://github.com/TorchedSammy)
+- [kizu](https://github.com/janleigh)
+- [gw](https://github.com/Gwynsav)
 
 **Feel free to use any code from any branch as long as you will credit me**
