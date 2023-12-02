@@ -175,12 +175,6 @@ playerctl pause
 sleep 0.2
 awesome-client "awesome.emit_signal('toggle::lock')"
 ```
-6. Make this file to generate pictures for control `~/.local/bin/gencontrolpic`
-```bash
-#!/bin/sh
-A=$(cat ~/.cache/themeName)
-convert ~/.config/awesome/theme/walls/$A.jpg -resize 1280x720 +repage -crop 570x310+400+310 ~/.config/awesome/theme/pics/tp/$A.png
-```
 #### Changing Themes
 This is something that I do not handle as I use NixOs, but this is a sample function I used when I used Endevaour Os and Void.
 
