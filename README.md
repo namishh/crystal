@@ -54,9 +54,10 @@ end
 
 ```
 
-### Screenshots
 
 3. Edit keys in `~/.cache/awesome/json/settings.json`
+
+### Screenshots
 
 | <b>Control Center</b>                                                                              |
 | ------------------------------------------------------------------------------------------------------------------ |
