@@ -12,6 +12,10 @@ local custom = {
     to = "terminal"
   },
   {
+    name = "neofetchpad",
+    to = "terminal"
+  },
+  {
     name = "ncmpcpppad",
     to = "deepin-music-player"
   },
