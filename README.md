@@ -19,7 +19,7 @@ The newer and much better rice.
 + Screenshotter
 
 
-## Setup on other distros
+### Setup on other distros
 
 1. Install these programs
 
@@ -54,6 +54,7 @@ end
 
 ```
 
+### Screenshots
 
 3. Edit keys in `~/.cache/awesome/json/settings.json`
 
