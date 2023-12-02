@@ -166,21 +166,23 @@ playerctl:connect_signal("position", function(_, interval_sec, length_sec)
 end)
 
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
-  if album_path == "" then
-    album_path = beautiful.songdefpicture
+  if player_name == "mpd" then
+    if album_path == "" then
+      album_path = beautiful.songdefpicture
+    end
+    if string.len(title) > 30 then
+      title = string.sub(title, 0, 30) .. "..."
+    end
+    if string.len(artist) > 22 then
+      artist = string.sub(artist, 0, 22) .. "..."
+    end
+    songname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
+    leftname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
+    leftartist:set_markup_silently(helpers.colorizeText(' ' .. artist or "WT" .. ' ', beautiful.fg))
+    artistname:set_markup_silently(helpers.colorizeText(artist or "HM", beautiful.fg))
+    art:set_image(gears.surface.load_uncached(album_path))
+    leftart:set_image(gears.surface.load_uncached(album_path))
   end
-  if string.len(title) > 30 then
-    title = string.sub(title, 0, 30) .. "..."
-  end
-  if string.len(artist) > 22 then
-    artist = string.sub(artist, 0, 22) .. "..."
-  end
-  songname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
-  leftname:set_markup_silently(helpers.colorizeText(title or "NO", beautiful.fg))
-  leftartist:set_markup_silently(helpers.colorizeText(' ' .. artist or "WT" .. ' ', beautiful.fg))
-  artistname:set_markup_silently(helpers.colorizeText(artist or "HM", beautiful.fg))
-  art:set_image(gears.surface.load_uncached(album_path))
-  leftart:set_image(gears.surface.load_uncached(album_path))
 end)
 
 
