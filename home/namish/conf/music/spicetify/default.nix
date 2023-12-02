@@ -60,7 +60,7 @@ in
         shadow = "${color8}";
         selected-row = "${color8}";
         button = "${color4}";
-        button-active = "${mbg}";
+        button-active = "${foreground}";
         button-disabled = "${color5}";
         tab-active = "${color4}";
         notification = "${color3}";
