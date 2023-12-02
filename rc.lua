@@ -1,6 +1,8 @@
 local awful = require "awful"
 local gears = require "gears"
 local beautiful = require "beautiful"
+
+awful.spawn.with_shell("bash ~/.config/awesome/main/autorun.sh")
 require "setup":generate()
 
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/init.lua")
@@ -13,8 +15,6 @@ require "misc"
 require "ui"
 require "signal"
 
--- Autorun at startup
-awful.spawn.with_shell("bash ~/.config/awesome/main/autorun.sh")
 
 gears.timer {
   timeout = 5,
