@@ -7,7 +7,6 @@ local helpers       = require "helpers"
 local settings      = require "setup".settings
 -- Var
 local themes_path   = gfs.get_configuration_dir() .. "theme/"
-local walls_path    = "~/.local/pictures/Walls/"
 local home          = os.getenv 'HOME'
 
 local theme         = {}
@@ -112,8 +111,7 @@ theme.layout_floating                           = gears.color.recolor_image(them
 theme.layout_tile                               = gears.color.recolor_image(themes_path .. "assets/tile.png",
   theme.fg)
 
-theme.nixos                                     = themes_path .. "assets/nixos.png",
-    theme.fg
+theme.nixos                                     = themes_path .. "assets/nixos.png"
 theme.titlebar_minimize_button_normal           = gears.color.recolor_image(
   themes_path .. "assets/titlebar/minimize_1.png", theme.bg3)
 theme.titlebar_minimize_button_focus            = gears.color.recolor_image(

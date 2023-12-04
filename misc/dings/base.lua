@@ -133,7 +133,7 @@ naughty.connect_signal("request::display", function(n)
     {
       {
         markup = n.title,
-        font   = beautiful.sans .. " 11",
+        font   = beautiful.sans .. " 12",
         align  = "right",
         valign = "center",
         widget = wibox.widget.textbox
@@ -152,7 +152,7 @@ naughty.connect_signal("request::display", function(n)
     {
       {
         markup = helpers.colorizeText("<span weight='normal'>" .. n.message .. "</span>", beautiful.fg .. "BF"),
-        font   = beautiful.sans .. " 11",
+        font   = beautiful.sans .. " 12",
         align  = "left",
         valign = "center",
         wrap   = "char",
