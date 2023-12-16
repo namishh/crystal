@@ -59,13 +59,9 @@ in
   };
   fonts.packages = with pkgs; [
     material-design-icons
-    phospor
-    maple-mono
-    inter
     dosis
     material-symbols
     rubik
-    ibm-plex
     (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })
   ];
 
@@ -95,6 +91,7 @@ in
     xorg.xwininfo
     pulseaudio
     gamemode
+    mpvc
     (pkgs.python3.withPackages my-python-packages)
     giph
     libnotify
@@ -102,12 +99,10 @@ in
     gtk3
     appimage-run
     jq
-    st
     spotdl
     (discord.override {
       withVencord = true;
     })
-    webcord-vencord
     osu-lazer
     heroic
     lutris
@@ -119,9 +114,7 @@ in
     grim
     slop
     eww-wayland
-    wayland
     swaylock-effects
-    swaybg
     git
     pstree
     mpv
@@ -136,9 +129,7 @@ in
     brillo
     wmctrl
     steam
-    steam-run
     slop
-    ueberzugpp
     ripgrep
     maim
     xclip

@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/fullerene.nix { };
+  colors = import ../shared/cols/cat.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -46,7 +46,7 @@ in
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
-    (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
+    (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
     (import ./misc/vencord.nix { inherit config colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
@@ -76,21 +76,19 @@ in
     packages = with pkgs; [
       bc
       chromium
-      catimg
       dunst
       git-lfs
       wl-clipboard
       unrar
       sway-contrib.grimshot
       trash-cli
+      jgmenu
       xss-lock
       glib
       htop
-      recode
       speechd
       authy
       gcc
-      nchat
       wget
       go
       gopls
@@ -111,7 +109,6 @@ in
       xorg.xev
       procps
       redshift
-      gammastep
       killall
       moreutils
       cava
@@ -119,6 +116,7 @@ in
       socat
       pavucontrol
       fzf
+      swww
       feh
       eza
     ];

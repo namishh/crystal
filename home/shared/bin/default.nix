@@ -3,6 +3,10 @@
 {
   home = {
     file = {
+      ".local/bin/pctl" = {
+        executable = true;
+        text = import ./misc/pctl.nix { };
+      };
       ".local/bin/ghcontribs" = {
         executable = true;
         text = import ./misc/github.nix { };

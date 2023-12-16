@@ -6,7 +6,7 @@
     enable = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    #    plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
+    #plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts
@@ -28,10 +28,10 @@
         sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
       }
       general {
-        gaps_in = 8
-        gaps_out = 8
+        gaps_in = 20
+        gaps_out = 20
         border_size = 3
-        col.active_border = rgb(${color4})
+        col.active_border = rgb(${accent})
         col.inactive_border = rgba(595959aa)
         layout = dwindle # master|dwindle 
       }
@@ -66,7 +66,7 @@
         dim_inactive = false
       # dim_strength = #0.0 ~ 1.0
         blur {
-          enabled: true
+          enabled: false
           size = 20
           passes = 4
           new_optimizations = true
@@ -111,6 +111,7 @@
         sensitivity = -0.5
       }
       bind = $mainMod, Return, exec, wezterm
+      bind = $mainMod, Q,exec,screenshotmenu
       bind = $mainMod SHIFT, Return, exec, wezterm
       bind = $mainMod SHIFT, C, killactive,
       bind = $mainMod SHIFT, Q, exit,
@@ -253,15 +254,12 @@
       bindm = $mainMod, mouse:273, resizewindow
       exec = source ~/.local/bin/upw
       exec = bash -c ~/.local/bin/genmenupic
-      exec = swaybg -i ~/.config/awesome/theme/walls/${name}.jpg &
+      exec = swww init && sww img ~/.config/awesome/theme/alt/${name}.jpg
       exec = dunst &
       exec-once = xss-lock lock &
       exec =  eww open bar && eww reload &
       exec = xrdb -merge ~/.Xresources &
 
-      layerrule = blur,lockscreen
-      layerrule = blur,gtk-layer-shell
-      layerrule = blur,waybar
       #---------------#
       # windows rules #
       #---------------#
@@ -299,6 +297,7 @@
       windowrule=move 25%-,ncmpcpp
       windowrule=size 960 540,ncmpcpp
       windowrule=noblur,^(firefox)$
+      windowrule=noblur,^(eww)$
     '';
   };
 }

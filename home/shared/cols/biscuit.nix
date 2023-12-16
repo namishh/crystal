@@ -6,6 +6,7 @@ rec {
   bg2 = "211b1b";
   mbg = "211b1b";
 
+  accent = "989F56";
   cursorColor = "ffe9c7";
   contrast = "211b1b";
   cursorline = "211b1b";

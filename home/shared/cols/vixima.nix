@@ -10,6 +10,7 @@ rec {
   contrast = "1E1F24";
   cursorline = "1E1F24";
   comment = "8f9093";
+  accent = "FA3867";
 
   color0 = "26272B";
   color8 = "333438";

@@ -43,9 +43,10 @@
       enable-fading-next-tag = true;
       corner-radius = 8;
       shadow = true;
-      shadow-radius = 15;
-      shadow-offset-x = -15;
-      shadow-offset-y = -15;
+      shadow-radius = 40;
+      shadow-offset-x = -38;
+      shadow-offset-y = -30;
+      shadow-opacity = 0.2;
       shadow-exclude = [
         "window_type = 'desktop'"
         "class_g ~= 'awesome'"

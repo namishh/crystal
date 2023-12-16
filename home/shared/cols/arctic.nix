@@ -3,6 +3,7 @@ rec {
   foreground = "d8dee9";
   background = "21262f";
   darker = "1b2028";
+  accent = "81a1c1";
   bg2 = "232832";
   mbg = "232831";
 

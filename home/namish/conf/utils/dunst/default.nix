@@ -4,18 +4,19 @@
     settings = {
       global = {
         follow = "mouse";
-        width = 500;
-        origin = "top-center";
+        width = "(180,500)";
+        origin = "bottom-center";
         alignment = "left";
         vertical_alignment = "center";
         ellipsize = "middle";
-        offset = "15x15";
+        offset = "0x45";
         padding = 15;
         horizontal_padding = 15;
         text_icon_padding = 15;
         icon_position = "left";
         min_icon_size = 48;
         max_icon_size = 64;
+        highlight = "#${color2}";
         progress_bar = true;
         progress_bar_height = 8;
         progress_bar_frame_width = 1;
@@ -25,7 +26,7 @@
         frame_width = 2;
         frame_color = "#${mbg}";
         separator_color = "frame";
-        corner_radius = 8;
+        corner_radius = 3;
         transparency = 0;
         gap_size = 8;
         line_height = 0;
@@ -34,8 +35,8 @@
         history_length = 20;
         show_age_threshold = 60;
         markup = "full";
-        font = "Iosevka Nerd Font 12";
-        format = "<span size='x-large' font_desc='Iosevka Nerd Font 10' foreground='#${foreground}'>%a</span>\\n%s\\n%b";
+        font = "Rubik 12";
+        format = "<b>%s</b>\n%b";
         word_wrap = "yes";
         sort = "yes";
         shrink = "no";
@@ -46,6 +47,7 @@
         stack_duplicates = true;
         always_run_script = true;
         hide_duplicate_count = false;
+        icon_theme = "reversal";
         ignore_dbusclose = false;
         force_xwayland = false;
         force_xinerama = false;
@@ -61,19 +63,19 @@
         script = "~/.config/eww/scripts/notification_logger.zsh";
       };
       urgency_low = {
-        timeout = 3;
+        timeout = 8;
         background = "#${background}";
         foreground = "#${foreground}";
         highlight = "#${color4}";
       };
       urgency_normal = {
-        timeout = 6;
+        timeout = 8;
         background = "#${background}";
         foreground = "#${foreground}";
         highlight = "#${color4}";
       };
       urgency_critical = {
-        timeout = 0;
+        timeout = 10;
         background = "#${background}";
         foreground = "#${foreground}";
         highlight = "#${color9}";

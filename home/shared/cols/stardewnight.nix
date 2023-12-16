@@ -5,6 +5,7 @@ rec {
   darker = "13111e";
   bg2 = "212126";
   mbg = "212126";
+  accent = "7aaaff";
 
   cursorColor = "e9ecf2";
   contrast = "212126";

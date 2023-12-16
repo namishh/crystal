@@ -24,6 +24,7 @@ rec {
   color11 = "e1956c";
 
   color4 = "6e95bd";
+  accent = "6e95bd";
   color12 = "6fadea";
 
   color5 = "a56db1";

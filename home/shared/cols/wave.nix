@@ -18,6 +18,7 @@ rec {
   color11 = "e59575";
 
   color4 = "659bdb";
+  accent = "659bdb";
   color12 = "739bdf";
 
   color5 = "c167d9";

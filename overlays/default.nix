@@ -18,6 +18,29 @@
         sha256 = "007pvimfpnmjz72is4y4g9a0vpq4sl1w6n9sdjq2xb2igys2jsyg";
       };
     });
+    dockbarx = prev.dockbarx.overrideAttrs (oldAttrs: {
+      src = prev.fetchFromGitHub {
+        owner = "xuzhen";
+        repo = "dockbarx";
+        rev = "31209c2f96eeb97e8755893c7b026bec8b2d53bd";
+        sha256 = "1v92fshpzf2762kgk841q4cbakhyf726wl35s3y94ar5drk604pw";
+      };
+      postPatch = ''
+        substituteInPlace setup.py \
+          --replace /usr/ "" \
+          --replace '"/", "usr", "share",' '"share",'
+
+        for f in \
+          utils/dbx_preference \
+          dockbarx/applets.py \
+          dockbarx/dockbar.py \
+          dockbarx/iconfactory.py \
+          dockbarx/theme.py
+        do
+          substituteInPlace $f --replace /usr/share/ $out/share/
+        done
+      '';
+    });
     steam = prev.steam.override {
       extraPkgs = pkgs:
         with pkgs; [

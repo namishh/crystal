@@ -4,6 +4,7 @@ rec {
   background = "101618";
   darker = "0c1012";
   mbg = "1c2121";
+  accent = "5a85db";
   bg2 = "1c2121";
 
   cursorColor = "1c2121";
