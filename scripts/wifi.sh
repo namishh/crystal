@@ -46,7 +46,11 @@ icon() {
         echo "󰤮 "
     fi
 }
-
+speed() {
+  s1=$(awk 'NR==3 {print $3}''' /proc/net/wireless)
+  s2=${s1::-1}
+  echo $s2
+}
 
 if [[ $1 == "--toggle" ]]; then
     toggle
@@ -58,4 +62,6 @@ elif [[ $1 == "--color" ]]; then
    color 
 elif [[ $1 == "--icon" ]]; then
    icon
+elif [[ $1 == "--speed" ]]; then
+   speed
 fi

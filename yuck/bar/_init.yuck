@@ -1,14 +1,13 @@
 (defwidget bar []
-   (box :class "bar" :orientation "horizontal" :space-evenly false 
-    (box :halign "start" :valign "center" :vexpand true  :space-evenly false :spacing 7 (launcher) (workspaces))
-    (box :halign 'left' :hexpand true (musicbar))  
-    (box  :halign "right" :orientation "horizontal" :space-evenly false :spacing 7 
-      (theme)
-      (button :onclick "eww open --toggle control" (batteryprog))
-      (button :onclick "eww open --toggle moment" (time))
-      (button :onclick "eww open --toggle exit" (powericon))
-    ) 
+   (box :class "bar" :vexpand false :orientation "horizontal" :space-evenly false
+    (box :halign "start" :valign "center":vexpand false   :space-evenly false :spacing 7 (launcher) (workspaces))
+    (box :halign "center" :valign "center" :hexpand true :vexpand false   :space-evenly false :spacing 7 (musicbar))
+    (box :halign "end" :class "image" :valign "center" :space-evenly false :orientation 'h' :spacing 10 (both) (time) (profileimage))
   )
+)
+
+(defwidget profileimage[]
+   (image  :image-width 42 :path pfp)
 )
 
 (defwidget musicbar[]
@@ -24,46 +23,31 @@
         ))
       )
 )
-(defvar themerev false)
-(defwidget theme[]
-(eventbox :onhover "eww update themerev=true"
-			  :onhoverlost "eww update themerev=false"
-		(box :vexpand "false" :hexpand "false" :space-evenly "false"
-				(button :class "icon"  :wrap "false" :limit-width 12 "󰃣")
-
-        (revealer :transition "slideleft"
-			    :reveal themerev
-			    :duration "350ms"
-          (box :class "themes" :space-evenly false :spacing 10 
-            (themeButton :color "#8dc080" :name "forest")
-            (themeButton :color "#659bdb" :name "wave")
-            (themeButton :color "#c668cc" :name "cat")
-            (themeButton :color "#c75f68" :name "onedark")
-          )
-        )
-  )
-))
-
-(defwidget themeButton[color name]
-  (button :onclick "setTheme ${name}" (box :valign 'center' :height 12 :width 12 :style 'background-color: ${color};'))
-)
 
 (defwidget time[]
-  (box :class "time" "${hour} : ${minute}")
+ (button :onclick "eww open --toggle moment" (box :class "time" "${hour} : ${minute} ${ampm}"))
 )
 (defwidget launcher[]
   (button :onclick "eww open --toggle dash" (box :class "launcher" " "))
 )
 (defwidget batteryprog[]
-  (box :class "batterybar" :space-evenly false :spacing 18
-      
-     (overlay (scale :active false :class "bat_progress" :value battery :max 100 :min 0) (box :class "batteryicon" :valign "center" "󱐋")) (wifiicon) 
-  )
+  (box :class "batbar"
+  (circular-progress :class "thingy"
+                   :value battery
+                   :thickness 3
+                   :clockwise true
+                     :start-at 30
+   (box :class "t")
+    ))
 )
 
 (defwidget wifiicon[]
   (box :class "wifiicon" wifiConnected)
 )
+
+(defwidget both[]
+  (button :onclick "eww open --toggle control" (box :class "both" :space-evenly false :spacing 15 (batteryprog) (wifiicon)))
+  )
 
 (defwidget powericon[]
   (box :class "powericon" "󰐥")
@@ -81,10 +65,10 @@
 
 (defwindow bar
     :monitor 0
-    :geometry (geometry :x "0%"
-      :y "0px"
-      :width "100%"
-      :height "20px"
+    :geometry (geometry :x "20px"
+      :y "20px"
+      :width "70%"
+      :height "58px"
       :anchor "top center")
     :stacking "fg"
     :exclusive true

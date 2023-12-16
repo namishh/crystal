@@ -1,6 +1,7 @@
 (defpoll hour 	:interval "1s" `date +%H`)
 (defpoll minute :interval "1s" `date +%M`)
 (defpoll day 	:interval "1s" `date "+%A"`)
+(defpoll ampm 	:interval "1s" `date "+%p"`)
 (defpoll date 	:interval "1s" `date "+%D"`)
 (defpoll month_year :interval "24h"
     "date '+%B %Y'")
@@ -14,6 +15,11 @@
 (defpoll volume :interval "1s" `pamixer --get-volume`)
 (defpoll brightness :interval "1s" `brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'`)
 
+(defvar pfp "/home/namish/.config/eww/assets/pfp.png")
+(defvar fullpfp "/home/namish/.config/eww/assets/fullpfp.png")
+
+(defpoll cputemp :interval "1s" "~/.config/eww/scripts/cpu.sh")
+(defpoll wifisped :interval "1s" "~/.config/eww/scripts/wifi.sh --speed")
 
 (defpoll battery :interval "1s" `~/.config/eww/scripts/bat.sh percent`)
 (defpoll wifiConnected :interval "2s" `~/.config/eww/scripts/wifi.sh --icon`)
@@ -34,10 +40,11 @@
 (defpoll btactive :interval '1s' "~/.config/eww/scripts/bl.sh --class")
 (defpoll wallpaper :interval "1h" "source ~/.local/bin/upw && echo $WALLPAPER")
 
-(deflisten cards "~/.config/eww/scripts/notification_logger.zsh subscribe")
-(defpoll critical :interval "1s" "~/.config/eww/scripts/notification_logger.zsh crits")
-
 (defpoll weathericon :interval "2h" "~/.config/eww/scripts/weather.sh icon")
+(defpoll weatherimage :interval "2h" "~/.config/eww/scripts/weather.sh image")
 (defpoll weatherhex :interval "2h" "~/.config/eww/scripts/weather.sh hex")
 (defpoll current_temp :interval "2h" "~/.config/eww/scripts/weather.sh current_temp")
 (defpoll current_desc :interval "2h" "~/.config/eww/scripts/weather.sh weather_desc")
+
+(defpoll dunsthistory :interval "250ms" "dunstctl history")
+(defpoll dunstcount :interval "250ms" "dunstctl count history")

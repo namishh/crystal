@@ -12,59 +12,46 @@
 
 .volscale trough {
   min-width: 8rem;
-  min-height: 12px;
-  background: rgba($foreground, 0.02);
+  min-height: 16px;
+  background: rgba($comment, 0.4);
   @include rounding;
 }
 
 .volscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $green, $green-light);
+  background: $green;
 }
 
 .brightscale trough {
   min-width: 8rem;
-  min-height: 12px;
-  background: rgba($foreground, 0.02);
+  min-height: 16px;
+  background: rgba($comment, 0.4);
   @include rounding;
 }
 
 .brightscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $blue, $blue-light);
-}
-
-.profileimage {
-  @include rounding;
-  background-size: cover;
-  background-position: center;
-  min-height: 80px;
-  opacity: 0.8;
-  min-width: 80px;
-  background-repeat: no-repeat;
+  background: $yellow;
 }
 
 .profile {
-  background: $background-alt;
-  @include rounding;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .profiletime {
-  font-family: "Iosevka Nerd Font";
-  font-size: 18px;
-  font-weight: 300;
+  font-family: "Rubik";
+  font-size: 16px;
 }
 
 .music {
   @include rounding;
-  min-height: 18rem;
+  min-height: 10rem;
   background-size: cover;
   background-position: center;
 }
 
 .music-g {
-  background-image: linear-gradient(to right, rgba($background, 1) 30%, rgba($background, 0.8));
+  background-image: linear-gradient(to right, rgba($background, 0.95) 30%, rgba($background, 0.5));
 }
 
 .musicbutton {
@@ -76,6 +63,7 @@
 .musicbuttons {
   background: $background-alt;
   padding: 0.5rem 1rem;
+  @include rounding;
 }
 
 .profileexit {
@@ -93,35 +81,29 @@
 }
 
 .music-scale trough highlight {
-  background: linear-gradient(to right, rgba($magenta, 0.2) 4%, $magenta);
+  background: $magenta;
 }
 
 .musicinfo {
-  font-family: "Iosevka Nerd Font";
-  font-size: 14px;
+  font-family: "Rubik";
+  font-size: 16px;
   padding: 1rem;
 }
 
 .musicname {
-  font-size: 16px;
-}
-
-.setbtns {
-  background: $background-alt;
-  @include rounding;
-  padding: 1rem;
+  font-size: 18px;
 }
 
 .setbtn {
   font-family: Material Design Icons;
-  background: rgba($blue, 0.03);
+  background: rgba($comment, 0.2);
   @include rounding;
-  padding: 1.5rem;
+  padding: 1.7rem;
   font-size: 24px;
 }
 
 .active {
-  background: linear-gradient(to bottom right, $blue 30%, $blue-light);
+  background: $accent;
   color: $background;
 }
 
@@ -133,4 +115,10 @@
 .mono {
   font-size: 16px;
   font-family: "Iosevka Nerd Font";
+}
+
+.buttons {
+  background: $background-alt;
+  padding: 16px;
+  @include rounding;
 }

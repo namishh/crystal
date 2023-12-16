@@ -1,9 +1,10 @@
 (defwidget moment_calendar[]
   (box :class " moment_calendar" :orientation "v" :space-evenly false
-			  (box :class "moment_up" :space-evenly false  (label :class "moment_month-year" :halign 'start' :hexpand true :text thourtime) (label :class "moment_month-year" :text month_year))
+			  (box :class "moment_up" :space-evenly false :orientation "v" :spacing 20 (mtime)  (label :class "m" :halign 'center' :hexpand true :text "${day}, ${calendar_day} ${month_year}") )
 				(box :class "moment_cal-box"
 					:orientation "v"
 					:space-evenly "false"
+          (label :class "moment_month-year" :text month_year)
 					(box :class "moment_day-names" :orientation "h" :space-evenly "true"
 						(label :text "Su")
 						(label :text "Mo")
@@ -19,18 +20,48 @@
   )
 )
 
+(defwidget mtime[]
+  (box :space-evenly false :halign "center" :orientation 'h' :spacing 15
+    (label :class "mo" :halign 'center'  :text "${hour}")
+    (box :class "sep" :valign "center" :space-evenly false :orientation 'v' 
+      (box :width 3 :height 20 :class "bgblue")
+      (box :width 3 :height 20 :class "bgpink")
+      (box :width 3 :height 20 :class "bgred")
+    )
+    (label :class "mo" :halign 'center':text "${minute}")
+  )
+)
+
+(defwidget weather[]
+  (box :orientation 'v'
+      (overlay :vexpand true
+        (box :orientation 'v' :hexpand true :space-evenly false :halign 'center' :class "weatherimage" :style "background: url('/home/namish/.config/eww/assets/weather/weather-${weatherimage}.jpg');") 
+        (box :class "woverlay" :hexpand true :vexpand true)
+        (box :class "ok" :hexpand true :valign "center"
+          (box :orientation 'v' :halign "start" :space-evenly false
+            (box :class "wicon" weathericon)
+          )
+          (box :orientation 'v' :space-evenly false :valign "center"
+            (box :class "wtemp" :halign "end" "${current_temp}°C")
+            (box :class "wdesc" :halign "end" current_desc)
+          )
+        )
+      )
+  )
+  )
+
 (defwidget moment[]
-    (box :orientation 'v' :class 'moment' :space-evenly false 
-      (moment_calendar))
+    (box :orientation 'v' :spacing 20 :class 'moment' :space-evenly false 
+      (moment_calendar) (weather))
 )
 
 
 (defwindow moment
     :monitor 0
-    :geometry (geometry :x "10px"
-      :y "10px"
-      :width "400px"
-      :height "360px"
+    :geometry (geometry :x "290px"
+      :y "20px"
+      :width "360px"
+      :height "650px"
       :anchor "top right")
     :stacking "fg"
     :exclusive true

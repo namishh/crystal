@@ -1,242 +1,153 @@
 .dash {
-  padding: 1rem;
   background: $background;
+  padding: 2rem;
   @include rounding;
 }
 
-.bartime {
+.notifcenter {
+  @include rounding;
   padding: 1rem;
-  background: $background-alt;
-  font-size: 3rem;
-  font-family: "Iosevka Nerd Font";
+  background: rgba($background-alt, 0.4);
 }
 
-.boxred {
-  background: $red;
-}
-
-.boxgreen {
-  background: $green;
-}
-
-.boxblue {
-  background: $blue;
-}
-
-.horizontalWidget {
+.eon {
+  font-family: Rubik;
+  font-size: 1.3rem;
   margin-top: 1rem;
 }
 
-.userbg {
-  background: $background-alt;
-  padding: 2rem;
-  min-height: 150px;
-  min-width: 150px;
+.notification {
+  font-family: Rubik;
+  background: rgba($background-alt, 0.6);
+  @include rounding;
+
+  &-close {
+    font-family: Material Design Icons;
+    color: $red;
+    font-size: 1.3rem;
+  }
 }
 
-.userimage {
-  background-size: cover;
-  background-size: 70%;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-width: 100px;
-  min-height: 150px;
+.notification-title {
+  padding: 1rem;
+  @include rounding;
+  background: $background-alt;
+}
+
+.notification-body {
+  padding: 1rem;
+}
+
+.dashpfp {
+  min-height: 200px;
+  @include rounding;
+}
+
+.dashgradient {
+  background-image: linear-gradient(to right, rgba($background, 0.5) 30%, rgba($background, 0.7));
+}
+
+.dashtime {
+  font-family: Rubik;
+  background: $background-alt;
+  @include rounding;
+  padding: 1rem;
+}
+
+.timelabel {
+  font-family: Iosevka Nerd Font;
+  font-size: 1rem;
+}
+
+.timelabelu {
+  font-family: Rubik;
+  font-size: 1.1rem;
+  color: $blue;
 }
 
 .stats {
   padding: 1rem;
-  min-width: 170px;
+  @include rounding;
+  background: rgba($background-alt, 0.4);
+}
+
+.gridline {
   background: $background-alt;
+  @include rounding;
 }
 
 .statscale trough {
-  min-width: 8px;
-  min-height: 18.5rem;
-  background: rgba($foreground, 0.02);
+  min-width: 1.5rem;
+  margin: .5rem 0;
+  min-height: 16px;
   @include rounding;
 }
 
-.memscale trough highlight {
+.magentascale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $yellow, $yellow-light);
+  background: $magenta;
 }
 
-.diskscale trough highlight {
+.greenscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $blue, $blue-light);
+  background: $green;
 }
 
-.tempscale trough highlight {
+.bluescale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $green, $green-light);
+  background: $blue;
 }
 
-.cpuscale trough highlight {
+.redscale trough highlight {
   @include rounding;
-  background: linear-gradient(to right, $red, $red-light);
+  background: $red;
 }
 
-.statstitle {
-  font-family: "Iosevka Nerd Font";
+.yellowscale trough highlight {
+  @include rounding;
+  background: $yellow;
 }
 
-.weatherbox {
-  background: $background-alt;
-  padding: 1rem;
+.circgreen {
+  color: $green;
 }
 
-.weatherbox {
-  font-size: 20px;
-  font-family: "Iosevka Nerd Font";
+.circred {
+  color: $red;
 }
 
-.weathericon {
-
-  font-family: Material Design Icons Desktop;
-  font-size: 100px;
-  margin-right: 3.5rem;
-}
-
-.dashdate {
-  padding: 1rem;
-  background: $background-alt;
-  font-size: 16px;
-  font-family: "Iosevka Nerd Font";
-}
-
-.dashdatedate {
-  font-size: 14px;
-  color: $magenta;
-}
-
-.control-center {
-  margin-top: 15px;
+.altstat {
+  @include rounding;
+  background: rgba($background-alt, 0.8);
   padding: 1rem 2rem;
-  background-color: $background-alt;
-  color: $foreground;
-
-  font-family: "Iosevka Nerd Font";
-
-  &-body {
-    padding: 1rem;
-  }
-
-  &-card-box {
-    font-size: 1.1rem;
-    font-weight: 300;
-  }
-
-  &-card-notify-close {
-    border: none;
-    font-size: 1.7rem;
-  }
-
-  &-titlebar {
-    background-color: rgba($blue, 0.04);
-    padding: 0.4rem 1rem;
-
-  }
-
-  &-content {
-    padding: 1rem;
-  }
-
-  &-card-eventbox {
-    background-color: rgba($foreground, 0.02);
-    padding: 1rem;
-  }
-
-  &-glyph {
-    font-size: 2.4rem;
-    padding: 1.7rem;
-    margin-right: 1rem;
-    background-color: rgba($foreground, 0.02);
-    font-family: Material Design Icons Desktop;
-  }
-
-  &-changebrightness {
-    color: $yellow;
-  }
-
-  &-empty-label {
-    font-size: 1.3rem;
-  }
-
-  &-changevolume {
-    color: $cyan;
-  }
-
-  &-Spotify {
-    color: $green;
-  }
-
-  &-firefox {
-    color: $yellow;
-  }
-
-  &-screenshot {
-    color: $magenta;
-  }
-
-  &-separator {
-    background-color: $comment;
-  }
-
-  &-title {
-    font-size: 1.3rem;
-    font-weight: 300;
-
-  }
-
-  &-header {
-    padding: 0.5rem 0rem;
-    margin-bottom: 0.5rem;
-  }
-
-  &-clear-all {
-    background-color: rgba($red, 0.1);
-    color: $red;
-    padding: .8rem;
-  }
-
-  font-family: "Iosevka Nerd Font";
 }
 
-.statcard {
-  &-box {
-    padding: 0 1rem 1rem 1rem;
-    background-color: $background;
-  }
+.tt {
+  font-family: Material Design Icons;
+  padding: 1.5rem;
+  font-size: 1.7rem;
+}
 
-  &-icon {
-    font-family: "Iosevka Nerd Font";
-    margin-bottom: 2rem;
-  }
-
-  &-value {
-    font-family: "Iosevka Nerd Font";
-    font-size: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  &-scale trough {
-    min-height: 0.2rem;
-    background-color: rgba($foreground, 0.2);
-  }
-
-  &-scale-red trough highlight {
-    background-color: $red;
-  }
+.clabel {
+  font-family: Iosevka Nerd Font;
+  color: $comment;
+}
 
 
-  &-scale-blue trough highlight {
-    background-color: $blue;
-  }
-
-  &-scale-green trough highlight {
-    background-color: $green;
-  }
-
+.dashmusic {
+  @include rounding;
+  background: rgba($background-alt, 0.8);
   padding: 1rem;
-  background-color: $background-alt;
+}
+
+.dashart {
+  @include rounding;
+  opacity: 0.6;
+  min-height: 100px;
+  min-width: 100px
+}
+
+.dmi {
+  margin-top: 1rem;
+  font-family: Rubik;
 }

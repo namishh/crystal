@@ -1,89 +1,157 @@
-(defwidget dashtime[]
-  (box :class "bartime" :orientation "h" :space-evenly false :spacing 10
-    (box :hexpand true :halign "end"  "${hour}")
-    (box :class "boxes" :orientation "v" :valign "center" :space-evenly false :spacing 5
-        (box :width 8 :height 8 :class "boxred")
-        (box :width 8 :height 8 :class "boxgreen")
-        (box :width 8 :height 8 :class "boxblue")
-    )
-    (box :hexpand true :halign "start"  "${minute}")
-  )
+(defwidget notification [title summary body id icon  ?LC ?reveal_close_icon]
+	(box :class "notification" :orientation "v" :height 150 :space-evenly "false"
+		(box :class "notification-title"
+			(label :class "notification-title-text" :halign "start" :text title)
+				(box :halign "end"
+					(button :class "notification-close"
+						:onclick "dunstctl history-rm ${id}"
+						"󰅖")
+			)
+		)
+		(box :class "notification-body" :space-evenly "false" :orientation "v"
+			(box :space-evenly "false" :spacing 20 :orientation "h"
+        (image :path icon :image-height 70)
+				(box
+					(box :class "notification-content" :orientation "v" :space-evenly "false"
+						(label :class "notification-summary" :halign "start" :valign "start"
+							:limit-width 15
+							:text summary)
+						(label :class "notification-message" :halign "start" :valign "start"
+							:limit-width 45 :wrap true :tooltip body
+							:xalign 0
+							:text body)
+					)
+				)
+			)
+		)
+	)
 )
 
-(defwidget statscale[class value]
-   (scale :class "statscale ${class}"
-				:min 0
-				:max 100
-				:orientation "v"
-        :value value
-        :flipped true
-        :active false
-        :halign 'center'
-        :valign 'center')
-)
-
-(defwidget stats[]
-  (box :class "stats" :orientation 'v' :space-evenly false :spacing 22
-      (box :class "statstitle" :halign "start" "Stats")
-      (box
-      (statscale :class "cpuscale" :value {round(EWW_CPU.avg, 0)})
-      (statscale :class "memscale" :value {EWW_RAM.used_mem_perc})
-      (statscale :class "diskscale" :value {EWW_DISK["/"].used_perc})
-      (statscale :class "tempscale" :value {EWW_TEMPS["ACPITZ_TEMP1"]})
-      )
-    )
-)
-
-(defwidget userimage[]
-  (overlay 
-  (box :class "userbg" )
-  (box :class "userimage" :style 'background-image: url("/home/namish/.config/eww/assets/snoo.png");')
-  )
-)
-
-(defwidget datewidget[]
-  (box "hi")
-)
-
-(defwidget weather[]
-  (box :class "weatherbox" :orientation "v" :vexpand true :space-evenly false
-    (box :halign "start" :class "weathertemp" current_temp)
-    (box :halign "start" :vexpand true :class "weatherdesc" current_desc)
-    (box :halign "end" :valign "end" :class "weathericon" :style 'color: ${weatherhex};' weathericon)
-  )
-)
-
-(defwidget horizontalWidget[]
-  (box :orientation "h" :space-evenly false :class "horizontalWidget" :spacing 15
-      (box :orientation "v" :space-evenly false :spacing 15
-        (userimage)
-        (weather)
-      )
-      (box :orientation "v" :space-evenly false :spacing 15
-        (box :class "dashdate" :orientation 'v' :space-evenly false
-          (box :halign 'start' :class "dashdatedate" day)
-          (box :halign 'start' month_year)
-          )
-        (stats)
-      )
+(defwidget sc[color val]
+  (box
+  (scale :orientation 'v' :flipped true :min 0 :max 100 :active false :class "${color}scale statscale" :value val)
     )
 )
 
+(defwidget circprog[value icon label color]
+  (box :class "altstat" :orientation 'v' :spacing 10 :space-evenly false
+  (box :class "clabel" :halign "start" label) 
+  (box :class "circbar"
+  (circular-progress :class " circ${color}"
+                   :value value
+                   :thickness 3
+                   :clockwise true
+                     :start-at 30
+   (box :class "tt" icon)
+    ))
+  )
+)
 (defwidget dash[]
-  (box :class "dash" :space-evenly false :orientation "v"
-    (dashtime)
-    (horizontalWidget)
-    (disclose)
+  (box :class "dash" :spacing 20 :orientation "h"
+    (box :class "leftthing" :orientation 'v' :space-evenly false :spacing 20
+      (box :orientation 'h' :spacing 20
+        (overlay
+          (box :class "dashpfp" :style "background: url('${fullpfp}');  background-size: cover;")
+          (box :class "dashgradient")
+        )
+        (box :orientation 'v' :spacing 20 
+          (box :class "dashtime" :orientation 'v' :space-evenly false 
+            (box :orientation 'v' :space-evenly false :valign "center" :spacing 3 :vexpand true
+              (box :valign "center" :halign "start" :class "timelabelu" "Hello There")
+              (box :valign "center" :halign "start" :class "timelabel" uptime)
+              )
+          ) 
+          (box :class "dashtime" :orientation 'v' :space-evenly false :spacing 5 
+            (box :orientation 'v' :space-evenly false :valign "center" :spacing 3 :vexpand true
+              (box :valign "center" :halign "start" :class "timelabelu" "Time")
+              (box :valign "center" :halign "start" :class "timelabel" thourtime)
+              )
+          ) 
+        )
+      )
+      (box :orientation 'h'  :space-evenly false :spacing 20
+        (box :class "altstats" :orientation 'v' :spacing 20
+          (circprog :value  {EWW_CPU.avg}  :icon "󰍛" :label "CPU" :color "red")
+          (circprog :value cputemp :icon "󰔏" :label "TEMP" :color "green")
+        )
+        (box :class "stats" :orientation 'h' :hexpand true
+        (overlay  
+          (box :orientation 'v' :spacing 60
+            (box :height 3 :class "gridline")
+            (box :height 3 :class "gridline")
+            (box :height 3 :class "gridline")
+            (box :height 3 :class "gridline")
+            (box :height 3 :class "gridline")
+          )
+          (box :orientation 'h' :spacing 75
+            (box :width 3 :class "gridline")
+            (box :width 3 :class "gridline")
+            (box :width 3 :class "gridline")
+            (box :width 3 :class "gridline")
+          )
+          (box :orientation 'h'
+            (sc :val {EWW_RAM.used_mem_perc} :color "red")
+            (sc :val wifisped :color "blue")
+            (sc :val  {EWW_DISK["/"].used_perc} :color "magenta")
+            (sc :val battery :color "green")
+          )
+        ))
+      )
+      (box :orientation "h" :vexpand true :class "dashmusic" :space-evenly false :spacing 20
+        (box :class "dashart" :style "background-image:  url('${cover_art}'); background-size:cover;")
+        (box :orientation 'v' :halign "center" :hexpand true :valign "center" :vexpand true :space-evenly false :class "dmi"
+                  (box :halign 'center' :class "musicname" song)
+                  (box :halign 'center' :class "musicartist" song_artist)
+  (box :orientation 'h'       (button :onclick "~/.config/eww/scripts/ms.sh  --prev":valign 'center' :class "musicbutton"  "󰒮")
+      (button :onclick "~/.config/eww/scripts/ms.sh  --toggle" :valign 'center' :class "musicbutton"  "${song_status}")
+      (button :onclick "~/.config/eww/scripts/ms.sh  --next" :valign 'center' :class "musicbutton"  "󰒭")
+    )
+        )
+      )
+    )
+    (box :class "notifcenter" :orientation 'v' :space-evenly true
+        (scroll :vscroll true 
+          (box :orientation 'v' :space-evenly false
+          (box :orientation "v" :space-evenly false :spacing 20
+							(for entry in {dunsthistory["data"][0]}
+                (box :class "notification-history" :orientation "v" :space-evenly "false"
+								  (box :orientation 'v' :space-evenly false
+									  (notification :class 'notif-${entry["id"]["data"]}'
+									  	:title {entry["appname"]["data"]}
+                      :id {entry["id"]["data"]}
+										  :summary {entry["summary"]["data"]}
+										  :body {entry["body"]["data"]}
+                      :icon {(entry["icon_path"]["data"] ?: "/home/namish/.config/awesome/theme/assets/notif.png")}
+										  :reveal_close_icon "false"
+										  :is_ss {entry["appname"]["data"] == "Screenshot Tool" ? "true" : "false"}
+									  )
+								  )
+                  )
+							  )
+            )
+
+            (revealer :valign "center" :vexpand true :reveal {dunstcount <= 0} :transition "crossfade"
+							(box :orientation "v" :space-evenly "false" :spacing 10 :valign "center"
+                (image :image-height 200 :path "/home/namish/.config/eww/assets/empty-notification.png")
+								(label :class "eon" 
+									:valign "center"
+									:text "No Notifications."
+								)
+							)
+						)
+
+          )
+      )
   )
 )
-
+)
 (defwindow dash
     :monitor 0
-    :geometry (geometry :x "10px"
-      :y "10px"
-      :width "450px"
-      :height "800px"
-      :anchor "top left")
+    :geometry (geometry :x "0px"
+      :y "20px"
+      :width "900px"
+      :height "700px"
+      :anchor "top center")
     :stacking "fg"
-    :exclusive true
+    :exclusive false
   (dash))

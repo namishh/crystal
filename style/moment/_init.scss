@@ -1,11 +1,12 @@
 .moment {
   background: $background;
+  padding: 1.2rem;
   @include rounding;
-  font-family: "Iosevka Nerd Font";
+  font-family: "Rubik";
 }
 
 calendar {
-  font-family: "Iosevka Nerd Font";
+  font-family: "Rubik";
 
   &:selected {
     color: $accent;
@@ -16,41 +17,97 @@ calendar {
   }
 }
 
+
+.bgblue {
+  background: $blue;
+}
+
+.bgred {
+  background: $red;
+}
+
+.bgpink {
+  background: $magenta;
+}
+
 .moment_calendar {
-  background-color: $background;
+  background-color: $background-alt;
+  @include rounding;
   border-radius: 10px;
 
   .moment_cal-box {
     padding: 0 1rem;
-    background-color: $background;
+    background-color: $background-alt;
+    @include rounding;
     border-radius: inherit;
 
-    margin: 1em;
+    margin: 0.4em;
 
 
     .moment_day-names {
-      font-family: "Iosevka Nerd Font";
-      margin: 1em 1em 0.5em;
-      font-weight: bold;
-      font-size: 20px;
-      color: $green;
+      font-family: "Rubik";
+      margin: 0.1em 0.5em 0.5em;
+      font-size: 16px;
+      color: $red;
     }
 
     .moment_cal {
-      font-size: 18px;
-      padding: 1em .75em 0.3em;
+      font-size: 17px;
+      padding: 1em .6em 0.3em;
     }
   }
 }
 
+.m {
+  font-family: "Rubik";
+  font-size: 1.3rem;
+  color: $blue;
+}
+
 .moment_month-year {
-  font-family: "Iosevka Nerd Font";
+  font-family: "Rubik";
   font-size: 1.3rem;
   color: $foreground;
-
+  margin: 1rem 0;
 }
 
 .moment_up {
   padding: 18px;
-  background: $background-alt;
+  background: $background;
+}
+
+.mo {
+  font-family: "Rubik";
+  font-size: 4rem;
+}
+
+.woverlay {
+  background: linear-gradient(to right, rgba($background, 0.94), rgba($background-alt, 0.86));
+
+}
+
+.wicon {
+  font-size: 4.3rem;
+  color: $foreground;
+}
+
+.wdesc {
+  font-family: "Rubik";
+  font-size: 1.4rem;
+  color: $foreground;
+}
+
+.weatherimage {
+  min-height: 150px;
+  min-width: 400px;
+  @include rounding;
+  background-position: bottom;
+}
+
+.ok {
+  padding: 3rem;
+}
+
+.wtemp {
+  font-size: 2.3em;
 }

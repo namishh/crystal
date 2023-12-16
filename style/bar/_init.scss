@@ -1,5 +1,4 @@
 .workspaces {
-  background-color: $background-alt;
   @include rounding;
   padding: 16px;
   margin-top: 2px;
@@ -16,61 +15,78 @@
     text-shadow: inherit;
     background-color: $comment;
 
-    min-width: 11px;
-    min-height: 11px;
-    border-radius: 2px;
+    min-width: 18px;
+    min-height: 18px;
+    margin: 0 0.4rem;
+    border-radius: 10px;
 
     &:hover {
       background-color: $foreground;
     }
 
     &.occupied {
-      background: $foreground;
-      margin-left: 3px;
-      margin-right: 3px;
-
-      min-width: 20px;
-      min-height: 11px;
-      border-radius: 2px;
+      background: rgba($foreground, 0.6);
 
       &:hover {
-        background-color: $comment;
+        background-color: $foreground;
       }
     }
 
     &.active {
-
-      background: linear-gradient(to right, $blue, $blue-light);
-      border-radius: 2px;
+      background: linear-gradient(to right, $accent, $accent);
       background-size: cover;
-      min-height: 11px;
-      min-width: 38px;
     }
   }
 }
 
 .bar {
   background: $background;
-  padding: 4px;
+}
+
+.barpor {
+  @include rounding;
+  padding: 8px;
 }
 
 .launcher {
   font-family: "Iosevka Nerd Font";
-  background-color: $background-alt;
-  color: $blue;
+  color: $background-alt;
+  background: $accent;
   @include rounding;
   padding: 3px 12px;
-  margin-top: 2px;
+  margin: 5px 0;
+  margin-left: 0.5rem;
   font-size: 22px;
+
+  &:hover {
+    color: $green
+  }
+}
+
+
+.both {
+  background-color: $background-alt;
+  padding: 3px 12px;
+  border-radius: 50px 7px 7px 50px;
+  margin-top: 2px;
+  font-size: 16px;
+}
+
+.thingy {
+  color: $green;
 }
 
 .time {
-  font-family: "Iosevka Nerd Font";
+  font-family: "Rubik";
   background-color: $background-alt;
-  @include rounding;
   padding: 3px 12px;
+  border-radius: 7px 50px 50px 7px;
   margin-top: 2px;
   font-size: 16px;
+}
+
+.t {
+  padding: 0.8rem;
 }
 
 .powericon {
@@ -115,10 +131,10 @@
 
 .musicbar {
   @include rounding;
-  margin: 5px 0px;
+  margin: 0px 0px;
   background-position: bottom;
   background-size: 100%;
-  min-height: 30px;
+  min-height: 42px;
   min-width: 280px;
 }
 
@@ -134,8 +150,18 @@
 
 .bmusicbutton {
   font-family: "Iosevka Nerd Font";
-  padding: 1rem;
+  padding: 0.8rem;
   font-size: 24px;
+}
+
+.bar {
+  margin: 0.3rem 0.3rem;
+  border-radius: 10px;
+}
+
+.image {
+  margin-right: 0.5rem;
+  border-radius: 100px;
 }
 
 .icon {

@@ -1,12 +1,11 @@
 
 (defwidget profile[]
-  (box :orientation 'h' :space-evenly false :class "profile" :spacing 20
-  (box :class "profileimage" :halign 'start' :style `background-image: url("/home/namish/.config/eww/assets/snoo.png");`)
-  (box :orientation 'v' :valign 'center' :space-evenly false :hexpand true :halign "start" :spacing 3
-    (box :class "profiletime" :halign "start" "${username}@${hostname}")
-    (box :class "profiletime" :halign "start" "${uptime}")
+  (box :orientation 'h'  :space-evenly false :class "profile" :spacing 20
+   (image :hexpand true :halign "start"  :image-width 50 :path pfp)
+  (box :orientation 'v' :valign 'center' :space-evenly false  :halign "end" :spacing 3
+    (box :class "profiletime" :halign "end" "${username}@${hostname}")
+    (box :class "profiletime" :halign "end" "${uptime}")
     )
-  (button :onclick "eww close control && eww open exit" (box :class "profileexit" :valign 'center' "󰐥"))
   )
 )
 
@@ -35,11 +34,9 @@
 )
 
 (defwidget setbtn[?icon active func label]
-  (button :halign 'center' :width 220 :class "${active == 'active' ? 'active' : ''} setbtn" :onclick "${func}"
-    (box :orientation 'h' :spacing 20 :space-evenly false 
+  (button :halign 'center' :class "${active == 'active' ? 'active' : ''} setbtn" :onclick "${func}"
       (box :hexpand true :halign "start" "${icon}" )
-      (box :class "mono" "${label}")
-                                                                                                      ) )
+  )
 )
 
 (defwidget slider[value icon function class]
@@ -59,15 +56,11 @@
 )
 
 (defwidget buttons[]
-  (box :orientation 'v' :space-evenly false :spacing 15 :class "setbtns"
-  (box :orientation 'h'  :spacing 15
-      (setbtn :icon "󰤨 " :func "~/.config/eww/scripts/wifi.sh --toggle" :label "wifi" :active wifiactive)
+  (box :orientation 'h' :class "buttons"  :spacing 5
+      (setbtn :icon "󰤨" :func "~/.config/eww/scripts/wifi.sh --toggle" :label "wifi" :active wifiactive)
       (setbtn :icon "󰂯" :func "~/.config/eww/scripts/bl.sh --toggle" :label "bluetooth" :active btactive)
-    )
-  (box :orientation 'h'  :spacing 15
       (setbtn :icon "󰍶" :func "~/.config/eww/scripts/dnd.sh --toggle" :label "silent" :active dndactive)
       (setbtn :icon "󰀝" :func "~/.config/eww/scripts/ap.sh --toggle" :label "airplane" :active apactive)
-    )
 ))
 
 
@@ -85,10 +78,10 @@
 
 (defwindow control
     :monitor 0
-    :geometry (geometry :x "10px"
-      :y "10px"
-      :width "500px"
-      :height "620px"
+    :geometry (geometry :x "290px"
+      :y "20px"
+      :width "450px"
+      :height "580px"
       :anchor "top right")
     :stacking "fg"
     :exclusive true
