@@ -35,7 +35,7 @@
 (defwidget weather[]
   (box :orientation 'v'
       (overlay :vexpand true
-        (box :orientation 'v' :hexpand true :space-evenly false :halign 'center' :class "weatherimage" :style "background: url('/home/namish/.config/eww/assets/weather/weather-${weatherimage}.jpg');") 
+        (box :orientation 'v' :hexpand true :space-evenly false :halign 'center' :class "weatherimage" :style "background: url('/home/namish/.config/eww/assets/weather/weather-${weatherimage}.jpg'); background-size:cover;") 
         (box :class "woverlay" :hexpand true :vexpand true)
         (box :class "ok" :hexpand true :valign "center"
           (box :orientation 'v' :halign "start" :space-evenly false

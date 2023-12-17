@@ -42,7 +42,6 @@
 
 (defpoll weathericon :interval "2h" "~/.config/eww/scripts/weather.sh icon")
 (defpoll weatherimage :interval "2h" "~/.config/eww/scripts/weather.sh image")
-(defpoll weatherhex :interval "2h" "~/.config/eww/scripts/weather.sh hex")
 (defpoll current_temp :interval "2h" "~/.config/eww/scripts/weather.sh current_temp")
 (defpoll current_desc :interval "2h" "~/.config/eww/scripts/weather.sh weather_desc")
 
