@@ -4,12 +4,9 @@ rec {
   background = "21262f";
   darker = "1b2028";
   accent = "81a1c1";
-  bg2 = "232832";
   mbg = "232831";
 
   cursorColor = "d8dee9";
-  contrast = "252a34";
-  cursorline = "252a34";
   comment = "79818f";
 
   color0 = "272c37";

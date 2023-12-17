@@ -254,7 +254,8 @@
       bindm = $mainMod, mouse:273, resizewindow
       exec = source ~/.local/bin/upw
       exec = bash -c ~/.local/bin/genmenupic
-      exec = swww init && sww img ~/.config/awesome/theme/alt/${name}.jpg
+      exec-once = swww init &
+      exec = swww img ~/.config/awesome/theme/alt/${name}.jpg
       exec = dunst &
       exec-once = xss-lock lock &
       exec =  eww open bar && eww reload &

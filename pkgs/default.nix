@@ -4,4 +4,9 @@
   # example = pkgs.callPackage ./example { };
   phospor = pkgs.callPackage ./fonts/phospor.nix { };
   material-symbols = pkgs.callPackage ./fonts/material-symbols.nix { };
+  lutgen = pkgs.callPackage ./others/lutgen.nix {};
+  phocus = pkgs.callPackage ./others/phocus.nix{};
+  imgclr = pkgs.callPackage ./others/imagecolorizer.nix {
+      buildPythonPackage = pkgs.python310Packages.buildPythonPackage;
+  };
 }

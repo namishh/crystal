@@ -30,11 +30,7 @@ rec {
   color7 = "c5d7d7";
   color15 = "cedcd9";
 
-  bg2 = "101a1b";
   mbg = "0e1718";
-
-  contrast = "111a1b";
-  cursorline = "111a1b";
 
   comment = "505758";
   name = "wave";

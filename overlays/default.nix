@@ -2,13 +2,9 @@
 {
   additions = final: _prev: import ../pkgs { pkgs = final; inherit inputs; };
   modifications = final: prev: {
-    imgclr = prev.callPackage ../derivs/imagecolorizer.nix {
-      buildPythonPackage = prev.python310Packages.buildPythonPackage;
-    };
     spotdl = prev.callPackage ../derivs/spotdl.nix {
       buildPythonApplication = prev.python311Packages.buildPythonApplication;
     };
-    lutgen = prev.callPackage ../derivs/lutgen.nix { };
     st = prev.st.overrideAttrs (oldAttrs: {
       buildInputs = oldAttrs.buildInputs ++ [ prev.harfbuzz ];
       src = prev.fetchFromGitHub {

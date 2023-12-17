@@ -5,11 +5,8 @@ rec {
   darker = "0c1012";
   mbg = "1c2121";
   accent = "5a85db";
-  bg2 = "1c2121";
 
   cursorColor = "1c2121";
-  contrast = "1c2121";
-  cursorline = "1c2121";
   comment = "404749";
 
   color0 = "232a2d";

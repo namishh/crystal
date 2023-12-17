@@ -3,13 +3,10 @@ rec {
   foreground = "dee1e6";
   background = "13161a";
   darker = "0e1114";
-  bg2 = "1b1f25";
   accent = "7297d9";
   mbg = "1b1f25";
 
   cursorColor = "dee1e6";
-  contrast = "1b1f25";
-  cursorline = "1b1f25";
   comment = "485263";
 
   color0 = "21262e";

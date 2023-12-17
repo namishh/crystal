@@ -13,7 +13,7 @@
     M.dis   = "#${colors.color5}"
     M.bg    = "#${colors.background}"
     M.mbg   = "#${colors.mbg}"
-    M.bg2   = "#${colors.bg2}"
+    M.bg2   = "#${colors.mbg}"
     M.bg3   = "#${colors.color0}"
     M.bg4   = "#${colors.color8}"
     M.fg    = "#${colors.foreground}"

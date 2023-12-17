@@ -3,12 +3,9 @@ rec {
   foreground = "dfdddd";
   background = "0c0c0c";
   darker = "070707";
-  bg2 = "151515";
   mbg = "131313";
 
   cursorColor = "dbdfdf";
-  contrast = "111111";
-  cursorline = "191919";
   comment = "5a5858";
 
   color0 = "1b1b1b";

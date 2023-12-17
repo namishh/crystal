@@ -30,11 +30,7 @@ rec {
   color7 = "e4e6e7";
   color15 = "f2f4f5";
 
-  bg2 = "111315";
   mbg = "111315";
-
-  contrast = "111315";
-  cursorline = "111315";
 
   comment = "79818f";
   name = "yoru";

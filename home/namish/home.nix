@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/cat.nix { };
+  colors = import ../shared/cols/oxo.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -95,7 +95,7 @@ in
       playerctl
       scc
       (pkgs.callPackage ../shared/icons/reversal.nix { })
-      (pkgs.callPackage ../../derivs/phocus.nix { inherit colors; })
+      (pkgs.callPackage ../../pkgs/others/phocus.nix { inherit colors; })
       cinnamon.nemo
       neofetch
       rust-analyzer
