@@ -25,7 +25,7 @@
     background:                  #${colors.background};
     background-alt:              #${colors.mbg};
     foreground:                  #${colors.foreground};
-    selected:                    #${colors.color4};
+    selected:                    #${colors.accent};
     active:                      #${colors.color2};
     urgent:                      #${colors.color1};
     }

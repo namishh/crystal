@@ -4,7 +4,7 @@
     settings = {
       clock = true;
       color = "00000000";
-      font = "Inter";
+      font = "Rubik";
       show-failed-attempts = false;
       indicator = true;
       indicator-radius = 200;
@@ -12,12 +12,12 @@
       line-color = "#${background}";
       ring-color = "${mbg}";
       inside-color = "#${background}";
-      key-hl-color = "#${color4}";
+      key-hl-color = "#${accent}";
       separator-color = "00000000";
       text-color = "#${foreground}";
       text-caps-lock-color = "";
-      line-ver-color = "#${color4}";
-      ring-ver-color = "#${color4}";
+      line-ver-color = "#${accent}";
+      ring-ver-color = "#${accent}";
       inside-ver-color = "#${background}";
       text-ver-color = "#${foreground}";
       ring-wrong-color = "#${color9}";
@@ -28,7 +28,7 @@
       ring-clear-color = "#${color5}";
       line-clear-color = "#${background}";
       line-wrong-color = "#${background}";
-      bs-hl-color = "#${color4}";
+      bs-hl-color = "#${accent}";
       line-uses-ring = false;
       grace = 0;
       grace-no-mouse = true;

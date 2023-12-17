@@ -59,10 +59,10 @@ in
         card = "${color0}";
         shadow = "${color8}";
         selected-row = "${color8}";
-        button = "${color4}";
+        button = "${accent}";
         button-active = "${foreground}";
         button-disabled = "${color5}";
-        tab-active = "${color4}";
+        tab-active = "${accent}";
         notification = "${color3}";
         notification-error = "${color1}";
         misc = "${comment}";
