@@ -12,7 +12,7 @@ local custom = {
     to = "terminal"
   },
   {
-    name = "neofetchpad",
+    name = "clearpad",
     to = "terminal"
   },
   {
