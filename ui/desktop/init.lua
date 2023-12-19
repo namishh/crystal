@@ -10,10 +10,8 @@ local beautiful = require("beautiful")
 local data = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json")
 local inspect = require("mods.inspect")
 local dpi = beautiful.xresources.apply_dpi
-local appicons = "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/"
-
-local foldericons =
-"/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/places/48"
+local appicons = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme
+local foldericons =  helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme .."places/48"
 
 local grid = wibox.widget {
   forced_num_rows = 14,

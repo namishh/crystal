@@ -9,7 +9,7 @@ local playerctl  = require("mods.playerctl").lib()
 local dpi        = beautiful.xresources.apply_dpi
 
 local art        = wibox.widget {
-  image = beautiful.songdefpicture,
+  image = helpers.cropSurface(1, gears.surface.load_uncached(beautiful.songdefpicture)),
   clip_shape = helpers.rrect(10),
   opacity = 0.75,
   resize = true,
