@@ -7,10 +7,10 @@
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     shellAliases = {
-      la = "eza -l";
+      la = "run exa -l";
       ls = "ls --color=auto";
       v = "nvim";
-      nf = "neofetch";
+      nf = "run neofetch";
       suda = "sudo -E -s";
       nix-pkgs = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
     };
