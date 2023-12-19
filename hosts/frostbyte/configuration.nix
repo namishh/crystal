@@ -23,10 +23,13 @@
       allowUnfree = true;
     };
   };
+
+  # fuck you jio
   networking.extraHosts =
     ''
       185.199.108.133 raw.githubusercontent.com
     '';
+
   networking.hostName = "frostbyte";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
@@ -62,7 +65,6 @@
       };
       windowManager.awesome = {
         enable = true;
-
       };
       desktopManager.gnome.enable = false;
     };

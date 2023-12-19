@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/kizu.nix { };
+  colors = import ../shared/cols/fullerene.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   unstable = import
@@ -46,18 +46,16 @@ in
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
-    (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
+    (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./misc/vencord.nix { inherit config colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
-    #(import ./conf/ui/waybar/default.nix { inherit config pkgs lib hyprland colors; })
     (import ./misc/xinit.nix { })
     (import ./misc/eww.nix { inherit config colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors; })
-    (import ../shared/lock.nix { inherit colors; })
   ];
   home = {
     activation = {
@@ -75,33 +73,20 @@ in
     };
     packages = with pkgs; [
       bc
-      chromium
-      dunst
       git-lfs
       wl-clipboard
-      unrar
       sway-contrib.grimshot
       trash-cli
-      jgmenu
       xss-lock
-      glib
-      htop
-      speechd
       authy
-      gcc
-      wget
       go
       gopls
       playerctl
-      scc
       (pkgs.callPackage ../shared/icons/reversal.nix { })
       (pkgs.callPackage ../../pkgs/others/phocus.nix { inherit colors; })
       cinnamon.nemo
-      neofetch
       rust-analyzer
-      hsetroot
       mpc-cli
-      pfetch
       ffmpeg_5-full
       neovim
       xdg-desktop-portal
@@ -111,14 +96,11 @@ in
       redshift
       killall
       moreutils
-      cava
       mpdris2
       socat
       pavucontrol
       fzf
       swww
-      feh
-      eza
     ];
   };
   nixpkgs.config = {

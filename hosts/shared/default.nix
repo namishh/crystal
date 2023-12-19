@@ -30,7 +30,6 @@ in
   services.redshift = {
     enable = true;
     brightness = {
-      # Note the string values below.
       day = "1";
       night = "1";
     };
@@ -62,9 +61,8 @@ in
     dosis
     material-symbols
     rubik
-    (nerdfonts.override { fonts = [ "Iosevka" "CascadiaCode" "JetBrainsMono" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
-
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
@@ -79,8 +77,6 @@ in
     lutgen
     home-manager
     lua-language-server
-    #  inputs.nix-gaming.packages.${pkgs.system}.rocket-league
-    lua54Packages.lua
     blueman
     bluez
     pulseaudioFull
@@ -106,10 +102,8 @@ in
     osu-lazer
     heroic
     lutris
-    opera
     firefox
     gperftools
-    unzip
     imgclr
     grim
     slop
