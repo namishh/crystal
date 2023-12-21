@@ -6,7 +6,7 @@
     enable = true;
     package = hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    #plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
+    plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts
@@ -30,7 +30,7 @@
       general {
         gaps_in = 20
         gaps_out = 20
-        border_size = 3
+        border_size = 0
         col.active_border = rgb(${accent})
         col.inactive_border = rgba(595959aa)
         layout = dwindle # master|dwindle 
@@ -87,6 +87,20 @@
         animation = fade, 1, 2, default
         animation = workspaces, 1, 3, md3_decel
         animation = specialWorkspace, 1, 3, md3_decel, slidevert
+      }
+      plugin {
+        hyprbars {
+          bar_color = rgb(${darker})
+          bar_height = 45
+          bar_text_font = "Rubik"
+          bar_text_align = left
+          bar_part_of_window = true
+          bar_button_padding = 14
+          bar_padding = 14
+          bar_precedence_over_border = true
+          hyprbars-button = rgb(${color1}), 16, , hyprctl dispatch killactive
+          hyprbars-button = rgb(${color2}), 16, , hyprctl dispatch fullscreen 1
+        }
       }
       gestures {
         workspace_swipe = true
