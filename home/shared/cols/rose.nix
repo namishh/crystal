@@ -3,33 +3,33 @@ rec {
   foreground = "e0def4";
   background = "191724";
   darker = "13111e";
-  mbg = "1e1c2c";
+  mbg = "1e1b2b";
 
-  accent = "ea5780";
+  accent = "bd97eb";
 
-  cursorColor = "dbdfdf";
-  comment = "6e6a86";
+  cursorColor = "e0def4";
+  comment = "83889a";
 
-  color0 = "26233a";
-  color8 = "26233a";
+  color0 = "221f31";
+  color8 = "29253b";
 
-  color1 = "ea5780";
-  color9 = "ee6a8f";
+  color1 = "ee5c85";
+  color9 = "ee5c85";
 
-  color2 = "93e49d";
-  color10 = "9ee6a7";
+  color2 = "f3a6a2";
+  color10 = "f3a6a2";
 
-  color3 = "fdb482";
-  color11 = "f0ac7c";
+  color3 = "f09670";
+  color11 = "f09670";
 
-  color4 = "7cb2bb";
-  color12 = "8ac1ca";
+  color4 = "449ec2";
+  color12 = "449ec2";
 
-  color5 = "b495db";
-  color13 = "c1a0ea";
+  color5 = "bd97eb";
+  color13 = "bd97eb";
 
-  color6 = "92cad4";
-  color14 = "9ad7e1";
+  color6 = "89cdd9";
+  color14 = "89cdd9";
 
   color7 = "b5bfe2";
   color15 = "908caa";

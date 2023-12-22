@@ -9,7 +9,9 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   programs.zsh.enable = true;
+
   security.pam.services.swaylock = {
     text = ''
       auth include login
@@ -19,14 +21,11 @@ in
     networkmanager.enable = true;
     firewall.enable = false;
   };
-  security = {
-    sudo.enable = true;
-  };
-  services.blueman = {
-    enable = true;
-  };
+
+  security.sudo.enable = true;
+  services.blueman.enable = true;
   location.provider = "geoclue2";
-  # All values except 'enable' are optional.
+
   services.redshift = {
     enable = true;
     brightness = {
@@ -43,11 +42,14 @@ in
     hardwareClockInLocalTime = true;
     timeZone = "Asia/Kolkata";
   };
+
   i18n.defaultLocale = "en_US.UTF-8";
+
   console = {
     font = "Lat2-Terminus16";
     useXkbConfig = true;
   };
+
   users = {
     users.namish = {
       isNormalUser = true;
@@ -56,13 +58,7 @@ in
     };
     defaultUserShell = pkgs.zsh;
   };
-  fonts.packages = with pkgs; [
-    material-design-icons
-    dosis
-    material-symbols
-    rubik
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
-  ];
+
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
@@ -85,11 +81,9 @@ in
     udiskie
     rnix-lsp
     xorg.xwininfo
+    brightnessctl
     pulseaudio
-    gamemode
-    mpvc
     (pkgs.python3.withPackages my-python-packages)
-    giph
     libnotify
     xdg-utils
     gtk3
@@ -100,10 +94,7 @@ in
       withVencord = true;
     })
     osu-lazer
-    heroic
-    lutris
     firefox
-    gperftools
     imgclr
     grim
     slop
@@ -119,7 +110,6 @@ in
     pamixer
     nix-prefetch-git
     python3
-    legendary-gl
     brillo
     wmctrl
     steam
@@ -135,9 +125,18 @@ in
     xorg.xf86videoati
   ];
 
+  fonts.packages = with pkgs; [
+    material-design-icons
+    dosis
+    material-symbols
+    rubik
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
+  ];
+
   environment.shells = with pkgs; [ zsh ];
 
   programs.dconf.enable = true;
+
   qt = {
     enable = true;
     platformTheme = "gtk2";
@@ -145,15 +144,19 @@ in
   };
 
   services.printing.enable = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
   };
+
   services.xserver = {
     layout = "us";
     xkbVariant = "us,";
   };
+
   security.polkit.enable = true;
+
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -162,7 +165,6 @@ in
       warn-dirty = false;
       substituters = [ "https://nix-gaming.cachix.org" ];
       trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
-
     };
     gc = {
       automatic = true;
@@ -170,6 +172,7 @@ in
     };
     optimise.automatic = true;
   };
+
   system = {
     copySystemConfiguration = false;
     stateVersion = "22.11";

@@ -18,7 +18,6 @@
         })
     ];
     config = {
-      # Disable if you don't want unfree packages
       allowUnfreePredicate = _: true;
       allowUnfree = true;
     };
@@ -33,15 +32,8 @@
   networking.hostName = "frostbyte";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
-  # Packages
-  # --------
+
   boot.kernelPackages = pkgs.linuxPackages_5_15;
-  environment.systemPackages = lib.attrValues {
-    inherit (pkgs)
-      brightnessctl
-      wayland
-      android-tools;
-  };
 
   services = {
     gvfs.enable = true;

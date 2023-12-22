@@ -1,26 +1,25 @@
 {
   description = "i have no idea how this works";
 
-  inputs = {
-    # Package sources.
-    master.url = "github:nixos/nixpkgs/master";
-    stable.url = "github:nixos/nixpkgs/nixos-22.11";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    nur.url = "github:nix-community/NUR";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland.url = "github:hyprwm/Hyprland";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
-    nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
+  inputs =
+    {
+      # Package sources.
+      master.url = "github:nixos/nixpkgs/master";
+      stable.url = "github:nixos/nixpkgs/nixos-22.11";
+      unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager.url = "github:nix-community/home-manager";
+      nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+      spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+      nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
+      nix-gaming.url = "github:fufexan/nix-gaming";
+
+      hyprland-plugins = {
+        url = "github:hyprwm/hyprland-plugins";
+        inputs.hyprland.follows = "hyprland";
+      };
+      hyprland.url = "github:hyprwm/Hyprland";
     };
-    # Channel to follow.
-    home-manager.inputs.nixpkgs.follows = "unstable";
-    nixpkgs.follows = "unstable";
-  };
   outputs = { self, nixpkgs, home-manager, hyprland, hyprland-plugins, ... } @inputs:
     let
       inherit (self) outputs;
@@ -37,7 +36,7 @@
         frostbyte = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
-              inherit inputs outputs home-manager hyprland hyprland-plugins;
+              inherit inputs outputs hyprland hyprland-plugins;
             };
             modules = [
               # > Our main nixos configuration file <
@@ -46,17 +45,17 @@
             ];
           };
       };
-      home-manager = home-manager.packages.${nixpkgs.system}."home-manager";
-      # user configurations
+
       homeConfigurations = {
         namish = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs home-manager self; };
+          extraSpecialArgs = { inherit inputs outputs self; };
           modules = [
             ./home/namish/home.nix
           ];
         };
       };
+
       frostbyte = self.nixosConfigurations.frostbyte.config.system.build.toplevel;
     };
 }
