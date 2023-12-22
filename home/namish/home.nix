@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/fullerene.nix { };
+  colors = import ../shared/cols/everblush.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   nixpkgs-f2k = inputs.nixpkgs-f2k;
