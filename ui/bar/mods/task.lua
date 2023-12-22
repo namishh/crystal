@@ -26,7 +26,7 @@ local M          = {
     {
       count = 0,
       pinned = true,
-      icon = getIcon(nil, "terminal", "terminal"),
+      icon = getIcon(nil, "org.wezfurlong.wezterm", "org.wezfurlong.wezterm"),
       id = 2,
       clients = {},
       class = "org.wezfurlong.wezterm",
@@ -289,10 +289,10 @@ function M:genIcons()
         if client.focus.class:lower() == j.class then
           bg = beautiful.fg .. "22"
         elseif j.count > 0 then
-          bg = beautiful.fg .. "55"
+          bg = beautiful.fg .. "33"
         end
       elseif minimized > 0 then
-        bg = beautiful.fg .. "55"
+        bg = beautiful.fg .. "33"
       end
       local widget = wibox.widget {
         {

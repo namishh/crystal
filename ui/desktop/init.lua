@@ -10,8 +10,8 @@ local beautiful = require("beautiful")
 local data = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json")
 local inspect = require("mods.inspect")
 local dpi = beautiful.xresources.apply_dpi
-local appicons = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme
-local foldericons =  helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme .."places/48"
+local appicons = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme .. "/"
+local foldericons =  helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme .."/places/"
 
 local grid = wibox.widget {
   forced_num_rows = 14,
@@ -69,7 +69,7 @@ local function gen()
   local entries = {}
 
   table.insert(entries,
-    { icon = appicons .. "places/48/trash-empty.svg", label = "Trash", exec = "nemo trash:/", type = "general" })
+    { icon = appicons .. "places/trashcan_empty.svg", label = "Trash", exec = "nemo trash:/", type = "general" })
   --  table.insert(entries,
   --    {
   --      icon = gears.filesystem.get_configuration_dir() .. "theme/assets/tsukkisaidmetoaddthis.png",
@@ -80,7 +80,7 @@ local function gen()
   for entry in io.popen([[ls ~/Desktop | sed '']]):lines() do
     local label = entry
     local exec = nil
-    local icon = appicons .. "mimes/48/text-x-generic.svg"
+    local icon = appicons .. "mimetypes/text-x-generic.svg"
     local ext = label:match("^.+(%..+)$")
 
     if ext == ".desktop" then
@@ -104,24 +104,24 @@ local function gen()
       exec = "nemo" .. " Desktop/'" .. entry .. "'"
       table.insert(entries, { icon = icon, label = label, exec = exec, type = "folder" })
     elseif os.execute("wc -c < ~/Desktop/'" .. entry .. "'") then
-      icon = appicons .. "mimes/48/application-x-zerosize.svg"
+      icon = appicons .. "mimetypes/application-x-zerosize.svg"
       exec = "wezterm -e nvim" .. " ~/Desktop/'" .. entry .. "'"
       if string.match(entry, "%.") then
         local extenstion = helpers.split(entry, ".")
         extenstion = extenstion[#extenstion]
         if extenstion == "jpg" or extenstion == "jpeg" or extenstion == "tiff" or extenstion == "png" or extenstion == "webp" or extenstion == "svg" then
           if extenstion == "jpg" then
-            icon = appicons .. "mimes/48/jpg.svg"
+            icon = appicons .. "mimetypes/jpg.svg"
           else
-            icon = appicons .. "mimes/48/image-" .. extenstion .. ".svg"
+            icon = appicons .. "mimetypes/image-" .. extenstion .. ".svg"
           end
           exec = "feh '~/Desktop/" .. entry .. "'"
         elseif extenstion == "mp4" or extenstion == "avif" or extenstion == "webm" or extenstion == "mkv" or extenstion == "mov" then
-          icon = appicons .. "mimes/48/media-video.svg"
+          icon = appicons .. "mimetypes/media-video.svg"
         elseif extenstion == "mp3" or extenstion == "wav" or extenstion == "flac" or extenstion == "aiff" then
-          icon = appicons .. "mimes/48/media-audio.svg"
+          icon = appicons .. "mimetypes/media-audio.svg"
         elseif icons[extenstion] ~= nil then
-          icon = appicons .. "mimes/48/text-x-" .. icons[extenstion] .. ".svg"
+          icon = appicons .. "mimetypes/text-x-" .. icons[extenstion] .. ".svg"
         end
       end
       table.insert(entries, { icon = icon, label = label, exec = exec, type = 'file' })
