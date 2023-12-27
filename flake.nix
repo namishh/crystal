@@ -19,6 +19,9 @@
         inputs.hyprland.follows = "hyprland";
       };
       hyprland.url = "github:hyprwm/Hyprland";
+
+      ags.url = "github:Aylur/ags";
+
     };
   outputs = { self, nixpkgs, home-manager, hyprland, hyprland-plugins, ... } @inputs:
     let

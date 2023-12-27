@@ -76,6 +76,8 @@ in
     blueman
     bluez
     pulseaudioFull
+    direnv
+    unzip
     bluez-tools
     inotify-tools
     udiskie
@@ -87,6 +89,8 @@ in
     libnotify
     xdg-utils
     gtk3
+    niv
+    st
     appimage-run
     jq
     spotdl
@@ -94,7 +98,6 @@ in
       withVencord = true;
     })
     osu-lazer
-    firefox
     imgclr
     grim
     slop

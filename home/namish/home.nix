@@ -2,10 +2,11 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/everblush.nix { };
+  colors = import ../shared/cols/rose.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   nixpkgs-f2k = inputs.nixpkgs-f2k;
+  ags = inputs.ags;
 in
 {
   # some general info  
@@ -86,11 +87,14 @@ in
 
   imports = [
     # Importing Configutations
+    ags.homeManagerModules.default
+
     (import ../shared/xresources.nix { inherit colors; })
 
     (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+    (import ./conf/utils/firefox/default.nix { inherit colors pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
 
@@ -99,6 +103,8 @@ in
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
 
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
+    (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors; })
+    (import ./conf/ui/ags/default.nix { inherit pkgs; })
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors nixpkgs-f2k; })
 
     # Music thingies
@@ -111,7 +117,7 @@ in
     (import ./misc/vencord.nix { inherit config colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./misc/xinit.nix { })
-    (import ./misc/eww.nix { inherit config colors; })
+    (import ./misc/ewwags.nix { inherit config colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors; })

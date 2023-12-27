@@ -30,7 +30,7 @@ with colors ;{
     $accent : #${accent};
 
   '';
-  home.file.".config/openbox/eww/style/_colors.scss".text = ''
+  home.file.".config/ags/style/_colors.scss".text = ''
     $background : #${background};
     $foreground : #${foreground};
     $background-alt : #${mbg};

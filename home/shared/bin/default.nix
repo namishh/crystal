@@ -20,6 +20,10 @@
         executable = true;
         text = import ./eyecandy/nixfetch.nix { };
       };
+      ".local/bin/awefetch" = {
+        executable = true;
+        text = import ./eyecandy/awefetch.nix { };
+      };
       ".local/bin/panes" = {
         executable = true;
         text = import ./eyecandy/panes.nix { };
