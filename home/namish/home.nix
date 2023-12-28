@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/rose.nix { };
+  colors = import ../shared/cols/sweetpastel.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   nixpkgs-f2k = inputs.nixpkgs-f2k;
@@ -77,6 +77,7 @@ in
       redshift
       killall
       moreutils
+      kitty
       mpdris2
       socat
       pavucontrol

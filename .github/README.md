@@ -149,6 +149,28 @@ home-manager switch --flake '.#namish' # this should automatically install nvim 
 >
 > For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix. 
 
+## Theming
+
+| <b>Firefox</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <img src="screenshots/firefox.jpg"  alt="fox">         |
+
+| <b>Spicetify</b>                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <img src="screenshots/spicetify.jpg"  alt="spotify">                  |
+
+| <b>Vencord</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <img src="screenshots/vencord.jpg"  alt="discord">                  |
+
+| <b>Phocus</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <img src="screenshots/phocus.jpg"  alt="phocus">                  |
+
+| <b>Neofetch</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <img src="screenshots/neofetch.jpg"  alt="neofetch">                  |
+
 ## Credits
 These are the chads which helped me throughout my short but crazy nix journey!
 - [gw](https://github.com/Gwynsav)
