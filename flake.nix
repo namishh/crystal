@@ -11,7 +11,7 @@
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
       spicetify-nix.url = "github:the-argus/spicetify-nix";
 
-      nurpkgs.url = "github:nix-community/NUR";
+      nur.url = "github:nix-community/NUR";
 
       nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
       nix-gaming.url = "github:fufexan/nix-gaming";

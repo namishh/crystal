@@ -24,25 +24,41 @@ with colors;{
           "extensions.pocket.onSaveRecs" = false;
         };
         search = {
-            force = true;
-            default = "Gooogle";
-            order = [ "Google" ];
-            engines = {
-              "Nix Packages" = {
-                urls = [{
-                  template = "https://search.nixos.org/packages";
-                  params = [
-                    { name = "type"; value = "packages"; }
-                    { name = "query"; value = "{searchTerms}"; }
-                  ];
-                }];
-                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
-              };
-              "Bing".metaData.hidden = true;
-              "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+          force = true;
+          default = "Gooogle";
+          order = [ "Google" ];
+          engines = {
+            "Nix Packages" = {
+              urls = [{
+                template = "https://search.nixos.org/packages";
+                params = [
+                  { name = "type"; value = "packages"; }
+                  { name = "query"; value = "{searchTerms}"; }
+                ];
+              }];
+              icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
             };
+            "Bing".metaData.hidden = true;
+            "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+          };
         };
+
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          ublock-origin
+          re-enable-right-click
+          don-t-fuck-with-paste
+
+          enhancer-for-youtube
+          sponsorblock
+          return-youtube-dislikes
+
+          enhanced-github
+          refined-github
+          github-file-icons
+          reddit-enhancement-suite
+        ];
+
         userChrome = ''
           :root {
             --sfwindow: #${darker};
@@ -214,32 +230,32 @@ with colors;{
         '';
 
         userContent = ''
-          @namespace url("http://www.w3.org/1999/xhtml");
-          @-moz-document url("about:home") ,url("about:blank"), url("about:newtab") {
-            body {
-              background-color: #${darker} !important;
-            }
-            .search-handoff-button {
-              border-radius: 12px !important;
-              border-width: 2px !important;
-              border-color: #${background} !important;
-              background-size: 0px !important;
+            @namespace url("http://www.w3.org/1999/xhtml");
+            @-moz-document url("about:home") ,url("about:blank"), url("about:newtab") {
+              body {
+                background-color: #${darker} !important;
+              }
+              .search-handoff-button {
+                border-radius: 12px !important;
+                border-width: 2px !important;
+                border-color: #${background} !important;
+                background-size: 0px !important;
+                background-color: #${mbg} !important;
+                padding-inline-start: 10px !important;
+                padding-inline-end: 10px !important;
+              }
+            .search-wrapper input {
               background-color: #${mbg} !important;
+              border-radius: 0px !important;
+              background-image: none !important;
+              background-size: none !important;
+              text-align: center !important;
+              font-size: 17px !important;
               padding-inline-start: 10px !important;
               padding-inline-end: 10px !important;
             }
-          .search-wrapper input {
-            background-color: #${mbg} !important;
-            border-radius: 0px !important;
-            background-image: none !important;
-            background-size: none !important;
-            text-align: center !important;
-            font-size: 17px !important;
-            padding-inline-start: 10px !important;
-            padding-inline-end: 10px !important;
           }
-        }
-      '';
+        '';
       };
     };
   };

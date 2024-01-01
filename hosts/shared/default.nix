@@ -115,7 +115,6 @@ in
     python3
     brillo
     wmctrl
-    steam
     slop
     ripgrep
     maim
@@ -137,7 +136,6 @@ in
   ];
 
   environment.shells = with pkgs; [ zsh ];
-
   programs.dconf.enable = true;
 
   qt = {

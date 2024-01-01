@@ -23,6 +23,7 @@ in
   };
 
   nixpkgs.overlays = [
+    inputs.nur.overlay
   ];
 
   nixpkgs.config = {
