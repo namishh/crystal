@@ -5,7 +5,7 @@ local gears = require("gears")
 local json = require("mods.json")
 local beautiful = require("beautiful")
 
-local themes = { "biscuit", "cat", "decay", "everblush", "forest", "fullerene",  "kizu", "oxo", "rose","solarized",
+local themes = { "biscuit", "cat", "decay", "everblush", "forest", "fullerene",  "kizu", "nirvana", "oxo", "rose","solarized",
   "stardewnight", "swamp",
   "sweetpastel", "verdant", "vixima" }
 

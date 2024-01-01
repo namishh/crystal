@@ -43,9 +43,29 @@ local M          = {
       exec = "discord",
       name = "discord",
     },
+    {
+      count = 0,
+      pinned = true,
+      icon = getIcon(nil, "spotify", "spotify"),
+      id = 4,
+      clients = {},
+      class = "spotify",
+      exec = "spotify",
+      name = "spotify",
+    },
+    {
+      count = 0,
+      pinned = true,
+      icon = getIcon(nil, "steam", "steam"),
+      id = 4,
+      clients = {},
+      class = "steam",
+      exec = "steam",
+      name = "steam",
+    },
   },
   entries = {},
-  classes = { "firefox", "org.wezfurlong.wezterm", "discord" }
+  classes = { "firefox", "org.wezfurlong.wezterm", "discord", "spotify", "steam" }
 }
 
 M.widget         = wibox.widget {
