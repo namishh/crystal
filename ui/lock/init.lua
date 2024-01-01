@@ -66,7 +66,7 @@ local promptbox = wibox {
   height = dpi(800),
   bg = beautiful.mbg .. "00",
   ontop = true,
-  shape = helpers.rrect(10),
+  shape = helpers.rrect(0),
   visible = false
 }
 
