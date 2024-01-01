@@ -1,12 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  spicetify-nix = inputs.spicetify-nix;
   colors = import ../shared/cols/nirvana.nix { };
-  hyprland = inputs.hyprland;
-  hyprland-plugins = inputs.hyprland-plugins;
-  nixpkgs-f2k = inputs.nixpkgs-f2k;
-  ags = inputs.ags;
 in
 {
   # some general info  
@@ -18,7 +13,6 @@ in
 
   home.file.".icons/default".source =
     "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
-
 
   # gtk themeing
   gtk = {
@@ -88,7 +82,7 @@ in
 
   imports = [
     # Importing Configutations
-    ags.homeManagerModules.default
+    inputs.ags.homeManagerModules.default
 
     (import ../shared/xresources.nix { inherit colors; })
 
@@ -97,19 +91,19 @@ in
     (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
     (import ./conf/utils/firefox/default.nix { inherit colors pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
-    (import ./conf/utils/picom/default.nix { inherit colors pkgs nixpkgs-f2k; })
+    (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
 
     # Shell
     (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
 
-    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib hyprland hyprland-plugins colors; })
+    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
     (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors; })
     (import ./conf/ui/ags/default.nix { inherit pkgs; })
-    (import ./conf/term/wezterm/default.nix { inherit pkgs colors nixpkgs-f2k; })
+    (import ./conf/term/wezterm/default.nix { inherit pkgs colors inputs; })
 
     # Music thingies
-    (import ./conf/music/spicetify/default.nix { inherit colors spicetify-nix pkgs; })
+    (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
     (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
     (import ./conf/music/cava/default.nix { inherit colors; })

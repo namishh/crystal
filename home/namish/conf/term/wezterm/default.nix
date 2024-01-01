@@ -1,4 +1,4 @@
-{ pkgs, colors, nixpkgs-f2k, ... }:
+{ pkgs, colors, inputs, ... }:
 
 with colors; {
   programs.wezterm = {
@@ -6,7 +6,7 @@ with colors; {
     colorSchemes = import ./colors.nix {
       inherit colors;
     };
-    package = nixpkgs-f2k.packages.${pkgs.system}.wezterm-git;
+    package = inputs.nixpkgs-f2k.packages.${pkgs.system}.wezterm-git;
     extraConfig = ''
       local wez = require('wezterm')
       return {

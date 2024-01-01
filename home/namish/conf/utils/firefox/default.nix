@@ -23,6 +23,26 @@ with colors;{
           "extensions.pocket.enabled" = false;
           "extensions.pocket.onSaveRecs" = false;
         };
+        search = {
+            force = true;
+            default = "Gooogle";
+            order = [ "Google" ];
+            engines = {
+              "Nix Packages" = {
+                urls = [{
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    { name = "type"; value = "packages"; }
+                    { name = "query"; value = "{searchTerms}"; }
+                  ];
+                }];
+                icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+              "Bing".metaData.hidden = true;
+              "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
+            };
+        };
         userChrome = ''
           :root {
             --sfwindow: #${darker};

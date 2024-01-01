@@ -1,12 +1,12 @@
-{ config, lib, pkgs, hyprland, hyprland-plugins, colors, ... }:
+{ config, lib, pkgs, inputs, colors, ... }:
 
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = with colors; {
     enable = true;
-    package = hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    plugins = [ hyprland-plugins.packages.${pkgs.system}.hyprbars ];
+    plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts

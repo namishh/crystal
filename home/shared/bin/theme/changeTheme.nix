@@ -3,7 +3,7 @@ _:
   #!/usr/bin/env sh
   THEME=$1
   notify-send "Changing Theme Now"
-  sed -i "5s/.*/  colors = import ..\/shared\/cols\/$THEME.nix { };/g" /etc/nixos/home/namish/home.nix
+  sed -i "/colors = import*/c\  colors = import ../shared/cols/$THEME.nix { };" /etc/nixos/home/namish/home.nix
   cd /etc/nixos && home-manager switch --flake ".#$USER"
   echo $THEME > /tmp/themeName
   notify-send "Changing Theme Complete"

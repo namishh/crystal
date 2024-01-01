@@ -474,6 +474,21 @@
         "type": "github"
       }
     },
+    "nurpkgs": {
+      "locked": {
+        "lastModified": 1704091836,
+        "narHash": "sha256-r7HZa9PW2raVEdG4u6cS0axIb77LK3V2aoYXN5ifeHc=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "8b173557cc4e5d4863d124305d22439a59897fef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib_2"
@@ -502,6 +517,7 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-f2k": "nixpkgs-f2k",
+        "nurpkgs": "nurpkgs",
         "spicetify-nix": "spicetify-nix",
         "stable": "stable",
         "unstable": "unstable"

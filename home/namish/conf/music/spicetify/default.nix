@@ -1,10 +1,10 @@
-{ colors, spicetify-nix, pkgs }:
+{ colors, inputs, pkgs }:
 let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in
 
 {
-  imports = [ spicetify-nix.homeManagerModule ];
+  imports = [ inputs.spicetify-nix.homeManagerModule ];
   programs.spicetify =
     let
       # use a different version of spicetify-themes than the one provided by
@@ -72,7 +72,7 @@ in
         lastfm
         genre
         historyShortcut
-        spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
+        inputs.spicetify-nix.packages.${pkgs.system}.default.extensions.adblock
         hidePodcasts
         fullAppDisplay
         shuffle

@@ -11,6 +11,8 @@
       nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
       spicetify-nix.url = "github:the-argus/spicetify-nix";
 
+      nurpkgs.url = "github:nix-community/NUR";
+
       nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
       nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -23,7 +25,7 @@
       ags.url = "github:Aylur/ags";
 
     };
-  outputs = { self, nixpkgs, home-manager, hyprland, hyprland-plugins, ... } @inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @inputs:
     let
       inherit (self) outputs;
       forSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
@@ -39,7 +41,7 @@
         frostbyte = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
-              inherit inputs outputs hyprland hyprland-plugins;
+              inherit inputs outputs;
             };
             modules = [
               # > Our main nixos configuration file <
