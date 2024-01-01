@@ -72,7 +72,6 @@ in
       redshift
       killall
       moreutils
-      kitty
       mpdris2
       socat
       pavucontrol
@@ -101,7 +100,11 @@ in
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
     (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors; })
     (import ./conf/ui/ags/default.nix { inherit pkgs; })
+
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors inputs; })
+    (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
+
+    (import ./conf/editors/vscopium/default.nix { inherit pkgs colors; })
 
     # Music thingies
     (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
