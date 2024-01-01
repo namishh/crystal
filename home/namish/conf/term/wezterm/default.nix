@@ -23,6 +23,8 @@ with colors; {
           "Iosevka Nerd Font",
           "Material Design Icons",
         }),
+        initial_rows = 18,
+        initial_cols = 85,
         dpi = 96.0,
         bold_brightens_ansi_colors = true,
         font_rules    = {

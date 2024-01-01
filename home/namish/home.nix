@@ -2,7 +2,7 @@
 
 let
   spicetify-nix = inputs.spicetify-nix;
-  colors = import ../shared/cols/sweetpastel.nix { };
+  colors = import ../shared/cols/nirvana.nix { };
   hyprland = inputs.hyprland;
   hyprland-plugins = inputs.hyprland-plugins;
   nixpkgs-f2k = inputs.nixpkgs-f2k;
