@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/nirvana.nix { };
+  colors = import ../shared/cols/fovere.nix { };
 in
 {
   # some general info  
