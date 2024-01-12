@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/fovere.nix { };
+  colors = import ../shared/cols/oxo.nix { };
 in
 {
   # some general info  
@@ -65,6 +65,7 @@ in
       mpc-cli
       ffmpeg_5-full
       neovim
+      libdbusmenu-gtk3
       xdg-desktop-portal
       imagemagick
       xorg.xev
@@ -72,11 +73,16 @@ in
       redshift
       killall
       moreutils
+      wf-recorder
       mpdris2
       socat
       pavucontrol
       fzf
       swww
+      swayidle
+      autotiling-rs
+      slurp
+      sassc
     ];
   };
 
@@ -88,7 +94,8 @@ in
 
     (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
-    (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+    #(import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+
     (import ./conf/utils/firefox/default.nix { inherit colors pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
@@ -99,7 +106,7 @@ in
 
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
     (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors; })
-    (import ./conf/ui/ags/default.nix { inherit pkgs; })
+    (import ./conf/ui/ags/default.nix { inherit pkgs inputs; })
 
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors inputs; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
@@ -109,7 +116,7 @@ in
     # Music thingies
     (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })
     (import ./conf/music/mpd/default.nix { inherit config pkgs; })
-    (import ./conf/music/ncmp/default.nix { inherit config pkgs; })
+    (import ./conf/music/ncmp/hypr.nix { inherit config pkgs; })
     (import ./conf/music/cava/default.nix { inherit colors; })
 
     # Some file generation

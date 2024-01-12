@@ -6,7 +6,7 @@
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
+    #  plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts

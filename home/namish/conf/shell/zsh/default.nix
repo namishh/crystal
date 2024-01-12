@@ -11,6 +11,7 @@
       ls = "ls --color=auto";
       v = "nvim";
       nf = "run neofetch";
+      sa = "pkill ags ; ags & disown";
       suda = "sudo -E -s";
       nix-pkgs = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
     };

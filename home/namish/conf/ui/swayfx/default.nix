@@ -7,12 +7,42 @@
     systemd.enable = true;
     package = pkgs.swayfx;
     extraConfig = ''
-      exec_always --no-startup-id xrdb -merge ~/.Xresources &
-      exec --no-startup-id swww init &
-      exec_always --no-startup-id swww img ~/.config/awesome/theme/alt/${name}.jpg
 
+      for_window [app_id="spad"] move scratchpad, resize set width 900 height 600
+      for_window [app_id="smusicpad"] move scratchpad, resize set width 850 height 550
+
+      set $bg-color 	         #${mbg}
+      set $inactive-bg-color   #${darker}
+      set $text-color          #${foreground}
+      set $inactive-text-color #${foreground}
+      set $urgent-bg-color     #${color9}
+
+      # window colors
+      #                       border              background         text                 indicator
+      client.focused          $bg-color           $bg-color          $text-color          $bg-color 
+      client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
+      client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
+      client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
+
+      font pango:Rubik Regular 12
+      titlebar_separator enable
+      titlebar_padding 12
+      title_align center
+      default_border normal 2
+      default_floating_border normal 2
+  
+      exec_always --no-startup-id xrdb -merge ~/.Xresources &
+      exec --no-startup-id ags &
+      exec_always --no-startup-id mpDris2 &
+      exec_always --no-startup-id autotiling-rs &
+      exec --no-startup-id swayidle -w \
+          timeout 360 'waylock' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'waylock'
       ## SWAYFX CONFIG
-      corner_radius 5
+      corner_radius 5 
+
+      output * bg ~/.config/awesome/theme/alt/${name}.jpg fill
     '';
     config = {
       terminal = "wezterm";
@@ -46,18 +76,22 @@
           mod = cfg.modifier;
         in
         {
+          "print" = "exec 'grim -g \"$(slurp)\" - | wl-copy'";
+          "Shift+print" = "exec 'grim - | wl-copy'";
 
-          "XF86MonBrightnessUp" = "~/.local/bin/changebrightness up";
-          "XF86MonBrightnessDown" = "~/.local/bin/changebrightness down";
+          "XF86MonBrightnessUp" = "exec 'brightnessctl s 5+'";
+          "XF86MonBrightnessDown" = "exec 'brightnessctl s 5-'";
 
-          "XF86AudioRaiseVolume" = "~/.local/bin/changevolume up";
-          "XF86AudioLowerVolume" = "~/.local/bin/changevolume down";
-          "XF86AudioMute" = "~/.local/bin/changevolume mute";
+          "XF86AudioRaiseVolume" = "exec 'pamixer -u ; pamixer -i 5'";
+          "XF86AudioLowerVolume" = "exec 'pamixer -u ; pamixer -d 5'";
+          "XF86AudioMute" = "exec 'pamixer -t'";
 
           "${mod}+Return" = "exec ${cfg.terminal}";
           "${mod}+Shift+q" = "reload";
           "${mod}+d" = "exec ${cfg.menu}";
 
+          "${mod}+v" = "exec 'swayscratch spad'";
+          "${mod}+z" = "exec 'swayscratch smusicpad'";
           #"${mod}+${cfg.left}" = "focus left";
           #"${mod}+${cfg.down}" = "focus down";
           #"${mod}+${cfg.up}" = "focus up";
@@ -78,8 +112,8 @@
           "${mod}+Shift+Up" = "move up";
           "${mod}+Shift+Right" = "move right";
 
-          "${mod}+b" = "splith";
-          "${mod}+v" = "splitv";
+          "${mod}+Shift+b" = "splith";
+          "${mod}+Shift+v" = "splitv";
           "${mod}+f" = "fullscreen";
           "${mod}+a" = "focus parent";
 
@@ -156,9 +190,6 @@
         smartGaps = false;
       };
 
-      window = {
-        titlebar = false;
-      };
 
       bars = [
       ];

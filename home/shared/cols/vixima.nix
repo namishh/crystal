@@ -32,5 +32,5 @@ rec {
 
   color7 = "CBCCCE";
   color15 = "CBCCCE";
-  name = "arctic";
+  name = "vixima";
 }

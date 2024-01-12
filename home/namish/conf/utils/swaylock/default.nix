@@ -7,8 +7,8 @@
       font = "Rubik";
       show-failed-attempts = false;
       indicator = true;
-      indicator-radius = 200;
-      indicator-thickness = 20;
+      indicator-radius = 220;
+      indicator-thickness = 25;
       line-color = "#${background}";
       ring-color = "${mbg}";
       inside-color = "#${background}";

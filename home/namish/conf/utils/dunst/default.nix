@@ -16,9 +16,9 @@
         icon_position = "left";
         min_icon_size = 48;
         max_icon_size = 64;
-        highlight = "#${color2}";
+        highlight = "#${accent}";
         progress_bar = true;
-        progress_bar_height = 8;
+        progress_bar_height = 12;
         progress_bar_frame_width = 1;
         progress_bar_min_width = 150;
         progress_bar_max_width = 300;
@@ -57,22 +57,17 @@
       };
 
       fullscreen_delay_everything = { fullscreen = "delay"; };
-      logger = {
-        summary = "*";
-        body = "*";
-        script = "~/.config/eww/scripts/notification_logger.zsh";
-      };
       urgency_low = {
         timeout = 8;
         background = "#${background}";
         foreground = "#${foreground}";
-        highlight = "#${color4}";
+        highlight = "#${accent}";
       };
       urgency_normal = {
         timeout = 8;
         background = "#${background}";
         foreground = "#${foreground}";
-        highlight = "#${color4}";
+        highlight = "#${accent}";
       };
       urgency_critical = {
         timeout = 10;

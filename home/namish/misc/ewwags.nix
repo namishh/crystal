@@ -56,7 +56,7 @@ with colors ;{
     $magenta-light : #${color13};
 
     $comment : #${comment};
-    $accent : #${color12};
+    $accent : #${accent};
 
   '';
 }

@@ -32,5 +32,5 @@ rec {
 
   color7 = "e0e0e0";
   color15 = "c6c6c6";
-  name = "arctic";
+  name = "fullerene";
 }

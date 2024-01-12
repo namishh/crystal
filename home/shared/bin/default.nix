@@ -3,6 +3,10 @@
 {
   home = {
     file = {
+      ".local/bin/swayscratch" = {
+        executable = true;
+        text = import ./misc/swayscratch.nix { };
+      };
       ".local/bin/run" = {
         executable = true;
         text = import ./misc/run.nix { };

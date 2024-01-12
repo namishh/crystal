@@ -22,7 +22,7 @@
       };
       hyprland.url = "github:hyprwm/Hyprland";
 
-      ags.url = "github:Aylur/ags";
+      ags.url = "github:ozwaldorf/ags";
 
     };
   outputs = { self, nixpkgs, home-manager, ... } @inputs:
