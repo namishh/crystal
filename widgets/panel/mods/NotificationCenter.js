@@ -37,7 +37,7 @@ const Notifs = Widget.Box({
             spacing: 20,
             children: [
               Widget.Icon({
-                icon: n.app_icon || `${App.configDir}assets/wedding-bells.png`,
+                icon: n.app_icon || `${App.configDir}/assets/wedding-bells.png`,
                 size: 60
               }),
               Widget.Label({
