@@ -1,0 +1,80 @@
+.bar {
+  padding: 1rem 0.6rem 0.6rem;
+  border-radius: 10px;
+  background: $background;
+
+  &-time {
+    padding: 0.6rem 0.3rem;
+    font-family: "Rubik";
+    border-radius: 8px;
+    font-size: 14px;
+    background: $background-alt;
+  }
+
+  &-ws {
+    border-radius: 8px;
+    background: $background-alt;
+    padding: 1rem 0.8rem;
+
+    &-occupied {
+      min-height: 40px;
+      border-radius: 10px;
+      margin: 5px 0;
+      background: $foreground;
+    }
+
+    &-active {
+      border-radius: 10px;
+      background: rgba($accent, 1);
+      margin: 5px 0;
+      min-height: 100px;
+    }
+
+    &-indicator {
+      background: rgba($foreground, 0.1);
+      padding: 0.25rem;
+      min-height: 30px;
+      margin: 5px 0;
+      border-radius: 10px;
+    }
+  }
+
+  &-battery {
+    border-radius: 8px;
+
+    &-bulb {
+      padding: 0.1rem;
+      border-radius: 100px;
+      min-width: 10px;
+      background: $comment;
+    }
+
+    &-prog {
+      border: 1px solid $comment;
+      padding: 0.2rem;
+      border-radius: 8px;
+
+      trough {
+        border-radius: 4px;
+        padding: 0 0.4rem;
+        min-width: 10px;
+        min-height: 40px;
+        background: rgba($green, 0.2);
+      }
+
+      progress {
+        border-radius: 4px;
+        padding: 0.4rem;
+        min-width: 10px;
+        background: $green;
+      }
+    }
+  }
+
+
+  &-icons {
+    border-radius: 4px;
+    padding: 0.7rem 0.3rem;
+    background: $background-alt;
+  }
+}

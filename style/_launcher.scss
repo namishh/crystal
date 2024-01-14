@@ -1,0 +1,131 @@
+.launcher {
+  border-radius: 10px;
+  background: $background;
+
+
+  &-left {
+    padding: 0.5rem;
+    background: rgba($background-alt, 0.5);
+    border-radius: 10px;
+  }
+
+  &-pfp {
+    border-radius: 100px;
+    min-height: 40px;
+    min-width: 40px;
+  }
+
+  &-right {
+    font-family: Rubik;
+    margin: 10px 10px 10px 0px;
+    border-radius: 10px;
+  }
+
+  &-exit {
+    font-family: Material Design Icons;
+    font-size: 25px;
+    color: $foreground;
+  }
+
+  &-appmenu {
+    padding: 1rem;
+    background: rgba($background-alt, 0.5);
+    border-radius: 10px;
+
+    &-list {
+      min-width: 350px;
+      min-height: 550px;
+    }
+
+    &-appicon {
+      padding: 0.5rem;
+    }
+
+    &-appentry {
+      border-radius: 10px;
+      padding: 1rem;
+      background: rgba($foreground, 0.05);
+      font-family: Iosevka Nerd Font;
+    }
+
+    &-apptitle {
+      font-family: "Rubik";
+      font-size: 16px;
+      margin-left: 1rem;
+    }
+  }
+
+
+  &-music {
+    background: rgba($background-alt, 0.5);
+    padding: 1rem;
+    margin-top: 10px;
+    border-radius: 10px;
+
+    &-img {
+      border-radius: 10px;
+    }
+
+    &-artist {
+      font-size: 12px;
+      font-family: Rubik;
+      margin: 0.4rem 0;
+    }
+
+    &-info {
+      padding: 1rem;
+    }
+
+    &-box {
+      margin-top: 1rem;
+    }
+
+    &-icon {
+      font-size: 20px;
+      color: $foreground;
+    }
+
+    &-prog {
+      min-height: 30px;
+      font-size: 2px;
+      color: $accent;
+      min-width: 30px;
+    }
+  }
+
+  &-sites {
+    background: rgba($background-alt, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+
+    &-list {
+      min-width: 300px;
+      min-height: 230px;
+    }
+  }
+
+  &-weather {
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    &-g {
+      background: linear-gradient(to bottom, rgba($background, 0.6), rgba($background, 0.9));
+    }
+
+    &-info {
+      padding: 2rem;
+    }
+
+    &-feelslike {
+      font-size: 1.3rem;
+    }
+
+    &-temp {
+      font-size: 2.3rem;
+    }
+
+    &-city {
+      margin-top: 2.8rem;
+    }
+  }
+}

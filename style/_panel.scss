@@ -1,0 +1,117 @@
+.panel {
+  background: $background;
+  border-radius: 10px;
+  padding: 2rem;
+  min-width: 450px;
+
+  &-pfp {
+    min-height: 40px;
+    min-width: 40px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 100px;
+  }
+
+  &-uptime {
+    font-family: Rubik;
+    font-size: 20px;
+    color: $comment;
+  }
+
+  &-name {
+    font-family: Rubik;
+    font-size: 25px;
+    font-weight: 300;
+  }
+
+  &-button {
+    padding: 1.4rem;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    background: rgba($foreground, 0.08);
+    font-family: Material Design Icons;
+
+    &active {
+      padding: 1.4rem;
+      font-size: 1.6rem;
+      border-radius: 20px;
+      background: $accent;
+      color: $background;
+      font-family: Material Design Icons;
+    }
+  }
+
+  &-sep {
+    min-width: 5px;
+    border-radius: 40px;
+    background: rgba($foreground, 0.08);
+
+    min-height: 30px;
+  }
+
+  &-sliders {
+    padding: 1.5rem;
+    font-family: Rubik;
+    background: rgba($background-alt, 0.5);
+    border-radius: 10px;
+  }
+
+  &-slider {
+    &-label {
+      font-family: Rubik;
+    }
+
+    trough {
+      min-height: 18px;
+      border-radius: 50px;
+      min-width: 100px;
+      background: rgba($accent, 0.07);
+    }
+
+    highlight {
+      background: $accent;
+      min-height: 18px;
+      border-radius: 50px;
+    }
+  }
+}
+
+.notifications {
+  padding: 1.5rem;
+  font-family: Rubik;
+  background: rgba($background-alt, 0.5);
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.nt {
+  font-size: 18px;
+}
+
+.notifempty {
+  min-height: 220px;
+}
+
+.ni {
+  font-size: 28px;
+  color: $accent;
+}
+
+.notification {
+  background: $background-alt;
+  border-radius: 10px;
+}
+
+.nt2 {
+  padding: 0.8rem;
+  background: rgba($foreground, 0.04);
+}
+
+.nti {
+  color: $red;
+}
+
+.nc {
+  min-height: 65px;
+  padding: 1rem;
+}
