@@ -1,4 +1,4 @@
-![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/screenshots/preview.png)
+![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/preview.png)
 
 ## freosan
 
