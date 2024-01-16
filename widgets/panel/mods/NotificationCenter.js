@@ -5,14 +5,14 @@ import App from 'resource:///com/github/Aylur/ags/app.js';
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 
 const Notifs = Widget.Box({
-  class_name: "notifs",
+  class_name: "panel-notifs",
   spacing: 20,
   vertical: true,
   vexpand: true,
   setup: (self) => {
     self.hook(Notifications, (self) => {
       self.children = Notifications.notifications.map(n => Widget.Box({
-        class_name: "notification",
+        class_name: "panel-notification",
         vertical: true,
         children: [
           Widget.CenterBox({
@@ -21,6 +21,7 @@ const Notifs = Widget.Box({
               label: `${n.summary}`,
               hpack: "start",
               class_name: "ntt",
+              wrap: true
             }),
             end_widget: Widget.Button({
               class_names: ["icon", "nti"],
@@ -42,11 +43,10 @@ const Notifs = Widget.Box({
               }),
               Widget.Label({
                 vpack: "start",
-                truncate: 'end',
+                hpack: "start",
+                xalign: 0,
                 justify: Gtk.Justification.LEFT,
-                truncate: 'end',
-                ellipsize: 3,
-
+                wrap: true,
                 label: n.body
               })
             ]
@@ -81,7 +81,7 @@ const Empty = Widget.Box({
 })
 
 export default () => Widget.Box({
-  class_name: "notifications",
+  class_name: "panel-notifications",
   spacing: 20,
   vertical: true,
   children: [

@@ -1,0 +1,123 @@
+.calendar {
+
+  &-music {
+    font-family: Rubik;
+    padding: 1rem;
+
+    &-vis {
+      min-width: 4px;
+      border-radius: 20px;
+      background: $foreground;
+
+      &-1 {
+        min-height: 10px;
+      }
+
+      &-2 {
+        min-height: 30px;
+      }
+
+      &-3 {
+        min-height: 18px;
+      }
+
+      &-4 {
+        min-height: 25px;
+      }
+    }
+
+    &-label {
+      font-weight: 300;
+    }
+
+    &-title {
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    &-b {
+      border-radius: 10px;
+    }
+
+    &-g {
+      background: linear-gradient(to right, rgba($background, 0.7), rgba($background, 0.9));
+    }
+  }
+
+  &box {
+    border-radius: 10px;
+    padding: 1.2rem;
+    background: $background;
+  }
+
+  &-hour {
+    color: $accent;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
+    margin-right: 2rem;
+    font-size: 35px;
+  }
+
+  &-min {
+    color: $comment;
+    font-weight: 600;
+    margin-left: 1rem;
+    font-size: 35px;
+    margin-top: 0.2rem;
+  }
+
+  &-time-box {
+    min-height: 80px;
+    min-width: 60px;
+  }
+
+  &-day {
+    font-size: 16px;
+    color: $comment;
+  }
+
+  &-mon {
+    margin-top: 11.4rem;
+    font-size: 20px;
+    color: $foreground;
+  }
+
+  &-side {
+    padding: 1.2rem;
+    background: rgba($background-alt, 0.46);
+    border-radius: 10px;
+    font-family: Rubik;
+  }
+
+  &-cal {
+    border-radius: 10px;
+    padding: 1.8rem;
+    background: rgba($background-alt, 0.46);
+  }
+
+  &-cell {
+    padding: 0.4rem .5rem;
+    color: $foreground;
+    margin: 0.5rem 0.4rem;
+    border-radius: 4px;
+    font-family: Rubik;
+    font-size: 18px;
+  }
+
+  &-disabled {
+    color: $comment;
+  }
+
+  &-weekend {
+    color: $red;
+  }
+
+  &-weekday {
+    color: $accent;
+  }
+
+  &-active {
+    background: rgba($background-alt, 1);
+    color: $accent;
+  }
+}

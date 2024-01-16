@@ -8,13 +8,14 @@ import GLib from 'gi://GLib';
  * }} o
  */
 export default ({
-    format = '%H:%M:%S %B %e. %A',
-    interval = 1000,
-    ...rest
+  format = '%H:%M:%S %B %e. %A',
+  interval = 1000,
+  class_name = "clock",
+  ...rest
 } = {}) => Widget.Label({
-    class_name: 'clock',
-    ...rest,
-    setup: self => self.poll(interval, () => {
-        self.label = GLib.DateTime.new_now_local().format(format) || 'wrong format';
-    }),
+  class_name: `clock ${class_name}`,
+  ...rest,
+  setup: self => self.poll(interval, () => {
+    self.label = GLib.DateTime.new_now_local().format(format) || 'wrong format';
+  }),
 });

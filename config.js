@@ -1,8 +1,11 @@
 import App from 'resource:///com/github/Aylur/ags/app.js'
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
+
 import { bar } from "./widgets/bar/Bar.js"
 import { launcher } from './widgets/launcher/Launcher.js'
 import { panel } from "./widgets/panel/Panel.js"
+
+import { calendarbox } from "./widgets/calendar/Calendar.js"
 
 let loadCSS = () => {
   const scss = `${App.configDir}/style/_style.scss`
@@ -29,4 +32,4 @@ Utils.monitorFile(
 
 
 
-export default { windows: [bar, launcher, panel], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [bar, launcher, panel, calendarbox], style: `${App.configDir}/finalcss/style.css` }

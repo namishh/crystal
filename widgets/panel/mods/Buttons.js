@@ -5,6 +5,7 @@ import Network from 'resource:///com/github/Aylur/ags/service/network.js';
 import Bluetooth from 'resource:///com/github/Aylur/ags/service/bluetooth.js';
 import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
+const { GLib } = imports.gi
 
 const SettingButton = (label, setup, on_clicked) => Widget.Button({
   class_name: "panel-button",
@@ -75,18 +76,18 @@ export default () => Widget.Box({
       vpack: "center",
     }),
 
-    SettingButton("󰻂", (self) => {
+    SettingButton("󰻂", () => {
     }, () => {
       let date = new Date().toJSON();
       App.toggleWindow("panel")
-      Utils.execAsync(`bash -c 'if pgrep -x "wf-recorder"; then notify-send "Ending Recording" ; pkill wf-recorder ; else notify-send "Starting Recording" ;wf-recorder -g "$(slurp)" -f ~/Videos/Recordings/${date}.mp4 ;fi'`)
+      Utils.execAsync(`bash -c 'if pgrep -x "wf-recorder"; then notify-send "Ending Recording" "Recording Saved" ; pkill wf-recorder ; else notify-send "Starting Recording" "Video Capture Starts Now" ;wf-recorder -g "$(slurp)" -f ~/Videos/Recordings/${date}.mp4 ;fi'`)
     }),
 
-    SettingButton("󰆟", (self) => {
+    SettingButton("󰆟", () => {
     }, () => {
       let date = new Date().toJSON();
       App.toggleWindow("panel")
-      Utils.execAsync(`bash -c 'grim -g "$(slurp)" ~/Pictures/Screenshots/${date}.png ; wl-copy < ~/Pictures/Screenshots/${date}.png'`)
+      Utils.execAsync(`bash -c 'grim -g "$(slurp)" ~/Pictures/Screenshots/${date}.png ; notify-send -i "${GLib.get_home_dir()}/Pictures/Screenshots/${date}.png" "New Screenshot" "Saved at ~/Picures/Screenshots/${date}.png"; wl-copy < ~/Pictures/Screenshots/${date}.png' `)
     }),
   ]
 })
