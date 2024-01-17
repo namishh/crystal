@@ -38,4 +38,9 @@ $comment : #485263;
 $accent : #7297d9;
 ```
 
-3. add openapikey in `scripts/weathercopy.sh` and rename it to `weather.sh`
+3. create `.config/ags/.env`
+
+```
+OPENWEATHERAPIKEY=key
+CITY=New York
+```

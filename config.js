@@ -30,6 +30,4 @@ Utils.monitorFile(
   'directory',
 )
 
-
-
 export default { windows: [bar, launcher, panel, calendarbox], style: `${App.configDir}/finalcss/style.css` }

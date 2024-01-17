@@ -1,4 +1,5 @@
 import Variable from 'resource:///com/github/Aylur/ags/variable.js';
+import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
 import App from 'resource:///com/github/Aylur/ags/app.js';
 
 export const Uptime = Variable("0h 0m", {
@@ -38,7 +39,27 @@ const defaultvalue = {
   "name": "New Delhi",
 }
 
-export const WeatherData = Variable(defaultvalue, {
-  poll: [1000 * 60 * 60, ['bash', '-c', `${App.configDir}/scripts/weather.sh full`], out => JSON.parse(out)],
-})
+const setVars = () => {
+  const g = {}
+  const contents = Utils.readFile(`${App.configDir}/.env`)
+  const lines = contents.toString().split("\n");
+  lines.forEach(line => {
+    const [key, value] = line.split("=");
+    if (key && value) {
+      g[key] = value
+    }
+  });
+  return g
+}
 
+export const GLOBAL = setVars()
+
+export const WeatherData = Variable(defaultvalue)
+
+Utils.interval(5000, () => {
+  Utils.fetch(`https://api.openweathermap.org/data/2.5/weather?q=${GLOBAL['CITY']}&appid=${GLOBAL['OPENWEATHERAPIKEY']}&units=metric`)
+    .then(res => res.text())
+    .then(res => {
+      WeatherData.setValue(JSON.parse(res))
+    })
+})

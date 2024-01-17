@@ -1,6 +1,7 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Mpris from 'resource:///com/github/Aylur/ags/service/mpris.js';
 
+
 const Music = player => {
   return Widget.Overlay({
     child: Widget.Box({

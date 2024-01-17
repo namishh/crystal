@@ -2,7 +2,6 @@ import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import { WeatherData } from '../../../variables.js';
 
-
 const getWeatherIcon = (code) => {
   if (code === "01d" || code === "01n") {
     return "clear-sky";
