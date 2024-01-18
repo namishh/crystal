@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/oxo.nix { };
+  colors = import ../shared/cols/material.nix { };
 in
 {
   # some general info  

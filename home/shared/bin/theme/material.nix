@@ -25,18 +25,28 @@ _:
 
       return darkened_hex
 
+  def lighten_hex_color(hex_color, percentage):
+    hex_color = hex_color.lstrip("#")
+    rgb = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    lightened_rgb = tuple(int(value + (255 - value) * (percentage / 100)) for value in rgb)
+    lightened_hex = "#{:02x}{:02x}{:02x}".format(*lightened_rgb)
+
+    return lightened_hex
+
   if os.path.isfile(themefile):
       if not os.path.exists(f"{home}/.cache/wallpapers/"):
           os.makedirs(f"{home}/.cache/wallpapers/")
+      if os.path.isfile(f"{home}/.cache/wallpapers/material.jpg"):
+          os.remove(f"{home}/.cache/wallpapers/material.jpg")
       newfile = f'{home}/.cache/wallpapers/material.jpg'
-      os.popen(f'convert {themefile} {newfile}')
+      subprocess.run(["convert", themefile, newfile]) 
     
-      colors = json.loads(runCommand(f'matugen image {newfile} --json hex' ))
+      colors = json.loads(runCommand(f'matugen --dry-run image {newfile} --json hex' ))
       colors = colors["colors"]["dark"]
       colmap = {
-          "background": colors["surface_container_lowest"],
+          "background": lighten_hex_color(colors["surface_container_lowest"], 2),
           "darker": darken_hex_color(colors["surface_container_lowest"], 30),
-          "mbg": darken_hex_color(colors["surface_container"], 18),
+          "mbg": darken_hex_color(colors["surface_container"], 15),
           "foreground": colors["inverse_surface"],
           "red": colors["error"],
           "comment":colors['outline'], 
@@ -49,8 +59,8 @@ _:
           "darkgreen": darken_hex_color(colors["on_primary_container"],10),
           "magenta": colors["primary_fixed"],
           "darkmagenta": darken_hex_color(colors["primary_fixed"],10),
-          "blue": colors["primary"],
-          "darkblue": darken_hex_color(colors["primary"],10), 
+          "blue": lighten_hex_color(colors["primary"], 15),
+          "darkblue": lighten_hex_color(colors["primary"],12), 
           "accent": colors["primary"],
       }
       with open('/etc/nixos/home/shared/cols/material.nix', 'w') as file:

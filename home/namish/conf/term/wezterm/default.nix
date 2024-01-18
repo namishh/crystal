@@ -15,7 +15,7 @@ with colors; {
         -- Performance
         --------------
         front_end        = "OpenGL",
-        enable_wayland   = true,
+        enable_wayland   = false,
         scrollback_lines = 1024,
         -- Fonts
         --------
