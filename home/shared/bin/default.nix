@@ -1,11 +1,17 @@
 { config, colors, ... }:
-
+let
+  wall = if colors.name == "material" then "~/.cache/wallpapers/material.jpg" else "~/.wallpapers/${colors.name}.jpg";
+in
 {
   home = {
     file = {
       ".local/bin/swayscratch" = {
         executable = true;
         text = import ./misc/swayscratch.nix { };
+      };
+      ".local/bin/material" = {
+        executable = true;
+        text = import ./theme/material.nix { };
       };
       ".local/bin/run" = {
         executable = true;
@@ -54,7 +60,7 @@
             #!/bin/sh
             playerctl pause
             sleep 0.2
-            swaylock -i ~/.config/awesome/theme/alt/${colors.name}.jpg --effect-blur 10x10
+            swaylock -i ${wall} --effect-blur 10x10
           '';
         };
       ".local/bin/setWall" = {

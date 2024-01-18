@@ -25,6 +25,10 @@
       ags.url = "github:ozwaldorf/ags";
 
       darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
+
+      matugen = {
+        url = "github:/InioX/Matugen";
+      };
     };
   outputs = { self, nixpkgs, ... } @inputs:
     let

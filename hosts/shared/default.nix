@@ -142,6 +142,7 @@ in
     dosis
     material-symbols
     rubik
+    google-fonts
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
 

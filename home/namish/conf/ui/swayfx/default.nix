@@ -1,5 +1,7 @@
 { config, lib, pkgs, colors, ... }:
-
+let
+  wall = if colors.name == "material" then "~/.cache/wallpapers/material.jpg" else "~/.wallpapers/${colors.name}.jpg";
+in
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.sway = with colors; {
@@ -43,7 +45,7 @@
       ## SWAYFX CONFIG
       corner_radius 5 
 
-      output * bg ~/.config/awesome/theme/alt/${name}.jpg fill
+      output * bg ${wall} fill
     '';
     config = {
       terminal = "wezterm";

@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/horizon.nix { };
+  colors = import ../shared/cols/oxo.nix { };
 in
 {
   # some general info  
@@ -13,6 +13,11 @@ in
 
   home.file.".icons/default".source =
     "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
+
+  home.file.".wallpapers" = {
+    source = ../../walls;
+    recursive = true;
+  };
 
   # gtk themeing
   gtk = {
@@ -76,11 +81,13 @@ in
       wf-recorder
       mpdris2
       socat
+      inputs.matugen.packages.${system}.default
       pavucontrol
       fzf
       swww
       swayidle
       autotiling-rs
+      pywal
       slurp
       sassc
     ];

@@ -1,5 +1,7 @@
 { config, lib, pkgs, inputs, colors, ... }:
-
+let
+  wall = if colors.name == "material" then "~/.cache/wallpapers/material.jpg" else "~/.wallpapers/${colors.name}.jpg";
+in
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = with colors; {
@@ -269,7 +271,7 @@
       exec = source ~/.local/bin/upw
       exec = bash -c ~/.local/bin/genmenupic
       exec-once = swww init &
-      exec = swww img ~/.config/awesome/theme/alt/${name}.jpg
+      exec = swww img ${wall}
       exec = dunst &
       exec-once = xss-lock lock &
       exec =  eww open bar && eww reload &
