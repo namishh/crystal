@@ -6,7 +6,17 @@ let
   ];
 in
 {
-  boot.loader.systemd-boot.enable = true;
+  boot.loader = {
+    systemd-boot.enable = false;
+    grub.enable = true;
+    grub.efiSupport = true;
+    grub.device = "nodev";
+    grub.darkmatter-theme = {
+      enable = true;
+      style = "nixos";
+    };
+  };
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 

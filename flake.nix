@@ -24,8 +24,9 @@
 
       ags.url = "github:ozwaldorf/ags";
 
+      darkmatter.url = "gitlab:VandalByte/darkmatter-grub-theme";
     };
-  outputs = { self, nixpkgs, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, ... } @inputs:
     let
       inherit (self) outputs;
       forSystems = nixpkgs.lib.genAttrs nixpkgs.lib.systems.flakeExposed;
@@ -45,14 +46,15 @@
             };
             modules = [
               # > Our main nixos configuration file <
-              home-manager.nixosModule
+              inputs.home-manager.nixosModule
+              inputs.darkmatter.nixosModule
               ./hosts/frostbyte/configuration.nix
             ];
           };
       };
 
       homeConfigurations = {
-        namish = home-manager.lib.homeManagerConfiguration {
+        namish = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = { inherit inputs outputs self; };
           modules = [

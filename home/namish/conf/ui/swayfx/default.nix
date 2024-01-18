@@ -5,6 +5,7 @@
   wayland.windowManager.sway = with colors; {
     enable = true;
     systemd.enable = true;
+    xwayland = true;
     package = pkgs.swayfx;
     extraConfig = ''
 
@@ -88,6 +89,7 @@
 
           "${mod}+Return" = "exec ${cfg.terminal}";
           "${mod}+Shift+q" = "reload";
+          "${mod}+Shift+s" = "exec 'pkill ags ; ags & disown'";
           "${mod}+d" = "exec ${cfg.menu}";
 
           "${mod}+v" = "exec 'swayscratch spad'";
@@ -162,8 +164,7 @@
         };
         "*" = {
           xkb_layout = "us";
-          xkb_variant = "altgr-intl,dhm-altgr-intl";
-          xkb_options = "grp:win_space_toggle,grp_led:caps,ctrl:nocaps,compose:ralt";
+          xkb_options = "grp:win_space_toggle,compose:ralt";
         };
       };
       output = {
