@@ -1,0 +1,30 @@
+.osd {
+  background: $background;
+  padding: 1.4rem;
+  border-radius: 10px;
+  font-family: "Product Sans";
+
+  &-icon {
+    font-size: 40px;
+  }
+
+  &-label{
+    font-size: 16px;
+  }
+    &-prog {
+      border-radius: 8px;
+
+      trough {
+        border-radius: 20px;
+        min-width: 190px;
+        min-height: 20px;
+        background: rgba($accent, 0.05);
+      }
+
+      progress {
+        min-height: 15px;
+        border-radius: 20px;
+        background: rgba($accent, 0.8);
+      }
+    }
+}

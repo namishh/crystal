@@ -56,10 +56,10 @@ export const GLOBAL = setVars()
 
 export const WeatherData = Variable(defaultvalue)
 
-Utils.interval(5000, () => {
+Utils.interval(1000 * 60 * 60, () => {
   Utils.fetch(`https://api.openweathermap.org/data/2.5/weather?q=${GLOBAL['CITY']}&appid=${GLOBAL['OPENWEATHERAPIKEY']}&units=metric`)
-    .then(res => res.text())
+    .then(res => res.json())
     .then(res => {
-      WeatherData.setValue(JSON.parse(res))
+      WeatherData.value = res
     })
 })

@@ -4,9 +4,11 @@
 @import "_launcher";
 @import "_panel";
 @import "_calendar";
+@import "_osd";
+
 
 * {
-  font-family: "Rubik";
+  font-family: "Product Sans";
   all: unset;
   transition: 100ms ease;
 }

@@ -13,23 +13,21 @@ export default () => Widget.Box({
     Widget.Button({
       setup: (btn) => (btn.id = i),
       on_clicked: () => dispatch(i),
+      setup: (btn) => {
+        btn.hook(Sway, (btn) => {
+          const ws = Sway.getWorkspace(`${i}`);
+          btn.toggleClassName("bar-ws-occupied", ws?.nodes.length > 0);
+        }, 'notify::workspaces');
+
+        btn.hook(Sway.active.workspace, (btn) => {
+          btn.toggleClassName("bar-ws-active", Sway.active.workspace.name == i);
+        });
+      },
       child: Widget.Label({
         label: ``,
         class_name: "bar-ws-indicator",
         vpack: "center",
       }),
-      connections: [
-        [
-          Sway,
-          (btn) => {
-            btn.toggleClassName("bar-ws-active", Sway.active.workspace.name == i);
-            btn.toggleClassName(
-              "bar-ws-occupied",
-              Sway.getWorkspace(`${i}`)?.nodes.length > 0,
-            );
-          },
-        ],
-      ],
     })
   ),
 });

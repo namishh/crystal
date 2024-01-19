@@ -13,13 +13,13 @@
   }
 
   &-uptime {
-    font-family: Rubik;
+    font-family: Product Sans;
     font-size: 20px;
     color: $comment;
   }
 
   &-name {
-    font-family: Rubik;
+    font-family: Product Sans;
     font-size: 25px;
     font-weight: 300;
   }
@@ -51,14 +51,14 @@
 
   &-sliders {
     padding: 1.5rem;
-    font-family: Rubik;
+    font-family: Product Sans;
     background: rgba($background-alt, 0.5);
     border-radius: 10px;
   }
 
   &-slider {
     &-label {
-      font-family: Rubik;
+      font-family: Product Sans;
     }
 
     trough {
@@ -78,7 +78,7 @@
 
 .panel-notifications {
   padding: 1.5rem;
-  font-family: Rubik;
+  font-family: Product Sans;
   background: rgba($background-alt, 0.5);
   margin-top: 10px;
   border-radius: 10px;

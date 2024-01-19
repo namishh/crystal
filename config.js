@@ -6,6 +6,7 @@ import { launcher } from './widgets/launcher/Launcher.js'
 import { panel } from "./widgets/panel/Panel.js"
 
 import { calendarbox } from "./widgets/calendar/Calendar.js"
+import { osd } from './widgets/popups/Osd.js'
 
 let loadCSS = () => {
   const scss = `${App.configDir}/style/_style.scss`
@@ -30,4 +31,4 @@ Utils.monitorFile(
   'directory',
 )
 
-export default { windows: [bar, launcher, panel, calendarbox], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [bar, launcher, panel, calendarbox, osd], style: `${App.configDir}/finalcss/style.css` }
