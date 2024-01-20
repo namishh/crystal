@@ -4,7 +4,7 @@
     settings = {
       clock = true;
       color = "00000000";
-      font = "Rubik";
+      font = "Product Sans";
       show-failed-attempts = false;
       indicator = true;
       indicator-radius = 220;

@@ -9,10 +9,6 @@ in
         executable = true;
         text = import ./misc/swayscratch.nix { };
       };
-      ".local/bin/material" = {
-        executable = true;
-        text = import ./theme/material.nix { };
-      };
       ".local/bin/run" = {
         executable = true;
         text = import ./misc/run.nix { };
@@ -42,6 +38,14 @@ in
       ".local/bin/setTheme" = {
         executable = true;
         text = import ./theme/changeTheme.nix { };
+      };
+      ".local/bin/material" = {
+        executable = true;
+        text = import ./theme/material.nix { };
+      };
+      ".local/bin/materialpy" = {
+        executable = true;
+        text = import ./theme/materialpy.nix { };
       };
       ".local/bin/lock" =
         {

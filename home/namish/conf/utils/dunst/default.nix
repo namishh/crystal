@@ -35,7 +35,7 @@
         history_length = 20;
         show_age_threshold = 60;
         markup = "full";
-        font = "Rubik 12";
+        font = "Product Sans 12";
         format = "<b>%s</b>\n%b";
         word_wrap = "yes";
         sort = "yes";

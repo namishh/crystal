@@ -15,7 +15,7 @@ with colors; {
         -- Performance
         --------------
         front_end        = "OpenGL",
-        enable_wayland   = false,
+        enable_wayland   = true,
         scrollback_lines = 1024,
         -- Fonts
         --------
@@ -42,8 +42,8 @@ with colors; {
         --------
         color_scheme   = "followSystem",
         window_padding = {
-          left = "24pt", right = "24pt",
-          bottom = "24pt", top = "24pt"
+          left = "32pt", right = "32pt",
+          bottom = "32pt", top = "32pt"
         },
         default_cursor_style = "SteadyUnderline",
         enable_scroll_bar    = false,

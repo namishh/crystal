@@ -21,7 +21,7 @@
     }
     @theme "/dev/null"
     * {
-    font:                        "Rubik 12";
+    font:                        "Product Sans 12";
     background:                  #${colors.background};
     background-alt:              #${colors.mbg};
     foreground:                  #${colors.foreground};

@@ -2,6 +2,7 @@
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
   my-python-packages = ps: with ps; [
+    material-color-utilities
     numpy
   ];
 in

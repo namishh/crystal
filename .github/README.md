@@ -89,48 +89,6 @@ If you that determined, here are some resources to start out
   + [nix-starter-config](https://github.com/Misterio77/nix-starter-config)
 
 
-## Installation
-Make your own dotfiles, installing them is a bad idea as they are made specifically for my machine and there is 1/6th chance that this will make you end up in North Korea's assassination list. <br>
-
-1. Get the latest [NixOS ISO](https://nixos.org/download.html) and boot into the installer/environment.
-2. Format and mount your disks.
-3. Follow these commands (you might need root privileges):
-
-```bash
-$ nix-shell -p git nixUnstable ## install git and unstable nix
-```
-
-```bash
-$ git clone --depth 1 https://github.com/chadcat7/fuyu /mnt/etc/nixos  ## cloning my config
-```
-
-```bash
-$ rm /mnt/etc/nixos/hosts/<your host>/hardware-configuration.nix ## remove the hardware-configuration.nix for my system!
-```
-
-```bash
-$ nixos-generate-config --root /mnt ## generate yours
-$ cp /mnt/etc/nixos/hardware-configuration.nix /mnt/etc/nixos/hosts/<your host>/
-$ rm /mnt/etc/nixos/configuration.nix
-```
-
-```bash
-$ cd /mnt/etc/nixos
-$ nixos-install --flake '.#frostbyte'
-```
-
-Congrats! You just installed NixOS! Now lets install the environment and the configs
-
-4. Reboot, login as root, and change the password for your user using `passwd`.
-5. Log in as your normal user.
-6. Follow these commands:
-
-```bash
-sudo chown -R $USER /etc/nixos # change ownership of configuration folder
-cd /etc/nixos
-home-manager switch --flake '.#namish' # this should automatically install nvim and awesome config
-```
-
 ## Rices
 
 | <b>Aura</b>                                                                                      |

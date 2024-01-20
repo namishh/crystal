@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/material.nix { };
+  colors = import ../shared/cols/fovere.nix { };
 in
 {
   # some general info  
@@ -18,6 +18,8 @@ in
     source = ../../walls;
     recursive = true;
   };
+
+  home.file.".local/share/fonts".source = ./fonts;
 
   # gtk themeing
   gtk = {
