@@ -16,7 +16,7 @@ export default () => Widget.Box({
       setup: (btn) => {
         btn.hook(Sway, (btn) => {
           const ws = Sway.getWorkspace(`${i}`);
-          btn.toggleClassName("bar-ws-occupied", ws?.nodes.length > 0);
+          btn.toggleClassName("bar-ws-occupied", ws?.nodes.length + ws?.floating_nodes.length > 0);
         }, 'notify::workspaces');
 
         btn.hook(Sway.active.workspace, (btn) => {

@@ -1,6 +1,6 @@
 ![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/preview.png)
 
-## freosan
+## freosan || wip
 
 ### installation of ags
 

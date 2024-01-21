@@ -1,0 +1,16 @@
+.dock {
+  background: $background;
+    padding: 0.5rem;
+  border-radius: 10px;
+
+  &-icon {
+    padding: 0.4rem;
+  }
+  &-sep {
+    min-height: 10px;
+    min-width: 2px;
+    margin: 16px 5px;
+    border-radius: 10px;
+    background: $comment;
+  }
+}

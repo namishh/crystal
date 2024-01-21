@@ -7,8 +7,7 @@ const revealer = () => Widget.Box({
   css: "min-height: 1px; min-width: 1px;",
   child: Widget.Revealer({
     reveal_child: false,
-    transition_duration: 100,
-    transition: 'slide_right',
+    transition: 'none',
     child: Widget.Box({
       class_name: "osd",
       spacing: 30,
@@ -81,8 +80,8 @@ const revealer = () => Widget.Box({
 
 const osd = Widget.Window({
   name: 'osd',
-  anchor: ['bottom'],
-  margins: [10, 10, 10, 10],
+  anchor: ['top'],
+  margins: [60, 10, 10, 10],
   child: revealer(),
 })
 

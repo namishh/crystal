@@ -7,10 +7,11 @@ import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import Notifications from 'resource:///com/github/Aylur/ags/service/notifications.js';
 const { GLib } = imports.gi
 
-const SettingButton = (label, setup, on_clicked) => Widget.Button({
+const SettingButton = (label, setup, on_clicked, on_secondary_click = () => { }) => Widget.Button({
   class_name: "panel-button",
   label: label,
-  on_clicked: on_clicked,
+  on_primary_click: on_clicked,
+  on_secondary_click: on_secondary_click,
   hpack: "center",
   vpack: "center",
   setup: setup
@@ -32,6 +33,8 @@ export default () => Widget.Box({
       })
     }, () => {
       Network.toggleWifi()
+    }, () => {
+      App.toggleWindow("wifimenu")
     }),
 
     SettingButton("󰂯", (self) => {
@@ -44,6 +47,8 @@ export default () => Widget.Box({
       })
     }, () => {
       Bluetooth.toggle()
+    }, () => {
+      App.toggleWindow("bluetoothmenu")
     }),
 
     SettingButton("󰍶", (self) => {
@@ -81,9 +86,17 @@ export default () => Widget.Box({
       let date = new Date().toJSON();
       App.toggleWindow("panel")
       Utils.execAsync(`bash -c 'if pgrep -x "wf-recorder"; then notify-send "Ending Recording" "Recording Saved" ; pkill wf-recorder ; else notify-send "Starting Recording" "Video Capture Starts Now" ;wf-recorder -g "$(slurp)" -f ~/Videos/Recordings/${date}.mp4 ;fi'`)
+    }, () => {
+      let date = new Date().toJSON();
+      App.toggleWindow("panel")
+      Utils.execAsync(`bash -c 'if pgrep -x "wf-recorder"; then notify-send "Ending Recording" "Recording Saved" ; pkill wf-recorder ; else notify-send "Starting Recording" "Video Capture Starts Now" ;wf-recorder -g "$(slurp)" -f ~/Videos/Recordings/${date}.mp4 ;fi'`)
     }),
 
     SettingButton("󰆟", () => {
+    }, () => {
+      let date = new Date().toJSON();
+      App.toggleWindow("panel")
+      Utils.execAsync(`bash -c 'grim -g "$(slurp)" ~/Pictures/Screenshots/${date}.png ; notify-send -i "${GLib.get_home_dir()}/Pictures/Screenshots/${date}.png" "New Screenshot" "Saved at ~/Picures/Screenshots/${date}.png"; wl-copy < ~/Pictures/Screenshots/${date}.png' `)
     }, () => {
       let date = new Date().toJSON();
       App.toggleWindow("panel")

@@ -1,0 +1,28 @@
+.desktime {
+  background: $background;
+  padding: 2rem 4rem;
+  font-family: "Product Sans";
+  border-radius: 100px 0 0 100px;
+
+  &-text-big {
+    font-size: 27px;
+  }
+  &-date, &-day {
+    font-size: 27px;
+  }
+
+  &-day {
+    color: $accent;
+    font-weight: 600;
+  }
+
+  &-message {
+
+  background: $background-alt;
+  padding: 1.5rem 0rem;
+  min-width: 300px;
+  font-size: 18px;
+  font-family: "Product Sans";
+  border-radius: 0px 0 0 20px;
+  }
+}
