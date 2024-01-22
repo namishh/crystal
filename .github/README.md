@@ -4,9 +4,14 @@
 
 ### installation of ags
 
-1. drag and drop this into `.config/ags`
+1. install these 
+```
+sassc inotifywait papirus-icon-theme matugen
+```
 
-2. create a `style/_colors.scss`
+2. drag and drop this into `.config/ags`
+
+3. create a `style/_colors.scss`
 
 ```scss
 /* decay */
@@ -38,7 +43,7 @@ $comment : #485263;
 $accent : #7297d9;
 ```
 
-3. create `.config/ags/.env`
+4. create `.config/ags/.env`
 
 ```
 OPENWEATHERAPIKEY=key
