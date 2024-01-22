@@ -26,6 +26,8 @@ const Notification = (n) => Widget.Revealer({
             Widget.Label({
               label: `${n.summary}`,
               hpack: "start",
+              xalign: 0,
+              justify: Gtk.Justification.LEFT,
               class_name: "notification-title",
               wrap: true
             }),
