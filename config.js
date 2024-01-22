@@ -14,6 +14,8 @@ import { wifimenu } from './widgets/popups/Wifi.js'
 import { bluetoothmenu } from './widgets/popups/Bluetooth.js'
 import { desktop } from './widgets/desktop/Desktop.js'
 
+import { notif } from './widgets/popups/Notifications.js'
+
 let loadCSS = () => {
   const scss = `${App.configDir}/style/_style.scss`
   const css = `${App.configDir}/finalcss/style.css`
@@ -32,4 +34,4 @@ Utils.monitorFile(
   'directory',
 )
 
-export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu, notif], style: `${App.configDir}/finalcss/style.css` }

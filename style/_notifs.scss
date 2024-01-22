@@ -1,0 +1,19 @@
+.notification {
+  border-radius: 10px;
+  background: $background;
+  padding: 1.3rem;
+  min-width: 300px;
+  font-family: "Product Sans";
+  min-height: 60px;
+
+  &-title {
+    font-size: 18px;
+  }
+
+  &-button {
+    padding: 0.3rem;
+    background: $background-alt;
+    margin-top: 0.7rem;
+  border-radius: 10px;
+  }
+}
