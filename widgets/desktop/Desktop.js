@@ -70,7 +70,7 @@ const generateDesktops = (self) => {
           setup: (self) => {
             self.children = row.map(r => r && Widget.Button({
               on_clicked: () => {
-                Utils.execAsyn(r.onclick)
+                Utils.execAsync(r.onclick)
               },
               child: Widget.Box({
                 class_name: "desktop-icon",
