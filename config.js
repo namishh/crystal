@@ -9,19 +9,15 @@ import { calendarbox } from "./widgets/calendar/Calendar.js"
 import { osd } from './widgets/popups/Osd.js'
 
 import { time } from './widgets/time/Time.js'
-import { dock } from './widgets/dock/Dock.js'
+//import { dock } from './widgets/dock/Dock.js'
 import { wifimenu } from './widgets/popups/Wifi.js'
 import { bluetoothmenu } from './widgets/popups/Bluetooth.js'
+import { desktop } from './widgets/desktop/Desktop.js'
 
 let loadCSS = () => {
   const scss = `${App.configDir}/style/_style.scss`
-
-  // target css file
   const css = `${App.configDir}/finalcss/style.css`
-
-  // make sure sassc is installed on your system
   Utils.exec(`sassc ${scss} ${css}`)
-
   App.resetCss() // reset if need
   App.applyCss(`${App.configDir}/finalcss/style.css`)
 }
@@ -36,4 +32,4 @@ Utils.monitorFile(
   'directory',
 )
 
-export default { windows: [bar, launcher, panel, calendarbox, osd, time, wifimenu, bluetoothmenu], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu], style: `${App.configDir}/finalcss/style.css` }

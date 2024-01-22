@@ -6,8 +6,6 @@ const generateChildren = (self) => {
   let apps = self.attribute.apps
   const nodes = Sway.getWorkspace(Sway.active.workspace.name).nodes;
   const floats = Sway.getWorkspace(Sway.active.workspace.name).floating_nodes;
-  console.log('floats')
-  console.log(nodes)
   let uniqueClasses = []
 }
 

@@ -10,7 +10,7 @@ const { GLib } = imports.gi
 const SettingButton = (label, setup, on_clicked, on_secondary_click = () => { }) => Widget.Button({
   class_name: "panel-button",
   label: label,
-  on_primary_click: on_clicked,
+  on_clicked: on_clicked,
   on_secondary_click: on_secondary_click,
   hpack: "center",
   vpack: "center",

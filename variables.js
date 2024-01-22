@@ -2,8 +2,29 @@ import Variable from 'resource:///com/github/Aylur/ags/variable.js';
 import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
 import App from 'resource:///com/github/Aylur/ags/app.js';
 
+const setVars = () => {
+  const g = {}
+  const contents = Utils.readFile(`${App.configDir}/.env`)
+  const lines = contents.toString().split("\n");
+  lines.forEach(line => {
+    const [key, value] = line.split("=");
+    if (key && value) {
+      g[key] = value
+    }
+  });
+  return g
+}
+
+export const GLOBAL = setVars()
+
 export const Uptime = Variable("0h 0m", {
   poll: [1000 * 60, ['bash', '-c', "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'"], out => out.trim()],
+})
+
+export const DesktopChange = Variable("", {
+  listen: [['bash', '-c', `inotifywait -m -e close_write -e delete -e create -e moved_from $HOME/Desktop/ -q`], out => {
+    return out.trim()
+  }],
 })
 
 export const Brightness = Variable(false, {
@@ -38,21 +59,6 @@ const defaultvalue = {
   },
   "name": "New Delhi",
 }
-
-const setVars = () => {
-  const g = {}
-  const contents = Utils.readFile(`${App.configDir}/.env`)
-  const lines = contents.toString().split("\n");
-  lines.forEach(line => {
-    const [key, value] = line.split("=");
-    if (key && value) {
-      g[key] = value
-    }
-  });
-  return g
-}
-
-export const GLOBAL = setVars()
 
 export const WeatherData = Variable(defaultvalue)
 
