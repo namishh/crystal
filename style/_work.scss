@@ -1,0 +1,75 @@
+.work {
+   background: $background;
+   padding: 0.8rem;
+   border-radius: 10px;
+
+   &-agenda {
+   border-radius: 10px;
+   background: rgba($background-alt, 0.7);
+   padding: 0.8rem;
+  font-family: "Product Sans";
+    &-title {
+        font-size: 18px;
+    }
+
+    &-scroll {
+      min-width: 300px;
+      min-height: 400px;
+    }
+
+    &-heading-1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    &-heading-2 {
+      font-size: 19px;
+      font-weight: bold;
+    }
+    &-heading-3 {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    &-bold {
+      font-weight: bold;
+    }
+    &-code {
+      padding: 0.2rem 0.7rem;
+      border-radius: 10px;
+      font-family: Iosevka Nerd Font;
+      background: rgba($foreground, 0.07);
+    }
+    &-list {
+      padding: 0.25rem;
+      background: rgba($foreground, 0.7);
+      border-radius: 100px;
+    }
+    &-italic {
+      font-style: oblique;
+    }
+    &-link {
+      color: $blue;
+      font-weight: bold;
+    }
+
+    &-text-false {
+      color: $comment;
+    }
+    &-todo-true {
+      padding: 0.45rem;
+      border-radius: 100px;
+      border: 1px solid $blue;
+      background: $blue;
+    }
+    &-todo-false {
+      padding: 0.45rem;
+      border-radius: 100px;
+      background: rgba($background-alt, 0.5);
+      border: 1px solid $comment;
+    }
+    &-italic-bold {
+      font-style: oblique;
+      font-weight: bold;
+    }
+   }
+}

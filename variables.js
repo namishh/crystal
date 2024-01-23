@@ -69,3 +69,12 @@ Utils.interval(1000 * 60 * 60, () => {
       WeatherData.value = res
     })
 })
+
+const content = Utils.readFile(`${App.configDir}/_data/agenda.md`)
+export const AgendaText = Variable(content)
+
+const monitor = Utils.monitorFile(`${App.configDir}/_data/agenda.md`, (file, event) => {
+  const content = Utils.readFile(`${App.configDir}/_data/agenda.md`)
+  AgendaText.setValue(content)
+})
+

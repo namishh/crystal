@@ -69,10 +69,8 @@ const Music = player => {
                 rounded: true,
                 hexpand: true,
                 setup: self => {
-                  self.hook(Mpris, self => {
-                    Utils.interval(3000, () => {
-                      self.value = player.position / player.length
-                    })
+                  self.poll(3000, (self) => {
+                    self.value = player.position / player.length
                   })
                 },
                 inverted: false,

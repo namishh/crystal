@@ -4,6 +4,7 @@ import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
 import { bar } from "./widgets/bar/Bar.js"
 import { launcher } from './widgets/launcher/Launcher.js'
 import { panel } from "./widgets/panel/Panel.js"
+import { work } from './widgets/work/Work.js'
 
 import { calendarbox } from "./widgets/calendar/Calendar.js"
 import { osd } from './widgets/popups/Osd.js'
@@ -34,4 +35,4 @@ Utils.monitorFile(
   'directory',
 )
 
-export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu, notif], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu, notif, work], style: `${App.configDir}/finalcss/style.css` }
