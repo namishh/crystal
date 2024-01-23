@@ -49,3 +49,9 @@ $accent : #7297d9;
 OPENWEATHERAPIKEY=key
 CITY=New York
 ```
+
+5. create `.config/ags/_data/agenda.md`
+
+```md 
+# any stuff here
+```
