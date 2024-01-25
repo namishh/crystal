@@ -1,20 +1,60 @@
 .work {
    background: $background;
-   padding: 0.8rem;
+   padding: 1.2rem;
    border-radius: 10px;
 
+  &-timer {
+    &-bg {
+      background: linear-gradient(to right, rgba($background, 0.85), rgba($background, 0.97)), url('../assets/pomo.jpg');
+      min-height: 220px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+    } 
+
+    &-selection {
+     font-size: 16px;
+     padding: 0.4rem 0.8rem;
+     border-radius: 10px;
+     font-family: "Product Sans";
+    }
+    &-true {
+     background: $accent;
+      color: $background;
+    }
+    &-buttons {
+     border-radius: 40px;
+      padding: 0.6rem 2rem;
+      background: $background-alt;
+    }
+    &-button {
+      margin: 0 1rem;
+      font-size: 20px;
+    }
+    &-time {
+     padding: 0.8rem;
+     font-size: 50px;
+     font-family: "Product Sans";
+    }
+    &-title {
+     padding: 1rem;
+     font-size: 17px;
+     font-family: "Product Sans";
+    }
+  }
+
    &-agenda {
-   border-radius: 10px;
-   background: rgba($background-alt, 0.7);
-   padding: 0.8rem;
-  font-family: "Product Sans";
+     border-radius: 10px;
+     background: rgba($background-alt, 0.7);
+     padding: 0.8rem;
+     font-family: "Product Sans";
     &-title {
         font-size: 18px;
     }
 
     &-scroll {
-      min-width: 300px;
-      min-height: 400px;
+      min-width: 400px;
+      min-height: 440px;
     }
 
     &-heading-1 {
@@ -43,12 +83,13 @@
       padding: 0.25rem;
       background: rgba($foreground, 0.7);
       border-radius: 100px;
+      margin-top: 7px;
     }
     &-italic {
       font-style: oblique;
     }
     &-link {
-      color: $blue;
+      color: $accent;
       font-weight: bold;
     }
 
@@ -58,13 +99,15 @@
     &-todo-true {
       padding: 0.45rem;
       border-radius: 100px;
-      border: 1px solid $blue;
-      background: $blue;
+      border: 1px solid $accent;
+      margin-top: 3px;
+      background: $accent;
     }
     &-todo-false {
       padding: 0.45rem;
       border-radius: 100px;
       background: rgba($background-alt, 0.5);
+      margin-top: 3px;
       border: 1px solid $comment;
     }
     &-italic-bold {

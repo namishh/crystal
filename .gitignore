@@ -3,3 +3,4 @@ scripts/weather.sh
 style/_colors.scss
 .env
 _data/*
+types

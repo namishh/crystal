@@ -43,7 +43,7 @@ const defaultvalue = {
   "base": "stations",
   "main": {
     "temp": 0,
-    "feels_like": "Temp Not Available",
+    "feels_like": "0",
     "temp_min": 0,
     "temp_max": 0,
     "pressure": 0,
@@ -57,7 +57,7 @@ const defaultvalue = {
   "clouds": {
     "all": 20
   },
-  "name": "New Delhi",
+  "name": "Weather Not Available!",
 }
 
 export const WeatherData = Variable(defaultvalue)
@@ -70,11 +70,22 @@ Utils.interval(1000 * 60 * 60, () => {
     })
 })
 
-const content = Utils.readFile(`${App.configDir}/_data/agenda.md`)
+const content = Utils.readFile(`${App.configDir}/_data/agenda.md`) || "No Agenda Setup :( "
 export const AgendaText = Variable(content)
 
-const monitor = Utils.monitorFile(`${App.configDir}/_data/agenda.md`, (file, event) => {
+Utils.monitorFile(`${App.configDir}/_data/agenda.md`, () => {
   const content = Utils.readFile(`${App.configDir}/_data/agenda.md`)
   AgendaText.setValue(content)
+})
+
+export const TimerSeconds = Variable(0)
+export const TimerMode = Variable("break")
+
+const timerhis = Utils.readFile(`${App.configDir}/_data/timerhistory.txt`) || ''
+export const TimerHistory = Variable(timerhis)
+
+Utils.monitorFile(`${App.configDir}/_data/agenda.md`, () => {
+  const content = Utils.readFile(`${App.configDir}/_data/timerhistory.txt`)
+  TimerHistory.setValue(content)
 })
 
