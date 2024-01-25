@@ -70,7 +70,7 @@ Utils.interval(1000 * 60 * 60, () => {
     })
 })
 
-const content = Utils.readFile(`${App.configDir}/_data/agenda.md`) || "No Agenda Setup :( "
+const content = Utils.readFile(`${App.configDir}/_data/agenda.md`) || "# No Agenda Setup :( "
 export const AgendaText = Variable(content)
 
 Utils.monitorFile(`${App.configDir}/_data/agenda.md`, () => {
@@ -79,7 +79,7 @@ Utils.monitorFile(`${App.configDir}/_data/agenda.md`, () => {
 })
 
 export const TimerSeconds = Variable(0)
-export const TimerMode = Variable("break")
+export const TimerMode = Variable("work")
 
 const timerhis = Utils.readFile(`${App.configDir}/_data/timerhistory.txt`) || ''
 export const TimerHistory = Variable(timerhis)
