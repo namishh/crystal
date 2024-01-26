@@ -11,10 +11,26 @@
     background: $background-alt;
   }
 
+  &-work {
+    &-prog{
+      font-size: 3px;
+      min-height: 30px;
+      min-width: 30px;
+      color: $blue;
+      background: $background-alt;
+    }
+
+    &-label {
+      font-size: 14px;
+      font-family: "Product Sans";
+      color: $foreground;
+    }
+  }
+
   &-ws {
     border-radius: 8px;
     background: $background-alt;
-    padding: 1rem 0.8rem;
+    padding: 1rem 0.85rem;
 
     &-occupied {
       min-height: 40px;

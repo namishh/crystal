@@ -3,8 +3,10 @@ import App from 'resource:///com/github/Aylur/ags/app.js';
 import Clock from "./mods/Clock.js"
 import Status from "./mods/Status.js"
 import Systray from "./mods/Systray.js"
+import Work from './mods/Work.js';
 
-const nixicon = Widget.Button({
+
+const nixicon = () => Widget.Button({
   child: Widget.Icon({
     icon: `${App.configDir}/assets/nixos.png`,
     size: 25
@@ -26,7 +28,7 @@ const left = () => Widget.Box({
   homogeneous: false,
   vertical: true,
   setup: async b => {
-    b.children = [nixicon, await OptionalWorkspaces(),]
+    b.children = [nixicon(), await OptionalWorkspaces(), Work()]
   }
 });
 
