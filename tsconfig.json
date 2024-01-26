@@ -6,7 +6,7 @@
       "ES2022"
     ],
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "strict": false,
     "noImplicitAny": false,
     "baseUrl": ".",

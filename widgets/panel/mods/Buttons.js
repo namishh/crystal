@@ -18,7 +18,7 @@ const SettingButton = (label, setup, on_clicked, on_secondary_click = () => { })
 })
 
 export default () => Widget.Box({
-  spacing: 12,
+  spacing: 10,
   class_name: "panel-buttons",
   homogeneous: false,
   vertical: false,
@@ -73,12 +73,6 @@ export default () => Widget.Box({
       })
     }, () => {
       Audio.microphone.is_muted = !Audio.microphone?.is_muted
-    }),
-
-    Widget.Box({
-      class_name: "panel-sep",
-      hpack: "center",
-      vpack: "center",
     }),
 
     SettingButton("󰻂", () => {

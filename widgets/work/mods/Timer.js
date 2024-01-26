@@ -42,9 +42,6 @@ const convertTime = (seconds) => {
 export default () => Widget.Overlay({
   child: Widget.Box({
     class_name: "work-timer-bg",
-    setup: () => {
-      console.log(convertTime(100))
-    }
   }),
   overlays: [
     Widget.CenterBox({
@@ -123,6 +120,7 @@ export default () => Widget.Overlay({
           Widget.Button({
             on_clicked: () => {
               Utils.exec(`bash -c 'echo "${TimerSeconds.value},${getCurrentDateTime()},${TimerMode.value}" >> ${App.configDir}/_data/timerhistory.txt'`)
+              TimerInterval.stop()
               TimerSeconds.value = 0
             },
             label: "󰈼",

@@ -1,7 +1,29 @@
 .work {
-   background: $background;
-   padding: 1.2rem;
-   border-radius: 10px;
+  background: $background;
+  padding: 1.2rem;
+  border-radius: 10px;
+
+  &-graph {
+    border-radius: 10px;
+    background: rgba($background-alt, 0.3);
+    padding: 20px;
+    min-height: 250px;
+
+    &-stick-work {
+      min-width: 15px;
+      background: $accent;
+    }
+
+    &-stick-break {
+      min-width: 15px;
+      background: rgba($foreground, 0.7);
+    }
+  }
+
+  &-cont {
+    border-left: 2px solid rgba($foreground, 0.1);
+    border-bottom: 2px solid rgba($foreground, 0.1);
+  }
 
   &-timer {
     &-bg {
@@ -10,61 +32,69 @@
       background-size: cover;
       background-position: center;
       border-radius: 10px;
-    } 
+    }
 
     &-selection {
-     font-size: 16px;
-     padding: 0.4rem 0.8rem;
-     border-radius: 10px;
-     font-family: "Product Sans";
+      font-size: 16px;
+      padding: 0.4rem 0.8rem;
+      border-radius: 10px;
+      font-family: "Product Sans";
     }
+
     &-true {
-     background: $accent;
+      background: $accent;
       color: $background;
     }
+
     &-buttons {
-     border-radius: 40px;
+      border-radius: 40px;
       padding: 0.6rem 2rem;
       background: $background-alt;
     }
+
     &-button {
       margin: 0 1rem;
       font-size: 20px;
     }
+
     &-time {
-     padding: 0.8rem;
-     font-size: 50px;
-     font-family: "Product Sans";
+      padding: 0.8rem;
+      font-size: 50px;
+      font-family: "Product Sans";
     }
+
     &-title {
-     padding: 1rem;
-     font-size: 17px;
-     font-family: "Product Sans";
+      padding: 1rem;
+      font-size: 17px;
+      font-family: "Product Sans";
     }
   }
 
-   &-agenda {
-     border-radius: 10px;
-     background: rgba($background-alt, 0.7);
-     padding: 0.8rem;
-     font-family: "Product Sans";
+  &-agenda {
+    border-radius: 10px;
+    background: rgba($background-alt, 0.7);
+    padding: 0.8rem;
+    font-family: "Product Sans";
+
     &-title {
-        font-size: 18px;
+      font-size: 18px;
     }
 
     &-scroll {
       min-width: 400px;
-      min-height: 440px;
+      min-height: 430px;
     }
 
     &-heading-1 {
       font-size: 20px;
       font-weight: bold;
     }
+
     &-heading-2 {
       font-size: 19px;
       font-weight: bold;
     }
+
     &-heading-3 {
       font-size: 17px;
       font-weight: bold;
@@ -73,21 +103,25 @@
     &-bold {
       font-weight: bold;
     }
+
     &-code {
       padding: 0.2rem 0.7rem;
       border-radius: 10px;
       font-family: Iosevka Nerd Font;
       background: rgba($foreground, 0.07);
     }
+
     &-list {
       padding: 0.25rem;
       background: rgba($foreground, 0.7);
       border-radius: 100px;
       margin-top: 7px;
     }
+
     &-italic {
       font-style: oblique;
     }
+
     &-link {
       color: $accent;
       font-weight: bold;
@@ -96,6 +130,7 @@
     &-text-false {
       color: $comment;
     }
+
     &-todo-true {
       padding: 0.45rem;
       border-radius: 100px;
@@ -103,6 +138,7 @@
       margin-top: 3px;
       background: $accent;
     }
+
     &-todo-false {
       padding: 0.45rem;
       border-radius: 100px;
@@ -110,9 +146,10 @@
       margin-top: 3px;
       border: 1px solid $comment;
     }
+
     &-italic-bold {
       font-style: oblique;
       font-weight: bold;
     }
-   }
+  }
 }

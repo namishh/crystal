@@ -84,7 +84,7 @@ export const TimerMode = Variable("work")
 const timerhis = Utils.readFile(`${App.configDir}/_data/timerhistory.txt`) || ''
 export const TimerHistory = Variable(timerhis)
 
-Utils.monitorFile(`${App.configDir}/_data/agenda.md`, () => {
+Utils.monitorFile(`${App.configDir}/_data/timerhistory.txt`, () => {
   const content = Utils.readFile(`${App.configDir}/_data/timerhistory.txt`)
   TimerHistory.setValue(content)
 })

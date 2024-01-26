@@ -2,7 +2,7 @@
   background: $background;
   border-radius: 10px;
   padding: 2rem;
-  min-width: 450px;
+  min-width: 400px;
 
   &-pfp {
     min-height: 40px;
@@ -25,16 +25,18 @@
   }
 
   &-button {
-    padding: 1.4rem;
+    padding: 1.2rem;
     font-size: 1.6rem;
-    border-radius: 20px;
-    background: rgba($foreground, 0.08);
+    border-radius: 100px;
     font-family: Material Design Icons;
-
+    &s {
+    background: $background-alt;
+    border-radius: 100px;
+    }
     &active {
-      padding: 1.4rem;
+      padding: 1.2rem;
       font-size: 1.6rem;
-      border-radius: 20px;
+      border-radius: 100px;
       background: $accent;
       color: $background;
       font-family: Material Design Icons;

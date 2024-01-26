@@ -15,8 +15,11 @@
 
 * {
   font-family: "Product Sans";
-  all: unset;
   transition: 100ms ease;
+}
+
+*:not(tooltip) {
+  all: unset;
 }
 
 .icon {

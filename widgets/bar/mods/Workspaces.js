@@ -9,7 +9,7 @@ const dispatch = (arg) => Utils.execAsync(`swaymsg workspace ${arg}`);
 export default () => Widget.Box({
   class_name: 'bar-ws',
   vertical: true,
-  children: range(5).map((i) =>
+  children: range(4).map((i) =>
     Widget.Button({
       setup: (btn) => (btn.id = i),
       on_clicked: () => dispatch(i),
