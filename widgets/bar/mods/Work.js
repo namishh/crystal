@@ -1,13 +1,10 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
-import * as Utils from 'resource:///com/github/Aylur/ags/utils.js'
-const { Gtk } = imports.gi;
 import App from 'resource:///com/github/Aylur/ags/app.js';
 import { AgendaText } from '../../../variables.js';
 
 const getTodos = (txt) => {
   const lines = txt.split("\n").filter(i => i.startsWith("- ["))
   const completed = lines.filter(i => i.startsWith("- [x]"))
-  console.log(completed, lines)
   return [lines, completed]
 }
 

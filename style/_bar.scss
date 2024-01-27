@@ -33,6 +33,7 @@
     padding: 1rem 0.85rem;
 
     &-occupied {
+  transition: 100ms ease;
       min-height: 40px;
       border-radius: 10px;
       margin: 5px 0;
@@ -40,6 +41,7 @@
     }
 
     &-active {
+  transition: 100ms ease;
       border-radius: 10px;
       background: rgba($accent, 1);
       margin: 5px 0;
@@ -47,6 +49,7 @@
     }
 
     &-indicator {
+  transition: 100ms ease;
       background: rgba($foreground, 0.1);
       padding: 0.25rem;
       min-height: 30px;
