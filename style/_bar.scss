@@ -1,5 +1,5 @@
 .bar {
-  padding: 1rem 0.6rem 0.6rem;
+  padding: 1rem 0.4rem 0.6rem;
   border-radius: 10px;
   background: $background;
 
@@ -14,8 +14,8 @@
   &-work {
     &-prog{
       font-size: 3px;
-      min-height: 30px;
-      min-width: 30px;
+      min-height: 28px;
+      min-width: 28px;
       color: $blue;
       background: $background-alt;
     }

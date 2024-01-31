@@ -21,6 +21,11 @@ export const Uptime = Variable("0h 0m", {
   poll: [1000 * 60, ['bash', '-c', "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'"], out => out.trim()],
 })
 
+export const WS = Variable("", {
+  listen: [['bash', '-c', `${App.configDir}/scripts/ws.sh`], out => {
+    return JSON.parse(out)
+  }],
+})
 export const DesktopChange = Variable("", {
   listen: [['bash', '-c', `inotifywait -m -e close_write -e delete -e create -e moved_from $HOME/Desktop/ -q`], out => {
     return out.trim()

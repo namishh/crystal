@@ -5,7 +5,15 @@
 
   &-icon {
     padding: 0.4rem;
+  &-true {
+    background: rgba($foreground, 0.1);
+  border-radius: 10px;
   }
+  &-false {
+  background: $background;
+  }
+  }
+
   &-sep {
     min-height: 10px;
     min-width: 2px;
