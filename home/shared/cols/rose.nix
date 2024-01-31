@@ -16,8 +16,8 @@ rec {
   color1 = "ee5c85";
   color9 = "ee5c85";
 
-  color2 = "f3a6a2";
-  color10 = "f3a6a2";
+  color2 = "449ec2";
+  color10 = "449ec2";
 
   color3 = "f09670";
   color11 = "f09670";

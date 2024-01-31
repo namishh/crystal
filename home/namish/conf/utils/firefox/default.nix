@@ -10,9 +10,6 @@ with colors;{
         settings = {
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "general.smoothScroll" = true;
-          "gfx.canvas.accelerated" = true;
-          "gfx.webrender.enabled" = true;
-          "gfx.x11-egl.force-enabled" = true;
           "layers.acceleration.force-enabled" = true;
           "media.av1.enabled" = false;
           "media.ffmpeg.vaapi.enabled" = true;

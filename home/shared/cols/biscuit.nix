@@ -9,8 +9,8 @@ rec {
   cursorColor = "ffe9c7";
   comment = "614f4f";
 
-  color0 = "2d2424";
-  color8 = "352a2a";
+  color0 = "282020";
+  color8 = "2a2222";
 
   color1 = "CA3F3F";
   color9 = "CA3F3F";

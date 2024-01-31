@@ -1,7 +1,7 @@
 {}:
 rec {
   foreground = "dadada";
-  background = "111111";
+  background = "090909";
   darker = "0b0b0b";
   mbg = "181818";
 

@@ -1,6 +1,7 @@
-{ config, lib, pkgs, colors, ... }:
+{ config, lib, pkgs, colors, inputs, walltype, ... }:
 let
   wall = if colors.name == "material" then "~/.cache/wallpapers/material.jpg" else "~/.wallpapers/${colors.name}.jpg";
+  w = if walltype == "image" then "output * bg ${wall} fill" else "output * bg #${colors.color8} solid_color";
 in
 {
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
@@ -45,7 +46,7 @@ in
       ## SWAYFX CONFIG
       corner_radius 5 
 
-      output * bg ${wall} fill
+      ${w} 
     '';
     config = {
       terminal = "wezterm";
@@ -123,6 +124,7 @@ in
 
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
+          "${mod}+Shift+w" = "exec 'ags -t \"work\"' ";
           "${mod}+e" = "layout toggle split";
 
           "${mod}+Shift+space" = "floating toggle";
@@ -192,8 +194,6 @@ in
         smartBorders = "off";
         smartGaps = false;
       };
-
-
       bars = [
       ];
     };

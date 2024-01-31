@@ -1,7 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/fovere.nix { };
+  colors = import ../shared/cols/tokyo.nix { };
+  walltype = "image";
 in
 {
   # some general info  
@@ -86,6 +87,7 @@ in
       inputs.matugen.packages.${system}.default
       pavucontrol
       fzf
+      vesktop
       swww
       swayidle
       autotiling-rs
@@ -97,8 +99,6 @@ in
 
   imports = [
     # Importing Configutations
-    inputs.ags.homeManagerModules.default
-
     (import ../shared/xresources.nix { inherit colors; })
 
     (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
@@ -107,15 +107,17 @@ in
 
     (import ./conf/utils/firefox/default.nix { inherit colors pkgs; })
     (import ./conf/utils/sxhkd/default.nix { })
+    (import ./conf/utils/obs/default.nix { inherit pkgs; })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
+    (import ./conf/utils/sss/default.nix { inherit inputs colors; })
 
     # Shell
     (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
 
     (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
-    (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors; })
-    (import ./conf/ui/ags/default.nix { inherit pkgs inputs; })
+    (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors inputs walltype; })
+    (import ./conf/ui/ags/default.nix { inherit pkgs inputs colors; })
 
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors inputs; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
@@ -135,7 +137,7 @@ in
     (import ./misc/ewwags.nix { inherit config colors; })
 
     # Bin files
-    (import ../shared/bin/default.nix { inherit config colors; })
+    (import ../shared/bin/default.nix { inherit config colors walltype; })
   ];
 
 

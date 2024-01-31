@@ -14,7 +14,7 @@ with colors; {
         cell_width = 0.85,
         -- Performance
         --------------
-        front_end        = "OpenGL",
+        front_end        = "WebGpu",
         enable_wayland   = true,
         scrollback_lines = 1024,
         -- Fonts

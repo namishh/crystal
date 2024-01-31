@@ -18,7 +18,6 @@
 
       hyprland-plugins = {
         url = "github:hyprwm/hyprland-plugins";
-        inputs.hyprland.follows = "hyprland";
       };
       hyprland.url = "github:hyprwm/Hyprland";
 
@@ -29,6 +28,10 @@
       matugen = {
         url = "github:/InioX/Matugen";
       };
+
+      swayfx.url = "github:/WillPower3309/swayfx";
+
+      sss.url = "github:/SergioRibera/sss";
     };
   outputs = { self, nixpkgs, ... } @inputs:
     let

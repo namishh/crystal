@@ -6,9 +6,9 @@ in
   systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
   wayland.windowManager.hyprland = with colors; {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    #package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     systemd.enable = true;
-    #  plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
+    #plugins = [ inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars ];
     extraConfig = ''
       $mainMod = SUPER
       # $scripts=$HOME/.config/hypr/scripts

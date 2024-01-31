@@ -1,6 +1,7 @@
-{ config, colors, ... }:
+{ config, colors, walltype, ... }:
 let
   wall = if colors.name == "material" then "~/.cache/wallpapers/material.jpg" else "~/.wallpapers/${colors.name}.jpg";
+  w = if walltype == "image" then "swaylock -i ${wall} --effect-blur 5x5" else "swaylock -S --effect-blur 5x5";
 in
 {
   home = {
@@ -17,6 +18,10 @@ in
         executable = true;
         text = import ./misc/pctl.nix { };
       };
+      ".local/bin/cpw" = {
+        executable = true;
+        text = import ./misc/copywall.nix { inherit colors; };
+      };
       ".local/bin/roundvalue" = {
         executable = true;
         text = import ./misc/roudnvalue.nix { };
@@ -29,6 +34,10 @@ in
       ".local/bin/awefetch" = {
         executable = true;
         text = import ./eyecandy/awefetch.nix { };
+      };
+      ".local/bin/cols" = {
+        executable = true;
+        text = import ./eyecandy/colors.nix { };
       };
       ".local/bin/panes" = {
         executable = true;
@@ -64,7 +73,7 @@ in
             #!/bin/sh
             playerctl pause
             sleep 0.2
-            swaylock -i ${wall} --effect-blur 10x10
+            ${w}
           '';
         };
       ".local/bin/setWall" = {

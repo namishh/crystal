@@ -9,7 +9,7 @@ rec {
   comment = "5a5a58";
 
   color0 = "222a2e";
-  color8 = "303b41";
+  color8 = "232b2f";
 
   color1 = "ce6568";
   color9 = "e76365";

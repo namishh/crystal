@@ -1,37 +1,37 @@
 {}:
-    rec {
-      foreground = "e4e1e6";
-      background = "17171b";
-      darker = "141418";
-      accent = "e0e0ff";
-      mbg = "252529";
+        rec {
+          foreground = "e1e3e3";
+          background = "101313";
+          darker = "080a0a";
+          accent = "69d6e1";
+          mbg = "181b1b";
 
-      cursorColor = "e4e1e6";
-      comment = "47464f";
+          cursorColor = "e1e3e3";
+          comment = "8a9293";
 
-      color0 = "1b1b1f";
-      color8 = "313034";
+          color0 = "1d2020";
+          color8 = "1d2020";
 
-      color1 = "ffb4a9";
-      color9 = "feb3a8";
+          color1 = "e5a299";
+          color9 = "ffb4ab";
 
-      color2 = "6366b1";
-      color10 = "6366b1";
+          color2 = "79dae4";
+          color10 = "87f3fe";
 
-      color3 = "ffb4a9";
-      color11 = "feb3a8";
+          color3 = "e5a299";
+          color11 = "ffb4ab";
 
-      color4 = "bcbcd6";
-      color12 = "bcbcd6";
+          color4 = "7bdae4";
+          color12 = "7fdce5";
 
-      color5 = "e8b9d4";
-      color13 = "e8b9d4";
+          color5 = "79dae4";
+          color13 = "87f3fe";
 
-      color6 = "bfc2ff";
-      color14 = "bfc2ff";
+          color6 = "3ca2ac";
+          color14 = "43b5c0";
 
-      color7 = "e4e1e6";
-      color15 = "e4e1e6";
-      name = "material";
-    }
-    
+          color7 = "d0e7e9";
+          color15 = "d0e7e9";
+          name = "material";
+        }
+        

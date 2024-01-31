@@ -49,6 +49,12 @@ in
     };
   };
 
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+  };
+
   time = {
     hardwareClockInLocalTime = true;
     timeZone = "Asia/Kolkata";
@@ -71,8 +77,27 @@ in
   };
 
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
+
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraConfig = "load-module module-switch-on-connect";
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    settings.General = {
+      Enable = "Source,Sink,Media,Socket";
+      Experimental = true;
+    };
+    powerOnBoot = true;
+  };
+
+  systemd.services.bluetooth.serviceConfig.ExecStart = [
+    ""
+    "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf"
+  ];
+
   security.rtkit.enable = true;
   virtualisation = {
     libvirtd.enable = true;
@@ -84,9 +109,7 @@ in
     lutgen
     home-manager
     lua-language-server
-    blueman
     bluez
-    pulseaudioFull
     direnv
     unzip
     bluez-tools
@@ -95,7 +118,6 @@ in
     rnix-lsp
     xorg.xwininfo
     brightnessctl
-    pulseaudio
     (pkgs.python3.withPackages my-python-packages)
     libnotify
     xdg-utils
@@ -105,9 +127,6 @@ in
     appimage-run
     jq
     spotdl
-    (discord.override {
-      withVencord = true;
-    })
     osu-lazer
     imgclr
     grim
@@ -128,6 +147,7 @@ in
     wmctrl
     slop
     ripgrep
+    imv
     maim
     xclip
     wirelesstools
@@ -157,11 +177,6 @@ in
   };
 
   services.printing.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
 
   services.xserver = {
     layout = "us";

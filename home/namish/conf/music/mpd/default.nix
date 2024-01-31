@@ -13,13 +13,14 @@
         name "Pulseaudio"
         server "127.0.0.1" # add this line - MPD must connect to the local sound server
       }
-
       audio_output {
       	type                "fifo"
       	name                "Visualizer"
       	format              "44100:16:2"
       	path                "/tmp/mpd.fifo"
       }
+
+
       audio_output {
       	type		            "httpd"
       	name		            "lossless"

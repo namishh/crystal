@@ -4,7 +4,7 @@ rec {
   background = "1d1a11";
   darker = "15130c";
   mbg = "242015";
-  accent = "80465f";
+  accent = "db930d";
 
   cursorColor = "ebe0bb";
   comment = "8b815e";
@@ -17,11 +17,11 @@ rec {
   color2 = "7a7653";
   color10 = "736f4e";
 
-  color3 = "db930d";
-  color11 = "e69a0e";
+  color3 = "91506c";
+  color11 = "a82d56";
 
-  color4 = "91506c";
-  color12 = "a82d56";
+  color4 = "db930d";
+  color12 = "e69a0e";
 
   color5 = "C1666B";
   color13 = "80465f";

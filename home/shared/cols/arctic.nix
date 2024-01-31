@@ -4,7 +4,7 @@ rec {
   background = "21262f";
   darker = "1b2028";
   accent = "81a1c1";
-  mbg = "232831";
+  mbg = "262c36";
 
   cursorColor = "d8dee9";
   comment = "79818f";

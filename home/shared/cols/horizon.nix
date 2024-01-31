@@ -3,7 +3,7 @@ rec {
   foreground = "d5d8da";
   background = "16171e";
   darker = "131419";
-  accent = "FAB795";
+  accent = "EE64AE";
   mbg = "1e1f29";
 
   cursorColor = "d5d8da";
@@ -18,11 +18,11 @@ rec {
   color2 = "29D398";
   color10 = "3FDAA4";
 
-  color4 = "FAB795";
-  color12 = "FBC3A7";
+  color3 = "FAB795";
+  color11 = "FBC3A7";
 
-  color3 = "26BBD9";
-  color11 = "3FC6DE";
+  color4 = "26BBD9";
+  color12 = "3FC6DE";
 
   color5 = "EE64AE";
   color13 = "F075B7";

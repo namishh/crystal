@@ -1,8 +1,8 @@
 {}:
 rec {
   foreground = "dfdddd";
-  background = "0c0c0c";
-  darker = "070707";
+  background = "090909";
+  darker = "060606";
   mbg = "131313";
 
   cursorColor = "dbdfdf";

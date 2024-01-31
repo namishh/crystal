@@ -1,7 +1,7 @@
 { config, colors, ... }:
 
 with colors ;{
-  home.file.".config/Vencord/themes/chadcat7.css".text = ''
+  home.file.".config/vesktop/themes/chadcat7.css".text = ''
     /**
      * @name ${name}
      * @description A darkened discord theme generated via home manager.
