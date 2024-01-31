@@ -1,8 +1,11 @@
-![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/preview.png)
+# freosan || wip
 
-## freosan || wip
+![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/a.jpeg)
 
-### installation of ags
+
+![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/b.jpeg)
+
+## installation of ags
 
 1. install these 
 ```
@@ -50,7 +53,7 @@ OPENWEATHERAPIKEY=key
 CITY=New York
 ```
 
-5. create `.config/ags/_data/agenda.md`
+5. create `.config/ags/_data/agenda.md` and `.config/ags/_data/timerhistory.txt`
 
 ```md 
 # any stuff here
