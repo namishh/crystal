@@ -53,7 +53,7 @@ const bar = Widget.Window({
   name: 'bar',
   anchor: ['top', 'left', 'bottom'],
   exclusivity: "exclusive",
-  margins: [10, 0, 10, 10],
+  margins: [0, 0, 0, 0],
   child: box(),
 })
 

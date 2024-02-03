@@ -21,6 +21,14 @@ export const Uptime = Variable("0h 0m", {
   poll: [1000 * 60, ['bash', '-c', "uptime -p | sed -e 's/up //;s/ hours,/h/;s/ hour,/h/;s/ minutes/m/;s/ minute/m/'"], out => out.trim()],
 })
 
+const currtheme = Utils.readFile(`/tmp/themeName`) || 'rose'
+export const CurrentTheme = Variable(currtheme)
+
+Utils.monitorFile(`/tmp/themeName`, () => {
+  const content = Utils.readFile(`/tmp/themeName`)
+  CurrentTheme.setValue(content.trim())
+})
+
 export const WS = Variable("", {
   listen: [['bash', '-c', `${App.configDir}/scripts/ws.sh`], out => {
     return JSON.parse(out)

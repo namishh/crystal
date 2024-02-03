@@ -1,0 +1,25 @@
+.bgoverlay {
+  min-height: 1080px;
+  min-width: 1920px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+}
+
+
+.bgbox {
+  background: rgba($background, 1);
+  border-radius: 0;
+  min-height: 1080px;
+  min-width: 1920px;
+}
+
+.rm {
+  &-icon {
+    font-size: 20px;
+  }
+
+  &-entry {
+    min-width: 200px;
+    min-height: 30px;
+  }
+}

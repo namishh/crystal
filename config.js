@@ -9,7 +9,6 @@ import { work } from './widgets/work/Work.js'
 import { calendarbox } from "./widgets/calendar/Calendar.js"
 import { osd } from './widgets/popups/Osd.js'
 
-import { time } from './widgets/time/Time.js'
 //import { dock } from './widgets/dock/Dock.js'
 import { wifimenu } from './widgets/popups/Wifi.js'
 import { bluetoothmenu } from './widgets/popups/Bluetooth.js'
@@ -35,4 +34,4 @@ Utils.monitorFile(
   'directory',
 )
 
-export default { windows: [bar, launcher, panel, calendarbox, osd, time, desktop, wifimenu, bluetoothmenu, notif, work], style: `${App.configDir}/finalcss/style.css` }
+export default { windows: [desktop, bar, launcher, panel, calendarbox, osd, wifimenu, bluetoothmenu, notif, work], style: `${App.configDir}/finalcss/style.css` }
