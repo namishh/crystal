@@ -20,7 +20,6 @@
       	path                "/tmp/mpd.fifo"
       }
 
-
       audio_output {
       	type		            "httpd"
       	name		            "lossless"

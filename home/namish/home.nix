@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/tokyo.nix { };
+  colors = import ../shared/cols/carburetor.nix { };
   walltype = "image";
 in
 {
@@ -16,7 +16,7 @@ in
     "${pkgs.phinger-cursors}/share/icons/phinger-cursors";
 
   home.file.".wallpapers" = {
-    source = ../../walls;
+    source = ../images/walls;
     recursive = true;
   };
 
@@ -36,9 +36,14 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
+    allowInsecure = true;
     allowBroken = true;
     allowUnfreePredicate = _: true;
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
 
   home = {
     activation = {
@@ -78,6 +83,7 @@ in
       imagemagick
       xorg.xev
       procps
+      obsidian
       redshift
       killall
       moreutils
@@ -85,6 +91,7 @@ in
       mpdris2
       socat
       inputs.matugen.packages.${system}.default
+      inputs.swayhide.packages.${system}.default
       pavucontrol
       fzf
       vesktop
@@ -135,6 +142,7 @@ in
     (import ./misc/neofetch.nix { inherit config colors; })
     (import ./misc/xinit.nix { })
     (import ./misc/ewwags.nix { inherit config colors; })
+    (import ./misc/obsidian.nix { inherit colors; })
 
     # Bin files
     (import ../shared/bin/default.nix { inherit config colors walltype; })

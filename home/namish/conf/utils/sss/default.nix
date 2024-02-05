@@ -9,15 +9,15 @@
 
     # General Config
     general = with colors;{
-      author = "${name}";
+      author = "${name} | chadcat7";
       # copy = true;
       colors = {
-        background = "#${darker}";
+        background = "#${accent}";
         author = "#${foreground}";
         shadow = "#${darker}";
       };
-      fonts = "Product Sans=12.0";
-      radius = 8;
+      fonts = "Product Sans=18.0";
+      radius = 16;
       save-format = "jpeg";
       shadow = true;
       shadow-image = true;

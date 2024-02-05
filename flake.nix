@@ -12,7 +12,6 @@
       spicetify-nix.url = "github:the-argus/spicetify-nix";
 
       nur.url = "github:nix-community/NUR";
-
       nixpkgs-f2k.url = "github:moni-dz/nixpkgs-f2k";
       nix-gaming.url = "github:fufexan/nix-gaming";
 
@@ -29,9 +28,15 @@
         url = "github:/InioX/Matugen";
       };
 
-      swayfx.url = "github:/WillPower3309/swayfx";
+      swayfx = {
+        url = "github:/WillPower3309/swayfx";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
 
       sss.url = "github:/SergioRibera/sss";
+
+      swayhide.url = "github:/rehanzo/swayhide";
+      prism.url = "github:/Diegiwg/PrismLauncher-Cracked";
     };
   outputs = { self, nixpkgs, ... } @inputs:
     let

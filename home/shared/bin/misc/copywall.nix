@@ -1,5 +1,5 @@
 { colors }:
 ''
   #!/bin/sh 
-  convert $1 /etc/nixos/walls/${colors.name}.jpg
+  convert $1 /etc/nixos/home/images/walls/${colors.name}.jpg
 ''

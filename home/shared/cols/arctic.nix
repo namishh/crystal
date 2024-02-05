@@ -1,16 +1,16 @@
 {}:
 rec {
   foreground = "d8dee9";
-  background = "21262f";
-  darker = "1b2028";
+  background = "1c2129";
+  darker = "161920";
   accent = "81a1c1";
-  mbg = "262c36";
+  mbg = "232933";
 
   cursorColor = "d8dee9";
   comment = "79818f";
 
-  color0 = "272c37";
-  color8 = "2a303b";
+  color0 = "252b35";
+  color8 = "282f3b";
 
   color1 = "d57780";
   color9 = "d56b75";

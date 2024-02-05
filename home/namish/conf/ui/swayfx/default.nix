@@ -9,7 +9,8 @@ in
     enable = true;
     systemd.enable = true;
     xwayland = true;
-    package = pkgs.swayfx;
+    #    package = pkgs.swayfx;
+    package = inputs.swayfx.packages.${pkgs.system}.default;
     extraConfig = ''
 
       for_window [app_id="spad"] move scratchpad, resize set width 900 height 600
@@ -44,9 +45,11 @@ in
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'waylock'
       ## SWAYFX CONFIG
-      corner_radius 5 
-
-      ${w} 
+      corner_radius 10
+      blur on
+      blur_passes 3
+      blur_radius 8
+      #${w} 
     '';
     config = {
       terminal = "wezterm";
