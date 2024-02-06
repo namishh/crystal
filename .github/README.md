@@ -1,9 +1,6 @@
 # freosan || wip
 
-![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/a.jpeg)
-
-
-![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/b.jpeg)
+![img](https://raw.githubusercontent.com/chadcat7/crystal/freosan/.github/image.png)
 
 ## installation of ags
 
