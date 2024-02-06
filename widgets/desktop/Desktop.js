@@ -31,7 +31,7 @@ const Box = Widget.EventBox({
     return Widget.Menu({
       children: [
         Item("Terminal", "org.wezfurlong.wezterm", () => {
-          Utils.exec("wezterm")
+          Utils.exec("wezterm & disown")
         }),
         Item("Open In Desktop", "org.wezfurlong.wezterm", () => {
           Utils.exec("wezterm -e sh -c 'cd ~/Desktop ; zsh'")
@@ -40,13 +40,13 @@ const Box = Widget.EventBox({
           Utils.exec("nemo Desktop")
         }),
         Item("Firefox", "firefox", () => {
-          Utils.exec("firefox")
+          Utils.exec("firefox & disown")
         }),
         Item("Music Pad", "deepin-music-player", () => {
-          Utils.exec("swayscratch smusicpad")
+          Utils.exec("swayscratch smusicpad & disown")
         }),
         Item("Scratch Pad", "terminal", () => {
-          Utils.exec("swayscratch spad")
+          Utils.exec("swayscratch spad & disown")
         }),
         Item("Launcher", "view-app-grid-symbolic", () => {
           App.toggleWindow("launcher")

@@ -62,7 +62,7 @@ const bluetoothmenu = Widget.Window({
   name: 'bluetoothmenu',
   visible: 'false',
   anchor: ['top', 'right'],
-  margins: [80, 480, 10, 10],
+  margins: [0, 450, 10, 10],
   child: box(),
 })
 

@@ -16,7 +16,7 @@ const left = () => Widget.Box({
   vexpand: true,
   children: [
     Widget.Box({
-     class_name: "launcher-left",
+      class_name: "launcher-left",
       homogeneous: false,
       spacing: 30,
       vertical: true,
@@ -93,7 +93,7 @@ const launcher = Widget.Window({
   visible: false,
   focusable: true,
   anchor: ['top', 'left'],
-  margins: [10, 10],
+  margins: [0, 0],
   child: box,
 })
 

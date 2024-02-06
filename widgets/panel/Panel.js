@@ -19,7 +19,7 @@ const panel = Widget.Window({
   popup: true,
   focusable: false,
   anchor: ['top', 'right', 'bottom'],
-  margins: [10, 10],
+  margins: [0, 0],
   child: Box,
 })
 

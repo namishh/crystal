@@ -50,10 +50,12 @@ const generateDesktops = (self) => {
           icon = icon.split("=")[icon.split("=").length - 1]
           onclick = properties.filter(s => s.includes('Exec'))[0];
           onclick = icon.split("=")[icon.split("=").length - 1]
+          const name = properties.filter(s => s.includes('Name'))[0];
+          element = name.split("=")[name.split("=").length - 1]
         } else {
           onclick = `wezterm start --always-new-process -e sh -c "nvim ~/Desktop/${element}; zsh"`
         }
-        stuff.push({ name: element, onclick: onclick, icon: icon, type: "file" })
+        stuff.push({ name: element.split(".")[0], onclick: onclick, icon: icon, type: "file" })
       } else {
         stuff.push({ name: element, onclick: `nemo Desktop/${element}`, icon: 'folder', type: "folder" })
       }

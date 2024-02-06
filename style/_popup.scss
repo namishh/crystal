@@ -1,10 +1,10 @@
 .popuppanel {
   background: $background;
-  border-radius: 20px;
-  padding: 2rem;
+  border-radius: 0px 0 0 20px;
+  padding: 1.5rem;
 
   &-wifi, &-bluetooth {
-    min-width: 330px;
+    min-width: 270px;
   }
 
   &-title {

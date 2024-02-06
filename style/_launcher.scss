@@ -1,11 +1,11 @@
 .launcher {
-  border-radius: 20px;
+  border-radius: 0 0 20px 0;
   background: $background;
 
 
   &-left {
     padding: 0.5rem;
-    background: rgba($background-alt, 0.5);
+    background: rgba($background, 1);
     border-radius: 10px;
   }
 

@@ -45,7 +45,7 @@
   }
 
   &box {
-    border-radius: 20px;
+    border-radius: 0 15px 0px 0;
     padding: 1.2rem;
     background: $background;
   }
@@ -96,9 +96,9 @@
   }
 
   &-cell {
-    padding: 0.2rem .3rem;
+    padding: 0.2rem .6rem;
     color: $foreground;
-    margin: 0.62rem 0.3rem;
+    margin: 0.62rem 0rem;
     border-radius: 4px;
     font-family: Product Sans;
     font-size: 18px;

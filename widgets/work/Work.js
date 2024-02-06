@@ -16,8 +16,8 @@ const work = Widget.Window({
   name: 'work',
   visible: false,
   focusable: false,
-  anchor: ['left'],
-  margins: [10, 10],
+  anchor: ['left', 'top', 'bottom'],
+  margins: [0, 0],
   child: Box,
 })
 

@@ -1,7 +1,7 @@
 import Widget from 'resource:///com/github/Aylur/ags/widget.js';
 import Calendar from './mods/Calendar.js';
 import Sidebar from './mods/Sidebar.js';
-import Music from './mods/Music.js'; 
+import Music from './mods/Music.js';
 
 const Box = Widget.Box({
   spacing: 20,
@@ -24,7 +24,7 @@ const calendarbox = Widget.Window({
   popup: true,
   focusable: false,
   anchor: ['left', 'bottom'],
-  margins: [10, 10],
+  margins: [0, 0],
   child: Box,
 })
 
