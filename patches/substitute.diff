@@ -14,8 +14,10 @@ index ac47a66..0c157c7 100644
 +$surface-weak: @bg3@;
 +$surface-weakest: @bg4@;
 
- $white-strongest: rgb(255, 255, 255);
- $white-strong: rgba(255, 255, 255, 0.87);
+-$white-strongest: rgb(255, 255, 255);
+-$white-strong: rgba(255, 255, 255, 0.87);
++$white-strongest: @fg@;
++$white-strong: @fg2@;
 @@ -16,25 +16,26 @@ $black-moderate: rgba(0, 0, 0, 0.42);
  $black-weak: rgba(0, 0, 0, 0.15);
  $black-weakest: rgba(0, 0, 0, 0.06);

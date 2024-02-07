@@ -23,6 +23,8 @@ stdenvNoCC.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace scss/gtk-3.0/_colors.scss \
+      --replace "@fg@" "#${colors.foreground}" \
+      --replace "@fg2@" "#${colors.color7}" \
       --replace "@bg0@" "#${colors.darker}" \
       --replace "@bg1@" "#${colors.background}" \
       --replace "@bg2@" "#${colors.mbg}"\

@@ -9,9 +9,26 @@ in
     enable = true;
     systemd.enable = true;
     xwayland = true;
-    #    package = pkgs.swayfx;
     package = inputs.swayfx.packages.${pkgs.system}.default;
     extraConfig = ''
+      ## SWAYFX CONFIG
+      corner_radius 14
+      blur on
+      blur_passes 3
+      blur_radius 8
+      shadows on
+      shadow_offset 0 0
+      shadow_blur_radius 20
+      shadow_color #000000BB
+      shadow_inactive_color #000000B0
+
+      default_dim_inactive 0.2
+
+      layer_effects "notif" blur enable; shadows enable; corner_radius 20
+      layer_effects "osd" blur enable; shadows enable; corner_radius 20
+      layer_effects "work" blur enable; shadows enable
+      layer_effects "panel" blur enable; shadows enable
+      layer_effects "calendarbox" blur enable; shadows enable; corner_radius 12
 
       for_window [app_id="spad"] move scratchpad, resize set width 900 height 600
       for_window [app_id="smusicpad"] move scratchpad, resize set width 850 height 550
@@ -29,9 +46,9 @@ in
       client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color  $inactive-bg-color
       client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $urgent-bg-color
 
-      font pango:Product Sans Regular 12
+      font pango:Product Sans 12
       titlebar_separator enable
-      titlebar_padding 12
+      titlebar_padding 16
       title_align center
       default_border normal 2
       default_floating_border normal 2
@@ -44,12 +61,6 @@ in
           timeout 360 'waylock' \
           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep 'waylock'
-      ## SWAYFX CONFIG
-      corner_radius 10
-      blur on
-      blur_passes 3
-      blur_radius 8
-      #${w} 
     '';
     config = {
       terminal = "wezterm";

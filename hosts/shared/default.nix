@@ -4,6 +4,7 @@ let
   my-python-packages = ps: with ps; [
     material-color-utilities
     numpy
+    i3ipc
   ];
 in
 {
@@ -118,7 +119,7 @@ in
     rnix-lsp
     xorg.xwininfo
     brightnessctl
-    (pkgs.python3.withPackages my-python-packages)
+    (pkgs.python311.withPackages my-python-packages)
     libnotify
     xdg-utils
     gtk3

@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/carburetor.nix { };
+  colors = import ../shared/cols/biscuit.nix { };
   walltype = "image";
 in
 {
