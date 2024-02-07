@@ -1,8 +1,7 @@
 .bgoverlay {
   min-height: 1080px;
-  min-width: 1920px;
-  border-radius: 20px;
-  background-repeat: no-repeat;
+  min-width: 1880px;
+  border-radius: 20px 0 0 20px;
 }
 
 
@@ -10,7 +9,7 @@
   background: rgba($background, 1);
   border-radius: 0;
   min-height: 1080px;
-  min-width: 1920px;
+  min-width: 1880px;
 }
 
 .rm {

@@ -1,31 +1,36 @@
 .popuppanel {
   background: $background;
   border-radius: 0px 0 0 20px;
+  color: $foreground;
   padding: 1.5rem;
 
-  &-wifi, &-bluetooth {
+  &-wifi,
+  &-bluetooth {
     min-width: 270px;
   }
 
   &-title {
-  font-family: "Product Sans";
+    font-family: "Product Sans";
     font-size: 18px;
   }
+
   &-close {
     font-size: 18px;
-    color: $red; 
+    color: $red;
     padding: 0.5rem;
     border-radius: 100px;
     background: rgba($red, 0.1);
   }
+
   &-label {
-  font-family: "Product Sans";
+    font-family: "Product Sans";
     font-size: 16px;
 
     &-active {
       color: $accent;
     }
   }
+
   &-scroll {
     min-height: 300px;
   }

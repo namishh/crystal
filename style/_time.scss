@@ -1,13 +1,17 @@
 .desktime {
   background: $background;
   padding: 2rem 4rem;
+  color: $foreground;
   font-family: "Product Sans";
   border-radius: 100px 0 0 100px;
   margin-top: 4rem;
+
   &-text-big {
     font-size: 27px;
   }
-  &-date, &-day {
+
+  &-date,
+  &-day {
     font-size: 27px;
   }
 
@@ -18,11 +22,12 @@
 
   &-message {
 
-  background: $background-alt;
-  padding: 1.5rem 0rem;
-  min-width: 300px;
-  font-size: 18px;
-  font-family: "Product Sans";
-  border-radius: 0px 0 0 20px;
+    color: $foreground;
+    background: $background-alt;
+    padding: 1.5rem 0rem;
+    min-width: 300px;
+    font-size: 18px;
+    font-family: "Product Sans";
+    border-radius: 0px 0 0 20px;
   }
 }

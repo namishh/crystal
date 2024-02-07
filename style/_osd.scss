@@ -1,6 +1,7 @@
 .osd {
   background: $background;
   padding: 1.4rem;
+  color: $foreground;
   border-radius: 20px;
   font-family: "Product Sans";
 
@@ -8,23 +9,24 @@
     font-size: 40px;
   }
 
-  &-label{
+  &-label {
     font-size: 16px;
   }
-    &-prog {
-      border-radius: 8px;
 
-      trough {
-        border-radius: 20px;
-        min-width: 190px;
-        min-height: 20px;
-        background: rgba($accent, 0.05);
-      }
+  &-prog {
+    border-radius: 8px;
 
-      progress {
-        min-height: 15px;
-        border-radius: 20px;
-        background: rgba($accent, 0.8);
-      }
+    trough {
+      border-radius: 20px;
+      min-width: 190px;
+      min-height: 20px;
+      background: rgba($accent, 0.05);
     }
+
+    progress {
+      min-height: 15px;
+      border-radius: 20px;
+      background: rgba($accent, 0.8);
+    }
+  }
 }
