@@ -71,11 +71,17 @@ in
   users = {
     users.namish = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" "adbusers" ];
       packages = with pkgs; [ ];
     };
     defaultUserShell = pkgs.zsh;
   };
+
+  programs.adb.enable = true;
+  services.udev.packages = [
+    pkgs.android-udev-rules
+  ];
+
 
   sound.enable = true;
 

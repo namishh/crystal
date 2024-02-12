@@ -36,7 +36,6 @@
       sss.url = "github:/SergioRibera/sss";
 
       swayhide.url = "github:/rehanzo/swayhide";
-      prism.url = "github:/Diegiwg/PrismLauncher-Cracked";
     };
   outputs = { self, nixpkgs, ... } @inputs:
     let

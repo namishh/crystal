@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/biscuit.nix { };
+  colors = import ../shared/cols/solarized.nix { };
   walltype = "image";
 in
 {
@@ -112,7 +112,9 @@ in
     (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
     #(import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
 
-    (import ./conf/utils/firefox/default.nix { inherit colors pkgs; })
+    (import ./conf/browsers/firefox/default.nix { inherit colors pkgs; })
+    (import ./conf/browsers/brave/default.nix { inherit pkgs; })
+
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/obs/default.nix { inherit pkgs; })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })

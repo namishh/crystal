@@ -13,9 +13,6 @@ in
     extraConfig = ''
       ## SWAYFX CONFIG
       corner_radius 14
-      blur on
-      blur_passes 3
-      blur_radius 8
       shadows on
       shadow_offset 0 0
       shadow_blur_radius 20
@@ -26,9 +23,9 @@ in
 
       layer_effects "notif" blur enable; shadows enable; corner_radius 20
       layer_effects "osd" blur enable; shadows enable; corner_radius 20
-      layer_effects "work" blur enable; shadows enable
-      layer_effects "panel" blur enable; shadows enable
-      layer_effects "calendarbox" blur enable; shadows enable; corner_radius 12
+      layer_effects "work"  shadows enable
+      layer_effects "panel" shadows enable
+      layer_effects "calendarbox"shadows enable; corner_radius 12
 
       for_window [app_id="spad"] move scratchpad, resize set width 900 height 600
       for_window [app_id="smusicpad"] move scratchpad, resize set width 850 height 550
@@ -52,7 +49,7 @@ in
       title_align center
       default_border normal 2
       default_floating_border normal 2
-  
+
       exec_always --no-startup-id xrdb -merge ~/.Xresources &
       exec --no-startup-id ags &
       exec_always --no-startup-id mpDris2 &
@@ -138,7 +135,8 @@ in
 
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
-          "${mod}+Shift+w" = "exec 'ags -t \"work\"' ";
+          "${mod}+Shift+x" = "exec 'ags -t \"powermenu\"'";
+
           "${mod}+e" = "layout toggle split";
 
           "${mod}+Shift+space" = "floating toggle";

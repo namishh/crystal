@@ -13,6 +13,7 @@
       nf = "run neofetch";
       sa = "pkill ags ; ags & disown";
       suda = "sudo -E -s";
+      sh = "swayhide";
       nix-pkgs = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
     };
     history = {
