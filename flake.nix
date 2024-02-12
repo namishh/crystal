@@ -33,8 +33,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      sss.url = "github:/SergioRibera/sss";
-
       swayhide.url = "github:/rehanzo/swayhide";
     };
   outputs = { self, nixpkgs, ... } @inputs:

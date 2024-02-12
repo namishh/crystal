@@ -118,7 +118,6 @@ in
     (import ./conf/utils/sxhkd/default.nix { })
     (import ./conf/utils/obs/default.nix { inherit pkgs; })
     (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
-    (import ./conf/utils/sss/default.nix { inherit inputs colors; })
 
     # Shell
     (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
