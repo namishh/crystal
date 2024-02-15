@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/solarized.nix { };
+  colors = import ../shared/cols/decay.nix { };
   walltype = "image";
 in
 {

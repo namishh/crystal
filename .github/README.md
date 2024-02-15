@@ -12,9 +12,9 @@
 </div>
 
 
-> **Warning**
+> [!Important]
 >
-> I am still very very new to nix and sometimes can also commit broken code! At best only use them as a reference for something you cannot find elsewhere!
+> I do not rice anymore and am happily retired with an xfce configuration. The swayfx rice lays down incomplete.
 
 ## Features of config
 + **OS**     -  nixos

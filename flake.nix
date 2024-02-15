@@ -60,6 +60,18 @@
               ./hosts/frostbyte/configuration.nix
             ];
           };
+        arcticmouse = nixpkgs.lib.nixosSystem
+          {
+            specialArgs = {
+              inherit inputs outputs;
+            };
+            modules = [
+              # > Our main nixos configuration file <
+              inputs.home-manager.nixosModule
+              inputs.darkmatter.nixosModule
+              ./hosts/arcticmouse/configuration.nix
+            ];
+          };
       };
 
       homeConfigurations = {
