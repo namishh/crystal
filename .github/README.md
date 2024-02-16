@@ -1,5 +1,5 @@
 <div align="center">
-<img src="screenshots/header.png" alt="showcase3">
+<img src="screenshots/crystal.png" alt="showcase3">
 
 <br>
 <br>
