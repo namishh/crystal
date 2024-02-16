@@ -95,6 +95,10 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/aura"><img src="screenshots/aura.png"  alt="aura"></a>                    |
 
+| <b>Freosan</b>                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/freosan"><img src="screenshots/freosan.png"  alt="freosan"></a>                    |
+
 | <b>Blizzard (Do not use)</b>                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/blizzard"><img src="screenshots/blizzard.png"  alt="blizz"></a>                    |

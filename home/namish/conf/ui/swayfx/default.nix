@@ -135,7 +135,6 @@ in
 
           "${mod}+s" = "layout stacking";
           "${mod}+w" = "layout tabbed";
-          "${mod}+Shift+x" = "exec 'ags -t \"powermenu\"'";
 
           "${mod}+e" = "layout toggle split";
 
