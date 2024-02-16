@@ -83,6 +83,15 @@ Utils.interval(1000 * 60 * 60, () => {
     })
 })
 
+
+const events = Utils.readFile(`${App.configDir}/_data/events.txt`) || ""
+export const EventsText = Variable(events)
+
+Utils.monitorFile(`${App.configDir}/_data/events.txt`, () => {
+  const content = Utils.readFile(`${App.configDir}/_data/events.txt`)
+  EventsText.setValue(content)
+})
+
 const content = Utils.readFile(`${App.configDir}/_data/agenda.md`) || "# No Agenda Setup :( "
 export const AgendaText = Variable(content)
 

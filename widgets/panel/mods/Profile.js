@@ -16,7 +16,7 @@ export default () => Widget.CenterBox({
     children: [
       Widget.Box({
         class_name: "panel-pfp",
-        css: `background-image: url('${App.configDir}/assets/pfp.png');`
+        css: `background-image: url('${App.configDir}/assets/pfp.jpg');`
       }),
       Widget.Label({
         class_name: "panel-name",

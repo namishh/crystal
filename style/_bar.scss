@@ -4,6 +4,13 @@
   background: $background;
   color: $foreground;
 
+  &-pfp {
+    min-height: 29px;
+    border: 1px $accent solid;
+    background-position: center;
+    border-radius: 100px;
+  }
+
   &-time {
     padding: 0.6rem 0.3rem;
     font-family: "Product Sans";

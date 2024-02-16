@@ -57,7 +57,7 @@ const left = () => Widget.Box({
         }),
         Widget.Box({
           class_name: "launcher-pfp",
-          css: `background-image: url('${App.configDir}/assets/pfp.png');background-size: cover;`
+          css: `background-image: url('${App.configDir}/assets/pfp.jpg');background-size: cover;`
         }),
       ],
     }),

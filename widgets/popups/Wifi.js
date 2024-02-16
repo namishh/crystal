@@ -55,7 +55,7 @@ const wifimenu = Widget.Window({
   name: 'wifimenu',
   visible: 'false',
   anchor: ['top', 'right'],
-  margins: [0, 450, 10, 10],
+  margins: [10, 470, 10, 10],
   child: box(),
 })
 

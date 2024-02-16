@@ -6,6 +6,14 @@ import Systray from "./mods/Systray.js"
 import Work from './mods/Work.js';
 
 
+const pfp = () => Widget.Button({
+  child: Widget.Box({
+    class_name: "bar-pfp",
+    css: `background-image: url('${App.configDir}/assets/pfp.jpg');background-size: cover;`
+  }),
+  on_clicked: () => {
+  }
+})
 const nixicon = () => Widget.Button({
   child: Widget.Icon({
     icon: `${App.configDir}/assets/nixos.png`,
@@ -37,7 +45,7 @@ const right = () => Widget.Box({
   homogeneous: false,
   vertical: true,
   vpack: "end",
-  children: [Systray(), Status(), Clock()]
+  children: [Systray(), Status(), Clock(), pfp()]
 });
 
 const box = () => Widget.CenterBox({

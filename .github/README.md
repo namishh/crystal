@@ -50,8 +50,14 @@ OPENWEATHERAPIKEY=key
 CITY=New York
 ```
 
-5. create `.config/ags/_data/agenda.md` and `.config/ags/_data/timerhistory.txt`
+5. create `.config/ags/_data/agenda.md`, `.config/ags/_data/timerhistory.txt` and create `.config/ags/_data/events.txt`
 
 ```md 
+agenda.md
 # any stuff here
+```
+
+events.txt (ik this is super scuffed but this is also incomplete so dont expect much)
+```
+26`Feb`high`Finals Week or the final week
 ```

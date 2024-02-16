@@ -1,5 +1,74 @@
 .calendar {
 
+  &-med {
+    background: rgba($yellow, 0.08);
+      border-radius: 5px;
+    border-left: 5px solid $yellow;
+    padding: 1rem;
+  }
+
+  &-normal{
+    background: rgba($green, 0.08);
+      border-radius: 5px;
+    padding: 1rem;
+    border-left: 2px solid $green;
+  }
+
+  &-low{
+    border-radius: 5px;
+    padding: 1rem;
+    border-left: 5px solid rgba($foreground, 0.7);
+  }
+  &-high{
+    background: rgba($red, 0.08);
+    border-left: 5px solid $red;
+      border-radius: 5px;
+    padding: 1rem;
+  }
+
+  &-events {
+    background: rgba($background-alt, 0.46);
+    color: $foreground;
+    font-family: Product Sans;
+    padding: 1.5rem;
+      border-radius: 20px;
+    .icon {
+      font-size: 18px;
+    }
+    &-title {
+      font-size: 20px;
+    }
+
+    &-box {
+      padding: 0rem;
+      color: $foreground;
+    background: rgba($foreground, 0.05);
+      border-radius: 5px;
+      min-width: 60px;
+      margin-right: 1rem;
+    }
+
+    &-month {
+    background: rgba($foreground, 0.1);
+      border-radius: 5px 5px 0 0;
+      color: $foreground;
+    padding: 0.3rem 0;
+    }
+    &-date {
+    padding: 0.4rem 0;
+    font-size: 22px;
+    font-weight: 900;
+    }
+
+    &-text {
+      font-size: 18px;
+    }
+
+    &-item {
+      margin: 0.5rem 0;
+    }
+  }
+
   &-music {
     font-family: Product Sans;
     padding: 1rem;
@@ -45,8 +114,7 @@
   }
 
   &box {
-    border-radius: 0 15px 0px 0;
-    padding: 1.2rem;
+    padding: 1rem;
     background: $background;
   }
 
@@ -83,7 +151,7 @@
   }
 
   &-side {
-    padding: 1.2rem;
+    padding: 1rem;
     background: rgba($background-alt, 0.46);
     border-radius: 10px;
     font-family: Product Sans;
@@ -96,9 +164,9 @@
   }
 
   &-cell {
-    padding: 0.2rem .6rem;
+    padding: 0.2rem .4rem;
     color: $foreground;
-    margin: 0.62rem 0rem;
+    margin: 0.5rem 0rem;
     border-radius: 4px;
     font-family: Product Sans;
     font-size: 18px;

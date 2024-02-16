@@ -15,14 +15,14 @@ export default () => Widget.Box({
       setup: (btn) => (btn.id = i),
       on_clicked: () => dispatch(i),
       setup: (btn) => {
-        btn.hook(Sway, (btn) => {
+        btn.hook(WS, (btn) => {
           const ws = Sway.getWorkspace(`${i}`);
           if (ws?.nodes.length + ws?.floating_nodes.length > 0) {
             btn.class_names = [...btn.class_names.filter(i => i != "bar-ws-empty"), "bar-ws-occupied"];
           } else {
             btn.class_names = [...btn.class_names.filter(i => i != "bar-ws-occupied"), "bar-ws-empty"];
           }
-        }, "notify::clients");
+        });
 
         btn.hook(Sway.active.workspace, (btn) => {
           btn.toggleClassName("bar-ws-active", Sway.active.workspace.name == i);
