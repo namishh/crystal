@@ -14,7 +14,7 @@
 
 > [!Important]
 >
-> I do not rice anymore and am happily retired with a default xfce. The swayfx rice lays down incomplete.
+> I do not rice anymore and am happily retired with a basic dwm. The swayfx rice lays down incomplete.
 
 ## Features of config
 + **OS**     -  nixos

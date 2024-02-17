@@ -26,7 +26,7 @@
       185.199.108.133 raw.githubusercontent.com
     '';
 
-  networking.hostName = "arcticmouse";
+  networking.hostName = "focusflake";
   networking.useDHCP = false;
   networking.interfaces.wlo1.useDHCP = true;
 
@@ -56,12 +56,23 @@
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
-      desktopManager = {
-        xterm.enable = false;
-        xfce.enable = true;
-      };
       displayManager = {
         startx.enable = true;
+      };
+      desktopManager.xfce.enable = true;
+      windowManager.dwm = {
+        enable = true;
+        package = pkgs.dwm.override {
+          conf = ../../patches/dwm/config.def.h;
+          patches = [
+            ../../patches/dwm/systray.diff
+            ../../patches/dwm/xresources.diff
+            ../../patches/dwm/alt-tags.diff
+            ../../patches/dwm/fullgaps.diff
+            ../../patches/dwm/titlecolor.diff
+            ../../patches/dwm/barheight.diff
+          ];
+        };
       };
       libinput = {
         enable = true;

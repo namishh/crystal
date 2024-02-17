@@ -16,9 +16,9 @@ stdenvNoCC.mkDerivation rec {
   };
 
   patches = [
-    ../../patches/npm.diff
-    ../../patches/gradients.diff
-    ../../patches/substitute.diff
+    ../../patches/phocus/npm.diff
+    ../../patches/phocus/gradients.diff
+    ../../patches/phocus/substitute.diff
   ];
 
   postPatch = ''

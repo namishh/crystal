@@ -22,6 +22,10 @@ in
         executable = true;
         text = import ./misc/copywall.nix { inherit colors; };
       };
+      ".local/bin/dwmbar" = {
+        executable = true;
+        text = import ./misc/dwmbar.nix { inherit colors; };
+      };
       ".local/bin/roundvalue" = {
         executable = true;
         text = import ./misc/roudnvalue.nix { };

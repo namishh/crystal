@@ -1,7 +1,7 @@
 { colors, pkgs, inputs, ... }:
 {
   services.picom = {
-    enable = true;
+    enable = false;
     #package = nixpkgs-f2k.packages.${pkgs.system}.picom-pijulius;
     package = inputs.nixpkgs-f2k.packages.${pkgs.system}.picom-ft-labs.overrideAttrs (oldAttrs: {
       src = pkgs.fetchFromGitHub {

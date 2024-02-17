@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/decay.nix { };
+  colors = import ../shared/cols/verdant.nix { };
   walltype = "image";
 in
 {
@@ -141,7 +141,7 @@ in
     # Some file generation
     (import ./misc/vencord.nix { inherit config colors; })
     (import ./misc/neofetch.nix { inherit config colors; })
-    (import ./misc/xinit.nix { })
+    (import ./misc/xinit.nix { inherit colors; })
     (import ./misc/ewwags.nix { inherit config colors; })
     (import ./misc/obsidian.nix { inherit colors; })
 

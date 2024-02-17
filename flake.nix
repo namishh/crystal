@@ -60,7 +60,7 @@
               ./hosts/frostbyte/configuration.nix
             ];
           };
-        arcticmouse = nixpkgs.lib.nixosSystem
+        focusflake = nixpkgs.lib.nixosSystem
           {
             specialArgs = {
               inherit inputs outputs;
@@ -69,7 +69,7 @@
               # > Our main nixos configuration file <
               inputs.home-manager.nixosModule
               inputs.darkmatter.nixosModule
-              ./hosts/arcticmouse/configuration.nix
+              ./hosts/focusflake/configuration.nix
             ];
           };
       };

@@ -7,6 +7,7 @@ with colors; {
     '';
     properties = {
       "st.background" = "#${background}";
+      "st.alt" = "#${mbg}";
       "st.color0" = "#${color0}";
       "st.color8" = "#${color8}";
       "st.color7" = "#${color7}";
@@ -25,6 +26,12 @@ with colors; {
       "st.color6" = "#${color6}";
       "st.color14" = "#${color14}";
       "st.borderpx" = 32;
+      "dwm.normbgcolor" = "#${background}";
+      "dwm.normfgcolor" = "#${foreground}";
+      "dwm.normbordercolor" = "#${comment}";
+      "dwm.selbgcolor" = "#${accent}";
+      "dwm.selfgcolor" = "#${background}";
+      "dwm.selbordercolor" = "#${accent}";
     };
   };
 }
