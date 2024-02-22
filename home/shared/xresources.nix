@@ -26,12 +26,13 @@ with colors; {
       "st.color6" = "#${color6}";
       "st.color14" = "#${color14}";
       "st.borderpx" = 32;
-      "dwm.normbgcolor" = "#${background}";
+      "dwm.normbgcolor" = "#${darker}";
       "dwm.normfgcolor" = "#${foreground}";
       "dwm.normbordercolor" = "#${comment}";
-      "dwm.selbgcolor" = "#${accent}";
-      "dwm.selfgcolor" = "#${background}";
+      "dwm.selbgcolor" = "#${mbg}";
+      "dwm.selfgcolor" = "#${accent}";
       "dwm.selbordercolor" = "#${accent}";
+      "dwm.urgcolor" = "#${color9}";
     };
   };
 }

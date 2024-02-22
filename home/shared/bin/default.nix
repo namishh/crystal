@@ -80,10 +80,47 @@ in
             ${w}
           '';
         };
+      ".local/bin/dlock" =
+        {
+          executable = true;
+          text = ''
+               #!/bin/sh
+               playerctl pause
+               sleep 0.2
+               fg_color=#${colors.foreground}ff
+               wrong_color=#${colors.color9}aa
+               highlight_color=#${colors.accent}ff
+               verif_color=#${colors.color2}ff
+               date_hour_color=#${colors.foreground}ff
+               i3lock -p default -n --force-clock -i ~/.wallpapers/${colors.name}.jpg \
+                 --ind-pos="w/2:h/2+158" --time-pos="w/2:h/4-5" --date-pos="w/2:h/4+55" --greeter-pos="w/2:h/2" \
+                 --insidever-color=62688000 --insidewrong-color=$wrong_color --inside-color=b3b9b800 \
+                 --ringver-color=$verif_color --ringwrong-color=$wrong_color --ring-color=$fg_color \
+                 --keyhl-color=$highlight_color --bshl-color=$highlight_color --separator-color=dadada00 \
+                 --date-color=$date_hour_color --time-color=$date_hour_color --greeter-color=$fg_color  \
+                 --time-str="%I:%M" --time-size=120 \
+                 --date-str="%a, %d %b" --date-size=35 \
+            --greeter-text="$date_now" --greeter-size=25 \
+                 --line-uses-inside --radius 115 --ring-width 15 --indicator \
+                 --verif-text=""  --wrong-text="" --noinput-text="" \
+                 --clock --date-font="Product Sans" --time-font="Product Sans" \
+                 --pass-media-keys
+          '';
+        };
       ".local/bin/setWall" = {
         executable = true;
         text = import ./theme/changeWall.nix { };
       };
+
+      ".local/bin/dmenupower" = {
+        executable = true;
+        text = import ./dmenu/power.nix { inherit colors; };
+      };
+      ".local/bin/dmenuemoji" = {
+        executable = true;
+        text = import ./dmenu/emoji.nix { inherit colors; };
+      };
+
 
       ".local/bin/wifimenu" = {
         executable = true;

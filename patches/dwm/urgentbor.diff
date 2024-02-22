@@ -1,0 +1,20 @@
+diff --git a/dwm.c b/dwm.c
+index 4465af1..fda4013 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -2022,8 +2022,11 @@ updatewmhints(Client *c)
+ 		if (c == selmon->sel && wmh->flags & XUrgencyHint) {
+ 			wmh->flags &= ~XUrgencyHint;
+ 			XSetWMHints(dpy, c->win, wmh);
+-		} else
++		} else {
+ 			c->isurgent = (wmh->flags & XUrgencyHint) ? 1 : 0;
++			if (c->isurgent)
++				XSetWindowBorder(dpy, c->win, scheme[SchemeUrg][ColBorder].pixel);
++		}
+ 		if (wmh->flags & InputHint)
+ 			c->neverfocus = !wmh->input;
+ 		else
+-- 
+2.27.0
+

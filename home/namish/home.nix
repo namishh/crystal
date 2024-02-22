@@ -1,7 +1,7 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  colors = import ../shared/cols/verdant.nix { };
+  colors = import ../shared/cols/vixima.nix { };
   walltype = "image";
 in
 {
@@ -74,6 +74,7 @@ in
       (pkgs.callPackage ../../pkgs/icons/papirus.nix { })
       (pkgs.callPackage ../../pkgs/others/phocus.nix { inherit colors; })
       cinnamon.nemo
+      i3lock-color
       rust-analyzer
       mpc-cli
       ffmpeg_5-full
@@ -108,29 +109,29 @@ in
     # Importing Configutations
     (import ../shared/xresources.nix { inherit colors; })
 
-    (import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
-    (import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
-    #(import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
+    #(import ./conf/utils/swaylock/default.nix { inherit colors pkgs; })
+    #(import ./conf/utils/rofi/default.nix { inherit config pkgs colors; })
+    (import ./conf/utils/dunst/default.nix { inherit colors pkgs; })
 
     (import ./conf/browsers/firefox/default.nix { inherit colors pkgs; })
     (import ./conf/browsers/brave/default.nix { inherit pkgs; })
 
-    (import ./conf/utils/sxhkd/default.nix { })
-    (import ./conf/utils/obs/default.nix { inherit pkgs; })
-    (import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
+    #(import ./conf/utils/sxhkd/default.nix { })
+    #(import ./conf/utils/obs/default.nix { inherit pkgs; })
+    #(import ./conf/utils/picom/default.nix { inherit colors pkgs inputs; })
 
     # Shell
     (import ./conf/shell/zsh/default.nix { inherit config colors pkgs lib; })
     (import ./conf/shell/tmux/default.nix { inherit pkgs; })
 
-    (import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
-    (import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors inputs walltype; })
-    (import ./conf/ui/ags/default.nix { inherit pkgs inputs colors; })
+    #(import ./conf/ui/hyprland/default.nix { inherit config pkgs lib inputs colors; })
+    #(import ./conf/ui/swayfx/default.nix { inherit config pkgs lib colors inputs walltype; })
+    #(import ./conf/ui/ags/default.nix { inherit pkgs inputs colors; })
 
     (import ./conf/term/wezterm/default.nix { inherit pkgs colors inputs; })
     (import ./conf/term/kitty/default.nix { inherit pkgs colors; })
 
-    (import ./conf/editors/vscopium/default.nix { inherit pkgs colors; })
+    #(import ./conf/editors/vscopium/default.nix { inherit pkgs colors; })
 
     # Music thingies
     (import ./conf/music/spicetify/default.nix { inherit colors inputs pkgs; })

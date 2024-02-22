@@ -1,0 +1,44 @@
+diff --git a/dwm.1 b/dwm.1
+index 13b3729..a368d05 100644
+--- a/dwm.1
++++ b/dwm.1
+@@ -116,6 +116,9 @@ Zooms/cycles focused window to/from master area (tiled layouts only).
+ .B Mod1\-Shift\-c
+ Close focused window.
+ .TP
++.B Mod1\-Shift\-f
++Toggle fullscreen for focused window.
++.TP
+ .B Mod1\-Shift\-space
+ Toggle focused window between tiled and floating state.
+ .TP
+diff --git a/dwm.c b/dwm.c
+index 4465af1..c1b899a 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -211,6 +211,8 @@ static void tagmon(const Arg *arg);
+ static void tile(Monitor *);
+ static void togglebar(const Arg *arg);
+ static void togglefloating(const Arg *arg);
++static void togglefullscr(const Arg *arg);
++static void togglescratch(const Arg *arg);
+ static void toggletag(const Arg *arg);
+ static void toggleview(const Arg *arg);
+ static void unfocus(Client *c, int setfocus);
+@@ -1719,6 +1720,13 @@ togglefloating(const Arg *arg)
+ 	arrange(selmon);
+ }
+ 
++void
++togglefullscr(const Arg *arg)
++{
++  if(selmon->sel)
++    setfullscreen(selmon->sel, !selmon->sel->isfullscreen);
++}
++
+ void
+ toggletag(const Arg *arg)
+ {
+-- 
+2.30.2
+

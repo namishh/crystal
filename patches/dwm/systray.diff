@@ -21,7 +21,7 @@ index e5efb6a..79a46f5 100644
 +
  /* enums */
  enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
- enum { SchemeNorm, SchemeSel }; /* color schemes */
+ enum { SchemeNorm, SchemeSel, SchemeHid, SchemeUrg, SchemeButton }; /* color schemes */
  enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
 +       NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
         NetWMFullscreen, NetActiveWindow, NetWMWindowType,
@@ -59,7 +59,7 @@ index e5efb6a..79a46f5 100644
  static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
  static void grabbuttons(Client *c, int focused);
  static void grabkeys(void);
-@@ -189,13 +212,16 @@ static void pop(Client *c);
+@@ -189,13 +212,17 @@ static void pop(Client *c);
  static void propertynotify(XEvent *e);
  static void quit(const Arg *arg);
  static Monitor *recttomon(int x, int y, int w, int h);
@@ -71,6 +71,7 @@ index e5efb6a..79a46f5 100644
 +static void resizerequest(XEvent *e);
  static void restack(Monitor *m);
  static void run(void);
++static void runAutostart(void);
  static void scan(void);
 -static int sendevent(Client *c, Atom proto);
 +static int sendevent(Window w, Atom proto, int m, long d0, long d1, long d2, long d3, long d4);
@@ -124,15 +125,6 @@ index e5efb6a..79a46f5 100644
  static int running = 1;
  static Cur *cursor[CurLast];
  static Clr **scheme;
-@@ -442,7 +475,7 @@ buttonpress(XEvent *e)
- 			arg.ui = 1 << i;
- 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
- 			click = ClkLtSymbol;
--		else if (ev->x > selmon->ww - (int)TEXTW(stext))
-+		else if (ev->x > selmon->ww - (int)TEXTW(stext) - getsystraywidth())
- 			click = ClkStatusText;
- 		else
- 			click = ClkWinTitle;
 @@ -485,9 +518,16 @@ cleanup(void)
  	XUngrabKey(dpy, AnyKey, AnyModifier, root);
  	while (mons)
@@ -220,7 +212,7 @@ index e5efb6a..79a46f5 100644
  			}
  			focus(NULL);
  			arrange(NULL);
-@@ -656,6 +745,11 @@ destroynotify(XEvent *e)
+@@ -656,6 +745,13 @@ destroynotify(XEvent *e)
  
  	if ((c = wintoclient(ev->window)))
  		unmanage(c, 1);
@@ -229,6 +221,8 @@ index e5efb6a..79a46f5 100644
 +		resizebarwin(selmon);
 +		updatesystray();
 +	}
++	else if ((c = swallowingclient(ev->window)))
++		unmanage(c->swallowing, 1);
  }
  
  void
@@ -274,7 +268,7 @@ index e5efb6a..79a46f5 100644
 +		isCode = 0;
 +	text = p;
 +
-+	w += 2; /* 1px padding on both sides */
++	w += horizpadbar; /* 1px padding on both sides */
 +	ret = m->ww - w;
 +	x = m->ww - w - getsystraywidth();
 +
@@ -282,7 +276,7 @@ index e5efb6a..79a46f5 100644
 +	drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
 +	drw->scheme[ColBg] = scheme[SchemeNorm][ColBg];
 +	drw_rect(drw, x, 0, w, bh, 1, 1);
-+	x++;
++ x += horizpadbar / 2;
 +
 +	/* process status text */
 +	i = -1;
@@ -292,7 +286,7 @@ index e5efb6a..79a46f5 100644
 +
 +			text[i] = '\0';
 +			w = TEXTW(text) - lrpad;
-+			drw_text(drw, x, 0, w, bh, 0, text, 0);
++			drw_text(drw, x, vertpadbar / 2, w, bh - vertpadbar, 0, text, 0);
 +
 +			x += w;
 +
@@ -322,7 +316,7 @@ index e5efb6a..79a46f5 100644
 +					while (text[++i] != ',');
 +					int rh = atoi(text + ++i);
 +
-+					drw_rect(drw, rx + x, ry, rw, rh, 1, 0);
++					drw_rect(drw, rx + x, ry + vertpadbar / 2, rw, rh, 1, 0);
 +				} else if (text[i] == 'f') {
 +					x += atoi(text + ++i);
 +				}
@@ -336,7 +330,7 @@ index e5efb6a..79a46f5 100644
 +
 +	if (!isCode) {
 +		w = TEXTW(text) - lrpad;
-+		drw_text(drw, x, 0, w, bh, 0, text, 0);
++		drw_text(drw, x, vertpadbar / 2, w, bh - vertpadbar, 0, text, 0);
 +	}
 +
 +	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -348,8 +342,8 @@ index e5efb6a..79a46f5 100644
  void
  drawbar(Monitor *m)
  {
--	int x, w, tw = 0;
-+	int x, w, tw = 0, stw = 0;
+-	int x, w, tw = 0, n = 0, scm;
++	int x, w, tw = 0, stw = 0, n = 0, blw, scm;
  	int boxs = drw->fonts->h / 9;
  	int boxw = drw->fonts->h / 6 + 2;
  	unsigned int i, occ = 0, urg = 0;
@@ -372,24 +366,11 @@ index e5efb6a..79a46f5 100644
  	for (c = m->clients; c; c = c->next) {
  		occ |= c->tags;
  		if (c->isurgent)
-@@ -735,7 +940,7 @@ drawbar(Monitor *m)
- 	drw_setscheme(drw, scheme[SchemeNorm]);
+@@ -735,3 +940,3 @@ drawbar(Monitor *m)
  	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
  
 -	if ((w = m->ww - tw - x) > bh) {
 +	if ((w = m->ww - tw - stw - x) > bh) {
- 		if (m->sel) {
- 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
- 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
-@@ -746,7 +951,7 @@ drawbar(Monitor *m)
- 			drw_rect(drw, x, 0, w, bh, 1, 1);
- 		}
- 	}
--	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
-+	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
- }
- 
- void
 @@ -783,8 +988,11 @@ expose(XEvent *e)
  	Monitor *m;
  	XExposeEvent *ev = &e->xexpose;

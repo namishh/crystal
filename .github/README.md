@@ -111,6 +111,15 @@ If you that determined, here are some resources to start out
 >
 > For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix. 
 
+### Focus Flake. 
+This is a very minimal dwm rice I made to quit ricing. This build mainly contains useful patches like xrdb, swallow, awesomebar,scratchpads, etc. The way of patching is so shit with nixos because I had to manually modify each patch to not conflict with the other. 
+
+| <b>focusflake</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="#"><img src="screenshots/dwm1.png"  alt="ff1"></a>                    |
+| <a href="#"><img src="screenshots/dwm2.png"  alt="ff2"></a>                    |
+
+
 ## Theming
 
 | <b>Firefox</b>                                                                                      |

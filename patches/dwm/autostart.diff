@@ -1,0 +1,24 @@
+diff --git a/dwm.c b/dwm.c
+index d27cb67..066ed71 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -1386,6 +1387,11 @@ run(void)
+ }
+ 
+ void
++runAutostart(void) {
++	system("cd ~/.dwm; ./autostart.sh &");
++}
++
++void
+ scan(void)
+ {
+ 	unsigned int i, num;
+@@ -2145,6 +2152,7 @@ main(int argc, char *argv[])
+ 	setup();
+ 	scan();
+	restoreSession();
++	runAutostart();
+ 	run();
+	if(restart) execvp(argv[0], argv);
+ 	cleanup();

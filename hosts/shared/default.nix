@@ -84,12 +84,8 @@ in
 
 
   sound.enable = true;
-
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-    extraConfig = "load-module module-switch-on-connect";
-  };
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1";
 
   hardware.bluetooth = {
     enable = true;
@@ -125,6 +121,7 @@ in
     rnix-lsp
     xorg.xwininfo
     brightnessctl
+    networkmanager_dmenu
     (pkgs.python311.withPackages my-python-packages)
     libnotify
     xdg-utils
@@ -156,6 +153,7 @@ in
     slop
     ripgrep
     imv
+    element-desktop
     maim
     xclip
     wirelesstools
@@ -172,9 +170,17 @@ in
     dosis
     material-symbols
     rubik
+    noto-fonts-color-emoji
     google-fonts
     (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
+  fonts.fontconfig = {
+    defaultFonts = {
+      sansSerif = [ "Product Sans" ];
+      monospace = [ "Iosevka Nerd Font" ];
+    };
+  };
+  fonts.enableDefaultPackages = true;
 
   environment.shells = with pkgs; [ zsh ];
   programs.dconf.enable = true;

@@ -48,12 +48,24 @@
         package = pkgs.dwm.override {
           conf = ../../patches/dwm/config.def.h;
           patches = [
-            ../../patches/dwm/systray.diff
-            ../../patches/dwm/xresources.diff
+            # IN THE NAME OF THY GOD,
+            # DO NOT CHANGE THE ORDER OF THESE PATCHES 
+            # OR SHIT WILL BREAK
             ../../patches/dwm/alt-tags.diff
+            ../../patches/dwm/awm.diff
+            ../../patches/dwm/fullscreen.diff
+            ../../patches/dwm/systray.diff
+            ../../patches/dwm/scratches.diff
+            ../../patches/dwm/alttab.diff
+            ../../patches/dwm/restartsig.diff
+            ../../patches/dwm/restore.diff
+            ../../patches/dwm/autostart.diff
+            ../../patches/dwm/center.diff
+            ../../patches/dwm/statuspadding.diff
+            ../../patches/dwm/swallow.diff
+            ../../patches/dwm/xresources.diff
+            ../../patches/dwm/urgentbor.diff
             ../../patches/dwm/fullgaps.diff
-            ../../patches/dwm/titlecolor.diff
-            ../../patches/dwm/barheight.diff
           ];
         };
       };

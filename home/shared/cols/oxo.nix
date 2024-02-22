@@ -6,7 +6,7 @@ rec {
   mbg = "181818";
 
   cursorColor = "dadada";
-  accent = "1bbab7";
+  accent = "df5b93";
   comment = "696969";
 
   color0 = "1d1d1d";

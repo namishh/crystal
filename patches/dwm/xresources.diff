@@ -74,7 +74,7 @@ index e5efb6a..3fe76be 100644
  static void zoom(const Arg *arg);
  
  /* variables */
-@@ -1019,6 +1037,37 @@ killclient(const Arg *arg)
+@@ -1019,6 +1037,38 @@ killclient(const Arg *arg)
  	}
  }
  
@@ -102,6 +102,7 @@ index e5efb6a..3fe76be 100644
 +        XRDB_LOAD_COLOR("dwm.selbordercolor", selbordercolor);
 +        XRDB_LOAD_COLOR("dwm.selbgcolor", selbgcolor);
 +        XRDB_LOAD_COLOR("dwm.selfgcolor", selfgcolor);
++        XRDB_LOAD_COLOR("dwm.urgcolor", urgborder);
 +      }
 +    }
 +  }
