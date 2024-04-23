@@ -1,0 +1,5 @@
+require(... .. '.cpu')
+require(... .. '.disk')
+require(... .. '.mem')
+require(... .. '.weather')
+require(... .. '.uptime')

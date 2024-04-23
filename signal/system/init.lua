@@ -1,0 +1,6 @@
+require(... .. ".battery")
+require(... .. ".dnd")
+require(... .. ".wifi")
+require(... .. ".bluetooth")
+require(... .. ".brightness")
+require(... .. ".volume")
