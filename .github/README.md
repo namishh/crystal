@@ -1,1 +1,1 @@
-Vercel UI Rice
+Cuwute light theme rice
