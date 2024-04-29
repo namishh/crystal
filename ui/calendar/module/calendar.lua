@@ -41,12 +41,10 @@ local currwidget = function(day)
       font   = beautiful.sans .. " 12",
       widget = wibox.widget.textbox,
     },
-    shape = helpers.rrect(5),
+    shape = helpers.rrect(10),
 
     widget = wibox.container.background,
-    shape_border_width = 1,
-    shape_border_color = beautiful.fg3 .. 'cc',
-    bg = beautiful.fg3 .. '88',
+    bg = beautiful.blue .. '22',
   }
 end
 
@@ -144,11 +142,9 @@ return function()
                 top = 5,
                 bottom = 5,
               },
-              shape = helpers.rrect(5),
+              shape = helpers.rrect(10),
               widget = wibox.container.background,
-              shape_border_width = 1,
-              shape_border_color = beautiful.fg3 .. 'cc',
-              bg = beautiful.fg3 .. '99',
+              bg = beautiful.blue .. '22',
               buttons = awful.button({}, 1, function()
                 curr = os.date("*t", os.time({
                   day = curr.day,
@@ -176,11 +172,9 @@ return function()
                 top = 5,
                 bottom = 5,
               },
-              shape = helpers.rrect(5),
+              shape = helpers.rrect(10),
               widget = wibox.container.background,
-              shape_border_width = 1,
-              shape_border_color = beautiful.fg3 .. 'cc',
-              bg = beautiful.fg3 .. '99',
+              bg = beautiful.blue .. '22',
               buttons = awful.button({}, 1, function()
                 curr = os.date("*t", os.time({
                   day = curr.day,
@@ -206,10 +200,8 @@ return function()
       widget = wibox.container.margin,
       margins = 20
     },
-    shape = helpers.rrect(5),
+    shape = helpers.rrect(10),
     widget = wibox.container.background,
-    shape_border_width = 1,
-    shape_border_color = beautiful.fg3,
-    bg = beautiful.mbg
+    bg = beautiful.magenta .. '11'
   }
 end

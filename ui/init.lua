@@ -6,7 +6,7 @@ return {
   wibar        = require(... .. '.wibar'),
   launcher     = require(... .. ".launcher"),
   settings     = require(... .. ".settings"),
-  calnotif     = require(... .. ".calnotif"),
   dash         = require(... .. ".dash"),
+  calendar     = require(... .. ".calendar"),
   osd          = require(... .. ".osd"),
 }

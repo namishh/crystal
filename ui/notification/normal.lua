@@ -36,8 +36,8 @@ end)
 naughty.config.defaults.ontop           = true
 naughty.config.defaults.screen          = awful.screen.focused()
 naughty.config.defaults.timeout         = 10
-naughty.config.defaults.title           = "Ding!"
-naughty.config.defaults.position        = "top_right"
+naughty.config.defaults.title           = "Notification!"
+naughty.config.defaults.position        = "bottom_left"
 
 -- Timeouts
 naughty.config.presets.low.timeout      = 10
@@ -117,10 +117,10 @@ naughty.connect_signal("request::display", function(n)
     rounded_edge = true,
     thickness = dpi(4),
     start_angle = 4.71238898,
-    bg = beautiful.fg2,
-    colors = { beautiful.fg3 },
-    forced_width = dpi(70),
-    forced_height = dpi(70)
+    bg = beautiful.blue .. '33',
+    colors = { beautiful.blue },
+    forced_width = dpi(60),
+    forced_height = dpi(60)
   }
   local anim = animation:new {
     duration = 6,
@@ -233,7 +233,7 @@ naughty.connect_signal("request::display", function(n)
   local widget = naughty.layout.box {
     notification    = n,
     bg              = beautiful.bg,
-    shape           = helpers.rrect(0),
+    shape           = helpers.rrect(10),
     widget_template = {
       {
         {
@@ -251,9 +251,7 @@ naughty.connect_signal("request::display", function(n)
               widget = wibox.container.margin
             },
             widget = wibox.container.background,
-            shape_border_width = 1,
-            shape_border_color = beautiful.fg3,
-            bg = beautiful.mbg,
+            bg = beautiful.blue .. '11',
           },
           layout = wibox.layout.fixed.vertical
         },
@@ -270,22 +268,14 @@ naughty.connect_signal("request::display", function(n)
             layout = wibox.layout.fixed.horizontal,
             spacing = 20,
           },
-          margins = { left = dpi(15), top = dpi(10), right = dpi(10) },
-          widget = wibox.container.margin
-        },
-        {
-          -- foot
-          actions,
-          margins = dpi(10),
+          margins = { left = dpi(15), top = dpi(5), right = dpi(10), bottom = dpi(15) },
           widget = wibox.container.margin
         },
         layout = wibox.layout.fixed.vertical,
         spacing = dpi(10)
       },
       widget = wibox.container.background,
-      shape = helpers.rrect(0),
-      shape_border_width = 1,
-      shape_border_color = beautiful.fg3,
+      shape = helpers.rrect(10),
       bg = beautiful.bg,
     }
   }

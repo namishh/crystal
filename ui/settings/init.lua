@@ -9,8 +9,8 @@ local module = require(... .. ".module")
 awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
     screen = s,
-    width = 430,
-    height = 325,
+    width = 515,
+    height = 750,
     shape = helpers.rrect(10),
     bg = beautiful.bg .. 00,
     ontop = true,
@@ -21,8 +21,8 @@ awful.screen.connect_for_each_screen(function(s)
     {
       module.topsection,
       module.buttons,
+      module.notifs,
       module.sliders,
-      module.song,
       layout = wibox.layout.fixed.vertical,
     },
     widget = wibox.container.background,
@@ -31,6 +31,6 @@ awful.screen.connect_for_each_screen(function(s)
 
   awesome.connect_signal("toggle::settings", function()
     control.visible = not control.visible
-    awful.placement.top_left(control, { honor_workarea = true, margins = { left = 130, top = 15 } })
+    awful.placement.top_left(control, { honor_workarea = true, margins = { left = 15, top = 15 } })
   end)
 end)

@@ -9,7 +9,7 @@ local widget = wibox.widget {
       {
         {
           widget = wibox.widget.textbox,
-          font = beautiful.sans .. " 14",
+          font = beautiful.sans .. " 12",
           valign = "center",
           markup = helpers.colorizeText("Hello " .. beautiful.user .. "!", beautiful.blue)
         },
@@ -20,7 +20,7 @@ local widget = wibox.widget {
           markup = helpers.colorizeText(" ⋅ ", beautiful.fg)
         },
         {
-          font = beautiful.sans .. " 14",
+          font = beautiful.sans .. " 12",
           format = helpers.colorizeText("%A, %d %B", beautiful.blue),
           align = "center",
           valign = "center",
@@ -34,8 +34,8 @@ local widget = wibox.widget {
       layout = wibox.layout.align.horizontal,
     },
     widget = wibox.container.margin,
-    top = 10,
-    bottom = 10,
+    top = 15,
+    bottom = 15,
     left = 15,
     right = 15,
   },

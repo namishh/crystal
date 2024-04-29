@@ -134,7 +134,7 @@ theme.bluetooth_disconnected = gears.color.recolor_image(
   theme.fg)
 
 theme.awesome_icon           = gears.color.recolor_image(themes_path .. "icons/awesome.svg",
-  theme.fg)
+  theme.magenta .. '99')
 
 theme.trash                  = gears.color.recolor_image(themes_path .. "icons/trash.svg",
   theme.red)
@@ -151,7 +151,7 @@ theme.check                                     = gears.color.recolor_image(them
   theme.fg)
 
 theme.notif_bell                                = gears.color.recolor_image(themes_path .. "icons/bell.png",
-  theme.fg)
+  theme.blue)
 
 theme.titlebar_left                             = gears.color.recolor_image(
   themes_path .. "icons/titlebars/titlebar.svg",

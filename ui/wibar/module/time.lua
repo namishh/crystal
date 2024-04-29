@@ -22,7 +22,7 @@ local hourminutes = wibox.widget {
   bg = beautiful.magenta .. '11',
   buttons = {
     awful.button({}, 1, function()
-      awesome.emit_signal('toggle::calnotif')
+      awesome.emit_signal('toggle::calendar')
     end)
   },
   widget = wibox.container.background,
