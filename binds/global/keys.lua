@@ -49,9 +49,6 @@ awful.keyboard.append_global_keybindings({
     awesome.emit_signal("open::osd")
   end),
 
-  awful.key({ modkey }, "d", function()
-    awesome.emit_signal("toggle::dash")
-  end),
 
   awful.key({ modkey, }, 's', require('awful.hotkeys_popup').show_help,
     { description = 'show help', group = 'awesome' }),
