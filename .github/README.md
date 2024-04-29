@@ -107,6 +107,10 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/glacier"><img src="screenshots/glacier.png"  alt="glacier"></a>                    |
 
+| <b>Kawai</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/kawai"><img src="https://raw.githubusercontent.com/chadcat7/crystal/kawai/.github/1.png"  alt="kawai"></a>                    |
+
 > **Info**
 >
 > For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix. 
