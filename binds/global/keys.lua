@@ -31,6 +31,10 @@ awful.keyboard.append_global_keybindings({
       awesome.emit_signal("toggle::launcher")
     end),
 
+  awful.key({ modkey, }, "x",
+    function(c)
+      awesome.emit_signal("toggle::lock")
+    end),
 
   awful.key({}, "XF86MonBrightnessDown", function()
     brightness.decrease()
