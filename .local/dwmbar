@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+ interval=0
+
+ battery() {
+   get_capacity="$(cat /sys/class/power_supply/BAT0/capacity)%%"
+   stat=$(cat /sys/class/power_supply/BAT0/status)
+   if [ "$stat" = "Charging" ]; then
+     printf "^C2^^B0^ BAT ^q^"
+   else 
+     printf "^W^^B0^ BAT ^q^"
+   fi
+   printf "^W^^q^ $get_capacity"
+ }
+
+ music() {
+   player_status=$(playerctl status) 
+   song=$(playerctl metadata title)
+    trim_length=15
+   if [ "$player_status" = "Playing" ]; then
+     printf "^a^^C0^ NP ^q^^W^"
+     echo " ${song:0:25} "
+
+   elif [ "$player_status" = "Paused" ]; then
+     printf "^A^^B0^ PA ^q^^W^"
+     echo " ${song:0:25} "
+   else 
+     printf "^A^^B0^ X ^q^^W^ Nothing Playing "
+   fi
+ }
+
+ wlan() {
+   SSID=$(iwgetid -r)
+ 	case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+ 	up) printf "^B0^^A^ 󰤨  ^d^%s""^W^^q^ $SSID ^q^" ;;
+  down) printf "^B0^^W^ 󰤯  ^d^%s""^W^^q^ Disconnected ^q^" ;;
+ 	esac
+ }
+
+ clock() {
+ 	printf "^B0^^A^   "
+   printf "^W^^B0^ $(date '+%H:%M') ^q^"
+ }
+
+ while true; do
+  interval=$((interval + 1))
+  sleep 1 && xsetroot -name "$(battery) $(wlan)$(clock)"
+ done
+

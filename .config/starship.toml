@@ -1,0 +1,51 @@
+format = """
+$git_branch\
+$git_status\
+$directory\
+$character
+"""
+
+right_format = """
+$rust\
+$bun\
+$nodejs\
+"""
+
+add_newline = false
+
+[directory]
+format = "[ [$read_only]($read_only_style)$path ]($style)"
+style = "bg:black"
+read_only = "󰌾 "
+read_only_style = "fg:red bg:black"
+
+[character]
+format = " "
+
+[git_branch]
+format = "[ $branch(:$remote_branch) ]($style)"
+style = "fg:black bg:blue"
+
+
+[nodejs]
+format = " [( node $version )]($style) "
+style	= 'bg:black fg:bold green'
+
+[rust]
+format = " [( rust $version )]($style) "
+style	= 'bg:black fg:bold red'
+
+
+[git_status]
+format = "[ $all_status$ahead_behind ]($style)"
+style = "fg:black bg:cyan"
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
+
+[cmd_duration]
+min_time = 500
+format = "[ $duration ]($style)"
+style = "fg:black bg:yellow"
