@@ -74,7 +74,7 @@ local widget = wibox.widget {
           "bluetooth", 0),
         createButton("awesome-client \'naughty = require(\"naughty\") naughty.toggle()\'", "dnd", "Silence",
           "dnd", 0),
-        createButton("pamixer --source 82 -t", "mic", "Silence",
+        createButton("pamixer --source 83 -t", "mic", "Silence",
           "mic", 2),
         spacing = 0,
         layout = wibox.layout.fixed.horizontal

@@ -24,13 +24,13 @@ theme.hostname  = os.getenv('HOST')
 local themeName = "dawn"
 local colors    = require("theme.colors." .. themeName)
 
-
-theme.wallpaper      = themes_path .. "walls/" .. require("config.user").wallpaper
+local wall = require("config.user").flavour
+theme.wallpaper      = themes_path .. "walls/" .. wall .. '.png'
 theme.pfp            = themes_path .. "pics/pfp.png"
 theme.pfpname        = themes_path .. "pics/pfpname.png"
 theme.scheme         = themeName
 theme.sans           = "Lexend"
-theme.mono           = "Fantasque Sans M Nerd Font"
+theme.mono           = "IosevkaTermSlab Nerd Font"
 theme.icon           = "Material Design Icons"
 theme.font           = "Lexend 12"
 theme.prompt_font    = theme.font
