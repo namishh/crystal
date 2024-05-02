@@ -14,21 +14,20 @@ local themes_path   = gfs.get_configuration_dir() .. "theme/"
 local theme         = {}
 
 
-local home      = os.getenv 'HOME'
+local home           = os.getenv 'HOME'
 
 ----- User Preferences -----
 
-theme.user      = string.gsub(os.getenv('USER'), '^%l', string.upper)
-theme.hostname  = os.getenv('HOST')
+theme.user           = string.gsub(os.getenv('USER'), '^%l', string.upper)
+theme.hostname       = os.getenv('HOST')
 ----- Font -----
-local themeName = "dawn"
-local colors    = require("theme.colors." .. themeName)
+local colors         = loadfile(home .. "/.config/awesome/theme/colors/dawn.lua")()
 
-local wall = require("config.user").flavour
+local wall           = require("config.user").flavour
 theme.wallpaper      = themes_path .. "walls/" .. wall .. '.png'
 theme.pfp            = themes_path .. "pics/pfp.png"
 theme.pfpname        = themes_path .. "pics/pfpname.png"
-theme.scheme         = themeName
+theme.scheme         = wall
 theme.sans           = "Lexend"
 theme.mono           = "IosevkaTermSlab Nerd Font"
 theme.icon           = "Material Design Icons"
@@ -66,7 +65,7 @@ theme.fg             = colors.fg
 theme.bg             = colors.bg
 --theme.dbg            = colors.dbg
 theme.bg_alt         = colors.mbg
-theme.mab            = "#edebe8"
+theme.mab            = colors.mab
 theme.mbg            = colors.mbg
 theme.bg3            = colors.bg3
 theme.bg4            = colors.bg4
@@ -175,6 +174,19 @@ theme.titlebar_maximized_button_focus_active    = gears.color.recolor_image(
   themes_path .. "icons/titlebars/maximize.svg",
   theme.blue)
 
+theme.shuffle_on                                = gears.color.recolor_image(
+  themes_path .. "icons/titlebars/shuffle.svg", theme.blue)
+
+theme.shuffle_off                               = gears.color.recolor_image(
+  themes_path .. "icons/titlebars/shuffle.svg", theme.fg3)
+
+theme.repeat_song                               = gears.color.recolor_image(
+  themes_path .. "icons/titlebars/repeat-once.svg", theme.blue)
+theme.repeat_play                               = gears.color.recolor_image(
+  themes_path .. "icons/titlebars/repeat.svg", theme.blue)
+theme.no_repeat                                 = gears.color.recolor_image(
+  themes_path .. "icons/titlebars/repeat.svg", theme.fg3)
+
 theme.titlebar_minimize_button_normal           = gears.color.recolor_image(
   themes_path .. "icons/titlebars/minimize.svg", theme.fg3)
 theme.titlebar_minimize_button_focus            = gears.color.recolor_image(
@@ -189,4 +201,4 @@ rnotification.connect_signal('request::rules', function()
   }
 end)
 
-return theme
+beautiful.init(theme)

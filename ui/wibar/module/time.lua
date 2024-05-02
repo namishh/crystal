@@ -25,8 +25,10 @@ local hourminutes = wibox.widget {
       awesome.emit_signal('toggle::calendar')
     end)
   },
+  id = "bg",
   widget = wibox.container.background,
   shape = helpers.rrect(5),
 }
+
 
 return hourminutes

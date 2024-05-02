@@ -7,13 +7,13 @@ return {
   -- this or do not have such a key, I suggest you to remap Mod4 to another key using
   -- xmodmap or other tools. However, you can use another modifier like Mod1, but it
   -- may interact with others.
-  mod       = 'Mod4',
+  mod     = 'Mod4',
   -- Each screen has its own tag table. You can just define one and append it to all
   -- screens (default behavior).
-  tags      = { '零', '一', '二', '三', '四' },
+  tags    = { '零', '一', '二', '三', '四' },
   -- Table of layouts to cover with awful.layout.inc, ORDER MATTERS, the first layout
   -- in the table is your DEFAULT LAYOUT.
-  layouts   = {
+  layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.floating,
     --    awful.layout.suit.tile.left,
@@ -28,5 +28,5 @@ return {
     --    awful.layout.suit.magnifier,
     --    awful.layout.suit.corner.nw
   },
-  flavour = "dawn", 
+flavour="serenity",
 }

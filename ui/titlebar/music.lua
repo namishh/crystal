@@ -10,11 +10,11 @@ local dpi             = beautiful.xresources.apply_dpi
 
 local art             = wibox.widget {
   image = helpers.cropSurface(1, gears.surface.load_uncached(beautiful.songdefpicture)),
-  clip_shape = helpers.rrect(100),
+  clip_shape = helpers.rrect(10),
   opacity = 0.75,
   resize = true,
-  forced_height = dpi(45),
-  forced_width = dpi(45),
+  forced_height = dpi(220),
+  forced_width = dpi(220),
   valign = 'center',
   widget = wibox.widget.imagebox
 }
@@ -75,7 +75,7 @@ local songname        = wibox.widget {
   markup = helpers.colorizeText('Nothing Playing', beautiful.fg),
   align = 'left',
   valign = 'center',
-  forced_width = dpi(40),
+  forced_width = dpi(120),
   font = beautiful.sans .. " 12",
   widget = wibox.widget.textbox
 }
@@ -150,84 +150,123 @@ local createTopButton = function(c, icon, click, color)
   return widget
 end
 
-local bottom          = function(c)
+local shufflebtn = wibox.widget {
+  align = 'center',
+  forced_height = 25,
+  image = beautiful.shuffle_off,
+  widget = wibox.widget.imagebox,
+  buttons = {
+    awful.button({}, 1, function()
+      playerctl:cycle_shuffle()
+    end)
+  }
+}
+playerctl:connect_signal("shuffle", function(_, shuffle)
+  shufflebtn.image = shuffle and beautiful.shuffle_on or beautiful.shuffle_off
+end)
+
+local repeatt = wibox.widget {
+  align = 'center',
+  forced_height = 25,
+  image = beautiful.no_repeat,
+  widget = wibox.widget.imagebox,
+  buttons = {
+    awful.button({}, 1, function()
+      playerctl:cycle_loop_status()
+    end)
+  }
+}
+playerctl:connect_signal("loop_status", function(_, loop_status)
+  if loop_status:match('none') then
+    repeatt.image = beautiful.no_repeat
+  elseif loop_status:match('track') then
+    repeatt.image = beautiful.repeat_song
+  else
+    repeatt.image = beautiful.repeat_play
+  end
+end)
+
+
+local right = function(c)
   local playtab = createTopButton(c, '󰲸', '1', beautiful.blue)
   local vistab = createTopButton(c, '󰐰', '8', beautiful.blue)
   vistab:add_button(awful.button({}, 3, function()
     helpers.clickKey(c, '8 ')
   end))
-  awful.titlebar(c, { position = "bottom", size = dpi(70), bg = beautiful.mbg }):setup {
-    slider,
+  awful.titlebar(c, { position = "right", size = dpi(300), bg = beautiful.mbg }):setup {
     {
       {
         {
           {
             art,
-            {
-              {
-                songname,
-                artistname,
-                forced_width = 400,
-                layout = wibox.layout.fixed.vertical,
-              },
-              align = 'center',
-              widget = wibox.container.place
-            },
-            spacing = 13,
-            layout = wibox.layout.fixed.horizontal,
+            widget = wibox.container.margin,
+            bottom = 10,
           },
-          margins = {
-            top = 5,
-            bottom = 5,
-            left = 5,
-            right = 5,
-          },
-          widget = wibox.container.margin,
+          widget = wibox.container.place,
+          halign = "center",
         },
-        nil,
         {
           {
             {
               {
                 {
-                  prev,
-                  play,
-                  next,
-                  spacing = 15,
-                  layout = wibox.layout.fixed.horizontal,
+                  shufflebtn,
+                  widget = wibox.container.place,
+                  halign = "right",
                 },
-                align = 'center',
                 widget = wibox.container.place,
+                halign = "center",
               },
-              widget = wibox.container.margin,
-              left = 10,
-              right = 10,
+              {
+                {
+                  {
+                    spacing = 20,
+                    layout = wibox.layout.fixed.horizontal,
+                    prev,
+                    play,
+                    next
+                  },
+                  widget = wibox.container.margin,
+                  left = 20,
+                  right = 20,
+                  top = 8,
+                  bottom = 8
+                },
+                shape = helpers.rrect(15),
+                widget = wibox.container.background,
+                bg = beautiful.blue .. '11'
+              },
+              {
+                repeatt,
+                widget = wibox.container.place,
+                valign = "center",
+              },
+              spacing = 20,
+              layout = wibox.layout.fixed.horizontal,
             },
-            widget = wibox.container.background,
-            bg = beautiful.mbg,
-            shape_border_width = 1,
-            shape_border_color = beautiful.fg3,
-            shape = helpers.rrect(5),
+            widget = wibox.container.place,
+            halign = "center",
           },
           widget = wibox.container.margin,
-          margins = 5
-
+          bottom = 10,
         },
-        expand = 'none',
-        layout = wibox.layout.align.horizontal,
+        spacing = 10,
+        layout = wibox.layout.fixed.vertical,
       },
-      widget = wibox.container.margin,
-      left = 15,
-      top = 5,
-      bottom = 5,
-      right = 15
+      widget = wibox.container.place,
+      halign = "center",
+      valign = "center",
     },
-    layout = wibox.layout.fixed.vertical,
+    widget = wibox.container.margin,
+    left = 20,
+    top = 15,
+    bottom = 15,
+    right = 20
   }
 end
 
-local final           = function(c)
-  bottom(c)
+local final = function(c)
+  right(c)
 end
 
 

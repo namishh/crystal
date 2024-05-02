@@ -10,7 +10,7 @@ awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
     screen = s,
     width = 515,
-    height = 750,
+    height = 760,
     shape = helpers.rrect(10),
     bg = beautiful.bg .. 00,
     ontop = true,

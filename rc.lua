@@ -23,11 +23,10 @@ require('awful.hotkeys_popup.keys')
 
 -- Load the theme. In other words, defines the variables within the `beautiful`
 -- table.
-require("beautiful").init(require("gears").filesystem.get_configuration_dir() .. "theme/init.lua")
+require('theme')
 
 require("lib.swallow")
 require("lib.scratch")
-
 -- Treat all signals. Bear in mind this implies creating all tags, attaching
 -- their layouts, setting client behavior and loading UI.
 require('signal')
