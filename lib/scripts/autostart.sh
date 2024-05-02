@@ -1,4 +1,4 @@
 picom &
 mpd &
-xss-lock slock &
+xss-lock lock &
 mpd-mpris &

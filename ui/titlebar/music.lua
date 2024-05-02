@@ -73,18 +73,18 @@ local slider          = wibox.widget {
 
 local songname        = wibox.widget {
   markup = helpers.colorizeText('Nothing Playing', beautiful.fg),
-  align = 'left',
+  align = 'center',
   valign = 'center',
   forced_width = dpi(120),
-  font = beautiful.sans .. " 12",
+  font = beautiful.sans .. " 14",
   widget = wibox.widget.textbox
 }
 local artistname      = wibox.widget {
   markup = helpers.colorizeText('None', beautiful.comm),
-  align = 'left',
+  align = 'center',
   valign = 'center',
   forced_height = dpi(20),
-  font = beautiful.sans .. " 11",
+  font = beautiful.sans .. " 12",
   widget = wibox.widget.textbox
 }
 local is_prog_hovered = false
@@ -249,6 +249,12 @@ local right = function(c)
           },
           widget = wibox.container.margin,
           bottom = 10,
+        },
+        {
+          songname,
+          artistname,
+          spacing = 3,
+          layout = wibox.layout.fixed.vertical,
         },
         spacing = 10,
         layout = wibox.layout.fixed.vertical,

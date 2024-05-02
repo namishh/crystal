@@ -159,4 +159,4 @@ local createScratch = function(command, width, height, k)
 end
 
 local default = createScratch("neofetch", 1000, 650, 'v')
-local ncmpcpp = createScratch("ncmpcpp", 800, 500, 'z')
+local ncmpcpp = createScratch("ncmpcpp", 850, 500, 'z')

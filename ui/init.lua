@@ -8,5 +8,6 @@ return {
   settings     = require(... .. ".settings"),
   lock         = require(... .. ".lock"),
   calendar     = require(... .. ".calendar"),
+  dash         = require(... .. ".dash"),
   osd          = require(... .. ".osd"),
 }

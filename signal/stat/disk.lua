@@ -6,7 +6,7 @@ local function emit_disk_status()
     ,
     function(stdout)
       stdout = stdout:gsub("%s+", "")
-      stdout = (tonumber(stdout) / 255) * 100
+      stdout = (tonumber(stdout) / 255) * 100 + 20
       awesome.emit_signal('signal::disk', stdout)
     end)
 end

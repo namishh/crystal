@@ -30,6 +30,10 @@ awful.keyboard.append_global_keybindings({
     function(c)
       awesome.emit_signal("toggle::launcher")
     end),
+  awful.key({ modkey, }, "d",
+    function(c)
+      awesome.emit_signal("toggle::dash")
+    end),
 
   awful.key({ modkey, }, "x",
     function(c)

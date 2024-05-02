@@ -100,7 +100,7 @@ awful.screen.connect_for_each_screen(function(s)
           {
             button("poweroff", "power"),
             button("reboot", "reboot"),
-            button("slock", "lock"),
+            button("lock", "lock"),
             spacing = 10,
             layout = wibox.layout.fixed.vertical,
           },
