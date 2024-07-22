@@ -14,10 +14,10 @@
 
 > [!Important]
 >
-> I do not rice anymore and am happily retired with a basic dwm. The swayfx rice lays down incomplete.
+> New Changes Soon.
 
 ## Features of config
-+ **OS**     -  nixos
++ **OS**     -  nixos // arch
 + **WM**     -  awesome - [blizzard](https://github.com/chadcat7/crystal/tree/blizzard) // [aura](https://github.com/chadcat7/fuyu/tree/aura) // hyprland
 + **Shell**  -  zsh
 + **Term**   -  wezterm
