@@ -25,7 +25,13 @@
 + **Comp**   -  picom - [fdev31 fork](https://github.com/fdev31/picom/tree/animation-pr)
 + **Editor** -  nvim v0.9 - [my config](https://github.com/chadcat7/lodo)
 
-## Nix
+## Nix 
+
+> [!note]
+>
+> I have written a [blog post](https://nam.is-a.dev/blog/nixos) on setting up Nixos. And for those who are interested in learning about ricing itself, I have a seperate blog post about is. Checkout the [Ricing Guide](https://nam.is-a.dev/blog/ricing/) (btw it also got featured in the official unixporn wiki).
+
+
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
 
 NixOS is a unique distro. Unlike other distros where you store your configurations in `~/.config/` and binaries in `~/.local/bin` , nix takes a different approach. Instead you can [declaratively](https://zero-to-nix.com/concepts/declarative) define your configuration in `.nix` files. These nix files can be used to install and configure programs, services, setting up things like xresources, etc. This approach provides a modular system that enables users to share, reuse, and modify their configurations easily. <br> <br>
@@ -75,7 +81,7 @@ This is the general structure of my dotfiles. I am using a beta feature called `
 5. overlays
   + they are just modifications you do on top of the original program, for example patching st, or using a fork of st from github.
 
-> **Warning** 
+> [!Warning]
 >
 > by no means are the above things I say 100% the truth. I maybe wrong somewhere, if you spot a mistake kindly prompt me to correct it
 
@@ -111,9 +117,14 @@ If you that determined, here are some resources to start out
 | ------------------------------------------------------------------------------------------------------------------ |
 | <a href="https://github.com/chadcat7/crystal/tree/kawai"><img src="https://raw.githubusercontent.com/chadcat7/crystal/kawai/.github/1.png"  alt="kawai"></a>                    |
 
-> **Info**
+| <b>Vercel</b>                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------ |
+| <a href="https://github.com/chadcat7/crystal/tree/vercel"><img src="https://github.com/user-attachments/assets/f709ef1c-30ff-4973-942c-ad71cdc2acd0"  alt="vercel"></a>                    |
+
+> [!NOTE]
 >
-> For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix. 
+> For screenshots, go to each rice's respective branch. Also I am aware of the fact that none of the rices are themed like they are named. They are all named like that because the words are related to winter / snow which means nix.
+> To get Basic dotfiles, go to the [simplefiles branch](https://github.com/chadcat7/crystal/tree/simplefiles).
 
 ### Focus Flake. 
 This is a very minimal dwm rice I made to quit ricing. This build mainly contains useful patches like xrdb, swallow, awesomebar,scratchpads, etc. The way of patching is so shit with nixos because I had to manually modify each patch to not conflict with the other. 
