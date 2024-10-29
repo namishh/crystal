@@ -29,7 +29,7 @@
 
 > [!note]
 >
-> I have written a [blog post](https://nam.is-a.dev/blog/nixos) on setting up Nixos. And for those who are interested in learning about ricing itself, I have a seperate blog post about is. Checkout the [Ricing Guide](https://nam.is-a.dev/blog/ricing/) (btw it also got featured in the official unixporn wiki).
+> I have written a [blog post](https://namishh.me/blog/nixos) on setting up Nixos. And for those who are interested in learning about ricing itself, I have a seperate blog post about is. Checkout the [Ricing Guide](https://namishh.me/blog/ricing/) (btw it also got featured in the official unixporn wiki).
 
 
 The "Textbook" Definition - A Linux distribution based on the Nix package manager and guided by Nix's core principles.
